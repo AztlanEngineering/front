@@ -13,7 +13,7 @@
     "release:minor": "./scripts/release.sh minor",  
     "release:major": "./scripts/release.sh major",
     "lerna":"lerna",
-    "test": "echo 0",
+    "test": "exit 0"
   },
   "devDependencies": {
     "lerna": "^7.4.1",
