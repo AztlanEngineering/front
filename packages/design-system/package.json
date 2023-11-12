@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006 --debug",
     "build-storybook": "storybook build",
-    "build:esm": "node ./build.js --format esm",
-    "build:cjs": "node ./build.js --format cjs"
+    "build:cjs": "node ./build.js --format cjs",
+    "build:esm": "node ./build.js --format esm"
   },
   "author": "",
   "license": "ISC",
