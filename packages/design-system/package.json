@@ -14,12 +14,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@aztlan/assets": "^0.0.0-alpha.0",
+    "@aztlan/swatch": "0.0.1-alpha.11",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addon-interactions": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",
     "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/addon-themes": "^7.5.3",
     "@storybook/blocks": "^7.5.3",
     "@storybook/react": "^7.5.3",
     "@storybook/react-webpack5": "^7.5.3",
@@ -38,8 +41,5 @@
     "ts-loader": "^9.5.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "@storybook/addon-themes": "^7.5.3"
   }
 }
