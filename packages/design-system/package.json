@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/design-system",
-  "version": "0.0.0-alpha.2",
+  "version": "0.0.0",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/assets": "^0.0.0-alpha.2",
+    "@aztlan/assets": "^0.0.0",
     "@aztlan/swatch": "0.0.1-alpha.11",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
