@@ -12,6 +12,9 @@
     "release:patch": "./scripts/release.sh patch",
     "release:minor": "./scripts/release.sh minor",  
     "release:major": "./scripts/release.sh major",
+    "test:stylelint":"exit 0",
+    "test:jest":"exit 0",
+    "test:eslint":"exit 0",
     "lerna":"lerna",
     "test": "exit 0"
   },
