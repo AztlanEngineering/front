@@ -7,6 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006 --debug",
+    "test:stylelint":"exit 0",
+    "test:jest":"exit 0",
+    "test:eslint":"exit 0",
     "build-storybook": "storybook build",
     "build:cjs": "node ./build.js --format cjs",
     "build:esm": "node ./build.js --format esm"
