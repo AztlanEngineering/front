@@ -1,6 +1,8 @@
 module.exports = {
-  parser       :'@babel/eslint-parser',
-  root    :true,
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  root: true,
   ignorePatterns: ['!.storybook/*'],
   env:{
     browser:true,
