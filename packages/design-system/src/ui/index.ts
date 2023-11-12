@@ -1,3 +1,3 @@
-export { Button } from './Button.jsx'
-export { Header } from './Header.jsx'
-export { Page } from './Page.jsx'
+export { Button } from './Button'
+export { Header } from './Header'
+export { Page } from './Page'
