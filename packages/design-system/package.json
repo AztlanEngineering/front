@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/design-system",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -19,10 +19,10 @@
   "license": "ISC",
   "devDependencies": {
     "@aztlan/assets": "^0.0.0",
-    "@aztlan/eslint-config": "^0.0.1-alpha.2",
+    "@aztlan/eslint-config": "^0.0.1-alpha.3",
     "@aztlan/stylelint-config": "^0.0.1-alpha.2",
     "@aztlan/swatch": "0.0.1-alpha.11",
-    "@aztlan/tsconfig": "^0.0.1-alpha.2",
+    "@aztlan/tsconfig": "^0.0.1-alpha.3",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.5.3",
