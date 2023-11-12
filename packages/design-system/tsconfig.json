@@ -1,5 +1,11 @@
 {
+  "extends":"@aztlan/tsconfig",
   "compilerOptions": {
-    "extends":"@aztlan/tsconfig"
-  }   
+     "baseUrl":"src"
+  },
+  "include":["src", "stories"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

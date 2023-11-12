@@ -9,6 +9,7 @@
     "storybook": "storybook dev -p 6006 --debug",
     "test:stylelint": "exit 0",
     "test:jest": "exit 0",
+    "test:tsc":"tsc",
     "test:eslint": "eslint --ext .js,.tsx,.ts src/ && eslint --ext .js,.tsx,.ts stories/",
     "build-storybook": "storybook build",
     "build:cjs": "node ./build.js --format cjs",
@@ -21,6 +22,7 @@
     "@aztlan/eslint-config": "^0.0.0",
     "@aztlan/stylelint-config": "^0.0.1-alpha.2",
     "@aztlan/swatch": "0.0.1-alpha.11",
+    "@aztlan/tsconfig": "^0.0.0",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.5.3",
@@ -47,7 +49,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@aztlan/tsconfig": "^0.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
