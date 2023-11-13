@@ -1,0 +1,9 @@
+/* <%= pkg %> <%= version %> */
+@use "@<%= npmOrg %>/bem";
+
+.#{bem.$base}.<%= lower %>{
+
+}
+
+
+

@@ -1,14 +1,13 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  root: true,
-  ignorePatterns: ['!.storybook/*'],
-  env:{
+  extends       :['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'airbnb'],
+  parser        :'@typescript-eslint/parser',
+  plugins       :['@typescript-eslint'],
+  root          :true,
+  ignorePatterns:['!.storybook/*'],
+  env           :{
     browser:true,
     node   :true,
   },
-  extends  :['airbnb'],
   rules:{
     semi:[
       2,
@@ -27,5 +26,5 @@ module.exports = {
         },
       },
     ],
-  }
+  },
 }
