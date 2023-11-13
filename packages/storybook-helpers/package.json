@@ -1,11 +1,25 @@
 {
   "name": "@aztlan/storybook-helpers",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.4",
   "description": "",
-  "main": "index.js",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:tsc": "tsc",
+    "build:cjs": "node ./build.mjs --format cjs",
+    "build:cjs:watch": "node ./build.mjs --format cjs --watch",
+    "build:esm": "node ./build.mjs --format esm",
+    "build:esm:watch": "node ./build.mjs --format esm --watch",
+    "build": "npm run build:cjs && npm run build:esm"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@aztlan/eslint-config": "^0.0.1-alpha.3",
+    "@aztlan/tsconfig": "^0.0.1-alpha.3",
+    "esbuild": "^0.19.5",
+    "resolve-glob": "^1.0.0",
+    "typescript": "^5.2.2"
+  }
 }

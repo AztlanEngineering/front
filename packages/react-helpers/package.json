@@ -7,8 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:tsc": "tsc",
-    "build:cjs": "node ./build.js --format cjs",
-    "build:esm": "node ./build.js --format esm",
+    "build:cjs": "node ./build.mjs --format cjs",
+    "build:cjs:watch": "node ./build.mjs --format cjs --watch",
+    "build:esm": "node ./build.mjs --format esm",
+    "build:esm:watch": "node ./build.mjs --format esm --watch",
     "build": "npm run build:cjs && npm run build:esm"
   },
   "author": "",

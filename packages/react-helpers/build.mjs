@@ -1,5 +1,4 @@
 import * as esbuild from 'esbuild'
-import copyfiles from 'copyfiles'
 import glob from 'resolve-glob'
 
 const args = process.argv
@@ -51,12 +50,3 @@ if (watch) {
   // ...
   }).catch(() => process.exit(1))
 }
-
-copyfiles([
-  'src/ui/**/*.scss',
-  'src/ui/**/*.css',
-  `dist/${format}`,
-], {
-  up     :2,
-  verbose:true,
-}, (a) => console.log(a))
