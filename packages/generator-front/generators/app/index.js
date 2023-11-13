@@ -49,7 +49,7 @@ module.exports = class extends Generator {
       type   :String,
       alias  :'o',
       desc   :'The npm org namespace to use for dependencies. ',
-      default:'pareto-engineering',
+      default:'aztlan',
     })
 
     console.log(
