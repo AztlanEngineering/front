@@ -1,1 +1,1 @@
-export const Example = 'this is an example'
+export const Example = 'Another test'
