@@ -3,9 +3,6 @@ name: _template.apps.test-compile
 on:
   workflow_call:
     inputs:
-      PROJECT_TOKEN:
-        required: true
-        type: string
       working-directory:
         required: true
         type: string
@@ -78,6 +75,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: ${{ inputs.PROJECT_TOKEN }}
+          projectToken: ${{ secrets.PROJECT_TOKEN }}
           exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing, in case there are changes (but no errors)
           workingDir: ${{ inputs.working-directory }}
