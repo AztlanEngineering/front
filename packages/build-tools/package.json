@@ -1,0 +1,26 @@
+{
+  "name": "@aztlan/build-tools",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:tsc": "tsc",
+    "test:eslint": "eslint --ext .js,.tsx,.ts src/ && eslint --ext .js,.tsx,.ts stories/",
+    "build:cjs": "node ./build.mjs --format cjs",
+    "build:cjs:watch": "node ./build.mjs --format cjs --watch",
+    "build:esm": "node ./build.mjs --format esm",
+    "build:esm:watch": "node ./build.mjs --format esm --watch",
+    "build": "npm run build:cjs && npm run build:esm"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aztlan/eslint-config": "^0.0.1",
+    "@aztlan/typescript-config": "^0.0.1",
+    "esbuild": "^0.19.5",
+    "resolve-glob": "^1.0.0",
+    "typescript": "^5.2.2"
+  }
+}
