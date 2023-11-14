@@ -7,7 +7,7 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const buildOrWatch = async (config) => {
-  const getDirname = (typeof __dirname === 'undefined') ? dirname(fileURLToPath(inputs.location || import.meta.url)) : __dirname
+  const getDirname = (typeof __dirname === 'undefined') ? dirname(fileURLToPath(config.location || import.meta.url)) : __dirname
   const location = getDirname(config.location)
 
   const args = process.argv
