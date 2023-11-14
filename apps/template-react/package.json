@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@aztlan/base-styles": "^0.0.12",
-    "@aztlan/design-system": "^0.0.11",
+    "@aztlan/design-system": "^0.0.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^1.3.0",
