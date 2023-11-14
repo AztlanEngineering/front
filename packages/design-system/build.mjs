@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import tools from '@aztlan/build-tools'
 
 tools.buildOrWatch({

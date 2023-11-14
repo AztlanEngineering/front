@@ -15,9 +15,11 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/index.ts
 var src_exports = {};
 __export(src_exports, {
   Example: () => import_Example.Example
 });
 module.exports = __toCommonJS(src_exports);
-var import_Example = require("./Example");
+var import_Example = require("./Example.cjs");

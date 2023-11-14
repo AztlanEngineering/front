@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/build-tools": "^0.0.1",
+    "@aztlan/build-tools": "^0.0.4",
     "@aztlan/eslint-config": "^0.0.4",
     "@aztlan/typescript-config": "^0.0.4",
     "typescript": "^5.2.2"
