@@ -23,7 +23,6 @@
   "license": "ISC",
   "devDependencies": {
     "@aztlan/assets": "^0.0.10",
-    "@aztlan/build-tools": "^0.0.10",
     "@aztlan/eslint-config": "^0.0.10",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/swatch": "0.1.0",
@@ -54,6 +53,7 @@
   },
   "dependencies": {
     "@aztlan/bem": "^0.2.5",
+    "@aztlan/build-tools": "^0.0.10",
     "@aztlan/react-helpers": "^0.0.10",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
