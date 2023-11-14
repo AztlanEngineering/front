@@ -19,7 +19,9 @@
   "devDependencies": {
     "@aztlan/eslint-config": "^0.0.1",
     "@aztlan/typescript-config": "^0.0.1",
+    "copyfiles": "^2.4.1",
     "esbuild": "^0.19.5",
+    "esbuild-plugin-file-path-extensions": "^1.0.0",
     "resolve-glob": "^1.0.0",
     "typescript": "^5.2.2"
   }

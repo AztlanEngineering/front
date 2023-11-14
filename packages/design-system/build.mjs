@@ -1,77 +1,15 @@
-import * as esbuild from 'esbuild'
-import copyfiles from 'copyfiles'
-import glob from 'resolve-glob'
-import { esbuildPluginFilePathExtensions } from 'esbuild-plugin-file-path-extensions'
+import tools  from '@aztlan/build-tools'
 
-const args = process.argv
-const indexOfFormat = args.indexOf('--format') + 1
-const format = indexOfFormat ? args.at(indexOfFormat) : undefined
-if (!format) {
-  console.error('No --format was provided. Options are cjs and esm.')
-}
-const watch = args.indexOf('--watch') > 0
-
-const options = { ignore: ['**/*.test.js', '**/*.spec.js', '**/*.stories.js'] }
-const entryPoints = glob.sync(
-  [
+tools.buildOrWatch({
+  entryPoints:[
     './src/**/*.ts',
     './src/**/*.tsx',
     './src/**/*.js',
     './src/**/*.jsx',
   ],
-  options,
-)
-
-const indexFiles = entryPoints.filter((name) => name.endsWith('index.ts'))
-const mainFiles = entryPoints.filter((name) => !name.endsWith('index.ts'))
-
-const buildArgs = {
-  entryPoints,
-  outdir      :`dist/${format}/`,
-  // target:"cjs",
-  format,
-  logLevel    :'debug',
-  outExtension:{ '.js': `.${format === 'cjs' ? 'cjs' : 'mjs'}` },
-  supported   :{
-    // https://esbuild.github.io/api/#supported
-    'object-rest-spread':true,
-  },
-  metafile:true,
-  // external:['*.scss', 'node_modules/*', '../../node_modules/*'],
-}
-
-const indexBuildArgs = {
-  ...buildArgs,
-  entryPoints:indexFiles,
-  bundle     :true,
-  plugins    :[esbuildPluginFilePathExtensions({
-    esm:format === 'esm',
-    // filter:/.*index.*/,
-  })],
-}
-
-const mainBuildArgs = {
-  ...buildArgs,
-  entryPoints:mainFiles,
-}
-
-if (watch) {
-  const ctx = await esbuild.context(buildArgs)
-
-  await ctx.watch()
-  console.log('watching...')
-} else {
-  const result = await esbuild.build(indexBuildArgs).catch(() => process.exit(1))
-  console.log(await esbuild.analyzeMetafile(result.metafile, { verbose: true }))
-  const result2 = await esbuild.build(mainBuildArgs).catch(() => process.exit(1))
-  console.log(await esbuild.analyzeMetafile(result.metafile, { verbose: true }))
-}
-
-copyfiles([
-  'src/ui/**/*.scss',
-  'src/ui/**/*.css',
-  `dist/${format}`,
-], {
-  up     :2,
-  verbose:true,
-}, (a) => console.log(a))
+  copyfiles:[
+    'src/ui/**/*.scss',
+    'src/ui/**/*.css',
+  ],
+  // copyfilesUp:2,
+})
