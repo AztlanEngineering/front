@@ -13,5 +13,5 @@ jobs:
   test-compile:
     uses: ./.github/workflows/_template.storybook.publish.yaml
     with:
-      PROJECT _TOKEN: ${{ TEMPLATE_REACT_CHROMATIC_PROJECT }}
+      PROJECT _TOKEN: ${{ secrets.TEMPLATE_REACT_CHROMATIC_PROJECT }}
       working-directory: apps/template-react
