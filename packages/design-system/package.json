@@ -16,8 +16,8 @@
     "build:cjs:watch": "node ./build.mjs --format cjs --watch",
     "build:esm": "node ./build.mjs --format esm",
     "build:esm:watch": "node ./build.mjs --format esm --watch",
-    "build": "npm run build:cjs && npm run build:esm",
-    "postinstall": "npm run build"
+    "compile": "npm run build:cjs && npm run build:esm",
+    "prepare": "npm run build"
   },
   "author": "",
   "license": "ISC",
