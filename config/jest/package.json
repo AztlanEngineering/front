@@ -1,0 +1,13 @@
+{
+  "name": "@aztlan/jest-config",
+  "version": "0.1.0",
+  "description": "",
+  "main": "jest.config.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "eslint": "^8.53.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
