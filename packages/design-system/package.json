@@ -18,7 +18,7 @@
     "build:esm:watch": "node ./build.mjs --format esm --watch",
     "build": "exit 0",
     "compile": "npm run build:cjs && npm run build:esm",
-    "prepare": "npm run build"
+    "prepare": "npm run compile"
   },
   "author": "",
   "license": "ISC",
