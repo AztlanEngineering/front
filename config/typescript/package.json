@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/typescript-config",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "",
   "main": "tsconfig.json",
   "author": "",

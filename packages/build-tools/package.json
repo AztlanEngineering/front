@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/build-tools",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "a",
   "main": "src/index.mjs",
   "module": "src/index.mjs",
@@ -12,8 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/eslint-config": "^0.0.20",
-    "@aztlan/typescript-config": "^0.0.20",
+    "@aztlan/eslint-config": "^0.0.21",
+    "@aztlan/typescript-config": "^0.0.21",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.19.5",
     "esbuild-plugin-file-path-extensions": "^1.0.0",

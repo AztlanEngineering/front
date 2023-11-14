@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/generator-front",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "files": [
     "generators"
   ],
@@ -10,8 +10,8 @@
     "yeoman-generator"
   ],
   "devDependencies": {
-    "@aztlan/eslint-config": "^0.0.20",
-    "@aztlan/typescript-config": "^0.0.20",
+    "@aztlan/eslint-config": "^0.0.21",
+    "@aztlan/typescript-config": "^0.0.21",
     "jest": "^26.1.0",
     "prettier": "^1.19.1",
     "yeoman-assert": "^3.1.0",
