@@ -3,7 +3,7 @@ import { esbuildPluginFilePathExtensions } from 'esbuild-plugin-file-path-extens
 import glob from 'resolve-glob'
 import copyfiles from 'copyfiles'
 
-const buildOrWatch = (config) => {
+const buildOrWatch = async (config) => {
   const args = process.argv
   const indexOfFormat = args.indexOf('--format') + 1
   const format = indexOfFormat ? args.at(indexOfFormat) : undefined
