@@ -32,8 +32,7 @@ __export(Header_exports, {
 module.exports = __toCommonJS(Header_exports);
 var import_react = __toESM(require("react"));
 var import_prop_types = __toESM(require("prop-types"));
-var import_Button = require("./Button");
-var import_header = require("./header.css");
+var import_header = require("./header.scss");
 const Header = ({ user, onLogin, onLogout, onCreateAccount }) => /* @__PURE__ */ import_react.default.createElement("header", null, /* @__PURE__ */ import_react.default.createElement("div", { className: "storybook-header" }, /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("svg", { width: "32", height: "32", viewBox: "0 0 32 32", xmlns: "http://www.w3.org/2000/svg" }, /* @__PURE__ */ import_react.default.createElement("g", { fill: "none", fillRule: "evenodd" }, /* @__PURE__ */ import_react.default.createElement(
   "path",
   {
@@ -52,7 +51,7 @@ const Header = ({ user, onLogin, onLogout, onCreateAccount }) => /* @__PURE__ */
     d: "M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z",
     fill: "#91BAF8"
   }
-))), /* @__PURE__ */ import_react.default.createElement("h1", null, "Acme")), /* @__PURE__ */ import_react.default.createElement("div", null, user ? /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("span", { className: "welcome" }, "Welcome, ", /* @__PURE__ */ import_react.default.createElement("b", null, user.name), "!"), /* @__PURE__ */ import_react.default.createElement(import_Button.Button, { size: "small", onClick: onLogout, label: "Log out" })) : /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement(import_Button.Button, { size: "small", onClick: onLogin, label: "Log in" }), /* @__PURE__ */ import_react.default.createElement(import_Button.Button, { primary: true, size: "small", onClick: onCreateAccount, label: "Sign up" })))));
+))), /* @__PURE__ */ import_react.default.createElement("h1", null, "Acme"))));
 Header.propTypes = {
   user: import_prop_types.default.shape({
     name: import_prop_types.default.string.isRequired

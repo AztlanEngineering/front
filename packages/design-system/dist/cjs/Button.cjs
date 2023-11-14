@@ -5,8 +5,8 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
+  for (var name2 in all)
+    __defProp(target, name2, { get: all[name2], enumerable: true });
 };
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
@@ -32,20 +32,36 @@ __export(Button_exports, {
 module.exports = __toCommonJS(Button_exports);
 var import_react = __toESM(require("react"));
 var import_prop_types = __toESM(require("prop-types"));
-var import_button = require("./button.css");
-const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+var import_button = require("./button.scss");
+var import_react_helpers = require("@aztlan/react-helpers");
+const name = import_react_helpers.Example;
+function Button({
+  primary,
+  backgroundColor,
+  size,
+  label,
+  ...props
+}) {
   const mode = primary ? "storybook-button--primary" : "storybook-button--secondary";
   return /* @__PURE__ */ import_react.default.createElement(
     "button",
     {
       type: "button",
-      className: ["storybook-button", `storybook-button--${size}`, mode].join(" "),
+      className: [
+        "borders",
+        "storybook-button",
+        `storybook-button--${size}`,
+        mode
+      ].join(" "),
       style: backgroundColor && { backgroundColor },
       ...props
     },
+    "Hello",
+    " ",
+    name,
     label
   );
-};
+}
 Button.propTypes = {
   /**
    * Is this the principal call to action on the page?

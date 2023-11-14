@@ -1,6 +1,7 @@
-import { Button } from "./Button.jsx";
-import { Header } from "./Header.jsx";
-import { Page } from "./Page.jsx";
+// src/ui/index.ts
+import { Button } from "./Button.mjs";
+import { Header } from "./Header.mjs";
+import { Page } from "./Page.mjs";
 export {
   Button,
   Header,

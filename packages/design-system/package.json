@@ -40,6 +40,7 @@
     "copyfiles": "^2.4.1",
     "css-loader": "^6.8.1",
     "esbuild": "^0.19.5",
+    "esbuild-plugin-file-path-extensions": "^1.0.0",
     "eslint": "^8.53.0",
     "postcss-scss": "^4.0.9",
     "resolve-glob": "^1.0.0",

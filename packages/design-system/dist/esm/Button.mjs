@@ -1,19 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./button.css";
-const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+import "./button.scss";
+import { Example } from "@aztlan/react-helpers";
+const name = Example;
+function Button({
+  primary,
+  backgroundColor,
+  size,
+  label,
+  ...props
+}) {
   const mode = primary ? "storybook-button--primary" : "storybook-button--secondary";
   return /* @__PURE__ */ React.createElement(
     "button",
     {
       type: "button",
-      className: ["storybook-button", `storybook-button--${size}`, mode].join(" "),
+      className: [
+        "borders",
+        "storybook-button",
+        `storybook-button--${size}`,
+        mode
+      ].join(" "),
       style: backgroundColor && { backgroundColor },
       ...props
     },
+    "Hello",
+    " ",
+    name,
     label
   );
-};
+}
 Button.propTypes = {
   /**
    * Is this the principal call to action on the page?

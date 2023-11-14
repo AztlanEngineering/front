@@ -15,6 +15,8 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/ui/index.ts
 var ui_exports = {};
 __export(ui_exports, {
   Button: () => import_Button.Button,
@@ -22,6 +24,6 @@ __export(ui_exports, {
   Page: () => import_Page.Page
 });
 module.exports = __toCommonJS(ui_exports);
-var import_Button = require("./Button.jsx");
-var import_Header = require("./Header.jsx");
-var import_Page = require("./Page.jsx");
+var import_Button = require("./Button.cjs");
+var import_Header = require("./Header.cjs");
+var import_Page = require("./Page.cjs");

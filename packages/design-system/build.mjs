@@ -1,6 +1,7 @@
 import * as esbuild from 'esbuild'
-import { esbuildPluginFilePathExtensions } from 'esbuild-plugin-file-path-extensions'
+import copyfiles from 'copyfiles'
 import glob from 'resolve-glob'
+import { esbuildPluginFilePathExtensions } from 'esbuild-plugin-file-path-extensions'
 
 const args = process.argv
 const indexOfFormat = args.indexOf('--format') + 1
@@ -20,6 +21,7 @@ const entryPoints = glob.sync(
   ],
   options,
 )
+
 const indexFiles = entryPoints.filter((name) => name.endsWith('index.ts'))
 const mainFiles = entryPoints.filter((name) => !name.endsWith('index.ts'))
 
@@ -64,3 +66,12 @@ if (watch) {
   const result2 = await esbuild.build(mainBuildArgs).catch(() => process.exit(1))
   console.log(await esbuild.analyzeMetafile(result.metafile, { verbose: true }))
 }
+
+copyfiles([
+  'src/ui/**/*.scss',
+  'src/ui/**/*.css',
+  `dist/${format}`,
+], {
+  up     :2,
+  verbose:true,
+}, (a) => console.log(a))
