@@ -13,7 +13,7 @@
     "build:esm": "node ./build.mjs --format esm",
     "build:esm:watch": "node ./build.mjs --format esm --watch",
     "build": "npm run build:cjs && npm run build:esm",
-    "prepare": "npm run build"
+    "postinstall": "npm run build"
   },
   "author": "",
   "license": "ISC",
