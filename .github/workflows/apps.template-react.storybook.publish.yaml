@@ -13,6 +13,6 @@ jobs:
   test-compile:
     uses: ./.github/workflows/_template.storybook.publish.yaml
     secrets:
-      PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
+      inherit
     with:
       working-directory: apps/template-react
