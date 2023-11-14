@@ -1,0 +1,9 @@
+/* @aztlan/generator-front 0.0.22 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.tester {
+  background: red;
+}
+
+
