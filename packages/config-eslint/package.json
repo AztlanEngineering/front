@@ -1,8 +1,8 @@
 {
-  "name": "@aztlan/tsconfig",
-  "version": "0.0.1-alpha.3",
+  "name": "@aztlan/config-eslint",
+  "version": "0.0.1-alpha.6",
   "description": "",
-  "main": "tsconfig.json",
+  "main": "index.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {

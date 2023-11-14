@@ -1,0 +1,17 @@
+{
+  "name": "@aztlan/template-react",
+  "version": "0.0.1-alpha.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "@aztlan/config-eslint": "^0.0.1-alpha.6",
+    "@aztlan/config-stylelint": "^0.0.1-alpha.12",
+    "@aztlan/config-typescript": "^0.0.1-alpha.3"
+  }
+}

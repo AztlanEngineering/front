@@ -22,6 +22,7 @@ const config: StorybookConfig = {
     //'../../../node_modules/@aztlan/assets/images',
     //'../../../node_modules/@aztlan/assets/fonts',
     `${getAbsolutePath("@aztlan/assets")}/fonts`,
+    "../src/assets"
   ],
   addons: [
     getAbsolutePath("@storybook/addon-links"),

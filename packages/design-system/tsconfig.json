@@ -1,5 +1,5 @@
 {
-  "extends":"@aztlan/tsconfig",
+  "extends":"@aztlan/config-typescript",
   "compilerOptions": {
      "baseUrl":"src"
   },
