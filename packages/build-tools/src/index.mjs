@@ -3,7 +3,13 @@ import { esbuildPluginFilePathExtensions } from 'esbuild-plugin-file-path-extens
 import glob from 'resolve-glob'
 import copyfiles from 'copyfiles'
 
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
 const buildOrWatch = async (config) => {
+  const getDirname = (typeof __dirname === 'undefined') ? dirname(fileURLToPath(inputs.location || import.meta.url)) : __dirname
+  const location = getDirname(config.location)
+
   const args = process.argv
   const indexOfFormat = args.indexOf('--format') + 1
   const format = indexOfFormat ? args.at(indexOfFormat) : undefined
@@ -70,7 +76,7 @@ const buildOrWatch = async (config) => {
   }
   if (config.copyfiles) {
     copyfiles(
-      [...config.copyfiles, `dist/${format}`],
+      [...config.copyfiles, `${location}/dist/${format}`],
       {
         up     :config.copyfilesUp || 2,
         verbose:true,
