@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/build-tools",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -13,13 +13,13 @@
     "build:esm": "node ./build.mjs --format esm",
     "build:esm:watch": "node ./build.mjs --format esm --watch",
     "build": "npm run build:cjs && npm run build:esm",
-    "prepare":"npm run build"
+    "prepare": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/eslint-config": "^0.0.4",
-    "@aztlan/typescript-config": "^0.0.4",
+    "@aztlan/eslint-config": "^0.0.5",
+    "@aztlan/typescript-config": "^0.0.5",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.19.5",
     "esbuild-plugin-file-path-extensions": "^1.0.0",
