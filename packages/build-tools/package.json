@@ -2,8 +2,8 @@
   "name": "@aztlan/build-tools",
   "version": "0.0.18",
   "description": "a",
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/esm/index.mjs",
+  "main": "src/index.mjs",
+  "module": "src/index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:tsc": "tsc",

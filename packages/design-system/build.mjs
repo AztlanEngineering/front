@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import tools from '@aztlan/build-tools'
+import { buildOrWatch } from '@aztlan/build-tools'
 
-tools.buildOrWatch({
+buildOrWatch({
   location   :import.meta.url,
   entryPoints:[
     './src/**/*.ts',
