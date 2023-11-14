@@ -13,7 +13,7 @@ jobs:
   test-compile:
     uses: ./.github/workflows/_template.storybook.publish.yaml
     secrets:
-      PROJECT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
         #PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
     with:
       working-directory: packages/design-system
