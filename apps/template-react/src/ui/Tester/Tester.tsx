@@ -36,7 +36,7 @@ function Tester({
       style={style}
       // {...otherProps}
     >
-      >This is the tested2
+      >This is the teste2
       {children}
     </div>
   );
