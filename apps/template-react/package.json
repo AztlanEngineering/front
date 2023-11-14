@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/template-react",
-  "version": "0.0.22-3",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,11 +22,11 @@
   "private": true,
   "devDependencies": {
     "@aztlan/bem": "^0.2.5",
-    "@aztlan/eslint-config": "^0.0.22",
-    "@aztlan/react-helpers": "^0.0.22",
+    "@aztlan/eslint-config": "^0.1.0",
+    "@aztlan/react-helpers": "^0.1.0",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
-    "@aztlan/typescript-config": "^0.0.22",
-    "@aztlan/webpack-config": "^0.0.22",
+    "@aztlan/typescript-config": "^0.1.0",
+    "@aztlan/webpack-config": "^0.1.0",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
@@ -52,7 +52,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "@aztlan/base-styles": "^0.0.22",
+    "@aztlan/base-styles": "^0.1.0",
     "@aztlan/design-system": "^0.0.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
