@@ -4,19 +4,19 @@ import * as React from 'react'
 import { Tester } from 'ui'
 
 export default {
-  title: 'Tester',
-  component: Tester,
-  subcomponents: {
-    //Item:Tester.Item
+  title        :'Tester',
+  component    :Tester,
+  subcomponents:{
+    // Item:Tester.Item
   },
   decorators:[
-    //storyfn => <div className="">{ storyfn() }</div>,
+    // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes: {
-    backgroundColor: { control: 'color' },
+  argTypes:{
+    backgroundColor:{ control: 'color' },
   },
 }
 
-export const Base = () => (
-  <Tester>Sample Tester</Tester>
-)
+export function Base() {
+  return <Tester>Sample Tester</Tester>
+}

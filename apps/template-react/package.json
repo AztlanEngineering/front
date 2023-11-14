@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/template-react",
-  "version": "0.0.22-2",
+  "version": "0.0.22-3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "start": "npm run start:dev",
     "start:dev": "webpack serve -c ./webpack.client.dev.mjs",
     "start:prod": "webpack serve -c ./webpack.client.prod.mjs",
-    "test:eslint": "eslint --ext .jsx,.js src/",
+    "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts src/",
     "test:eslint:fix": "npm run test:eslint -- --fix",
     "test:stylelint": "stylelint 'src/**/*.scss' --rd --rdd --risd --color --formatter verbose",
     "test:stylelint:fix": "npm run test:stylelint -- --fix",

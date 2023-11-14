@@ -10,7 +10,7 @@
     "test:stylelint": "exit 0",
     "test:jest": "exit 0",
     "test:tsc": "tsc",
-    "test:eslint": "eslint --ext .js,.tsx,.ts src/ && eslint --ext .js,.tsx,.ts stories/",
+    "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts src/ && eslint --ext .js,.tsx,.ts stories/",
     "build-storybook": "storybook build",
     "build:cjs": "node ./build.mjs --format cjs",
     "build:cjs:watch": "node ./build.mjs --format cjs --watch",
