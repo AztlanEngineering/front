@@ -1,26 +1,26 @@
 {
-  "hash": "12da32ded7e960c73bf7",
+  "hash": "186a49c6913b14c527c4",
   "version": "5.89.0",
-  "time": 8919,
-  "builtAt": 1699983129573,
+  "time": 8571,
+  "builtAt": 1699991264337,
   "publicPath": "/",
   "outputPath": "/home/adrian_villa/code/aztlan/front/apps/template-react/public",
   "assetsByChunkName": {
     "main": [
       "main.css",
-      "main.js?90385"
+      "main.js?a4c1b"
     ],
     "exports.scss|0|||}}": [
       "exports.scss|0|||}}.css"
     ],
     "react-router.js": [
-      "react-router.js.js?5863d"
+      "react-router.js.js?b53e7"
     ],
     "react-dom.production.min.js": [
       "react-dom.production.min.js.js?e8068"
     ],
     "history.js": [
-      "history.js.js?0bf94"
+      "history.js.js?1e735"
     ]
   },
   "assets": [
@@ -28,8 +28,8 @@
       "type": "asset",
       "name": "react-dom.production.min.js.js?e8068",
       "size": 129198,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "immutable": true,
@@ -56,8 +56,8 @@
           "type": "sourceMap",
           "name": "react-dom.production.min.js.js.map?e8068",
           "size": 322866,
-          "emitted": true,
-          "comparedForEmit": false,
+          "emitted": false,
+          "comparedForEmit": true,
           "cached": false,
           "info": {
             "development": true,
@@ -82,8 +82,8 @@
           "type": "license",
           "name": "react-dom.production.min.js.js.LICENSE.txt",
           "size": 241,
-          "emitted": true,
-          "comparedForEmit": false,
+          "emitted": false,
+          "comparedForEmit": true,
           "cached": false,
           "info": {
             "extractedComments": true,
@@ -109,8 +109,8 @@
       "type": "asset",
       "name": "m.book.italic.ttf",
       "size": 48612,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -130,8 +130,8 @@
       "type": "asset",
       "name": "m.bold.italic.ttf",
       "size": 47736,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -151,8 +151,8 @@
       "type": "asset",
       "name": "m.book.ttf",
       "size": 46264,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -172,8 +172,8 @@
       "type": "asset",
       "name": "m.bold.ttf",
       "size": 45048,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -193,8 +193,8 @@
       "type": "asset",
       "name": "s.italic.ttf",
       "size": 43692,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -214,8 +214,8 @@
       "type": "asset",
       "name": "s.regular.ttf",
       "size": 35772,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -233,19 +233,19 @@
     },
     {
       "type": "asset",
-      "name": "main.js?90385",
+      "name": "main.js?a4c1b",
       "size": 31573,
       "emitted": true,
-      "comparedForEmit": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "immutable": true,
-        "chunkhash": "90385",
+        "chunkhash": "a4c1b",
         "javascriptModule": false,
         "minimized": true,
         "related": {
           "license": "main.js.LICENSE.txt",
-          "sourceMap": "main.js.map?90385"
+          "sourceMap": "main.js.map?a4c1b"
         },
         "size": 31573
       },
@@ -259,14 +259,14 @@
       "related": [
         {
           "type": "sourceMap",
-          "name": "main.js.map?90385",
-          "size": 113499,
+          "name": "main.js.map?a4c1b",
+          "size": 113448,
           "emitted": true,
           "comparedForEmit": false,
           "cached": false,
           "info": {
             "development": true,
-            "size": 113499
+            "size": 113448
           },
           "chunkNames": [],
           "chunkIdHints": [],
@@ -285,8 +285,8 @@
           "type": "license",
           "name": "main.js.LICENSE.txt",
           "size": 726,
-          "emitted": true,
-          "comparedForEmit": false,
+          "emitted": false,
+          "comparedForEmit": true,
           "cached": false,
           "info": {
             "extractedComments": true,
@@ -312,8 +312,8 @@
       "type": "asset",
       "name": "m.book.italic.woff",
       "size": 21984,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -333,8 +333,8 @@
       "type": "asset",
       "name": "m.bold.italic.woff",
       "size": 21788,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -354,8 +354,8 @@
       "type": "asset",
       "name": "m.book.woff",
       "size": 20984,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -375,8 +375,8 @@
       "type": "asset",
       "name": "m.bold.woff",
       "size": 20696,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -396,8 +396,8 @@
       "type": "asset",
       "name": "s.italic.woff",
       "size": 19924,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -417,8 +417,8 @@
       "type": "asset",
       "name": "s.regular.woff",
       "size": 17176,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -438,8 +438,8 @@
       "type": "asset",
       "name": "s.italic.woff2",
       "size": 15364,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -459,8 +459,8 @@
       "type": "asset",
       "name": "m.book.italic.woff2",
       "size": 14904,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -480,8 +480,8 @@
       "type": "asset",
       "name": "m.bold.italic.woff2",
       "size": 14744,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -501,8 +501,8 @@
       "type": "asset",
       "name": "m.book.woff2",
       "size": 14328,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -522,8 +522,8 @@
       "type": "asset",
       "name": "m.bold.woff2",
       "size": 14048,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -543,8 +543,8 @@
       "type": "asset",
       "name": "s.regular.woff2",
       "size": 13516,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "copied": true,
@@ -562,18 +562,18 @@
     },
     {
       "type": "asset",
-      "name": "react-router.js.js?5863d",
+      "name": "react-router.js.js?b53e7",
       "size": 9021,
       "emitted": true,
-      "comparedForEmit": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "immutable": true,
-        "chunkhash": "5863d",
+        "chunkhash": "b53e7",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "react-router.js.js.map?5863d"
+          "sourceMap": "react-router.js.js.map?b53e7"
         },
         "size": 9021
       },
@@ -589,10 +589,10 @@
       "related": [
         {
           "type": "sourceMap",
-          "name": "react-router.js.js.map?5863d",
+          "name": "react-router.js.js.map?b53e7",
           "size": 46441,
           "emitted": true,
-          "comparedForEmit": false,
+          "comparedForEmit": true,
           "cached": false,
           "info": {
             "development": true,
@@ -622,18 +622,18 @@
     },
     {
       "type": "asset",
-      "name": "history.js.js?0bf94",
+      "name": "history.js.js?1e735",
       "size": 8761,
       "emitted": true,
-      "comparedForEmit": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "immutable": true,
-        "chunkhash": "0bf94",
+        "chunkhash": "1e735",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "history.js.js.map?0bf94"
+          "sourceMap": "history.js.js.map?1e735"
         },
         "size": 8761
       },
@@ -649,10 +649,10 @@
       "related": [
         {
           "type": "sourceMap",
-          "name": "history.js.js.map?0bf94",
+          "name": "history.js.js.map?1e735",
           "size": 44215,
           "emitted": true,
-          "comparedForEmit": false,
+          "comparedForEmit": true,
           "cached": false,
           "info": {
             "development": true,
@@ -684,8 +684,8 @@
       "type": "asset",
       "name": "main.css",
       "size": 8161,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "related": {
@@ -704,13 +704,13 @@
         {
           "type": "sourceMap",
           "name": "main.css.map",
-          "size": 13825,
+          "size": 13804,
           "emitted": true,
           "comparedForEmit": false,
           "cached": false,
           "info": {
             "development": true,
-            "size": 13825
+            "size": 13804
           },
           "chunkNames": [],
           "chunkIdHints": [],
@@ -737,7 +737,7 @@
       "name": "index.html",
       "size": 1333,
       "emitted": true,
-      "comparedForEmit": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "size": 1333
@@ -755,8 +755,8 @@
       "type": "asset",
       "name": "exports.scss|0|||}}.css",
       "size": 1,
-      "emitted": true,
-      "comparedForEmit": false,
+      "emitted": false,
+      "comparedForEmit": true,
       "cached": false,
       "info": {
         "size": 1
@@ -798,12 +798,12 @@
         "main"
       ],
       "files": [
-        "react-router.js.js?5863d"
+        "react-router.js.js?b53e7"
       ],
       "auxiliaryFiles": [
-        "react-router.js.js.map?5863d"
+        "react-router.js.js.map?b53e7"
       ],
-      "hash": "5863d143f597cb7810b4",
+      "hash": "b53e773ad6cd6232f251",
       "childrenByOrder": {},
       "id": 88,
       "siblings": [
@@ -1196,8 +1196,8 @@
             "Statement (VariableDeclaration) with side effects in source code at 14:0-18:5",
             "ModuleConcatenation bailout: Cannot concat with ../../node_modules/history/esm/history.js: Module ../../node_modules/history/esm/history.js is not in the same chunk(s) (expected in chunk(s) react-router.js, module is in chunk(s) history.js)",
             "ModuleConcatenation bailout: Cannot concat with ../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js: Module is not an ECMAScript module",
+            "ModuleConcatenation bailout: Cannot concat with ../../node_modules/path-to-regexp/index.js: Module is not an ECMAScript module",
             "ModuleConcatenation bailout: Cannot concat with ../../node_modules/prop-types/index.js: Module is not an ECMAScript module",
-            "ModuleConcatenation bailout: Cannot concat with ../../node_modules/react-router/node_modules/path-to-regexp/index.js: Module is not an ECMAScript module",
             "ModuleConcatenation bailout: Cannot concat with ../../node_modules/react-router/node_modules/react-is/index.js: Module is not an ECMAScript module",
             "ModuleConcatenation bailout: Cannot concat with ../../node_modules/react/index.js: Module is not an ECMAScript module",
             "ModuleConcatenation bailout: Cannot concat with ../../node_modules/@babel/runtime/helpers/esm/extends.js: Module ../../node_modules/@babel/runtime/helpers/esm/extends.js is not in the same chunk(s) (expected in chunk(s) react-router.js, module is in chunk(s) main)",
@@ -1238,13 +1238,13 @@
       ],
       "files": [
         "main.css",
-        "main.js?90385"
+        "main.js?a4c1b"
       ],
       "auxiliaryFiles": [
         "main.css.map",
-        "main.js.map?90385"
+        "main.js.map?a4c1b"
       ],
-      "hash": "903858f99400be9b87bc",
+      "hash": "a4c1bf5a41f2732d8d0f",
       "childrenByOrder": {},
       "id": 179,
       "siblings": [
@@ -2546,6 +2546,219 @@
           "type": "module",
           "moduleType": "javascript/auto",
           "layer": null,
+          "size": 120,
+          "sizes": {
+            "javascript": 120
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/isarray/index.js",
+          "name": "../../node_modules/isarray/index.js",
+          "nameForCondition": "/home/adrian_villa/code/aztlan/front/node_modules/isarray/index.js",
+          "index": 11,
+          "preOrderIndex": 11,
+          "index2": 7,
+          "postOrderIndex": 7,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+          "issuerName": "../../node_modules/path-to-regexp/index.js",
+          "issuerPath": [
+            {
+              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/ts-loader/index.js!/home/adrian_villa/code/aztlan/front/apps/template-react/src/client.tsx",
+              "name": "./src/client.tsx",
+              "id": 58
+            },
+            {
+              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router-dom/esm/react-router-dom.js",
+              "name": "../../node_modules/react-router-dom/esm/react-router-dom.js",
+              "id": 933
+            },
+            {
+              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+              "name": "../../node_modules/react-router/esm/react-router.js",
+              "id": 267
+            },
+            {
+              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+              "name": "../../node_modules/path-to-regexp/index.js",
+              "id": 99
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 906,
+          "issuerId": 99,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/isarray/index.js",
+              "module": "../../node_modules/isarray/index.js",
+              "moduleName": "../../node_modules/isarray/index.js",
+              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/isarray/index.js",
+              "resolvedModule": "../../node_modules/isarray/index.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "1:0-14",
+              "moduleId": 906,
+              "resolvedModuleId": 906
+            },
+            {
+              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+              "module": "../../node_modules/path-to-regexp/index.js",
+              "moduleName": "../../node_modules/path-to-regexp/index.js",
+              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+              "resolvedModule": "../../node_modules/path-to-regexp/index.js",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "isarray",
+              "loc": "1:14-32",
+              "moduleId": 99,
+              "resolvedModuleId": 99
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: module.exports is used directly at 1:0-14",
+            "Statement (ExpressionStatement) with side effects in source code at 1:0-3:2",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 4
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 10854,
+          "sizes": {
+            "javascript": 10854
+          },
+          "built": true,
+          "codeGenerated": true,
+          "buildTimeExecuted": false,
+          "cached": false,
+          "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+          "name": "../../node_modules/path-to-regexp/index.js",
+          "nameForCondition": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+          "index": 10,
+          "preOrderIndex": 10,
+          "index2": 8,
+          "postOrderIndex": 8,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "issuer": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+          "issuerName": "../../node_modules/react-router/esm/react-router.js",
+          "issuerPath": [
+            {
+              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/ts-loader/index.js!/home/adrian_villa/code/aztlan/front/apps/template-react/src/client.tsx",
+              "name": "./src/client.tsx",
+              "id": 58
+            },
+            {
+              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router-dom/esm/react-router-dom.js",
+              "name": "../../node_modules/react-router-dom/esm/react-router-dom.js",
+              "id": 933
+            },
+            {
+              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+              "name": "../../node_modules/react-router/esm/react-router.js",
+              "id": 267
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": 99,
+          "issuerId": 267,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+              "module": "../../node_modules/path-to-regexp/index.js",
+              "moduleName": "../../node_modules/path-to-regexp/index.js",
+              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+              "resolvedModule": "../../node_modules/path-to-regexp/index.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "6:0-14",
+              "moduleId": 99,
+              "resolvedModuleId": 99
+            },
+            {
+              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+              "module": "../../node_modules/react-router/esm/react-router.js",
+              "moduleName": "../../node_modules/react-router/esm/react-router.js",
+              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+              "resolvedModule": "../../node_modules/react-router/esm/react-router.js",
+              "type": "harmony side effect evaluation",
+              "active": true,
+              "explanation": "",
+              "userRequest": "path-to-regexp",
+              "loc": "8:0-42",
+              "moduleId": 267,
+              "resolvedModuleId": 267
+            },
+            {
+              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+              "module": "../../node_modules/react-router/esm/react-router.js",
+              "moduleName": "../../node_modules/react-router/esm/react-router.js",
+              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+              "resolvedModule": "../../node_modules/react-router/esm/react-router.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "path-to-regexp",
+              "loc": "438:18-38",
+              "moduleId": 267,
+              "resolvedModuleId": 267
+            },
+            {
+              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+              "module": "../../node_modules/react-router/esm/react-router.js",
+              "moduleName": "../../node_modules/react-router/esm/react-router.js",
+              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
+              "resolvedModule": "../../node_modules/react-router/esm/react-router.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "path-to-regexp",
+              "loc": "525:15-27",
+              "moduleId": 267,
+              "resolvedModuleId": 267
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: module.exports is used directly at 6:0-14",
+            "Statement (VariableDeclaration) with side effects in source code at 1:0-32",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 3
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
           "size": 1639,
           "sizes": {
             "javascript": 1639
@@ -3430,219 +3643,6 @@
             "ModuleConcatenation bailout: Cannot concat with ../../node_modules/tiny-invariant/dist/esm/tiny-invariant.js: Module ../../node_modules/tiny-invariant/dist/esm/tiny-invariant.js is referenced from different chunks by these modules: ../../node_modules/history/esm/history.js, ../../node_modules/react-router/esm/react-router.js"
           ],
           "depth": 1
-        },
-        {
-          "type": "module",
-          "moduleType": "javascript/auto",
-          "layer": null,
-          "size": 120,
-          "sizes": {
-            "javascript": 120
-          },
-          "built": true,
-          "codeGenerated": true,
-          "buildTimeExecuted": false,
-          "cached": false,
-          "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/isarray/index.js",
-          "name": "../../node_modules/react-router/node_modules/isarray/index.js",
-          "nameForCondition": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/isarray/index.js",
-          "index": 11,
-          "preOrderIndex": 11,
-          "index2": 7,
-          "postOrderIndex": 7,
-          "cacheable": true,
-          "optional": false,
-          "orphan": false,
-          "dependent": true,
-          "issuer": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "issuerName": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "issuerPath": [
-            {
-              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/ts-loader/index.js!/home/adrian_villa/code/aztlan/front/apps/template-react/src/client.tsx",
-              "name": "./src/client.tsx",
-              "id": 58
-            },
-            {
-              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router-dom/esm/react-router-dom.js",
-              "name": "../../node_modules/react-router-dom/esm/react-router-dom.js",
-              "id": 933
-            },
-            {
-              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-              "name": "../../node_modules/react-router/esm/react-router.js",
-              "id": 267
-            },
-            {
-              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "name": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "id": 56
-            }
-          ],
-          "failed": false,
-          "errors": 0,
-          "warnings": 0,
-          "id": 613,
-          "issuerId": 56,
-          "chunks": [
-            179
-          ],
-          "assets": [],
-          "reasons": [
-            {
-              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/isarray/index.js",
-              "module": "../../node_modules/react-router/node_modules/isarray/index.js",
-              "moduleName": "../../node_modules/react-router/node_modules/isarray/index.js",
-              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/isarray/index.js",
-              "resolvedModule": "../../node_modules/react-router/node_modules/isarray/index.js",
-              "type": "cjs self exports reference",
-              "active": true,
-              "explanation": "",
-              "userRequest": null,
-              "loc": "1:0-14",
-              "moduleId": 613,
-              "resolvedModuleId": 613
-            },
-            {
-              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "module": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "moduleName": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "resolvedModule": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "type": "cjs require",
-              "active": true,
-              "explanation": "",
-              "userRequest": "isarray",
-              "loc": "1:14-32",
-              "moduleId": 56,
-              "resolvedModuleId": 56
-            }
-          ],
-          "usedExports": null,
-          "providedExports": null,
-          "optimizationBailout": [
-            "CommonJS bailout: module.exports is used directly at 1:0-14",
-            "Statement (ExpressionStatement) with side effects in source code at 1:0-3:2",
-            "ModuleConcatenation bailout: Module is not an ECMAScript module"
-          ],
-          "depth": 4
-        },
-        {
-          "type": "module",
-          "moduleType": "javascript/auto",
-          "layer": null,
-          "size": 10854,
-          "sizes": {
-            "javascript": 10854
-          },
-          "built": true,
-          "codeGenerated": true,
-          "buildTimeExecuted": false,
-          "cached": false,
-          "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "name": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "nameForCondition": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "index": 10,
-          "preOrderIndex": 10,
-          "index2": 8,
-          "postOrderIndex": 8,
-          "cacheable": true,
-          "optional": false,
-          "orphan": false,
-          "dependent": false,
-          "issuer": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-          "issuerName": "../../node_modules/react-router/esm/react-router.js",
-          "issuerPath": [
-            {
-              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/ts-loader/index.js!/home/adrian_villa/code/aztlan/front/apps/template-react/src/client.tsx",
-              "name": "./src/client.tsx",
-              "id": 58
-            },
-            {
-              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router-dom/esm/react-router-dom.js",
-              "name": "../../node_modules/react-router-dom/esm/react-router-dom.js",
-              "id": 933
-            },
-            {
-              "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-              "name": "../../node_modules/react-router/esm/react-router.js",
-              "id": 267
-            }
-          ],
-          "failed": false,
-          "errors": 0,
-          "warnings": 0,
-          "id": 56,
-          "issuerId": 267,
-          "chunks": [
-            179
-          ],
-          "assets": [],
-          "reasons": [
-            {
-              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-              "module": "../../node_modules/react-router/esm/react-router.js",
-              "moduleName": "../../node_modules/react-router/esm/react-router.js",
-              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-              "resolvedModule": "../../node_modules/react-router/esm/react-router.js",
-              "type": "harmony side effect evaluation",
-              "active": true,
-              "explanation": "",
-              "userRequest": "path-to-regexp",
-              "loc": "8:0-42",
-              "moduleId": 267,
-              "resolvedModuleId": 267
-            },
-            {
-              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-              "module": "../../node_modules/react-router/esm/react-router.js",
-              "moduleName": "../../node_modules/react-router/esm/react-router.js",
-              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-              "resolvedModule": "../../node_modules/react-router/esm/react-router.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "path-to-regexp",
-              "loc": "438:18-38",
-              "moduleId": 267,
-              "resolvedModuleId": 267
-            },
-            {
-              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-              "module": "../../node_modules/react-router/esm/react-router.js",
-              "moduleName": "../../node_modules/react-router/esm/react-router.js",
-              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
-              "resolvedModule": "../../node_modules/react-router/esm/react-router.js",
-              "type": "harmony import specifier",
-              "active": true,
-              "explanation": "",
-              "userRequest": "path-to-regexp",
-              "loc": "525:15-27",
-              "moduleId": 267,
-              "resolvedModuleId": 267
-            },
-            {
-              "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "module": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "moduleName": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "resolvedModule": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-              "type": "cjs self exports reference",
-              "active": true,
-              "explanation": "",
-              "userRequest": null,
-              "loc": "6:0-14",
-              "moduleId": 56,
-              "resolvedModuleId": 56
-            }
-          ],
-          "usedExports": null,
-          "providedExports": null,
-          "optimizationBailout": [
-            "CommonJS bailout: module.exports is used directly at 6:0-14",
-            "Statement (VariableDeclaration) with side effects in source code at 1:0-32",
-            "ModuleConcatenation bailout: Module is not an ECMAScript module"
-          ],
-          "depth": 3
         },
         {
           "type": "module",
@@ -5607,7 +5607,7 @@
           "failed": false,
           "errors": 0,
           "warnings": 0,
-          "id": 137,
+          "id": 613,
           "issuerId": 547,
           "chunks": [
             179
@@ -6793,7 +6793,7 @@
                   "active": false,
                   "explanation": "",
                   "userRequest": "./Example.mjs",
-                  "loc": "1:0-39",
+                  "loc": "2:0-40",
                   "moduleId": null,
                   "resolvedModuleId": null
                 },
@@ -6807,7 +6807,7 @@
                   "active": false,
                   "explanation": "",
                   "userRequest": "./Example.mjs",
-                  "loc": "3:0-5:1",
+                  "loc": "3:0-5:2",
                   "moduleId": null,
                   "resolvedModuleId": null
                 }
@@ -7775,12 +7775,12 @@
         "main"
       ],
       "files": [
-        "history.js.js?0bf94"
+        "history.js.js?1e735"
       ],
       "auxiliaryFiles": [
-        "history.js.js.map?0bf94"
+        "history.js.js.map?1e735"
       ],
-      "hash": "0bf944df749a0ac9f84d",
+      "hash": "1e73551494dc428c351b",
       "childrenByOrder": {},
       "id": 319,
       "siblings": [
@@ -11065,8 +11065,8 @@
         "Statement (VariableDeclaration) with side effects in source code at 14:0-18:5",
         "ModuleConcatenation bailout: Cannot concat with ../../node_modules/history/esm/history.js: Module ../../node_modules/history/esm/history.js is not in the same chunk(s) (expected in chunk(s) react-router.js, module is in chunk(s) history.js)",
         "ModuleConcatenation bailout: Cannot concat with ../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js: Module is not an ECMAScript module",
+        "ModuleConcatenation bailout: Cannot concat with ../../node_modules/path-to-regexp/index.js: Module is not an ECMAScript module",
         "ModuleConcatenation bailout: Cannot concat with ../../node_modules/prop-types/index.js: Module is not an ECMAScript module",
-        "ModuleConcatenation bailout: Cannot concat with ../../node_modules/react-router/node_modules/path-to-regexp/index.js: Module is not an ECMAScript module",
         "ModuleConcatenation bailout: Cannot concat with ../../node_modules/react-router/node_modules/react-is/index.js: Module is not an ECMAScript module",
         "ModuleConcatenation bailout: Cannot concat with ../../node_modules/react/index.js: Module is not an ECMAScript module",
         "ModuleConcatenation bailout: Cannot concat with ../../node_modules/@babel/runtime/helpers/esm/extends.js: Module ../../node_modules/@babel/runtime/helpers/esm/extends.js is not in the same chunk(s) (expected in chunk(s) react-router.js, module is in chunk(s) main)",
@@ -13336,7 +13336,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./Example.mjs",
-              "loc": "1:0-39",
+              "loc": "2:0-40",
               "moduleId": null,
               "resolvedModuleId": null
             },
@@ -13350,7 +13350,7 @@
               "active": false,
               "explanation": "",
               "userRequest": "./Example.mjs",
-              "loc": "3:0-5:1",
+              "loc": "3:0-5:2",
               "moduleId": null,
               "resolvedModuleId": null
             }
@@ -13753,9 +13753,9 @@
       "codeGenerated": true,
       "buildTimeExecuted": false,
       "cached": false,
-      "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-      "name": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-      "nameForCondition": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
+      "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+      "name": "../../node_modules/path-to-regexp/index.js",
+      "nameForCondition": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
       "index": 10,
       "preOrderIndex": 10,
       "index2": 8,
@@ -13785,13 +13785,27 @@
       "failed": false,
       "errors": 0,
       "warnings": 0,
-      "id": 56,
+      "id": 99,
       "issuerId": 267,
       "chunks": [
         179
       ],
       "assets": [],
       "reasons": [
+        {
+          "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+          "module": "../../node_modules/path-to-regexp/index.js",
+          "moduleName": "../../node_modules/path-to-regexp/index.js",
+          "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+          "resolvedModule": "../../node_modules/path-to-regexp/index.js",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "6:0-14",
+          "moduleId": 99,
+          "resolvedModuleId": 99
+        },
         {
           "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/esm/react-router.js",
           "module": "../../node_modules/react-router/esm/react-router.js",
@@ -13833,20 +13847,6 @@
           "loc": "525:15-27",
           "moduleId": 267,
           "resolvedModuleId": 267
-        },
-        {
-          "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "module": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "moduleName": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "resolvedModule": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "type": "cjs self exports reference",
-          "active": true,
-          "explanation": "",
-          "userRequest": null,
-          "loc": "6:0-14",
-          "moduleId": 56,
-          "resolvedModuleId": 56
         }
       ],
       "usedExports": null,
@@ -14284,7 +14284,7 @@
       "failed": false,
       "errors": 0,
       "warnings": 0,
-      "id": 137,
+      "id": 613,
       "issuerId": 547,
       "chunks": [
         179
@@ -14867,9 +14867,9 @@
       "codeGenerated": true,
       "buildTimeExecuted": false,
       "cached": false,
-      "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/isarray/index.js",
-      "name": "../../node_modules/react-router/node_modules/isarray/index.js",
-      "nameForCondition": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/isarray/index.js",
+      "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/isarray/index.js",
+      "name": "../../node_modules/isarray/index.js",
+      "nameForCondition": "/home/adrian_villa/code/aztlan/front/node_modules/isarray/index.js",
       "index": 11,
       "preOrderIndex": 11,
       "index2": 7,
@@ -14877,8 +14877,8 @@
       "cacheable": true,
       "optional": false,
       "orphan": false,
-      "issuer": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-      "issuerName": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
+      "issuer": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+      "issuerName": "../../node_modules/path-to-regexp/index.js",
       "issuerPath": [
         {
           "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/ts-loader/index.js!/home/adrian_villa/code/aztlan/front/apps/template-react/src/client.tsx",
@@ -14896,48 +14896,48 @@
           "id": 267
         },
         {
-          "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "name": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "id": 56
+          "identifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+          "name": "../../node_modules/path-to-regexp/index.js",
+          "id": 99
         }
       ],
       "failed": false,
       "errors": 0,
       "warnings": 0,
-      "id": 613,
-      "issuerId": 56,
+      "id": 906,
+      "issuerId": 99,
       "chunks": [
         179
       ],
       "assets": [],
       "reasons": [
         {
-          "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/isarray/index.js",
-          "module": "../../node_modules/react-router/node_modules/isarray/index.js",
-          "moduleName": "../../node_modules/react-router/node_modules/isarray/index.js",
-          "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/isarray/index.js",
-          "resolvedModule": "../../node_modules/react-router/node_modules/isarray/index.js",
+          "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/isarray/index.js",
+          "module": "../../node_modules/isarray/index.js",
+          "moduleName": "../../node_modules/isarray/index.js",
+          "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/isarray/index.js",
+          "resolvedModule": "../../node_modules/isarray/index.js",
           "type": "cjs self exports reference",
           "active": true,
           "explanation": "",
           "userRequest": null,
           "loc": "1:0-14",
-          "moduleId": 613,
-          "resolvedModuleId": 613
+          "moduleId": 906,
+          "resolvedModuleId": 906
         },
         {
-          "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "module": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "moduleName": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/react-router/node_modules/path-to-regexp/index.js",
-          "resolvedModule": "../../node_modules/react-router/node_modules/path-to-regexp/index.js",
+          "moduleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+          "module": "../../node_modules/path-to-regexp/index.js",
+          "moduleName": "../../node_modules/path-to-regexp/index.js",
+          "resolvedModuleIdentifier": "/home/adrian_villa/code/aztlan/front/node_modules/path-to-regexp/index.js",
+          "resolvedModule": "../../node_modules/path-to-regexp/index.js",
           "type": "cjs require",
           "active": true,
           "explanation": "",
           "userRequest": "isarray",
           "loc": "1:14-32",
-          "moduleId": 56,
-          "resolvedModuleId": 56
+          "moduleId": 99,
+          "resolvedModuleId": 99
         }
       ],
       "usedExports": null,
@@ -15342,7 +15342,7 @@
           "active": false,
           "explanation": "",
           "userRequest": "./Example.mjs",
-          "loc": "1:0-39",
+          "loc": "2:0-40",
           "moduleId": null,
           "resolvedModuleId": null
         },
@@ -15356,7 +15356,7 @@
           "active": false,
           "explanation": "",
           "userRequest": "./Example.mjs",
-          "loc": "3:0-5:1",
+          "loc": "3:0-5:2",
           "moduleId": null,
           "resolvedModuleId": null
         }
@@ -15644,9 +15644,9 @@
       "type": "module",
       "moduleType": "javascript/esm",
       "layer": null,
-      "size": 63,
+      "size": 79,
       "sizes": {
-        "javascript": 63
+        "javascript": 79
       },
       "built": true,
       "codeGenerated": false,
@@ -16373,9 +16373,9 @@
       "type": "module",
       "moduleType": "javascript/auto",
       "layer": null,
-      "size": 17440,
+      "size": 17419,
       "sizes": {
-        "javascript": 17440
+        "javascript": 17419
       },
       "built": true,
       "codeGenerated": true,
@@ -18078,7 +18078,7 @@
           "size": 1
         },
         {
-          "name": "react-router.js.js?5863d",
+          "name": "react-router.js.js?b53e7",
           "size": 9021
         },
         {
@@ -18086,7 +18086,7 @@
           "size": 129198
         },
         {
-          "name": "history.js.js?0bf94",
+          "name": "history.js.js?1e735",
           "size": 8761
         },
         {
@@ -18094,7 +18094,7 @@
           "size": 8161
         },
         {
-          "name": "main.js?90385",
+          "name": "main.js?a4c1b",
           "size": 31573
         }
       ],
@@ -18102,28 +18102,28 @@
       "assetsSize": 186715,
       "auxiliaryAssets": [
         {
-          "name": "history.js.js.map?0bf94",
+          "name": "history.js.js.map?1e735",
           "size": 44215
         },
         {
           "name": "main.css.map",
-          "size": 13825
+          "size": 13804
         },
         {
-          "name": "main.js.map?90385",
-          "size": 113499
+          "name": "main.js.map?a4c1b",
+          "size": 113448
         },
         {
           "name": "react-dom.production.min.js.js.map?e8068",
           "size": 322866
         },
         {
-          "name": "react-router.js.js.map?5863d",
+          "name": "react-router.js.js.map?b53e7",
           "size": 46441
         }
       ],
       "filteredAuxiliaryAssets": 0,
-      "auxiliaryAssetsSize": 540846,
+      "auxiliaryAssetsSize": 540774,
       "children": {},
       "childAssets": {},
       "isOverSizeLimit": false
@@ -18145,7 +18145,7 @@
           "size": 1
         },
         {
-          "name": "react-router.js.js?5863d",
+          "name": "react-router.js.js?b53e7",
           "size": 9021
         },
         {
@@ -18153,7 +18153,7 @@
           "size": 129198
         },
         {
-          "name": "history.js.js?0bf94",
+          "name": "history.js.js?1e735",
           "size": 8761
         },
         {
@@ -18161,7 +18161,7 @@
           "size": 8161
         },
         {
-          "name": "main.js?90385",
+          "name": "main.js?a4c1b",
           "size": 31573
         }
       ],
@@ -18169,28 +18169,28 @@
       "assetsSize": 186715,
       "auxiliaryAssets": [
         {
-          "name": "history.js.js.map?0bf94",
+          "name": "history.js.js.map?1e735",
           "size": 44215
         },
         {
           "name": "main.css.map",
-          "size": 13825
+          "size": 13804
         },
         {
-          "name": "main.js.map?90385",
-          "size": 113499
+          "name": "main.js.map?a4c1b",
+          "size": 113448
         },
         {
           "name": "react-dom.production.min.js.js.map?e8068",
           "size": 322866
         },
         {
-          "name": "react-router.js.js.map?5863d",
+          "name": "react-router.js.js.map?b53e7",
           "size": 46441
         }
       ],
       "filteredAuxiliaryAssets": 0,
-      "auxiliaryAssetsSize": 540846,
+      "auxiliaryAssetsSize": 540774,
       "children": {},
       "childAssets": {},
       "isOverSizeLimit": false
@@ -18205,8 +18205,8 @@
       "name": "HtmlWebpackCompiler",
       "hash": "d58e4dedf657be19f02d",
       "version": "5.89.0",
-      "time": 83,
-      "builtAt": 1699983120768,
+      "time": 80,
+      "builtAt": 1699991255878,
       "publicPath": "",
       "outputPath": "/home/adrian_villa/code/aztlan/front/apps/template-react/public",
       "assetsByChunkName": {},
