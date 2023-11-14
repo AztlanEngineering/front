@@ -1,0 +1,17 @@
+name: apps.template-react.storybook.publish
+
+on:
+  push:
+    paths:
+      - "apps/template-react/**"
+
+defaults:
+  run:
+    working-directory: apps/template-react
+
+jobs:
+  test-compile:
+    uses: ./.github/workflows/_template.storybook.publish.yaml
+    with:
+      PROJECT _TOKEN: ${{ TEMPLATE_REACT_CHROMATIC_PROJECT }}
+      working-directory: apps/template-react

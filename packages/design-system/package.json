@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/design-system",
-  "version": "0.0.22",
+  "version": "0.0.22-1",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -34,7 +34,6 @@
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addon-interactions": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",
-    "@storybook/addon-onboarding": "^1.0.8",
     "@storybook/addon-themes": "^7.5.3",
     "@storybook/blocks": "^7.5.3",
     "@storybook/react": "^7.5.3",

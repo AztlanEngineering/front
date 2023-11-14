@@ -1,0 +1,17 @@
+name: packages.design-system.storybook.publish
+  
+on:
+  push:
+    paths:
+      - "packages/design-system/**"
+
+defaults:
+  run:
+    working-directory: packages/design-system
+
+jobs:
+  test-compile:
+    uses: ./.github/workflows/_template.storybook.publish.yaml
+    with:
+      PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
+      working-directory: packages/design-system
