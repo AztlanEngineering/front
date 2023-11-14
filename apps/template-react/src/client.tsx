@@ -7,7 +7,7 @@ import App from './App'
 // import environment from "./relay/environment.client";
 
 // import "./main.scss";
-// import 'aztlan/styles'
+import '@aztlan/base-styles'
 
 const container = document.getElementById('main')
 

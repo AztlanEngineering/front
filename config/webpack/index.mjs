@@ -19,6 +19,21 @@ const defaultInputs = {
   publicDir    :'public', // relative path
 }
 
+const isResourceBEM = (resourcePath) => resourcePath.includes('aztlan/bem') || resourcePath.includes('bem/exports')
+
+const loaders = {
+  'css-loader':{
+    loader :'css-loader',
+    options:{
+      url    :false,
+      modules:{
+        // We only activate CSS modules for the file containing the BEM rules
+        auto:isResourceBEM,
+      },
+    },
+  },
+}
+
 const template = (inputs) => ({
   resolve:{
     extensions:['.ts', '.tsx', '.js', '.jsx'],
@@ -65,6 +80,14 @@ const template = (inputs) => ({
       test   :/\.(j|t)s(x?)$/,
       exclude:/node_modules/,
       use    :'ts-loader',
+    },
+    scssDev:{
+      test:/\.(s?)css$/,
+      use :[
+        'style-loader',
+        loaders['css-loader'],
+        'sass-loader',
+      ],
     },
   },
 })

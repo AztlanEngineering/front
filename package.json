@@ -11,13 +11,13 @@
   "scripts": {
     "release:prerelease": "./scripts/release.sh prerelease",
     "release:patch": "./scripts/release.sh patch",
-    "release:minor": "./scripts/release.sh minor",  
+    "release:minor": "./scripts/release.sh minor",
     "release:major": "./scripts/release.sh major",
-    "lerna":"lerna",
+    "lerna": "lerna",
     "test": "exit 0"
   },
   "devDependencies": {
-    "lerna": "^7.4.1",
-    "jsonlint": "^1.6.3"
+    "jsonlint": "^1.6.3",
+    "lerna": "^7.4.1"
   }
 }

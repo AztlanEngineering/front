@@ -35,6 +35,7 @@ export default {
   module:{
     rules:[
       rules.ts,
+      rules.scssDev,
     ],
   },
 
