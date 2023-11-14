@@ -6,108 +6,14 @@
 0 silly argv   message: 'auto-publish %s',
 0 silly argv   lernaVersion: '7.4.2',
 0 silly argv   '$0': 'node_modules/.bin/lerna',
-0 silly argv   bump: 'prerelease'
+0 silly argv   bump: 'patch'
 0 silly argv }
 1 notice cli v7.4.2
 2 verbose packageConfigs Resolving packages based on package.json "workspaces" configuration.
 3 verbose rootPath /home/adrian_villa/code/aztlan/front
-4 info current version 0.0.1-alpha.1
-5 silly isAnythingCommitted
-6 verbose isAnythingCommitted 1
-7 silly getCurrentBranch
-8 verbose currentBranch development
-9 silly remoteBranchExists
-10 silly isBehindUpstream
-11 silly isBehindUpstream development is behind origin/development by 0 commit(s) and ahead by 0
-12 silly hasTags
-13 verbose hasTags true
-14 silly git-describe.sync "v0.0.1-alpha.1-13-gd5ef0b0" => {"lastTagName":"v0.0.1-alpha.1","lastVersion":"v0.0.1-alpha.1","refCount":"13","sha":"d5ef0b0","isDirty":false}
-15 info Looking for changed packages since v0.0.1-alpha.1
-16 silly checking diff apps/react-template-app
-17 silly no diff found in @aztlan/react-app-template
-18 silly checking diff packages/assets
-19 silly no diff found in @aztlan/assets
-20 silly checking diff packages/design-system
-21 silly found diff in packages/design-system/.eslintrc.js
-21 silly found diff in packages/design-system/package.json
-21 silly found diff in packages/design-system/src/ui/Button.js
-21 silly found diff in packages/design-system/src/ui/Button.tsx
-21 silly found diff in packages/design-system/src/ui/Header.js
-21 silly found diff in packages/design-system/src/ui/Page.js
-21 silly found diff in packages/design-system/src/ui/button.scss
-21 silly found diff in packages/design-system/src/ui/index.js
-21 silly found diff in packages/design-system/stories/Button.stories.js
-21 silly found diff in packages/design-system/stories/Header.stories.js
-21 silly found diff in packages/design-system/stories/Page.stories.ts
-21 silly found diff in packages/design-system/stylelint.config.js
-21 silly found diff in packages/design-system/tsconfig.json
-22 verbose filtered diff [
-22 verbose filtered diff   'packages/design-system/.eslintrc.js',
-22 verbose filtered diff   'packages/design-system/package.json',
-22 verbose filtered diff   'packages/design-system/src/ui/Button.js',
-22 verbose filtered diff   'packages/design-system/src/ui/Button.tsx',
-22 verbose filtered diff   'packages/design-system/src/ui/Header.js',
-22 verbose filtered diff   'packages/design-system/src/ui/Page.js',
-22 verbose filtered diff   'packages/design-system/src/ui/button.scss',
-22 verbose filtered diff   'packages/design-system/src/ui/index.js',
-22 verbose filtered diff   'packages/design-system/stories/Button.stories.js',
-22 verbose filtered diff   'packages/design-system/stories/Header.stories.js',
-22 verbose filtered diff   'packages/design-system/stories/Page.stories.ts',
-22 verbose filtered diff   'packages/design-system/stylelint.config.js',
-22 verbose filtered diff   'packages/design-system/tsconfig.json'
-22 verbose filtered diff ]
-23 silly checking diff packages/eslint-config
-24 silly found diff in packages/eslint-config/.eslintrc.js
-24 silly found diff in packages/eslint-config/index.js
-24 silly found diff in packages/eslint-config/package.json
-25 verbose filtered diff [
-25 verbose filtered diff   'packages/eslint-config/.eslintrc.js',
-25 verbose filtered diff   'packages/eslint-config/index.js',
-25 verbose filtered diff   'packages/eslint-config/package.json'
-25 verbose filtered diff ]
-26 silly checking diff packages/react-helpers
-27 silly no diff found in @aztlan/react-helpers
-28 silly checking diff packages/storybook-addon-relay
-29 silly no diff found in @aztlan/storybook-addon-relay
-30 silly checking diff packages/storybook-helpers
-31 silly no diff found in @aztlan/storybook-helpers
-32 silly checking diff packages/tsconfig
-33 silly found diff in packages/tsconfig/index.js
-33 silly found diff in packages/tsconfig/package.json
-33 silly found diff in packages/tsconfig/tsconfig.json
-34 verbose filtered diff [
-34 verbose filtered diff   'packages/tsconfig/index.js',
-34 verbose filtered diff   'packages/tsconfig/package.json',
-34 verbose filtered diff   'packages/tsconfig/tsconfig.json'
-34 verbose filtered diff ]
-35 verbose updated @aztlan/design-system
-36 verbose updated @aztlan/eslint-config
-37 verbose updated @aztlan/tsconfig
-38 verbose git-describe undefined => "v0.0.1-alpha.1-13-gd5ef0b0"
-39 silly git-describe parsed => {"lastTagName":"v0.0.1-alpha.1","lastVersion":"v0.0.1-alpha.1","refCount":"13","sha":"d5ef0b0","isDirty":false}
-40 info auto-confirmed
-41 info execute Skipping releases
-42 silly lifecycle No script for "preversion" in "@aztlan/front", continuing
-43 silly lifecycle No script for "preversion" in "@aztlan/eslint-config", continuing
-44 silly lifecycle No script for "preversion" in "@aztlan/tsconfig", continuing
-45 verbose version @aztlan/eslint-config has no lockfile. Skipping lockfile update.
-46 verbose version @aztlan/tsconfig has no lockfile. Skipping lockfile update.
-47 silly lifecycle No script for "version" in "@aztlan/tsconfig", continuing
-48 silly lifecycle No script for "version" in "@aztlan/eslint-config", continuing
-49 silly lifecycle No script for "preversion" in "@aztlan/design-system", continuing
-50 silly lifecycle No script for "version" in "@aztlan/design-system", continuing
-51 silly lifecycle No script for "version" in "@aztlan/front", continuing
-52 verbose version Updating root package-lock.json
-53 error Error: Command failed with exit code 1: npm install --package-lock-only --ignore-scripts
-53 error npm ERR! code ETARGET
-53 error npm ERR! notarget No matching version found for @aztlan/tsconfig@^0.0.1-alpha.2.
-53 error npm ERR! notarget In most cases you or one of your dependencies are requesting
-53 error npm ERR! notarget a package version that doesn't exist.
-53 error
-53 error npm ERR! A complete log of this run can be found in:
-53 error npm ERR!     /home/adrian_villa/.npm/_logs/2023-11-12T23_45_25_948Z-debug-0.log
-53 error     at makeError (/home/adrian_villa/code/aztlan/front/node_modules/execa/lib/error.js:59:11)
-53 error     at handlePromise (/home/adrian_villa/code/aztlan/front/node_modules/execa/index.js:114:26)
-53 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-53 error     at async VersionCommand.updatePackageVersions (/home/adrian_villa/code/aztlan/front/node_modules/lerna/dist/index.js:8317:13)
-53 error     at async Promise.all (index 0)
+4 error Error: GenericFailure
+4 error     at getNxWorkspaceFilesFromContext (/home/adrian_villa/code/aztlan/front/node_modules/nx/src/utils/workspace-context.js:16:29)
+4 error     at retrieveWorkspaceFiles (/home/adrian_villa/code/aztlan/front/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:26:138)
+4 error     at async buildProjectGraphWithoutDaemon (/home/adrian_villa/code/aztlan/front/node_modules/nx/src/project-graph/project-graph.js:65:82)
+4 error     at async createProjectGraphAsync (/home/adrian_villa/code/aztlan/front/node_modules/nx/src/project-graph/project-graph.js:116:25)
+4 error     at async detectProjects (/home/adrian_villa/code/aztlan/front/node_modules/lerna/dist/index.js:1455:25)
