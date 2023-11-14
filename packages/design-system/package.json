@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/design-system",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -16,20 +16,20 @@
     "build:cjs:watch": "node ./build.mjs --format cjs --watch",
     "build:esm": "node ./build.mjs --format esm",
     "build:esm:watch": "node ./build.mjs --format esm --watch",
-    "build":"exit 0",
+    "build": "exit 0",
     "compile": "npm run build:cjs && npm run build:esm",
     "prepare": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/assets": "^0.0.14",
-    "@aztlan/build-tools": "^0.0.14",
-    "@aztlan/eslint-config": "^0.0.14",
+    "@aztlan/assets": "^0.0.15",
+    "@aztlan/build-tools": "^0.0.15",
+    "@aztlan/eslint-config": "^0.0.15",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/swatch": "0.1.0",
-    "@aztlan/typescript-config": "^0.0.14",
-    "@aztlan/webpack-config": "^0.0.14",
+    "@aztlan/typescript-config": "^0.0.15",
+    "@aztlan/webpack-config": "^0.0.15",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.5.3",
@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@aztlan/bem": "^0.2.5",
-    "@aztlan/react-helpers": "^0.0.14",
+    "@aztlan/react-helpers": "^0.0.15",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
