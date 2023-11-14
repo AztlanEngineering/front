@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/react-helpers",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -18,9 +18,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/build-tools": "^0.0.10",
-    "@aztlan/eslint-config": "^0.0.10",
-    "@aztlan/typescript-config": "^0.0.10",
+    "@aztlan/build-tools": "^0.0.11",
+    "@aztlan/eslint-config": "^0.0.11",
+    "@aztlan/typescript-config": "^0.0.11",
     "typescript": "^5.2.2"
   }
 }
