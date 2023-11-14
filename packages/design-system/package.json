@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/design-system",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -22,13 +22,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/assets": "^0.0.7",
-    "@aztlan/build-tools": "^0.0.7",
-    "@aztlan/eslint-config": "^0.0.7",
+    "@aztlan/assets": "^0.0.8",
+    "@aztlan/build-tools": "^0.0.8",
+    "@aztlan/eslint-config": "^0.0.8",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/swatch": "0.1.0",
-    "@aztlan/typescript-config": "^0.0.7",
-    "@aztlan/webpack-config": "^0.0.7",
+    "@aztlan/typescript-config": "^0.0.8",
+    "@aztlan/webpack-config": "^0.0.8",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.5.3",
@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@aztlan/bem": "^0.2.5",
-    "@aztlan/react-helpers": "^0.0.7",
+    "@aztlan/react-helpers": "^0.0.8",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
