@@ -1,5 +1,5 @@
 {
-  "name": "@aztlan/storybook-helpers",
+  "name": "@aztlan/react-helpers",
   "version": "0.0.4",
   "description": "",
   "main": "dist/cjs/index.cjs",
@@ -7,18 +7,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:tsc": "tsc",
+    "test:eslint": "eslint --ext .js,.tsx,.ts src/ && eslint --ext .js,.tsx,.ts stories/",
     "build:cjs": "node ./build.mjs --format cjs",
     "build:cjs:watch": "node ./build.mjs --format cjs --watch",
     "build:esm": "node ./build.mjs --format esm",
     "build:esm:watch": "node ./build.mjs --format esm --watch",
-    "build": "npm run build:cjs && npm run build:esm"
+    "build": "npm run build:cjs && npm run build:esm",
+    "prepare":"npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@aztlan/build-tools": "^0.0.1",
     "@aztlan/eslint-config": "^0.0.4",
-    "esbuild": "^0.19.5",
-    "resolve-glob": "^1.0.0",
+    "@aztlan/typescript-config": "^0.0.4",
     "typescript": "^5.2.2"
   }
 }
