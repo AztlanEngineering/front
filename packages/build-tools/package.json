@@ -1,7 +1,7 @@
 {
   "name": "@aztlan/build-tools",
   "version": "0.0.5",
-  "description": "",
+  "description": "a",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
   "scripts": {
