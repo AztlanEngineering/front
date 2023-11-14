@@ -7,8 +7,7 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const buildOrWatch = async (config) => {
-  const getDirname = (typeof __dirname === 'undefined') ? dirname(fileURLToPath(config.location || import.meta.url)) : __dirname
-  const location = getDirname(config.location)
+  const dn = (typeof __dirname === 'undefined') ? dirname(fileURLToPath(config.location || import.meta.url)) : __dirname
 
   const args = process.argv
   const indexOfFormat = args.indexOf('--format') + 1
@@ -76,7 +75,7 @@ const buildOrWatch = async (config) => {
   }
   if (config.copyfiles) {
     copyfiles(
-      [...config.copyfiles, `${location}/dist/${format}`],
+      [...config.copyfiles, `${dn}/dist/${format}`],
       {
         up     :config.copyfilesUp || 2,
         verbose:true,
