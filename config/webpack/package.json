@@ -7,8 +7,11 @@
   "license": "ISC",
   "devDependencies": {
     "@aztlan/eslint-config": "^0.0.2",
+    "@loadable/webpack-plugin": "^5.15.2",
     "copy-webpack-plugin": "^11.0.0",
     "dotenv-webpack": "^8.0.1",
-    "html-webpack-plugin": "^5.5.3"
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "webpack-bundle-analyzer": "^4.10.0"
   }
 }

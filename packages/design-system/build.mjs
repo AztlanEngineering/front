@@ -1,4 +1,4 @@
-import tools  from '@aztlan/build-tools'
+import tools from '@aztlan/build-tools'
 
 tools.buildOrWatch({
   entryPoints:[

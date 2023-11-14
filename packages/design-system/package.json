@@ -27,6 +27,7 @@
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/swatch": "0.1.0",
     "@aztlan/typescript-config": "^0.0.2",
+    "@aztlan/webpack-config": "^0.0.2",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.5.3",
@@ -47,9 +48,11 @@
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "typescript-plugin-css-modules": "^5.0.2"
   },
   "dependencies": {
+    "@aztlan/bem": "^0.2.5",
     "@aztlan/react-helpers": "^0.0.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

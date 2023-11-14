@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './button.scss'
+import styles from '@aztlan/bem/exports.scss'
 
 import { Example } from '@aztlan/react-helpers'
 
@@ -28,6 +29,7 @@ export function Button({
       {...props}
     >
       Hello
+      {styles.modifierGhost}
       {' '}
       {name}
       {label}

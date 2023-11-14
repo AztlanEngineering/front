@@ -1,6 +1,7 @@
 import { join, dirname } from "path";
 import type { StorybookConfig } from "@storybook/react";
 import path from "path";
+import { loaders } from "@aztlan/webpack-config";
 
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
@@ -22,7 +23,7 @@ const config: StorybookConfig = {
     //'../../../node_modules/@aztlan/assets/images',
     //'../../../node_modules/@aztlan/assets/fonts',
     `${getAbsolutePath("@aztlan/assets")}/fonts`,
-    "../src/assets"
+    "../src/assets",
   ],
   addons: [
     getAbsolutePath("@storybook/addon-links"),
@@ -63,18 +64,10 @@ const config: StorybookConfig = {
 
     config.module.rules.push({
       test: /\.scss$/,
+      include: path.resolve(__dirname, "../../.."),
       use: [
         "style-loader",
-        {
-          loader: "css-loader",
-          options: {
-            url: false,
-            modules: {
-              // We only activate CSS modules for the file containing the BEM rules
-              auto: (resourcePath) => resourcePath.includes("bem/exports.scss"),
-            },
-          },
-        },
+        loaders["css-loader"],
         {
           loader: "sass-loader",
           options: {
@@ -87,7 +80,6 @@ const config: StorybookConfig = {
           },
         },
       ],
-      include: path.resolve(__dirname, "../.."),
     });
     return config;
   },

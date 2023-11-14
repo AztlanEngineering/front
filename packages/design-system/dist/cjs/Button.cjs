@@ -33,6 +33,7 @@ module.exports = __toCommonJS(Button_exports);
 var import_react = __toESM(require("react"));
 var import_prop_types = __toESM(require("prop-types"));
 var import_button = require("./button.scss");
+var import_exports = __toESM(require("@aztlan/bem/exports.scss"));
 var import_react_helpers = require("@aztlan/react-helpers");
 const name = import_react_helpers.Example;
 function Button({
@@ -57,6 +58,7 @@ function Button({
       ...props
     },
     "Hello",
+    import_exports.default.modifierGhost,
     " ",
     name,
     label

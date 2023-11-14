@@ -10,13 +10,15 @@ const staticFilesLocations = [
 ] */
 
 const {
-  entry,
-  resolve,
-  output,
   devServer,
+  entry,
+  output,
   plugins,
+  resolve,
   rules,
-} = configureSharedConfig({})
+} = configureSharedConfig({
+  location:import.meta.url,
+})
 
 export default {
   mode   :'development',

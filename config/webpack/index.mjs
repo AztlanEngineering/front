@@ -1,18 +1,19 @@
-import path, { dirname } from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import Dotenv from 'dotenv-webpack'
 import CopyPlugin from 'copy-webpack-plugin'
+import Dotenv from 'dotenv-webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import LoadablePlugin from '@loadable/webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import path, { dirname } from 'path'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { fileURLToPath } from 'url'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const defaultInputs = {
   staticFilesLocations:[
-    './src/assets/misc',
-    './src/assets/images',
+    // './src/assets/misc',
+    // './src/assets/images',
     '../../node_modules/@aztlan/assets/fonts',
-    '../../node_modules/@aztlan/assets/images',
-    '../../node_modules/@aztlan/assets/favicons',
+    // '../../node_modules/@aztlan/assets/images',
+    // '../../node_modules/@aztlan/assets/favicons',
   ],
   resolveAlias :{}, // TODO merge with other defaults
   devServerPort:3002,
@@ -34,63 +35,110 @@ const loaders = {
   },
 }
 
-const template = (inputs) => ({
-  resolve:{
-    extensions:['.ts', '.tsx', '.js', '.jsx'],
-    alias     :{
-      react             :path.resolve('../../node_modules/react'),
-      'react-dom'       :path.resolve('../../node_modules/react-dom'),
-      'react-router-dom':path.resolve('../../node_modules/react-router-dom'),
-      ...inputs.resolveAlias,
+const template = (inputs) => {
+  const getDirname = (typeof __dirname === 'undefined') ? dirname(fileURLToPath(inputs.location || import.meta.url)) : __dirname
+  return {
+    resolve:{
+      extensions:['.ts', '.tsx', '.js', '.jsx'],
+      alias     :{
+        react             :path.resolve('../../node_modules/react'),
+        'react-dom'       :path.resolve('../../node_modules/react-dom'),
+        'react-router-dom':path.resolve('../../node_modules/react-router-dom'),
+        ...inputs.resolveAlias,
+      },
     },
-  },
-  devServer:{
-    static:[
-      path.resolve(__dirname, inputs.publicDir),
-      ...inputs.staticFilesLocations.map((location) => path.resolve(__dirname, location)),
+    devServer:{
+      static:[
+        path.resolve(getDirname, inputs.publicDir),
+        ...inputs.staticFilesLocations.map((location) => path.resolve(getDirname, location)),
+      ],
+      port              :inputs.devServerPort,
+      host              :'0.0.0.0',
+      allowedHosts      :'all',
+      historyApiFallback:true, // allows react app to be served on all routes, not only index
+    },
+    entry:[
+      './src/client.tsx',
     ],
-    port              :inputs.devServerPort,
-    host              :'0.0.0.0',
-    allowedHosts      :'all',
-    historyApiFallback:true, // allows react app to be served on all routes, not only index
-  },
-  entry:[
-    './src/client.tsx',
-  ],
-  output:{
-    path      :path.resolve(__dirname, inputs.publicDir),
-    publicPath:'/',
-    filename  :'[name].js?[chunkhash:5]',
-  },
-  plugins:{
-    HtmlWebpack:new HtmlWebpackPlugin({
-      template:'./src/assets/html/index.html',
-    }),
-    Dotenv:new Dotenv({
-      systemvars:true,
-    }),
-    Copy:new CopyPlugin({
-      patterns:[
-        ...inputs.staticFilesLocations.map((location) => ({ from: location, to: './' })),
-      ],
-    }),
-  },
-  rules:{
-    ts:{
-      test   :/\.(j|t)s(x?)$/,
-      exclude:/node_modules/,
-      use    :'ts-loader',
+    output:{
+      path      :path.resolve(getDirname, inputs.publicDir),
+      publicPath:'/',
+      filename  :'[name].js?[chunkhash:5]',
     },
-    scssDev:{
-      test:/\.(s?)css$/,
-      use :[
-        'style-loader',
-        loaders['css-loader'],
-        'sass-loader',
-      ],
+    plugins:{
+      HtmlWebpack:new HtmlWebpackPlugin({
+        template:'./src/assets/html/index.html',
+      }),
+      Dotenv:new Dotenv({
+        systemvars:true,
+      }),
+      Copy:new CopyPlugin({
+        patterns:[
+          ...inputs.staticFilesLocations.map((location) => ({ from: location, to: './' })),
+        ],
+
+      }),
+      MiniCssExtract:new MiniCssExtractPlugin(),
+      BundleAnalyzer:new BundleAnalyzerPlugin({
+        analyzerMode     :'static',
+        generateStatsFile:true,
+      }),
+      Loadable:new LoadablePlugin(),
     },
-  },
-})
+    optimization:{
+      splitChunks:{
+        // We retake here most of the default config
+        // https://webpack.js.org/plugins/split-chunks-plugin/
+        // We code split for all node_modules
+        minSize             :15000,
+        maxSize             :150000,
+        minRemainingSize    :0,
+        minChunks           :1,
+        maxAsyncRequests    :30,
+        maxInitialRequests  :30,
+        enforceSizeThreshold:50000,
+        hidePathInfo        :false,
+        cacheGroups         :{
+          vendors:{
+            test  :/[\\/]node_modules[\\/]/,
+            chunks:'all',
+            name  :(module /* chunks, cacheGroupKey */) => {
+              const moduleFileName = module
+                .identifier()
+                .split('/')
+                .reduceRight((item) => item)
+              return `${moduleFileName}`
+            },
+          },
+        },
+      },
+    },
+    rules:{
+      ts:{
+        test   :/\.(j|t)s(x?)$/,
+        exclude:/node_modules/,
+        use    :'ts-loader',
+      },
+      scssDev:{
+        test:/\.(s?)css$/,
+        use :[
+          'style-loader',
+          loaders['css-loader'],
+          'sass-loader',
+        ],
+      },
+      scssProd:{
+        test:/\.(s?)css$/,
+        use :[
+          MiniCssExtractPlugin.loader,
+          loaders['css-loader'],
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
+    },
+  }
+}
 
 const configureSharedConfig = (userInputs) => {
   const inputs = {
@@ -104,3 +152,5 @@ const configureSharedConfig = (userInputs) => {
 }
 
 export { configureSharedConfig }
+
+export { loaders }
