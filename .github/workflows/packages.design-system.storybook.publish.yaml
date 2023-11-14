@@ -2,6 +2,8 @@ name: packages.design-system.storybook.publish
   
 on:
   push:
+    branches:                          
+      - '**' # This excludes tags
     paths:
       - "packages/design-system/**"
 

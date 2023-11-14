@@ -2,6 +2,8 @@ name: apps.template-react.storybook.publish
 
 on:
   push:
+    branches:                          
+      - '**' # This excludes tags
     paths:
       - "apps/template-react/**"
 
