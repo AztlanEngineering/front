@@ -1,0 +1,14 @@
+{
+  "name": "@aztlan/webpack-config",
+  "version": "0.0.1-alpha.6",
+  "description": "",
+  "main": "index.mjs",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aztlan/eslint-config": "^0.0.1-alpha.6",
+    "copy-webpack-plugin": "^11.0.0",
+    "dotenv-webpack": "^8.0.1",
+    "html-webpack-plugin": "^5.5.3"
+  }
+}

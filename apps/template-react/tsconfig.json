@@ -1,9 +1,9 @@
 {
-  "extends":"@aztlan/tsconfig",
+  "extends":"@aztlan/typescript-config",
   "compilerOptions": {
      "baseUrl":"src"
   },
-  "include":["src", "stories"],
+  "include":["src"],
   "exclude": [
     "node_modules",
     "dist"

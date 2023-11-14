@@ -1,3 +1,3 @@
 module.exports = {
-  extends:['@aztlan/config-eslint'],
+  extends:['@aztlan/eslint-config'],
 }
