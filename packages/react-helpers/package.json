@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
-  "bin":{
-    "fetch-schema":"./scripts/fetchSchema.js"
+  "bin": {
+    "fetch-schema": "./scripts/fetchSchema.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,6 +27,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "react-relay-network-modern": "^6.2.2",
+    "relay-runtime": "^16.0.0",
     "dotenv": "^16.3.1"
   }
 }
