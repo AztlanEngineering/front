@@ -4,6 +4,9 @@
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
+  "bin":{
+    "fetch-schema":"./scripts/fetchSchema.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:tsc": "tsc",
@@ -22,5 +25,8 @@
     "@aztlan/eslint-config": "^0.2.0",
     "@aztlan/typescript-config": "^0.2.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
   }
 }
