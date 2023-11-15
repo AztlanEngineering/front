@@ -27,6 +27,7 @@
     "@aztlan/build-tools": "^0.1.0",
     "@aztlan/eslint-config": "^0.1.0",
     "@aztlan/jest-config": "^0.1.0",
+    "@aztlan/storybook-config": "^0.1.0",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/swatch": "0.1.0",
     "@aztlan/typescript-config": "^0.1.0",

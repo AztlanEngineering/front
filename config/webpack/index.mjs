@@ -3,7 +3,7 @@ import Dotenv from 'dotenv-webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import LoadablePlugin from '@loadable/webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import path, { dirname } from 'path'
+import path, { dirname } froim 'path'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { fileURLToPath } from 'url'
 
@@ -36,7 +36,6 @@ const loaders = {
 }
 
 const template = (inputs) => {
-  const getDirname = (typeof __dirname === 'undefined') ? dirname(fileURLToPath(inputs.location || import.meta.url)) : __dirname
   return {
     resolve:{
       extensions:['.ts', '.tsx', '.js', '.jsx'],
@@ -49,8 +48,8 @@ const template = (inputs) => {
     },
     devServer:{
       static:[
-        path.resolve(getDirname, inputs.publicDir),
-        ...inputs.staticFilesLocations.map((location) => path.resolve(getDirname, location)),
+        path.resolve(inputs.dirname, inputs.publicDir),
+        ...inputs.staticFilesLocations.map((location) => path.resolve(inputs.dirname, location)),
       ],
       port              :inputs.devServerPort,
       host              :'0.0.0.0',
@@ -61,7 +60,7 @@ const template = (inputs) => {
       './src/client.tsx',
     ],
     output:{
-      path      :path.resolve(getDirname, inputs.publicDir),
+      path      :path.resolve(inputs.dirname, inputs.publicDir),
       publicPath:'/',
       filename  :'[name].js?[chunkhash:5]',
     },
@@ -142,6 +141,7 @@ const template = (inputs) => {
 
 const configureSharedConfig = (userInputs) => {
   const inputs = {
+    dirname: (typeof __dirname === 'undefined') ? dirname(fileURLToPath(inputs.location || import.meta.url)) : __dirname,
     ...defaultInputs,
     ...userInputs,
   }

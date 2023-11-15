@@ -63,6 +63,7 @@
     "@aztlan/assets": "^0.1.0",
     "@aztlan/base-styles": "^0.1.0",
     "@aztlan/design-system": "^0.0.22",
+    "@aztlan/storybook-config": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^1.3.0",

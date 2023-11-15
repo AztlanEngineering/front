@@ -11,7 +11,13 @@ module.exports = {
   cache          :false,
   testEnvironment:'jsdom',
   transform      :{
-    '^.+\\.ts?$':'ts-jest',
+    '^.+\\.tsx?$':[
+      'ts-jest',
+      /*
+      ,{
+        useESM: true,
+      }, */
+    ],
     // '^.+\\.mdx$'    :'@storybook/addon-docs/jest-transform-mdx',
   },
 
