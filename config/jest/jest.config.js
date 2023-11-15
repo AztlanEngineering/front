@@ -7,29 +7,46 @@ const packageInfo = require('./package.json')
 const rootDir = packageInfo.name// '<rootDir>'
 
 module.exports = {
-  testEnvironment :'jsdom',
   cache           :false,
-
-  testMatch      :[
-    '**/__tests__/**/*.[jt]s?(x)',
-    '**/?(*.)+(spec|test|stories).[mtj]s?(x)',
+  testEnvironment:'jsdom',
+  transform      :{
+    '^.+\\.ts?$':'ts-jest',
+  },
+  
+  moduleDirectories      :[
+    '../../node_modules',
+    'node_modules',
+    // Otherwise we get an error not managing to locate 'src/ui' as 'ui'
+    './src',
   ],
+  // Otherwise we get an error not managing to import scss files.
+  moduleNameMapper       :{
+    '^.+\\.(css|less|scss|sass)$':'identity-obj-proxy',
+  },
+
+  /*
   moduleDirectories: [
     "../../node_modules",
     "node_modules", 
-    "src", 
+    "./src", 
   ],
   // https://stackoverflow.com/questions/39418555/syntaxerror-with-jest-and-react-and-importing-css-files
   moduleNameMapper:{
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "^.+\\.(css|less|scss|sass)$": "identity-obj-proxy",
     '^.+\\.(mdx)$'         :`${rootDir}/tests/staticStub.js`,
   },
   transform:{
+    transform: {
+      '^.+\\.(js|jsx|ts|tsx|mjs)$': 'ts-jest',
+    },
     '^.+\\.mdx$'    :'@storybook/addon-docs/jest-transform-mdx',
+
   },
+    extensionsToTreatAsEsm: ['.ts', '.tsx','.jsx', '.mdx'],
   "transform": {
     },
+  roots:[`${rootDir}/src`, rootDir],
   setupFiles :[`${rootDir}/tests/test-setup.js`],
   // transformIgnorePatterns: [`node_modules/(?!${esModules})`],
-  globalSetup:`${rootDir}/tests/global-setup.js`,
+  globalSetup:`${rootDir}/tests/global-setup.js`,*/
 }
