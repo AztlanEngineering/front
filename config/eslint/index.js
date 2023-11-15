@@ -8,6 +8,22 @@ module.exports = {
     browser:true,
     node   :true,
   },
+  globals:{
+    graphql:'readonly',
+  },
+  overrides:[
+    {
+      files  :['*.graphql'],
+      parser :'@graphql-eslint/eslint-plugin',
+      plugins:['@graphql-eslint'],
+      rules  :{
+        '@graphql-eslint/known-type-names':'error',
+      },
+      parserOptions:{
+        schema:'./schema.graphql',
+      },
+    },
+  ],
   rules:{
     semi:[
       2,

@@ -45,6 +45,7 @@ const template = (inputs) => ({
       'react-router-dom':path.resolve('../../node_modules/react-router-dom'),
       ...inputs.resolveAlias,
     },
+    roots:[path.join(inputs.dirname, 'src')],
   },
   devServer:{
     static:[
@@ -116,7 +117,7 @@ const template = (inputs) => ({
     ts:{
       test   :/\.(j|t)s(x?)$/,
       exclude:/node_modules/,
-      use    :'ts-loader',
+      use    :'babel-loader',
     },
     scssDev:{
       test:/\.(s?)css$/,

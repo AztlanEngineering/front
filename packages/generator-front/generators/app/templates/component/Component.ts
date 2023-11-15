@@ -5,7 +5,8 @@ import { useInsertionEffect } from 'react'
 <% } %>
 import PropTypes from 'prop-types'
 <% if (!optionNoStyles) { %>
-import styleNames from '@<%= npmOrg %>/bem/exports'
+// @ts-ignore
+import styleNames from '@<%= npmOrg %>/bem/exports.scss'
 <% } %>
 
 // Local Definitions
@@ -26,6 +27,7 @@ const <%= name %> = ({
 }) => {
 <% if (!optionNoStyles) { %>
   useInsertionEffect(() => {
+    // @ts-ignore
     import('./styles.scss')
   }, [])
 <% } %>

@@ -10,7 +10,7 @@ import App from './App'
 // import "./main.scss";
 import '@aztlan/base-styles'
 
-const relayEnvironment = client.getEnvironment()
+const relayEnvironment = client.getEnvironment(process.env.GRAPHQL_ENDPOINT)
 
 const container = document.getElementById('main')
 
