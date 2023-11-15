@@ -1,7 +1,9 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-import config from '@aztlan/jest-config'
+//import config from '@aztlan/jest-config'
+const config = require("@aztlan/jest-config")
 
-export default {
-  preset:'ts-jest',
+module.exports = {
+//export default {
+  preset: 'ts-jest',
   ...config,
-}
+};
+

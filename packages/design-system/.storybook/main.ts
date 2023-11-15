@@ -2,7 +2,6 @@ import { join, dirname } from "path";
 // @ts-ignore
 import type { StorybookConfig } from "@storybook/react";
 import path from "path";
-// @ts-ignore
 import { loaders } from "@aztlan/webpack-config";
 
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
@@ -32,6 +31,7 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@storybook/addon-interactions"),
     getAbsolutePath("@storybook/addon-themes"),
+    getAbsolutePath("@storybook/addon-storyshots"),
   ],
   framework: {
     name: getAbsolutePath("@storybook/react-webpack5"),
@@ -68,7 +68,7 @@ const config: StorybookConfig = {
       include: path.resolve(__dirname, "../../.."),
       use: [
         "style-loader",
-        loaders["css-loader"],
+        //loaders["css-loader"],
         {
           loader: "sass-loader",
           options: {
