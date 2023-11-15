@@ -11,9 +11,9 @@
 1 notice cli v7.4.2
 2 verbose packageConfigs Resolving packages based on package.json "workspaces" configuration.
 3 verbose rootPath /home/adrian_villa/code/aztlan/front
-4 error SyntaxError: /home/adrian_villa/code/aztlan/front/packages/build-tools/package.json: Expected double-quoted property name in JSON at position 326
-4 error     at JSON.parse (<anonymous>)
-4 error     at _readFile (/home/adrian_villa/code/aztlan/front/node_modules/jsonfile/index.js:25:16)
-4 error     at async Promise.all (index 5)
-4 error     at async createProjectGraphWithPackages (/home/adrian_villa/code/aztlan/front/node_modules/lerna/dist/index.js:1337:18)
-4 error     at async detectProjects (/home/adrian_villa/code/aztlan/front/node_modules/lerna/dist/index.js:1457:24)
+4 error Error: GenericFailure
+4 error     at getNxWorkspaceFilesFromContext (/home/adrian_villa/code/aztlan/front/node_modules/nx/src/utils/workspace-context.js:16:29)
+4 error     at retrieveWorkspaceFiles (/home/adrian_villa/code/aztlan/front/node_modules/nx/src/project-graph/utils/retrieve-workspace-files.js:26:138)
+4 error     at async buildProjectGraphWithoutDaemon (/home/adrian_villa/code/aztlan/front/node_modules/nx/src/project-graph/project-graph.js:65:82)
+4 error     at async createProjectGraphAsync (/home/adrian_villa/code/aztlan/front/node_modules/nx/src/project-graph/project-graph.js:116:25)
+4 error     at async detectProjects (/home/adrian_villa/code/aztlan/front/node_modules/lerna/dist/index.js:1455:25)
