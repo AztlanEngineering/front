@@ -14,6 +14,7 @@
     "release:minor": "./scripts/release.sh minor",
     "release:major": "./scripts/release.sh major",
     "lerna": "lerna",
+    "test:json":"jsonlint",
     "test": "exit 0"
   },
   "devDependencies": {
