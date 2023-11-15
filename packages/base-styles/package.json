@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@aztlan/grid": "^0.1.1",
+    "@aztlan/mixins": "^0.2.1",
     "@aztlan/swatch": "^0.1.1"
   }
 }

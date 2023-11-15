@@ -1,5 +1,5 @@
-@use "@aztlan/swatch";
+@use "@aztlan/base-styles";
 
 .borders {
-  border:10px solid var(--hard-red)!important;
+  border: 10px solid var(--hard-red) !important;
 }

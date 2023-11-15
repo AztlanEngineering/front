@@ -59,6 +59,7 @@
     "typescript-plugin-css-modules": "^5.0.2"
   },
   "dependencies": {
+    "@aztlan/base-styles": "^0.2.0",
     "@aztlan/bem": "^0.2.5",
     "@aztlan/react-helpers": "^0.2.0",
     "@storybook/babel-plugin-require-context-hook": "^1.0.1",
