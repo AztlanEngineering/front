@@ -1,7 +1,5 @@
-import { join, dirname } from "path";
 // @ts-ignore
 import type { StorybookConfig } from "@storybook/react";
-import path from "path";
 import { configureSharedConfig } from "@aztlan/storybook-config";
 
 const {

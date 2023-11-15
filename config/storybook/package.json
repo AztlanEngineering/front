@@ -7,6 +7,6 @@
   "license": "ISC",
   "devDependencies": {
     "@aztlan/eslint-config": "^0.1.0",
-    "tsconfig-paths-webpack-plugin": "^4.1.0",
+    "tsconfig-paths-webpack-plugin": "^4.1.0"
   }
 }
