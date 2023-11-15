@@ -8,7 +8,7 @@ const {
   framework,
   docs,
   core,
-  pushCss,
+  pushScss,
   pushTsconfigPathsPlugin
 } = configureSharedConfig({
   location:__dirname,
@@ -26,7 +26,7 @@ const config: StorybookConfig = {
   docs,
   core,
   webpackFinal: async (config, { configType }) => {
-    pushCss(config)
+    pushScss(config)
     pushTsconfigPathsPlugin(config)
     return config;
   },
