@@ -3,23 +3,33 @@
  * https://jestjs.io/docs/en/configuration.html
  */
 // const esModules = ['@storybook/addon-docs', 'yay'].join('|');
+const packageInfo = require('./package.json')
+const rootDir = packageInfo.name// '<rootDir>'
 
 module.exports = {
   testEnvironment :'jsdom',
   cache           :false,
+
+  testMatch      :[
+    '**/__tests__/**/*.[jt]s?(x)',
+    '**/?(*.)+(spec|test|stories).[mtj]s?(x)',
+  ],
+  moduleDirectories: [
+    "../../node_modules",
+    "node_modules", 
+    "src", 
+  ],
   // https://stackoverflow.com/questions/39418555/syntaxerror-with-jest-and-react-and-importing-css-files
   moduleNameMapper:{
-    '^.+\\.(css|scss)$'    :'<rootDir>/tests/staticStub.js',
-    '^.+\\.(mdx)$'         :'<rootDir>/tests/staticStub.js',
-    // https://jestjs.io/docs/webpack#mocking-css-modules
-    '^@aztlan/bem$'        :'identity-obj-proxy',
-    '^@aztlan/bem/exports$':'identity-obj-proxy',
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    '^.+\\.(mdx)$'         :`${rootDir}/tests/staticStub.js`,
   },
   transform:{
-    '^.+\\.[tj]sx?$':'babel-jest',
     '^.+\\.mdx$'    :'@storybook/addon-docs/jest-transform-mdx',
   },
-  setupFiles :['<rootDir>/tests/test-setup.js'],
+  "transform": {
+    },
+  setupFiles :[`${rootDir}/tests/test-setup.js`],
   // transformIgnorePatterns: [`node_modules/(?!${esModules})`],
-  globalSetup:'<rootDir>/tests/global-setup.js',
+  globalSetup:`${rootDir}/tests/global-setup.js`,
 }

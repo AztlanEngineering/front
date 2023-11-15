@@ -1,6 +1,8 @@
 import { join, dirname } from "path";
+// @ts-ignore
 import type { StorybookConfig } from "@storybook/react";
 import path from "path";
+// @ts-ignore
 import { loaders } from "@aztlan/webpack-config";
 
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";

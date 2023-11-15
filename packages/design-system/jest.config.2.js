@@ -16,10 +16,10 @@ module.exports = {
     '^@aztlan/bem/exports$':'identity-obj-proxy',
   },
   transform:{
-    '^.+\\.[tj]sx?$':'babel-jest',
-    '^.+\\.mdx$'    :'@storybook/addon-docs/jest-transform-mdx',
+    // '^.+\\.[tj]sx?$':'babel-jest',
+    '//^.+\\.mdx$':'@storybook/addon-docs/jest-transform-mdx',
   },
-  setupFiles :['<rootDir>/tests/test-setup.js'],
+  setupFiles :['@aztlan/jest-config/itests/test-setup.js'],
   // transformIgnorePatterns: [`node_modules/(?!${esModules})`],
   globalSetup:'<rootDir>/tests/global-setup.js',
 }

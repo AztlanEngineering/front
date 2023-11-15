@@ -2,7 +2,6 @@
 import config from '@aztlan/jest-config'
 
 export default {
-  preset         :'ts-jest',
-  testEnvironment:'jsdom',
+  preset:'ts-jest',
   ...config,
 }
