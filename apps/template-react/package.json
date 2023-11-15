@@ -25,6 +25,7 @@
   "devDependencies": {
     "@aztlan/bem": "^0.2.5",
     "@aztlan/eslint-config": "^0.1.0",
+    "@aztlan/jest-config": "^0.1.0",
     "@aztlan/react-helpers": "^0.1.0",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/typescript-config": "^0.1.0",
