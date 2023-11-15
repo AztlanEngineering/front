@@ -41,6 +41,7 @@ const buildOrWatch = async (config) => {
     ...buildArgs,
     entryPoints:indexFiles,
     bundle     :true,
+    // external   :config.external || ['./src/*'],
     plugins    :[
       esbuildPluginFilePathExtensions({
         esm:format === 'esm',

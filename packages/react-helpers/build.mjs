@@ -2,7 +2,8 @@
 import { buildOrWatch } from '@aztlan/build-tools'
 
 buildOrWatch({
-  location   :import.meta.url,
+  // Hack to disable bundle mode with extensions plugin
+  external   :['./src/*', './src/relay/*'],
   entryPoints:[
     './src/**/*.ts',
     './src/**/*.tsx',

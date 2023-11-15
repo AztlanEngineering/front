@@ -3,11 +3,14 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 // import { loadableReady } from "@loadable/component";
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
+import { RelayEnvironmentProvider } from 'react-relay/hooks'
+import { client } from '@aztlan/react-helpers/src/relay'
 import App from './App'
-// import environment from "./relay/environment.client";
 
 // import "./main.scss";
 import '@aztlan/base-styles'
+
+const relayEnvironment = client.getEnvironment()
 
 const container = document.getElementById('main')
 
@@ -21,9 +24,11 @@ const jsx = (
   </BrowserRouter>
 ); */
 const jsx = (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <RelayEnvironmentProvider environment={relayEnvironment}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </RelayEnvironmentProvider>
 )
 
 // loadableReady(() => {

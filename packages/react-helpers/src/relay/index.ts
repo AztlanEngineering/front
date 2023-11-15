@@ -1,2 +1,2 @@
-export * as client from './client.ts'
-export * as server from './server.ts'
+export { default as client } from './client'
+export { default as server } from './server'

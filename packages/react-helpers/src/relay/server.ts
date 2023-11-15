@@ -1,29 +1,32 @@
-import { RecordSource, Store, Network } from 'relay-runtime'
+import {
+  Environment, RecordSource, Store, Network,
+} from 'relay-runtime'
 
 // Alternative way to do SSR
 // const collector = []
-export const store = new Store(new RecordSource())
+const store = new Store(new RecordSource())
 
-function fetchGraphQL(params, variables) {
-  const request = fetch(process.env.GRAPHQL_ENDPOINT, {
-    method :'POST',
-    headers:{
-      'Content-Type':'application/json',
-    },
-    body:JSON.stringify({
-      query:params.text,
-      variables,
-    }),
-  }).then((response) => response.json())
-  // collector.push(request)
-  return request
-}
+// { collector }
 
-// export { collector }
-
-export const network = Network.create(fetchGraphQL)
-
-export const getEnvironment = () => new Environment({
-  network,
+const getEnvironment = (url) => new Environment({
+  network:Network.create((params, variables) => {
+    const request = fetch(url, {
+      method :'POST',
+      headers:{
+        'Content-Type':'application/json',
+      },
+      body:JSON.stringify({
+        query:params.text,
+        variables,
+      }),
+    }).then((response) => response.json())
+    // collector.push(request)
+    return request
+  }),
   store,
 })
+
+export default {
+  store,
+  getEnvironment,
+}

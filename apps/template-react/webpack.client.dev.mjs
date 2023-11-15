@@ -16,9 +16,7 @@ const {
   plugins,
   resolve,
   rules,
-} = configureSharedConfig({
-  location:import.meta.url,
-})
+} = configureSharedConfig()
 
 export default {
   mode   :'development',
