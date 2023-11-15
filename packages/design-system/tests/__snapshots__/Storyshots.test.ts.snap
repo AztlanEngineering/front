@@ -7,7 +7,6 @@ exports[`Storyshots Example/Button Large 1`] = `
   type="button"
 >
   Hello
-  modifierGhost
    
   Another test
   Button
@@ -21,7 +20,6 @@ exports[`Storyshots Example/Button Primary 1`] = `
   type="button"
 >
   Hello
-  modifierGhost
    
   Another test
   Button
@@ -35,7 +33,6 @@ exports[`Storyshots Example/Button Secondary 1`] = `
   type="button"
 >
   Hello
-  modifierGhost
    
   Another test
   Button
@@ -49,7 +46,6 @@ exports[`Storyshots Example/Button Small 1`] = `
   type="button"
 >
   Hello
-  modifierGhost
    
   Another test
   Button
