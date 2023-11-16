@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/design-system",
-  "version": "0.4.3",
+  "version": "0.4.3-0",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
