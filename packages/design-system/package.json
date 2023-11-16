@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/design-system",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -62,7 +62,7 @@
     "typescript-plugin-css-modules": "^5.0.2"
   },
   "dependencies": {
-    "@aztlan/base-styles": "^0.4.7",
+    "@aztlan/base-styles": "^0.4.8",
     "@aztlan/bem": "^0.2.5",
     "@aztlan/react-helpers": "^0.4.7",
     "prop-types": "^15.8.1",

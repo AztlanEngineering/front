@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/template-react",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -71,8 +71,8 @@
   },
   "dependencies": {
     "@aztlan/assets": "^0.4.0",
-    "@aztlan/base-styles": "^0.4.7",
-    "@aztlan/design-system": "^0.4.7",
+    "@aztlan/base-styles": "^0.4.8",
+    "@aztlan/design-system": "^0.4.8",
     "@aztlan/storybook-config": "^0.4.3",
     "@aztlan/storybook-helpers": "^0.4.5",
     "@loadable/component": "^5.15.3",
