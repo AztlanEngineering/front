@@ -2,13 +2,13 @@
 import { buildOrWatch } from '@aztlan/build-tools'
 
 buildOrWatch({
-  entryPoints:[
+  entryPoints: [
     './src/**/*.ts',
     './src/**/*.tsx',
     './src/**/*.js',
     './src/**/*.jsx',
   ],
-  copyfiles:[
+  copyfiles: [
     'src/ui/**/*.scss',
     'src/ui/**/*.css',
   ],

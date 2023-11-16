@@ -12,7 +12,8 @@
     "test:jest": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js --verbose",
     "test:jest:update": "npm run test:jest -- --updateSnapshot",
     "test:tsc": "tsc",
-    "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts src/ && eslint --ext .js,.tsx,.ts stories/",
+    "t2": "lint-eslint",
+    "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts ./",
     "build:cjs": "node ./build.mjs --format cjs",
     "build:cjs:watch": "node ./build.mjs --format cjs --watch",
     "build:esm": "node ./build.mjs --format esm",
@@ -24,14 +25,16 @@
   "license": "ISC",
   "devDependencies": {
     "@aztlan/assets": "^0.2.0",
+    "@aztlan/babel-preset-react": "^0.2.0",
     "@aztlan/build-tools": "^0.2.0",
-    "@aztlan/eslint-config": "^0.2.0",
+    "@aztlan/eslint-config-base": "^0.2.0",
     "@aztlan/jest-config": "^0.2.0",
     "@aztlan/storybook-config": "^0.2.0",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/swatch": "0.1.0",
     "@aztlan/typescript-config": "^0.2.0",
     "@aztlan/webpack-config": "^0.2.0",
+    "@babel/core": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.5.3",
@@ -62,10 +65,22 @@
     "@aztlan/base-styles": "^0.2.0",
     "@aztlan/bem": "^0.2.5",
     "@aztlan/react-helpers": "^0.2.0",
-    "@storybook/babel-plugin-require-context-hook": "^1.0.1",
-    "babel-plugin-require-context-hook": "^1.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "babel": {
+    "presets": [
+      "@aztlan/react"
+    ],
+    "plugins": [
+      "relay"
+    ]
+  },
+  "stylelint": {
+    "extends": "@aztlan/stylelint-config"
+  },
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
   }
 }
