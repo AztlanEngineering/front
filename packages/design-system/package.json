@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/design-system",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -30,7 +30,7 @@
     "@aztlan/build-tools": "^0.4.0",
     "@aztlan/eslint-config-base": "^0.4.0",
     "@aztlan/jest-config": "^0.4.0",
-    "@aztlan/storybook-config": "^0.4.0",
+    "@aztlan/storybook-config": "^0.4.2",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/swatch": "0.1.0",
     "@aztlan/typescript-config": "^0.4.0",
@@ -63,7 +63,7 @@
     "typescript-plugin-css-modules": "^5.0.2"
   },
   "dependencies": {
-    "@aztlan/base-styles": "^0.4.0",
+    "@aztlan/base-styles": "^0.4.2",
     "@aztlan/bem": "^0.2.5",
     "@aztlan/react-helpers": "^0.4.1",
     "prop-types": "^15.8.1",
