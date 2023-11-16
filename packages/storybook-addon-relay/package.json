@@ -67,7 +67,7 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "npm run vite"
+    "build": "vite build"
   },
   "resolutions": {
     "jest-mock": "^28"
