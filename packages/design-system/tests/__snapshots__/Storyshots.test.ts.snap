@@ -8,7 +8,6 @@ exports[`Storyshots Example/Button Large 1`] = `
 >
   Hello
    
-  Another test
   Button
 </button>
 `;
@@ -21,7 +20,6 @@ exports[`Storyshots Example/Button Primary 1`] = `
 >
   Hello
    
-  Another test
   Button
 </button>
 `;
@@ -34,7 +32,6 @@ exports[`Storyshots Example/Button Secondary 1`] = `
 >
   Hello
    
-  Another test
   Button
 </button>
 `;
@@ -47,7 +44,6 @@ exports[`Storyshots Example/Button Small 1`] = `
 >
   Hello
    
-  Another test
   Button
 </button>
 `;
