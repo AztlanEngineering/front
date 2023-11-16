@@ -17,7 +17,7 @@ const buildOrWatch = async (config) => {
   }
   const watch = args.indexOf('--watch') > 0
   const entryPoints = glob.sync(config.entryPoints, {
-    ignore:config.ignore, // ['**/*.test.js', '**/*.spec.js', '**/*.stories.js']
+    ignore: config.ignore, // ['**/*.test.js', '**/*.spec.js', '**/*.stories.js']
   })
 
   const indexFiles = entryPoints.filter((name) => name.endsWith('index.ts'))
@@ -25,26 +25,26 @@ const buildOrWatch = async (config) => {
 
   const buildArgs = {
     entryPoints,
-    outdir      :`dist/${format}/`,
+    outdir: `dist/${format}/`,
     // target:"cjs",
     format,
-    logLevel    :'debug',
-    outExtension:{ '.js': `.${format === 'cjs' ? 'cjs' : 'mjs'}` },
-    supported   :{
+    logLevel: 'debug',
+    outExtension: { '.js': `.${format === 'cjs' ? 'cjs' : 'mjs'}` },
+    supported: {
       // https://esbuild.github.io/api/#supported
-      'object-rest-spread':true,
+      'object-rest-spread': true,
     },
-    metafile:true,
+    metafile: true,
     // external:['*.scss', 'node_modules/*', '../../node_modules/*'],
   }
   const indexBuildArgs = {
     ...buildArgs,
-    entryPoints:indexFiles,
-    bundle     :true,
+    entryPoints: indexFiles,
+    bundle: true,
     // external   :config.external || ['./src/*'],
-    plugins    :[
+    plugins: [
       esbuildPluginFilePathExtensions({
-        esm:format === 'esm',
+        esm: format === 'esm',
         // filter:/.*index.*/,
       }),
     ],
@@ -52,7 +52,7 @@ const buildOrWatch = async (config) => {
 
   const mainBuildArgs = {
     ...buildArgs,
-    entryPoints:mainFiles,
+    entryPoints: mainFiles,
   }
   if (watch) {
     const ctx = await esbuild.context(buildArgs)
@@ -78,8 +78,8 @@ const buildOrWatch = async (config) => {
     copyfiles(
       [...config.copyfiles, `${dn}/dist/${format}`],
       {
-        up     :config.copyfilesUp || 2,
-        verbose:true,
+        up: config.copyfilesUp || 2,
+        verbose: true,
       },
       (a) => console.log(a),
     )

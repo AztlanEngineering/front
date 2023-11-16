@@ -7,17 +7,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:tsc": "tsc",
-    "test:eslint": "eslint --ext .js,.tsx,.ts src/ && eslint --ext .js,.tsx,.ts stories/"
+    "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts ./",
+    "test:eslint:fix": "npm run test:eslint -- --fix"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/eslint-config": "^0.2.0",
+    "@aztlan/eslint-config-base": "^0.2.0",
     "@aztlan/typescript-config": "^0.2.0",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.19.5",
     "esbuild-plugin-file-path-extensions": "^1.0.0",
     "resolve-glob": "^1.0.0",
     "typescript": "^5.2.2"
+  },
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
   }
 }

@@ -9,16 +9,31 @@
     "packages/*"
   ],
   "scripts": {
-    "release:prerelease": "./scripts/release.sh prerelease",
-    "release:patch": "./scripts/release.sh patch",
-    "release:minor": "./scripts/release.sh minor",
-    "release:major": "./scripts/release.sh major",
     "lerna": "lerna",
+    "release:major": "./scripts/release.sh major",
+    "release:minor": "./scripts/release.sh minor",
+    "release:patch": "./scripts/release.sh patch",
+    "release:prerelease": "./scripts/release.sh prerelease",
+    "test": "exit 0",
+    "test:eslint": "lerna run test:eslint --parallel",
+    "test:eslint:fix": "lerna run test:eslint:fix --parallel",
+    "test:jest": "lerna run test:jest --parallel",
+    "test:jest:update": "lerna run test:jest:update --parallel",
     "test:json":"jsonlint",
-    "test": "exit 0"
+    "test:stylelint": "lerna run test:stylelint --parallel",
+    "test:stylelint:fix": "lerna run test:stylelint:fix --parallel",
+    "test:tsc": "lerna run test:tsc --parallel"
   },
   "devDependencies": {
     "jsonlint": "^1.6.3",
     "lerna": "^7.4.1"
+  },
+  "babel": {
+    "presets": [
+      "@aztlan/react"
+    ],
+    "plugins": [
+      "relay"
+    ]
   }
 }

@@ -19,21 +19,21 @@ const {
 } = configureSharedConfig()
 
 export default {
-  mode   :'development',
-  devtool:'source-map',
+  mode: 'development',
+  devtool: 'source-map',
 
   entry,
   resolve,
   output,
   devServer,
 
-  plugins:[
+  plugins: [
     plugins.Dotenv,
     plugins.HtmlWebpack,
   ],
 
-  module:{
-    rules:[
+  module: {
+    rules: [
       rules.ts,
       rules.scssDev,
     ],

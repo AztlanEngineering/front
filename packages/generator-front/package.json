@@ -10,7 +10,7 @@
     "yeoman-generator"
   ],
   "devDependencies": {
-    "@aztlan/eslint-config": "^0.2.0",
+    "@aztlan/eslint-config-base": "^0.2.0",
     "@aztlan/typescript-config": "^0.2.0",
     "jest": "^26.1.0",
     "prettier": "^1.19.1",
@@ -30,11 +30,15 @@
     "testEnvironment": "node"
   },
   "scripts": {
+    "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts ./",
+    "test:eslint:fix": "npm run test:eslint -- --fix",
     "pretest": "eslint .",
-    "test:eslint": "eslint --ext .js,.tsx,.ts src/ && eslint --ext .js,.tsx,.ts stories/",
     "test:tsc": "tsc",
     "test": "jest"
   },
   "repository": "git@github.com:HelloPareto/generator-front.git",
-  "license": "MIT"
+  "license": "MIT",
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
+  }
 }

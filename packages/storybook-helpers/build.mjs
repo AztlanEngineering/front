@@ -2,7 +2,7 @@
 import { buildOrWatch } from '@aztlan/build-tools'
 
 buildOrWatch({
-  entryPoints:[
+  entryPoints: [
     './src/**/*.ts',
     './src/**/*.tsx',
     './src/**/*.js',

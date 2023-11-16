@@ -478,12 +478,3 @@ exports[`Storyshots Example/Page Logged Out 1`] = `
   </section>
 </article>
 `;
-
-exports[`Storyshots Tester Base 1`] = `
-<div
-  className="d1 tester"
->
-  This is the testedd2
-  Sample Tester
-</div>
-`;

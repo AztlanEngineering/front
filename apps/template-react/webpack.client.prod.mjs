@@ -20,8 +20,8 @@ const {
 } = configureSharedConfig()
 
 export default {
-  mode   :'production',
-  devtool:'source-map',
+  mode: 'production',
+  devtool: 'source-map',
 
   entry,
   resolve,
@@ -30,7 +30,7 @@ export default {
 
   optimization,
 
-  plugins:[
+  plugins: [
     plugins.Copy,
     plugins.Dotenv,
     plugins.HtmlWebpack,
@@ -39,8 +39,8 @@ export default {
     plugins.BundleAnalyzer,
   ],
 
-  module:{
-    rules:[
+  module: {
+    rules: [
       rules.ts,
       rules.scssProd,
     ],

@@ -22,7 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@aztlan/build-tools": "^0.2.0",
-    "@aztlan/eslint-config": "^0.2.0",
+    "@aztlan/eslint-config-base": "^0.2.0",
     "@aztlan/typescript-config": "^0.2.0",
     "typescript": "^5.2.2"
   },
@@ -30,5 +30,8 @@
     "react-relay-network-modern": "^6.2.2",
     "relay-runtime": "^16.0.0",
     "dotenv": "^16.3.1"
+  },
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
   }
 }

@@ -23,33 +23,33 @@ module.exports = class extends Generator {
     super(args, opts)
 
     this.argument('type', {
-      type    :String,
-      required:true,
-      desc    :'<story|comp|component|page|module>',
+      type: String,
+      required: true,
+      desc: '<story|comp|component|page|module>',
     })
     this.argument('fullname', {
-      type    :String,
-      required:true,
-      desc    :'The name of the component or page for which we generate code for.',
+      type: String,
+      required: true,
+      desc: 'The name of the component or page for which we generate code for.',
     })
 
     this.option('diet', {
-      type :Boolean,
-      alias:'d',
-      desc :'[type=comp|component] Whether this component is on a diet (no prop-types)',
+      type: Boolean,
+      alias: 'd',
+      desc: '[type=comp|component] Whether this component is on a diet (no prop-types)',
     })
 
     this.option('nostyles', {
-      type:Boolean,
+      type: Boolean,
       // Alias: "",
-      desc:'[type=comp|component] Whether to generate a component without css',
+      desc: '[type=comp|component] Whether to generate a component without css',
     })
 
     this.option('npmOrg', {
-      type   :String,
-      alias  :'o',
-      desc   :'The npm org namespace to use for dependencies. ',
-      default:'aztlan',
+      type: String,
+      alias: 'o',
+      desc: 'The npm org namespace to use for dependencies. ',
+      default: 'aztlan',
     })
 
     console.log(

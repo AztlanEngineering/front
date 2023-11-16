@@ -4,16 +4,16 @@ import * as React from 'react'
 import { Tester } from 'ui'
 
 export default {
-  title        :'Tester',
-  component    :Tester,
-  subcomponents:{
+  title: 'Tester',
+  component: Tester,
+  subcomponents: {
     // Item:Tester.Item
   },
-  decorators:[
+  decorators: [
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes:{
-    backgroundColor:{ control: 'color' },
+  argTypes: {
+    backgroundColor: { control: 'color' },
   },
 }
 

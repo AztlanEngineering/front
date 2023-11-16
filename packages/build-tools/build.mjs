@@ -2,7 +2,7 @@
 import { buildOrWatch } from './src/index.mjs'
 
 buildOrWatch({
-  entryPoints:[
+  entryPoints: [
     './src/**/*.mjs',
   ],
 })

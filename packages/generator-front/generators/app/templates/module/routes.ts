@@ -7,10 +7,10 @@ const moduleName = 'app.<%= lower %>'
 
 export default [
   {
-    path     :MODULE_URLS.HOME,
-    component:loadable(() => import (/* webpackChunkName: `app.<%= lower %>` */ './pages/Home.jsx')),
-    exact:true
-  }
+    path: MODULE_URLS.HOME,
+    component: loadable(() => import(/* webpackChunkName: `app.<%= lower %>` */ './pages/Home.jsx')),
+    exact: true,
+  },
 
   /*
   {
@@ -21,4 +21,3 @@ export default [
   },
   */
 ]
-
