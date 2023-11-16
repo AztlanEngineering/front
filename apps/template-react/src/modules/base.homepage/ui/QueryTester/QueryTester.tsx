@@ -8,19 +8,22 @@ import PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
 
-import { useLazyLoadQuery } from 'react-relay'
+import { useFragment, useRelayEnvironment } from 'react-relay'
 
 // Local Definitions
 
 const baseClassName = styleNames.base
 
 const componentClassName = 'query-tester'
+const FRAGMENT = graphql`
+  fragment QueryTesterFragment on Query {
+    time
+  }
+`
+
 const QUERY = graphql`
   query QueryTesterQuery {
-    time
-    usdw {
-      hello
-    }
+    ...QueryTesterFragment
   }
 `
 
@@ -32,6 +35,7 @@ function QueryTester({
   className: userClassName,
   style,
   children,
+  data,
   ...otherProps
   // ...otherProps
 }) {
@@ -40,7 +44,8 @@ function QueryTester({
     import('./styles.scss')
   }, [])
 
-  const data = useLazyLoadQuery(QUERY, {}, { fetchPolicy: 'store-or-network' })
+  const time = useFragment(FRAGMENT, data)
+  const envir = useRelayEnvironment()
 
   return (
     <div
@@ -52,8 +57,15 @@ function QueryTester({
       // {...otherProps}
     >
       TIME IS
+      {' '}
+      {JSON.stringify(time)}
       {JSON.stringify(data)}
-      {JSON.stringify(otherProps)}
+      {JSON.stringify(
+        envir
+          .getStore()
+          .getSource()
+          .toJSON(),
+      )}
       {children}
     </div>
   )
@@ -85,5 +97,6 @@ QueryTester.defaultProps = {
   // someProp:false
 }
 QueryTester.QUERY = QUERY
+QueryTester.FRAGMENT = FRAGMENT
 
 export default QueryTester

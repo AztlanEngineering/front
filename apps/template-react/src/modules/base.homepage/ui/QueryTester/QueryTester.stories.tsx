@@ -14,7 +14,7 @@ export default {
   subcomponents: {
     // Item:QueryTester.Item
   },
-  decorators: [decorators.relay],
+  // decorators: [decorators.relay],
   argTypes: {
     backgroundColor: { control: 'color' },
   },
@@ -24,17 +24,14 @@ const relayConfig = {
   getReferenceEntry: (data) => ['data', data],
   variables: {},
   mockResolvers: {
-    time: () => '2023-11-16T17:10:13.357101',
+    time: (ctx) => {
+      console.log('RSL time')
+      return '2023-11-16T17:10:13.357101'
+    },
   },
 }
 
 export const Default: StoryObj = {
-  parameters: {
-    relay: relayConfig,
-  },
-}
-
-export const Default2: StoryObj = {
   parameters: {
     relay: relayConfig,
   },

@@ -59,7 +59,14 @@ export const withRelay = makeDecorator({
         Object.fromEntries([getReferenceEntry(queryResult)])
       );
 
-      console.log("RESULT", queryResult);
+      console.log("RESULT", queryResult, mockResolvers);
+      console.log(
+        "!!!!!!",
+        environment
+          .getStore()
+          .getSource()
+          .toJSON()
+      );
       return getStory(context) as any;
     };
 
@@ -68,6 +75,13 @@ export const withRelay = makeDecorator({
     });
 
     environment.mock.queuePendingOperation(query, variables);
+    console.log(
+      "<<>><<>>",
+      environment
+        .getStore()
+        .getSource()
+        .toJSON()
+    );
 
     return (
       <RelayEnvironmentProvider environment={environment}>
