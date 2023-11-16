@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/template-react",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "@aztlan/eslint-config-base": "^0.4.0",
     "@aztlan/jest-config": "^0.4.0",
     "@aztlan/react-helpers": "^0.4.5",
-    "@aztlan/storybook-addon-relay": "^0.4.3",
+    "@aztlan/storybook-addon-relay": "^0.4.6",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/typescript-config": "^0.4.0",
     "@aztlan/webpack-config": "^0.4.0",
