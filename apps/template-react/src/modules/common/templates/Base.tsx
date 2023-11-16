@@ -6,10 +6,10 @@ import { Link, useHistory } from 'react-router-dom'
 function Base({ title, children }) {
   return (
     <main className="grid">
-      <div className="background red span-3">
+      <div className="background near span-3 fit-content">
         <h1>{title}</h1>
       </div>
-      <div className="background green span-5 md-start-5 md-span-8">
+      <div className="background near span-5 md-start-5 md-span-8 fit-content">
         <ul className="inline">
           <li>
             <Link to="/">Homepage</Link>

@@ -55,10 +55,12 @@ function QueryTester({
       style={style}
       // {...otherProps}
     >
-      TIME IS
-      {' '}
-      {time}
-      {children}
+      <p>
+        TIME IS
+        {' '}
+        {time}
+        {children}
+      </p>
     </div>
   )
 }

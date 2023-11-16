@@ -32,7 +32,6 @@
     "@aztlan/jest-config": "^0.4.0",
     "@aztlan/storybook-config": "^0.4.3",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
-    "@aztlan/swatch": "0.1.0",
     "@aztlan/typescript-config": "^0.4.0",
     "@aztlan/webpack-config": "^0.4.0",
     "@babel/core": "^7.23.3",

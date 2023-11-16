@@ -36,10 +36,18 @@ $root-font-map:(
 }
 
 html {
+  background: var(--far);
   font-family: var(--font-paragraph);
   font-size: var(--font-size);
   font-weight: 400;
+  height: 100%;
   line-height: var(--line-height);
+}
+
+body,
+#main,
+main {
+  height: 100%;
 }
 
 h1,
@@ -90,7 +98,7 @@ p {
 
 ul {
   &.inline {
-    display: inline-flex;
+    display: flex;
     gap: var(--gap);
     list-style: none;
     margin-block-end: var(--margin);
@@ -99,8 +107,17 @@ ul {
   }
 }
 
+a,
+p {
+  color: var(--paragraph);
+}
+
 a {
   cursor: pointer;
+}
+
+.fit-content {
+  height: fit-content;
 }
 
 .bold {

@@ -17,7 +17,7 @@ function Home() {
     <Template title="Homepage">
       <ThemeSwitcher />
       <QueryTester data={data} />
-      Welcome to the homepage of our site.
+      <p>Welcome to the homepage of our site.</p>
     </Template>
   )
 }

@@ -5,7 +5,7 @@ import Template from '../../common/templates/Base'
 function Status404() {
   return (
     <Template title="Maintenance">
-      This website is currently not available.
+      <p>This website is currently not available.</p>
     </Template>
   )
 }

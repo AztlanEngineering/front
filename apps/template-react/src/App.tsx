@@ -10,7 +10,7 @@ import Status404Page from './modules/common/pages/Status404.tsx'
 function App() {
   const { theme } = useApp()
   return (
-    <main className={theme}>
+    <main className={`${theme || ''} background far`}>
       <SwitchRoutes items={routes} NotFoundPage={Status404Page} />
     </main>
   )

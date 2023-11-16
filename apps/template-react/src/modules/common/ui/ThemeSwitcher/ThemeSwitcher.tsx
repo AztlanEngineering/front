@@ -39,31 +39,25 @@ function ThemeSwitcher({
   const { theme, isTheme, setTheme } = useApp()
 
   return (
-    <div
+    <ul
       id={id}
-      className={[baseClassName, componentClassName, userClassName]
+      className={[baseClassName, componentClassName, userClassName, 'inline']
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
     >
-      <p>
-        Current :
-        {theme}
-      </p>
-      <ul className="inline">
-        {Object.keys(themes).map((themeName) => (
-          <li>
-            <a
-              onClick={() => setTheme(themeName)}
-              className={isTheme(themeName) ? 'bold' : ''}
-            >
-              {themes[themeName]}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+      {Object.keys(themes).map((themeName) => (
+        <li>
+          <a
+            onClick={() => setTheme(themeName)}
+            className={isTheme(themeName) ? 'bold' : ''}
+          >
+            {themes[themeName]}
+          </a>
+        </li>
+      ))}
+    </ul>
   )
 }
 
