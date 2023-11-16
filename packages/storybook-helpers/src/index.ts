@@ -1,1 +1,1 @@
-export { Example } from './Example'
+export * as decorators from './decorators/index'

@@ -435,8 +435,9 @@ $colorscheme-iceberg-extras:(
   --hard-pink: #e82878;
   --soft-pink: #e799b9;
   --on-pink: #000000;
-  --font-size: 16px;
+  --font-size: 18px;
   --light-height: 1em;
+  --margin: 1em;
 }
 
 .dark-theme {
@@ -1068,13 +1069,50 @@ h4,
   color: var(--heading);
   font-size: 1em;
   font-weight: 700;
-  margin-block-end: 1em;
-  margin-block-start: 1em;
+  margin-block-end: var(--margin);
+  margin-block-start: 0;
 }
 
 p {
   color: var(--paragraph);
-  margin-block-end: 1em;
+  margin-block-end: var(--margin);
+}
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + .h1,
+p + .h2,
+p + .h3,
+p + .h4 {
+  margin-block-start: var(--margin);
+}
+
+.color {
+  color: var(--color);
+}
+
+.background {
+  background: var(--color);
+}
+
+@media screen and (min-width: 801px) {
+  :root {
+    --columns: 14;
+    --column-width: calc((100vw - (14 + 1) * 1rem) / 14);
+  }
+}
+ul.inline {
+  list-style: none;
+  margin-block-end: var(--margin);
+  margin-block-start: 0;
+  padding-left: 0;
+}
+ul.inline li {
+  display: inline;
+}
+ul.inline li + li {
+  margin-left: var(--margin);
 }
 
 /*# sourceMappingURL=main.css.map */
