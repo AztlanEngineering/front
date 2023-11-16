@@ -44,8 +44,7 @@ function QueryTester({
     import('./styles.scss')
   }, [])
 
-  const time = useFragment(FRAGMENT, data)
-  const envir = useRelayEnvironment()
+  const { time } = useFragment(FRAGMENT, data)
 
   return (
     <div
@@ -58,14 +57,7 @@ function QueryTester({
     >
       TIME IS
       {' '}
-      {JSON.stringify(time)}
-      {JSON.stringify(data)}
-      {JSON.stringify(
-        envir
-          .getStore()
-          .getSource()
-          .toJSON(),
-      )}
+      {time}
       {children}
     </div>
   )

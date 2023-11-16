@@ -24,10 +24,7 @@ const relayConfig = {
   getReferenceEntry: (data) => ['data', data],
   variables: {},
   mockResolvers: {
-    time: (ctx) => {
-      console.log('RSL time')
-      return '2023-11-16T17:10:13.357101'
-    },
+    time: (ctx) => '2023-11-16T17:10:13.357101',
   },
 }
 
@@ -36,28 +33,3 @@ export const Default: StoryObj = {
     relay: relayConfig,
   },
 }
-
-/*
-export function Base() {
-  function Content() {
-    mock()
-    relay.queue(QueryTester.QUERY, {})
-
-    // const data = useLazyLoadQuery(QueryTester.QUERY, {})
-    console.log(relay.environment)
-
-    useEffect(() => {
-      console.log('>>', relay.environment)
-      mock()
-      relay.queue(QueryTester.QUERY, {})
-    }, [])
-
-    return (
-      <React.Suspense fallback="Loading...">
-        <QueryTester />
-      </React.Suspense>
-    )
-  }
-
-  return <Content />
-} */
