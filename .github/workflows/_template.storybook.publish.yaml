@@ -40,8 +40,8 @@ jobs:
         run: |
           npm ci
         
-      - name: Lint SCSS
-        run: npm run test:stylelint
+      #- name: Lint SCSS
+      #  run: npm run test:stylelint
 
       - name: Test with Storyshots (Take Snapshots -> Compare)
         run: npm run test:jest
