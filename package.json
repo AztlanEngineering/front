@@ -14,6 +14,7 @@
     "release:minor": "./scripts/release.sh minor",
     "release:patch": "./scripts/release.sh patch",
     "release:prerelease": "./scripts/release.sh prerelease",
+    "storybook": "lerna run storybook --parallel",
     "test": "exit 0",
     "test:eslint": "lerna run test:eslint --parallel",
     "test:eslint:fix": "lerna run test:eslint:fix --parallel",

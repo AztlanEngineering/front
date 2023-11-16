@@ -86,6 +86,14 @@
     "schema": "./schema.graphql",
     "language": "typescript"
   },
+  "babel": {
+    "presets": [
+      "@aztlan/react"
+    ],
+    "plugins": [
+      "relay"
+    ]
+  },
   "stylelint": {
     "extends": "@aztlan/stylelint-config"
   },
