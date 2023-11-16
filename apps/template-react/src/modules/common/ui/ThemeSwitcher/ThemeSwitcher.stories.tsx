@@ -20,5 +20,5 @@ export default {
 }
 
 export function Base() {
-  return <ThemeSwitcher>Sample ThemeSwitcher</ThemeSwitcher>
+  return <ThemeSwitcher />
 }

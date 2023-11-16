@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
 import { client } from '@aztlan/react-helpers/src/relay'
+import { AppContextProvider } from '@aztlan/design-system'
 import App from './App'
 
 // import "./main.scss";
@@ -26,7 +27,9 @@ const jsx = (
 const jsx = (
   <RelayEnvironmentProvider environment={relayEnvironment}>
     <BrowserRouter>
-      <App />
+      <AppContextProvider>
+        <App />
+      </AppContextProvider>
     </BrowserRouter>
   </RelayEnvironmentProvider>
 )

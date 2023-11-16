@@ -72,7 +72,7 @@
   "dependencies": {
     "@aztlan/assets": "^0.4.0",
     "@aztlan/base-styles": "^0.4.3",
-    "@aztlan/design-system": "^0.0.22",
+    "@aztlan/design-system": "^0.4.5",
     "@aztlan/storybook-config": "^0.4.3",
     "@aztlan/storybook-helpers": "^0.4.5",
     "@loadable/component": "^5.15.3",

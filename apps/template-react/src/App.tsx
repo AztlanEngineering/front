@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Button } from '@aztlan/design-system'
+import { Button, useApp } from '@aztlan/design-system'
+import { useTheme } from '@aztlan/react-helpers'
 import { QueryTester } from './ui'
 import routes from './modules/routes'
 import { SwitchRoutes } from './modules/common/ui'
@@ -7,7 +8,12 @@ import Status404Page from './modules/common/pages/Status404.tsx'
 // @ts-ignore
 
 function App() {
-  return <SwitchRoutes items={routes} NotFoundPage={Status404Page} />
+  const { theme } = useApp()
+  return (
+    <main className={theme}>
+      <SwitchRoutes items={routes} NotFoundPage={Status404Page} />
+    </main>
+  )
 }
 /*
     <>

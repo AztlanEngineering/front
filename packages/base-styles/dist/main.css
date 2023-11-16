@@ -1103,16 +1103,20 @@ p + .h4 {
   }
 }
 ul.inline {
+  display: inline-flex;
+  gap: var(--gap);
   list-style: none;
   margin-block-end: var(--margin);
   margin-block-start: 0;
   padding-left: 0;
 }
-ul.inline li {
-  display: inline;
+
+a {
+  cursor: pointer;
 }
-ul.inline li + li {
-  margin-left: var(--margin);
+
+.bold {
+  font-weight: 700;
 }
 
 /*# sourceMappingURL=main.css.map */

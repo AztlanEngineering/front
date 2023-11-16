@@ -4,12 +4,8 @@ import PropTypes from 'prop-types'
 // @ts-ignore
 import styles from '@aztlan/bem/exports.scss'
 
-import { Example } from '@aztlan/react-helpers'
-
 // @ts-ignore
 import('./button.scss')
-
-const name = Example
 
 /**
  * Primary UI component for user interaction
@@ -35,7 +31,6 @@ export function Button({
       Hello
       {styles.modifierGhost}
       {' '}
-      {name}
       {label}
     </button>
   )

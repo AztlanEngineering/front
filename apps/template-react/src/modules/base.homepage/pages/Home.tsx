@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { useLazyLoadQuery } from 'react-relay'
 import Template from '../../common/templates/Base'
 import { QueryTester } from '../ui'
+import { ThemeSwitcher } from '../../common/ui'
 
 function Home() {
   const data = useLazyLoadQuery(
@@ -14,6 +15,7 @@ function Home() {
   )
   return (
     <Template title="Homepage">
+      <ThemeSwitcher />
       <QueryTester data={data} />
       Welcome to the homepage of our site.
     </Template>
