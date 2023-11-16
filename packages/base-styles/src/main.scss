@@ -1,5 +1,12 @@
 @use "@aztlan/grid/src/main" as grid;
-@use "@aztlan/swatch/src/main" as swatch;
+@use "@aztlan/swatch/src/main" as swatch with (
+  $extras:(
+    "light-theme":(
+      "font-size":16px,
+      "light-height":1em,
+    ),
+  )
+);
 @use "@aztlan/mixins/src/reset" as reset;
 @use "@aztlan/mixins/src/font" as font;
 
@@ -27,8 +34,55 @@ $root-font-map:(
   @include font.root-definitions-from-map($root-font-map);
 }
 
-html,
-* {
-  background: orange;
-  font-family: "paragraph";
+html {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: var(--line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+  color: var(--heading);
+  font-size: 1em;
+  font-weight: 700;
+  margin-block-end: 1em;
+  margin-block-start: 0;
+}
+
+p {
+  color: var(--paragraph);
+  margin-block-end: 1em;
+
+  + h1,
+  + h2,
+  + h3,
+  + h4,
+  + .h1,
+  + .h2,
+  + .h3,
+  + .h4 {
+    margin-block-start: 1em;
+  }
+}
+
+.color {
+  color: var(--color);
+}
+
+.background {
+  background: var(--color);
+}
+
+@media screen and (min-width: 801px) {
+  :root {
+    --columns: 14;
+    --column-width: calc((100vw - (14 + 1) * 1rem) / 14);
+  }
 }

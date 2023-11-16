@@ -435,6 +435,8 @@ $colorscheme-iceberg-extras:(
   --hard-pink: #e82878;
   --soft-pink: #e799b9;
   --on-pink: #000000;
+  --font-size: 16px;
+  --light-height: 1em;
 }
 
 .dark-theme {
@@ -1048,10 +1050,31 @@ template {
   --font-icons: icons, sans-serif;
 }
 
-html,
-* {
-  background: orange;
-  font-family: "paragraph";
+html {
+  font-family: var(--font-paragraph);
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: var(--line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+  color: var(--heading);
+  font-size: 1em;
+  font-weight: 700;
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+}
+
+p {
+  color: var(--paragraph);
+  margin-block-end: 1em;
 }
 
 /*# sourceMappingURL=main.css.map */

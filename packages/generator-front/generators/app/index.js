@@ -170,8 +170,8 @@ module.exports = class extends Generator {
   _generatePage(templateVars) {
     this.log(`Will generate the page ${templateVars.fullname}`)
 
-    const stringToAppendToIndex = `export { default as ${templateVars.name} } from './${templateVars.name}'\n`
-    this._touchOrAppendToIndex(stringToAppendToIndex)
+    // const stringToAppendToIndex = `export { default as ${templateVars.name} } from './${templateVars.name}'\n`
+    // this._touchOrAppendToIndex(stringToAppendToIndex)
 
     this.fs.copyTpl(
       this.templatePath('page/Page.ts'),
