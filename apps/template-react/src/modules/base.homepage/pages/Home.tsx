@@ -3,10 +3,14 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Template from '../../common/templates/Base'
+import { QueryTester } from '../ui'
 
 function Home() {
   return (
-    <Template title="Homepage">Welcome to the homepage of our site.</Template>
+    <Template title="Homepage">
+      <QueryTester />
+      Welcome to the homepage of our site.
+    </Template>
   )
 }
 

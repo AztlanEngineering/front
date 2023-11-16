@@ -1,0 +1,66 @@
+/* @aztlan/generator-front 0.2.0 */
+import * as React from 'react'
+import { useEffect } from 'react'
+import { useLazyLoadQuery } from 'react-relay'
+import { WithRelayParameters } from '@imchhh/storybook-addon-relay'
+import { StoryObj } from '@storybook/react'
+
+import { decorators, relay } from '@aztlan/storybook-helpers'
+import QueryTester from './QueryTester.tsx'
+
+export default {
+  title: 'common/QueryTester',
+  component: QueryTester,
+  subcomponents: {
+    // Item:QueryTester.Item
+  },
+  decorators: [decorators.relay],
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+}
+const relayConfig = {
+  query: QueryTester.QUERY,
+  getReferenceEntry: (data) => ['data', data],
+  variables: {},
+  mockResolvers: {
+    time: () => '2023-11-16T17:10:13.357101',
+  },
+}
+
+export const Default: StoryObj = {
+  parameters: {
+    relay: relayConfig,
+  },
+}
+
+export const Default2: StoryObj = {
+  parameters: {
+    relay: relayConfig,
+  },
+}
+
+/*
+export function Base() {
+  function Content() {
+    mock()
+    relay.queue(QueryTester.QUERY, {})
+
+    // const data = useLazyLoadQuery(QueryTester.QUERY, {})
+    console.log(relay.environment)
+
+    useEffect(() => {
+      console.log('>>', relay.environment)
+      mock()
+      relay.queue(QueryTester.QUERY, {})
+    }, [])
+
+    return (
+      <React.Suspense fallback="Loading...">
+        <QueryTester />
+      </React.Suspense>
+    )
+  }
+
+  return <Content />
+} */

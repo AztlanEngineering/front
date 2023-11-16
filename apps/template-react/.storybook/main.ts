@@ -1,6 +1,6 @@
 // @ts-ignore
 import type { StorybookConfig } from "@storybook/react";
-import { configureSharedConfig } from "@aztlan/storybook-config";
+import { configureSharedConfig, getAbsolutePath } from "@aztlan/storybook-config";
 
 const {
   staticDirs,
@@ -12,6 +12,7 @@ const {
   pushTsconfigPathsPlugin
 } = configureSharedConfig({
   location:__dirname,
+  //alias:['react', 'react-dom', 'react-relay']
 })
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
@@ -21,7 +22,10 @@ const config: StorybookConfig = {
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   staticDirs,
-  addons,
+  addons:[
+    ...addons,
+    getAbsolutePath("@aztlan/storybook-addon-relay")
+  ],
   framework,
   docs,
   core,

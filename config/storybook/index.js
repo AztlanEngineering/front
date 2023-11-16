@@ -33,6 +33,7 @@ const defaultInputs = {
     '@storybook/addon-themes',
     '@storybook/addon-storyshots',
   ],
+  alias:[],
 }
 
 const template = (inputs) => ({
@@ -52,6 +53,12 @@ const template = (inputs) => ({
   },
   core:{
     disableTelemetry:true, // 👈 Disables telemetry
+  },
+  resolve:{
+    alias:inputs.alias.reduce((a, e) => {
+      a[e] = getAbsolutePath(e)
+      return a
+    }, {}),
   },
   pushScss:(config) => config.module.rules.push({
     test   :/\.scss$/,
@@ -108,4 +115,5 @@ const configureSharedConfig = (userInputs) => {
 module.exports = {
   loaders,
   configureSharedConfig,
+  getAbsolutePath,
 }
