@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
-  "type": "module",
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm",
     "build-storybook": "storybook build",

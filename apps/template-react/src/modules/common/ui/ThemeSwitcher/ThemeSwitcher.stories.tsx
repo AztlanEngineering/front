@@ -1,7 +1,8 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
 
-import { decorators } from '@aztlan/storybook-helpers'
+// import { decorators } from '@aztlan/storybook-helpers'
+import * as decorators from 'storybook/decorators.tsx'
 import ThemeSwitcher from './ThemeSwitcher.tsx'
 
 export default {
@@ -11,7 +12,7 @@ export default {
     // Item:ThemeSwitcher.Item
   },
   decorators: [
-    decorators.relay,
+    decorators.app,
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
   argTypes: {

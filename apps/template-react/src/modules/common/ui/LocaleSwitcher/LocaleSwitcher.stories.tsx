@@ -1,7 +1,8 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
 
-import { decorators } from '@aztlan/storybook-helpers'
+// import { decorators } from '@aztlan/storybook-helpers'
+import * as decorators from 'storybook/decorators.tsx'
 import LocaleSwitcher from './LocaleSwitcher.tsx'
 
 export default {
@@ -11,7 +12,7 @@ export default {
     // Item:LocaleSwitcher.Item
   },
   decorators: [
-    decorators.relay,
+    decorators.intlApp,
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
   argTypes: {
