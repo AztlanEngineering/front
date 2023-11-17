@@ -14,24 +14,27 @@ export default function useTheme(initialTheme, options = {}) {
     ? defaultMap.dark
     : defaultMap.light)
 
-  // TODO Add isSystemTheme
-  // TODO Add proper managed of default system (management of blank storage state)
+  const [isSystemTheme, setIsSystemTheme] = useState(false)
 
   const getDefaultTheme = useCallback(() => {
-    // Try to get the stored theme, fallback to initialTheme or system theme
     if (isClient) {
       const storedTheme = window.localStorage.getItem(storageKey)
-      return storedTheme || getSystemTheme() || initialTheme
+      if (storedTheme) {
+        setIsSystemTheme(false)
+        return storedTheme
+      }
+      setIsSystemTheme(true)
+      return getSystemTheme() || initialTheme
     }
     return initialTheme
-  })
+  }, [initialTheme, isClient, storageKey])
 
   const [theme, setTheme] = useState(() => getDefaultTheme())
   // )
 
   // Effect for syncing theme with localStorage
   useEffect(() => {
-    if (isClient) {
+    if (isClient && theme) {
       window.localStorage.setItem(storageKey, theme)
     }
   }, [theme, storageKey])
@@ -43,6 +46,7 @@ export default function useTheme(initialTheme, options = {}) {
         const systemTheme = getSystemTheme()
         // Update theme only if the user hasn't set a preferred theme
         if (!window.localStorage.getItem(storageKey)) {
+          setIsSystemTheme(true)
           setTheme(systemTheme)
         }
       }
@@ -53,11 +57,20 @@ export default function useTheme(initialTheme, options = {}) {
     }
   }, [storageKey])
 
+  const resetTheme = useCallback(() => {
+    setTheme(undefined)
+    if (isClient) {
+      window.localStorage.removeItem(storageKey)
+      setIsSystemTheme(true) // Assuming reset to system theme as default
+    }
+  }, [initialTheme, isClient, storageKey])
+
   const isTheme = useCallback((queryTheme) => theme === queryTheme, [theme])
 
   return {
     theme,
     setTheme,
     isTheme,
+    resetTheme,
   }
 }

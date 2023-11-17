@@ -25,46 +25,11 @@ const d = { es }
 
 function App() {
   const { theme } = useApp()
-  const [locale, setLocale] = useState('es')
-  const isLocale = useCallback((queryLocale) => locale === queryLocale, [locale])
-  const [messages, setMessages] = useState({})
-  const setMessagesForLocale = useCallback(
-    (targetLocale, messages) => setMessages((state) => ({ [targetLocale]: messages, ...state })),
-    [setMessages],
-  )
-
-  useEffect(() => {
-    async function loadLocale() {
-      const m = await loadLocaleData()
-      console.log(locale, m)
-      setMessagesForLocale(locale, m.default)
-    }
-
-    loadLocale()
-  }, [locale])
-  console.log('MMM', messages)
   return (
-    <IntlProvider locale={locale} messages={d} key={locale}>
-      <AppContextProvider
-        value={{
-          locale,
-          setLocale,
-          isLocale,
-        }}
-      >
-        <main className={`${theme || ''} background far`}>
-          <SwitchRoutes items={routes} NotFoundPage={Status404Page} />
-        </main>
-      </AppContextProvider>
-    </IntlProvider>
+    <main className={`${theme || ''} background far`}>
+      <SwitchRoutes items={routes} NotFoundPage={Status404Page} />
+    </main>
   )
 }
-/*
-    <>
-      <Button>Test</Button>
-      <QueryTester />
-      <h1>Hey there welcome</h1>
-    </>
-      */
 
 export default App

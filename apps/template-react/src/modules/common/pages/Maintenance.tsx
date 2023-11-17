@@ -6,7 +6,6 @@ import Template from '../../common/templates/Base'
 const messagesPrefix = 'common.pages.maintenance'
 const m = defineMessages({
   notAvailable: {
-    id: `${messagesPrefix}.notAvailable`,
     defaultMessage: 'This website is currently not available',
   },
 })

@@ -6,7 +6,6 @@ import Template from '../../common/templates/Base'
 const messagesPrefix = 'common.pages.404'
 const m = defineMessages({
   notFound: {
-    id: `${messagesPrefix}.notFound`,
     defaultMessage: 'The page you requested is not found.',
   },
 })

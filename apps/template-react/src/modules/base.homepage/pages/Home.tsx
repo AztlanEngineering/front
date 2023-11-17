@@ -3,21 +3,21 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useLazyLoadQuery } from 'react-relay'
-import { defineMessages, useIntl } from 'react-intl'
+import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
 import Template from '../../common/templates/Base'
 import { QueryTester } from '../ui'
 import { ThemeSwitcher, LocaleSwitcher } from '../../common/ui'
 
 const messagesPrefix = 'base.homepage.pages.Home'
+
 const m = defineMessages({
   title: {
-    id: `${messagesPrefix}.title`,
+    // id: `${messagesPrefix}.title`,
     defaultMessage: 'Homepage',
   },
   welcome: {
-    id: `${messagesPrefix}.welcome`,
     description: 'Message to greet the user.',
-    defaultMessage: 'Welcome to the site, {name}!',
+    defaultMessage: 'Welcome to the site, {name}!!!',
   },
 })
 
@@ -29,8 +29,9 @@ function Home() {
   )
 
   const { formatMessage } = useIntl()
+  console.log('>>>', useIntl())
   return (
-    <Template title="homepage">
+    <Template title={formatMessage(m.title)}>
       <ThemeSwitcher />
       <LocaleSwitcher />
       <QueryTester data={data} />

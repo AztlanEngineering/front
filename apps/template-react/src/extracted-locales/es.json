@@ -1,15 +1,7 @@
 {
-  "IEmYNF": {
-    "defaultMessage": "Esta pagina se encuentra en mantenimiento."
-  },
-  "M/1qd7": {
-    "defaultMessage": "Esta pagina no esta disponible."
-  },
-  "Z2CYks": {
-    "defaultMessage": "Bienvenido a la pagina, {name}!",
-    "description": "Message to greet the user."
-  },
-  "rxNddi": {
-    "defaultMessage": "Inicio"
-  }
+  "IEmYNF": "Este sitio web actualmente no está disponible",
+  "M/1qd7": "La página que solicitaste no se encuentra.",
+  "dUEMP6": "¡Bienvenido al sitio, {name}!!!",
+  "rxNddi": "Página principal"
 }
+

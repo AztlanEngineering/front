@@ -34,7 +34,12 @@
       "@aztlan/react"
     ],
     "plugins": [
-      "relay"
-    ]
+      "relay",
+      [
+      "formatjs",
+      {
+        "ast": true
+      }
+    ]]
   }
 }

@@ -2,19 +2,19 @@
   "IEmYNF": [
     {
       "type": 0,
-      "value": "Esta pagina se encuentra en mantenimiento."
+      "value": "Este sitio web actualmente no está disponible"
     }
   ],
   "M/1qd7": [
     {
       "type": 0,
-      "value": "Esta pagina no esta disponible."
+      "value": "La página que solicitaste no se encuentra."
     }
   ],
-  "Z2CYks": [
+  "dUEMP6": [
     {
       "type": 0,
-      "value": "Bienvenido a la pagina, "
+      "value": "¡Bienvenido al sitio, "
     },
     {
       "type": 1,
@@ -22,13 +22,13 @@
     },
     {
       "type": 0,
-      "value": "!"
+      "value": "!!!"
     }
   ],
   "rxNddi": [
     {
       "type": 0,
-      "value": "Inicio"
+      "value": "Página principal"
     }
   ]
 }
