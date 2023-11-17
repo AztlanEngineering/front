@@ -6,6 +6,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path, { dirname } from 'path'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { fileURLToPath } from 'url'
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
 
 function getAbsolutePath(value) {
   return path.dirname(require.resolve(path.join(value, 'package.json')))
