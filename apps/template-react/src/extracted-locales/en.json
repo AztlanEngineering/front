@@ -1,0 +1,15 @@
+{
+  "IEmYNF": {
+    "defaultMessage": "This website is currently not available"
+  },
+  "M/1qd7": {
+    "defaultMessage": "The page you requested is not found."
+  },
+  "Z2CYks": {
+    "defaultMessage": "Welcome to the site, {name}!",
+    "description": "Message to greet the user."
+  },
+  "rxNddi": {
+    "defaultMessage": "Homepage"
+  }
+}

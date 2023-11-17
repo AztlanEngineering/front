@@ -1,0 +1,34 @@
+{
+  "IEmYNF": [
+    {
+      "type": 0,
+      "value": "Esta pagina se encuentra en mantenimiento."
+    }
+  ],
+  "M/1qd7": [
+    {
+      "type": 0,
+      "value": "Esta pagina no esta disponible."
+    }
+  ],
+  "Z2CYks": [
+    {
+      "type": 0,
+      "value": "Bienvenido a la pagina, "
+    },
+    {
+      "type": 1,
+      "value": "name"
+    },
+    {
+      "type": 0,
+      "value": "!"
+    }
+  ],
+  "rxNddi": [
+    {
+      "type": 0,
+      "value": "Inicio"
+    }
+  ]
+}

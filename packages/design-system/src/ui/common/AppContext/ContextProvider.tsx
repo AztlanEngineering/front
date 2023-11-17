@@ -23,7 +23,7 @@ const reducer = (state, action) => {
 function AppContextProvider({
   children,
   initialTheme,
-  config,
+  value,
   initialState,
   // ...otherProps
 }) {
@@ -33,7 +33,7 @@ function AppContextProvider({
   return (
     <Context.Provider
       value={{
-        ...config,
+        ...value,
         ...theme,
       }}
     >
@@ -56,7 +56,7 @@ AppContextProvider.propTypes = {
   /**
    * A dictionnary containing settings and preferences to be used application-wide
    */
-  config: PropTypes.shape({
+  value: PropTypes.shape({
     APP: PropTypes.shape({
       NAME: PropTypes.string.isRequired,
       CANONICAL: PropTypes.string.isRequired,

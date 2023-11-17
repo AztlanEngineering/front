@@ -7,6 +7,9 @@
     "build-storybook": "storybook build",
     "compile:dev": "webpack -c ./webpack.client.dev.mjs",
     "compile:prod": "webpack -c ./webpack.client.prod.mjs",
+    "formatjs:extract": "formatjs extract 'src/**/*.{ts,tsx}' --out-file src/extracted-locales/en.json",
+    "formatjs:compile:en": "formatjs compile src/extracted-locales/en.json --ast --out-file src/locales/en.json",
+    "formatjs:compile:es": "formatjs compile src/extracted-locales/es.json --ast --out-file src/locales/es.json",
     "relay": "relay-compiler",
     "relay:debug": "relay-compiler --output debug",
     "schema:development": "fetch-schema",
@@ -42,6 +45,7 @@
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@formatjs/cli": "^6.2.4",
     "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addon-interactions": "^7.5.3",
     "@storybook/addon-links": "^7.5.3",
@@ -51,6 +55,7 @@
     "@storybook/react": "^7.5.3",
     "@storybook/react-webpack5": "^7.5.3",
     "@storybook/testing-library": "^0.2.2",
+    "babel-plugin-formatjs": "^10.5.10",
     "babel-plugin-relay": "^16.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.53.0",
@@ -95,7 +100,8 @@
       "@aztlan/react"
     ],
     "plugins": [
-      "relay"
+      "relay",
+      "formatjs"
     ]
   },
   "stylelint": {
