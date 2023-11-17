@@ -17,7 +17,6 @@ const {
   plugins,
   resolve,
   rules,
-  includeReactIntl: include,
 } = configureSharedConfig()
 
 export default {
@@ -28,7 +27,6 @@ export default {
   resolve,
   output,
   devServer,
-  include,
 
   optimization,
 

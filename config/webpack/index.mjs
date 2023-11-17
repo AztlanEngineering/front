@@ -42,6 +42,13 @@ const loaders = {
     },
   },
 }
+const includeRules = {
+  ReactIntl:[
+    getAbsolutePath('react-intl'),
+    getAbsolutePath('intl-messageformat'),
+    getAbsolutePath('@formatjs/icu-messageformat-parser'),
+  ],
+}
 
 const template = (inputs) => ({
   resolve:{
@@ -54,11 +61,6 @@ const template = (inputs) => ({
     },
     roots:[path.join(inputs.dirname, 'src')],
   },
-  includeReactIntl:[
-    getAbsolutePath('react-intl'),
-    getAbsolutePath('intl-messageformat'),
-    getAbsolutePath('@formatjs/icu-messageformat-parser'),
-  ],
   devServer:{
     static:[
       path.resolve(inputs.dirname, inputs.publicDir),
@@ -128,7 +130,7 @@ const template = (inputs) => ({
   rules:{
     ts:{
       test   :/\.(j|t)s(x?)$/,
-      exclude:/node_modules/,
+      exclude:/node_modules\/(?!react-intl|intl-messageformat|@formatjs\/icu-messageformat-parser)/,
       use    :'babel-loader',
     },
     scssDev:{
