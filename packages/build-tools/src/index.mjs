@@ -7,7 +7,7 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const buildOrWatch = async (config) => {
-  const dn = (typeof __dirname === 'undefined') ? dirname(process.cwd() || import.meta.url) : __dirname
+  const dn = process.cwd()
 
   const args = process.argv
   const indexOfFormat = args.indexOf('--format') + 1
@@ -56,7 +56,6 @@ const buildOrWatch = async (config) => {
   }
   if (watch) {
     const ctx = await esbuild.context(buildArgs)
-
     await ctx.watch()
     console.log('watching...')
   } else {

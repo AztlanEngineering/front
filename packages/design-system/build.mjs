@@ -9,6 +9,7 @@ buildOrWatch({
     './src/**/*.jsx',
   ],
   copyfiles: [
+    'src/ui/*.scss',
     'src/ui/**/*.scss',
     'src/ui/**/*.css',
   ],
