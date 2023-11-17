@@ -3,6 +3,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client'
 // import { loadableReady } from "@loadable/component";
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
+import { IntlProvider } from 'react-intl'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
 import { client } from '@aztlan/react-helpers/src/relay'
 import { AppContextProvider } from '@aztlan/design-system'
@@ -14,6 +15,8 @@ import '@aztlan/base-styles'
 const relayEnvironment = client.getEnvironment(process.env.GRAPHQL_ENDPOINT)
 
 const container = document.getElementById('main')
+
+const messages = {}
 
 /*
 const jsx = (
@@ -27,9 +30,11 @@ const jsx = (
 const jsx = (
   <RelayEnvironmentProvider environment={relayEnvironment}>
     <BrowserRouter>
-      <AppContextProvider>
-        <App />
-      </AppContextProvider>
+      <IntlProvider locale="en" messages={messages}>
+        <AppContextProvider>
+          <App />
+        </AppContextProvider>
+      </IntlProvider>
     </BrowserRouter>
   </RelayEnvironmentProvider>
 )
