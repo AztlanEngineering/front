@@ -7,12 +7,16 @@ import path, { dirname } from 'path'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { fileURLToPath } from 'url'
 
+function getAbsolutePath(value) {
+  return path.dirname(require.resolve(path.join(value, 'package.json')))
+}
+
 const defaultInputs = {
   dirname             :process.cwd(),
   staticFilesLocations:[
     // './src/assets/misc',
     // './src/assets/images',
-    '../../node_modules/@aztlan/assets/fonts',
+    path.join(getAbsolutePath('@aztlan/assets'), 'fonts'),
     // '../../node_modules/@aztlan/assets/images',
     // '../../node_modules/@aztlan/assets/favicons',
   ],
@@ -40,13 +44,18 @@ const template = (inputs) => ({
   resolve:{
     extensions:['.ts', '.tsx', '.js', '.jsx'],
     alias     :{
-      react             :path.resolve('../../node_modules/react'),
-      'react-dom'       :path.resolve('../../node_modules/react-dom'),
-      'react-router-dom':path.resolve('../../node_modules/react-router-dom'),
+      react             :getAbsolutePath('react'),
+      'react-dom'       :getAbsolutePath('react-dom'),
+      'react-router-dom':getAbsolutePath('react-router-dom'),
       ...inputs.resolveAlias,
     },
     roots:[path.join(inputs.dirname, 'src')],
   },
+  includeReactIntl:[
+    getAbsolutePath('react-intl'),
+    getAbsolutePath('intl-messageformat'),
+    getAbsolutePath('@formatjs/icu-messageformat-parser'),
+  ],
   devServer:{
     static:[
       path.resolve(inputs.dirname, inputs.publicDir),
