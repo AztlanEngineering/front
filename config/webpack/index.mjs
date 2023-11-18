@@ -1,11 +1,12 @@
 import CopyPlugin from 'copy-webpack-plugin'
 import Dotenv from 'dotenv-webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import NodemonPlugin from 'nodemon-webpack-plugin'
 import LoadablePlugin from '@loadable/webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import nodeExternals from 'webpack-node-externals'
 import path, { dirname } from 'path'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import { fileURLToPath } from 'url'
 import { createRequire } from 'node:module'
 
 const require = createRequire(import.meta.url)
@@ -79,6 +80,22 @@ const template = (inputs) => ({
     publicPath:'/',
     filename  :'[name].js?[chunkhash:5]',
   },
+  // This is for the SSR executable file
+  outputSSR:{
+    path         :path.resolve(inputs.dirname, 'api/'),
+    filename     :inputs.outputSSRFilename,
+    // https://webpack.js.org/configuration/output/#librarytarget-module
+    libraryTarget:'module',
+  },
+  // This is for the temporary SSR dev server (wrapper around the renderer)
+  outputServer:{
+    path    :path.resolve(inputs.dirname, 'tmp/'),
+    filename:inputs.outputSSRFilename,
+  },
+
+  experiments:{
+    outputModule:true,
+  },
   plugins:{
     HtmlWebpack:new HtmlWebpackPlugin({
       template:'./src/assets/html/index.html',
@@ -98,7 +115,21 @@ const template = (inputs) => ({
       generateStatsFile:true,
     }),
     Loadable:new LoadablePlugin(),
+    Nodemon :new NodemonPlugin({
+      watch  :path.resolve(inputs.dirname, 'src'),
+      ext    :'ts,tsx,graphql',
+      verbose:true,
+    }),
   },
+  externals:[nodeExternals({
+    additionalModuleDirs:[
+      '../../node_modules',
+      '../../packages',
+    ],
+    allowlist:[
+      /^@aztlan/, // TODO be more selective to only include
+    ],
+  })],
   optimization:{
     splitChunks:{
       // We retake here most of the default config
@@ -149,6 +180,32 @@ const template = (inputs) => ({
         'postcss-loader',
         'sass-loader',
       ],
+    },
+    scssIgnore:{
+      test:/\.(s?)css$/,
+      use :'ignore-loader',
+    },
+    scssServerSideBEM:{
+      test:/bem\/exports\.(s?)css$/i,
+      use :[
+        {
+          loader :'css-loader',
+          options:{
+            url    :false,
+            modules:{
+              // We only activate CSS modules for the file containing the BEM rules
+              auto            :isResourceBEM,
+              exportOnlyLocals:true,
+            },
+          },
+        },
+        'sass-loader',
+      ],
+    },
+    scssIgnoreExceptBEM:{
+      test   :/\.(s?)css$/,
+      exclude:/bem\/exports/,
+      use    :'ignore-loader',
     },
   },
 })
