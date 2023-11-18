@@ -13,7 +13,7 @@ defaults:
 
 jobs:
   test-compile:
-    uses: ./.github/workflows/_template.apps.test-compile.yaml
+    uses: ./.github/workflows/_template.apps.compile.yaml
     with:
       working-directory: apps/template-react
       GRAPHQL_ENDPOINT: "https://api.idioma.io/graphql"
