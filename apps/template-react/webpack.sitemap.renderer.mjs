@@ -15,7 +15,7 @@ export default {
   mode: 'production',
   target: 'node18',
   entry: [
-    path.resolve(process.cwd(), 'src/sitemap/renderer.js'),
+    path.resolve(process.cwd(), 'src/sitemap/renderer.ts'),
   ],
   resolve,
   output,

@@ -1,5 +1,6 @@
 /* eslint-disable prefer-template -- for legibility */
 import { format } from 'date-fns'
+import getters from '../modules/sitemap'
 
 const config = {
   CANONICAL: 'https://domain.com',
@@ -10,20 +11,16 @@ const template = `<?xml version="1.0" encoding="UTF-8"?>
 </urlset>
 `
 
-const basePages = ['/', '/pricing']
-
-const createMap = () => {
+const createMap = async () => {
   const paths = []
 
-  const urls = basePages
-  urls.forEach((url) => {
-    paths.push({
-      loc: url,
-      lastmod: new Date(),
-      priority: 1,
-      changefreq: 'weekly',
+  getters.forEach(async (getter) => {
+    const items = await getter()
+    items.forEach((path) => {
+      paths.push(path)
     })
   })
+
   return paths
 }
 
@@ -42,7 +39,7 @@ const formatMap = (items) => items.map(({
 }))
 
 export default async (req, res) => {
-  const rawSitemap = createMap()
+  const rawSitemap = await createMap()
   const sitemap = formatMap(rawSitemap)
   // console.log(sitemap)
 

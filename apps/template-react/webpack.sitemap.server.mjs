@@ -15,7 +15,7 @@ export default {
   target: 'node',
   watch: true,
   entry: [
-    path.resolve(process.cwd(), 'src/sitemap/server.js'),
+    path.resolve(process.cwd(), 'src/sitemap/server.ts'),
   ],
   resolve,
   output,
