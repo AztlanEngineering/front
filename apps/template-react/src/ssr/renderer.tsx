@@ -26,7 +26,8 @@ export default async (req, res) => {
   const routerContext = {}
   const helmetContext = {}
   const relayEnvironment = getEnvironment(process.env.GRAPHQL_ENDPOINT)
-  const messages = await loadMessages('es')
+  const messages = await loadMessages('en')
+  console.log(req.headers['accept-language'])
   console.log(messages)
 
   const jsx = extractor.collectChunks(

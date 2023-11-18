@@ -1,20 +1,20 @@
 {
-  "hash": "cc1d4ba4707506485d7a",
+  "hash": "1ba46be73fcb7a6ace95",
   "publicPath": "/",
   "outputPath": "/home/adrian_villa/code/aztlan/front/apps/template-react/public",
   "assetsByChunkName": {
     "main": [
       "main.css",
-      "main.js?0f79e"
+      "main.js?dcbf9"
     ],
     "common": [
       "common.js?754b9"
     ],
     "base.homepage": [
-      "base.homepage.js?1dbe5"
+      "base.homepage.js?97747"
     ],
     "index.js": [
-      "index.js.js?d77a1"
+      "index.js.js?4b0ac"
     ],
     "tslib.es6.mjs": [
       "tslib.es6.mjs.js?18806"
@@ -62,19 +62,19 @@
   "assets": [
     {
       "type": "asset",
-      "name": "main.js?0f79e",
-      "size": 215406,
+      "name": "main.js?dcbf9",
+      "size": 229819,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "0f79e",
+        "chunkhash": "dcbf9",
         "javascriptModule": false,
         "minimized": true,
         "related": {
           "license": "main.js.LICENSE.txt",
-          "sourceMap": "main.js.map?0f79e"
+          "sourceMap": "main.js.map?dcbf9"
         }
       },
       "chunkNames": [
@@ -588,18 +588,18 @@
     },
     {
       "type": "asset",
-      "name": "index.js.js?d77a1",
-      "size": 10804,
+      "name": "index.js.js?4b0ac",
+      "size": 12976,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "d77a1",
+        "chunkhash": "4b0ac",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "index.js.js.map?d77a1"
+          "sourceMap": "index.js.js.map?4b0ac"
         }
       },
       "chunkNames": [
@@ -858,18 +858,18 @@
     },
     {
       "type": "asset",
-      "name": "base.homepage.js?1dbe5",
-      "size": 3152,
+      "name": "base.homepage.js?97747",
+      "size": 3122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "1dbe5",
+        "chunkhash": "97747",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "base.homepage.js.map?1dbe5"
+          "sourceMap": "base.homepage.js.map?97747"
         }
       },
       "chunkNames": [
@@ -1184,7 +1184,7 @@
       ],
       "assets": [
         {
-          "name": "index.js.js?d77a1"
+          "name": "index.js.js?4b0ac"
         },
         {
           "name": "tslib.es6.mjs.js?18806"
@@ -1229,7 +1229,7 @@
           "name": "main.css"
         },
         {
-          "name": "main.js?0f79e"
+          "name": "main.js?dcbf9"
         }
       ],
       "filteredAssets": 0,
@@ -1266,7 +1266,7 @@
       ],
       "assets": [
         {
-          "name": "index.js.js?d77a1"
+          "name": "index.js.js?4b0ac"
         },
         {
           "name": "ReactRelayPaginationContainer.js.js?ba7f4"
@@ -1275,7 +1275,7 @@
           "name": "896.js?3ddad"
         },
         {
-          "name": "base.homepage.js?1dbe5"
+          "name": "base.homepage.js?97747"
         }
       ],
       "filteredAssets": 0,
@@ -1292,13 +1292,7 @@
       "id": 179,
       "files": [
         "main.css",
-        "main.js?0f79e"
-      ]
-    },
-    {
-      "id": 790,
-      "files": [
-        "790.js?ccabd"
+        "main.js?dcbf9"
       ]
     },
     {
@@ -1306,6 +1300,12 @@
       "files": [
         "731.css",
         "731.js?28814"
+      ]
+    },
+    {
+      "id": 790,
+      "files": [
+        "790.js?ccabd"
       ]
     },
     {
@@ -1317,7 +1317,7 @@
     {
       "id": 300,
       "files": [
-        "base.homepage.js?1dbe5"
+        "base.homepage.js?97747"
       ]
     },
     {
@@ -1344,7 +1344,7 @@
     {
       "id": 976,
       "files": [
-        "index.js.js?d77a1"
+        "index.js.js?4b0ac"
       ]
     },
     {

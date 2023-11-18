@@ -19,16 +19,8 @@ const relayEnvironment = getEnvironment(process.env.GRAPHQL_ENDPOINT)
 
 const container = document.getElementById('main')
 
-/*
-const jsx = (
-      <UTMTracker initialState={{}}>
-        <App environment={environment} />
-      </UTMTracker>
-); */
-
 function Main() {
   const { locale, messages, ...useLocaleProps } = useLocale('es', loadMessages)
-  console.log(locale, messages)
 
   return (
     <RelayEnvironmentProvider environment={relayEnvironment}>
@@ -52,7 +44,7 @@ function Main() {
 
 loadableReady(() => {
   if (container.hasChildNodes()) {
-    hydrateRoot(container, jsx)
+    hydrateRoot(container, <Main />)
   } else {
     const root = createRoot(container)
     root.render(<Main />)
