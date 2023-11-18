@@ -47,6 +47,9 @@ function ThemeSwitcher({
       style={style}
       // {...otherProps}
     >
+      {theme}
+      {' '}
+      {isTheme(theme)}
       {Object.keys(themes).map((themeName) => (
         <li>
           <a

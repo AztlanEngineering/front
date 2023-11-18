@@ -14,7 +14,9 @@ export default function useTheme(initialTheme, options = {}) {
     ? defaultMap.dark
     : defaultMap.light)
 
-  const [isSystemTheme, setIsSystemTheme] = useState(false)
+  const [isSystemTheme, setIsSystemTheme] = useState(
+    isClient ? window.localStorage.getItem(storageKey) && true : false,
+  )
 
   const getDefaultTheme = useCallback(() => {
     if (isClient) {
@@ -71,6 +73,7 @@ export default function useTheme(initialTheme, options = {}) {
     theme,
     setTheme,
     isTheme,
+    isSystemTheme,
     resetTheme,
   }
 }
