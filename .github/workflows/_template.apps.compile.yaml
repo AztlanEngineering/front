@@ -86,9 +86,6 @@ jobs:
       run: |
         npm ci
 
-    - name: Link
-      run: npm run link
-
     - name: Create local changes
       run: cd ${{ inputs.working-directory }} && npm run compile:all
 
