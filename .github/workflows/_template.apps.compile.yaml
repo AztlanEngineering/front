@@ -74,6 +74,13 @@ jobs:
 
     - uses: nelonoel/branch-name@v1.0.1
 
+    - name: install latest npm
+      run: |
+        npm install -g npm &&
+        npm --version &&
+        npm list -g --depth 0
+
+
     - name: Cache
       id: cache-modules
       uses: actions/cache@v1
