@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/template-react",
-  "version": "0.4.12",
+  "version": "0.4.13",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -41,11 +41,11 @@
     "@aztlan/eslint-config": "^0.2.0",
     "@aztlan/eslint-config-base": "^0.4.0",
     "@aztlan/jest-config": "^0.4.0",
-    "@aztlan/react-helpers": "^0.4.11",
+    "@aztlan/react-helpers": "^0.4.13",
     "@aztlan/storybook-addon-relay": "^0.4.6",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/typescript-config": "^0.4.0",
-    "@aztlan/webpack-config": "^0.4.11",
+    "@aztlan/webpack-config": "^0.4.13",
     "@babel/core": "^7.23.3",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
@@ -83,7 +83,7 @@
   "dependencies": {
     "@aztlan/assets": "^0.4.0",
     "@aztlan/base-styles": "^0.4.8",
-    "@aztlan/design-system": "^0.4.12",
+    "@aztlan/design-system": "^0.4.13",
     "@aztlan/storybook-config": "^0.4.3",
     "@aztlan/storybook-helpers": "^0.4.11",
     "@loadable/component": "^5.15.3",
