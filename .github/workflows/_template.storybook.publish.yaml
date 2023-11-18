@@ -1,4 +1,4 @@
-name: _template.apps.test-compile
+name: _template.apps.compile
 
 on:
   workflow_call:
@@ -70,7 +70,7 @@ jobs:
         npm install
 
     - name: Link
-      run: npm link
+      run: npm run link
 
     - name: Publish to Chromatic
       uses: chromaui/action@v1
