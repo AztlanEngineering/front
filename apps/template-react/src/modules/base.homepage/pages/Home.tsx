@@ -29,12 +29,13 @@ function Home() {
   )
 
   const { formatMessage } = useIntl()
-  console.log('>>>', useIntl())
   return (
     <Template title={formatMessage(m.title)}>
       <ThemeSwitcher />
       <LocaleSwitcher />
-      {/* <QueryTester data={data} /> */}
+      <React.Suspense fallback="Loading">
+        <QueryTester data={data} />
+      </React.Suspense>
       <p>{formatMessage(m.welcome, { name: 'you guys' })}</p>
     </Template>
   )

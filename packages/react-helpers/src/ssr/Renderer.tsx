@@ -1,6 +1,7 @@
 import { createElement } from 'react'
 import { ChunkExtractor } from '@loadable/server'
 import ReactDOMServer from 'react-dom/server'
+import ssrPrepass from '@pareto-engineering/react-ssr-prepass'
 
 class Renderer {
   constructor(Component, template, stats, options = {}) {
@@ -69,6 +70,7 @@ class Renderer {
         messages: this.messages,
       }),
     )
+    await ssrPrepass(jsx)
 
     this.html = ReactDOMServer.renderToString(jsx)
 

@@ -1,20 +1,20 @@
 {
-  "hash": "1ba46be73fcb7a6ace95",
+  "hash": "e3a1aee5f1fcf83a9b9f",
   "publicPath": "/",
   "outputPath": "/home/adrian_villa/code/aztlan/front/apps/template-react/public",
   "assetsByChunkName": {
     "main": [
       "main.css",
-      "main.js?dcbf9"
+      "main.js?d209c"
     ],
     "common": [
-      "common.js?754b9"
+      "common.js?b9338"
     ],
     "base.homepage": [
-      "base.homepage.js?97747"
+      "base.homepage.js?1603e"
     ],
     "index.js": [
-      "index.js.js?4b0ac"
+      "index.js.js?56030"
     ],
     "tslib.es6.mjs": [
       "tslib.es6.mjs.js?18806"
@@ -38,16 +38,16 @@
       "DataChecker.js.js?36fa2"
     ],
     "react-router.js": [
-      "react-router.js.js?8cc6a"
+      "react-router.js.js?24cf3"
     ],
     "FragmentResource.js": [
       "FragmentResource.js.js?481e2"
     ],
     "ReactRelayPaginationContainer.js": [
-      "ReactRelayPaginationContainer.js.js?ba7f4"
+      "ReactRelayPaginationContainer.js.js?a5975"
     ],
     "react-dom.production.min.js": [
-      "react-dom.production.min.js.js?cf81a"
+      "react-dom.production.min.js.js?16d07"
     ],
     "history.js": [
       "history.js.js?76d29"
@@ -56,25 +56,25 @@
       "parser.js.js?af134"
     ],
     "loadable.esm.js": [
-      "loadable.esm.js.js?1e1fc"
+      "loadable.esm.js.js?f593e"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "main.js?dcbf9",
-      "size": 229819,
+      "name": "main.js?d209c",
+      "size": 229802,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "dcbf9",
+        "chunkhash": "d209c",
         "javascriptModule": false,
         "minimized": true,
         "related": {
           "license": "main.js.LICENSE.txt",
-          "sourceMap": "main.js.map?dcbf9"
+          "sourceMap": "main.js.map?d209c"
         }
       },
       "chunkNames": [
@@ -91,19 +91,19 @@
     },
     {
       "type": "asset",
-      "name": "react-dom.production.min.js.js?cf81a",
+      "name": "react-dom.production.min.js.js?16d07",
       "size": 129185,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "cf81a",
+        "chunkhash": "16d07",
         "javascriptModule": false,
         "minimized": true,
         "related": {
           "license": "react-dom.production.min.js.js.LICENSE.txt",
-          "sourceMap": "react-dom.production.min.js.js.map?cf81a"
+          "sourceMap": "react-dom.production.min.js.js.map?16d07"
         }
       },
       "chunkNames": [
@@ -326,18 +326,18 @@
     },
     {
       "type": "asset",
-      "name": "896.js?3ddad",
+      "name": "896.js?22064",
       "size": 20190,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "3ddad",
+        "chunkhash": "22064",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "896.js.map?3ddad"
+          "sourceMap": "896.js.map?22064"
         }
       },
       "chunkNames": [],
@@ -588,18 +588,18 @@
     },
     {
       "type": "asset",
-      "name": "index.js.js?4b0ac",
+      "name": "index.js.js?56030",
       "size": 12976,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "4b0ac",
+        "chunkhash": "56030",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "index.js.js.map?4b0ac"
+          "sourceMap": "index.js.js.map?56030"
         }
       },
       "chunkNames": [
@@ -738,18 +738,18 @@
     },
     {
       "type": "asset",
-      "name": "ReactRelayPaginationContainer.js.js?ba7f4",
+      "name": "ReactRelayPaginationContainer.js.js?a5975",
       "size": 8053,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "ba7f4",
+        "chunkhash": "a5975",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "ReactRelayPaginationContainer.js.js.map?ba7f4"
+          "sourceMap": "ReactRelayPaginationContainer.js.js.map?a5975"
         }
       },
       "chunkNames": [
@@ -798,18 +798,18 @@
     },
     {
       "type": "asset",
-      "name": "loadable.esm.js.js?1e1fc",
+      "name": "loadable.esm.js.js?f593e",
       "size": 5797,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "1e1fc",
+        "chunkhash": "f593e",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "loadable.esm.js.js.map?1e1fc"
+          "sourceMap": "loadable.esm.js.js.map?f593e"
         }
       },
       "chunkNames": [
@@ -828,18 +828,18 @@
     },
     {
       "type": "asset",
-      "name": "react-router.js.js?8cc6a",
+      "name": "react-router.js.js?24cf3",
       "size": 5337,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "8cc6a",
+        "chunkhash": "24cf3",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "react-router.js.js.map?8cc6a"
+          "sourceMap": "react-router.js.js.map?24cf3"
         }
       },
       "chunkNames": [
@@ -858,18 +858,18 @@
     },
     {
       "type": "asset",
-      "name": "base.homepage.js?97747",
-      "size": 3122,
+      "name": "base.homepage.js?1603e",
+      "size": 3201,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "97747",
+        "chunkhash": "1603e",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "base.homepage.js.map?97747"
+          "sourceMap": "base.homepage.js.map?1603e"
         }
       },
       "chunkNames": [
@@ -953,18 +953,18 @@
     },
     {
       "type": "asset",
-      "name": "common.js?754b9",
+      "name": "common.js?b9338",
       "size": 470,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "754b9",
+        "chunkhash": "b9338",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "common.js.map?754b9"
+          "sourceMap": "common.js.map?b9338"
         }
       },
       "chunkNames": [
@@ -1184,7 +1184,7 @@
       ],
       "assets": [
         {
-          "name": "index.js.js?4b0ac"
+          "name": "index.js.js?56030"
         },
         {
           "name": "tslib.es6.mjs.js?18806"
@@ -1208,13 +1208,13 @@
           "name": "DataChecker.js.js?36fa2"
         },
         {
-          "name": "react-router.js.js?8cc6a"
+          "name": "react-router.js.js?24cf3"
         },
         {
           "name": "FragmentResource.js.js?481e2"
         },
         {
-          "name": "react-dom.production.min.js.js?cf81a"
+          "name": "react-dom.production.min.js.js?16d07"
         },
         {
           "name": "history.js.js?76d29"
@@ -1223,13 +1223,13 @@
           "name": "parser.js.js?af134"
         },
         {
-          "name": "loadable.esm.js.js?1e1fc"
+          "name": "loadable.esm.js.js?f593e"
         },
         {
           "name": "main.css"
         },
         {
-          "name": "main.js?dcbf9"
+          "name": "main.js?d209c"
         }
       ],
       "filteredAssets": 0,
@@ -1246,7 +1246,7 @@
       ],
       "assets": [
         {
-          "name": "common.js?754b9"
+          "name": "common.js?b9338"
         }
       ],
       "filteredAssets": 0,
@@ -1266,16 +1266,16 @@
       ],
       "assets": [
         {
-          "name": "index.js.js?4b0ac"
+          "name": "index.js.js?56030"
         },
         {
-          "name": "ReactRelayPaginationContainer.js.js?ba7f4"
+          "name": "ReactRelayPaginationContainer.js.js?a5975"
         },
         {
-          "name": "896.js?3ddad"
+          "name": "896.js?22064"
         },
         {
-          "name": "base.homepage.js?97747"
+          "name": "base.homepage.js?1603e"
         }
       ],
       "filteredAssets": 0,
@@ -1292,7 +1292,7 @@
       "id": 179,
       "files": [
         "main.css",
-        "main.js?dcbf9"
+        "main.js?d209c"
       ]
     },
     {
@@ -1311,13 +1311,13 @@
     {
       "id": 592,
       "files": [
-        "common.js?754b9"
+        "common.js?b9338"
       ]
     },
     {
       "id": 300,
       "files": [
-        "base.homepage.js?97747"
+        "base.homepage.js?1603e"
       ]
     },
     {
@@ -1344,7 +1344,7 @@
     {
       "id": 976,
       "files": [
-        "index.js.js?4b0ac"
+        "index.js.js?56030"
       ]
     },
     {
@@ -1392,7 +1392,7 @@
     {
       "id": 88,
       "files": [
-        "react-router.js.js?8cc6a"
+        "react-router.js.js?24cf3"
       ]
     },
     {
@@ -1404,13 +1404,13 @@
     {
       "id": 394,
       "files": [
-        "ReactRelayPaginationContainer.js.js?ba7f4"
+        "ReactRelayPaginationContainer.js.js?a5975"
       ]
     },
     {
       "id": 417,
       "files": [
-        "react-dom.production.min.js.js?cf81a"
+        "react-dom.production.min.js.js?16d07"
       ]
     },
     {
@@ -1428,13 +1428,13 @@
     {
       "id": 324,
       "files": [
-        "loadable.esm.js.js?1e1fc"
+        "loadable.esm.js.js?f593e"
       ]
     },
     {
       "id": 896,
       "files": [
-        "896.js?3ddad"
+        "896.js?22064"
       ]
     }
   ]

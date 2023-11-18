@@ -1,5 +1,4 @@
 import * as React from 'react'
-// import ssrPrepass from '@pareto-engineering/react-ssr-prepass'
 
 import getEnvironment from '@aztlan/react-helpers/relay/server'
 import { Renderer } from '@aztlan/react-helpers/ssr'
@@ -12,6 +11,7 @@ import stats from '../../public/loadable-stats.json'
 import styleNames from '@aztlan/bem'
 console.log('The two following should return if SSR is \
 properly configured with CSS Modules', styleNames, styleNames.base)
+      console.log(req.headers['accept-language'])
 */
 
 const r = new Renderer(Base, template, stats, {
