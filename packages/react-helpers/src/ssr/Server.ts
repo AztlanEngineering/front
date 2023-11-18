@@ -4,6 +4,7 @@
 import express, {
   Request, Response, NextFunction, Express,
 } from 'express'
+import path from 'path'
 
 const logRequestStart = (
   req: Request,
@@ -16,25 +17,31 @@ const logRequestStart = (
 
 type ServerOptions = {
   port?: number;
-  publicDir?: string | null;
+  publicPath?: string | null;
 };
 
 class Server {
   private port: number
 
-  private publicDir: string | null
+  private publicPath: string | null
 
   private app: Express
 
   constructor(renderer: any, options: ServerOptions = {}) {
-    const { port = 3004, publicDir = null } = options
+    const { port = 3004, publicPath = null } = options
 
     this.port = port
-    this.publicDir = publicDir
+    this.publicPath = publicPath
 
     this.app = express()
     this.app.use('[-a-z1-9/]+', renderer)
     this.app.use(logRequestStart)
+
+    if (this.publicPath) {
+      const fullPath = path.resolve(process.cwd(), this.publicPath)
+      this.app.use(express.static(fullPath))
+      console.log(`Static files are served from : ${fullPath}`)
+    }
   }
 
   listen(): void {

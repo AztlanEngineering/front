@@ -6,7 +6,7 @@ import {
   // loggerMiddleware,
   errorMiddleware,
   perfMiddleware,
-} from 'react-relay-network-modern/es'
+} from 'react-relay-network-modern/es/index.js'
 
 /* eslint-disable no-underscore-dangle -- special case */
 // @ts-ignore
@@ -18,7 +18,7 @@ const source = new RecordSource(queryRecords)
 const store = new Store(source)
 
 const getEnvironment = (url) => new Environment({
-  network:new RelayNetworkLayer([
+  network: new RelayNetworkLayer([
     urlMiddleware({ url }),
     perfMiddleware(),
     errorMiddleware(),

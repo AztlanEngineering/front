@@ -6,6 +6,7 @@
   "scripts": {
     "build-storybook": "storybook build",
     "compile:dev": "webpack -c ./webpack.client.dev.mjs",
+    "compile:ssr": "webpack -c ./webpack.ssr.renderer.mjs",
     "compile:prod": "webpack -c ./webpack.client.prod.mjs",
     "compile:sitemap": "webpack -c ./webpack.sitemap.renderer.mjs",
     "formatjs:extract": "formatjs extract 'src/**/*.{ts,tsx}' --out-file src/extracted-locales/en.json --format simple",
@@ -19,6 +20,7 @@
     "start:dev": "webpack serve -c ./webpack.client.dev.mjs",
     "start:prod": "webpack serve -c ./webpack.client.prod.mjs",
     "start:sitemap": "webpack -c ./webpack.sitemap.server.mjs",
+    "start:ssr": "webpack -c ./webpack.ssr.server.mjs",
     "storybook": "storybook dev -p 6007",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts ./",

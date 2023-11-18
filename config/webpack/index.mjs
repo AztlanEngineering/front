@@ -44,13 +44,6 @@ const loaders = {
     },
   },
 }
-const includeRules = {
-  ReactIntl:[
-    getAbsolutePath('react-intl'),
-    getAbsolutePath('intl-messageformat'),
-    getAbsolutePath('@formatjs/icu-messageformat-parser'),
-  ],
-}
 
 const template = (inputs) => ({
   resolve:{
