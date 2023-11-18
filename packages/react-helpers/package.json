@@ -4,6 +4,16 @@
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
+  "exports":{
+    ".":{
+      "import":"dist/esm/index.mjs",
+      "require":"dist/cjs/index.cjs"
+    },
+    "./ssr":{
+      "import":"dist/esm/ssr/index.mjs",
+      "require":"dist/cjs/ssr/index.cjs"
+    }
+  },
   "bin": {
     "fetch-schema": "./scripts/fetchSchema.js"
   },
