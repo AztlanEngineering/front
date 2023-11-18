@@ -10,7 +10,7 @@ const {
   externals,
   experiments,
 } = configureSharedConfig({
-  entry: 'src/ssr/renderer.js',
+  entry: 'src/ssr/renderer.ts',
   outputSSRFilename: 'ssr.js',
 })
 
