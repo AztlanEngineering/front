@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { IntlProvider } from 'react-intl'
 import { useEffect, useState, useCallback } from 'react'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
-import { client } from '@aztlan/react-helpers/src/relay'
+import { client } from '@aztlan/react-helpers/relay'
 import { useLocale } from '@aztlan/react-helpers'
 import App from './App'
 

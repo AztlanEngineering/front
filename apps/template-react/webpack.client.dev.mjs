@@ -16,7 +16,9 @@ const {
   plugins,
   resolve,
   rules,
-} = configureSharedConfig()
+} = configureSharedConfig({
+  entry: 'src/client.tsx',
+})
 
 export default {
   mode: 'development',

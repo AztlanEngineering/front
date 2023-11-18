@@ -2,6 +2,7 @@ import CopyPlugin from 'copy-webpack-plugin'
 import Dotenv from 'dotenv-webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import NodemonPlugin from 'nodemon-webpack-plugin'
+import webpack from 'webpack'
 import LoadablePlugin from '@loadable/webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import nodeExternals from 'webpack-node-externals'
@@ -73,7 +74,7 @@ const template = (inputs) => ({
     historyApiFallback:true, // allows react app to be served on all routes, not only index
   },
   entry:[
-    './src/client.tsx',
+    path.resolve(inputs.dirname, inputs.entry),
   ],
   output:{
     path      :path.resolve(inputs.dirname, inputs.publicDir),
@@ -81,14 +82,14 @@ const template = (inputs) => ({
     filename  :'[name].js?[chunkhash:5]',
   },
   // This is for the SSR executable file
-  outputSSR:{
+  outputSSRRenderer:{
     path         :path.resolve(inputs.dirname, 'api/'),
     filename     :inputs.outputSSRFilename,
     // https://webpack.js.org/configuration/output/#librarytarget-module
     libraryTarget:'module',
   },
   // This is for the temporary SSR dev server (wrapper around the renderer)
-  outputServer:{
+  outputSSRServer:{
     path    :path.resolve(inputs.dirname, 'tmp/'),
     filename:inputs.outputSSRFilename,
   },
@@ -119,6 +120,9 @@ const template = (inputs) => ({
       watch  :path.resolve(inputs.dirname, 'src'),
       ext    :'ts,tsx,graphql',
       verbose:true,
+    }),
+    LimitChunkCount:new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks:1,
     }),
   },
   externals:[nodeExternals({
@@ -207,6 +211,10 @@ const template = (inputs) => ({
       exclude:/bem\/exports/,
       use    :'ignore-loader',
     },
+  },
+  htmlRaw:{
+    test:/\.html$/,
+    use :'raw-loader',
   },
 })
 

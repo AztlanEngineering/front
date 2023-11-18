@@ -12,6 +12,10 @@
     "./ssr":{
       "import":"dist/esm/ssr/index.mjs",
       "require":"dist/cjs/ssr/index.cjs"
+    },
+    "./relay":{
+      "import":"dist/esm/relay/index.mjs",
+      "require":"dist/cjs/relay/index.cjs"
     }
   },
   "bin": {

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { configureSharedConfig } from '@aztlan/webpack-config'
 
 const {
@@ -7,8 +8,8 @@ const {
   plugins,
   outputSSRServer: output,
 } = configureSharedConfig({
-  entry: 'src/sitemap/server.ts',
-  outputSSRFilename: 'sitemap.js',
+  entry: 'src/ssr/server.ts',
+  outputSSRFilename: 'ssr.js',
 })
 
 export default {
@@ -21,11 +22,15 @@ export default {
   plugins: [
     plugins.Dotenv,
     plugins.Nodemon,
+    plugins.LimitChunkCount,
   ],
   module: {
     rules: [
+      rules.mdx,
       rules.ts,
+      rules.scssServerSide,
+      rules.scssIgnoreExceptBEM,
+      rules.htmlRaw,
     ],
   },
-
 }
