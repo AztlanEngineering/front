@@ -1,0 +1,1441 @@
+{
+  "hash": "cc1d4ba4707506485d7a",
+  "publicPath": "/",
+  "outputPath": "/home/adrian_villa/code/aztlan/front/apps/template-react/public",
+  "assetsByChunkName": {
+    "main": [
+      "main.css",
+      "main.js?0f79e"
+    ],
+    "common": [
+      "common.js?754b9"
+    ],
+    "base.homepage": [
+      "base.homepage.js?1dbe5"
+    ],
+    "index.js": [
+      "index.js.js?d77a1"
+    ],
+    "tslib.es6.mjs": [
+      "tslib.es6.mjs.js?18806"
+    ],
+    "exports.scss|0|||}}": [
+      "exports.scss|0|||}}.css"
+    ],
+    "RelayResponseNormalizer.js": [
+      "RelayResponseNormalizer.js.js?5403d"
+    ],
+    "RelayReader.js": [
+      "RelayReader.js.js?f582e"
+    ],
+    "RelayModernStore.js": [
+      "RelayModernStore.js.js?bcb48"
+    ],
+    "OperationExecutor.js": [
+      "OperationExecutor.js.js?dab1e"
+    ],
+    "DataChecker.js": [
+      "DataChecker.js.js?36fa2"
+    ],
+    "react-router.js": [
+      "react-router.js.js?8cc6a"
+    ],
+    "FragmentResource.js": [
+      "FragmentResource.js.js?481e2"
+    ],
+    "ReactRelayPaginationContainer.js": [
+      "ReactRelayPaginationContainer.js.js?ba7f4"
+    ],
+    "react-dom.production.min.js": [
+      "react-dom.production.min.js.js?cf81a"
+    ],
+    "history.js": [
+      "history.js.js?76d29"
+    ],
+    "parser.js": [
+      "parser.js.js?af134"
+    ],
+    "loadable.esm.js": [
+      "loadable.esm.js.js?1e1fc"
+    ]
+  },
+  "assets": [
+    {
+      "type": "asset",
+      "name": "main.js?0f79e",
+      "size": 215406,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "0f79e",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "license": "main.js.LICENSE.txt",
+          "sourceMap": "main.js.map?0f79e"
+        }
+      },
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 2,
+      "chunks": [
+        179
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "react-dom.production.min.js.js?cf81a",
+      "size": 129185,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "cf81a",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "license": "react-dom.production.min.js.js.LICENSE.txt",
+          "sourceMap": "react-dom.production.min.js.js.map?cf81a"
+        }
+      },
+      "chunkNames": [
+        "react-dom.production.min.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 2,
+      "chunks": [
+        417
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.book.italic.ttf",
+      "size": 48612,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.book.italic.ttf"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.bold.italic.ttf",
+      "size": 47736,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.bold.italic.ttf"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.book.ttf",
+      "size": 46264,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.book.ttf"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.bold.ttf",
+      "size": 45048,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.bold.ttf"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "s.italic.ttf",
+      "size": 43692,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/s.italic.ttf"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "s.regular.ttf",
+      "size": 35772,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/s.regular.ttf"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.book.italic.woff",
+      "size": 21984,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.book.italic.woff"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.bold.italic.woff",
+      "size": 21788,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.bold.italic.woff"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "main.css",
+      "size": 21279,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "related": {
+          "sourceMap": "main.css.map"
+        }
+      },
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        179
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.book.woff",
+      "size": 20984,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.book.woff"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.bold.woff",
+      "size": 20696,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.bold.woff"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "896.js?3ddad",
+      "size": 20190,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "3ddad",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "896.js.map?3ddad"
+        }
+      },
+      "chunkNames": [],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        896
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "s.italic.woff",
+      "size": 19924,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/s.italic.woff"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "OperationExecutor.js.js?dab1e",
+      "size": 18951,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "dab1e",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "OperationExecutor.js.js.map?dab1e"
+        }
+      },
+      "chunkNames": [
+        "OperationExecutor.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        342
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "s.regular.woff",
+      "size": 17176,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/s.regular.woff"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "parser.js.js?af134",
+      "size": 16751,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "af134",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "parser.js.js.map?af134"
+        }
+      },
+      "chunkNames": [
+        "parser.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        226
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "s.italic.woff2",
+      "size": 15364,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/s.italic.woff2"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.book.italic.woff2",
+      "size": 14904,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.book.italic.woff2"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.bold.italic.woff2",
+      "size": 14744,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.bold.italic.woff2"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.book.woff2",
+      "size": 14328,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.book.woff2"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "m.bold.woff2",
+      "size": 14048,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/m.bold.woff2"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "s.regular.woff2",
+      "size": 13516,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "copied": true,
+        "sourceFilename": "../../packages/assets/fonts/s.regular.woff2"
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "RelayReader.js.js?f582e",
+      "size": 13303,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "f582e",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "RelayReader.js.js.map?f582e"
+        }
+      },
+      "chunkNames": [
+        "RelayReader.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        101
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "index.js.js?d77a1",
+      "size": 10804,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "d77a1",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "index.js.js.map?d77a1"
+        }
+      },
+      "chunkNames": [
+        "index.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        976
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "FragmentResource.js.js?481e2",
+      "size": 9355,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "481e2",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "FragmentResource.js.js.map?481e2"
+        }
+      },
+      "chunkNames": [
+        "FragmentResource.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        37
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "history.js.js?76d29",
+      "size": 8604,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "76d29",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "history.js.js.map?76d29"
+        }
+      },
+      "chunkNames": [
+        "history.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        319
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "RelayModernStore.js.js?bcb48",
+      "size": 8221,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "bcb48",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "RelayModernStore.js.js.map?bcb48"
+        }
+      },
+      "chunkNames": [
+        "RelayModernStore.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        577
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "RelayResponseNormalizer.js.js?5403d",
+      "size": 8124,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "5403d",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "RelayResponseNormalizer.js.js.map?5403d"
+        }
+      },
+      "chunkNames": [
+        "RelayResponseNormalizer.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        54
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "ReactRelayPaginationContainer.js.js?ba7f4",
+      "size": 8053,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "ba7f4",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "ReactRelayPaginationContainer.js.js.map?ba7f4"
+        }
+      },
+      "chunkNames": [
+        "ReactRelayPaginationContainer.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        394
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "DataChecker.js.js?36fa2",
+      "size": 7229,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "36fa2",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "DataChecker.js.js.map?36fa2"
+        }
+      },
+      "chunkNames": [
+        "DataChecker.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        586
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "loadable.esm.js.js?1e1fc",
+      "size": 5797,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "1e1fc",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "loadable.esm.js.js.map?1e1fc"
+        }
+      },
+      "chunkNames": [
+        "loadable.esm.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        324
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "react-router.js.js?8cc6a",
+      "size": 5337,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "8cc6a",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "react-router.js.js.map?8cc6a"
+        }
+      },
+      "chunkNames": [
+        "react-router.js"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        88
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "base.homepage.js?1dbe5",
+      "size": 3152,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "1dbe5",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "base.homepage.js.map?1dbe5"
+        }
+      },
+      "chunkNames": [
+        "base.homepage"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        300
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "tslib.es6.mjs.js?18806",
+      "size": 1476,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "18806",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "tslib.es6.mjs.js.map?18806"
+        }
+      },
+      "chunkNames": [
+        "tslib.es6.mjs"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        670
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "index.html",
+      "size": 1242,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {},
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "731.css",
+      "size": 616,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "related": {
+          "sourceMap": "731.css.map"
+        }
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        731
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "common.js?754b9",
+      "size": 470,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "754b9",
+        "javascriptModule": false,
+        "minimized": true,
+        "related": {
+          "sourceMap": "common.js.map?754b9"
+        }
+      },
+      "chunkNames": [
+        "common"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "filteredRelated": 1,
+      "chunks": [
+        592
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "790.js?ccabd",
+      "size": 421,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "ccabd",
+        "javascriptModule": false,
+        "minimized": true
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        790
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "731.js?28814",
+      "size": 122,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "28814",
+        "javascriptModule": false,
+        "minimized": true
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        731
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "851.js?5e9a5",
+      "size": 122,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "5e9a5",
+        "javascriptModule": false,
+        "minimized": true
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        851
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "532.js?e2334",
+      "size": 121,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "e2334",
+        "javascriptModule": false,
+        "minimized": true
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        532
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "42.js?92aa8",
+      "size": 119,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "92aa8",
+        "javascriptModule": false,
+        "minimized": true
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        42
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "42.css",
+      "size": 1,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {},
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        42
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "532.css",
+      "size": 1,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {},
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        532
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "851.css",
+      "size": 1,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {},
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        851
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "exports.scss|0|||}}.css",
+      "size": 1,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {},
+      "chunkNames": [
+        "exports.scss|0|||}}"
+      ],
+      "chunkIdHints": [
+        "vendors"
+      ],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        941
+      ],
+      "auxiliaryChunks": []
+    }
+  ],
+  "namedChunkGroups": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        976,
+        670,
+        941,
+        54,
+        101,
+        577,
+        342,
+        586,
+        88,
+        37,
+        417,
+        319,
+        226,
+        324,
+        179
+      ],
+      "assets": [
+        {
+          "name": "index.js.js?d77a1"
+        },
+        {
+          "name": "tslib.es6.mjs.js?18806"
+        },
+        {
+          "name": "exports.scss|0|||}}.css"
+        },
+        {
+          "name": "RelayResponseNormalizer.js.js?5403d"
+        },
+        {
+          "name": "RelayReader.js.js?f582e"
+        },
+        {
+          "name": "RelayModernStore.js.js?bcb48"
+        },
+        {
+          "name": "OperationExecutor.js.js?dab1e"
+        },
+        {
+          "name": "DataChecker.js.js?36fa2"
+        },
+        {
+          "name": "react-router.js.js?8cc6a"
+        },
+        {
+          "name": "FragmentResource.js.js?481e2"
+        },
+        {
+          "name": "react-dom.production.min.js.js?cf81a"
+        },
+        {
+          "name": "history.js.js?76d29"
+        },
+        {
+          "name": "parser.js.js?af134"
+        },
+        {
+          "name": "loadable.esm.js.js?1e1fc"
+        },
+        {
+          "name": "main.css"
+        },
+        {
+          "name": "main.js?0f79e"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 15,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "common": {
+      "name": "common",
+      "chunks": [
+        592
+      ],
+      "assets": [
+        {
+          "name": "common.js?754b9"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 1,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    },
+    "base.homepage": {
+      "name": "base.homepage",
+      "chunks": [
+        976,
+        394,
+        896,
+        300
+      ],
+      "assets": [
+        {
+          "name": "index.js.js?d77a1"
+        },
+        {
+          "name": "ReactRelayPaginationContainer.js.js?ba7f4"
+        },
+        {
+          "name": "896.js?3ddad"
+        },
+        {
+          "name": "base.homepage.js?1dbe5"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 4,
+      "auxiliaryAssetsSize": null,
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "generator": "loadable-components",
+  "chunks": [
+    {
+      "id": 179,
+      "files": [
+        "main.css",
+        "main.js?0f79e"
+      ]
+    },
+    {
+      "id": 790,
+      "files": [
+        "790.js?ccabd"
+      ]
+    },
+    {
+      "id": 731,
+      "files": [
+        "731.css",
+        "731.js?28814"
+      ]
+    },
+    {
+      "id": 592,
+      "files": [
+        "common.js?754b9"
+      ]
+    },
+    {
+      "id": 300,
+      "files": [
+        "base.homepage.js?1dbe5"
+      ]
+    },
+    {
+      "id": 532,
+      "files": [
+        "532.css",
+        "532.js?e2334"
+      ]
+    },
+    {
+      "id": 42,
+      "files": [
+        "42.css",
+        "42.js?92aa8"
+      ]
+    },
+    {
+      "id": 851,
+      "files": [
+        "851.css",
+        "851.js?5e9a5"
+      ]
+    },
+    {
+      "id": 976,
+      "files": [
+        "index.js.js?d77a1"
+      ]
+    },
+    {
+      "id": 670,
+      "files": [
+        "tslib.es6.mjs.js?18806"
+      ]
+    },
+    {
+      "id": 941,
+      "files": [
+        "exports.scss|0|||}}.css"
+      ]
+    },
+    {
+      "id": 54,
+      "files": [
+        "RelayResponseNormalizer.js.js?5403d"
+      ]
+    },
+    {
+      "id": 101,
+      "files": [
+        "RelayReader.js.js?f582e"
+      ]
+    },
+    {
+      "id": 577,
+      "files": [
+        "RelayModernStore.js.js?bcb48"
+      ]
+    },
+    {
+      "id": 342,
+      "files": [
+        "OperationExecutor.js.js?dab1e"
+      ]
+    },
+    {
+      "id": 586,
+      "files": [
+        "DataChecker.js.js?36fa2"
+      ]
+    },
+    {
+      "id": 88,
+      "files": [
+        "react-router.js.js?8cc6a"
+      ]
+    },
+    {
+      "id": 37,
+      "files": [
+        "FragmentResource.js.js?481e2"
+      ]
+    },
+    {
+      "id": 394,
+      "files": [
+        "ReactRelayPaginationContainer.js.js?ba7f4"
+      ]
+    },
+    {
+      "id": 417,
+      "files": [
+        "react-dom.production.min.js.js?cf81a"
+      ]
+    },
+    {
+      "id": 319,
+      "files": [
+        "history.js.js?76d29"
+      ]
+    },
+    {
+      "id": 226,
+      "files": [
+        "parser.js.js?af134"
+      ]
+    },
+    {
+      "id": 324,
+      "files": [
+        "loadable.esm.js.js?1e1fc"
+      ]
+    },
+    {
+      "id": 896,
+      "files": [
+        "896.js?3ddad"
+      ]
+    }
+  ]
+}

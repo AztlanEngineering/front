@@ -34,7 +34,7 @@ function Home() {
     <Template title={formatMessage(m.title)}>
       <ThemeSwitcher />
       <LocaleSwitcher />
-      <QueryTester data={data} />
+      {/* <QueryTester data={data} /> */}
       <p>{formatMessage(m.welcome, { name: 'you guys' })}</p>
     </Template>
   )

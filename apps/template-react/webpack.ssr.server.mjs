@@ -26,9 +26,9 @@ export default {
   ],
   module: {
     rules: [
-      rules.mdx,
       rules.ts,
-      rules.scssServerSide,
+      rules.mdx,
+      rules.scssServerSideBEM,
       rules.scssIgnoreExceptBEM,
       rules.htmlRaw,
     ],

@@ -1,1 +1,1 @@
-"use strict";(self.webpackChunk_aztlan_template_react=self.webpackChunk_aztlan_template_react||[]).push([[731],{8731:(e,a,t)=>{t.r(a)}}]);
+"use strict";(self.__LOADABLE_LOADED_CHUNKS__=self.__LOADABLE_LOADED_CHUNKS__||[]).push([[731],{8731:(_,A,D)=>{D.r(A)}}]);

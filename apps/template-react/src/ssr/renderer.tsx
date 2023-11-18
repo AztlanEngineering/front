@@ -4,15 +4,13 @@
 // import path from 'path'
 import * as React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import { StaticRouter } from 'react-router-dom'
-import ssrPrepass from '@pareto-engineering/react-ssr-prepass'
+// import ssrPrepass from '@pareto-engineering/react-ssr-prepass'
 import { ChunkExtractor } from '@loadable/server'
-import { HelmetProvider } from 'react-helmet-async'
 
-import App from 'App'
-import template from 'assets/html/index.html'
-
-import { getEnvironment } from '../relay/environment.server'
+import getEnvironment from '@aztlan/react-helpers/relay/server'
+import Base from './Base.tsx'
+import template from '../assets/html/index.html'
+import loadMessages from '../locales/loadMessages'
 
 /*
 import styleNames from '@pareto-engineering/bem'
@@ -27,27 +25,29 @@ const extractor = new ChunkExtractor({ stats })
 export default async (req, res) => {
   const routerContext = {}
   const helmetContext = {}
-  const environment = getEnvironment()
+  const relayEnvironment = getEnvironment(process.env.GRAPHQL_ENDPOINT)
+  const messages = await loadMessages('es')
+  console.log(messages)
 
   const jsx = extractor.collectChunks(
-    <HelmetProvider context={helmetContext}>
-      <StaticRouter
-        location={req.originalUrl || req.url}
-        context={routerContext}
-      >
-        <App environment={environment} />
-      </StaticRouter>
-    </HelmetProvider>
-    ,
+    <Base
+      environment={relayEnvironment}
+      location={req.originalUrl || req.url}
+      routerContext={routerContext}
+      helmetContext={helmetContext}
+      locale="es"
+      messages={messages}
+    />,
   )
 
-  await ssrPrepass(jsx)
+  // await ssrPrepass(jsx)
 
-  const html = ReactDOMServer.renderToString(
-    jsx,
-  )
+  const html = ReactDOMServer.renderToString(jsx)
 
-  const queryRecords = environment.getStore().getSource().toJSON()
+  const queryRecords = relayEnvironment
+    .getStore()
+    .getSource()
+    .toJSON()
 
   /*
   console.log(`${req.method} ${req.originalUrl || req.url}`)
@@ -80,14 +80,13 @@ export default async (req, res) => {
       .replace('<div id="main"></div>', `<div id="main">${html}</div>`)
       .replace(
         '</body>',
-        `${`${scriptTags
-        }<script> window.__RELAY_PAYLOADS__ = ${JSON.stringify(queryRecords)}; </script>`
-        }</body>`,
+        `${`${scriptTags}<script> window.__RELAY_PAYLOADS__ = ${JSON.stringify(
+          queryRecords,
+        )}; </script>`}</body>`,
       )
-      .replace('<title></title>',
-        linkTags
-        + styleTags
-        + helmet.title.toString() + helmet.meta.toString(),
+      .replace(
+        '<title></title>',
+        linkTags + styleTags + helmet.title.toString() + helmet.meta.toString(),
       )
       .replace(/(\r\n|\n|\r)/gm, '') // Minification
       .replace(/\s\s+/g, ''), // Minification

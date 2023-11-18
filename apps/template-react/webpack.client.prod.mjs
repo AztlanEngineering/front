@@ -1,4 +1,5 @@
 import { configureSharedConfig } from '@aztlan/webpack-config'
+import LoadablePlugin from '@loadable/webpack-plugin'
 
 /*
 const staticFilesLocations = [
@@ -37,6 +38,7 @@ export default {
     plugins.Dotenv,
     plugins.HtmlWebpack,
     plugins.LoadablePlugin,
+    new LoadablePlugin(),
     plugins.MiniCssExtract,
     plugins.BundleAnalyzer,
   ],
