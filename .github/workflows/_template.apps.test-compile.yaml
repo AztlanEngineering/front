@@ -1,0 +1,105 @@
+name: _template.apps.test-compile
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        required: true
+        type: string
+      git-user-email:
+        default: ${{ vars.GIT_USER_EMAIL }}
+        type: string
+      git-user-name:
+        default: ${{ vars.GIT_USER_NAME }}
+        type: string
+      commit-message:
+        default: "[CI] Compilation Successful"
+        type: string
+      GRAPHQL_ENDPOINT:
+        required: true
+        type: string
+    #secrets:
+      #envPAT:
+        #required: true
+        
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Cache
+      id: cache-modules
+      uses: actions/cache@v1
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install dependencies
+      if: steps.cache-modules.outputs.cache-hit != 'true'
+      run: |
+        npm ci
+
+    #- name: Test
+    #  env:
+    #    CI: true
+    #  run: npm test
+
+  compile:
+    needs: test
+    runs-on: ubuntu-latest
+    #defaults:
+    #  run:
+    #    working-directory: ${{ inputs.working-directory }}
+    env:
+      GRAPHQL_ENDPOINT: ${{ inputs.GRAPHQL_ENDPOINT }} 
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - uses: nelonoel/branch-name@v1.0.1
+
+    - name: Cache
+      id: cache-modules
+      uses: actions/cache@v1
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install dependencies
+      if: steps.cache-modules.outputs.cache-hit != 'true'
+      run: |
+        npm ci
+
+    - name: Link
+      run: npm run link
+
+    - name: Create local changes
+      run: cd ${{ inputs.working-directory }} && npm run compile:all
+
+    - name: Commit files
+      run: |
+        git config --local user.email "${{ inputs.git-user-email }}"
+        git config --local user.name "${{ inputs.git-user-name }}"
+        cd ${{ inputs.working-directory }} && git add -- ./api/* ./public/*
+        git commit -m "${{ inputs.commit-message }}" #-a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: ${{ env.BRANCH_NAME }}-build
+        force: true

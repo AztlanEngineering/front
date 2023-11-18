@@ -1,0 +1,15 @@
+name: apps.site.test-compile.development
+
+on:
+  push:
+    branches-ignore:
+      - production
+    paths:
+      - "apps/template-react/**"
+
+jobs:
+  test-compile:
+    uses: ./.github/workflows/_template.apps.compile.yaml
+    with:
+      working-directory: apps/template-react
+      GRAPHQL_ENDPOINT: "https://api.idioma.io/graphql"
