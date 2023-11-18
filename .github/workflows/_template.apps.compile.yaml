@@ -90,7 +90,7 @@ jobs:
       run: npm link
 
     - name: Create local changes
-      run: cd ${{ inputs.working-directory }} && npm run compile:all
+      run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
 
     - name: Commit files
       run: |
