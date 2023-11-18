@@ -18,7 +18,7 @@ jobs:
         working-directory: ${{ inputs.working-directory }}
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [19.6]
 
     steps:
     - uses: actions/checkout@v2
@@ -68,6 +68,9 @@ jobs:
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
         npm install
+
+    - name: Link
+      run: npm link
 
     - name: Publish to Chromatic
       uses: chromaui/action@v1

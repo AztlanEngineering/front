@@ -30,7 +30,7 @@ jobs:
         working-directory: ${{ inputs.working-directory }}
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [19.6]
 
     steps:
     - uses: actions/checkout@v2
@@ -85,6 +85,9 @@ jobs:
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
         npm ci
+
+    - name: Link
+      run: npm run link
 
     - name: Create local changes
       run: cd ${{ inputs.working-directory }} && npm run compile:all
