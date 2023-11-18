@@ -6,12 +6,6 @@ on:
       working-directory:
         required: true
         type: string
-      git-user-email:
-        default: ${{ vars.GIT_USER_EMAIL }}
-        type: string
-      git-user-name:
-        default: ${{ vars.GIT_USER_NAME }}
-        type: string
       commit-message:
         default: "[CI] Compilation Successful"
         type: string

@@ -9,9 +9,13 @@
       "import": "dist/esm/index.mjs",
       "require": "dist/cjs/index.cjs"
     },
-    "./ssr": {
-      "import": "dist/esm/ssr/index.mjs",
-      "require": "dist/cjs/ssr/index.cjs"
+    "./ssr/Renderer": {
+      "import": "dist/esm/ssr/Renderer.mjs",
+      "require": "dist/cjs/ssr/Renderer.cjs"
+    },
+    "./ssr/Server": {
+      "import": "dist/esm/ssr/Server.mjs",
+      "require": "dist/cjs/ssr/Server.cjs"
     },
     "./relay/server": {
       "import": "dist/esm/relay/server.mjs",
