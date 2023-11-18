@@ -1,0 +1,27 @@
+name: "Merge development to production"
+on:
+  workflow_dispatch
+
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE: development
+      TARGET: production
+    steps:
+      - uses: actions/checkout@master
+        with:
+          token: ${{ secrets.PAT }}
+          fetch-depth: 0
+      - name: Merge
+        run: |
+          git config --local user.email "adrian.villa@779.mx"
+          git config --local user.name "github-actions[bot]"
+          git checkout ${{ env.TARGET }}
+          git merge ${{ env.SOURCE }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:        
+          github_token: ${{ secrets.PAT }}
+          branch: ${{ env.TARGET }}
+          force: true

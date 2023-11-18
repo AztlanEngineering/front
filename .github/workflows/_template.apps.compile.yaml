@@ -92,12 +92,16 @@ jobs:
     - name: Create local changes
       run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
 
+    - name: Configure CI Git User
+      run: |     
+        git config user.name "${{ github.actor }}"                         
+        git config user.email "${{ github.actor}}@users.noreply.github.com"
+
     - name: Commit files
       run: |
-        git config --local user.email "${{ inputs.git-user-email }}"
-        git config --local user.name "${{ inputs.git-user-name }}"
         cd ${{ inputs.working-directory }} && git add -- ./api/* ./public/*
         git commit -m "${{ inputs.commit-message }}" #-a
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
