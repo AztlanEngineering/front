@@ -72,6 +72,9 @@ jobs:
     - name: Link
       run: npm run link
 
+    - name: Version
+      run: npm --version
+
     - name: Publish to Chromatic
       uses: chromaui/action@v1
       # Chromatic GitHub Action options
