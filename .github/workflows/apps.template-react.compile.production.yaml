@@ -16,4 +16,4 @@ jobs:
     uses: ./.github/workflows/_template.apps.compile.yaml
     with:
       working-directory: apps/template-react
-      GRAPHQL_ENDPOINT: ${{ env.GRAPHQL_ENDPOINT }} 
+      GRAPHQL_ENDPOINT: ${{ vars.GRAPHQL_ENDPOINT }} 

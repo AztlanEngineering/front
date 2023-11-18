@@ -8,8 +8,6 @@ import Template from '../../common/templates/Base'
 import { QueryTester } from '../ui'
 import { ThemeSwitcher, LocaleSwitcher } from '../../common/ui'
 
-const messagesPrefix = 'base.homepage.pages.Home'
-
 const m = defineMessages({
   title: {
     // id: `${messagesPrefix}.title`,

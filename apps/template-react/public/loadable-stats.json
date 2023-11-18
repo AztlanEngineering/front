@@ -1,17 +1,17 @@
 {
-  "hash": "b6235f6a5cc982c3da5c",
+  "hash": "630aede032992e10ea78",
   "publicPath": "/",
   "outputPath": "/home/adrian_villa/code/aztlan/front/apps/template-react/public",
   "assetsByChunkName": {
     "main": [
       "main.css",
-      "main.js?6c7b5"
+      "main.js?8c0cb"
     ],
     "common": [
       "common.js?b9338"
     ],
     "base.homepage": [
-      "base.homepage.js?480d4"
+      "base.homepage.js?86dba"
     ],
     "index.js": [
       "index.js.js?56030"
@@ -62,19 +62,19 @@
   "assets": [
     {
       "type": "asset",
-      "name": "main.js?6c7b5",
-      "size": 229866,
+      "name": "main.js?8c0cb",
+      "size": 229891,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "6c7b5",
+        "chunkhash": "8c0cb",
         "javascriptModule": false,
         "minimized": true,
         "related": {
           "license": "main.js.LICENSE.txt",
-          "sourceMap": "main.js.map?6c7b5"
+          "sourceMap": "main.js.map?8c0cb"
         }
       },
       "chunkNames": [
@@ -858,18 +858,18 @@
     },
     {
       "type": "asset",
-      "name": "base.homepage.js?480d4",
+      "name": "base.homepage.js?86dba",
       "size": 3172,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "480d4",
+        "chunkhash": "86dba",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "base.homepage.js.map?480d4"
+          "sourceMap": "base.homepage.js.map?86dba"
         }
       },
       "chunkNames": [
@@ -1229,7 +1229,7 @@
           "name": "main.css"
         },
         {
-          "name": "main.js?6c7b5"
+          "name": "main.js?8c0cb"
         }
       ],
       "filteredAssets": 0,
@@ -1275,7 +1275,7 @@
           "name": "896.js?22064"
         },
         {
-          "name": "base.homepage.js?480d4"
+          "name": "base.homepage.js?86dba"
         }
       ],
       "filteredAssets": 0,
@@ -1292,7 +1292,7 @@
       "id": 179,
       "files": [
         "main.css",
-        "main.js?6c7b5"
+        "main.js?8c0cb"
       ]
     },
     {
@@ -1317,7 +1317,7 @@
     {
       "id": 300,
       "files": [
-        "base.homepage.js?480d4"
+        "base.homepage.js?86dba"
       ]
     },
     {
