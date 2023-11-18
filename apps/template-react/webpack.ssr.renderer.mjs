@@ -30,7 +30,7 @@ export default {
     rules: [
       rules.mdx,
       rules.ts,
-      rules.scssServerSide,
+      rules.scssServerSideBEM,
       rules.scssIgnoreExceptBEM,
       rules.htmlRaw,
     ],
