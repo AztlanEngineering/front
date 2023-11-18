@@ -19,8 +19,13 @@ const relayEnvironment = getEnvironment(process.env.GRAPHQL_ENDPOINT)
 
 const container = document.getElementById('main')
 
+const defaultLocale = window.__LOCALE__ || 'es'
+
 function Main() {
-  const { locale, messages, ...useLocaleProps } = useLocale('es', loadMessages)
+  const { locale, messages, ...useLocaleProps } = useLocale(
+    defaultLocale,
+    loadMessages,
+  )
 
   return (
     <RelayEnvironmentProvider environment={relayEnvironment}>

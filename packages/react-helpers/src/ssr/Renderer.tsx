@@ -25,7 +25,9 @@ class Renderer {
           this.scriptTags
         }<script> window.__RELAY_PAYLOADS__ = ${JSON.stringify(
           this.queryRecords,
-        )}; </script>`}</body>`,
+        )}; 
+        window.__LOCALE__ = ${this.locale}
+        </script>`}</body>`,
       )
       .replace(
         '<title></title>',
