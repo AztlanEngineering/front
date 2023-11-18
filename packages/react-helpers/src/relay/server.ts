@@ -9,14 +9,14 @@ const store = new Store(new RecordSource())
 // { collector }
 
 const getEnvironment = (url) => new Environment({
-  network:Network.create((params, variables) => {
+  network: Network.create((params, variables) => {
     const request = fetch(url, {
-      method :'POST',
-      headers:{
-        'Content-Type':'application/json',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-      body:JSON.stringify({
-        query:params.text,
+      body: JSON.stringify({
+        query: params.text,
         variables,
       }),
     }).then((response) => response.json())
@@ -26,7 +26,4 @@ const getEnvironment = (url) => new Environment({
   store,
 })
 
-export default {
-  store,
-  getEnvironment,
-}
+export default getEnvironment

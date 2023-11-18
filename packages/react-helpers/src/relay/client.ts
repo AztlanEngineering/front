@@ -26,7 +26,4 @@ const getEnvironment = (url) => new Environment({
   store,
 })
 
-export default {
-  store,
-  getEnvironment,
-}
+export default getEnvironment

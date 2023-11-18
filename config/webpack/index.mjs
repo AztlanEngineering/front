@@ -108,8 +108,10 @@ const template = (inputs) => ({
       analyzerMode     :'static',
       generateStatsFile:true,
     }),
-    Loadable:new LoadablePlugin(),
-    Nodemon :new NodemonPlugin({
+    /* TODO when modular config doesnt write properly.
+    Loadable:new LoadablePlugin({
+    }), */
+    Nodemon:new NodemonPlugin({
       watch  :path.resolve(inputs.dirname, 'src'),
       ext    :'ts,tsx,graphql',
       verbose:true,
@@ -204,10 +206,10 @@ const template = (inputs) => ({
       exclude:/bem\/exports/,
       use    :'ignore-loader',
     },
-  },
-  htmlRaw:{
-    test:/\.html$/,
-    use :'raw-loader',
+    htmlRaw:{
+      test:/\.html$/,
+      use :'raw-loader',
+    },
   },
 })
 
