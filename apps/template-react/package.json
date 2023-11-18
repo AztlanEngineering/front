@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-storybook": "storybook build",
+    "compile:all": "npm run compile:prod && npm run compile:ssr && npm run compile:sitemap",
     "compile:dev": "webpack -c ./webpack.client.dev.mjs",
     "compile:ssr": "webpack -c ./webpack.ssr.renderer.mjs",
     "compile:prod": "webpack -c ./webpack.client.prod.mjs",
