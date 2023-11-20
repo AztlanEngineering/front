@@ -23,7 +23,7 @@ const m = defineMessages({
 function Login() {
   const data = useLazyLoadQuery(
     LoginButton.QUERY,
-    { resource: 'https://localhost:3002' },
+    { resource: 'http://ash.779.mx:3002/success' },
     { fetchPolicy: 'store-or-network' },
   )
 

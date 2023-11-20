@@ -17,7 +17,7 @@ const componentClassName = 'login-button'
 const FRAGMENT = graphql`
   fragment LoginButtonFragment on Query
     @argumentDefinitions(resource: { type: "String!" }) {
-    oAuth2Login(resource: $resource) {
+    oAuth2Links(resource: $resource) {
       google
     }
   }

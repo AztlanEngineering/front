@@ -5,7 +5,15 @@ type Query {
   """The current time"""
   time: DateTime
   viewer: UserNode
-  oAuth2Login(resource: String!, additionalStatePayload: String): OAuth2LinksProvider
+
+  """Retrieve OAuth2 authentication URLs for various providers"""
+  oAuth2Links(
+    """Resource identifier for the OAuth2 provider"""
+    resource: String!
+
+    """Additional state payload for OAuth2 authentication"""
+    additionalStatePayload: String
+  ): OAuth2LinksProvider
 }
 
 """
@@ -118,6 +126,12 @@ type UserNodeEdge {
   cursor: String!
 }
 
+"""
+GraphQL ObjectType for OAuth2LinksProvider.
+
+Utilizes OAuth2LinksProviderMetaclass for dynamic field generation. Each field represents
+an OAuth2 provider's authentication link.
+"""
 type OAuth2LinksProvider {
   """Login link for google authentication"""
   google: String!

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<154e36a94d2dfeff1b417033905d2f2c>>
+ * @generated SignedSource<<9bd8d23ca5048a5a73f79e12f55c8c26>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -63,7 +63,7 @@ return {
         "args": (v1/*: any*/),
         "concreteType": "OAuth2LinksProvider",
         "kind": "LinkedField",
-        "name": "oAuth2Login",
+        "name": "oAuth2Links",
         "plural": false,
         "selections": [
           {
@@ -79,12 +79,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "77eaa057c64ff061f175acd94d987649",
+    "cacheID": "579dbfe9c478c2b1c2eeaf9429d82bbc",
     "id": null,
     "metadata": {},
     "name": "LoginButtonQuery",
     "operationKind": "query",
-    "text": "query LoginButtonQuery(\n  $resource: String!\n) {\n  ...LoginButtonFragment_1AFwKl\n}\n\nfragment LoginButtonFragment_1AFwKl on Query {\n  oAuth2Login(resource: $resource) {\n    google\n  }\n}\n"
+    "text": "query LoginButtonQuery(\n  $resource: String!\n) {\n  ...LoginButtonFragment_1AFwKl\n}\n\nfragment LoginButtonFragment_1AFwKl on Query {\n  oAuth2Links(resource: $resource) {\n    google\n  }\n}\n"
   }
 };
 })();
