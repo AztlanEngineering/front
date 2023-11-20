@@ -11,7 +11,7 @@ module.exports = function (api) {
       'formatjs',
       {
         ast: true,
-        overrideIdFn: (string, m, d) => string,
+        // overrideIdFn: (string, m, d) => string,
       },
     ],
   ]

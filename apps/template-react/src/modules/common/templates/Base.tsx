@@ -18,6 +18,9 @@ function Base({ title, children }) {
             <Link to="/maintenance">Maintenance</Link>
           </li>
           <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
             <Link to="/404">Test 404</Link>
           </li>
         </ul>
