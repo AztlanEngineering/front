@@ -2,10 +2,7 @@ import * as React from 'react'
 import { useReducer, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from '@aztlan/react-helpers'
-
-const Context = React.createContext({})
-// Component-level imports
-const useApp = () => useContext(Context)
+import Context from './Context.ts'
 
 // Helper Definitions
 const reducer = (state, action) => {
@@ -82,6 +79,3 @@ AppContextProvider.defaultProps = {
 }
 
 export default AppContextProvider
-
-export { Context }
-export { useApp }

@@ -6,18 +6,18 @@ import * as babel from '@babel/core'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-const generateOutputPaths = (result, format, outputExtension) => {
+const generateOutputPaths = (result, format, outputExtension, slice = 1) => {
   const split = result.options.filename.split('/')
   const entryFilename = split.pop()
 
   const outputFilename = entryFilename.replace('.tsx', `${outputExtension}`).replace('.ts', `${outputExtension}`)
 
   const dirname = result.options.root
-  // const dirname = result.options.cwd
-  //
-  const relativePath = split.join('/').replace(dirname, '').split('/').slice(2)
+  // const dirname2 = result.options.cwd
+
+  const relativePath = split.join('/').replace(dirname, '').split('/').slice(1 + slice)
     .join('/')
-  const outputFolder = path.join('dist', format, relativePath)
+  const outputFolder = path.join(dirname, 'dist', format, relativePath)
   const outputPath = path.join(outputFolder, outputFilename)
 
   return {
@@ -27,7 +27,8 @@ const generateOutputPaths = (result, format, outputExtension) => {
 }
 
 const buildOrWatch = async (config) => {
-  const dn = process.cwd()
+  const dirname = process.cwd()
+  const up = config.up ?? 1
 
   const args = process.argv
   const indexOfFormat = args.indexOf('--format') + 1
@@ -49,10 +50,16 @@ const buildOrWatch = async (config) => {
       ...presetEnv,
       modules: 'commonjs',
       targets: 'defaults',
+      include: [
+        'transform-export-namespace-from',
+      ],
     } : {
       ...presetEnv,
       modules: false,
-      targets: { chrome: '111' },
+      targets: {
+        // esmodules: true,
+        chrome: '111',
+      },
     }
 
     babel.transformFile(
@@ -61,6 +68,7 @@ const buildOrWatch = async (config) => {
         caller: {
           name: '@aztlan/build-tools',
           // supportsStaticESM: format === 'esm',
+          // supportsExportNamespaceFrom: true,
         },
         presets: [
           [
@@ -72,12 +80,13 @@ const buildOrWatch = async (config) => {
 
         ],
         plugins: [
-          ['replace-import-extension', {
+          ['@aztlan/replace-import-extension', {
             extMapping: {
               '.ts': outputExtension,
               '.tsx': outputExtension,
               '.js': outputExtension,
             },
+            disableDyanmicImportTransform: true,
           }],
         ],
       },
@@ -92,11 +101,11 @@ const buildOrWatch = async (config) => {
           result,
           format,
           outputExtension,
+          up,
         )
         fs.mkdirSync(outputFolder, { recursive: true })
-        fs.writeFileSync(path.join(outputFolder, 'test.js'), 'content')
         fs.writeFileSync(outputPath, result.code)
-        console.log(outputPath)
+        console.log('compiled: ', outputPath)
 
         // console.log(result) // => { code, map, ast }
       },
@@ -105,9 +114,9 @@ const buildOrWatch = async (config) => {
 
   if (config.copyfiles) {
     copyfiles(
-      [...config.copyfiles, `${dn}/dist/${format}`],
+      [...config.copyfiles, `${dirname}/dist/${format}`],
       {
-        up: config.copyfilesUp || 2,
+        up: config.up || 2,
         verbose: true,
       },
       (a) => console.log(a),

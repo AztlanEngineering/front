@@ -94,16 +94,17 @@ module.exports = function({ types: t }) {
       CallExpression(path, state) {
         const opts = state.opts || {};
         const extMapping = opts.extMapping;
-        const disableTransform = opts.disableDynamicImportTransform;
+        //const disableDynamicImportTransform = getOption(state, "disableDynamicImportTransform");
+        const disableDynamicImportTransform = opts.disableDyanmicImportTransform
+        const disableTransform = (
+          !path.node.callee || 
+          (path.node.callee.type !== 'Import') ||
+          !extMapping ||
+          disableDynamicImportTransform
+        )
 
         // Check if the transform should be disabled
-        if(!extMapping) {
-          return;
-        }
-        if (disableTransform === true) {
-          return;
-        }
-        if (!path.node.callee || path.node.callee.type !== 'Import') {
+        if (disableTransform) {
           return;
         }
 

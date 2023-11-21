@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import styles from '@aztlan/bem/exports.scss'
 
 // @ts-ignore
-import('./button.scss')
 
 /**
  * Primary UI component for user interaction
@@ -13,6 +12,9 @@ import('./button.scss')
 export function Button({
   primary, backgroundColor, size, label, ...props
 }) {
+  useEffect(() => {
+    import('./button.scss')
+  }, [])
   const mode = primary
     ? 'storybook-button--primary'
     : 'storybook-button--secondary'

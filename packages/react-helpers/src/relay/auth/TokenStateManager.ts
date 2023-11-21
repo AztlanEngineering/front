@@ -1,4 +1,4 @@
-import log from './log'
+import log from './log.ts'
 
 const storage: Storage = localStorage
 const keys = {

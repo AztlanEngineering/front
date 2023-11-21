@@ -8,7 +8,7 @@ import {
   perfMiddleware,
 } from 'react-relay-network-modern/es/index.js'
 
-import { refreshTokenMiddleware } from './auth/index.mjs'
+import { refreshTokenMiddleware } from './auth/index.ts'
 
 /* eslint-disable no-underscore-dangle -- special case */
 // @ts-ignore

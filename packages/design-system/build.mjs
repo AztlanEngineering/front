@@ -13,5 +13,5 @@ buildOrWatch({
     'src/ui/**/*.scss',
     'src/ui/**/*.css',
   ],
-  // copyfilesUp:2,
+  up: 2,
 })

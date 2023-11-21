@@ -1,3 +1,3 @@
-export { default as refreshTokenMiddleware } from './refreshTokenMiddleware'
-export { default as getTokenRefresh } from './getTokenRefresh'
-export { default as TokenStateManager } from './TokenStateManager'
+export { default as refreshTokenMiddleware } from './refreshTokenMiddleware.ts'
+export { default as fetchAccessToken } from './fetchAccessToken.ts'
+export { default as TokenStateManager } from './TokenStateManager.ts'

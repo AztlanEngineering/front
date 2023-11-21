@@ -1,5 +1,5 @@
-import log from './log'
-import TokenStateManager from './TokenStateManager'
+import log from './log.ts'
+import TokenStateManager from './TokenStateManager.ts'
 
 interface ITokenRefreshResponse {
   accessTokenExpiration: number;

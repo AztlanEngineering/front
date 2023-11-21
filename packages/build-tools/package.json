@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@aztlan/babel-plugin-replace-import-extension": "^1.1.3",
     "@aztlan/eslint-config-base": "^0.4.0",
     "@aztlan/typescript-config": "^0.4.0",
+    "@babel/core": "^7.23.3",
     "babel-plugin-replace-import-extension": "^1.1.3",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.19.5",
@@ -26,16 +28,6 @@
     "extends": "@aztlan/eslint-config-base"
   },
   "dependencies": {
-    "@aztlan/babel-preset-react": "^0.4.0",
-    "@babel/core": "^7.23.3"
-  },
-  "babel": {
-    "presets": [
-      "@aztlan/react"
-    ],
-    "plugins": [
-      "relay",
-      "formatjs"
-    ]
+    "@aztlan/babel-preset-react": "^0.4.0"
   }
 }

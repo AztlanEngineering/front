@@ -1,5 +1,5 @@
-import fetchAccessToken from './fetchAccessToken'
-import TokenStateManager from './TokenStateManager'
+import fetchAccessToken from './fetchAccessToken.ts'
+import TokenStateManager from './TokenStateManager.ts'
 
 const defaults = {
   mutation: 'mutation { refreshToken { payload { exp }, refreshExpiresIn } }',

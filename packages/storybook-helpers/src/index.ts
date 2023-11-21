@@ -1,2 +1,1 @@
-export * as decorators from './decorators/index'
-export * as relay from './relay/index'
+export * as decorators from './decorators/index.ts'
