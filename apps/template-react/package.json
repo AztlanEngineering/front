@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/template-react",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -36,12 +36,12 @@
   "license": "ISC",
   "private": true,
   "devDependencies": {
-    "@aztlan/babel-preset-react": "^0.4.14",
+    "@aztlan/babel-preset-react": "^0.4.15",
     "@aztlan/bem": "^0.2.5",
     "@aztlan/eslint-config": "^0.2.0",
     "@aztlan/eslint-config-base": "^0.4.0",
     "@aztlan/jest-config": "^0.4.0",
-    "@aztlan/react-helpers": "^0.4.14",
+    "@aztlan/react-helpers": "^0.4.15",
     "@aztlan/storybook-addon-relay": "^0.4.6",
     "@aztlan/stylelint-config": "^0.2.0-alpha.0",
     "@aztlan/typescript-config": "^0.4.0",
@@ -83,9 +83,9 @@
   "dependencies": {
     "@aztlan/assets": "^0.4.0",
     "@aztlan/base-styles": "^0.4.8",
-    "@aztlan/design-system": "^0.4.14",
+    "@aztlan/design-system": "^0.4.15",
     "@aztlan/storybook-config": "^0.4.3",
-    "@aztlan/storybook-helpers": "^0.4.14",
+    "@aztlan/storybook-helpers": "^0.4.15",
     "@loadable/component": "^5.15.3",
     "@loadable/server": "^5.16.1",
     "date-fns": "^2.30.0",
