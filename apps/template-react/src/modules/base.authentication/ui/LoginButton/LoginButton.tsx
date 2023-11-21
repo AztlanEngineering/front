@@ -44,8 +44,8 @@ function LoginButton({
     import('./styles.scss')
   }, [])
 
-  const { oAuth2Login } = useFragment(FRAGMENT, data)
-  const { google } = oAuth2Login
+  const { oAuth2Links } = useFragment(FRAGMENT, data)
+  const { google } = oAuth2Links
 
   return (
     <button

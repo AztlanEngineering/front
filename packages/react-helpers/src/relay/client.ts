@@ -8,6 +8,8 @@ import {
   perfMiddleware,
 } from 'react-relay-network-modern/es/index.js'
 
+import { refreshTokenMiddleware } from './auth/index.mjs'
+
 /* eslint-disable no-underscore-dangle -- special case */
 // @ts-ignore
 const getRecords = () => window.__RELAY_PAYLOADS__
@@ -21,6 +23,7 @@ const getEnvironment = (url) => new Environment({
   network: new RelayNetworkLayer([
     urlMiddleware({ url }),
     perfMiddleware(),
+    refreshTokenMiddleware(),
     errorMiddleware(),
   ]),
   store,

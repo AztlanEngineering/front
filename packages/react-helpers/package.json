@@ -24,6 +24,10 @@
     "./relay/client": {
       "import": "dist/esm/relay/client.mjs",
       "require": "dist/cjs/relay/client.cjs"
+    },
+    "./relay/auth": {
+      "import": "dist/esm/relay/auth/index.mjs",
+      "require": "dist/cjs/relay/auth/index.cjs"
     }
   },
   "bin": {

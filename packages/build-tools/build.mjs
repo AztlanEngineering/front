@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { buildOrWatch } from './src/index.mjs'
+import { buildOrWatch } from './src/index.babel.mjs'
 
 buildOrWatch({
   entryPoints: [

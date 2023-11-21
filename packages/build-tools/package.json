@@ -2,8 +2,8 @@
   "name": "@aztlan/build-tools",
   "version": "0.4.11",
   "description": "a",
-  "main": "src/index.mjs",
-  "module": "src/index.mjs",
+  "main": "src/index.babel.mjs",
+  "module": "src/index.babel.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:tsc": "tsc",
@@ -15,6 +15,7 @@
   "devDependencies": {
     "@aztlan/eslint-config-base": "^0.4.0",
     "@aztlan/typescript-config": "^0.4.0",
+    "babel-plugin-replace-import-extension": "^1.1.3",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.19.5",
     "esbuild-plugin-file-path-extensions": "^1.0.0",
@@ -23,5 +24,18 @@
   },
   "eslintConfig": {
     "extends": "@aztlan/eslint-config-base"
+  },
+  "dependencies": {
+    "@aztlan/babel-preset-react": "^0.4.0",
+    "@babel/core": "^7.23.3"
+  },
+  "babel": {
+    "presets": [
+      "@aztlan/react"
+    ],
+    "plugins": [
+      "relay",
+      "formatjs"
+    ]
   }
 }
