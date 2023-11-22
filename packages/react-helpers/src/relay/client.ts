@@ -4,6 +4,7 @@ import {
   RelayNetworkLayer,
   urlMiddleware,
   // loggerMiddleware,
+  retryMiddleware,
   errorMiddleware,
   perfMiddleware,
 } from 'react-relay-network-modern/es/index.js'
@@ -24,6 +25,35 @@ const getEnvironment = (url) => new Environment({
     urlMiddleware({
       url,
       credentials: 'include',
+    }),
+    retryMiddleware({
+      fetchTimeout: 15000,
+      retryDelays: (attempt) => 2 ** (attempt + 4) * 100,
+      // or simple array [3200, 6400, 12800, 25600, 51200, 102400, 204800, 409600],
+      beforeRetry: ({
+        forceRetry,
+        abort,
+        attempt,
+        // delay,
+        // lastError,
+        // req,
+      }) => {
+        // if (attempt > 10) {
+        console.log('[Retry Middleware] call#', attempt)
+        const attemptLimit = 0
+        if (attempt > attemptLimit) {
+          try {
+            abort()
+          } catch (RRNLRetryMiddlewareError) {
+            console.log(
+              `[Retry Middleware] Aborted retries after ${attemptLimit}`,
+            )
+          }
+        }
+        window.forceRelayRetry = forceRetry
+        // console.log(`call 'forceRelayRetry()' for immediately retry! Or wait ${delay} ' ms.`);
+      },
+      statusCodes: [500, 503, 504],
     }),
     perfMiddleware(),
     refreshTokenMiddleware(),

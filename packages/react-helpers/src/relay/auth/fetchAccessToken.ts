@@ -8,14 +8,15 @@ interface ITokenRefreshResponse {
 
 const fetchAccessToken = (
   mutation: string,
+  url: string,
   extractor: (json: any) => ITokenRefreshResponse,
 ): Promise<ITokenRefreshResponse> => {
   log('[fetchAccessToken]', 'Refreshing token')
 
-  return fetch(`${process.env.BACKEND_ENDPOINT}/graphql`, {
+  return fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ mutation }),
+    body: JSON.stringify({ query: mutation }),
     credentials: 'include',
   })
     .then((res) => res.json())
