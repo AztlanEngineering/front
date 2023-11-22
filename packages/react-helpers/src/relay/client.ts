@@ -21,7 +21,10 @@ const store = new Store(source)
 
 const getEnvironment = (url) => new Environment({
   network: new RelayNetworkLayer([
-    urlMiddleware({ url }),
+    urlMiddleware({
+      url,
+      credentials: 'include',
+    }),
     perfMiddleware(),
     refreshTokenMiddleware(),
     errorMiddleware(),
