@@ -11,6 +11,7 @@ import getEnvironment from '@aztlan/react-helpers/relay/client'
 import { useLocale } from '@aztlan/react-helpers'
 import App from './App'
 import loadMessages from './locales/loadMessages'
+import { ErrorBoundary } from './modules/base.profile/ui'
 
 // import "./main.scss";
 import '@aztlan/base-styles'

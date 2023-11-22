@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 0.4.3 */
 import * as React from 'react'
 
-import { useInsertionEffect } from 'react'
+import { useEffect, useInsertionEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -49,8 +49,13 @@ function ViewerProfile({
     // @ts-ignore
     import('./styles.scss')
   }, [])
+  console.log('>>>', data)
 
-  const [result, refetch] = useRefetchableFragment(FRAGMENT, data)
+  const [result, refetch] = useRefetchableFragment(FRAGMENT, data.viewer)
+
+  useEffect(() => {
+    // refetch()
+  }, [])
 
   return (
     <div

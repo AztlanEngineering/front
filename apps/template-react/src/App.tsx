@@ -3,10 +3,10 @@ import { Button, useApp, AppContextProvider } from '@aztlan/design-system'
 import { useTheme } from '@aztlan/react-helpers'
 import { IntlProvider } from 'react-intl'
 import { useEffect, useState, useCallback } from 'react'
-import { QueryTester } from './ui'
 import routes from './modules/routes'
 import { SwitchRoutes } from './modules/common/ui'
 import Status404Page from './modules/common/pages/Status404.tsx'
+import { ErrorBoundary } from './modules/base.profile/ui'
 
 // @ts-ignore
 import es from './locales/es.json'

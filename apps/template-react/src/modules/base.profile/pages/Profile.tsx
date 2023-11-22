@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useLazyLoadQuery } from 'react-relay'
+import { useLazyLoadQuery, useQueryLoader } from 'react-relay'
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
 import Template from '../../common/templates/Base'
 import { ViewerProfile, ErrorBoundary } from '../ui'
@@ -21,16 +21,21 @@ const m = defineMessages({
 }) */
 
 function Profile() {
+  /*
   const data = useLazyLoadQuery(
     ViewerProfile.QUERY,
     {},
     { fetchPolicy: 'store-or-network' },
-  )
+  ) */
+  const [data, loadQuery, disposeQuery] = useQueryLoader(ViewerProfile.QUERY)
+  useEffect(() => {
+    loadQuery()
+  }, [])
 
   // const { formatMessage } = useIntl()
   return (
     <Template title="Profile">
-      <ViewerProfile data={data} />
+      {data && <ViewerProfile data={data} />}
       {/*
       <React.Suspense fallback="Loading">
         <QueryTester data={data} />
@@ -41,16 +46,4 @@ function Profile() {
   )
 }
 
-export default function () {
-  return (
-    <ErrorBoundary fallback={({ e }) => <h1>{e}</h1>}>
-      <Profile />
-    </ErrorBoundary>
-  )
-}
-
-/*
-export default function () {
-  return
-    HELLO THERE !!
-} */
+export default Profile
