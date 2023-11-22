@@ -5,37 +5,52 @@ import { useHistory } from 'react-router-dom'
 import { useLazyLoadQuery } from 'react-relay'
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
 import Template from '../../common/templates/Base'
-import { LoginButton } from '../ui'
+import { ViewerProfile, ErrorBoundary } from '../ui'
 import { ThemeSwitcher, LocaleSwitcher } from '../../common/ui'
 
+/*
 const m = defineMessages({
   title: {
     // id: `${messagesPrefix}.title`,
-    description: 'Message to greet the user.',
-    defaultMessage: 'Login',
+    defaultMessage: 'Homepage',
   },
-  login: {
+  welcome: {
     description: 'Message to greet the user.',
-    defaultMessage: 'Please click on the button to log in.',
+    defaultMessage: 'Welcome to the site, {name}!!!',
   },
-})
+}) */
 
-function Login() {
+function Profile() {
   const data = useLazyLoadQuery(
-    LoginButton.QUERY,
-    { resource: 'http://ash.779.mx:3002/profile' },
+    ViewerProfile.QUERY,
+    {},
     { fetchPolicy: 'store-or-network' },
   )
 
-  const { formatMessage } = useIntl()
+  // const { formatMessage } = useIntl()
   return (
-    <Template title={formatMessage(m.title)}>
+    <Template title="Profile">
+      <ViewerProfile data={data} />
+      {/*
       <React.Suspense fallback="Loading">
-        <LoginButton data={data} />
+        <QueryTester data={data} />
       </React.Suspense>
-      <p>{formatMessage(m.login)}</p>
+        */}
+      <p>Welcome to the profile page</p>
     </Template>
   )
 }
 
-export default Login
+export default function () {
+  return (
+    <ErrorBoundary fallback={({ e }) => <h1>{e}</h1>}>
+      <Profile />
+    </ErrorBoundary>
+  )
+}
+
+/*
+export default function () {
+  return
+    HELLO THERE !!
+} */

@@ -21,6 +21,9 @@ function Base({ title, children }) {
             <Link to="/login">Login</Link>
           </li>
           <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
             <Link to="/404">Test 404</Link>
           </li>
         </ul>
