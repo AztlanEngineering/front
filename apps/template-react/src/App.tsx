@@ -8,11 +8,6 @@ import { SwitchRoutes } from './modules/common/ui'
 import Status404Page from './modules/common/pages/Status404.tsx'
 import { ErrorBoundary } from './modules/base.profile/ui'
 
-// @ts-ignore
-import es from './locales/es.json'
-
-// @ts-ignore
-//
 function loadLocaleData(locale: string) {
   switch (locale) {
     case 'es':
@@ -21,14 +16,15 @@ function loadLocaleData(locale: string) {
       return import('./locales/en.json')
   }
 }
-const d = { es }
 
 function App() {
   const { theme } = useApp()
   return (
-    <main className={`${theme || ''} background far`}>
-      <SwitchRoutes items={routes} NotFoundPage={Status404Page} />
-    </main>
+    <React.Suspense fallback={<h1>Loading</h1>}>
+      <main className={`${theme || ''} background far`}>
+        <SwitchRoutes items={routes} NotFoundPage={Status404Page} />
+      </main>
+    </React.Suspense>
   )
 }
 

@@ -28,14 +28,17 @@ function Profile() {
     { fetchPolicy: 'store-or-network' },
   ) */
   const [data, loadQuery, disposeQuery] = useQueryLoader(ViewerProfile.QUERY)
+
   useEffect(() => {
     loadQuery()
-  }, [])
+  }, [window.isAuthReady])
+
+  console.log('>>Data is', data, data?.viewer)
 
   // const { formatMessage } = useIntl()
   return (
     <Template title="Profile">
-      {data && <ViewerProfile data={data} />}
+      {data ? <ViewerProfile data={data.viewer} /> : ''}
       {/*
       <React.Suspense fallback="Loading">
         <QueryTester data={data} />

@@ -49,12 +49,14 @@ function ViewerProfile({
     // @ts-ignore
     import('./styles.scss')
   }, [])
-  console.log('>>>', data)
+  console.log('!!!', data)
 
-  const [result, refetch] = useRefetchableFragment(FRAGMENT, data.viewer)
+  const [result, refetch] = useRefetchableFragment(FRAGMENT, data)
+
+  console.log('@@@@@', result, data)
 
   useEffect(() => {
-    // refetch()
+    refetch({ fetchPolicy: 'store-only' })
   }, [])
 
   return (
