@@ -138,6 +138,67 @@ type OAuth2LinksProvider {
 }
 
 type Mutation {
-  """The current time"""
-  time: DateTime
+  verifyToken(input: VerifyInput!): VerifyPayload
+  refreshToken(input: RefreshInput!): RefreshPayload
+  deleteTokenCookie(input: DeleteJSONWebTokenCookieInput!): DeleteJSONWebTokenCookiePayload
+  deleteRefreshTokenCookie(input: DeleteRefreshTokenCookieInput!): DeleteRefreshTokenCookiePayload
+  revokeToken(input: RevokeInput!): RevokePayload
+}
+
+type VerifyPayload {
+  payload: GenericScalar!
+  clientMutationId: String
+}
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+input VerifyInput {
+  token: String
+  clientMutationId: String
+}
+
+type RefreshPayload {
+  payload: GenericScalar!
+  refreshExpiresIn: Int!
+  clientMutationId: String
+  token: String!
+  refreshToken: String!
+}
+
+input RefreshInput {
+  refreshToken: String
+  clientMutationId: String
+}
+
+type DeleteJSONWebTokenCookiePayload {
+  deleted: Boolean!
+  clientMutationId: String
+}
+
+input DeleteJSONWebTokenCookieInput {
+  clientMutationId: String
+}
+
+type DeleteRefreshTokenCookiePayload {
+  deleted: Boolean!
+  clientMutationId: String
+}
+
+input DeleteRefreshTokenCookieInput {
+  clientMutationId: String
+}
+
+type RevokePayload {
+  revoked: Int!
+  clientMutationId: String
+}
+
+input RevokeInput {
+  refreshToken: String
+  clientMutationId: String
 }

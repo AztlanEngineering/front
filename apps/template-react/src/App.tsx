@@ -39,6 +39,7 @@ const MUTATION_LOGOUT = graphql`
 
 function App() {
   const { theme } = useApp()
+  console.log('[APP] : Render')
   return (
     <AuthContextProvider
       QUERY_VIEWER={QUERY_VIEWER}

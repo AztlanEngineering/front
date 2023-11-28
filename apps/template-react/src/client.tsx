@@ -9,6 +9,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
 import getEnvironment from '@aztlan/react-helpers/relay/client'
 import { useLocale } from '@aztlan/react-helpers'
+import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
 import App from './App'
 import loadMessages from './locales/loadMessages'
 import { ErrorBoundary } from './modules/base.profile/ui'
@@ -27,6 +28,9 @@ function Main() {
     defaultLocale,
     loadMessages,
   )
+  TokenStateManager.initialize()
+
+  console.log('[CLI] : Render')
 
   return (
     <RelayEnvironmentProvider environment={relayEnvironment}>

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
 import { useRefetchableFragment, useFragment } from 'react-relay'
-import { useViewer } from '../AuthContextProvider'
+import { usePreloadedViewer } from '../AuthContextProvider'
 
 // Local Definitions
 
@@ -43,17 +43,17 @@ function ViewerProfile({
   className: userClassName,
   style,
   children,
-  data,
+  // data,
   // ...otherProps
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
     import('./styles.scss')
   }, [])
-  const queryReference = useViewer()
+  const data = usePreloadedViewer()
   const result = useFragment(FRAGMENT, data)
 
-  console.log('VP#', result, data)
+  console.log('[VPR] : Render', result, data)
 
   return (
     <div

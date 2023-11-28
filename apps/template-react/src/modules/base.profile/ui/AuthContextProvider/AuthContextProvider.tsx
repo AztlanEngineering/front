@@ -33,7 +33,19 @@ function AuthContextProvider({
     commitLogout({
       onCompleted() {
         TokenStateManager.logout()
+        disposeViewerQuery()
       },
+      /*
+      updater(store) {
+        console.log(
+          'ACP - before',
+          getRoot().getLinkedRecord("viewer")updating store',
+          store,
+        )
+        const record = store.getRoot().getLinkedRecord('viewer')
+        store.delete(record._dataId)
+        console.log('ACP - 2', record._dataId, record, store.getRoot())
+      }, */
     })
   }, [commitLogout])
 
@@ -43,6 +55,12 @@ function AuthContextProvider({
     // }
   }, [window.isAuthReady])
 
+  console.log(
+    '[ACP] : Render',
+    viewerQueryReference,
+    viewerQueryReference?.viewer,
+  )
+
   return (
     <AuthContext.Provider
       value={{
@@ -51,6 +69,7 @@ function AuthContextProvider({
         viewerQueryReference,
         loadViewerQuery,
         disposeViewerQuery,
+        QUERY_VIEWER,
       }}
     >
       {children}

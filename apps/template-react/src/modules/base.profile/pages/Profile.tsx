@@ -2,10 +2,14 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useLazyLoadQuery, useQueryLoader } from 'react-relay'
+import {
+  useLazyLoadQuery,
+  useQueryLoader,
+  usePreloadedQuery,
+} from 'react-relay'
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
 import Template from '../../common/templates/Base'
-import { ViewerProfile, ErrorBoundary } from '../ui'
+import { ViewerProfile, ErrorBoundary, useAuth } from '../ui'
 import { ThemeSwitcher, LocaleSwitcher } from '../../common/ui'
 
 /*
