@@ -27,10 +27,7 @@ const refreshTokenMiddleware = (
   const url = options.url ?? process.env.GRAPHQL_ENDPOINT
 
   return (next: (req: Request) => Promise<any>) => async (req: Request) => {
-    if (
-      window.isAuthReady === true
-      && !TokenStateManager.shouldRefetchToken()
-    ) {
+    if (!TokenStateManager.shouldRefetchToken()) {
       return next(req)
     }
 
@@ -38,12 +35,10 @@ const refreshTokenMiddleware = (
       tokenRefreshInProgress = fetchAccessToken(mutation, url, extractor)
         .then((content) => {
           tokenRefreshInProgress = null
-          window.isAuthReady = true
           return content
         })
         .catch((err) => {
           tokenRefreshInProgress = null
-          window.isAuthReady = true
           throw err
         })
     }

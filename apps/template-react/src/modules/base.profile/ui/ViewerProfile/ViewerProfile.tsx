@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
 import { useRefetchableFragment, useFragment } from 'react-relay'
+import { useViewer } from '../AuthContextProvider'
 
 // Local Definitions
 
@@ -49,15 +50,10 @@ function ViewerProfile({
     // @ts-ignore
     import('./styles.scss')
   }, [])
-  console.log('!!!', data)
+  const queryReference = useViewer()
+  const result = useFragment(FRAGMENT, data)
 
-  const [result, refetch] = useRefetchableFragment(FRAGMENT, data)
-
-  console.log('@@@@@', result, data)
-
-  useEffect(() => {
-    refetch({ fetchPolicy: 'store-only' })
-  }, [])
+  console.log('VP#', result, data)
 
   return (
     <div

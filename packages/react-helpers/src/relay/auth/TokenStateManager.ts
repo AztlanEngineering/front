@@ -47,6 +47,29 @@ class TokenStateManager {
   static saveRefreshTokenExpiration(expirationTimestamp: number): void {
     this.saveTokenExpiration(keys.refreshToken, expirationTimestamp)
   }
+
+  static initialize(): void {
+    const currentUrl = window.location.href
+
+    const searchParams = new URLSearchParams(new URL(currentUrl).search)
+
+    const jwtExpiresParam = searchParams.get('jwt_expires')
+    const refreshExpiresParam = searchParams.get('refresh_expires')
+
+    const jwtExpires = jwtExpiresParam
+      ? Math.ceil(parseFloat(jwtExpiresParam))
+      : null
+    const refreshExpires = refreshExpiresParam
+      ? Math.ceil(parseFloat(refreshExpiresParam))
+      : null
+
+    if (jwtExpires) {
+      this.saveAccessTokenExpiration(jwtExpires)
+      if (refreshExpires) {
+        this.saveRefreshTokenExpiration(refreshExpires)
+      }
+    }
+  }
 }
 
 export default TokenStateManager

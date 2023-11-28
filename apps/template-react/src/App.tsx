@@ -6,7 +6,7 @@ import { useEffect, useState, useCallback } from 'react'
 import routes from './modules/routes'
 import { SwitchRoutes } from './modules/common/ui'
 import Status404Page from './modules/common/pages/Status404.tsx'
-import { ErrorBoundary } from './modules/base.profile/ui'
+import { AuthContextProvider } from './modules/base.profile/ui'
 
 function loadLocaleData(locale: string) {
   switch (locale) {
@@ -17,15 +17,40 @@ function loadLocaleData(locale: string) {
   }
 }
 
+const QUERY_VIEWER = graphql`
+  query AppViewerQuery {
+    ...ViewerProfileFragment
+  }
+`
+const MUTATION_LOGOUT = graphql`
+  mutation AppViewerLogoutMutation {
+    deleteTokenCookie(input: { clientMutationId: "logout-delete-access" }) {
+      deleted
+      clientMutationId
+    }
+    deleteRefreshTokenCookie(
+      input: { clientMutationId: "logout-delete-refresh" }
+    ) {
+      deleted
+      clientMutationId
+    }
+  }
+`
+
 function App() {
   const { theme } = useApp()
   return (
-    <React.Suspense fallback={<h1>Loading</h1>}>
+    <AuthContextProvider
+      QUERY_VIEWER={QUERY_VIEWER}
+      MUTATION_LOGOUT={MUTATION_LOGOUT}
+    >
       <main className={`${theme || ''} background far`}>
         <SwitchRoutes items={routes} NotFoundPage={Status404Page} />
       </main>
-    </React.Suspense>
+    </AuthContextProvider>
   )
 }
 
 export default App
+// <React.Suspense fallback={<h1>Loading</h1>}>
+//  </React.Suspense>
