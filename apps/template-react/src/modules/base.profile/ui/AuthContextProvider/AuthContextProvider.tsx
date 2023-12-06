@@ -55,7 +55,7 @@ function AuthContextProvider({
     // if (window.isAuthReady) {
     loadViewerQuery()
     // }
-  }, [window.isAuthReady])
+  }, [])
 
   console.log(
     '[ACP] : Render',

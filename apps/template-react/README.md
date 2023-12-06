@@ -18,3 +18,7 @@ to remove ssr :
 - remove corresponding webpack config
 - remove unneeded ci
 - on Vercel, make sure the build script and env variables are properly configured (as it doesnt happen on github anymore)
+
+important information
+- It is crucial that login-only routes are protected by PrivateRoute. This is what will catch an empty user and redirect properly. Several issues can arise if this is not taken care of, on the front-end "You do not have permission to perform this action" (GraphQL Error), and on the SSR renderer (fetchKey is undefined) - when running usePreloadedQuery. 
+- For SSR, you might want to use useLazyLoadQuery rather than useQueryLoader

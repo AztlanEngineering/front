@@ -1,6 +1,6 @@
 import log from './log.ts'
 
-const storage: Storage = localStorage
+const storage: Storage = typeof process === 'undefined' ? localStorage : {}
 const keys = {
   loginState: 'isLoggedIn',
   accessToken: 'accessTokenExpiresAt',
