@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8824cbf637f89fbc5cf5e65a82d25351>>
+ * @generated SignedSource<<b660609ba098261b50d1959e49a82c99>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,9 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ViewerProfileQuery$variables = Record<PropertyKey, never>;
 export type ViewerProfileQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"ViewerProfileFragment">;
+  readonly viewer: {
+    readonly " $fragmentSpreads": FragmentRefs<"ViewerProfileFragment">;
+  } | null | undefined;
 };
 export type ViewerProfileQuery = {
   response: ViewerProfileQuery$data;
@@ -27,9 +29,20 @@ const node: ConcreteRequest = {
     "name": "ViewerProfileQuery",
     "selections": [
       {
+        "alias": null,
         "args": null,
-        "kind": "FragmentSpread",
-        "name": "ViewerProfileFragment"
+        "concreteType": "UserNode",
+        "kind": "LinkedField",
+        "name": "viewer",
+        "plural": false,
+        "selections": [
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "ViewerProfileFragment"
+          }
+        ],
+        "storageKey": null
       }
     ],
     "type": "Query",
@@ -104,15 +117,15 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "29697983a9d944d7b4d5d65c3b77b39b",
+    "cacheID": "f189adab0db3fa8cf050915b509fe910",
     "id": null,
     "metadata": {},
     "name": "ViewerProfileQuery",
     "operationKind": "query",
-    "text": "query ViewerProfileQuery {\n  ...ViewerProfileFragment\n}\n\nfragment ViewerProfileFragment on Query {\n  viewer {\n    firstName\n    lastName\n    createdAt\n    updatedAt\n    email\n    profilePicture\n    id\n  }\n}\n"
+    "text": "query ViewerProfileQuery {\n  viewer {\n    ...ViewerProfileFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  id\n}\n"
   }
 };
 
-(node as any).hash = "5ae2f1e2edc88d4579f2e19d4f201168";
+(node as any).hash = "902b69677f6ed2152889fb87f9d7e33b";
 
 export default node;

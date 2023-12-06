@@ -14,6 +14,10 @@ type Query {
     """Additional state payload for OAuth2 authentication"""
     additionalStatePayload: String
   ): OAuth2LinksProvider
+  node(
+    """The ID of the object"""
+    id: ID!
+  ): Node
 }
 
 """

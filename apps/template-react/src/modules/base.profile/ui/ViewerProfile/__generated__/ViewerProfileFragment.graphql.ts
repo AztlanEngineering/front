@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0f4e0cb2d10a7d9bb79de1973d627687>>
+ * @generated SignedSource<<2403e1f4363e7e6141f074554283c6d2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,14 +11,13 @@
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ViewerProfileFragment$data = {
-  readonly viewer: {
-    readonly createdAt: any;
-    readonly email: string;
-    readonly firstName: string;
-    readonly lastName: string;
-    readonly profilePicture: string | null | undefined;
-    readonly updatedAt: any;
-  } | null | undefined;
+  readonly createdAt: any;
+  readonly email: string;
+  readonly firstName: string;
+  readonly id: string;
+  readonly lastName: string;
+  readonly profilePicture: string | null | undefined;
+  readonly updatedAt: any;
   readonly " $fragmentType": "ViewerProfileFragment";
 };
 export type ViewerProfileFragment$key = {
@@ -32,8 +31,14 @@ const node: ReaderFragment = {
   "metadata": {
     "refetch": {
       "connection": null,
-      "fragmentPathInResult": [],
-      "operation": require('./ViewerProfileRefetchableFragment.graphql')
+      "fragmentPathInResult": [
+        "node"
+      ],
+      "operation": require('./ViewerProfileefetchableFragment.graphql'),
+      "identifierInfo": {
+        "identifierField": "id",
+        "identifierQueryVariableName": "id"
+      }
     }
   },
   "name": "ViewerProfileFragment",
@@ -41,61 +46,57 @@ const node: ReaderFragment = {
     {
       "alias": null,
       "args": null,
-      "concreteType": "UserNode",
-      "kind": "LinkedField",
-      "name": "viewer",
-      "plural": false,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "firstName",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "lastName",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "createdAt",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "updatedAt",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "email",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "profilePicture",
-          "storageKey": null
-        }
-      ],
+      "kind": "ScalarField",
+      "name": "firstName",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "lastName",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "createdAt",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "updatedAt",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "email",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "profilePicture",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "id",
       "storageKey": null
     }
   ],
-  "type": "Query",
+  "type": "UserNode",
   "abstractKey": null
 };
 
-(node as any).hash = "b0aba748562499bebced993adca5de23";
+(node as any).hash = "b5d6d12894d6995fa917786b977a0528";
 
 export default node;

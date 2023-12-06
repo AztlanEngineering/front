@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<accaed3735f8530c71c0f00ba375ff6e>>
+ * @generated SignedSource<<c311e6bfc24a6e7adc367a0dfafd919d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,14 +12,24 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type AppViewerQuery$variables = Record<PropertyKey, never>;
 export type AppViewerQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"ViewerProfileFragment">;
+  readonly viewer: {
+    readonly " $fragmentSpreads": FragmentRefs<"ViewerProfileFragment" | "useViewerFragment">;
+  } | null | undefined;
 };
 export type AppViewerQuery = {
   response: AppViewerQuery$data;
   variables: AppViewerQuery$variables;
 };
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+};
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
@@ -27,9 +37,25 @@ const node: ConcreteRequest = {
     "name": "AppViewerQuery",
     "selections": [
       {
+        "alias": null,
         "args": null,
-        "kind": "FragmentSpread",
-        "name": "ViewerProfileFragment"
+        "concreteType": "UserNode",
+        "kind": "LinkedField",
+        "name": "viewer",
+        "plural": false,
+        "selections": [
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "ViewerProfileFragment"
+          },
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "useViewerFragment"
+          }
+        ],
+        "storageKey": null
       }
     ],
     "type": "Query",
@@ -91,11 +117,46 @@ const node: ConcreteRequest = {
             "name": "profilePicture",
             "storageKey": null
           },
+          (v0/*: any*/),
           {
             "alias": null,
             "args": null,
-            "kind": "ScalarField",
-            "name": "id",
+            "concreteType": "GroupNodeConnection",
+            "kind": "LinkedField",
+            "name": "groups",
+            "plural": false,
+            "selections": [
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "GroupNodeEdge",
+                "kind": "LinkedField",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "GroupNode",
+                    "kind": "LinkedField",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      (v0/*: any*/),
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "name",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
             "storageKey": null
           }
         ],
@@ -104,15 +165,16 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "e8944657eb67e3dbb951baa896aeda74",
+    "cacheID": "6a74f7496fb3de4484ba64dc44515bba",
     "id": null,
     "metadata": {},
     "name": "AppViewerQuery",
     "operationKind": "query",
-    "text": "query AppViewerQuery {\n  ...ViewerProfileFragment\n}\n\nfragment ViewerProfileFragment on Query {\n  viewer {\n    firstName\n    lastName\n    createdAt\n    updatedAt\n    email\n    profilePicture\n    id\n  }\n}\n"
+    "text": "query AppViewerQuery {\n  viewer {\n    ...ViewerProfileFragment\n    ...useViewerFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  id\n}\n\nfragment useViewerFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  groups {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n  id\n}\n"
   }
 };
+})();
 
-(node as any).hash = "663dbc2944eb8876bd226bc97df4600d";
+(node as any).hash = "692c9b9a7770a927ac4239bb467b903b";
 
 export default node;

@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import { useEffect, useCallback } from 'react'
 import { useMutation, useQueryLoader } from 'react-relay'
+import { useHistory } from 'react-router'
 
 import PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
@@ -34,6 +35,7 @@ function AuthContextProvider({
       onCompleted() {
         TokenStateManager.logout()
         disposeViewerQuery()
+        history.go(0)
       },
       /*
       updater(store) {
@@ -66,9 +68,11 @@ function AuthContextProvider({
       value={{
         logout,
         isLogoutInFlight,
+
         viewerQueryReference,
         loadViewerQuery,
         disposeViewerQuery,
+
         QUERY_VIEWER,
       }}
     >

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
 import { useRefetchableFragment, useFragment } from 'react-relay'
-import { usePreloadedViewer } from '../AuthContextProvider'
+import { useViewer } from '../AuthContextProvider'
 
 // Local Definitions
 
@@ -17,21 +17,21 @@ const baseClassName = styleNames.base
 const componentClassName = 'viewer-profile'
 
 const FRAGMENT = graphql`
-  fragment ViewerProfileFragment on Query
-    @refetchable(queryName: "ViewerProfileRefetchableFragment") {
-    viewer {
-      firstName
-      lastName
-      createdAt
-      updatedAt
-      email
-      profilePicture
-    }
+  fragment ViewerProfileFragment on UserNode
+    @refetchable(queryName: "ViewerProfileefetchableFragment") {
+    firstName
+    lastName
+    createdAt
+    updatedAt
+    email
+    profilePicture
   }
 `
 const QUERY = graphql`
   query ViewerProfileQuery {
-    ...ViewerProfileFragment
+    viewer {
+      ...ViewerProfileFragment
+    }
   }
 `
 
@@ -50,8 +50,8 @@ function ViewerProfile({
     // @ts-ignore
     import('./styles.scss')
   }, [])
-  const data = usePreloadedViewer()
-  const result = useFragment(FRAGMENT, data)
+  const { data } = useViewer()
+  const result = useFragment(FRAGMENT, data.viewer)
 
   console.log('[VPR] : Render', result, data)
 

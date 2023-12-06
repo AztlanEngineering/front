@@ -8,18 +8,12 @@ import { SwitchRoutes } from './modules/common/ui'
 import Status404Page from './modules/common/pages/Status404.tsx'
 import { AuthContextProvider } from './modules/base.profile/ui'
 
-function loadLocaleData(locale: string) {
-  switch (locale) {
-    case 'es':
-      return import('./locales/es.json')
-    default:
-      return import('./locales/en.json')
-  }
-}
-
 const QUERY_VIEWER = graphql`
   query AppViewerQuery {
-    ...ViewerProfileFragment
+    viewer {
+      ...ViewerProfileFragment
+      ...useViewerFragment
+    }
   }
 `
 const MUTATION_LOGOUT = graphql`
