@@ -49,12 +49,10 @@ class TokenStateManager {
   }
 
   static initialize(): void {
-    const currentUrl = window.location.href
+    const currentUrl = new URL(window.location.href)
 
-    const searchParams = new URLSearchParams(new URL(currentUrl).search)
-
-    const jwtExpiresParam = searchParams.get('jwt_expires')
-    const refreshExpiresParam = searchParams.get('refresh_expires')
+    const jwtExpiresParam = currentUrl.searchParams.get('jwt_expires')
+    const refreshExpiresParam = currentUrl.searchParams.get('refresh_expires')
 
     const jwtExpires = jwtExpiresParam
       ? Math.ceil(parseFloat(jwtExpiresParam))
@@ -65,9 +63,13 @@ class TokenStateManager {
 
     if (jwtExpires) {
       this.saveAccessTokenExpiration(jwtExpires)
+      currentUrl.searchParams.delete('jwt_expires') // Remove jwt_expires from URL
       if (refreshExpires) {
         this.saveRefreshTokenExpiration(refreshExpires)
+        currentUrl.searchParams.delete('refresh_expires') // Remove refresh_expires from URL
       }
+      const newUrl = currentUrl.toString()
+      window.history.replaceState({}, document.title, newUrl) // Update URL without page reload
     }
   }
 }
