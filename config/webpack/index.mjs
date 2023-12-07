@@ -98,6 +98,10 @@ const template = (inputs) => ({
     Dotenv:new Dotenv({
       systemvars:true,
     }),
+    DotenvProd:new Dotenv({
+      path      :'./env.prod',
+      systemvars:true,
+    }),
     Copy:new CopyPlugin({
       patterns:[
         ...inputs.staticFilesLocations.map((location) => ({ from: location, to: './' })),

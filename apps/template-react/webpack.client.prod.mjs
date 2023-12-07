@@ -35,7 +35,7 @@ export default {
 
   plugins: [
     plugins.Copy,
-    plugins.Dotenv,
+    plugins.DotenvProd,
     plugins.HtmlWebpack,
     plugins.LoadablePlugin,
     new LoadablePlugin(),
