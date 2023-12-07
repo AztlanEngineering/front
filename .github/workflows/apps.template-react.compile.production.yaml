@@ -16,4 +16,4 @@ jobs:
     uses: ./.github/workflows/_template.apps.compile.yaml
     with:
       working-directory: apps/template-react
-      GRAPHQL_ENDPOINT: ${{ vars.GRAPHQL_ENDPOINT }} 
+      GRAPHQL_ENDPOINT: https://api.idioma.io/graphql #${{ vars.GRAPHQL_ENDPOINT }} 

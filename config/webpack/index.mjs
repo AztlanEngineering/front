@@ -99,7 +99,7 @@ const template = (inputs) => ({
       systemvars:true,
     }),
     DotenvProd:new Dotenv({
-      path      :'./env.prod',
+      path      :'./.env.prod',
       systemvars:true,
     }),
     Copy:new CopyPlugin({

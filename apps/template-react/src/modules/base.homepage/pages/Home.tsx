@@ -34,7 +34,7 @@ function Home() {
       <React.Suspense fallback="Loading">
         <QueryTester data={data} />
       </React.Suspense>
-      <p>Hello!</p>
+      <p>Hello</p>
       <p>{formatMessage(m.welcome, { name: 'you guys' })}</p>
     </Template>
   )
