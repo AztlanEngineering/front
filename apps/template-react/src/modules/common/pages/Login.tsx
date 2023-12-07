@@ -24,6 +24,17 @@ const DEFAULT_REDIRECT = '/profile2'
 function Login() {
   const location = useLocation()
 
+  let hostname
+  if (typeof process === 'undefined') {
+    const { protocol } = window.location // 'http:' or 'https:'
+    const { hostname } = window.location // 'ash.779.mx'
+    const { port } = window.location // '3002'
+
+    hostname = `${protocol}//${hostname}${port ? `:${port}` : ''}`
+  } else {
+    hostname = 'http://test.com'
+  }
+
   const resource = `http://ash.779.mx:3002${
     location.state?.from ? location.state.from : DEFAULT_REDIRECT
   }`
