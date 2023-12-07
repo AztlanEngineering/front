@@ -1,4 +1,4 @@
 import commonRoutes from './common/routes.ts'
 import baseHomepageRoutes from './base.homepage/routes.ts'
 
-export default [...commonRoutes, ...baseHomepageRoutes]
+export default [...baseHomepageRoutes, ...commonRoutes]
