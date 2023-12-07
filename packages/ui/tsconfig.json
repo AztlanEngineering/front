@@ -1,0 +1,11 @@
+{
+  "extends":"@aztlan/typescript-config",
+  "compilerOptions": {
+     "baseUrl":"src"
+  },
+  "include":["src", "stories"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
