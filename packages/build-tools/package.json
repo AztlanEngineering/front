@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/build-tools",
-  "version": "0.4.15",
+  "version": "0.4.17",
   "description": "a",
   "main": "src/index.babel.mjs",
   "module": "src/index.babel.mjs",
