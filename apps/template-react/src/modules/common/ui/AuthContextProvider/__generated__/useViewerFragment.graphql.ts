@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<09b1b6e07cefd8919a908ae570b554f8>>
+ * @generated SignedSource<<ec6cfa59e0a7ddd1db40ae8a8167ce57>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -23,6 +23,7 @@ export type useViewerFragment$data = {
     } | null | undefined>;
   };
   readonly id: string;
+  readonly isActive: boolean;
   readonly lastName: string;
   readonly profilePicture: string | null | undefined;
   readonly updatedAt: any;
@@ -104,6 +105,13 @@ return {
     {
       "alias": null,
       "args": null,
+      "kind": "ScalarField",
+      "name": "isActive",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
       "concreteType": "GroupNodeConnection",
       "kind": "LinkedField",
       "name": "groups",
@@ -149,6 +157,6 @@ return {
 };
 })();
 
-(node as any).hash = "6871c067ba692e76d57e971cd3781062";
+(node as any).hash = "c6bb2438811dc124e62ee46fddc60b0d";
 
 export default node;

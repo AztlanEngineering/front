@@ -12,7 +12,7 @@ import { useLocale } from '@aztlan/react-helpers'
 import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
 import App from './App'
 import loadMessages from './locales/loadMessages'
-import { ErrorBoundary } from './modules/base.profile/ui'
+import ErrorBoundary from './modules/common/ui/ErrorBoundary'
 
 // import "./main.scss";
 import '@aztlan/base-styles'

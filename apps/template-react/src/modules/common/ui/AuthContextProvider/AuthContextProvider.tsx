@@ -12,12 +12,35 @@ import AuthContext from './Context.ts'
 // @ts-ignore
 
 // Local Definitions
+const QUERY_VIEWER = graphql`
+  query AuthContextProviderViewerQuery {
+    viewer {
+      ...ViewerProfileFragment
+      ...useViewerFragment
+    }
+  }
+`
+const MUTATION_LOGOUT = graphql`
+  mutation AuthContextProviderViewerLogoutMutation {
+    deleteTokenCookie(input: { clientMutationId: "logout-delete-access" }) {
+      deleted
+      clientMutationId
+    }
+    deleteRefreshTokenCookie(
+      input: { clientMutationId: "logout-delete-refresh" }
+    ) {
+      deleted
+      clientMutationId
+    }
+  }
+`
 
 /**
  * This is the component description.
  */
 function AuthContextProvider({
   children,
+  loginPath,
   QUERY_VIEWER,
   MUTATION_LOGOUT,
   // ...otherProps
@@ -30,12 +53,15 @@ function AuthContextProvider({
 
   const [commitLogout, isLogoutInFlight] = useMutation(MUTATION_LOGOUT)
 
+  const history = useHistory()
+
   const logout = useCallback(() => {
     commitLogout({
       onCompleted() {
         TokenStateManager.logout()
         disposeViewerQuery()
-        history.go(0)
+        loadViewerQuery({}, { fetchPolicy: 'network-only' })
+        // history.go(0)
       },
       /*
       updater(store) {
@@ -53,7 +79,7 @@ function AuthContextProvider({
 
   useEffect(() => {
     // if (window.isAuthReady) {
-    loadViewerQuery()
+    loadViewerQuery({})
     // }
   }, [])
 
@@ -68,6 +94,7 @@ function AuthContextProvider({
       value={{
         logout,
         isLogoutInFlight,
+        loginPath,
 
         viewerQueryReference,
         loadViewerQuery,
@@ -104,6 +131,9 @@ AuthContextProvider.propTypes = {
 }
 
 AuthContextProvider.defaultProps = {
+  QUERY_VIEWER,
+  MUTATION_LOGOUT,
+  loginPath: '/login',
   // someProp:false
 }
 

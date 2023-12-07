@@ -16,5 +16,6 @@ export default [
     path: '/profile',
     component: loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/Profile.tsx')),
     exact: true,
+    isPrivate: true,
   },
 ]

@@ -4,7 +4,7 @@ import { usePreloadedQuery } from 'react-relay'
 import useAuth from './useAuth'
 
 const FRAGMENT = graphql`
-  fragment useViewerFragment on viewer
+  fragment useViewerFragment on UserNode
     @refetchable(queryName: "useViewerRefetchableFragment") {
     firstName
     lastName
@@ -12,6 +12,7 @@ const FRAGMENT = graphql`
     updatedAt
     email
     profilePicture
+    isActive
     groups {
       edges {
         node {
@@ -30,7 +31,7 @@ const useViewer = () => {
 
   const hasPermissions = useCallback(
     (permissions) => {
-      const viewerPermissions = data?.viewer.permissions?.edges
+      const viewerPermissions = data?.viewer?.permissions?.edges
       return permissions.some((permission) => viewerPermissions.includes(permission))
     },
     [data],
@@ -38,18 +39,21 @@ const useViewer = () => {
 
   const isInGroups = useCallback(
     (groups) => {
-      const viewerGroups = data?.viewer.groups.edges
-      return viewerGroups.some((edge) => groups?.includes(edge?.node?.name))
+      const viewerGroups = data?.viewer?.groups?.edges
+      return viewerGroups
+        ? viewerGroups.some((edge) => groups?.includes(edge?.node?.name))
+        : false
     },
     [data],
   )
 
-  // console.log('(UPV)', viewerQueryReference, data)
+  const test = useCallback((fn) => (data ? fn(data.viewer) : false), [data])
 
   return {
     data,
     hasPermissions,
     isInGroups,
+    test,
   }
 }
 

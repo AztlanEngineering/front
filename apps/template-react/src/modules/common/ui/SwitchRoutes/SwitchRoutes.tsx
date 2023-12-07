@@ -1,19 +1,39 @@
 import * as React from 'react'
+import { Suspense } from 'react'
 import PropTypes from 'prop-types'
 
 import { Switch, Route } from 'react-router-dom'
+import { PrivateRoute } from '../PrivateRoute'
+import { useAuth } from '../AuthContextProvider'
+import ErrorBoundary from '../ErrorBoundary'
 /* eslint-disable react/no-children-prop */
 
 function SwitchRoutes({ items, NotFoundPage }) {
+  const { viewerQueryReference } = useAuth()
+  console.log('SR')
+
   return (
-    <Switch
-      children={[
-        ...items.map(({ isPrivate, ...routeProps }) => (
-          <Route key={routeProps.path} {...routeProps} />
-        )),
-        ...(NotFoundPage ? [<Route component={NotFoundPage} />] : []),
-      ]}
-    />
+    <Suspense fallback={<h1>Loading user</h1>}>
+      <Switch
+        children={[
+          ...items.map(({
+            isPrivate, groups, testFunction, ...routeProps
+          }) => (isPrivate ? (
+            viewerQueryReference && (
+            <PrivateRoute
+              key={routeProps.path}
+              groups={groups}
+              testFunction={testFunction}
+              {...routeProps}
+            />
+            )
+          ) : (
+            <Route key={routeProps.path} {...routeProps} />
+          ))),
+          ...(NotFoundPage ? [<Route component={NotFoundPage} />] : []),
+        ]}
+      />
+    </Suspense>
   )
 }
 

@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { useAuth } from '../../base.profile/ui'
+import { useAuth } from '../ui'
 
 function Base({ title, children }) {
   const { logout, isLogoutInFlight } = useAuth()

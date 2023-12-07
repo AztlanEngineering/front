@@ -18,7 +18,7 @@ const componentClassName = 'viewer-profile'
 
 const FRAGMENT = graphql`
   fragment ViewerProfileFragment on UserNode
-    @refetchable(queryName: "ViewerProfileefetchableFragment") {
+    @refetchable(queryName: "ViewerProfileRefetchableFragment") {
     firstName
     lastName
     createdAt

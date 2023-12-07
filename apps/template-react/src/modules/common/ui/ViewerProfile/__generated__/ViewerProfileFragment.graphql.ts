@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2403e1f4363e7e6141f074554283c6d2>>
+ * @generated SignedSource<<2a01046b60ffa6aca6cd5e3cb248f19f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -34,7 +34,7 @@ const node: ReaderFragment = {
       "fragmentPathInResult": [
         "node"
       ],
-      "operation": require('./ViewerProfileefetchableFragment.graphql'),
+      "operation": require('./ViewerProfileRefetchableFragment.graphql'),
       "identifierInfo": {
         "identifierField": "id",
         "identifierQueryVariableName": "id"
@@ -97,6 +97,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "b5d6d12894d6995fa917786b977a0528";
+(node as any).hash = "ee746ca48303b1d9adf56e37eba6f847";
 
 export default node;

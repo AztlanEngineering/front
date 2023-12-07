@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<df374f3989e383b6c05562f28b3b2ea3>>
+ * @generated SignedSource<<afa78339900872c4d26926664882611b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,17 +10,17 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type useViewerRefetchableFragment$variables = {
+export type ViewerProfileRefetchableFragment$variables = {
   id: string;
 };
-export type useViewerRefetchableFragment$data = {
+export type ViewerProfileRefetchableFragment$data = {
   readonly node: {
-    readonly " $fragmentSpreads": FragmentRefs<"useViewerFragment">;
+    readonly " $fragmentSpreads": FragmentRefs<"ViewerProfileFragment">;
   } | null | undefined;
 };
-export type useViewerRefetchableFragment = {
-  response: useViewerRefetchableFragment$data;
-  variables: useViewerRefetchableFragment$variables;
+export type ViewerProfileRefetchableFragment = {
+  response: ViewerProfileRefetchableFragment$data;
+  variables: ViewerProfileRefetchableFragment$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -37,20 +37,13 @@ v1 = [
     "name": "id",
     "variableName": "id"
   }
-],
-v2 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "id",
-  "storageKey": null
-};
+];
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "useViewerRefetchableFragment",
+    "name": "ViewerProfileRefetchableFragment",
     "selections": [
       {
         "alias": null,
@@ -63,7 +56,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "useViewerFragment"
+            "name": "ViewerProfileFragment"
           }
         ],
         "storageKey": null
@@ -76,7 +69,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "useViewerRefetchableFragment",
+    "name": "ViewerProfileRefetchableFragment",
     "selections": [
       {
         "alias": null,
@@ -93,7 +86,13 @@ return {
             "name": "__typename",
             "storageKey": null
           },
-          (v2/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          },
           {
             "kind": "InlineFragment",
             "selections": [
@@ -138,47 +137,6 @@ return {
                 "kind": "ScalarField",
                 "name": "profilePicture",
                 "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "GroupNodeConnection",
-                "kind": "LinkedField",
-                "name": "groups",
-                "plural": false,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "GroupNodeEdge",
-                    "kind": "LinkedField",
-                    "name": "edges",
-                    "plural": true,
-                    "selections": [
-                      {
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "GroupNode",
-                        "kind": "LinkedField",
-                        "name": "node",
-                        "plural": false,
-                        "selections": [
-                          (v2/*: any*/),
-                          {
-                            "alias": null,
-                            "args": null,
-                            "kind": "ScalarField",
-                            "name": "name",
-                            "storageKey": null
-                          }
-                        ],
-                        "storageKey": null
-                      }
-                    ],
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
               }
             ],
             "type": "UserNode",
@@ -190,16 +148,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "327c446722248cb0ceb7649f6dacd857",
+    "cacheID": "b951df9383378d83d831bb81233d2b28",
     "id": null,
     "metadata": {},
-    "name": "useViewerRefetchableFragment",
+    "name": "ViewerProfileRefetchableFragment",
     "operationKind": "query",
-    "text": "query useViewerRefetchableFragment(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...useViewerFragment\n    id\n  }\n}\n\nfragment useViewerFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  groups {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n  id\n}\n"
+    "text": "query ViewerProfileRefetchableFragment(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ViewerProfileFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "6871c067ba692e76d57e971cd3781062";
+(node as any).hash = "ee746ca48303b1d9adf56e37eba6f847";
 
 export default node;
