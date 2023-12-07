@@ -8,10 +8,13 @@ import {
   usePreloadedQuery,
 } from 'react-relay'
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
-import Template from '../templates/Base'
 import {
-  ViewerProfile, ErrorBoundary, useAuth, ThemeSwitcher, LocaleSwitcher,
-} from '../ui'
+  ViewerProfile,
+  useAuth,
+  ThemeSwitcher,
+  LocaleSwitcher,
+} from '@aztlan/ui'
+import Template from '../templates/Base'
 
 /*
 const m = defineMessages({

@@ -52,6 +52,7 @@ const template = (inputs) => ({
       react             :getAbsolutePath('react'),
       'react-dom'       :getAbsolutePath('react-dom'),
       'react-router-dom':getAbsolutePath('react-router-dom'),
+      'react-relay'     :getAbsolutePath('react-relay'),
       ...inputs.resolveAlias,
     },
     roots:[path.join(inputs.dirname, 'src')],

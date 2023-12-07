@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
-import { AppContextProvider } from '@aztlan/design-system'
+import { AppContextProvider } from '@aztlan/ui'
 import { loadableReady } from '@loadable/component'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'

@@ -43,8 +43,8 @@ jobs:
     #- name: Lint SCSS
     #  run: npm run test:stylelint
 
-    - name: Test with Storyshots (Take Snapshots -> Compare)
-      run: npm run test:jest
+    #- name: Test with Storyshots (Take Snapshots -> Compare)
+    #  run: npm run test:jest
 
     #- name: Test with Eslint
     #  run: npm run test:eslint

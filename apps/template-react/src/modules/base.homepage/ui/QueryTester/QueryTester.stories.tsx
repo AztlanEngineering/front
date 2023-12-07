@@ -3,7 +3,7 @@ import * as React from 'react'
 import { StoryObj } from '@storybook/react'
 
 // import { decorators, relay } from '@aztlan/storybook-helpers'
-import QueryTester from './QueryTester.tsx'
+import QueryTester from './QueryTester'
 
 export default {
   title: 'common/QueryTester',

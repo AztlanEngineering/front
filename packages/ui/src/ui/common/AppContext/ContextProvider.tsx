@@ -3,7 +3,7 @@ import { useReducer, useContext } from 'react'
 import PropTypes from 'prop-types'
 // @ts-ignore
 import { useTheme } from '@aztlan/react-helpers'
-import Context from './Context'
+import Context from './Context.ts'
 
 // Helper Definitions
 const reducer = (state, action) => {

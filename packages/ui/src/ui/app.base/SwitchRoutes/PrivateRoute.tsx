@@ -5,7 +5,7 @@ import { useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Route, useHistory, useLocation } from 'react-router-dom'
 import { useFragment } from 'react-relay'
-import { useViewer, useAuth } from '../AuthContextProvider'
+import { useViewer, useAuth } from '../AuthContextProvider/index.ts'
 
 // Local Definitions
 

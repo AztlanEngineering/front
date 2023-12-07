@@ -12,7 +12,7 @@ module.exports = {
   testEnvironment:'jsdom',
   transform      :{
     '^.+\\.tsx?$':[
-      'ts-jest',
+      'babel-jest',
       /*
       ,{
         useESM: true,
@@ -37,6 +37,7 @@ module.exports = {
     '^.+\\.(mdx)$'     :`${rootDir}/tests/staticStub.js`,
     // '^.+\\.(css|less|scss|sass)$':'identity-obj-proxy',
   },
+  setupFiles:[`${rootDir}/tests/setup.js`],
 
   /*
   moduleNameMapper:{
@@ -45,7 +46,6 @@ module.exports = {
   },
   extensionsToTreatAsEsm: ['.ts', '.tsx','.jsx', '.mdx'],
   roots:[`${rootDir}/src`, rootDir],
-  setupFiles :[`${rootDir}/tests/test-setup.js`],
   // transformIgnorePatterns: [`node_modules/(?!${esModules})`],
   globalSetup:`${rootDir}/tests/global-setup.js`, */
 }

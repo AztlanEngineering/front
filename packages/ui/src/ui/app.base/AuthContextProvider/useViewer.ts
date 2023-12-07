@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { usePreloadedQuery } from 'react-relay'
 
-import useAuth from './useAuth'
+import useAuth from './useAuth.ts'
 
 const FRAGMENT = graphql`
   fragment useViewerFragment on UserNode

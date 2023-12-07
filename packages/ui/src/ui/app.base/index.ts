@@ -1,13 +1,12 @@
-export { SwitchRoutes } from './SwitchRoutes'
-export { ThemeSwitcher } from './ThemeSwitcher'
-export { LocaleSwitcher } from './LocaleSwitcher'
-export { LoginButton } from './LoginButton'
+export { SwitchRoutes } from './SwitchRoutes/index.ts'
+export { ThemeSwitcher } from './ThemeSwitcher/index.ts'
+export { LocaleSwitcher } from './LocaleSwitcher/index.ts'
+export { LoginButton } from './LoginButton/index.ts'
 export {
   AuthContextProvider,
   AuthContext,
   useAuth,
   useViewer,
-} from './AuthContextProvider'
-export { ViewerProfile } from './ViewerProfile'
+} from './AuthContextProvider/index.ts'
+export { ViewerProfile } from './ViewerProfile/index.ts'
 // export { default as ErrorBoundary } from './ErrorBoundary'
-export { PrivateRoute } from './PrivateRoute'

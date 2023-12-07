@@ -3,12 +3,11 @@ import * as React from 'react'
 
 import { useInsertionEffect } from 'react'
 
-import { useApp } from 'ui/common'
-
 import PropTypes from 'prop-types'
 
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
+import { useApp } from '../../common/index.ts'
 
 // Local Definitions
 

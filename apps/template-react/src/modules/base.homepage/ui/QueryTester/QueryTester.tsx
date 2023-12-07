@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import styleNames from '@aztlan/bem/exports.scss'
 
 import { useFragment, useRelayEnvironment } from 'react-relay'
+import { Button } from '@aztlan/ui'
 
 // Local Definitions
 
@@ -61,6 +62,7 @@ function QueryTester({
         {time}
         {children}
       </p>
+      <Button>Test</Button>
     </div>
   )
 }

@@ -138,7 +138,7 @@ module.exports = class extends Generator {
   _generateComponent(templateVars) {
     this.log(`Will generate the component ${templateVars.fullname}`)
 
-    const stringToAppendToIndex = `export { ${templateVars.name} } from './${templateVars.name}'\n`
+    const stringToAppendToIndex = `export { ${templateVars.name} } from './${templateVars.name}/index.ts'\n`
     this._touchOrAppendToIndex(stringToAppendToIndex)
 
     const targetFolder = `./${templateVars.name}/`

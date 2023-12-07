@@ -4,9 +4,9 @@ import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useLazyLoadQuery } from 'react-relay'
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
+import { ThemeSwitcher, LocaleSwitcher } from '@aztlan/ui'
 import Template from '../../common/templates/Base'
 import { QueryTester } from '../ui'
-import { ThemeSwitcher, LocaleSwitcher } from '../../common/ui'
 
 const m = defineMessages({
   title: {

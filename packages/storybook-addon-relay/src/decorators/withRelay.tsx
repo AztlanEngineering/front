@@ -6,8 +6,9 @@ import {
   useLazyLoadQuery
 } from "react-relay";
 import { GraphQLTaggedNode, OperationType } from "relay-runtime";
-import { createMockEnvironment, MockPayloadGenerator } from "relay-test-utils";
+import { MockPayloadGenerator } from "relay-test-utils";
 import { InferMockResolvers } from "./types";
+import environment from "./environment";
 
 export interface WithRelayParameters<
   TQuery extends OperationType,
@@ -37,7 +38,6 @@ export interface WithRelayParameters<
    */
   getReferenceEntry: (queryResult: TQuery["response"]) => [string, unknown];
 }
-const environment = createMockEnvironment();
 export const withRelay = makeDecorator({
   name: "withRelay",
   parameterName: "relay",

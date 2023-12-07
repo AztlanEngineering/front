@@ -57,8 +57,8 @@ const buildOrWatch = async (config) => {
       ...presetEnv,
       modules: false,
       targets: {
-        // esmodules: true,
-        chrome: '111',
+        esmodules: true,
+        chrome: '120',
       },
     }
 
@@ -67,7 +67,7 @@ const buildOrWatch = async (config) => {
       {
         caller: {
           name: '@aztlan/build-tools',
-          // supportsStaticESM: format === 'esm',
+          supportsStaticESM: format === 'esm',
           // supportsExportNamespaceFrom: true,
         },
         presets: [
@@ -82,11 +82,16 @@ const buildOrWatch = async (config) => {
         plugins: [
           ['@aztlan/replace-import-extension', {
             extMapping: {
+              '.graphql': '.graphql.js',
               '.ts': outputExtension,
               '.tsx': outputExtension,
               '.js': outputExtension,
             },
             disableDyanmicImportTransform: true,
+          }],
+          ['relay', {
+            eagerEsModules: format === 'esm',
+            codegenCommand: 'exit 0',
           }],
         ],
       },
@@ -94,13 +99,15 @@ const buildOrWatch = async (config) => {
         if (err) {
           console.error(err)
         }
+        const extension = result.options.filename.includes('.graphql') ? '.js' : outputExtension
+
         const {
           outputPath,
           outputFolder,
         } = generateOutputPaths(
           result,
           format,
-          outputExtension,
+          extension,
           up,
         )
         fs.mkdirSync(outputFolder, { recursive: true })

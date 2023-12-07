@@ -4,8 +4,8 @@ import { useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import { useLazyLoadQuery } from 'react-relay'
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
+import { LoginButton } from '@aztlan/ui'
 import Template from '../../common/templates/Base'
-import { LoginButton } from '../ui'
 
 const m = defineMessages({
   title: {

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
 import { useRefetchableFragment, useFragment } from 'react-relay'
-import { useViewer } from '../AuthContextProvider'
+import { useViewer } from '../AuthContextProvider/index.ts'
 
 // Local Definitions
 

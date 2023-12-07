@@ -7,7 +7,7 @@ import { useHistory } from 'react-router'
 
 import PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
-import AuthContext from './Context'
+import AuthContext from './Context.ts'
 
 // @ts-ignore
 

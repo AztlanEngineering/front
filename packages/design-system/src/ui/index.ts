@@ -1,5 +1,0 @@
-export { Button } from './Button'
-export { Header } from './Header'
-export { Page } from './Page'
-export * from './common'
-export * from './app.base'

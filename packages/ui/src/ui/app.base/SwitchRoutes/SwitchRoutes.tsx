@@ -3,8 +3,8 @@ import { Suspense } from 'react'
 import PropTypes from 'prop-types'
 
 import { Switch, Route } from 'react-router-dom'
-import { PrivateRoute } from '../PrivateRoute'
-import { useAuth } from '../AuthContextProvider'
+import PrivateRoute from './PrivateRoute.tsx'
+import { useAuth } from '../AuthContextProvider/index.ts'
 /* eslint-disable react/no-children-prop */
 
 function SwitchRoutes({ items, Wireframe, NotFoundPage }) {
