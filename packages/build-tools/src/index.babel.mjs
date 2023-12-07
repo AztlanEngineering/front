@@ -85,7 +85,7 @@ const buildOrWatch = async (config) => {
               '.graphql': '.graphql.js',
               '.ts': outputExtension,
               '.tsx': outputExtension,
-              '.js': outputExtension,
+              // '.js': "js",
             },
             disableDyanmicImportTransform: true,
           }],
