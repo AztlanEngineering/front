@@ -19,7 +19,7 @@ const m = defineMessages({
   },
 })
 
-const DEFAULT_REDIRECT = '/profile2'
+const DEFAULT_REDIRECT = '/profile'
 
 function Login() {
   const location = useLocation()
@@ -48,20 +48,23 @@ function Login() {
   const { formatMessage } = useIntl()
   return (
     <Template title={formatMessage(m.title)}>
-      {location.state?.reason && (
-      <p>
-        {' '}
-        {location.state.reason}
-      </p>
-      )}
-      <React.Suspense fallback="Loading">
-        <LoginButton data={data} />
-      </React.Suspense>
-      <p>{formatMessage(m.login)}</p>
-      <p>
-        After login you will be redirected to
-        {resource}
-      </p>
+      <div className="container">
+        {location.state?.reason && (
+        <p>
+          {' '}
+          {location.state.reason}
+        </p>
+        )}
+        <React.Suspense fallback="Loading">
+          <LoginButton data={data} />
+        </React.Suspense>
+
+        <p>{formatMessage(m.login)}</p>
+        <p>
+          After login you will be redirected to
+          {resource}
+        </p>
+      </div>
     </Template>
   )
 }

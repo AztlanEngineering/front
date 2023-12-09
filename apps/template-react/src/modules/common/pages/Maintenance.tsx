@@ -14,7 +14,7 @@ function Maintenance() {
   const { formatMessage } = useIntl()
   return (
     <Template title="Maintenance">
-      <p>{formatMessage(m.notAvailable)}</p>
+      <p className="container">{formatMessage(m.notAvailable)}</p>
     </Template>
   )
 }

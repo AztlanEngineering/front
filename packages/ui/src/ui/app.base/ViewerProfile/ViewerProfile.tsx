@@ -58,13 +58,28 @@ function ViewerProfile({
   return (
     <div
       id={id}
-      className={[baseClassName, componentClassName, userClassName]
+      className={[
+        'grid container',
+        baseClassName,
+        componentClassName,
+        userClassName,
+      ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
     >
-      {JSON.stringify(result)}
+      {result
+        && Object.keys(result).map((k) => (
+          <>
+            <div className="span-3">
+              <h2>{k}</h2>
+            </div>
+            <div className="span-5">
+              <p>{result[k]}</p>
+            </div>
+          </>
+        ))}
     </div>
   )
 }

@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import styleNames from '@aztlan/bem/exports.scss'
 
 import { useFragment, useRelayEnvironment } from 'react-relay'
-import { Button } from '@aztlan/ui'
+// import { Button } from '@aztlan/ui'
 
 // Local Definitions
 
@@ -50,7 +50,7 @@ function QueryTester({
   return (
     <div
       id={id}
-      className={[baseClassName, componentClassName, userClassName]
+      className={['container', baseClassName, componentClassName, userClassName]
         .filter((e) => e)
         .join(' ')}
       style={style}
@@ -62,7 +62,9 @@ function QueryTester({
         {time}
         {children}
       </p>
+      {/*
       <Button>Test</Button>
+      */}
     </div>
   )
 }

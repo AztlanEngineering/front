@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useLazyLoadQuery } from 'react-relay'
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
-import { ThemeSwitcher, LocaleSwitcher } from '@aztlan/ui'
 import Template from '../../common/templates/Base'
 import { QueryTester } from '../ui'
 
@@ -29,13 +28,10 @@ function Home() {
   const { formatMessage } = useIntl()
   return (
     <Template title={formatMessage(m.title)}>
-      <ThemeSwitcher />
-      <LocaleSwitcher />
       <React.Suspense fallback="Loading">
         <QueryTester data={data} />
       </React.Suspense>
-      <p>Hello!</p>
-      <p>{formatMessage(m.welcome, { name: 'you guys' })}</p>
+      <p className="container">{formatMessage(m.welcome, { name: 'guest' })}</p>
     </Template>
   )
 }

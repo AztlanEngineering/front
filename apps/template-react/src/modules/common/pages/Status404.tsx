@@ -14,7 +14,7 @@ function Status404() {
   const { formatMessage } = useIntl()
   return (
     <Template title="Error 404">
-      <p>{formatMessage(m.notFound)}</p>
+      <p className="container">{formatMessage(m.notFound)}</p>
     </Template>
   )
 }

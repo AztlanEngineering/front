@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { useAuth } from '@aztlan/ui'
+import { useAuth, ThemeSwitcher, LocaleSwitcher } from '@aztlan/ui'
 
 function Base({ title, wireframe, children }) {
   const { logout, isLogoutInFlight } = useAuth()
@@ -11,6 +11,7 @@ function Base({ title, wireframe, children }) {
       <main className="grid">
         <div className="background near span-3 fit-content">
           <h1>{title}</h1>
+
           <a onClick={logout}>
             <h2>
               Logout
@@ -18,7 +19,7 @@ function Base({ title, wireframe, children }) {
             </h2>
           </a>
         </div>
-        <div className="background near span-5 md-start-5 md-span-8 fit-content">
+        <div className="background near span-5 md-start-6 md-span-8 fit-content grid">
           <ul className="inline">
             <li>
               <Link to="/">Homepage</Link>
@@ -43,8 +44,10 @@ function Base({ title, wireframe, children }) {
   }
   return (
     <main className="grid">
-      <div className="background near span-3 fit-content">
+      <div className="background near span-4 fit-content">
         <h1>{title}</h1>
+        <ThemeSwitcher />
+        <LocaleSwitcher />
         <a onClick={logout}>
           <h2>
             Logout
@@ -52,8 +55,8 @@ function Base({ title, wireframe, children }) {
           </h2>
         </a>
       </div>
-      <div className="background near span-5 md-start-5 md-span-8 fit-content">
-        <ul className="inline">
+      <div className="background near span-5 md-start-6 md-span-8 fit-content grid container">
+        <ul className="inline span-8">
           <li>
             <Link to="/">Homepage</Link>
           </li>

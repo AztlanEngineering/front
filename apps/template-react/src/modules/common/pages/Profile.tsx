@@ -40,13 +40,13 @@ function Profile() {
   // const { formatMessage } = useIntl()
   return (
     <Template title="Profile">
+      <p className="span-8">Welcome to the profile page</p>
       <ViewerProfile />
       {/*
       <React.Suspense fallback="Loading">
         <QueryTester data={data} />
       </React.Suspense>
         */}
-      <p>Welcome to the profile page</p>
     </Template>
   )
 }
