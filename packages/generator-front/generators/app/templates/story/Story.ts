@@ -1,7 +1,8 @@
 /* <%= pkg %> <%= version %> */
 import * as React from 'react'
 
-import { <%= name %> } from 'ui'
+//import { <%= name %> } from 'ui'
+import <%= name %> from './<%= name %>.tsx'
 
 export default {
   title: '<%= fullname %>',
