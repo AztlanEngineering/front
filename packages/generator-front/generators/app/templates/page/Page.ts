@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 import {
   Page,
   Title,
-} from '@<%= npmOrg %>/design-system'
+} from '@<%= npmOrg %>/ui'
 
 const <%= name %> = () => {
   return (
