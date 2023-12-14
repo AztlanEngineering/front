@@ -7,24 +7,25 @@ import PropTypes from 'prop-types'
 
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
-import { withInputWrapper } from '../common/index.ts'
 
 // Local Definitions
 
 const baseClassName = styleNames.base
 
-const componentClassName = 'text-input'
+const componentClassName = 'label'
 
 /**
  * This is the component description.
  */
-function TextInput({
+function Label({
   id,
   className: userClassName,
   style,
+  children,
   name,
-  type: inputType,
-  ...otherProps
+  optional,
+  as: Wrapper,
+  // ...otherProps
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
@@ -32,7 +33,8 @@ function TextInput({
   }, [])
 
   return (
-    <div
+    <Wrapper
+      htmlFor={Wrapper === 'label' ? `form.${name}` : undefined}
       id={id}
       className={[baseClassName, componentClassName, userClassName]
         .filter((e) => e)
@@ -40,18 +42,13 @@ function TextInput({
       style={style}
       // {...otherProps}
     >
-      <input
-        id={`form.${name}`}
-        name={name}
-        type={inputType}
-        {...otherProps}
-        //
-      />
-    </div>
+      {children || name}
+      {optional && <span> (Optional)</span>}
+    </Wrapper>
   )
 }
 
-TextInput.propTypes = {
+Label.propTypes = {
   /**
    * The HTML id for this element
    */
@@ -71,10 +68,26 @@ TextInput.propTypes = {
    *  The children JSX
    */
   children: PropTypes.node,
+
+  /**
+   *  The html tag that acts as an input label
+   */
+  as: PropTypes.node,
+
+  /**
+   *  The name of the input label
+   */
+  name: PropTypes.string,
+
+  /**
+   * Whether the input should have an optional tag
+   */
+  optional: PropTypes.bool,
 }
 
-TextInput.defaultProps = {
-  // someProp:false
+Label.defaultProps = {
+  as: 'label',
+  optional: false,
 }
 
-export default withInputWrapper(TextInput)
+export default Label

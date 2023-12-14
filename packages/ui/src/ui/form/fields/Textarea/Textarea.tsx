@@ -22,8 +22,9 @@ function Textarea({
   id,
   className: userClassName,
   style,
-  children,
-  // ...otherProps
+  name,
+  rows,
+  ...otherProps
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
@@ -39,8 +40,13 @@ function Textarea({
       style={style}
       // {...otherProps}
     >
-      Textarea
-      {children}
+      <textarea
+        id={`form.${name}`}
+        name={name}
+        rows={rows}
+        {...otherProps}
+        //
+      />
     </div>
   )
 }
@@ -68,7 +74,7 @@ Textarea.propTypes = {
 }
 
 Textarea.defaultProps = {
-  // someProp:false
+  rows: 4,
 }
 
 export default withInputWrapper(Textarea)

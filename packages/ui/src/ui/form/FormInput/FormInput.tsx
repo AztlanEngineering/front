@@ -6,6 +6,7 @@ import { useInsertionEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem/exports.scss'
+import { Form } from 'formik'
 import { TextInput, Textarea, Select } from '../fields/index.ts'
 
 // @ts-ignore
@@ -106,15 +107,42 @@ FormInput.propTypes = {
   /**
    * The name of the input
    */
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
 
   /**
    * The type of the input
    */
   type: PropTypes.oneOf(allTypes),
+
+  /**
+   * Whether the text input should be disabled
+   */
+
+  disabled: PropTypes.bool,
+
+  /**
+   * Whether the input is optional or not
+   */
+
+  optional: PropTypes.bool,
+
+  /**
+   * The placeholder text for the input
+   */
+
+  placeholder: PropTypes.string,
+
+  /**
+   * The autoComplete value that the browser should watch for the input
+   * `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete`
+   */
+
+  autoComplete: PropTypes.string,
 }
 
 FormInput.defaultProps = {
+  optional: false,
+  disabled: false,
   // someProp:false
 }
 

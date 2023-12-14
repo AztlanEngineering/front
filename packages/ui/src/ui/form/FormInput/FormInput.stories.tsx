@@ -1,6 +1,7 @@
 /* @aztlan/generator-front 0.5.0 */
 import * as React from 'react'
 
+import { Formik } from 'formik'
 import FormInput from './FormInput.tsx'
 
 export default {
@@ -10,6 +11,8 @@ export default {
     // Item:FormInput.Item
   },
   decorators: [
+    (StoryFn) => <div className="grid">{StoryFn()}</div>,
+    (StoryFn) => <Formik initialValues={{}}>{StoryFn()}</Formik>,
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
   argTypes: {
@@ -20,6 +23,7 @@ export default {
 export const Base = {
   args: {
     type: 'text',
+    name: 'name',
     label: 'Your name',
   },
 }
@@ -27,6 +31,7 @@ export const Base = {
 export const Textarea = {
   args: {
     type: 'textarea',
+    name: 'blog_post',
     label: 'Blog post content',
   },
 }
@@ -34,6 +39,7 @@ export const Textarea = {
 export const Select = {
   args: {
     type: 'select',
+    name: 'region',
     label: 'Select your region',
   },
 }
