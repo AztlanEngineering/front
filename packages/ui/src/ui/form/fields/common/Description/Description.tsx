@@ -1,29 +1,28 @@
 /* @aztlan/generator-front 0.5.0 */
 import * as React from 'react'
 
-import { useInsertionEffect } from 'react'
+import { useInsertionEffect, useMemo } from 'react'
 
 import PropTypes from 'prop-types'
-import styleNames from '@aztlan/bem/exports.scss'
 
 // @ts-ignore
+import styleNames from '@aztlan/bem/exports.scss'
 
 // Local Definitions
 
 const baseClassName = styleNames.base
 
-const componentClassName = 'label'
+const componentClassName = 'description'
 
 /**
  * This is the component description.
  */
-function Label({
+function Description({
   className: userClassName,
   style,
-  children,
+  meta,
   name,
-  optional,
-  as: Wrapper,
+  children,
   // ...otherProps
 }) {
   useInsertionEffect(() => {
@@ -31,22 +30,28 @@ function Label({
     import('./styles.scss')
   }, [])
 
+  const isError = !!meta?.error
+
   return (
-    <Wrapper
-      htmlFor={Wrapper === 'label' ? `form.${name}` : undefined}
-      className={[baseClassName, componentClassName, userClassName]
+    <div
+      className={[
+        baseClassName,
+
+        componentClassName,
+        userClassName,
+        isError && styleNames.modifierError,
+      ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
     >
-      {children || name}
-      {optional && <span> (Optional)</span>}
-    </Wrapper>
+      {meta?.error || children}
+    </div>
   )
 }
 
-Label.propTypes = {
+Description.propTypes = {
   /**
    * The HTML id for this element
    */
@@ -66,26 +71,10 @@ Label.propTypes = {
    *  The children JSX
    */
   children: PropTypes.node,
-
-  /**
-   *  The html tag that acts as an input label
-   */
-  as: PropTypes.node,
-
-  /**
-   *  The name of the input label
-   */
-  name: PropTypes.string,
-
-  /**
-   * Whether the input should have an optional tag
-   */
-  optional: PropTypes.bool,
 }
 
-Label.defaultProps = {
-  as: 'label',
-  optional: false,
+Description.defaultProps = {
+  // someProp:false
 }
 
-export default Label
+export default Description

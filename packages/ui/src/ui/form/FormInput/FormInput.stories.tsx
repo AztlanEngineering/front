@@ -4,15 +4,32 @@ import * as React from 'react'
 import { Formik } from 'formik'
 import FormInput from './FormInput.tsx'
 
+function validateEmail(value) {
+  let error
+  if (!value) {
+    error = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+    error = 'Invalid email address'
+  }
+  return error
+}
+
 export default {
   title: 'form/FormInput',
   component: FormInput,
-  subcomponents: {
-    // Item:FormInput.Item
-  },
   decorators: [
     (StoryFn) => <div className="grid">{StoryFn()}</div>,
-    (StoryFn) => <Formik initialValues={{}}>{StoryFn()}</Formik>,
+    (StoryFn) => (
+      <Formik
+        initialValues={
+          {
+            // email: 'test',
+          }
+        }
+      >
+        {StoryFn()}
+      </Formik>
+    ),
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
   argTypes: {
@@ -25,6 +42,16 @@ export const Base = {
     type: 'text',
     name: 'name',
     label: 'Your name',
+  },
+}
+
+export const WithValidation = {
+  args: {
+    type: 'email',
+    name: 'email',
+    label: 'Your email',
+    validate: validateEmail,
+    description: 'Your email will be used as your login credential.',
   },
 }
 

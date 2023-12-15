@@ -6,7 +6,6 @@ import { useInsertionEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem/exports.scss'
-import { Form } from 'formik'
 import { TextInput, Textarea, Select } from '../fields/index.ts'
 
 // @ts-ignore

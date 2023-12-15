@@ -7,9 +7,6 @@ import Label from './Label.tsx'
 export default {
   title: 'form/fields/common/Label',
   component: Label,
-  subcomponents: {
-    // Item:Label.Item
-  },
   decorators: [
     // storyfn => <div className="">{ storyfn() }</div>,
   ],

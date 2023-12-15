@@ -24,6 +24,7 @@ function Textarea({
   style,
   name,
   rows,
+  optional,
   ...otherProps
 }) {
   useInsertionEffect(() => {

@@ -40,13 +40,7 @@ function TextInput({
       style={style}
       // {...otherProps}
     >
-      <input
-        id={`form.${name}`}
-        name={name}
-        type={inputType}
-        {...otherProps}
-        //
-      />
+      <input name={name} type={inputType} {...otherProps} />
     </div>
   )
 }

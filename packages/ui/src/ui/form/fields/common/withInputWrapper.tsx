@@ -1,7 +1,9 @@
 import * as React from 'react'
+import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { useField } from 'formik'
+import { useField, useFormikContext } from 'formik'
 import { Label } from './Label/index.ts'
+import { Description } from './Description/index.ts'
 
 const span = (defaultSpan, desktopSpan) => {
   const className = []
@@ -9,6 +11,8 @@ const span = (defaultSpan, desktopSpan) => {
   if (desktopSpan) className.push(`md-span-${desktopSpan}`)
   return className
 }
+
+const idPrefix = 'form'
 
 function Wrapper({
   Component,
@@ -23,22 +27,65 @@ function Wrapper({
   spanLabelDesktop,
   spanContent,
   spanContentDesktop,
+  mockLabel,
   ...otherProps
 }) {
-  const [field] = useField({ name, validate })
+  const [field, meta] = useField({ name, validate })
+
+  const isError = !!meta.error
+
+  const ariaProps = useMemo(
+    () => ({
+      field: {
+        id: `${idPrefix}.${name}`,
+        'aria-labelledby': `${idPrefix}.${name}.label`,
+        'aria-describedby': `${idPrefix}.${name}.description${
+          isError ? ` ${idPrefix}.${name}.error` : ''
+        }`,
+      },
+      label: {
+        id: `${idPrefix}.${name}.label`,
+      },
+      description: {
+        id: `${idPrefix}.${name}.description`,
+      },
+      state: {
+        id: `${idPrefix}.${name}.error`,
+      },
+    }),
+    [name, isError],
+  )
+
   const fieldProps = {
     name,
-    optional,
+    // optional,
     type: inputType,
-    validate,
+    // validate,
+    meta,
+    ...ariaProps.field,
     ...field,
     ...otherProps,
   }
+
   const labelProps = {
     name,
     children: label,
     optional,
+    ...ariaProps.label,
   }
+
+  const descriptionProps = {
+    name,
+    children: description,
+    ...ariaProps.description,
+  }
+
+  const stateProps = {
+    name,
+    meta,
+    ...ariaProps.state,
+  }
+
   return (
     <>
       <div
@@ -46,14 +93,16 @@ function Wrapper({
           .filter(Boolean)
           .join(' ')}
       >
-        <Label {...labelProps} />
+        <Label {...labelProps} as={mockLabel ? 'p' : undefined} />
       </div>
       <div
         className={[...span(spanContent, spanContentDesktop)]
           .filter(Boolean)
           .join(' ')}
       >
+        {description && <Description {...descriptionProps} />}
         <Component {...fieldProps} />
+        {meta.error && <Description {...stateProps} />}
       </div>
       {/* Error handling and other common functionalities */}
     </>
@@ -61,7 +110,7 @@ function Wrapper({
 }
 
 Wrapper.propTypes = {
-  Component: PropTypes.node,
+  Component: PropTypes.elementType.isRequired,
   label: PropTypes.string,
   spanLabel: PropTypes.number,
   spanLabelDesktop: PropTypes.number,
@@ -75,9 +124,18 @@ Wrapper.defaultProps = {
   spanLabelDesktop: 8,
   spanContent: 8,
   spanContentDesktop: 9,
+  mockLabel: false,
 }
 
-const areEqual = (prevProps, nextProps) => prevProps.value === nextProps.value
+const areEqual = (prevProps, nextProps) => {
+  if (prevProps.value !== nextProps.value) {
+    return false
+  }
+  if (prevProps.meta !== nextProps.meta) {
+    return false
+  }
+  return true
+}
 
 const withInputWrapper = (Component) => function (props) {
   return (
