@@ -7,9 +7,6 @@ import <%= name %> from './<%= name %>.tsx'
 export default {
   title: '<%= fullname %>',
   component: <%= name %>,
-  subcomponents: {
-    //Item:<%= name %>.Item
-  },
   decorators:[
     //storyfn => <div className="">{ storyfn() }</div>,
   ],
