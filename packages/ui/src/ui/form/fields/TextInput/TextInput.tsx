@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
-import { withInputWrapper } from '../common/index.ts'
+import { withFieldWrapper } from '../common/index.ts'
 
 // Local Definitions
 
@@ -71,4 +71,4 @@ TextInput.defaultProps = {
   // someProp:false
 }
 
-export default withInputWrapper(TextInput)
+export default withFieldWrapper(TextInput)

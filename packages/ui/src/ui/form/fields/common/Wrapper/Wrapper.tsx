@@ -1,9 +1,13 @@
+/* @aztlan/generator-front 0.6.0 */
 import * as React from 'react'
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { useField, useFormikContext } from 'formik'
-import { Label } from './Label/index.ts'
-import { Description } from './Description/index.ts'
+
+import { useField } from 'formik'
+
+import { Label } from '../Label/index.ts'
+import { Description } from '../Description/index.ts'
+import Debugger from './Debugger.ts'
 
 const span = (defaultSpan, desktopSpan) => {
   const className = []
@@ -14,6 +18,9 @@ const span = (defaultSpan, desktopSpan) => {
 
 const idPrefix = 'form'
 
+/**
+ * This is the component description.
+ */
 function Wrapper({
   Component,
   label,
@@ -28,6 +35,7 @@ function Wrapper({
   spanContent,
   spanContentDesktop,
   mockLabel,
+  debug, // TODO TEMP, will be moved to the Form
   ...otherProps
 }) {
   const [field, meta] = useField({ name, validate })
@@ -103,6 +111,7 @@ function Wrapper({
         {description && <Description {...descriptionProps} />}
         <Component {...fieldProps} />
         {meta.error && <Description {...stateProps} />}
+        {debug && <Debugger />}
       </div>
       {/* Error handling and other common functionalities */}
     </>
@@ -127,26 +136,4 @@ Wrapper.defaultProps = {
   mockLabel: false,
 }
 
-const areEqual = (prevProps, nextProps) => {
-  if (prevProps.value !== nextProps.value) {
-    return false
-  }
-  if (prevProps.meta !== nextProps.meta) {
-    return false
-  }
-  return true
-}
-
-const withInputWrapper = (Component) => function (props) {
-  return (
-    <Wrapper
-      Component={
-          React.memo(Component, areEqual)
-          // Component
-        }
-      {...props}
-    />
-  )
-} // TODO add react memp
-
-export default withInputWrapper
+export default Wrapper

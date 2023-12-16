@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
-import { withInputWrapper } from '../common/index.ts'
+import { withFieldWrapper } from '../common/index.ts'
 
 // Local Definitions
 
@@ -24,7 +24,6 @@ function Textarea({
   style,
   name,
   rows,
-  optional,
   ...otherProps
 }) {
   useInsertionEffect(() => {
@@ -42,7 +41,6 @@ function Textarea({
       // {...otherProps}
     >
       <textarea
-        id={`form.${name}`}
         name={name}
         rows={rows}
         {...otherProps}
@@ -67,15 +65,10 @@ Textarea.propTypes = {
    * The React-written, css properties for this element.
    */
   style: PropTypes.objectOf(PropTypes.string),
-
-  /**
-   *  The children JSX
-   */
-  children: PropTypes.node,
 }
 
 Textarea.defaultProps = {
   rows: 4,
 }
 
-export default withInputWrapper(Textarea)
+export default withFieldWrapper(Textarea)

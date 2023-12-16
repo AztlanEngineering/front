@@ -45,6 +45,15 @@ export const Base = {
   },
 }
 
+export const WithDescription = {
+  args: {
+    type: 'text',
+    name: 'last_name',
+    label: 'Your last name',
+    description: 'This is where we explain why this field is important',
+  },
+}
+
 export const WithValidation = {
   args: {
     type: 'email',
@@ -68,6 +77,13 @@ export const Select = {
     type: 'select',
     name: 'region',
     label: 'Select your region',
+    options: [
+      { value: 'north', label: 'North' },
+      { value: 'south', label: 'South' },
+      { value: 'east', label: 'East', disabled: true },
+      { value: 'west', label: 'West' },
+    ],
+    debug: true,
   },
 }
 

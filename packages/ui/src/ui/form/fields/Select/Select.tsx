@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 
 // @ts-ignore
 import styleNames from '@aztlan/bem/exports.scss'
-import { withInputWrapper } from '../common/index.ts'
+import { withFieldWrapper } from '../common/index.ts'
 
 // Local Definitions
 
@@ -22,8 +22,9 @@ function Select({
   id,
   className: userClassName,
   style,
-  children,
-  // ...otherProps
+  name,
+  options,
+  ...otherProps
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
@@ -39,8 +40,17 @@ function Select({
       style={style}
       // {...otherProps}
     >
-      Select
-      {children}
+      <select name={name} {...otherProps}>
+        {options.map((option) => (
+          <option
+            key={option.value}
+            value={option.value}
+            disabled={option?.disabled || false}
+          >
+            {option.label}
+          </option>
+        ))}
+      </select>
     </div>
   )
 }
@@ -62,13 +72,19 @@ Select.propTypes = {
   style: PropTypes.objectOf(PropTypes.string),
 
   /**
-   *  The children JSX
+   * The options of the select input
    */
-  children: PropTypes.node,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string,
+      label: PropTypes.string,
+      disabled: PropTypes.bool,
+    }).isRequired,
+  ),
 }
 
 Select.defaultProps = {
   // someProp:false
 }
 
-export default withInputWrapper(Select)
+export default withFieldWrapper(Select)

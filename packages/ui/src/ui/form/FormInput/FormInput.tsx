@@ -142,6 +142,7 @@ FormInput.propTypes = {
 FormInput.defaultProps = {
   optional: false,
   disabled: false,
+  debug: false,
   // someProp:false
 }
 
