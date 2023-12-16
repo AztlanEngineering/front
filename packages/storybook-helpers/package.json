@@ -22,7 +22,7 @@
     "@aztlan/build-tools": "^0.5.1",
     "@aztlan/eslint-config-base": "^0.5.0",
     "@aztlan/typescript-config": "^0.5.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   },
   "eslintConfig": {
     "extends": "@aztlan/eslint-config-base"
@@ -30,7 +30,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-relay": "^16.0.0",
-    "relay-test-utils": "^16.0.0"
+    "react-relay": "^16.1.0",
+    "relay-test-utils": "^16.1.0"
   }
 }

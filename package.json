@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "jsonlint": "^1.6.3",
-    "lerna": "=7.4.1"
+    "lerna": "=8.0.1"
   },
   "babel": {
     "presets": [

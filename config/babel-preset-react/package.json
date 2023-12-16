@@ -8,10 +8,10 @@
   "devDependencies": {
     "@aztlan/eslint-config": "^0.2.0",
     "@babel/helper-plugin-utils": "^7.22.5",
-    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-env": "^7.23.6",
     "@babel/preset-typescript": "^7.23.3",
     "@loadable/babel-plugin": "^5.16.1",
     "babel-plugin-module-resolver": "^5.0.0",
-    "babel-plugin-relay": "^16.0.0"
+    "babel-plugin-relay": "^16.1.0"
   }
 }
