@@ -12,13 +12,14 @@ const areEqual = (prevProps, nextProps) => {
   return true
 }
 
-const withWrapper = (Component) => function (props) {
+const withWrapper = (Component, options = {}) => function (props) {
   return (
     <Wrapper
       Component={
           React.memo(Component, areEqual)
           // Component
         }
+      {...options}
       {...props}
     />
   )

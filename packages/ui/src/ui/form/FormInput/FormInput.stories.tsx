@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import { Formik } from 'formik'
 import FormInput from './FormInput.tsx'
+import { allTypes } from '../constants.ts'
 
 function validateEmail(value) {
   let error
@@ -33,7 +34,7 @@ export default {
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
   argTypes: {
-    type: { control: 'select', options: FormInput.allTypes },
+    type: { control: 'select', options: allTypes },
   },
 }
 
@@ -69,6 +70,15 @@ export const Textarea = {
     type: 'textarea',
     name: 'blog_post',
     label: 'Blog post content',
+  },
+}
+
+export const Checkbox = {
+  args: {
+    type: 'checkbox',
+    name: 'newsletter_opt_in',
+    label: 'Newsletter opt-in',
+    debug: true,
   },
 }
 

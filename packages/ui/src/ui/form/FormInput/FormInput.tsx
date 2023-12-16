@@ -6,7 +6,10 @@ import { useInsertionEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem/exports.scss'
-import { TextInput, Textarea, Select } from '../fields/index.ts'
+import {
+  Checkbox, TextInput, Textarea, Select,
+} from '../fields/index.ts'
+import { allTypes } from '../constants.ts'
 
 // @ts-ignore
 
@@ -15,23 +18,6 @@ import { TextInput, Textarea, Select } from '../fields/index.ts'
 const baseClassName = styleNames.base
 
 const componentClassName = 'input'
-
-const allTypes = [
-  'text',
-  'email',
-  'password',
-  'number',
-  'date',
-  'datetime',
-  'month',
-  'tel',
-  'hidden',
-  'select',
-  // 'choices',
-  'textarea',
-  // 'query-combobox',
-  // 'query-select',
-]
 
 /**
  * This is the component description.
@@ -60,6 +46,14 @@ function FormInput({
     case 'select':
       return (
         <Select
+          className={newClassName}
+          {...otherProps}
+          //
+        />
+      )
+    case 'checkbox':
+      return (
+        <Checkbox
           className={newClassName}
           {...otherProps}
           //
@@ -135,7 +129,6 @@ FormInput.propTypes = {
    * The autoComplete value that the browser should watch for the input
    * `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete`
    */
-
   autoComplete: PropTypes.string,
 }
 
@@ -145,7 +138,5 @@ FormInput.defaultProps = {
   debug: false,
   // someProp:false
 }
-
-FormInput.allTypes = allTypes
 
 export default FormInput

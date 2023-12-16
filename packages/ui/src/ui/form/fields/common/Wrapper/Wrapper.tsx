@@ -8,6 +8,7 @@ import { useField } from 'formik'
 import { Label } from '../Label/index.ts'
 import { Description } from '../Description/index.ts'
 import Debugger from './Debugger.ts'
+import { htmlTypes } from '../../../constants.ts'
 
 const span = (defaultSpan, desktopSpan) => {
   const className = []
@@ -36,9 +37,10 @@ function Wrapper({
   spanContentDesktop,
   mockLabel,
   debug, // TODO TEMP, will be moved to the Form
+  hookOptions,
   ...otherProps
 }) {
-  const [field, meta] = useField({ name, validate })
+  const [field, meta] = useField({ name, validate, ...hookOptions })
 
   const isError = !!meta.error
 
@@ -67,7 +69,7 @@ function Wrapper({
   const fieldProps = {
     name,
     // optional,
-    type: inputType,
+    type: inputType, // This means the props need to be spread first ! Otherwise type:undefined will override children
     // validate,
     meta,
     ...ariaProps.field,
@@ -134,6 +136,7 @@ Wrapper.defaultProps = {
   spanContent: 8,
   spanContentDesktop: 9,
   mockLabel: false,
+  hookOptions: {},
 }
 
 export default Wrapper

@@ -22,7 +22,6 @@ function Select({
   id,
   className: userClassName,
   style,
-  name,
   options,
   ...otherProps
 }) {
@@ -40,7 +39,7 @@ function Select({
       style={style}
       // {...otherProps}
     >
-      <select name={name} {...otherProps}>
+      <select {...otherProps}>
         {options.map((option) => (
           <option
             key={option.value}

@@ -1,4 +1,4 @@
-/* @aztlan/generator-front 0.5.0 */
+/* @aztlan/generator-front 0.6.0 */
 import * as React from 'react'
 
 import { useInsertionEffect } from 'react'
@@ -13,13 +13,19 @@ import { withFieldWrapper } from '../common/index.ts'
 
 const baseClassName = styleNames.base
 
-const componentClassName = 'text-input'
+const componentClassName = 'checkbox'
 
 /**
- * This is the component description.
+ * At the moment this is the exact same as TextInput
+ * However as we add more features to the TextInput,
+ * it will diverge
  */
-function TextInput({
-  id, className: userClassName, style, ...otherProps
+function Checkbox({
+  id,
+  className: userClassName,
+  style,
+  children,
+  ...otherProps
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
@@ -35,12 +41,12 @@ function TextInput({
       style={style}
       // {...otherProps}
     >
-      <input {...otherProps} />
+      <input {...otherProps} type="checkbox" />
     </div>
   )
 }
 
-TextInput.propTypes = {
+Checkbox.propTypes = {
   /**
    * The HTML id for this element
    */
@@ -62,8 +68,12 @@ TextInput.propTypes = {
   children: PropTypes.node,
 }
 
-TextInput.defaultProps = {
+Checkbox.defaultProps = {
   // someProp:false
 }
 
-export default withFieldWrapper(TextInput)
+export default withFieldWrapper(Checkbox, {
+  hookOptions: {
+    type: 'checkbox',
+  },
+})

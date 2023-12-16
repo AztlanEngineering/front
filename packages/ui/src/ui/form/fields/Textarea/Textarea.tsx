@@ -22,7 +22,6 @@ function Textarea({
   id,
   className: userClassName,
   style,
-  name,
   rows,
   ...otherProps
 }) {
@@ -41,7 +40,6 @@ function Textarea({
       // {...otherProps}
     >
       <textarea
-        name={name}
         rows={rows}
         {...otherProps}
         //
