@@ -1,18 +1,18 @@
 /* @aztlan/generator-front 0.5.0 */
-import * as React from 'react'
+import * as React from "react";
 
-import { useInsertionEffect } from 'react'
+import { useInsertionEffect } from "react";
 
-import PropTypes from 'prop-types'
-import styleNames from '@aztlan/bem/exports.scss'
+import PropTypes from "prop-types";
+import styleNames from "@aztlan/bem";
 
 // @ts-ignore
 
 // Local Definitions
 
-const baseClassName = styleNames.base
+const baseClassName = styleNames.base;
 
-const componentClassName = 'label'
+const componentClassName = "label";
 
 /**
  * This is the component description.
@@ -23,27 +23,27 @@ function Label({
   children,
   name,
   optional,
-  as: Wrapper,
+  as: Wrapper
   // ...otherProps
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+    import("./styles.scss");
+  }, []);
 
   return (
     <Wrapper
-      htmlFor={Wrapper === 'label' ? `form.${name}` : undefined}
+      htmlFor={Wrapper === "label" ? `form.${name}` : undefined}
       className={[baseClassName, componentClassName, userClassName]
-        .filter((e) => e)
-        .join(' ')}
+        .filter(e => e)
+        .join(" ")}
       style={style}
       // {...otherProps}
     >
       {children || name}
       {optional && <span> (Optional)</span>}
     </Wrapper>
-  )
+  );
 }
 
 Label.propTypes = {
@@ -80,12 +80,12 @@ Label.propTypes = {
   /**
    * Whether the input should have an optional tag
    */
-  optional: PropTypes.bool,
-}
+  optional: PropTypes.bool
+};
 
 Label.defaultProps = {
-  as: 'label',
-  optional: false,
-}
+  as: "label",
+  optional: false
+};
 
-export default Label
+export default Label;

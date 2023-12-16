@@ -1,18 +1,18 @@
 /* @aztlan/generator-front 0.2.0 */
-import * as React from 'react'
+import * as React from "react";
 
-import { useInsertionEffect } from 'react'
+import { useInsertionEffect } from "react";
 
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 // @ts-ignore
-import styleNames from '@aztlan/bem/exports.scss'
+import styleNames from "@aztlan/bem";
 
-import { useFragment } from 'react-relay'
+import { useFragment } from "react-relay";
 
 // Local Definitions
-const baseClassName = styleNames.base
-const componentClassName = 'login-button'
+const baseClassName = styleNames.base;
+const componentClassName = "login-button";
 
 const FRAGMENT = graphql`
   fragment LoginButtonFragment on Query
@@ -21,13 +21,13 @@ const FRAGMENT = graphql`
       google
     }
   }
-`
+`;
 
 const QUERY = graphql`
   query LoginButtonQuery($resource: String!) {
     ...LoginButtonFragment @arguments(resource: $resource)
   }
-`
+`;
 
 /**
  * This is the LoginButton component description.
@@ -41,24 +41,24 @@ function LoginButton({
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+    import("./styles.scss");
+  }, []);
 
-  const { oAuth2Links } = useFragment(FRAGMENT, data)
-  const { google } = oAuth2Links
+  const { oAuth2Links } = useFragment(FRAGMENT, data);
+  const { google } = oAuth2Links;
 
   return (
     <button
       id={id}
       className={[baseClassName, componentClassName, userClassName]
-        .filter((e) => e)
-        .join(' ')}
+        .filter(e => e)
+        .join(" ")}
       style={style}
       // {...otherProps}
     >
       <a href={google}>Login with Google</a>
     </button>
-  )
+  );
 }
 
 LoginButton.propTypes = {
@@ -80,14 +80,14 @@ LoginButton.propTypes = {
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
-}
+  children: PropTypes.node
+};
 
 LoginButton.defaultProps = {
   // someProp:false
-}
+};
 
-LoginButton.FRAGMENT = FRAGMENT
-LoginButton.QUERY = QUERY
+LoginButton.FRAGMENT = FRAGMENT;
+LoginButton.QUERY = QUERY;
 
-export default LoginButton
+export default LoginButton;

@@ -1,46 +1,39 @@
 /* @aztlan/generator-front 0.5.0 */
-import * as React from 'react'
+import * as React from "react";
 
-import { useInsertionEffect } from 'react'
+import { useInsertionEffect } from "react";
 
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 // @ts-ignore
-import styleNames from '@aztlan/bem/exports.scss'
-import { withFieldWrapper } from '../common/index.ts'
+import styleNames from "@aztlan/bem";
+import { withFieldWrapper } from "../common/index.ts";
 
 // Local Definitions
 
-const baseClassName = styleNames.base
+const baseClassName = styleNames.base;
 
-const componentClassName = 'select'
+const componentClassName = "select";
 
 /**
  * This is the component description.
  */
-function Select({
-  id,
-  className: userClassName,
-  style,
-  options,
-  ...otherProps
-}) {
+function Select({ className: userClassName, style, options, ...otherProps }) {
   useInsertionEffect(() => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+    import("./styles.scss");
+  }, []);
 
   return (
     <div
-      id={id}
       className={[baseClassName, componentClassName, userClassName]
-        .filter((e) => e)
-        .join(' ')}
+        .filter(e => e)
+        .join(" ")}
       style={style}
       // {...otherProps}
     >
       <select {...otherProps}>
-        {options.map((option) => (
+        {options.map(option => (
           <option
             key={option.value}
             value={option.value}
@@ -51,7 +44,7 @@ function Select({
         ))}
       </select>
     </div>
-  )
+  );
 }
 
 Select.propTypes = {
@@ -77,13 +70,13 @@ Select.propTypes = {
     PropTypes.shape({
       value: PropTypes.string,
       label: PropTypes.string,
-      disabled: PropTypes.bool,
-    }).isRequired,
-  ),
-}
+      disabled: PropTypes.bool
+    }).isRequired
+  )
+};
 
 Select.defaultProps = {
   // someProp:false
-}
+};
 
-export default withFieldWrapper(Select)
+export default withFieldWrapper(Select);

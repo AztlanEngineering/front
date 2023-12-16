@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@aztlan/base-styles": "^0.6.0",
-    "@aztlan/bem": "^0.3.0",
+    "@aztlan/bem": "^0.3.3",
     "@aztlan/react-helpers": "^0.6.0",
     "@aztlan/storybook-addon-relay": "^0.6.0",
     "babel-plugin-formatjs": "^10.5.10",

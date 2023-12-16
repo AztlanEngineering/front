@@ -1,41 +1,34 @@
 /* @aztlan/generator-front 0.5.0 */
-import * as React from 'react'
+import * as React from "react";
 
-import { useInsertionEffect } from 'react'
+import { useInsertionEffect } from "react";
 
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 // @ts-ignore
-import styleNames from '@aztlan/bem/exports.scss'
-import { withFieldWrapper } from '../common/index.ts'
+import styleNames from "@aztlan/bem";
+import { withFieldWrapper } from "../common/index.ts";
 
 // Local Definitions
 
-const baseClassName = styleNames.base
+const baseClassName = styleNames.base;
 
-const componentClassName = 'textarea'
+const componentClassName = "textarea";
 
 /**
  * This is the component description.
  */
-function Textarea({
-  id,
-  className: userClassName,
-  style,
-  rows,
-  ...otherProps
-}) {
+function Textarea({ className: userClassName, style, rows, ...otherProps }) {
   useInsertionEffect(() => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+    import("./styles.scss");
+  }, []);
 
   return (
     <div
-      id={id}
       className={[baseClassName, componentClassName, userClassName]
-        .filter((e) => e)
-        .join(' ')}
+        .filter(e => e)
+        .join(" ")}
       style={style}
       // {...otherProps}
     >
@@ -45,7 +38,7 @@ function Textarea({
         //
       />
     </div>
-  )
+  );
 }
 
 Textarea.propTypes = {
@@ -62,11 +55,11 @@ Textarea.propTypes = {
   /**
    * The React-written, css properties for this element.
    */
-  style: PropTypes.objectOf(PropTypes.string),
-}
+  style: PropTypes.objectOf(PropTypes.string)
+};
 
 Textarea.defaultProps = {
-  rows: 4,
-}
+  rows: 4
+};
 
-export default withFieldWrapper(Textarea)
+export default withFieldWrapper(Textarea);

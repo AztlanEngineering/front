@@ -2,9 +2,10 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'airbnb',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:storybook/recommended',
-    'plugin:jsx-a11y/recommended',
+    'airbnb-typescript',
+    // 'plugin:@typescript-eslint/recommended',
+    // 'plugin:storybook/recommended',
+    // 'plugin:jsx-a11y/recommended',
   ],
   parser: '@typescript-eslint/parser',
   plugins: [

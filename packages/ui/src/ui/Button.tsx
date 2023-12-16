@@ -1,42 +1,38 @@
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
 // @ts-ignore
-import styles from '@aztlan/bem/exports.scss'
+import styles from "@aztlan/bem";
 
 // @ts-ignore
 
 /**
  * Primary UI component for user interaction
  */
-export function Button({
-  primary, backgroundColor, size, label, ...props
-}) {
+export function Button({ primary, backgroundColor, size, label, ...props }) {
   useEffect(() => {
     // @ts-ignore
-    import('./button.scss')
-  }, [])
+    import("./button.scss");
+  }, []);
   const mode = primary
-    ? 'storybook-button--primary'
-    : 'storybook-button--secondary'
+    ? "storybook-button--primary"
+    : "storybook-button--secondary";
   return (
     <button
       type="button"
       className={[
-        'borders',
-        'storybook-button',
+        "borders",
+        "storybook-button",
         `storybook-button--${size}`,
-        mode,
-      ].join(' ')}
+        mode
+      ].join(" ")}
       style={backgroundColor && { backgroundColor }}
       {...props}
     >
       Hello
-      {styles.modifierGhost}
-      {' '}
-      {label}
+      {styles.modifierGhost} {label}
     </button>
-  )
+  );
 }
 
 Button.propTypes = {
@@ -51,7 +47,7 @@ Button.propTypes = {
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
   /**
    * Button contents
    */
@@ -59,12 +55,12 @@ Button.propTypes = {
   /**
    * Optional click handler
    */
-  onClick: PropTypes.func,
-}
+  onClick: PropTypes.func
+};
 
 Button.defaultProps = {
   backgroundColor: null,
   primary: false,
-  size: 'medium',
-  onClick: undefined,
-}
+  size: "medium",
+  onClick: undefined
+};
