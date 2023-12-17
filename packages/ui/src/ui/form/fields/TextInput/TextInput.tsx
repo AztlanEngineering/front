@@ -18,15 +18,23 @@ const componentClassName = 'text-input'
 /**
  * This is the component description.
  */
-function TextInput({ className: userClassName, style, ...otherProps }) {
-  useInsertionEffect(() => {
+function TextInput({
+  className: userClassName, style, ...otherProps
+}) {
+  useInsertionEffect(
+    () => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+      import('./styles.scss')
+    }, [],
+  )
 
   return (
     <div
-      className={[baseClassName, componentClassName, userClassName]
+      className={[
+        baseClassName,
+        componentClassName,
+        userClassName,
+      ]
         .filter((e) => e)
         .join(' ')}
       style={style}
@@ -41,22 +49,22 @@ TextInput.propTypes = {
   /**
    * The HTML id for this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The HTML class names for this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The React-written, css properties for this element.
    */
-  style: PropTypes.objectOf(PropTypes.string),
+  style:PropTypes.objectOf(PropTypes.string),
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 }
 
 TextInput.defaultProps = {

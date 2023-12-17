@@ -27,7 +27,7 @@
     "test:jest:update": "npm run test:jest -- --updateSnapshot",
     "test:stylelint": "stylelint 'src/**/*.scss' --rd --rdd --risd --color --formatter verbose",
     "test:stylelint:fix": "npm run test:stylelint -- --fix",
-    "test:tsc": "tsc"
+    "esl": "eslint"
   },
   "author": "",
   "license": "ISC",
@@ -53,6 +53,7 @@
     "@storybook/react": "^7.6.5",
     "@storybook/react-webpack5": "^7.6.5",
     "@storybook/testing-library": "^0.2.2",
+    "@stylistic/eslint-plugin": "^1.5.1",
     "@types/jest": "^29.5.11",
     "@types/prop-types": "^15.7.11",
     "babel-jest": "^29.7.0",

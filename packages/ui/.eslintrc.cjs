@@ -1,46 +1,92 @@
-module.exports = {
-  extends: [
-    'eslint:recommended', 
-    'plugin:@typescript-eslint/recommended'
-    //'plugin:@typescript-eslint/recommended-type-checked',
+const ignorePatterns = [
+  '!.storybook/*',
+  '**/storybook-static/**',
+  '**/node_modules/**',
+  '**/public/**',
+  '**/dist/**',
+]
 
+const sharedRules = {
+  'import/extensions':[
+    'error',
+    'always',
+    { ignorePackages: true },
   ],
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    //project: './tsconfig.json' // Path to your TypeScript config file
-    project: true,
-    tsconfigRootDir: __dirname,
+  '@stylistic/array-element-newline':[
+    'error',
+    {
+      multiline:true, minItems:3,
+    },
+  ],
+  '@stylistic/array-bracket-newline':[
+    'error',
+    {
+      multiline:true, minItems:3,
+    },
+  ],
+  'react/jsx-props-no-spreading'     :[0],
+  'function-paren-newline'           :['error', { minItems: 2 }],
+  '@stylistic/function-paren-newline':['error', { minItems: 2 }],
+  '@stylistic/object-curly-newline'  :['error', { minProperties: 2 }],
+  'key-spacing'                      :[
+    'error',
+    {
+      multiLine:{
+        beforeColon:false,
+        afterColon :false,
+      },
+      align:{
+        beforeColon:false,
+        afterColon :false,
+        on         :'colon',
+      },
+    },
+  ],
+}
+
+module.exports = {
+  // These are the two rules that cannot be overriden
+  root:true,
+  ignorePatterns,
+
+  // Main modular config
+  extends:['eslint:recommended', 'airbnb'],
+  parser :'@typescript-eslint/parser',
+  env    :{
+    browser:true,
+    node   :true,
   },
-  root: true,
-  ignorePatterns: [
-    '!.storybook/*',
-    '**/storybook-static/**',
-    '**/node_modules/**',
-    '**/public/**',
-    '**/dist/**',
+  plugins  :['@stylistic'],
+  overrides:[
+    {
+      files  :['*.ts', '*.tsx'], // Apply these settings only to TypeScript files
+      extends:[
+        'airbnb-typescript',
+        // 'plugin:@typescript-eslint/recommended',
+        // 'plugin:@typescript-eslint/recommended-type-checked',
+      ],
+      // plugins: ['@typescript-eslint'], // Already provided by airbnb
+      parserOptions:{
+        ecmaVersion    :2020,
+        sourceType     :'module',
+        project        :'./tsconfig.json', // Path to your TypeScript config file
+        tsconfigRootDir:__dirname,
+      },
+      rules:{
+        '@typescript-eslint/semi':[2, 'never'],
+        ...sharedRules,
+      },
+    },
   ],
-  "rules": {
-   "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-   ]
-  }
-};
+  rules:{
+    semi:['error', 'never'],
+    ...sharedRules,
+  },
+}
 /*
 module.exports = {
   extends: [
     'eslint:recommended',
-    //'airbnb',
-    //'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
     // 'plugin:storybook/recommended',
     // 'plugin:jsx-a11y/recommended',
@@ -53,17 +99,9 @@ module.exports = {
     '@typescript-eslint',
     // 'jsx-a11y',
   ],
-  env: {
-    browser: true,
-    node: true,
-  },
   globals: {
     // graphql:'readonly',
   },
   rules: {
-    '@typescript-eslint/semi': [
-      2,
-      'never',
-    ],
   },
-}*/
+} */

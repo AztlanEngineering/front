@@ -16,9 +16,9 @@ function validateEmail(value) {
 }
 
 export default {
-  title: 'form/FormInput',
-  component: FormInput,
-  decorators: [
+  title     :'form/FormInput',
+  component :FormInput,
+  decorators:[
     (StoryFn) => <div className="grid">{StoryFn()}</div>,
     (StoryFn) => (
       <Formik
@@ -33,67 +33,67 @@ export default {
     ),
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes: {
-    type: { control: 'select', options: allTypes },
+  argTypes:{
+    type:{ control: 'select', options: allTypes },
   },
 }
 
 export const Base = {
-  args: {
-    type: 'text',
-    name: 'name',
-    label: 'Your name',
+  args:{
+    type :'text',
+    name :'name',
+    label:'Your name',
   },
 }
 
 export const WithDescription = {
-  args: {
-    type: 'text',
-    name: 'last_name',
-    label: 'Your last name',
-    description: 'This is where we explain why this field is important',
+  args:{
+    type       :'text',
+    name       :'last_name',
+    label      :'Your last name',
+    description:'This is where we explain why this field is important',
   },
 }
 
 export const WithValidation = {
-  args: {
-    type: 'email',
-    name: 'email',
-    label: 'Your email',
-    validate: validateEmail,
-    description: 'Your email will be used as your login credential.',
+  args:{
+    type       :'email',
+    name       :'email',
+    label      :'Your email',
+    validate   :validateEmail,
+    description:'Your email will be used as your login credential.',
   },
 }
 
 export const Textarea = {
-  args: {
-    type: 'textarea',
-    name: 'blog_post',
-    label: 'Blog post content',
+  args:{
+    type :'textarea',
+    name :'blog_post',
+    label:'Blog post content',
   },
 }
 
 export const Checkbox = {
-  args: {
-    type: 'checkbox',
-    name: 'newsletter_opt_in',
-    label: 'Newsletter opt-in',
-    debug: true,
+  args:{
+    type :'checkbox',
+    name :'newsletter_opt_in',
+    label:'Newsletter opt-in',
+    debug:true,
   },
 }
 
 export const Select = {
-  args: {
-    type: 'select',
-    name: 'region',
-    label: 'Select your region',
-    options: [
+  args:{
+    type   :'select',
+    name   :'region',
+    label  :'Select your region',
+    options:[
       { value: 'north', label: 'North' },
       { value: 'south', label: 'South' },
       { value: 'east', label: 'East', disabled: true },
       { value: 'west', label: 'West' },
     ],
-    debug: true,
+    debug:true,
   },
 }
 

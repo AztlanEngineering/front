@@ -1,17 +1,17 @@
 /* @aztlan/generator-front 0.5.0 */
-import * as React from "react";
+import * as React from 'react'
 
-import { useInsertionEffect, useMemo } from "react";
+import { useInsertionEffect, useMemo } from 'react'
 
-import * as PropTypes from "prop-types";
+import * as PropTypes from 'prop-types'
 
-import styleNames from "@aztlan/bem";
+import styleNames from '@aztlan/bem'
 
 // Local Definitions
 
-const baseClassName = styleNames.base;
+const baseClassName = styleNames.base
 
-const componentClassName = "description";
+const componentClassName = 'description'
 
 /**
  * This is the component description.
@@ -21,15 +21,15 @@ function Description({
   style,
   meta,
   name,
-  children
+  children,
   // ...otherProps
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
-    import("./styles.scss");
-  }, []);
+    import('./styles.scss')
+  }, [])
 
-  const isError = !!meta?.error;
+  const isError = !!meta?.error
 
   return (
     <div
@@ -38,16 +38,16 @@ function Description({
 
         componentClassName,
         userClassName,
-        isError && styleNames.modifierError
+        isError && styleNames.modifierError,
       ]
         .filter(e => e)
-        .join(" ")}
+        .join(' ')}
       style={style}
       // {...otherProps}
     >
       {meta?.error || children}
     </div>
-  );
+  )
 }
 
 Description.propTypes = {
@@ -69,11 +69,11 @@ Description.propTypes = {
   /**
    *  The children JSX
    */
-  children: PropTypes.node
-};
+  children: PropTypes.node,
+}
 
 Description.defaultProps = {
   // someProp:false
-};
+}
 
-export default Description;
+export default Description
