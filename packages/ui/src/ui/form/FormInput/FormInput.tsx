@@ -1,60 +1,64 @@
 /* @aztlan/generator-front 0.5.0 */
-import * as React from "react";
+import * as React from 'react'
 
-import { useInsertionEffect } from "react";
+import { useInsertionEffect } from 'react'
 
-import PropTypes from "prop-types";
+import * as PropTypes from 'prop-types'
 
-import styleNames from "@aztlan/bem";
-import { Checkbox, TextInput, Textarea, Select } from "../fields/index.ts";
-import { allTypes } from "../constants.ts";
+import styleNames from '@aztlan/bem'
+import {
+  Checkbox, TextInput, Textarea, Select,
+} from '../fields/index.ts'
+import { allTypes } from '../constants.ts'
 
 // @ts-ignore
 
 // Local Definitions
 
-const baseClassName = styleNames.base;
+const baseClassName = styleNames.base
 
-const componentClassName = "input";
+const componentClassName = 'input'
 
 /**
  * This is the component description.
  */
-function FormInput({ className, type: inputType, children, ...otherProps }) {
+function FormInput({
+  className, type: inputType, children, ...otherProps
+}) {
   useInsertionEffect(() => {
     // @ts-ignore
-    import("./styles.scss");
-  }, []);
+    import('./styles.scss')
+  }, [])
 
   const newClassName = [className, componentClassName]
     .filter(Boolean)
-    .join(" ");
+    .join(' ')
 
   switch (inputType) {
-    case "textarea":
+    case 'textarea':
       return (
         <Textarea
           className={newClassName}
           {...otherProps}
           //
         />
-      );
-    case "select":
+      )
+    case 'select':
       return (
         <Select
           className={newClassName}
           {...otherProps}
           //
         />
-      );
-    case "checkbox":
+      )
+    case 'checkbox':
       return (
         <Checkbox
           className={newClassName}
           {...otherProps}
           //
         />
-      );
+      )
     default:
       return (
         <TextInput
@@ -63,7 +67,7 @@ function FormInput({ className, type: inputType, children, ...otherProps }) {
           {...otherProps}
           //
         />
-      );
+      )
   }
 }
 
@@ -125,14 +129,14 @@ FormInput.propTypes = {
    * The autoComplete value that the browser should watch for the input
    * `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete`
    */
-  autoComplete: PropTypes.string
-};
+  autoComplete: PropTypes.string,
+}
 
 FormInput.defaultProps = {
   optional: false,
   disabled: false,
-  debug: false
+  debug: false,
   // someProp:false
-};
+}
 
-export default FormInput;
+export default FormInput

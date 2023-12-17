@@ -1,25 +1,24 @@
 /* @aztlan/generator-front 0.4.0 */
-import * as React from "react";
+import * as React from 'react'
 
-import { useInsertionEffect } from "react";
+import { useInsertionEffect } from 'react'
 
-import PropTypes from "prop-types";
+import * as PropTypes from 'prop-types'
 
-// @ts-ignore
-import styleNames from "@aztlan/bem";
+import styleNames from '@aztlan/bem'
 
-import { useApp } from "../../common/index.ts";
+import { useApp } from '../../common/index.ts'
 
 // Local Definitions
 
-const baseClassName = styleNames.base;
+const baseClassName = styleNames.base
 
-const componentClassName = "locale-switcher";
+const componentClassName = 'locale-switcher'
 
 const locales = {
-  en: "English",
-  es: "Spanish"
-};
+  en: 'English',
+  es: 'Spanish',
+}
 
 /**
  * This is the component description.
@@ -28,37 +27,37 @@ function LocaleSwitcher({
   id,
   className: userClassName,
   style,
-  children
+  children,
   // ...otherProps
 }) {
   useInsertionEffect(() => {
     // @ts-ignore
-    import("./styles.scss");
-  }, []);
+    import('./styles.scss')
+  }, [])
 
-  const { locale, isLocale, setLocale } = useApp();
+  const { locale, isLocale, setLocale } = useApp()
 
   return (
     <ul
       id={id}
-      className={[baseClassName, componentClassName, userClassName, "inline"]
-        .filter(e => e)
-        .join(" ")}
+      className={[baseClassName, componentClassName, userClassName, 'inline']
+        .filter((e) => e)
+        .join(' ')}
       style={style}
       // {...otherProps}
     >
-      {Object.keys(locales).map(localeName => (
+      {Object.keys(locales).map((localeName) => (
         <li>
           <a
             onClick={() => setLocale(localeName)}
-            className={isLocale(localeName) ? "bold" : ""}
+            className={isLocale(localeName) ? 'bold' : ''}
           >
             {locales[localeName]}
           </a>
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
 LocaleSwitcher.propTypes = {
@@ -80,11 +79,11 @@ LocaleSwitcher.propTypes = {
   /**
    *  The children JSX
    */
-  children: PropTypes.node
-};
+  children: PropTypes.node,
+}
 
 LocaleSwitcher.defaultProps = {
   // someProp:false
-};
+}
 
-export default LocaleSwitcher;
+export default LocaleSwitcher

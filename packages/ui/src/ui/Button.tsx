@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
+import * as PropTypes from "prop-types";
 
-// @ts-ignore
 import styles from "@aztlan/bem";
 
 // @ts-ignore

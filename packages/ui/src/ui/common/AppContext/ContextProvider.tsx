@@ -1,43 +1,43 @@
-import * as React from 'react'
-import { useReducer, useContext } from 'react'
-import PropTypes from 'prop-types'
-// @ts-ignore
-import { useTheme } from '@aztlan/react-helpers'
-import Context from './Context.ts'
+import * as React from "react";
+import { useReducer, useContext } from "react";
+import * as PropTypes from "prop-types";
+
+import { useTheme } from "@aztlan/react-helpers";
+import Context from "./Context.ts";
 
 // Helper Definitions
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'UPDATE_STATE':
+    case "UPDATE_STATE":
       return {
         ...state,
-        ...action.payload,
-      }
+        ...action.payload
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 function AppContextProvider({
   children,
   initialTheme,
   value,
-  initialState,
+  initialState
   // ...otherProps
 }) {
-  const theme = useTheme(initialTheme)
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const theme = useTheme(initialTheme);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <Context.Provider
       value={{
         ...value,
-        ...theme,
+        ...theme
       }}
     >
       {children}
     </Context.Provider>
-  )
+  );
 }
 
 AppContextProvider.propTypes = {
@@ -59,24 +59,24 @@ AppContextProvider.propTypes = {
       NAME: PropTypes.string.isRequired,
       CANONICAL: PropTypes.string.isRequired,
       SUPPORT_EMAIL: PropTypes.string,
-      TITLE_SUFFIX: PropTypes.string,
+      TITLE_SUFFIX: PropTypes.string
     }),
     SOCIAL: PropTypes.shape({
       FACEBOOK: PropTypes.string,
       INSTAGRAM: PropTypes.string,
-      YOUTUBE: PropTypes.string,
+      YOUTUBE: PropTypes.string
     }),
-    CONSTANTS: PropTypes.shape({}),
+    CONSTANTS: PropTypes.shape({})
   }).isRequired,
 
   /**
    * Application context initial state
    */
-  initialState: PropTypes.objectOf(PropTypes.string),
-}
+  initialState: PropTypes.objectOf(PropTypes.string)
+};
 
 AppContextProvider.defaultProps = {
-  initialState: {},
-}
+  initialState: {}
+};
 
-export default AppContextProvider
+export default AppContextProvider;

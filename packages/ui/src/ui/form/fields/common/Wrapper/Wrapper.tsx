@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 0.6.0 */
 import * as React from 'react'
 import { useMemo } from 'react'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 
 import { useField } from 'formik'
 

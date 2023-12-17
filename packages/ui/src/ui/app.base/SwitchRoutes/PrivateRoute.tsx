@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { useEffect, useMemo } from 'react'
 
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 import { Route, useHistory, useLocation } from 'react-router-dom'
 import { useFragment } from 'react-relay'
 import { useViewer, useAuth } from '../AuthContextProvider/index.ts'

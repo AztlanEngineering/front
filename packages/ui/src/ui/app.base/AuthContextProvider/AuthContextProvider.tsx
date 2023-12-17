@@ -5,7 +5,7 @@ import { useEffect, useCallback } from 'react'
 import { useMutation, useQueryLoader } from 'react-relay'
 import { useHistory } from 'react-router'
 
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
 import AuthContext from './Context.ts'
 

@@ -1,1 +1,1 @@
-export { QueryTester } from './QueryTester'
+export { QueryTester } from "./QueryTester/index.ts";

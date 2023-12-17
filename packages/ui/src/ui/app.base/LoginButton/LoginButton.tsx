@@ -3,12 +3,12 @@ import * as React from "react";
 
 import { useInsertionEffect } from "react";
 
-import PropTypes from "prop-types";
+import * as PropTypes from "prop-types";
 
-// @ts-ignore
 import styleNames from "@aztlan/bem";
 
 import { useFragment } from "react-relay";
+import { graphql } from "relay-runtime";
 
 // Local Definitions
 const baseClassName = styleNames.base;

@@ -3,9 +3,8 @@ import * as React from 'react'
 <% if (!optionNoStyles) { %>
 import { useInsertionEffect } from 'react'
 <% } %>
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 <% if (!optionNoStyles) { %>
-// @ts-ignore
 import styleNames from '@<%= npmOrg %>/bem'
 <% } %>
 

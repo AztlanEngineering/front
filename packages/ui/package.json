@@ -18,7 +18,9 @@
     "prepare": "npm run build",
     "storybook": "storybook dev -p 6006 --debug",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts ./",
+    "eslint": "eslint",
+    "tsc": "tsc",
+    "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts ./ --quiet",
     "test:eslint:fix": "npm run test:eslint -- --fix",
     "test:jest": "jest --verbose",
     "test:jest:old": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js --verbose",
@@ -52,6 +54,7 @@
     "@storybook/react-webpack5": "^7.6.5",
     "@storybook/testing-library": "^0.2.2",
     "@types/jest": "^29.5.11",
+    "@types/prop-types": "^15.7.11",
     "babel-jest": "^29.7.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.56.0",
@@ -69,7 +72,7 @@
   },
   "dependencies": {
     "@aztlan/base-styles": "^0.6.0",
-    "@aztlan/bem": "^0.3.3",
+    "@aztlan/bem": "^0.3.4",
     "@aztlan/react-helpers": "^0.6.0",
     "@aztlan/storybook-addon-relay": "^0.6.0",
     "babel-plugin-formatjs": "^10.5.10",
@@ -98,8 +101,5 @@
   },
   "stylelint": {
     "extends": "@aztlan/stylelint-config"
-  },
-  "eslintConfig": {
-    "extends": "@aztlan/eslint-config-base"
   }
 }

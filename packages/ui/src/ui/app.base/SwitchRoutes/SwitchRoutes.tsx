@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Suspense } from 'react'
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
 
 import { Switch, Route } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute.tsx'

@@ -1,19 +1,19 @@
 /* @aztlan/generator-front 0.5.0 */
-import * as React from "react";
+import * as React from 'react'
 
-import { useInsertionEffect } from "react";
+import { useInsertionEffect } from 'react'
 
-import PropTypes from "prop-types";
+import * as PropTypes from 'prop-types'
 
 // @ts-ignore
-import styleNames from "@aztlan/bem";
-import { withFieldWrapper } from "../common/index.ts";
+import styleNames from '@aztlan/bem'
+import { withFieldWrapper } from '../common/index.ts'
 
 // Local Definitions
 
-const baseClassName = styleNames.base;
+const baseClassName = styleNames.base
 
-const componentClassName = "text-input";
+const componentClassName = 'text-input'
 
 /**
  * This is the component description.
@@ -21,20 +21,20 @@ const componentClassName = "text-input";
 function TextInput({ className: userClassName, style, ...otherProps }) {
   useInsertionEffect(() => {
     // @ts-ignore
-    import("./styles.scss");
-  }, []);
+    import('./styles.scss')
+  }, [])
 
   return (
     <div
       className={[baseClassName, componentClassName, userClassName]
-        .filter(e => e)
-        .join(" ")}
+        .filter((e) => e)
+        .join(' ')}
       style={style}
       // {...otherProps}
     >
       <input {...otherProps} />
     </div>
-  );
+  )
 }
 
 TextInput.propTypes = {
@@ -56,11 +56,11 @@ TextInput.propTypes = {
   /**
    *  The children JSX
    */
-  children: PropTypes.node
-};
+  children: PropTypes.node,
+}
 
 TextInput.defaultProps = {
   // someProp:false
-};
+}
 
-export default withFieldWrapper(TextInput);
+export default withFieldWrapper(TextInput)

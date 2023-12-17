@@ -3,9 +3,8 @@ import * as React from "react";
 
 import { useInsertionEffect } from "react";
 
-import PropTypes from "prop-types";
+import * as PropTypes from "prop-types";
 
-// @ts-ignore
 import styleNames from "@aztlan/bem";
 
 import { useFragment, useRelayEnvironment } from "react-relay";

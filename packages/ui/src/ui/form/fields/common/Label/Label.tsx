@@ -3,10 +3,8 @@ import * as React from "react";
 
 import { useInsertionEffect } from "react";
 
-import PropTypes from "prop-types";
+import * as PropTypes from "prop-types";
 import styleNames from "@aztlan/bem";
-
-// @ts-ignore
 
 // Local Definitions
 

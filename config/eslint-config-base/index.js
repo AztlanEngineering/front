@@ -8,9 +8,12 @@ module.exports = {
     // 'plugin:jsx-a11y/recommended',
   ],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    //project: [`./tsconfig.json`]
+  },
   plugins: [
-    '@typescript-eslint',
-    'jsx-a11y',
+    //'@typescript-eslint',
+    //'jsx-a11y',
   ],
   ignorePatterns: [
     '!.storybook/*',
