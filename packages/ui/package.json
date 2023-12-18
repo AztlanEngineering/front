@@ -2,8 +2,8 @@
   "name": "@aztlan/ui",
   "version": "0.7.0",
   "description": "",
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/esm/index.mjs",
+  "main": "dist/cjs/ui/index.cjs",
+  "module": "dist/esm/ui/index.mjs",
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm",
     "build-storybook": "storybook build",

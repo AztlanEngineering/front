@@ -12,5 +12,5 @@ buildOrWatch({
     'src/ui/**/*.css',
     // 'src/ui/**/*.graphql',
   ],
-  up:2,
+  up:1,
 })
