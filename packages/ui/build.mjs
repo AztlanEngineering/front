@@ -4,13 +4,9 @@ import {
 } from '@aztlan/build-tools'
 
 buildOrWatch({
-  entryPoints:[
-    './src/**/*.ts',
-    './src/**/*.tsx',
-    './src/**/*.js',
-    './src/**/*.jsx',
-  ],
-  copyfiles:[
+  entryPoints:['./src/**/*.{ts,tsx,js,jsx}'],
+  ignore     :['./**/*.stories.tsx'],
+  copyfiles  :[
     'src/ui/*.scss',
     'src/ui/**/*.scss',
     'src/ui/**/*.css',
