@@ -103,7 +103,7 @@ module.exports = {
       parserOptions:{
         ecmaVersion    :2020,
         sourceType     :'module',
-        project        :'./tsconfig.json', // Path to your TypeScript config file
+        project        :true, // Path to your TypeScript config file
         tsconfigRootDir:process.cwd(),
       },
       rules:{
