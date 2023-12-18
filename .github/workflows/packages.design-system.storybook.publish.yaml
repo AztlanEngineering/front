@@ -5,11 +5,11 @@ on:
     branches:                          
       - '**' # This excludes tags
     paths:
-      - "packages/design-system/**"
+      - "packages/ui/**"
 
 defaults:
   run:
-    working-directory: packages/design-system
+    working-directory: packages/ui
 
 jobs:
   test-compile:
@@ -18,4 +18,4 @@ jobs:
       PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
         #PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
     with:
-      working-directory: packages/design-system
+      working-directory: packages/ui
