@@ -1,13 +1,17 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
 
-import { useInsertionEffect } from 'react'
+import {
+  useInsertionEffect,
+} from 'react'
 
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-import { useApp } from '../../common/index.ts'
+import {
+  useApp,
+} from '../../common/index.ts'
 
 // Local Definitions
 
@@ -16,8 +20,8 @@ const baseClassName = styleNames.base
 const componentClassName = 'locale-switcher'
 
 const locales = {
-  en: 'English',
-  es: 'Spanish',
+  en:'English',
+  es:'Spanish',
 }
 
 /**
@@ -30,17 +34,26 @@ function LocaleSwitcher({
   children,
   // ...otherProps
 }) {
-  useInsertionEffect(() => {
+  useInsertionEffect(
+    () => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+      import('./styles.scss')
+    }, [],
+  )
 
-  const { locale, isLocale, setLocale } = useApp()
+  const {
+    locale, isLocale, setLocale,
+  } = useApp()
 
   return (
     <ul
       id={id}
-      className={[baseClassName, componentClassName, userClassName, 'inline']
+      className={[
+        baseClassName,
+        componentClassName,
+        userClassName,
+        'inline',
+      ]
         .filter((e) => e)
         .join(' ')}
       style={style}
@@ -64,22 +77,22 @@ LocaleSwitcher.propTypes = {
   /**
    * The HTML id for this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The HTML class names for this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The React-written, css properties for this element.
    */
-  style: PropTypes.objectOf(PropTypes.string),
+  style:PropTypes.objectOf(PropTypes.string),
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 }
 
 LocaleSwitcher.defaultProps = {

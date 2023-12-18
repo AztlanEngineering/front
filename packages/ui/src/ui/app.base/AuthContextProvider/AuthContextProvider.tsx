@@ -1,12 +1,20 @@
 /* @aztlan/generator-front 0.4.3 */
 import * as React from 'react'
 
-import { useEffect, useCallback } from 'react'
-import { useMutation, useQueryLoader } from 'react-relay'
-import { useHistory } from 'react-router'
+import {
+  useEffect, useCallback,
+} from 'react'
+import {
+  useMutation, useQueryLoader,
+} from 'react-relay'
+import {
+  useHistory,
+} from 'react-router'
 
 import * as PropTypes from 'prop-types'
-import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
+import {
+  TokenStateManager,
+} from '@aztlan/react-helpers/relay/auth'
 import AuthContext from './Context.ts'
 
 // @ts-ignore
@@ -56,15 +64,20 @@ function AuthContextProvider({
 
   const history = useHistory()
 
-  const logout = useCallback(() => {
+  const logout = useCallback(
+    () => {
     // @ts-ignore
-    commitLogout({
-      onCompleted() {
-        TokenStateManager.logout()
-        disposeViewerQuery()
-        loadViewerQuery({}, { fetchPolicy: 'network-only' })
+      commitLogout({
+        onCompleted() {
+          TokenStateManager.logout()
+          disposeViewerQuery()
+          loadViewerQuery(
+            {}, {
+              fetchPolicy:'network-only',
+            },
+          )
         // history.go(0)
-      },
+        },
       /*
       updater(store) {
         console.log(
@@ -76,16 +89,21 @@ function AuthContextProvider({
         store.delete(record._dataId)
         console.log('ACP - 2', record._dataId, record, store.getRoot())
       }, */
-    })
-  }, [commitLogout])
+      })
+    }, [commitLogout],
+  )
 
-  useEffect(() => {
+  useEffect(
+    () => {
     // if (window.isAuthReady) {
-    loadViewerQuery({})
+      loadViewerQuery({})
     // }
-  }, [])
+    }, [],
+  )
 
-  console.log('[ACP] : Render', viewerQueryReference)
+  console.log(
+    '[ACP] : Render', viewerQueryReference,
+  )
 
   return (
     <AuthContext.Provider
@@ -110,28 +128,28 @@ AuthContextProvider.propTypes = {
   /**
    * The HTML id for this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The HTML class names for this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The React-written, css properties for this element.
    */
-  style: PropTypes.objectOf(PropTypes.string),
+  style:PropTypes.objectOf(PropTypes.string),
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 }
 
 AuthContextProvider.defaultProps = {
   QUERY_VIEWER,
   MUTATION_LOGOUT,
-  loginPath: '/login',
+  loginPath:'/login',
   // someProp:false
 }
 

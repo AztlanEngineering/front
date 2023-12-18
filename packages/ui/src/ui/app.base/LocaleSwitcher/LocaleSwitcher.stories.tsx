@@ -6,17 +6,19 @@ import * as decorators from 'storybook/decorators'
 import LocaleSwitcher from './LocaleSwitcher'
 
 export default {
-  title: 'common/LocaleSwitcher',
-  component: LocaleSwitcher,
-  subcomponents: {
+  title        :'common/LocaleSwitcher',
+  component    :LocaleSwitcher,
+  subcomponents:{
     // Item:LocaleSwitcher.Item
   },
-  decorators: [
+  decorators:[
     decorators.intlApp,
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes: {
-    backgroundColor: { control: 'color' },
+  argTypes:{
+    backgroundColor:{
+      control:'color',
+    },
   },
 }
 

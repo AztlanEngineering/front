@@ -1,1 +1,3 @@
-export { FormInput } from './FormInput/index.ts'
+export {
+  FormInput,
+} from './FormInput/index.ts'

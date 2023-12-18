@@ -1,1 +1,3 @@
-export { AppContext, AppContextProvider, useApp } from './AppContext/index.ts'
+export {
+  AppContext, AppContextProvider, useApp,
+} from './AppContext/index.ts'

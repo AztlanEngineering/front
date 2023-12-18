@@ -1,8 +1,12 @@
 import * as React from 'react'
-import { useEffect } from 'react'
+import {
+  useEffect,
+} from 'react'
 import Wrapper from './Wrapper.tsx'
 
-const areEqual = (prevProps, nextProps) => {
+const areEqual = (
+  prevProps, nextProps,
+) => {
   if (prevProps.value !== nextProps.value) {
     return false
   }
@@ -12,11 +16,15 @@ const areEqual = (prevProps, nextProps) => {
   return true
 }
 
-const withWrapper = (Component, options = {}) => function (props) {
+const withWrapper = (
+  Component, options = {},
+) => function (props) {
   return (
     <Wrapper
       Component={
-          React.memo(Component, areEqual)
+          React.memo(
+            Component, areEqual,
+          )
           // Component
         }
       {...options}

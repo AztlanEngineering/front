@@ -1,18 +1,20 @@
 #!/usr/bin/env node
-import { buildOrWatch } from '@aztlan/build-tools'
+import {
+  buildOrWatch,
+} from '@aztlan/build-tools'
 
 buildOrWatch({
-  entryPoints: [
+  entryPoints:[
     './src/**/*.ts',
     './src/**/*.tsx',
     './src/**/*.js',
     './src/**/*.jsx',
   ],
-  copyfiles: [
+  copyfiles:[
     'src/ui/*.scss',
     'src/ui/**/*.scss',
     'src/ui/**/*.css',
     // 'src/ui/**/*.graphql',
   ],
-  up: 2,
+  up:2,
 })

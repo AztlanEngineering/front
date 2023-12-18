@@ -6,17 +6,19 @@ import * as decorators from 'storybook/decorators'
 import ThemeSwitcher from './ThemeSwitcher'
 
 export default {
-  title: 'common/ThemeSwitcher',
-  component: ThemeSwitcher,
-  subcomponents: {
+  title        :'common/ThemeSwitcher',
+  component    :ThemeSwitcher,
+  subcomponents:{
     // Item:ThemeSwitcher.Item
   },
-  decorators: [
+  decorators:[
     decorators.app,
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes: {
-    backgroundColor: { control: 'color' },
+  argTypes:{
+    backgroundColor:{
+      control:'color',
+    },
   },
 }
 

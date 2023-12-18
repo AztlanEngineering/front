@@ -1,8 +1,16 @@
 import * as React from 'react'
-import { useLocale } from '@aztlan/react-helpers'
-import { IntlProvider } from 'react-intl'
-import { AppContextProvider } from 'ui/common'
-import { RelayEnvironmentProvider } from 'react-relay/hooks'
+import {
+  useLocale,
+} from '@aztlan/react-helpers'
+import {
+  IntlProvider,
+} from 'react-intl'
+import {
+  AppContextProvider,
+} from 'ui/common'
+import {
+  RelayEnvironmentProvider,
+} from 'react-relay/hooks'
 import environment from '@aztlan/storybook-addon-relay/src/decorators/environment'
 
 export const app = (StoryFn) => (
@@ -27,7 +35,9 @@ export const relay = (StoryFn) => (
 )
 
 export const intlApp = (StoryFn) => {
-  const { locale, messages, ...useLocaleProps } = useLocale(
+  const {
+    locale, messages, ...useLocaleProps
+  } = useLocale(
     'es',
     loadLocaleData,
   )

@@ -1,7 +1,9 @@
 import React from 'react'
 import * as PropTypes from 'prop-types'
 
-import { Button } from './Button'
+import {
+  Button,
+} from './Button'
 import './header.scss'
 
 export function Header({
@@ -40,14 +42,14 @@ export function Header({
 }
 
 Header.propTypes = {
-  user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+  user:PropTypes.shape({
+    name:PropTypes.string.isRequired,
   }),
-  onLogin: PropTypes.func, // .isRequired,
-  onLogout: PropTypes.func, // .isRequired,
-  onCreateAccount: PropTypes.func, // .isRequired,
+  onLogin        :PropTypes.func, // .isRequired,
+  onLogout       :PropTypes.func, // .isRequired,
+  onCreateAccount:PropTypes.func, // .isRequired,
 }
 
 Header.defaultProps = {
-  user: null,
+  user:null,
 }

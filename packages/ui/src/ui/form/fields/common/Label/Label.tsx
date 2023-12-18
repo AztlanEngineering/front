@@ -1,7 +1,9 @@
 /* @aztlan/generator-front 0.5.0 */
 import * as React from 'react'
 
-import { useInsertionEffect } from 'react'
+import {
+  useInsertionEffect,
+} from 'react'
 
 import * as PropTypes from 'prop-types'
 import styleNames from '@aztlan/bem'

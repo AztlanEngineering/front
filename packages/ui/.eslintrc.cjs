@@ -10,7 +10,9 @@ const sharedRules = {
   'import/extensions':[
     'error',
     'always',
-    { ignorePackages: true },
+    {
+      ignorePackages:true,
+    },
   ],
   '@stylistic/array-element-newline':[
     'error',
@@ -26,17 +28,33 @@ const sharedRules = {
       minItems :3,
     },
   ],
-  'react/jsx-props-no-spreading'      :[0],
+  'react/jsx-props-no-spreading':[0],
   // TODO fix
-  'function-paren-newline'            :['error', { minItems: 2 }],
-  '@stylistic/function-paren-newline' :['error', { minItems: 2 }],
-  // 'object-property-newline'           :['error', { allowAllPropertiesOnSameLine: false }], // TODO fix
-  '@stylistic/object-property-newline':['error', { allowAllPropertiesOnSameLine: false }],
-  '@stylistic/object-curly-newline'   :[
+  'function-paren-newline'      :[
+    'error',
+    {
+      minItems:2,
+    },
+  ],
+  '@stylistic/function-paren-newline':[
+    'error',
+    {
+      minItems:2,
+    },
+  ],
+  // TODO looks like the linting works alright, but the fixing is conservative
+  // 'object-property-newline'           :['error', { allowAllPropertiesOnSameLine: false }],
+  '@stylistic/object-property-newline':[
+    'error',
+    {
+      allowAllPropertiesOnSameLine:false,
+    },
+  ],
+  '@stylistic/object-curly-newline':[
     'error',
     {
       multiline    :true,
-      minProperties:2,
+      minProperties:1,
     },
   ],
   'key-spacing':[
@@ -61,9 +79,13 @@ module.exports = {
   ignorePatterns,
 
   // Main modular config
-  extends:['eslint:recommended', 'airbnb'],
-  parser :'@typescript-eslint/parser',
-  env    :{
+  extends:[
+    'eslint:recommended',
+    'airbnb',
+    'plugin:storybook/recommended',
+  ],
+  parser:'@typescript-eslint/parser',
+  env   :{
     browser:true,
     node   :true,
   },
@@ -99,7 +121,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    // 'plugin:storybook/recommended',
     // 'plugin:jsx-a11y/recommended',
   ],
   parser: '@typescript-eslint/parser',

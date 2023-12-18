@@ -1,9 +1,13 @@
 /* @aztlan/generator-front 0.5.0 */
 import * as React from 'react'
 
-import { Formik } from 'formik'
+import {
+  Formik,
+} from 'formik'
 import FormInput from './FormInput.tsx'
-import { allTypes } from '../constants.ts'
+import {
+  allTypes,
+} from '../constants.ts'
 
 function validateEmail(value) {
   let error
@@ -34,7 +38,10 @@ export default {
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
   argTypes:{
-    type:{ control: 'select', options: allTypes },
+    type:{
+      control:'select',
+      options:allTypes,
+    },
   },
 }
 
@@ -88,10 +95,23 @@ export const Select = {
     name   :'region',
     label  :'Select your region',
     options:[
-      { value: 'north', label: 'North' },
-      { value: 'south', label: 'South' },
-      { value: 'east', label: 'East', disabled: true },
-      { value: 'west', label: 'West' },
+      {
+        value:'north',
+        label:'North',
+      },
+      {
+        value:'south',
+        label:'South',
+      },
+      {
+        value   :'east',
+        label   :'East',
+        disabled:true,
+      },
+      {
+        value:'west',
+        label:'West',
+      },
     ],
     debug:true,
   },

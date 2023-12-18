@@ -1,16 +1,28 @@
 /* @aztlan/generator-front 0.6.0 */
 import * as React from 'react'
-import { useMemo } from 'react'
+import {
+  useMemo,
+} from 'react'
 import * as PropTypes from 'prop-types'
 
-import { useField } from 'formik'
+import {
+  useField,
+} from 'formik'
 
-import { Label } from '../Label/index.ts'
-import { Description } from '../Description/index.ts'
+import {
+  Label,
+} from '../Label/index.ts'
+import {
+  Description,
+} from '../Description/index.ts'
 import Debugger from './Debugger.ts'
-import { htmlTypes } from '../../../constants.ts'
+import {
+  htmlTypes,
+} from '../../../constants.ts'
 
-const span = (defaultSpan, desktopSpan) => {
+const span = (
+  defaultSpan, desktopSpan,
+) => {
   const className = []
   if (defaultSpan) className.push(`span-${defaultSpan}`)
   if (desktopSpan) className.push(`md-span-${desktopSpan}`)
@@ -40,27 +52,31 @@ function Wrapper({
   hookOptions,
   ...otherProps
 }) {
-  const [field, meta] = useField({ name, validate, ...hookOptions })
+  const [field, meta] = useField({
+    name,
+    validate,
+    ...hookOptions,
+  })
 
   const isError = !!meta.error
 
   const ariaProps = useMemo(
     () => ({
-      field: {
-        id: `${idPrefix}.${name}`,
-        'aria-labelledby': `${idPrefix}.${name}.label`,
-        'aria-describedby': `${idPrefix}.${name}.description${
+      field:{
+        id                :`${idPrefix}.${name}`,
+        'aria-labelledby' :`${idPrefix}.${name}.label`,
+        'aria-describedby':`${idPrefix}.${name}.description${
           isError ? ` ${idPrefix}.${name}.error` : ''
         }`,
       },
-      label: {
-        id: `${idPrefix}.${name}.label`,
+      label:{
+        id:`${idPrefix}.${name}.label`,
       },
-      description: {
-        id: `${idPrefix}.${name}.description`,
+      description:{
+        id:`${idPrefix}.${name}.description`,
       },
-      state: {
-        id: `${idPrefix}.${name}.error`,
+      state:{
+        id:`${idPrefix}.${name}.error`,
       },
     }),
     [name, isError],
@@ -69,7 +85,7 @@ function Wrapper({
   const fieldProps = {
     name,
     // optional,
-    type: inputType, // This means the props need to be spread first ! Otherwise type:undefined will override children
+    type:inputType, // This means the props need to be spread first ! Otherwise type:undefined will override children
     // validate,
     meta,
     ...ariaProps.field,
@@ -79,14 +95,14 @@ function Wrapper({
 
   const labelProps = {
     name,
-    children: label,
+    children:label,
     optional,
     ...ariaProps.label,
   }
 
   const descriptionProps = {
     name,
-    children: description,
+    children:description,
     ...ariaProps.description,
   }
 
@@ -99,14 +115,22 @@ function Wrapper({
   return (
     <>
       <div
-        className={[...span(spanLabel, spanLabelDesktop)]
+        className={[
+          ...span(
+            spanLabel, spanLabelDesktop,
+          ),
+        ]
           .filter(Boolean)
           .join(' ')}
       >
         <Label {...labelProps} as={mockLabel ? 'p' : undefined} />
       </div>
       <div
-        className={[...span(spanContent, spanContentDesktop)]
+        className={[
+          ...span(
+            spanContent, spanContentDesktop,
+          ),
+        ]
           .filter(Boolean)
           .join(' ')}
       >
@@ -121,22 +145,22 @@ function Wrapper({
 }
 
 Wrapper.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  label: PropTypes.string,
-  spanLabel: PropTypes.number,
-  spanLabelDesktop: PropTypes.number,
-  spanContent: PropTypes.number,
-  spanContentDesktop: PropTypes.number,
+  Component         :PropTypes.elementType.isRequired,
+  label             :PropTypes.string,
+  spanLabel         :PropTypes.number,
+  spanLabelDesktop  :PropTypes.number,
+  spanContent       :PropTypes.number,
+  spanContentDesktop:PropTypes.number,
   // Add other common PropTypes
 }
 
 Wrapper.defaultProps = {
-  spanLabel: 8,
-  spanLabelDesktop: 8,
-  spanContent: 8,
-  spanContentDesktop: 9,
-  mockLabel: false,
-  hookOptions: {},
+  spanLabel         :8,
+  spanLabelDesktop  :8,
+  spanContent       :8,
+  spanContentDesktop:9,
+  mockLabel         :false,
+  hookOptions       :{},
 }
 
 export default Wrapper

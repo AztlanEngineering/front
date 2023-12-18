@@ -1,65 +1,79 @@
-import React, { useEffect } from "react";
-import * as PropTypes from "prop-types";
+import React, {
+  useEffect,
+} from 'react'
+import * as PropTypes from 'prop-types'
 
-import styles from "@aztlan/bem";
+import styles from '@aztlan/bem'
 
 // @ts-ignore
 
 /**
  * Primary UI component for user interaction
  */
-export function Button({ primary, backgroundColor, size, label, ...props }) {
-  useEffect(() => {
+export function Button({
+  primary, backgroundColor, size, label, ...props
+}) {
+  useEffect(
+    () => {
     // @ts-ignore
-    import("./button.scss");
-  }, []);
+      import('./button.scss')
+    }, [],
+  )
   const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+    ? 'storybook-button--primary'
+    : 'storybook-button--secondary'
   return (
     <button
       type="button"
       className={[
-        "borders",
-        "storybook-button",
+        'borders',
+        'storybook-button',
         `storybook-button--${size}`,
-        mode
-      ].join(" ")}
-      style={backgroundColor && { backgroundColor }}
+        mode,
+      ].join(' ')}
+      style={backgroundColor && {
+        backgroundColor,
+      }}
       {...props}
     >
       Hello
-      {styles.modifierGhost} {label}
+      {styles.modifierGhost}
+      {' '}
+      {label}
     </button>
-  );
+  )
 }
 
 Button.propTypes = {
   /**
    * Is this the principal call to action on the page?
    */
-  primary: PropTypes.bool,
+  primary        :PropTypes.bool,
   /**
    * What background color to use
    */
-  backgroundColor: PropTypes.string,
+  backgroundColor:PropTypes.string,
   /**
    * How large should the button be?
    */
-  size: PropTypes.oneOf(["small", "medium", "large"]),
+  size           :PropTypes.oneOf([
+    'small',
+    'medium',
+    'large',
+  ]),
   /**
    * Button contents
    */
-  label: PropTypes.string.isRequired,
+  label  :PropTypes.string.isRequired,
   /**
    * Optional click handler
    */
-  onClick: PropTypes.func
-};
+  onClick:PropTypes.func,
+}
 
 Button.defaultProps = {
-  backgroundColor: null,
-  primary: false,
-  size: "medium",
-  onClick: undefined
-};
+  backgroundColor:null,
+  primary        :false,
+  size           :'medium',
+  onClick        :undefined,
+}

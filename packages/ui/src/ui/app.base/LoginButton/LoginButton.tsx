@@ -1,18 +1,24 @@
 /* @aztlan/generator-front 0.2.0 */
-import * as React from "react";
+import * as React from 'react'
 
-import { useInsertionEffect } from "react";
+import {
+  useInsertionEffect,
+} from 'react'
 
-import * as PropTypes from "prop-types";
+import * as PropTypes from 'prop-types'
 
-import styleNames from "@aztlan/bem";
+import styleNames from '@aztlan/bem'
 
-import { useFragment } from "react-relay";
-import { graphql } from "relay-runtime";
+import {
+  useFragment,
+} from 'react-relay'
+import {
+  graphql,
+} from 'relay-runtime'
 
 // Local Definitions
-const baseClassName = styleNames.base;
-const componentClassName = "login-button";
+const baseClassName = styleNames.base
+const componentClassName = 'login-button'
 
 const FRAGMENT = graphql`
   fragment LoginButtonFragment on Query
@@ -21,13 +27,13 @@ const FRAGMENT = graphql`
       google
     }
   }
-`;
+`
 
 const QUERY = graphql`
   query LoginButtonQuery($resource: String!) {
     ...LoginButtonFragment @arguments(resource: $resource)
   }
-`;
+`
 
 /**
  * This is the LoginButton component description.
@@ -39,55 +45,67 @@ function LoginButton({
   data,
   ...otherProps
 }) {
-  useInsertionEffect(() => {
+  useInsertionEffect(
+    () => {
     // @ts-ignore
-    import("./styles.scss");
-  }, []);
+      import('./styles.scss')
+    }, [],
+  )
 
-  const { oAuth2Links } = useFragment(FRAGMENT, data);
-  const { google } = oAuth2Links;
+  const {
+    oAuth2Links,
+  } = useFragment(
+    FRAGMENT, data,
+  )
+  const {
+    google,
+  } = oAuth2Links
 
   return (
     <button
       id={id}
-      className={[baseClassName, componentClassName, userClassName]
-        .filter(e => e)
-        .join(" ")}
+      className={[
+        baseClassName,
+        componentClassName,
+        userClassName,
+      ]
+        .filter((e) => e)
+        .join(' ')}
       style={style}
       // {...otherProps}
     >
       <a href={google}>Login with Google</a>
     </button>
-  );
+  )
 }
 
 LoginButton.propTypes = {
   /**
    * The HTML id for this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The HTML class names for this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The React-written, css properties for this element.
    */
-  style: PropTypes.objectOf(PropTypes.string),
+  style:PropTypes.objectOf(PropTypes.string),
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node
-};
+  children:PropTypes.node,
+}
 
 LoginButton.defaultProps = {
   // someProp:false
-};
+}
 
-LoginButton.FRAGMENT = FRAGMENT;
-LoginButton.QUERY = QUERY;
+LoginButton.FRAGMENT = FRAGMENT
+LoginButton.QUERY = QUERY
 
-export default LoginButton;
+export default LoginButton

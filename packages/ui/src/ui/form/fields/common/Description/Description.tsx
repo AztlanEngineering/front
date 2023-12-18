@@ -1,7 +1,9 @@
 /* @aztlan/generator-front 0.5.0 */
 import * as React from 'react'
 
-import { useInsertionEffect, useMemo } from 'react'
+import {
+  useInsertionEffect, useMemo,
+} from 'react'
 
 import * as PropTypes from 'prop-types'
 
@@ -24,10 +26,12 @@ function Description({
   children,
   // ...otherProps
 }) {
-  useInsertionEffect(() => {
+  useInsertionEffect(
+    () => {
     // @ts-ignore
-    import('./styles.scss')
-  }, [])
+      import('./styles.scss')
+    }, [],
+  )
 
   const isError = !!meta?.error
 
@@ -40,7 +44,7 @@ function Description({
         userClassName,
         isError && styleNames.modifierError,
       ]
-        .filter(e => e)
+        .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
@@ -54,22 +58,22 @@ Description.propTypes = {
   /**
    * The HTML id for this element
    */
-  id: PropTypes.string,
+  id:PropTypes.string,
 
   /**
    * The HTML class names for this element
    */
-  className: PropTypes.string,
+  className:PropTypes.string,
 
   /**
    * The React-written, css properties for this element.
    */
-  style: PropTypes.objectOf(PropTypes.string),
+  style:PropTypes.objectOf(PropTypes.string),
 
   /**
    *  The children JSX
    */
-  children: PropTypes.node,
+  children:PropTypes.node,
 }
 
 Description.defaultProps = {

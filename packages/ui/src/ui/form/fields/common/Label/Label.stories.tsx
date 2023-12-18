@@ -5,41 +5,43 @@ import * as React from 'react'
 import Label from './Label.tsx'
 
 export default {
-  title: 'form/fields/common/Label',
-  component: Label,
-  decorators: [
+  title     :'form/fields/common/Label',
+  component :Label,
+  decorators:[
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes: {
-    backgroundColor: { control: 'color' },
+  argTypes:{
+    backgroundColor:{
+      control:'color',
+    },
   },
 }
 
 export const Base = {
-  args: {
-    name: 'name',
-    children: 'Your name',
+  args:{
+    name    :'name',
+    children:'Your name',
   },
 }
 
 export const Optional = {
-  args: {
-    name: 'name',
-    children: 'Your name',
-    optional: true,
+  args:{
+    name    :'name',
+    children:'Your name',
+    optional:true,
   },
 }
 
 export const As = {
-  args: {
-    name: 'name',
-    children: 'Your name',
-    as: 'h2',
+  args:{
+    name    :'name',
+    children:'Your name',
+    as      :'h2',
   },
 }
 
 export const NoChildren = {
-  args: {
-    name: 'name',
+  args:{
+    name:'name',
   },
 }
