@@ -14,43 +14,63 @@ const pkg = pjson.name
 
 function pascalToSnake(s) {
   return s
-    .replace(/(?:^|\.?)([A-Z])/g, (x, y) => `-${y.toLowerCase()}`)
-    .replace(/^-/, '')
+    .replace(
+      /(?:^|\.?)([A-Z])/g, (
+        x, y,
+      ) => `-${y.toLowerCase()}`,
+    )
+    .replace(
+      /^-/, '',
+    )
 }
 
 module.exports = class extends Generator {
-  constructor(args, opts) {
-    super(args, opts)
+  constructor(
+    args, opts,
+  ) {
+    super(
+      args, opts,
+    )
 
-    this.argument('type', {
-      type: String,
-      required: true,
-      desc: '<story|comp|component|page|module>',
-    })
-    this.argument('fullname', {
-      type: String,
-      required: true,
-      desc: 'The name of the component or page for which we generate code for.',
-    })
+    this.argument(
+      'type', {
+        type    :String,
+        required:true,
+        desc    :'<story|comp|component|page|module>',
+      },
+    )
+    this.argument(
+      'fullname', {
+        type    :String,
+        required:true,
+        desc    :'The name of the component or page for which we generate code for.',
+      },
+    )
 
-    this.option('diet', {
-      type: Boolean,
-      alias: 'd',
-      desc: '[type=comp|component] Whether this component is on a diet (no prop-types)',
-    })
+    this.option(
+      'diet', {
+        type :Boolean,
+        alias:'d',
+        desc :'[type=comp|component] Whether this component is on a diet (no prop-types)',
+      },
+    )
 
-    this.option('nostyles', {
-      type: Boolean,
-      // Alias: "",
-      desc: '[type=comp|component] Whether to generate a component without css',
-    })
+    this.option(
+      'nostyles', {
+        type:Boolean,
+        // Alias: "",
+        desc:'[type=comp|component] Whether to generate a component without css',
+      },
+    )
 
-    this.option('npmOrg', {
-      type: String,
-      alias: 'o',
-      desc: 'The npm org namespace to use for dependencies. ',
-      default: 'aztlan',
-    })
+    this.option(
+      'npmOrg', {
+        type   :String,
+        alias  :'o',
+        desc   :'The npm org namespace to use for dependencies. ',
+        default:'aztlan',
+      },
+    )
 
     console.log(
       'Generator called with options:',
@@ -104,25 +124,33 @@ module.exports = class extends Generator {
   }
 
   _touchFile(relativeFilePath) {
-    this.log('TOUCH : ', relativeFilePath)
+    this.log(
+      'TOUCH : ', relativeFilePath,
+    )
 
-    const fullPath = path.resolve(path.join(process.cwd(), relativeFilePath))
-    fs.closeSync(fs.openSync(fullPath, 'w'))
+    const fullPath = path.resolve(path.join(
+      process.cwd(), relativeFilePath,
+    ))
+    fs.closeSync(fs.openSync(
+      fullPath, 'w',
+    ))
   }
 
   _touchOrAppendToIndex(toAppend) {
     const localIndex = 'index.ts'
     const localIndexExists = () => this.fs.exists(localIndex)
-    const fullPathLocalIndex = path.resolve(
-      path.join(process.cwd(), localIndex),
-    )
+    const fullPathLocalIndex = path.resolve(path.join(
+      process.cwd(), localIndex,
+    ))
 
     if (!localIndexExists()) {
       // This.fs.write(localIndex, '')
       this._touchFile(localIndex)
     }
 
-    fs.appendFileSync(fullPathLocalIndex, toAppend)
+    fs.appendFileSync(
+      fullPathLocalIndex, toAppend,
+    )
     this.log(`updated \x1b[36m\x1b[1m ${localIndex} \x1b[0m`)
   }
 
@@ -138,7 +166,7 @@ module.exports = class extends Generator {
   _generateComponent(templateVars) {
     this.log(`Will generate the component ${templateVars.fullname}`)
 
-    const stringToAppendToIndex = `export { ${templateVars.name} } from './${templateVars.name}/index.ts'\n`
+    const stringToAppendToIndex = `export * from './${templateVars.name}/index.ts'\n`
     this._touchOrAppendToIndex(stringToAppendToIndex)
 
     const targetFolder = `./${templateVars.name}/`

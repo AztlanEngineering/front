@@ -4,10 +4,9 @@ import {
 } from 'react'
 import * as PropTypes from 'prop-types'
 
-import {
-  useTheme,
-} from '@aztlan/react-helpers'
+import { useTheme } from '@aztlan/react-helpers'
 import Context from './Context.ts'
+import useMaintenance from './useMaintenance.ts'
 
 // Helper Definitions
 const reducer = (
@@ -29,12 +28,22 @@ function AppContextProvider({
   initialTheme,
   value,
   initialState,
+  maintenance,
   // ...otherProps
 }) {
   const theme = useTheme(initialTheme)
   const [state, dispatch] = useReducer(
     reducer, initialState,
   )
+
+  const isMaintenanceMode = useMaintenance(maintenance)
+  console.log(
+    'MMM', isMaintenanceMode,
+  )
+
+  if (isMaintenanceMode) {
+    return <div>This site is currently not available.</div>
+  }
 
   return (
     <Context.Provider
@@ -74,17 +83,31 @@ AppContextProvider.propTypes = {
       INSTAGRAM:PropTypes.string,
       YOUTUBE  :PropTypes.string,
     }),
-    CONSTANTS:PropTypes.shape({}),
+    CONSTANTS:PropTypes.shape({
+    }),
   }).isRequired,
 
   /**
    * Application context initial state
    */
   initialState:PropTypes.objectOf(PropTypes.string),
+
+  /**
+   * Maintenance mode. If true, the website will be in maintenance mode.
+   */
+  maintenance:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape({
+      start:PropTypes.instanceOf(Date),
+      end  :PropTypes.instanceOf(Date),
+    }),
+  ]),
 }
 
 AppContextProvider.defaultProps = {
-  initialState:{},
+  initialState:{
+  },
+  maintenance:false,
 }
 
 export default AppContextProvider
