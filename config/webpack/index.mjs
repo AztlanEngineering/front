@@ -190,7 +190,8 @@ const template = (inputs) => ({
       use :'ignore-loader',
     },
     scssServerSideBEM:{
-      test:/bem\/exports\.(s?)css$/i,
+      // test:/bem\/exports\.module\.(s?)css$/i,
+      test:/aztlan\/bem/i,
       use :[
         {
           loader :'css-loader',
