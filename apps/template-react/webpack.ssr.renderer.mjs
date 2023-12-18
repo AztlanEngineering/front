@@ -1,5 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { configureSharedConfig } from '@aztlan/webpack-config'
+import {
+  configureSharedConfig,
+} from '@aztlan/webpack-config'
 
 const {
   entry,
@@ -10,24 +12,24 @@ const {
   externals,
   experiments,
 } = configureSharedConfig({
-  entry: 'src/ssr/renderer.ts',
-  outputSSRFilename: 'ssr.js',
+  entry            :'src/ssr/renderer.ts',
+  outputSSRFilename:'ssr.js',
 })
 
 export default {
-  mode: 'production',
-  target: 'node18',
+  mode   :'production',
+  target :'node18',
   entry,
   resolve,
   output,
   experiments,
   externals,
-  plugins: [
+  plugins:[
     // plugins.Dotenv,
     plugins.LimitChunkCount,
   ],
-  module: {
-    rules: [
+  module:{
+    rules:[
       rules.mdx,
       rules.ts,
       rules.scssServerSideBEM,

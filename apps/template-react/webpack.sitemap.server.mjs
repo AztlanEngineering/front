@@ -1,4 +1,6 @@
-import { configureSharedConfig } from '@aztlan/webpack-config'
+import {
+  configureSharedConfig,
+} from '@aztlan/webpack-config'
 
 const {
   entry,
@@ -7,25 +9,20 @@ const {
   plugins,
   outputSSRServer: output,
 } = configureSharedConfig({
-  entry: 'src/sitemap/server.ts',
-  outputSSRFilename: 'sitemap.js',
+  entry            :'src/sitemap/server.ts',
+  outputSSRFilename:'sitemap.js',
 })
 
 export default {
-  mode: 'development',
-  target: 'node',
-  watch: true,
+  mode   :'development',
+  target :'node',
+  watch  :true,
   entry,
   resolve,
   output,
-  plugins: [
-    plugins.Dotenv,
-    plugins.Nodemon,
-  ],
-  module: {
-    rules: [
-      rules.ts,
-    ],
+  plugins:[plugins.Dotenv, plugins.Nodemon],
+  module :{
+    rules:[rules.ts],
   },
 
 }

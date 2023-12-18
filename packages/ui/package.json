@@ -21,8 +21,8 @@
     "lint:tsc": "tsc",
     "lint:eslint": "eslint --ext .cjs,.mjs,.js,.tsx,.ts ./ --quiet",
     "lint:stylelint": "stylelint 'src/**/*.scss' --rd --rdd --risd --color --formatter verbose",
-    "format:eslint": "npm run test:eslint -- --fix",
-    "format:stylelint": "npm run test:stylelint -- --fix",
+    "format:eslint": "npm run lint:eslint -- --fix",
+    "format:stylelint": "npm run lint:stylelint -- --fix",
     "test:jest": "jest --verbose",
     "test:jest:old": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js --verbose",
     "test:jest:update": "npm run test:jest -- --updateSnapshot"
@@ -100,5 +100,8 @@
   },
   "stylelint": {
     "extends": "@aztlan/stylelint-config"
+  },
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
   }
 }

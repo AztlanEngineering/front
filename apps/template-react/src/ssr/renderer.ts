@@ -14,10 +14,12 @@ properly configured with CSS Modules', styleNames, styleNames.base)
       console.log(req.headers['accept-language'])
 */
 
-const r = new Renderer(Base, template, stats, {
-  getEnvironment,
-  defaultLocale: 'en',
-  loadMessages,
-})
+const r = new Renderer(
+  Base, template, stats, {
+    getEnvironment,
+    defaultLocale:'en',
+    loadMessages,
+  },
+)
 // console.log(r)
 export default r.render

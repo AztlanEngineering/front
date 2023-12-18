@@ -1,4 +1,6 @@
-import { loadable } from '../common/utils'
+import {
+  loadable,
+} from '../common/utils'
 
 export default [
   /*
@@ -13,8 +15,8 @@ export default [
     exact    :true,
   }, */
   {
-    path: '/',
-    component: loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/Home.tsx')),
-    exact: true,
+    path     :'/',
+    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/Home.tsx')),
+    exact    :true,
   },
 ]

@@ -1,4 +1,6 @@
-import { loadable } from '../common/utils'
+import {
+  loadable,
+} from '../common/utils'
 
 export default [
   /*
@@ -13,9 +15,9 @@ export default [
     exact    :true,
   }, */
   {
-    path: '/profile',
-    component: loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/Profile.tsx')),
-    exact: true,
-    isPrivate: true,
+    path     :'/profile',
+    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/Profile.tsx')),
+    exact    :true,
+    isPrivate:true,
   },
 ]

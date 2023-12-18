@@ -31,19 +31,6 @@ module.exports = {
       tagName:'graphql',
       // tagName is set for you to Relay.QL
     }],
-    'key-spacing':[
-      'error', {
-        multiLine:{
-          beforeColon:false,
-          afterColon :false,
-        },
-        align:{
-          beforeColon:false,
-          afterColon :false,
-          on         :'colon',
-        },
-      },
-    ],
     */
   },
 }

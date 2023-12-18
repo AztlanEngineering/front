@@ -3,6 +3,6 @@ const config = require('@aztlan/jest-config')
 
 module.exports = {
 // export default {
-  preset: 'ts-jest',
+  preset:'ts-jest',
   ...config,
 }

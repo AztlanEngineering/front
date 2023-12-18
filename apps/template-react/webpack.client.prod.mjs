@@ -1,4 +1,6 @@
-import { configureSharedConfig } from '@aztlan/webpack-config'
+import {
+  configureSharedConfig,
+} from '@aztlan/webpack-config'
 import LoadablePlugin from '@loadable/webpack-plugin'
 
 /*
@@ -19,12 +21,12 @@ const {
   resolve,
   rules,
 } = configureSharedConfig({
-  entry: 'src/client.tsx',
+  entry:'src/client.tsx',
 })
 
 export default {
-  mode: 'production',
-  devtool: 'source-map',
+  mode   :'production',
+  devtool:'source-map',
 
   entry,
   resolve,
@@ -33,7 +35,7 @@ export default {
 
   optimization,
 
-  plugins: [
+  plugins:[
     plugins.Copy,
     plugins.DotenvProd,
     plugins.HtmlWebpack,
@@ -43,11 +45,8 @@ export default {
     plugins.BundleAnalyzer,
   ],
 
-  module: {
-    rules: [
-      rules.ts,
-      rules.scssProd,
-    ],
+  module:{
+    rules:[rules.ts, rules.scssProd],
   },
 
 }

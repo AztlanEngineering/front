@@ -1,5 +1,9 @@
-export { ViewerProfile } from './ViewerProfile'
-export { default as ErrorBoundary } from './ErrorBoundary'
+export {
+  ViewerProfile,
+} from './ViewerProfile'
+export {
+  default as ErrorBoundary,
+} from './ErrorBoundary'
 export {
   AuthContextProvider,
   AuthContext,

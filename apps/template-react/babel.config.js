@@ -10,7 +10,7 @@ module.exports = function (api) {
     [
       'formatjs',
       {
-        ast: true,
+        ast:true,
         // overrideIdFn: (string, m, d) => string,
       },
     ],

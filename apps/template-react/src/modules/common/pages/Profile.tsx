@@ -1,13 +1,19 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
-import { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import {
+  useEffect,
+} from 'react'
+import {
+  useHistory,
+} from 'react-router-dom'
 import {
   useLazyLoadQuery,
   useQueryLoader,
   usePreloadedQuery,
 } from 'react-relay'
-import { defineMessages, useIntl, FormattedMessage } from 'react-intl'
+import {
+  defineMessages, useIntl, FormattedMessage,
+} from 'react-intl'
 import {
   ViewerProfile,
   useAuth,

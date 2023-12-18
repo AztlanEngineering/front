@@ -1,11 +1,21 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
-import { useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { useAuth, ThemeSwitcher, LocaleSwitcher } from '@aztlan/ui'
+import {
+  useEffect,
+} from 'react'
+import {
+  Link, useHistory,
+} from 'react-router-dom'
+import {
+  useAuth, ThemeSwitcher, LocaleSwitcher,
+} from '@aztlan/ui'
 
-function Base({ title, wireframe, children }) {
-  const { logout, isLogoutInFlight } = useAuth()
+function Base({
+  title, wireframe, children,
+}) {
+  const {
+    logout, isLogoutInFlight,
+  } = useAuth()
   if (wireframe) {
     return (
       <main className="grid">
@@ -37,7 +47,12 @@ function Base({ title, wireframe, children }) {
               <Link to="/404">Test 404</Link>
             </li>
           </ul>
-          <div style={{ minHeight: '300px' }}>WF</div>
+          <div style={{
+            minHeight:'300px',
+          }}
+          >
+            WF
+          </div>
         </div>
       </main>
     )
