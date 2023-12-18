@@ -1,1 +1,1 @@
-export default "NOT IMPLEMENTED";
+export default 'NOT IMPLEMENTED'

@@ -15,6 +15,14 @@ const sharedRules = {
       ignorePackages:true,
     },
   ],
+  'react/jsx-props-no-spreading':[0],
+  'react/jsx-max-props-per-line':[
+    'error',
+    {
+      maximum:1,
+    },
+  ],
+  // TODO fix
   '@stylistic/array-element-newline':[
     'error',
     {
@@ -29,9 +37,7 @@ const sharedRules = {
       minItems :3,
     },
   ],
-  'react/jsx-props-no-spreading':[0],
-  // TODO fix
-  'function-paren-newline'      :[
+  'function-paren-newline':[
     'error',
     {
       minItems:2,
@@ -54,8 +60,19 @@ const sharedRules = {
   '@stylistic/object-curly-newline':[
     'error',
     {
-      multiline    :true,
-      minProperties:1,
+      ObjectExpression:'always',
+      ObjectPattern   :{
+        multiline    :true,
+        minProperties:2,
+      },
+      ImportDeclaration:{
+        multiline    :true,
+        minProperties:2,
+      },
+      ExportDeclaration:{
+        multiline    :true,
+        minProperties:2,
+      },
     },
   ],
   'key-spacing':[

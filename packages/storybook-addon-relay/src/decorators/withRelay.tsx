@@ -50,8 +50,6 @@ export const withRelay = makeDecorator({
       getReferenceEntry
     } = parameters as WithRelayParameters<any>;
 
-    console.log("!!!!!!<<>><<>>!!", parameters);
-
     const Renderer = () => {
       const queryResult = useLazyLoadQuery(query, variables);
       Object.assign(
@@ -59,29 +57,24 @@ export const withRelay = makeDecorator({
         Object.fromEntries([getReferenceEntry(queryResult)])
       );
 
-      console.log("RESULT", queryResult, mockResolvers);
+      //console.log("RESULT", queryResult, mockResolvers);
+      /*
       console.log(
         "!!!!!!",
         environment
           .getStore()
           .getSource()
           .toJSON()
-      );
+      );*/
       return getStory(context) as any;
     };
 
     environment.mock.queueOperationResolver(operation => {
+      //console.log(">>", operation, mockResolvers);
       return MockPayloadGenerator.generate(operation, mockResolvers);
     });
 
     environment.mock.queuePendingOperation(query, variables);
-    console.log(
-      "<<>><<>>",
-      environment
-        .getStore()
-        .getSource()
-        .toJSON()
-    );
 
     return (
       <RelayEnvironmentProvider environment={environment}>

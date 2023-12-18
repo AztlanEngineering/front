@@ -11,12 +11,8 @@ import styleNames from '@aztlan/bem'
 import {
   useRefetchableFragment, useFragment,
 } from 'react-relay'
-import {
-  graphql,
-} from 'relay-runtime'
-import {
-  useViewer,
-} from '../AuthContextProvider/index.ts'
+import { graphql } from 'relay-runtime'
+import { useViewer } from '../AuthContextProvider/index.ts'
 
 // Local Definitions
 
@@ -46,12 +42,12 @@ const QUERY = graphql`
 /**
  * This is the component description.
  */
-function ViewerProfile({
+function RawViewerProfile({
   id,
   className: userClassName,
   style,
   children,
-  // data,
+  data,
   // ...otherProps
 }) {
   useInsertionEffect(
@@ -60,15 +56,8 @@ function ViewerProfile({
       import('./styles.scss')
     }, [],
   )
-  const {
-    data,
-  } = useViewer()
   const result = useFragment(
     FRAGMENT, data.viewer,
-  )
-
-  console.log(
-    '[VPR] : Render', result, data,
   )
 
   return (
@@ -100,7 +89,7 @@ function ViewerProfile({
   )
 }
 
-ViewerProfile.propTypes = {
+RawViewerProfile.propTypes = {
   /**
    * The HTML id for this element
    */
@@ -122,11 +111,23 @@ ViewerProfile.propTypes = {
   children:PropTypes.node,
 }
 
-ViewerProfile.defaultProps = {
+RawViewerProfile.defaultProps = {
   // someProp:false
 }
 
-ViewerProfile.QUERY = QUERY
-ViewerProfile.FRAGMENT = FRAGMENT
+RawViewerProfile.QUERY = QUERY
+RawViewerProfile.FRAGMENT = FRAGMENT
+
+function ViewerProfile(props) {
+  const { data } = useViewer()
+  return (
+    <RawViewerProfile
+      data={data}
+      {...props}
+    />
+  )
+}
+
+export { RawViewerProfile }
 
 export default ViewerProfile
