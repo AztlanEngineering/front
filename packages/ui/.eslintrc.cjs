@@ -15,20 +15,31 @@ const sharedRules = {
   '@stylistic/array-element-newline':[
     'error',
     {
-      multiline:true, minItems:3,
+      multiline:true,
+      minItems :3,
     },
   ],
   '@stylistic/array-bracket-newline':[
     'error',
     {
-      multiline:true, minItems:3,
+      multiline:true,
+      minItems :3,
     },
   ],
-  'react/jsx-props-no-spreading'     :[0],
-  'function-paren-newline'           :['error', { minItems: 2 }],
-  '@stylistic/function-paren-newline':['error', { minItems: 2 }],
-  '@stylistic/object-curly-newline'  :['error', { minProperties: 2 }],
-  'key-spacing'                      :[
+  'react/jsx-props-no-spreading'      :[0],
+  // TODO fix
+  'function-paren-newline'            :['error', { minItems: 2 }],
+  '@stylistic/function-paren-newline' :['error', { minItems: 2 }],
+  // 'object-property-newline'           :['error', { allowAllPropertiesOnSameLine: false }], // TODO fix
+  '@stylistic/object-property-newline':['error', { allowAllPropertiesOnSameLine: false }],
+  '@stylistic/object-curly-newline'   :[
+    'error',
+    {
+      multiline    :true,
+      minProperties:2,
+    },
+  ],
+  'key-spacing':[
     'error',
     {
       multiLine:{
