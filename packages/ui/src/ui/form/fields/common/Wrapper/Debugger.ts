@@ -1,18 +1,12 @@
-import {
-  useEffect,
-} from 'react'
-import {
-  useFormikContext,
-} from 'formik'
+import { useEffect } from 'react'
+import { useFormikContext } from 'formik'
 
 function Debugger() {
-  const {
-    values,
-  } = useFormikContext()
+  const { values } = useFormikContext()
   useEffect(
     () => {
       console.log(
-        '[Formik State]', values,
+        '[Formik Values]', values,
       )
     }, [values],
   )

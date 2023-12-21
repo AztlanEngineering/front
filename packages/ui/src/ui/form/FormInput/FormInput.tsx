@@ -1,9 +1,7 @@
 /* @aztlan/generator-front 0.5.0 */
 import * as React from 'react'
 
-import {
-  useInsertionEffect,
-} from 'react'
+import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 
@@ -11,9 +9,7 @@ import styleNames from '@aztlan/bem'
 import {
   Checkbox, TextInput, Textarea, Select,
 } from '../fields/index.ts'
-import {
-  allTypes,
-} from '../constants.ts'
+import { allTypes } from '../constants.ts'
 
 // @ts-ignore
 
@@ -58,6 +54,14 @@ function FormInput({
         />
       )
     case 'checkbox':
+      return (
+        <Checkbox
+          className={newClassName}
+          {...otherProps}
+          //
+        />
+      )
+    case 'choices':
       return (
         <Checkbox
           className={newClassName}
