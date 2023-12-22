@@ -1,9 +1,7 @@
 /* @aztlan/generator-front 0.5.0 */
 import * as React from 'react'
 
-import {
-  useInsertionEffect,
-} from 'react'
+import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 import styleNames from '@aztlan/bem'
@@ -24,7 +22,7 @@ function Label({
   name,
   optional,
   as: Wrapper,
-  // ...otherProps
+  ...otherProps
 }) {
   useInsertionEffect(
     () => {
@@ -44,7 +42,7 @@ function Label({
         .filter((e) => e)
         .join(' ')}
       style={style}
-      // {...otherProps}
+      {...otherProps}
     >
       {children || name}
       {optional && <span> (Optional)</span>}

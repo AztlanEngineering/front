@@ -1,24 +1,14 @@
 /* @aztlan/generator-front 0.6.0 */
 import * as React from 'react'
-import {
-  useMemo,
-} from 'react'
+import { useMemo } from 'react'
 import * as PropTypes from 'prop-types'
 
-import {
-  useField,
-} from 'formik'
+import { useField } from 'formik'
 
-import {
-  Label,
-} from '../Label/index.ts'
-import {
-  Description,
-} from '../Description/index.ts'
+import { Label } from '../Label/index.ts'
+import { Description } from '../Description/index.ts'
 import Debugger from './Debugger.ts'
-import {
-  htmlTypes,
-} from '../../../constants.ts'
+import { htmlTypes } from '../../../constants.ts'
 
 const span = (
   defaultSpan, desktopSpan,
@@ -62,13 +52,21 @@ function Wrapper({
 
   const ariaProps = useMemo(
     () => ({
-      field:{
-        id                :`${idPrefix}.${name}`,
-        'aria-labelledby' :`${idPrefix}.${name}.label`,
-        'aria-describedby':`${idPrefix}.${name}.description${
-          isError ? ` ${idPrefix}.${name}.error` : ''
-        }`,
-      },
+      field:!mockLabel
+        ? {
+          id                :`${idPrefix}.${name}`,
+          'aria-labelledby' :`${idPrefix}.${name}.label`,
+          'aria-describedby':`${idPrefix}.${name}.description${
+            isError ? ` ${idPrefix}.${name}.error` : ''
+          }`,
+        }
+        : {
+          getOptionInputId  :(option) => `${idPrefix}.${name}-${option.value}`,
+          getOptionLabelId  :(option) => `${idPrefix}.${name}-${option.value}.label`,
+          'aria-describedby':`${idPrefix}.${name}.description${
+            isError ? ` ${idPrefix}.${name}.error` : ''
+          }`,
+        },
       label:{
         id:`${idPrefix}.${name}.label`,
       },
@@ -85,7 +83,9 @@ function Wrapper({
   const fieldProps = {
     name,
     // optional,
-    type:inputType, // This means the props need to be spread first ! Otherwise type:undefined will override children
+    // type : This means the props need to be spread first !
+    // Otherwise type:undefined will override children
+    type:inputType,
     // validate,
     meta,
     ...ariaProps.field,
@@ -123,7 +123,10 @@ function Wrapper({
           .filter(Boolean)
           .join(' ')}
       >
-        <Label {...labelProps} as={mockLabel ? 'p' : undefined} />
+        <Label
+          {...labelProps}
+          as={mockLabel ? 'p' : undefined}
+        />
       </div>
       <div
         className={[
@@ -160,7 +163,8 @@ Wrapper.defaultProps = {
   spanContent       :8,
   spanContentDesktop:9,
   mockLabel         :false,
-  hookOptions       :{},
+  hookOptions       :{
+  },
 }
 
 export default Wrapper

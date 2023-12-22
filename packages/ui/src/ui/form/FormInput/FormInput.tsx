@@ -7,7 +7,12 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import {
-  Checkbox, TextInput, Textarea, Select,
+  Checkbox,
+  TextInput,
+  Textarea,
+  Select,
+  SimpleChoices,
+  Choices,
 } from '../fields/index.ts'
 import { allTypes } from '../constants.ts'
 
@@ -36,46 +41,27 @@ function FormInput({
     .filter(Boolean)
     .join(' ')
 
+  const fieldProps = {
+    ...otherProps,
+    className:newClassName,
+  }
+
   switch (inputType) {
     case 'textarea':
-      return (
-        <Textarea
-          className={newClassName}
-          {...otherProps}
-          //
-        />
-      )
+      return <Textarea {...fieldProps} />
     case 'select':
-      return (
-        <Select
-          className={newClassName}
-          {...otherProps}
-          //
-        />
-      )
+      return <Select {...fieldProps} />
     case 'checkbox':
-      return (
-        <Checkbox
-          className={newClassName}
-          {...otherProps}
-          //
-        />
-      )
+      return <Checkbox {...fieldProps} />
+    case 'simple-choices':
+      return <SimpleChoices {...fieldProps} />
     case 'choices':
-      return (
-        <Checkbox
-          className={newClassName}
-          {...otherProps}
-          //
-        />
-      )
+      return <Choices {...fieldProps} />
     default:
       return (
         <TextInput
           type={inputType}
-          className={newClassName}
-          {...otherProps}
-          //
+          {...fieldProps}
         />
       )
   }

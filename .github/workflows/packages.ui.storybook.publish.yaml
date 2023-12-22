@@ -1,4 +1,4 @@
-name: packages.design-system.storybook.publish
+name: packages.ui.storybook.publish
   
 on:
   push:

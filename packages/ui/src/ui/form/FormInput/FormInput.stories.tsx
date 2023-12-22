@@ -1,13 +1,9 @@
 /* @aztlan/generator-front 0.5.0 */
 import * as React from 'react'
 
-import {
-  Formik,
-} from 'formik'
+import { Formik } from 'formik'
 import FormInput from './FormInput.tsx'
-import {
-  allTypes,
-} from '../constants.ts'
+import { allTypes } from '../constants.ts'
 
 function validateEmail(value) {
   let error
@@ -114,6 +110,55 @@ export const Select = {
       },
     ],
     debug:true,
+  },
+}
+
+export const SimpleChoices = {
+  args:{
+    type   :'simple-choices',
+    name   :'favourite-colors',
+    label  :'Select your favourite color',
+    options:[
+      {
+        value:'red',
+        label:'Red',
+      },
+      {
+        value:'green',
+        label:'Green',
+      },
+      {
+        value:'blue',
+        label:'Blue',
+      },
+      {
+        value:'yellow',
+        label:'Yellow',
+      },
+    ],
+    debug:true,
+  },
+}
+
+export const SimpleChoicesMultiple = {
+  args:{
+    ...SimpleChoices.args,
+    multiple:true,
+  },
+}
+
+export const Choices = {
+  args:{
+    ...SimpleChoices.args,
+    type:'choices',
+  },
+}
+
+export const ChoicesMultiple = {
+  args:{
+    ...SimpleChoices.args,
+    type    :'choices',
+    multiple:true,
   },
 }
 

@@ -1,7 +1,5 @@
 import * as React from 'react'
-import {
-  useEffect,
-} from 'react'
+import { useEffect } from 'react'
 import Wrapper from './Wrapper.tsx'
 
 const areEqual = (
@@ -17,7 +15,8 @@ const areEqual = (
 }
 
 const withWrapper = (
-  Component, options = {},
+  Component, options = {
+  },
 ) => function (props) {
   return (
     <Wrapper

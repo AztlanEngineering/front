@@ -10,3 +10,5 @@ export {
 export {
   Checkbox,
 } from './Checkbox/index.ts'
+export * from './SimpleChoices/index.ts'
+export * from './Choices/index.ts'
