@@ -74,7 +74,12 @@ const sharedRules = {
   // https://astexplorer.net/
   '@stylistic/no-multi-spaces':[
     'error',
-    { exceptions: { TSPropertySignature: true } },
+    {
+      exceptions:{
+        TSPropertySignature:true,
+        TSIndexSignature   :true,
+      },
+    },
   ],
 }
 
