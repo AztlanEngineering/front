@@ -21,3 +21,20 @@ export default {
 export const Base = () => (
   <<%= name %>>Sample <%= name %></<%= name %>>
 )
+
+/*
+export const Base = {         
+  args:{
+    type :'text',
+    name :'name',
+    label:'Your name',
+  },
+}*/
+
+/*
+const Template = (args) => <<%= name %> {...args} />
+                                                     
+export const Base = Template.bind({})
+Base.args = {
+  children:'Sample Button',
+}*/

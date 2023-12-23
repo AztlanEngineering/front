@@ -1,0 +1,30 @@
+/* @aztlan/generator-front 0.7.2 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.form {
+
+
+
+  .#{bem.$base}.navigator {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+
+.#{bem.$base}.form-menu {
+  > li.#{bem.$modifier-previous} {
+    color: red;
+  }
+  > li.#{bem.$modifier-active} {
+    color: green;
+  }
+  > li.#{bem.$modifier-next} {
+    color: blue;
+  }
+
+  > li {
+    color: yellow;
+  }
+}

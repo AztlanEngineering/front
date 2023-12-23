@@ -1,3 +1,2 @@
-export {
-  FormInput,
-} from './FormInput/index.ts'
+export * from './FormInput/index.ts'
+export * from './Form/index.ts'

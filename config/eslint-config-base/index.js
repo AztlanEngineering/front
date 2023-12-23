@@ -11,57 +11,51 @@ const sharedRules = {
   'import/extensions':[
     'error',
     'always',
-    {
-      ignorePackages:true,
-    },
+    { ignorePackages: true },
   ],
   'react/jsx-props-no-spreading':[0],
   'react/jsx-max-props-per-line':[
     'error',
-    {
-      maximum:1,
-    },
+    { maximum: 1 },
   ],
   // TODO fix
   '@stylistic/array-element-newline':[
     'error',
     {
       multiline:true,
-      minItems :3,
+      minItems :2,
     },
   ],
   '@stylistic/array-bracket-newline':[
     'error',
     {
       multiline:true,
-      minItems :3,
+      minItems :2,
     },
   ],
   'function-paren-newline':[
     'error',
-    {
-      minItems:2,
-    },
+    { minItems: 2 },
   ],
   '@stylistic/function-paren-newline':[
     'error',
-    {
-      minItems:2,
-    },
+    { minItems: 2 },
   ],
   // TODO looks like the linting works alright, but the fixing is conservative
   // 'object-property-newline'           :['error', { allowAllPropertiesOnSameLine: false }],
   '@stylistic/object-property-newline':[
     'error',
-    {
-      allowAllPropertiesOnSameLine:false,
-    },
+    { allowAllPropertiesOnSameLine: false },
   ],
+  'object-curly-newline'           :'off',
   '@stylistic/object-curly-newline':[
     'error',
     {
-      ObjectExpression:'always',
-      ObjectPattern   :{
+      ObjectExpression:{
+        multiline    :true,
+        minProperties:2,
+      },
+      ObjectPattern:{
         multiline    :true,
         minProperties:2,
       },
@@ -75,19 +69,12 @@ const sharedRules = {
       },
     },
   ],
-  'key-spacing':[
+  'no-multi-spaces'           :'off',
+  // Find proper rules here
+  // https://astexplorer.net/
+  '@stylistic/no-multi-spaces':[
     'error',
-    {
-      multiLine:{
-        beforeColon:false,
-        afterColon :false,
-      },
-      align:{
-        beforeColon:false,
-        afterColon :false,
-        on         :'colon',
-      },
-    },
+    { exceptions: { TSPropertySignature: true } },
   ],
 }
 
@@ -110,7 +97,10 @@ module.exports = {
   plugins  :['@stylistic'],
   overrides:[
     {
-      files  :['*.ts', '*.tsx'], // Apply these settings only to TypeScript files
+      files:[
+        '*.ts',
+        '*.tsx',
+      ], // Apply these settings only to TypeScript files
       extends:[
         'airbnb-typescript',
         // 'plugin:@typescript-eslint/recommended',
@@ -124,13 +114,48 @@ module.exports = {
         tsconfigRootDir:process.cwd(),
       },
       rules:{
-        '@typescript-eslint/semi':[2, 'never'],
+        '@typescript-eslint/semi':[
+          2,
+          'never',
+        ],
+        'key-spacing'                   :'off',
+        '@typescript-eslint/key-spacing':[
+          'error',
+          {
+            multiLine:{
+              beforeColon:false,
+              afterColon :false,
+            },
+            align:{
+              beforeColon:false,
+              afterColon :false,
+              on         :'colon',
+            },
+          },
+        ],
         ...sharedRules,
       },
     },
   ],
   rules:{
-    semi:['error', 'never'],
+    semi:[
+      'error',
+      'never',
+    ],
+    'key-spacing':[
+      'error',
+      {
+        multiLine:{
+          beforeColon:false,
+          afterColon :false,
+        },
+        align:{
+          beforeColon:false,
+          afterColon :false,
+          on         :'colon',
+        },
+      },
+    ],
     ...sharedRules,
   },
 }
