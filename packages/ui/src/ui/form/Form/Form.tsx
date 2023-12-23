@@ -7,13 +7,16 @@ import {
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import { Formik } from 'formik'
+import {
+  Formik, useFormikContext,
+} from 'formik'
 
+import { useSections } from '@aztlan/react-helpers'
 import {
   Menu, Inputs,
 } from './common/index.ts'
-import useHandler from './useHandler.ts'
 import Context from './Context.ts'
+import Debugger from '../Debugger.ts'
 
 // Local Definitions
 
@@ -30,6 +33,7 @@ function Form({
   style,
   children,
   items,
+  debug,
   type: formType,
 
   ...formikProps
@@ -42,10 +46,7 @@ function Form({
     }, [],
   )
 
-  const handlerProps = useHandler(items)
-  console.log(
-    'F', handlerProps,
-  )
+  const handlerProps = useSections(items)
 
   return (
     <Formik {...formikProps}>
@@ -56,6 +57,7 @@ function Form({
         }}
       >
         {children}
+        {debug && <Debugger />}
       </Context.Provider>
     </Formik>
   )
@@ -89,13 +91,18 @@ Form.propTypes = {
     'default',
     'multipart',
   ]),
+
+  /**
+   * Whether to debug form state in console
+   */
+  debug:PropTypes.bool,
 }
 
 Form.defaultProps = {
-  type:'default',
+  type :'default',
+  debug:false,
 }
 
 Form.Menu = Menu
 Form.Inputs = Inputs
-
 export default Form

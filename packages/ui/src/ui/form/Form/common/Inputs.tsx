@@ -31,7 +31,7 @@ function Inputs({
   } = useForm()
 
   const {
-    section, sectionIndex, sections,
+    currentSection, currentIndex, sections,
   } = state
 
   return (
@@ -49,19 +49,19 @@ function Inputs({
     >
       {formType === 'default' ? (
         sections.map((
-          s, index,
+          section, index,
         ) => (
           <Section
-            key={s.label}
+            key={section.label}
             index={index}
-            {...s}
+            {...section}
           />
         ))
       ) : (
         <>
           <Section
-            index={sectionIndex}
-            {...section}
+            index={currentIndex}
+            {...currentSection}
           />
           <Navigator />
         </>

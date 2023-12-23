@@ -14,7 +14,7 @@ export const allTypes = [
   ...htmlTypes,
   'hidden',
   'select',
-  // 'choices',
+  'choices',
   'simple-choices',
   'textarea',
   // 'query-combobox',

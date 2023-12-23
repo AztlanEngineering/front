@@ -27,19 +27,19 @@ function Navigator({
   // ...otherProps
 }) {
   const {
-    state, setNextSectionIndex, setPrevSectionIndex,
+    state, setNext, setPrevious,
   } = useForm()
 
   const {
-    section, isFirstSection, isLastSection,
+    currentSection, isFirst, isLast,
   } = state
 
   const displayBack = useMemo(
-    () => !isFirstSection && !section.hideBack, [section],
+    () => !isFirst && !currentSection.hideBack, [currentSection],
   )
 
   const displayNext = useMemo(
-    () => !isLastSection && !section.hideNext, [section],
+    () => !isLast && !currentSection.hideNext, [currentSection],
   )
 
   return (
@@ -55,16 +55,8 @@ function Navigator({
       style={style}
       // {...otherProps}
     >
-      {displayBack ? (
-        <button onClick={setPrevSectionIndex}>Prev</button>
-      ) : (
-        <span />
-      )}
-      {displayNext ? (
-        <button onClick={setNextSectionIndex}>Next</button>
-      ) : (
-        <span />
-      )}
+      {displayBack ? <button onClick={setPrevious}>Prev</button> : <span />}
+      {displayNext ? <button onClick={setNext}>Next</button> : <span />}
     </div>
   )
 }

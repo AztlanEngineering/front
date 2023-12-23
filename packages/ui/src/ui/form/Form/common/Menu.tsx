@@ -25,11 +25,11 @@ function Menu({
   // ...otherProps
 }) {
   const {
-    setSectionIndex, state,
+    setIndex, state,
   } = useForm()
 
   const {
-    sections, sectionIndex,
+    sections, currentIndex,
   } = state
 
   return (
@@ -48,19 +48,35 @@ function Menu({
       {sections.map((
         section, index,
       ) => {
-        if (index < sectionIndex) {
+        const payload = section.label
+        if (index < currentIndex) {
           return (
-            <li className={styleNames.modifierPrevious}>
-              <button onClick={() => setSectionIndex(index)}>
-                {section.label}
-              </button>
+            <li
+              className={styleNames.modifierPrevious}
+              key={payload}
+            >
+              <button onClick={() => setIndex(index)}>{payload}</button>
             </li>
           )
         }
-        if (index === sectionIndex) {
-          return <li className={styleNames.modifierActive}>{section.label}</li>
+        if (index === currentIndex) {
+          return (
+            <li
+              className={styleNames.modifierActive}
+              key={payload}
+            >
+              {payload}
+            </li>
+          )
         }
-        return <li className={styleNames.modifierNext}>{section.label}</li>
+        return (
+          <li
+            className={styleNames.modifierNext}
+            key={payload}
+          >
+            {payload}
+          </li>
+        )
       })}
     </ul>
   )

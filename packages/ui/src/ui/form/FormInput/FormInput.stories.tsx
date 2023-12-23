@@ -4,6 +4,7 @@ import * as React from 'react'
 import { Formik } from 'formik'
 import FormInput from './FormInput.tsx'
 import { allTypes } from '../constants.ts'
+import Debugger from '../Debugger.ts'
 
 function validateEmail(value) {
   let error
@@ -28,7 +29,10 @@ export default {
           }
         }
       >
-        {StoryFn()}
+        <>
+          {StoryFn()}
+          <Debugger />
+        </>
       </Formik>
     ),
     // storyfn => <div className="">{ storyfn() }</div>,
@@ -81,7 +85,6 @@ export const Checkbox = {
     type :'checkbox',
     name :'newsletter_opt_in',
     label:'Newsletter opt-in',
-    debug:true,
   },
 }
 
@@ -109,7 +112,6 @@ export const Select = {
         label:'West',
       },
     ],
-    debug:true,
   },
 }
 
@@ -136,7 +138,6 @@ export const SimpleChoices = {
         label:'Yellow',
       },
     ],
-    debug:true,
   },
 }
 

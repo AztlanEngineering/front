@@ -13,24 +13,25 @@ export default {
     // decorators.app,
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes:{
-    backgroundColor:{
-      control:'color',
-    },
-  },
+  argTypes:{ backgroundColor: { control: 'color' } },
 }
 
 function BaseTemplate(args) {
   return <Form {...args} />
 }
 
-export const Base = BaseTemplate.bind({
-})
+export const Base = BaseTemplate.bind({})
 Base.args = {
   className:'grid',
   children :[
-    <Form.Menu className="span-8 md-span-5" />,
-    <Form.Inputs className="span-8 md-span-7" />,
+    <Form.Menu
+      className="span-8 md-span-5"
+      key="menu"
+    />,
+    <Form.Inputs
+      className="span-8 md-span-7"
+      key="inputs"
+    />,
   ],
   items:[
     {
@@ -92,10 +93,20 @@ Base.args = {
       ],
     },
   ],
+  initialValues:{
+    name             :'',
+    email            :'',
+    phone            :'',
+    'company-name'   :'',
+    'company-address':'',
+    'company-phone'  :'',
+    'site-name'      :'',
+    'site-address'   :'',
+  },
+  debug:true,
 }
 
-export const Multipart = BaseTemplate.bind({
-})
+export const Multipart = BaseTemplate.bind({})
 Multipart.args = {
   ...Base.args,
   type:'multipart',

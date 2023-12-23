@@ -7,7 +7,6 @@ import { useField } from 'formik'
 
 import { Label } from '../Label/index.ts'
 import { Description } from '../Description/index.ts'
-import Debugger from './Debugger.ts'
 import { htmlTypes } from '../../../constants.ts'
 
 const span = (
@@ -38,11 +37,13 @@ function Wrapper({
   spanContent,
   spanContentDesktop,
   mockLabel,
-  debug, // TODO TEMP, will be moved to the Form
   hookOptions,
   ...otherProps
 }) {
-  const [field, meta] = useField({
+  const [
+    field,
+    meta,
+  ] = useField({
     name,
     validate,
     ...hookOptions,
@@ -67,17 +68,14 @@ function Wrapper({
             isError ? ` ${idPrefix}.${name}.error` : ''
           }`,
         },
-      label:{
-        id:`${idPrefix}.${name}.label`,
-      },
-      description:{
-        id:`${idPrefix}.${name}.description`,
-      },
-      state:{
-        id:`${idPrefix}.${name}.error`,
-      },
+      label      :{ id: `${idPrefix}.${name}.label` },
+      description:{ id: `${idPrefix}.${name}.description` },
+      state      :{ id: `${idPrefix}.${name}.error` },
     }),
-    [name, isError],
+    [
+      name,
+      isError,
+    ],
   )
 
   const fieldProps = {
@@ -140,7 +138,6 @@ function Wrapper({
         {description && <Description {...descriptionProps} />}
         <Component {...fieldProps} />
         {meta.error && <Description {...stateProps} />}
-        {debug && <Debugger />}
       </div>
       {/* Error handling and other common functionalities */}
     </>
@@ -163,8 +160,7 @@ Wrapper.defaultProps = {
   spanContent       :8,
   spanContentDesktop:9,
   mockLabel         :false,
-  hookOptions       :{
-  },
+  hookOptions       :{},
 }
 
 export default Wrapper

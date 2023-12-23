@@ -37,7 +37,10 @@ function FormInput({
     }, [],
   )
 
-  const newClassName = [className, componentClassName]
+  const newClassName = [
+    className,
+    componentClassName,
+  ]
     .filter(Boolean)
     .join(' ')
 
@@ -131,7 +134,6 @@ FormInput.propTypes = {
 FormInput.defaultProps = {
   optional:false,
   disabled:false,
-  debug   :false,
   // someProp:false
 }
 
