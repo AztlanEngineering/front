@@ -1,48 +1,46 @@
 /* <%= pkg %> <%= version %> */
 //import * as React from 'react'
 
-import { StoryObj } from '@storybook/react'
-import <%= name %> from './<%= name %>.tsx'
+import { Meta, StoryObj } from "@storybook/react";
+//import { Meta, StoryFn } from '@storybook/react'
+import Component from "./<%= name %>.tsx";
 //import * as decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 //import * as decorators from "story-utils/decorators.tsx";
 
 export default {
-  title: '<%= fullname %>',
-  component: <%= name %>,
-  decorators:[
-    //decorators.app, 
+  title: "<%= fullname %>",
+  component: Component,
+  decorators: [
+    //decorators.app,
     //storyfn => <div className="">{ storyfn() }</div>,
   ],
   argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+    backgroundColor: { control: "color" }
+  }
   /*
   parameters: {
     layout: 'centered|fullscreen|padded(default)',
   },*/
-}
+} as Meta<typeof Component>;
 
-export const LoggedOut = {}
-}
-
-export const Base: StoryObj = {         
-  args:{
-    type :'text',
-    name :'name',
-    label:'Your name',
-  },
-}*/
+export const Base: StoryObj<typeof Component> = {
+  args: {
+    type: "text",
+    name: "name",
+    label: "Your name"
+  }
+};
 
 /*
-export const Base = () => (
-  <<%= name %>>Sample <%= name %></<%= name %>>
+export const Base: StoryFn<typeof Component> = () => (
+  <Component>Sample <%= name %></Component>
 )
 */
 
 /*
-const Template = (args) => <<%= name %> {...args} />
+const Template: StoryFn<typeof Component> = (args) => <<%= name %> {...args} />
                                                      
-export const Base = Template.bind({})
+export const Base: StoryFn<typeof Component> = Template.bind({})
 Base.args = {
   children:'Sample Button',
 }*/

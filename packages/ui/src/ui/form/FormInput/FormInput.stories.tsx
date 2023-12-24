@@ -1,15 +1,17 @@
 /* @aztlan/generator-front 0.5.0 */
 // import * as React from 'react'
 
-import { StoryObj } from '@storybook/react'
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
 import * as decorators from 'story-utils/decorators.tsx'
-import FormInput from './FormInput.tsx'
+import Component from './FormInput.tsx'
 import { allTypes } from '../constants.ts'
 import { validateEmail } from '../validators.ts'
 
 export default {
   title     :'form/FormInput',
-  component :FormInput,
+  component :Component,
   decorators:[
     decorators.grid,
     decorators.form,
@@ -20,9 +22,9 @@ export default {
       options:allTypes,
     },
   },
-}
+} as Meta<typeof Component>
 
-export const Base: StoryObj = {
+export const Base: StoryObj<typeof Component> = {
   args:{
     type :'text',
     name :'name',
@@ -30,7 +32,7 @@ export const Base: StoryObj = {
   },
 }
 
-export const WithDescription: StoryObj = {
+export const WithDescription: StoryObj<typeof Component> = {
   args:{
     type       :'text',
     name       :'last_name',
@@ -39,7 +41,7 @@ export const WithDescription: StoryObj = {
   },
 }
 
-export const WithValidation: StoryObj = {
+export const WithValidation: StoryObj<typeof Component> = {
   args:{
     type       :'email',
     name       :'email',
@@ -49,7 +51,7 @@ export const WithValidation: StoryObj = {
   },
 }
 
-export const Textarea: StoryObj = {
+export const Textarea: StoryObj<typeof Component> = {
   args:{
     type :'textarea',
     name :'blog_post',
@@ -57,7 +59,7 @@ export const Textarea: StoryObj = {
   },
 }
 
-export const Checkbox: StoryObj = {
+export const Checkbox: StoryObj<typeof Component> = {
   args:{
     type :'checkbox',
     name :'newsletter_opt_in',
@@ -65,7 +67,7 @@ export const Checkbox: StoryObj = {
   },
 }
 
-export const Select: StoryObj = {
+export const Select: StoryObj<typeof Component> = {
   args:{
     type   :'select',
     name   :'region',
@@ -92,7 +94,7 @@ export const Select: StoryObj = {
   },
 }
 
-export const SimpleChoices: StoryObj = {
+export const SimpleChoices: StoryObj<typeof Component> = {
   args:{
     type   :'simple-choices',
     name   :'favourite-colors',
@@ -118,21 +120,21 @@ export const SimpleChoices: StoryObj = {
   },
 }
 
-export const SimpleChoicesMultiple: StoryObj = {
+export const SimpleChoicesMultiple: StoryObj<typeof Component> = {
   args:{
     ...SimpleChoices.args,
     multiple:true,
   },
 }
 
-export const Choices: StoryObj = {
+export const Choices: StoryObj<typeof Component> = {
   args:{
     ...SimpleChoices.args,
     type:'choices',
   },
 }
 
-export const ChoicesMultiple: StoryObj = {
+export const ChoicesMultiple: StoryObj<typeof Component> = {
   args:{
     ...SimpleChoices.args,
     type    :'choices',

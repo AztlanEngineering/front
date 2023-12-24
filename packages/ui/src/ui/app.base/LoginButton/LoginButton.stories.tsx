@@ -1,13 +1,15 @@
 /* @aztlan/generator-front 0.4.3 */
 import * as React from 'react'
 
-import { StoryObj } from '@storybook/react'
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
 import LoginButton from './LoginButton'
 
 export default {
   title    :'base.authentication/LoginButton',
   component:LoginButton,
-}
+} as Meta<typeof LoginButton>
 
 const relayConfig = {
   query            :LoginButton.QUERY,
@@ -25,4 +27,4 @@ const relayConfig = {
   },
 }
 
-export const Default: StoryObj = { parameters: { relay: relayConfig } }
+export const Default: StoryObj<typeof LoginButton> = { parameters: { relay: relayConfig } }

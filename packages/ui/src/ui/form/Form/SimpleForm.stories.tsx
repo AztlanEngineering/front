@@ -1,8 +1,10 @@
 /* @aztlan/generator-front 0.7.2 */
 import * as React from 'react'
 
-import { StoryObj } from '@storybook/react'
-import SimpleForm from './SimpleForm.tsx'
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
+import Component from './SimpleForm.tsx'
 import {
   validateEmail,
   validatePhoneNumber,
@@ -11,15 +13,13 @@ import {
 
 export default {
   title     :'form/SimpleForm',
-  component :SimpleForm,
+  component :Component,
   decorators:[
     // decorators.app,
-    // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  // argTypes:{ backgroundColor: { control: 'color' } },
-}
+} as Meta<typeof Component>
 
-export const Base: StoryObj = {
+export const Base: StoryObj<typeof Component> = {
   args:{
     type  :'text',
     name  :'name',

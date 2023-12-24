@@ -1,15 +1,16 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
 
-import { StoryObj } from '@storybook/react'
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
 import * as decorators from 'story-utils/decorators.tsx'
-import LocaleSwitcher from './LocaleSwitcher.tsx'
+import Component from './LocaleSwitcher.tsx'
 
 export default {
   title     :'common/LocaleSwitcher',
-  component :LocaleSwitcher,
+  component :Component,
   decorators:[decorators.intlApp],
-  // argTypes  :{ backgroundColor: { control: 'color' } },
-}
+} as Meta<typeof Component>
 
-export const Base: StoryObj = { args: {} }
+export const Base: StoryObj<typeof Component> = { args: {} }

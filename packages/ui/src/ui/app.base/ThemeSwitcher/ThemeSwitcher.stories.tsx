@@ -1,14 +1,16 @@
 /* @aztlan/generator-front 0.4.0 */
 // import * as React from 'react'
 
-import { StoryObj } from '@storybook/react'
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
 import * as decorators from 'story-utils/decorators.tsx'
-import ThemeSwitcher from './ThemeSwitcher.tsx'
+import Component from './ThemeSwitcher.tsx'
 
 export default {
   title     :'common/ThemeSwitcher',
-  component :ThemeSwitcher,
+  component :Component,
   decorators:[decorators.app],
-}
+} as Meta<typeof Component>
 
-export const Base: StoryObj = { args: {} }
+export const Base: StoryObj<typeof Component> = { args: {} }

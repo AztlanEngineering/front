@@ -1,22 +1,24 @@
 /* @aztlan/generator-front 0.4.3 */
 // import * as React from 'react'
 
-import { StoryObj } from '@storybook/react'
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
 import * as decorators from 'story-utils/decorators.tsx'
-import { RawViewerProfile as ViewerProfile } from './ViewerProfile.tsx'
+import { RawViewerProfile as Component } from './ViewerProfile.tsx'
 
 export default {
   title     :'base.profile/ViewerProfile',
-  component :ViewerProfile,
+  component :Component,
   decorators:[
     // Needed for storyshots, not for storybook itself
     decorators.auth,
   ],
   argTypes:{ backgroundColor: { control: 'color' } },
-}
+} as Meta<typeof Component>
 
 const relayConfig = {
-  query            :ViewerProfile.QUERY,
+  query            :Component.QUERY,
   getReferenceEntry:(data) => [
     'data',
     data,
@@ -32,4 +34,4 @@ const relayConfig = {
   },
 }
 
-export const Default: StoryObj = { parameters: { relay: relayConfig } }
+export const Default: StoryObj<typeof Component> = { parameters: { relay: relayConfig } }
