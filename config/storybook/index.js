@@ -60,6 +60,9 @@ const template = (inputs) => ({
       return a
     }, {}),
   },
+  typescript:{
+    reactDocgen:'react-docgen',
+  },
   pushScss:(config) => config.module.rules.push({
     test   :/\.scss$/,
     include:path.resolve(__dirname, '../../..'),

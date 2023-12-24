@@ -3,13 +3,14 @@ import type { StorybookConfig } from "@storybook/react";
 import { configureSharedConfig, getAbsolutePath } from "@aztlan/storybook-config";
 
 const {
-  staticDirs,
   addons,
-  framework,
-  docs,
   core,
+  docs,
+  framework,
   pushScss,
-  pushTsconfigPathsPlugin
+  pushTsconfigPathsPlugin,
+  staticDirs,
+  typescript,
 } = configureSharedConfig({
   location:__dirname,
 })
@@ -30,6 +31,7 @@ const config: StorybookConfig = {
   framework,
   docs,
   core,
+  typescript,
   webpackFinal: async (config, { configType }) => {
     pushScss(config)
     pushTsconfigPathsPlugin(config)
