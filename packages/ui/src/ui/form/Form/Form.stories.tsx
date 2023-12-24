@@ -7,6 +7,7 @@ import {
   validateEmail,
   validateURL,
   validatePhoneNumber,
+  validateRequired,
 } from '../validators.ts'
 // import * as decorators from "@aztlan/ui/dist/esm/storybook/decorators.mjs";
 // import * as decorators from "storybook";
@@ -26,8 +27,14 @@ export const Base = BaseTemplate.bind({})
 Base.args = {
   className:'grid',
   children :[
-    <Form.Menu key="menu" />,
-    <Form.Inputs key="inputs" />,
+    <Form.Menu
+      className="span-8 md-span-5"
+      key="menu"
+    />,
+    <Form.Inputs
+      className="span-8 md-span-9"
+      key="inputs"
+    />,
   ],
   items:[
     {
@@ -35,21 +42,31 @@ Base.args = {
       description:"Let's get to know you",
       inputs     :[
         {
-          type :'text',
-          label:'Name',
-          name :'name',
+          type    :'text',
+          label   :'First Name',
+          name    :'first-name',
+          validate:validateRequired,
         },
         {
-          type    :'email',
-          label   :'Email',
-          name    :'email',
-          validate:validateEmail,
+          type    :'text',
+          label   :'Last Name',
+          name    :'last-name',
+          optional:true,
         },
         {
-          type    :'tel',
-          label   :'Phone',
-          name    :'phone',
-          validate:validatePhoneNumber,
+          type       :'email',
+          label      :'Email',
+          name       :'email',
+          description:'Try something @gmail.com',
+          validate   :validateEmail,
+        },
+        {
+          type       :'tel',
+          label      :'Phone',
+          name       :'phone',
+          description:'this field should only appear is an email ending with gmail.com is entered',
+          condition  :(values) => values.email.endsWith('gmail.com'),
+          validate   :validatePhoneNumber,
         },
       ],
     },
@@ -94,8 +111,15 @@ Base.args = {
       ],
     },
   ],
+  inputProps:{
+    spanLabel         :8,
+    spanLabelDesktop  :3,
+    spanContent       :8,
+    spanContentDesktop:6,
+  },
   initialValues:{
-    name             :'',
+    'first-name'     :'',
+    'last-name'      :'',
     email            :'',
     phone            :'',
     'company-name'   :'',
@@ -107,29 +131,8 @@ Base.args = {
   debug:true,
 }
 
-export const InputProps = BaseTemplate.bind({})
-InputProps.args = {
-  ...Base.args,
-  children:[
-    <Form.Menu
-      className="span-8 md-span-5"
-      key="menu"
-    />,
-    <Form.Inputs
-      className="span-8 md-span-9"
-      key="inputs"
-    />,
-  ],
-  inputProps:{
-    spanLabel         :8,
-    spanLabelDesktop  :3,
-    spanContent       :8,
-    spanContentDesktop:6,
-  },
-}
-
 export const Multipart = BaseTemplate.bind({})
 Multipart.args = {
-  ...InputProps.args,
+  ...Base.args,
   type:'multipart',
 }

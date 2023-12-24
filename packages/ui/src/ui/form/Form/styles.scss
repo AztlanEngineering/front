@@ -12,17 +12,19 @@
 
 
 .#{bem.$base}.form-menu {
-  > li.#{bem.$modifier-previous} {
-    color: red;
-  }
-  > li.#{bem.$modifier-active} {
-    color: green;
-  }
-  > li.#{bem.$modifier-next} {
-    color: blue;
-  }
-
   > li {
-    color: yellow;
+    &.#{bem.$modifier-previous} {
+      color: red;
+    }
+    &.#{bem.$modifier-active} {
+      color: green;
+    }
+    &.#{bem.$modifier-next} {
+      color: blue;
+    }
   }
+}
+
+.#{bem.$base}.simple-form {
+
 }

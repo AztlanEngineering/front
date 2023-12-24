@@ -1,3 +1,11 @@
+export const validateRequired = (value) => {
+  let error
+  if (!value) {
+    error = 'Required'
+  }
+  return error
+}
+
 export const validateEmail = (value) => {
   let error
   if (!value) {

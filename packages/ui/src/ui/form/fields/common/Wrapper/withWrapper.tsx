@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { useEffect } from 'react'
-import Wrapper from './Wrapper.tsx'
+import { useFormikContext } from 'formik'
+import Wrapper from './Wrapper'
 
 const areEqual = (
   prevProps, nextProps,
@@ -15,21 +15,29 @@ const areEqual = (
 }
 
 const withWrapper = (
-  Component, options = {
-  },
-) => function (props) {
-  return (
-    <Wrapper
-      Component={
-          React.memo(
-            Component, areEqual,
-          )
-          // Component
-        }
-      {...options}
-      {...props}
-    />
+  Component, options = {},
+) => {
+  const WrappedComponent = React.memo(
+    Component, areEqual,
   )
-} // TODO add react memp
+
+  return function ({
+    condition, ...props
+  }) {
+    const { values } = useFormikContext()
+
+    if (condition && !condition(values)) {
+      return null
+    }
+
+    return (
+      <Wrapper
+        Component={WrappedComponent}
+        {...options}
+        {...props}
+      />
+    )
+  }
+}
 
 export default withWrapper

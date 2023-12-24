@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 0.7.2 */
 import * as React from 'react'
 
-import { useInsertionEffect } from 'react'
+import { useMemo } from 'react'
 
 import * as PropTypes from 'prop-types'
 
@@ -30,7 +30,6 @@ function Section({
   inputs,
   as: Wrapper,
 }) {
-  //
   const { inputProps } = useForm()
 
   return (
@@ -90,7 +89,7 @@ Section.propTypes = {
 }
 
 Section.defaultProps = {
-  as:'div',
+  as:'fieldset',
   // someProp:false
 }
 

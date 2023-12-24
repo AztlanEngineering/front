@@ -110,10 +110,6 @@ function Wrapper({
     ...ariaProps.state,
   }
 
-  console.log(
-    'WW', meta,
-  )
-
   return (
     <>
       <div

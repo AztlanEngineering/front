@@ -9,6 +9,7 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import useForm from '../useForm.ts'
+import useFormValidity from '../useFormValidity.ts'
 
 // Local Definitions
 
@@ -42,6 +43,18 @@ function Navigator({
     () => !isLast && !currentSection.hideNext, [currentSection],
   )
 
+  const {
+    touchInputs, isValid: isFormSectionValid,
+  } = useFormValidity(currentSection.inputs)
+
+  const onClickNext = () => {
+    if (isFormSectionValid) {
+      setNext()
+    } else {
+      touchInputs()
+    }
+  }
+
   return (
     <div
       id={id}
@@ -57,7 +70,7 @@ function Navigator({
       // {...otherProps}
     >
       {displayBack ? <button onClick={setPrevious}>Prev</button> : <span />}
-      {displayNext ? <button onClick={setNext}>Next</button> : <span />}
+      {displayNext ? <button onClick={onClickNext}>Next</button> : <span />}
     </div>
   )
 }
