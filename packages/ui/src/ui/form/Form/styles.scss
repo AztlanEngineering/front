@@ -2,9 +2,7 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.form {
-
-
+.#{bem.$base}.form-inputs {
 
   .#{bem.$base}.navigator {
     display: flex;

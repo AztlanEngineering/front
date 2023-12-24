@@ -14,7 +14,7 @@ import Navigator from './Navigator.tsx'
 
 const baseClassName = styleNames.base
 
-const componentClassName = 'form'
+const componentClassName = 'form-inputs'
 
 /**
  * This is the component description.
@@ -41,6 +41,7 @@ function Inputs({
         baseClassName,
         componentClassName,
         userClassName,
+        'grid',
       ]
         .filter((e) => e)
         .join(' ')}

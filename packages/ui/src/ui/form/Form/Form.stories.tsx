@@ -3,17 +3,19 @@ import * as React from 'react'
 
 // import { Form } from 'ui'
 import Form from './Form.tsx'
+import {
+  validateEmail,
+  validateURL,
+  validatePhoneNumber,
+} from '../validators.ts'
 // import * as decorators from "@aztlan/ui/dist/esm/storybook/decorators.mjs";
 // import * as decorators from "storybook";
 
 export default {
   title     :'form/Form',
   component :Form,
-  decorators:[
-    // decorators.app,
-    // storyfn => <div className="">{ storyfn() }</div>,
-  ],
-  argTypes:{ backgroundColor: { control: 'color' } },
+  decorators:[(storyfn) => <div className="grid">{storyfn()}</div>],
+  argTypes  :{ backgroundColor: { control: 'color' } },
 }
 
 function BaseTemplate(args) {
@@ -24,14 +26,8 @@ export const Base = BaseTemplate.bind({})
 Base.args = {
   className:'grid',
   children :[
-    <Form.Menu
-      className="span-8 md-span-5"
-      key="menu"
-    />,
-    <Form.Inputs
-      className="span-8 md-span-7"
-      key="inputs"
-    />,
+    <Form.Menu key="menu" />,
+    <Form.Inputs key="inputs" />,
   ],
   items:[
     {
@@ -44,14 +40,16 @@ Base.args = {
           name :'name',
         },
         {
-          type :'email',
-          label:'Email',
-          name :'email',
+          type    :'email',
+          label   :'Email',
+          name    :'email',
+          validate:validateEmail,
         },
         {
-          type :'tel',
-          label:'Phone',
-          name :'phone',
+          type    :'tel',
+          label   :'Phone',
+          name    :'phone',
+          validate:validatePhoneNumber,
         },
       ],
     },
@@ -70,9 +68,10 @@ Base.args = {
           name :'company-address',
         },
         {
-          type :'text',
-          label:'Company Phone',
-          name :'company-phone',
+          type    :'tel',
+          label   :'Company Phone',
+          name    :'company-phone',
+          validate:validatePhoneNumber,
         },
       ],
     },
@@ -86,9 +85,11 @@ Base.args = {
           name :'site-name',
         },
         {
-          type :'text',
-          label:'Site Address',
-          name :'site-address',
+          type       :'url',
+          label      :'Site Address',
+          name       :'site-address',
+          description:'This is the address of your website.',
+          validate   :validateURL,
         },
       ],
     },
@@ -106,8 +107,29 @@ Base.args = {
   debug:true,
 }
 
+export const InputProps = BaseTemplate.bind({})
+InputProps.args = {
+  ...Base.args,
+  children:[
+    <Form.Menu
+      className="span-8 md-span-5"
+      key="menu"
+    />,
+    <Form.Inputs
+      className="span-8 md-span-9"
+      key="inputs"
+    />,
+  ],
+  inputProps:{
+    spanLabel         :8,
+    spanLabelDesktop  :3,
+    spanContent       :8,
+    spanContentDesktop:6,
+  },
+}
+
 export const Multipart = BaseTemplate.bind({})
 Multipart.args = {
-  ...Base.args,
+  ...InputProps.args,
   type:'multipart',
 }

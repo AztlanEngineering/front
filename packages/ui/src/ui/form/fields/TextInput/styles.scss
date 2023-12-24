@@ -2,9 +2,10 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.text-input{
-
+.#{bem.$base}.text-input {
+  > input {
+    width: 100%;
+  }
 }
-
 
 

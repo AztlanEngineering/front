@@ -49,6 +49,7 @@ function Navigator({
         baseClassName,
         componentClassName,
         userClassName,
+        'container',
       ]
         .filter((e) => e)
         .join(' ')}

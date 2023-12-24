@@ -110,6 +110,10 @@ function Wrapper({
     ...ariaProps.state,
   }
 
+  console.log(
+    'WW', meta,
+  )
+
   return (
     <>
       <div
@@ -137,7 +141,7 @@ function Wrapper({
       >
         {description && <Description {...descriptionProps} />}
         <Component {...fieldProps} />
-        {meta.error && <Description {...stateProps} />}
+        {meta.error && meta.touched && <Description {...stateProps} />}
       </div>
       {/* Error handling and other common functionalities */}
     </>
@@ -160,7 +164,6 @@ Wrapper.defaultProps = {
   spanContent       :8,
   spanContentDesktop:9,
   mockLabel         :false,
-  hookOptions       :{},
 }
 
 export default Wrapper

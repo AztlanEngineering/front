@@ -34,6 +34,7 @@ function Form({
   children,
   items,
   debug,
+  inputProps,
   type: formType,
 
   ...formikProps
@@ -53,6 +54,7 @@ function Form({
       <Context.Provider
         value={{
           ...handlerProps,
+          inputProps,
           type:formType,
         }}
       >
@@ -99,8 +101,9 @@ Form.propTypes = {
 }
 
 Form.defaultProps = {
-  type :'default',
-  debug:false,
+  type      :'default',
+  debug     :false,
+  inputProps:{},
 }
 
 Form.Menu = Menu

@@ -6,6 +6,7 @@ import { useInsertionEffect } from 'react'
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
+import useForm from '../useForm.ts'
 
 import { FormInput } from '../../FormInput/index.ts'
 
@@ -27,35 +28,42 @@ function Section({
   label,
   description,
   inputs,
+  as: Wrapper,
 }) {
   //
+  const { inputProps } = useForm()
+
   return (
-    <fieldset
+    <Wrapper
       id={id}
       className={[
         baseClassName,
         componentClassName,
         userClassName,
+        'grid container',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
       // {...otherProps}
     >
-      <h2>
-        {index + 1}
-        .
-        {label}
-        {' '}
-      </h2>
-      {description && <p>{description}</p>}
+      <div className="container">
+        <h2>
+          {index + 1}
+          .
+          {label}
+          {' '}
+        </h2>
+        {description && <p>{description}</p>}
+      </div>
       {inputs.map((input) => (
         <FormInput
           {...input}
+          {...inputProps}
           key={input.name}
         />
       ))}
-    </fieldset>
+    </Wrapper>
   )
 }
 
@@ -82,6 +90,7 @@ Section.propTypes = {
 }
 
 Section.defaultProps = {
+  as:'div',
   // someProp:false
 }
 

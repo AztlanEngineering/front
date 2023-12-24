@@ -3,7 +3,9 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.textarea {
-  //
+  textarea {
+    width: 100%;
+  }
 }
 
 
