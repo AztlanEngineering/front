@@ -13,8 +13,8 @@ const sharedRules = {
     'always',
     { ignorePackages: true },
   ],
-  'react/jsx-props-no-spreading':[0],
-  'react/require-default-props:':[0],
+  'react/jsx-props-no-spreading':'off',
+  'react/require-default-props' :'off',
   'react/jsx-max-props-per-line':[
     'error',
     { maximum: 1 },

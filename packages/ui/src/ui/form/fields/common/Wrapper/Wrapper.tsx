@@ -25,19 +25,19 @@ const idPrefix = 'form'
  */
 function Wrapper({
   Component,
+  name,
   label,
   description,
-  error,
-  name,
-  optional,
+  optional = false,
+  disabled = false,
   validate,
-  type: inputType,
   spanLabel = 8,
   spanLabelDesktop = 6,
   spanContent = 8,
   spanContentDesktop = 8,
   mockLabel = false,
   hookOptions,
+  autoComplete,
   ...otherProps
 }) {
   const [
@@ -80,12 +80,9 @@ function Wrapper({
 
   const fieldProps = {
     name,
-    // optional,
-    // type : This means the props need to be spread first !
-    // Otherwise type:undefined will override children
-    type:inputType,
-    // validate,
     meta,
+    disabled,
+    autoComplete,
     ...ariaProps.field,
     ...field,
     ...otherProps,
@@ -145,13 +142,51 @@ function Wrapper({
 }
 
 Wrapper.propTypes = {
-  Component         :PropTypes.elementType.isRequired,
-  label             :PropTypes.string,
-  spanLabel         :PropTypes.number,
-  spanLabelDesktop  :PropTypes.number,
-  spanContent       :PropTypes.number,
+  Component:PropTypes.elementType.isRequired,
+
+  /** Name attribute for the input */
+  name:PropTypes.string.isRequired,
+
+  /** Label content for the input, defaults to component name */
+  label:PropTypes.string,
+
+  /** Description or additional information below the input */
+  description:PropTypes.string,
+
+  /** Whether the input is optional or not */
+  optional:PropTypes.bool,
+
+  /** Whether the text input should be disabled */
+  disabled:PropTypes.bool,
+
+  /** Validation function for the input, passed to formik `useField` */
+  validate:PropTypes.func,
+
+  /** Column span for the label */
+  spanLabel:PropTypes.number,
+
+  /** Desktop column span for the label */
+  spanLabelDesktop:PropTypes.number,
+
+  /** Column span for the content */
+  spanContent:PropTypes.number,
+
+  /** Desktop column span for the content */
   spanContentDesktop:PropTypes.number,
-  // Add other common PropTypes
+
+  /** Indicates if a mock label with `<p>` is used,
+   * This is useful when the field renders several `<inputs>`
+   * and the "real" HTML labels are next to them. */
+  mockLabel:PropTypes.bool,
+
+  /** Options that will be passed to the `useField` hook in the wrapper. */
+  hookOptions:PropTypes.instanceOf(Object),
+
+  /**
+   * The autoComplete value that the browser should watch for the input <br>
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+   */
+  autoComplete:PropTypes.string.isRequired,
 }
 
 export default Wrapper

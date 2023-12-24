@@ -28,7 +28,10 @@ const componentClassName = 'input'
  * This is the component description.
  */
 function FormInput({
-  className, type: inputType, children, ...otherProps
+  className,
+  type: inputType = 'text',
+  condition,
+  ...otherProps
 }) {
   useInsertionEffect(
     () => {
@@ -46,6 +49,7 @@ function FormInput({
 
   const fieldProps = {
     ...otherProps,
+    condition,
     className:newClassName,
   }
 
@@ -71,64 +75,18 @@ function FormInput({
 }
 
 FormInput.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
-
-  /**
-   * The HTML class names for this element
-   */
+  /** The HTML class names for this element */
   className:PropTypes.string,
 
-  /**
-   * The React-written, css properties for this element.
-   */
-  style:PropTypes.objectOf(PropTypes.string),
-
-  /**
-   *  The children JSX
-   */
-  children:PropTypes.node,
-
-  /**
-   * The label of the input
-   */
-  label:PropTypes.string,
-
-  /**
-   * The name of the input
-   */
-  name:PropTypes.string.isRequired,
-
-  /**
-   * The type of the input
-   */
+  /** The type of the input */
   type:PropTypes.oneOf(allTypes),
 
-  /**
-   * Whether the text input should be disabled
+  /** A function shaped as `(formValues) => boolean`
+   * that returns whether the input should be rendered.
+   * Useful for conditional input rendering.
+   * Without this prop, the input will always be rendered.
    */
-
-  disabled:PropTypes.bool,
-
-  /**
-   * Whether the input is optional or not
-   */
-
-  optional:PropTypes.bool,
-
-  /**
-   * The placeholder text for the input
-   */
-
-  placeholder:PropTypes.string,
-
-  /**
-   * The autoComplete value that the browser should watch for the input
-   * `https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete`
-   */
-  autoComplete:PropTypes.string,
+  condition:PropTypes.func,
 }
 
 export default FormInput
