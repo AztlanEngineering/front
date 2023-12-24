@@ -11,6 +11,7 @@ const {
   pushTsconfigPathsPlugin,
   staticDirs,
   typescript,
+  stories,
 } = configureSharedConfig({
   location:__dirname,
   //alias:['react', 'react-dom', 'react-relay']
@@ -18,10 +19,7 @@ const {
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config: StorybookConfig = {
-  stories: [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  stories,
   staticDirs,
   addons:[
     ...addons,

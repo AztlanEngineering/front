@@ -1,9 +1,7 @@
 /* @aztlan/generator-front 0.2.0 */
 import * as React from 'react'
 
-import {
-  useInsertionEffect,
-} from 'react'
+import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 
@@ -50,9 +48,7 @@ function QueryTester({
     }, [],
   )
 
-  const {
-    time,
-  } = useFragment(
+  const { time } = useFragment(
     FRAGMENT, data,
   )
 
@@ -105,9 +101,6 @@ QueryTester.propTypes = {
   children:PropTypes.node,
 }
 
-QueryTester.defaultProps = {
-  // someProp:false
-}
 QueryTester.QUERY = QUERY
 QueryTester.FRAGMENT = FRAGMENT
 
