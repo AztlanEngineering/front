@@ -2,31 +2,18 @@
 import * as React from 'react'
 
 import { Formik } from 'formik'
+import * as decorators from 'sb-utils/decorators.tsx'
+import Debugger from '../Debugger.ts'
 import FormInput from './FormInput.tsx'
 import { allTypes } from '../constants.ts'
-import Debugger from '../Debugger.ts'
 import { validateEmail } from '../validators.ts'
 
 export default {
   title     :'form/FormInput',
   component :FormInput,
   decorators:[
-    (StoryFn) => <div className="grid">{StoryFn()}</div>,
-    (StoryFn) => (
-      <Formik
-        initialValues={
-          {
-            // email: 'test',
-          }
-        }
-      >
-        <>
-          {StoryFn()}
-          <Debugger />
-        </>
-      </Formik>
-    ),
-    // storyfn => <div className="">{ storyfn() }</div>,
+    decorators.grid,
+    decorators.form,
   ],
   argTypes:{
     type:{

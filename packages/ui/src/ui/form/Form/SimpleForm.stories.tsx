@@ -1,10 +1,7 @@
 /* @aztlan/generator-front 0.7.2 */
 import * as React from 'react'
 
-// import { SimpleForm } from 'ui'
 import SimpleForm from './SimpleForm.tsx'
-// import * as decorators from "@aztlan/ui/dist/esm/storybook/decorators.mjs";
-// import * as decorators from "storybook";
 import {
   validateEmail,
   validatePhoneNumber,

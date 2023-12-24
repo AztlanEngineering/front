@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 0.7.2 */
 import * as React from 'react'
 
-// import { Form } from 'ui'
+import * as decorators from 'story-utils/decorators.tsx'
 import Form from './Form.tsx'
 import {
   validateEmail,
@@ -9,13 +9,11 @@ import {
   validatePhoneNumber,
   validateRequired,
 } from '../validators.ts'
-// import * as decorators from "@aztlan/ui/dist/esm/storybook/decorators.mjs";
-// import * as decorators from "storybook";
 
 export default {
   title     :'form/Form',
   component :Form,
-  decorators:[(storyfn) => <div className="grid">{storyfn()}</div>],
+  decorators:[decorators.grid],
   argTypes  :{ backgroundColor: { control: 'color' } },
 }
 

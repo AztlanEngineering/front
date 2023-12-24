@@ -2,24 +2,14 @@
 import * as React from 'react'
 
 // import { decorators } from '@aztlan/storybook-helpers'
-import * as decorators from 'storybook/decorators'
+import * as decorators from 'story-utils/decorators.tsx'
 import ThemeSwitcher from './ThemeSwitcher'
 
 export default {
-  title        :'common/ThemeSwitcher',
-  component    :ThemeSwitcher,
-  subcomponents:{
-    // Item:ThemeSwitcher.Item
-  },
-  decorators:[
-    decorators.app,
-    // storyfn => <div className="">{ storyfn() }</div>,
-  ],
-  argTypes:{
-    backgroundColor:{
-      control:'color',
-    },
-  },
+  title     :'common/ThemeSwitcher',
+  component :ThemeSwitcher,
+  decorators:[decorators.app],
+  argTypes  :{ backgroundColor: { control: 'color' } },
 }
 
 export function Base() {

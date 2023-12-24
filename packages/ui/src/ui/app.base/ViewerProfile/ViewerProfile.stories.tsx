@@ -2,31 +2,26 @@
 import * as React from 'react'
 
 import { StoryObj } from '@storybook/react'
-import * as decorators from 'storybook/decorators'
+import * as decorators from 'story-utils/decorators.tsx'
 import { RawViewerProfile as ViewerProfile } from './ViewerProfile'
 
 export default {
-  title        :'base.profile/ViewerProfile',
-  component    :ViewerProfile,
-  subcomponents:{
-    // Item:ViewerProfile.Item
-  },
+  title     :'base.profile/ViewerProfile',
+  component :ViewerProfile,
   decorators:[
     // Needed for storyshots, not for storybook itself
     decorators.auth,
   ],
-  argTypes:{
-    backgroundColor:{
-      control:'color',
-    },
-  },
+  argTypes:{ backgroundColor: { control: 'color' } },
 }
 
 const relayConfig = {
   query            :ViewerProfile.QUERY,
-  getReferenceEntry:(data) => ['data', data],
-  variables        :{
-  },
+  getReferenceEntry:(data) => [
+    'data',
+    data,
+  ],
+  variables    :{},
   mockResolvers:{
     UserNode:() => ({
       firstName     :'Bogdan',
@@ -37,8 +32,4 @@ const relayConfig = {
   },
 }
 
-export const Default: StoryObj = {
-  parameters:{
-    relay:relayConfig,
-  },
-}
+export const Default: StoryObj = { parameters: { relay: relayConfig } }

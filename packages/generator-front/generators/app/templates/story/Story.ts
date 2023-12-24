@@ -3,8 +3,8 @@ import * as React from 'react'
 
 //import { <%= name %> } from 'ui'
 import <%= name %> from './<%= name %>.tsx'
-//import * as decorators from "@aztlan/ui/dist/esm/storybook/decorators.mjs";
-//import * as decorators from "storybook";
+//import * as decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
+//import * as decorators from "story-utils/decorators.tsx";
 
 export default {
   title: '<%= fullname %>',
