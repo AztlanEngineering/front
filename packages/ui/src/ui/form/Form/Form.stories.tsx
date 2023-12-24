@@ -14,7 +14,7 @@ export default {
   title     :'form/Form',
   component :Form,
   decorators:[decorators.grid],
-  argTypes  :{ backgroundColor: { control: 'color' } },
+  // argTypes  :{ backgroundColor: { control: 'color' } },
 }
 
 function BaseTemplate(args) {

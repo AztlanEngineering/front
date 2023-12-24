@@ -1,9 +1,8 @@
 /* @aztlan/generator-front 0.5.0 */
-import * as React from 'react'
+// import * as React from 'react'
 
-import { Formik } from 'formik'
-import * as decorators from 'sb-utils/decorators.tsx'
-import Debugger from '../Debugger.ts'
+import { StoryObj } from '@storybook/react'
+import * as decorators from 'story-utils/decorators.tsx'
 import FormInput from './FormInput.tsx'
 import { allTypes } from '../constants.ts'
 import { validateEmail } from '../validators.ts'
@@ -23,7 +22,7 @@ export default {
   },
 }
 
-export const Base = {
+export const Base: StoryObj = {
   args:{
     type :'text',
     name :'name',
@@ -31,7 +30,7 @@ export const Base = {
   },
 }
 
-export const WithDescription = {
+export const WithDescription: StoryObj = {
   args:{
     type       :'text',
     name       :'last_name',
@@ -40,7 +39,7 @@ export const WithDescription = {
   },
 }
 
-export const WithValidation = {
+export const WithValidation: StoryObj = {
   args:{
     type       :'email',
     name       :'email',
@@ -50,7 +49,7 @@ export const WithValidation = {
   },
 }
 
-export const Textarea = {
+export const Textarea: StoryObj = {
   args:{
     type :'textarea',
     name :'blog_post',
@@ -58,7 +57,7 @@ export const Textarea = {
   },
 }
 
-export const Checkbox = {
+export const Checkbox: StoryObj = {
   args:{
     type :'checkbox',
     name :'newsletter_opt_in',
@@ -66,7 +65,7 @@ export const Checkbox = {
   },
 }
 
-export const Select = {
+export const Select: StoryObj = {
   args:{
     type   :'select',
     name   :'region',
@@ -93,7 +92,7 @@ export const Select = {
   },
 }
 
-export const SimpleChoices = {
+export const SimpleChoices: StoryObj = {
   args:{
     type   :'simple-choices',
     name   :'favourite-colors',
@@ -119,28 +118,24 @@ export const SimpleChoices = {
   },
 }
 
-export const SimpleChoicesMultiple = {
+export const SimpleChoicesMultiple: StoryObj = {
   args:{
     ...SimpleChoices.args,
     multiple:true,
   },
 }
 
-export const Choices = {
+export const Choices: StoryObj = {
   args:{
     ...SimpleChoices.args,
     type:'choices',
   },
 }
 
-export const ChoicesMultiple = {
+export const ChoicesMultiple: StoryObj = {
   args:{
     ...SimpleChoices.args,
     type    :'choices',
     multiple:true,
   },
 }
-
-// export function Base() {
-//  return <FormInput>Sample FormInput</FormInput>
-// }

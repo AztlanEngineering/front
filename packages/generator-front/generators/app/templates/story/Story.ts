@@ -1,7 +1,7 @@
 /* <%= pkg %> <%= version %> */
-import * as React from 'react'
+//import * as React from 'react'
 
-//import { <%= name %> } from 'ui'
+import { StoryObj } from '@storybook/react'
 import <%= name %> from './<%= name %>.tsx'
 //import * as decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 //import * as decorators from "story-utils/decorators.tsx";
@@ -25,18 +25,19 @@ export default {
 export const LoggedOut = {}
 }
 
-export const Base = () => (
-  <<%= name %>>Sample <%= name %></<%= name %>>
-)
-
-/*
-export const Base = {         
+export const Base: StoryObj = {         
   args:{
     type :'text',
     name :'name',
     label:'Your name',
   },
 }*/
+
+/*
+export const Base = () => (
+  <<%= name %>>Sample <%= name %></<%= name %>>
+)
+*/
 
 /*
 const Template = (args) => <<%= name %> {...args} />

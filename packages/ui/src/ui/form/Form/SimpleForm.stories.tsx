@@ -1,6 +1,7 @@
 /* @aztlan/generator-front 0.7.2 */
 import * as React from 'react'
 
+import { StoryObj } from '@storybook/react'
 import SimpleForm from './SimpleForm.tsx'
 import {
   validateEmail,
@@ -15,10 +16,10 @@ export default {
     // decorators.app,
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes:{ backgroundColor: { control: 'color' } },
+  // argTypes:{ backgroundColor: { control: 'color' } },
 }
 
-export const Base = {
+export const Base: StoryObj = {
   args:{
     type  :'text',
     name  :'name',
@@ -67,11 +68,3 @@ export const Base = {
     debug:true,
   },
 }
-
-/*
-const Template = (args) => <SimpleForm {...args} />
-
-export const Base = Template.bind({})
-Base.args = {
-  children:'Sample Button',
-} */

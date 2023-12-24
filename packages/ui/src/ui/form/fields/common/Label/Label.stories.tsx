@@ -1,7 +1,7 @@
 /* @aztlan/generator-front 0.5.0 */
-import * as React from 'react'
+// import * as React from 'react'
 
-// import { Label } from 'ui'
+import { StoryObj } from '@storybook/react'
 import Label from './Label.tsx'
 
 export default {
@@ -10,21 +10,17 @@ export default {
   decorators:[
     // storyfn => <div className="">{ storyfn() }</div>,
   ],
-  argTypes:{
-    backgroundColor:{
-      control:'color',
-    },
-  },
+  // argTypes:{ backgroundColor: { control: 'color' } },
 }
 
-export const Base = {
+export const Base: StoryObj = {
   args:{
     name    :'name',
     children:'Your name',
   },
 }
 
-export const Optional = {
+export const Optional: StoryObj = {
   args:{
     name    :'name',
     children:'Your name',
@@ -32,7 +28,7 @@ export const Optional = {
   },
 }
 
-export const As = {
+export const As: StoryObj = {
   args:{
     name    :'name',
     children:'Your name',
@@ -40,8 +36,4 @@ export const As = {
   },
 }
 
-export const NoChildren = {
-  args:{
-    name:'name',
-  },
-}
+export const NoChildren: StoryObj = { args: { name: 'name' } }

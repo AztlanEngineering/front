@@ -1,9 +1,9 @@
 /* @aztlan/generator-front 0.4.3 */
-import * as React from 'react'
+// import * as React from 'react'
 
 import { StoryObj } from '@storybook/react'
 import * as decorators from 'story-utils/decorators.tsx'
-import { RawViewerProfile as ViewerProfile } from './ViewerProfile'
+import { RawViewerProfile as ViewerProfile } from './ViewerProfile.tsx'
 
 export default {
   title     :'base.profile/ViewerProfile',

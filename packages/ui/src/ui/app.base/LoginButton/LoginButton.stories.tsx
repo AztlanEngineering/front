@@ -7,7 +7,6 @@ import LoginButton from './LoginButton'
 export default {
   title    :'base.authentication/LoginButton',
   component:LoginButton,
-  argTypes :{ backgroundColor: { control: 'color' } },
 }
 
 const relayConfig = {
