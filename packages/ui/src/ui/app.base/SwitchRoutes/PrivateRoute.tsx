@@ -8,9 +8,7 @@ import * as PropTypes from 'prop-types'
 import {
   Route, useHistory, useLocation,
 } from 'react-router-dom'
-import {
-  useFragment,
-} from 'react-relay'
+import { useFragment } from 'react-relay'
 import {
   useViewer, useAuth,
 } from '../AuthContextProvider/index.ts'
@@ -23,12 +21,10 @@ const componentClassName = 'private-route'
  * This is the component description.
  */
 function PrivateRoute({
-  groups, testFunction, ...otherProps
+  groups = [], testFunction, ...otherProps
 }) {
   // @ts-ignore
-  const {
-    loginPath,
-  } = useAuth()
+  const { loginPath } = useAuth()
 
   useEffect(
     () => {
@@ -121,11 +117,6 @@ PrivateRoute.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
-}
-
-PrivateRoute.defaultProps = {
-  groups:[],
-  // someProp:false
 }
 
 export default PrivateRoute

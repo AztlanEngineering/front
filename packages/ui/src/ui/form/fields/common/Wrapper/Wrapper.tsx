@@ -32,11 +32,11 @@ function Wrapper({
   optional,
   validate,
   type: inputType,
-  spanLabel,
-  spanLabelDesktop,
-  spanContent,
-  spanContentDesktop,
-  mockLabel,
+  spanLabel = 8,
+  spanLabelDesktop = 6,
+  spanContent = 8,
+  spanContentDesktop = 8,
+  mockLabel = false,
   hookOptions,
   ...otherProps
 }) {
@@ -152,14 +152,6 @@ Wrapper.propTypes = {
   spanContent       :PropTypes.number,
   spanContentDesktop:PropTypes.number,
   // Add other common PropTypes
-}
-
-Wrapper.defaultProps = {
-  spanLabel         :8,
-  spanLabelDesktop  :8,
-  spanContent       :8,
-  spanContentDesktop:9,
-  mockLabel         :false,
 }
 
 export default Wrapper

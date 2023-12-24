@@ -1,20 +1,14 @@
 /* @aztlan/generator-front 0.2.0 */
 import * as React from 'react'
 
-import {
-  useInsertionEffect,
-} from 'react'
+import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-import {
-  useFragment,
-} from 'react-relay'
-import {
-  graphql,
-} from 'relay-runtime'
+import { useFragment } from 'react-relay'
+import { graphql } from 'relay-runtime'
 
 // Local Definitions
 const baseClassName = styleNames.base
@@ -52,14 +46,10 @@ function LoginButton({
     }, [],
   )
 
-  const {
-    oAuth2Links,
-  } = useFragment(
+  const { oAuth2Links } = useFragment(
     FRAGMENT, data,
   )
-  const {
-    google,
-  } = oAuth2Links
+  const { google } = oAuth2Links
 
   return (
     <button
@@ -99,10 +89,6 @@ LoginButton.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
-}
-
-LoginButton.defaultProps = {
-  // someProp:false
 }
 
 LoginButton.FRAGMENT = FRAGMENT

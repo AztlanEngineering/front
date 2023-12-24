@@ -1,25 +1,21 @@
 import * as React from 'react'
-import {
-  Suspense,
-} from 'react'
+import { Suspense } from 'react'
 import * as PropTypes from 'prop-types'
 
 import {
   Switch, Route,
 } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute.tsx'
-import {
-  useAuth,
-} from '../AuthContextProvider/index.ts'
+import { useAuth } from '../AuthContextProvider/index.ts'
 /* eslint-disable react/no-children-prop */
 
 function SwitchRoutes({
-  items, Wireframe, NotFoundPage,
+  items,
+  NotFoundPage,
+  Wireframe = () => <h1>Loading user</h1>,
 }) {
   // @ts-ignore
-  const {
-    viewerQueryReference,
-  } = useAuth()
+  const { viewerQueryReference } = useAuth()
   console.log('SR')
 
   return (
@@ -43,16 +39,19 @@ function SwitchRoutes({
                 )}
           >
             {viewerQueryReference && (
-              <PrivateRoute
-                key={routeProps.path}
-                groups={groups}
-                testFunction={testFunction}
-                {...routeProps}
-              />
+            <PrivateRoute
+              key={routeProps.path}
+              groups={groups}
+              testFunction={testFunction}
+              {...routeProps}
+            />
             )}
           </Suspense>
         ) : (
-          <Route key={routeProps.path} {...routeProps} />
+          <Route
+            key={routeProps.path}
+            {...routeProps}
+          />
         ))),
         ...(NotFoundPage ? [<Route component={NotFoundPage} />] : []),
       ]}
@@ -78,10 +77,6 @@ SwitchRoutes.propTypes = {
    */
 
   NotFound:PropTypes.node,
-}
-
-SwitchRoutes.defaultProps = {
-  Wireframe:() => <h1>Loading user</h1>,
 }
 
 export default SwitchRoutes

@@ -27,7 +27,7 @@ function SimpleForm({
   children,
   inputs,
   inputProps,
-  debug,
+  debug = false,
   ...formikProps
   // ...otherProps
 }) {
@@ -86,11 +86,6 @@ SimpleForm.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
-}
-
-SimpleForm.defaultProps = {
-  debug:false,
-  // someProp:false
 }
 
 export default SimpleForm

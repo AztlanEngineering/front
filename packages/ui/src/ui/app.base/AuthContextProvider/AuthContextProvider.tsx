@@ -7,20 +7,16 @@ import {
 import {
   useMutation, useQueryLoader,
 } from 'react-relay'
-import {
-  useHistory,
-} from 'react-router'
+import { useHistory } from 'react-router'
 
 import * as PropTypes from 'prop-types'
-import {
-  TokenStateManager,
-} from '@aztlan/react-helpers/relay/auth'
+import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
 import AuthContext from './Context.ts'
 
 // @ts-ignore
 
 // Local Definitions
-const QUERY_VIEWER = graphql`
+const DEFAULT_QUERY_VIEWER = graphql`
   query AuthContextProviderViewerQuery {
     viewer {
       ...ViewerProfileFragment
@@ -29,7 +25,7 @@ const QUERY_VIEWER = graphql`
   }
 `
 // @ts-ignore
-const MUTATION_LOGOUT = graphql`
+const DEFAULT_MUTATION_LOGOUT = graphql`
   mutation AuthContextProviderViewerLogoutMutation {
     deleteTokenCookie(input: { clientMutationId: "logout-delete-access" }) {
       deleted
@@ -49,9 +45,9 @@ const MUTATION_LOGOUT = graphql`
  */
 function AuthContextProvider({
   children,
-  loginPath,
-  QUERY_VIEWER,
-  MUTATION_LOGOUT,
+  loginPath = '/login',
+  QUERY_VIEWER = DEFAULT_QUERY_VIEWER,
+  MUTATION_LOGOUT = DEFAULT_MUTATION_LOGOUT,
   // ...otherProps
 }) {
   const [
@@ -60,7 +56,10 @@ function AuthContextProvider({
     disposeViewerQuery,
   ] = useQueryLoader(QUERY_VIEWER)
 
-  const [commitLogout, isLogoutInFlight] = useMutation(MUTATION_LOGOUT)
+  const [
+    commitLogout,
+    isLogoutInFlight,
+  ] = useMutation(MUTATION_LOGOUT)
 
   const history = useHistory()
 
@@ -72,9 +71,7 @@ function AuthContextProvider({
           TokenStateManager.logout()
           disposeViewerQuery()
           loadViewerQuery(
-            {}, {
-              fetchPolicy:'network-only',
-            },
+            {}, { fetchPolicy: 'network-only' },
           )
         // history.go(0)
         },
@@ -144,13 +141,6 @@ AuthContextProvider.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
-}
-
-AuthContextProvider.defaultProps = {
-  QUERY_VIEWER,
-  MUTATION_LOGOUT,
-  loginPath:'/login',
-  // someProp:false
 }
 
 export default AuthContextProvider

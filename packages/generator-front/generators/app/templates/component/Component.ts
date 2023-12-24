@@ -75,9 +75,5 @@ const <%= name %> = ({
 }
 <% } %>
 
-<%= name %>.defaultProps = { 
-  //someProp:false 
-}
-
 export default <%= name %>
 

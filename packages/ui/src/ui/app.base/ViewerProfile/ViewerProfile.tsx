@@ -111,10 +111,6 @@ RawViewerProfile.propTypes = {
   children:PropTypes.node,
 }
 
-RawViewerProfile.defaultProps = {
-  // someProp:false
-}
-
 RawViewerProfile.QUERY = QUERY
 RawViewerProfile.FRAGMENT = FRAGMENT
 

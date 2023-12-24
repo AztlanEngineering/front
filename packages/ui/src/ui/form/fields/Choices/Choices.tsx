@@ -91,12 +91,6 @@ Choices.propTypes = {
   children:PropTypes.node,
 }
 
-Choices.defaultProps = {
-  // someProp:false
-}
-
 export default withFieldWrapper(
-  Choices, {
-    mockLabel:true,
-  },
+  Choices, { mockLabel: true },
 )

@@ -14,6 +14,7 @@ const sharedRules = {
     { ignorePackages: true },
   ],
   'react/jsx-props-no-spreading':[0],
+  'react/require-default-props:':[0],
   'react/jsx-max-props-per-line':[
     'error',
     { maximum: 1 },

@@ -23,7 +23,6 @@ function Inputs({
   id,
   className: userClassName,
   style,
-  children,
   // ...otherProps
 }) {
   const {
@@ -93,8 +92,4 @@ Inputs.propTypes = {
   children:PropTypes.node,
 }
 
-Inputs.defaultProps = {
-  // someProp:false
-}
-
-export default Inputs
+export default React.memo(Inputs)

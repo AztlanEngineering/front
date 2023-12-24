@@ -131,10 +131,4 @@ FormInput.propTypes = {
   autoComplete:PropTypes.string,
 }
 
-FormInput.defaultProps = {
-  optional:false,
-  disabled:false,
-  // someProp:false
-}
-
 export default FormInput

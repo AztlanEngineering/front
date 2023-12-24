@@ -1,17 +1,13 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
 
-import {
-  useInsertionEffect,
-} from 'react'
+import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-import {
-  useApp,
-} from '../../common/index.ts'
+import { useApp } from '../../common/index.ts'
 
 // Local Definitions
 
@@ -93,10 +89,6 @@ LocaleSwitcher.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
-}
-
-LocaleSwitcher.defaultProps = {
-  // someProp:false
 }
 
 export default LocaleSwitcher

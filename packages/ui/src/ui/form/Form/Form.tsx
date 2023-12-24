@@ -30,9 +30,9 @@ function Form({
   style,
   children,
   items,
-  debug,
-  inputProps,
-  type: formType,
+  debug = false,
+  inputProps = {},
+  type: formType = 'default',
 
   ...formikProps
   // ...otherProps
@@ -95,12 +95,6 @@ Form.propTypes = {
    * Whether to debug form state in console
    */
   debug:PropTypes.bool,
-}
-
-Form.defaultProps = {
-  type      :'default',
-  debug     :false,
-  inputProps:{},
 }
 
 Form.Menu = Menu

@@ -20,8 +20,8 @@ function Label({
   style,
   children,
   name,
-  optional,
-  as: Wrapper,
+  optional = false,
+  as: Wrapper = 'label',
   ...otherProps
 }) {
   useInsertionEffect(
@@ -85,11 +85,6 @@ Label.propTypes = {
    * Whether the input should have an optional tag
    */
   optional:PropTypes.bool,
-}
-
-Label.defaultProps = {
-  as      :'label',
-  optional:false,
 }
 
 export default React.memo(Label)

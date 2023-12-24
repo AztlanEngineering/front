@@ -27,12 +27,15 @@ function AppContextProvider({
   children,
   initialTheme,
   value,
-  initialState,
-  maintenance,
+  initialState = {},
+  maintenance = false,
   // ...otherProps
 }) {
   const theme = useTheme(initialTheme)
-  const [state, dispatch] = useReducer(
+  const [
+    state,
+    dispatch,
+  ] = useReducer(
     reducer, initialState,
   )
 
@@ -83,8 +86,7 @@ AppContextProvider.propTypes = {
       INSTAGRAM:PropTypes.string,
       YOUTUBE  :PropTypes.string,
     }),
-    CONSTANTS:PropTypes.shape({
-    }),
+    CONSTANTS:PropTypes.shape({}),
   }).isRequired,
 
   /**
@@ -102,12 +104,6 @@ AppContextProvider.propTypes = {
       end  :PropTypes.instanceOf(Date),
     }),
   ]),
-}
-
-AppContextProvider.defaultProps = {
-  initialState:{
-  },
-  maintenance:false,
 }
 
 export default AppContextProvider

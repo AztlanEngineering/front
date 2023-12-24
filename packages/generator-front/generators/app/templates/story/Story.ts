@@ -16,6 +16,13 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  /*
+  parameters: {
+    layout: 'centered|fullscreen|padded(default)',
+  },*/
+}
+
+export const LoggedOut = {}
 }
 
 export const Base = () => (

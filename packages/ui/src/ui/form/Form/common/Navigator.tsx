@@ -97,8 +97,4 @@ Navigator.propTypes = {
   children:PropTypes.node,
 }
 
-Navigator.defaultProps = {
-  // someProp:false
-}
-
 export default React.memo(Navigator)

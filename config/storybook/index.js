@@ -43,6 +43,10 @@ const template = (inputs) => ({
     `${getAbsolutePath('@aztlan/assets')}/fonts`,
     '../src/assets',
   ],
+  stories:[
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
   addons   :inputs.addons.map((addonName) => getAbsolutePath(addonName)),
   framework:{
     name   :getAbsolutePath('@storybook/react-webpack5'),

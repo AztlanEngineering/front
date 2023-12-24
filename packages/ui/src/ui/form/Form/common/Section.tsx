@@ -28,7 +28,7 @@ function Section({
   label,
   description,
   inputs,
-  as: Wrapper,
+  as: Wrapper = 'fieldset',
 }) {
   const { inputProps } = useForm()
 
@@ -86,11 +86,6 @@ Section.propTypes = {
    *  The children JSX
    */
   children:PropTypes.node,
-}
-
-Section.defaultProps = {
-  as:'fieldset',
-  // someProp:false
 }
 
 export default Section

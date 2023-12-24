@@ -10,6 +10,7 @@ const {
   pushScss,
   pushTsconfigPathsPlugin,
   staticDirs,
+  stories,
   typescript,
 } = configureSharedConfig({
   location:__dirname,
@@ -17,12 +18,7 @@ const {
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config: StorybookConfig = {
-  stories: [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  stories,
   staticDirs,
   addons:[
     ...addons,

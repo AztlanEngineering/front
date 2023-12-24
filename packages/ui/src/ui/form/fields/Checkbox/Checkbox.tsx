@@ -1,17 +1,13 @@
 /* @aztlan/generator-front 0.6.0 */
 import * as React from 'react'
 
-import {
-  useInsertionEffect,
-} from 'react'
+import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 
 // @ts-ignore
 import styleNames from '@aztlan/bem'
-import {
-  withFieldWrapper,
-} from '../common/index.ts'
+import { withFieldWrapper } from '../common/index.ts'
 
 // Local Definitions
 
@@ -49,7 +45,10 @@ function Checkbox({
       style={style}
       // {...otherProps}
     >
-      <input {...otherProps} type="checkbox" />
+      <input
+        {...otherProps}
+        type="checkbox"
+      />
     </div>
   )
 }
@@ -76,14 +75,6 @@ Checkbox.propTypes = {
   children:PropTypes.node,
 }
 
-Checkbox.defaultProps = {
-  // someProp:false
-}
-
 export default withFieldWrapper(
-  Checkbox, {
-    hookOptions:{
-      type:'checkbox',
-    },
-  },
+  Checkbox, { hookOptions: { type: 'checkbox' } },
 )

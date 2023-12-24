@@ -104,8 +104,4 @@ Menu.propTypes = {
   children:PropTypes.node,
 }
 
-Menu.defaultProps = {
-  // someProp:false
-}
-
-export default Menu
+export default React.memo(Menu)

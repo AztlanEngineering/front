@@ -76,8 +76,4 @@ Description.propTypes = {
   children:PropTypes.node,
 }
 
-Description.defaultProps = {
-  // someProp:false
-}
-
 export default Description
