@@ -22,7 +22,7 @@
     "start:prod": "webpack serve -c ./webpack.client.prod.mjs",
     "start:sitemap": "webpack -c ./webpack.sitemap.server.mjs",
     "start:ssr": "webpack -c ./webpack.ssr.server.mjs",
-    "storybook": "storybook dev -p 6007",
+    "storybook": "storybook dev -p 6007 --no-open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:tsc": "tsc",
     "lint:eslint": "eslint --ext .cjs,.mjs,.js,.tsx,.ts ./ --quiet",

@@ -63,11 +63,11 @@ export const grid = (StoryFn) => <div className="grid">{StoryFn()}</div>
 
 export const form = (StoryFn) => (
   <Formik
-    initialValues={
-      {
-        // email: 'test',
-      }
-    }
+    initialValues={{
+      name    :'',
+      username:'',
+      // email: 'test',
+    }}
   >
     <>
       {StoryFn()}

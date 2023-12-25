@@ -1,4 +1,7 @@
 type Query {
+  """Check if the username is available"""
+  isUsernameAvailable(value: String!): Boolean
+
   """Authenticated greeting"""
   authHello: String
 

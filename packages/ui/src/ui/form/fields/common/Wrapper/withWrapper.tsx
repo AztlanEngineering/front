@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useFormikContext } from 'formik'
-import Wrapper from './Wrapper'
+import Wrapper from './Wrapper.tsx'
 
 const areEqual = (
   prevProps, nextProps,
