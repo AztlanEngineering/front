@@ -8,9 +8,7 @@ import * as PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem'
 import { withFieldWrapper } from '../common/index.ts'
-import {
-  FormInputPropTypes, WrapperPropTypes,
-} from '../../PropTypes.ts'
+import { sharedPropTypes } from '../../PropTypes.ts'
 
 // Local Definitions
 
@@ -54,8 +52,7 @@ function RawCheckbox({
 }
 
 RawCheckbox.propTypes = {
-  ...FormInputPropTypes,
-  ...WrapperPropTypes,
+  ...sharedPropTypes,
 
   /** The HTML class names for this element */
   className:PropTypes.string,

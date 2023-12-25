@@ -46,3 +46,8 @@ export const WrapperPropTypes = {
    */
   autoComplete:PropTypes.string.isRequired,
 }
+
+export const sharedPropTypes = {
+  ...FormInputPropTypes,
+  ...WrapperPropTypes,
+}

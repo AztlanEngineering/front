@@ -8,9 +8,7 @@ import * as PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem'
 import { withFieldWrapper } from '../common/index.ts'
-import {
-  FormInputPropTypes, WrapperPropTypes,
-} from '../../PropTypes.ts'
+import { sharedPropTypes } from '../../PropTypes.ts'
 
 const baseClassName = styleNames.base
 
@@ -60,8 +58,7 @@ function RawSelect({
 }
 
 RawSelect.propTypes = {
-  ...FormInputPropTypes,
-  ...WrapperPropTypes,
+  ...sharedPropTypes,
 
   /**
    * The HTML class names for this element

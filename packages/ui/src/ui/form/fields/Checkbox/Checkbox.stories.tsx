@@ -10,7 +10,10 @@ import Component, { RawCheckbox as RawComponent } from './Checkbox.tsx'
 export default {
   title     :'form/fields/Checkbox',
   component :RawComponent,
-  decorators:[decorators.form],
+  decorators:[
+    decorators.grid,
+    decorators.form,
+  ],
 } as Meta<typeof RawComponent>
 
 const Template: StoryFn<typeof Component> = function (args) {

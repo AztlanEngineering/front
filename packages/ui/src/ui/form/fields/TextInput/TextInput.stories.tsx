@@ -10,7 +10,10 @@ import Component, { RawTextInput as RawComponent } from './TextInput.tsx'
 export default {
   title     :'form/fields/TextInput',
   component :RawComponent,
-  decorators:[decorators.form],
+  decorators:[
+    decorators.grid,
+    decorators.form,
+  ],
 } as Meta<typeof RawComponent>
 
 const Template: StoryFn<typeof Component> = function (args) {

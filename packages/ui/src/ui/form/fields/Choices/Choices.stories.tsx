@@ -10,7 +10,10 @@ import Component, { RawChoices as RawComponent } from './Choices.tsx'
 export default {
   title     :'form/fields/Choices',
   component :RawComponent,
-  decorators:[decorators.form],
+  decorators:[
+    decorators.grid,
+    decorators.form,
+  ],
 } as Meta<typeof RawComponent>
 
 const Template: StoryFn<typeof Component> = function (args) {

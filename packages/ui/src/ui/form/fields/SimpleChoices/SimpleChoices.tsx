@@ -9,9 +9,7 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import { withFieldWrapper } from '../common/index.ts'
-import {
-  FormInputPropTypes, WrapperPropTypes,
-} from '../../PropTypes.ts'
+import { sharedPropTypes } from '../../PropTypes.ts'
 
 // Local Definitions
 
@@ -78,8 +76,7 @@ function RawSimpleChoices({
 }
 
 RawSimpleChoices.propTypes = {
-  ...FormInputPropTypes,
-  ...WrapperPropTypes,
+  ...sharedPropTypes,
 
   /** The HTML class names for this element */
   className:PropTypes.string,
