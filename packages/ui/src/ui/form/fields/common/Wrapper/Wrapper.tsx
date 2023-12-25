@@ -8,6 +8,7 @@ import { useField } from 'formik'
 import { Label } from '../Label/index.ts'
 import { Description } from '../Description/index.ts'
 import { htmlTypes } from '../../../constants.ts'
+import { WrapperPropTypes } from '../../../PropTypes.ts'
 
 const span = (
   defaultSpan, desktopSpan,
@@ -142,37 +143,10 @@ function Wrapper({
 }
 
 Wrapper.propTypes = {
+  ...WrapperPropTypes,
+
+  /** The front Component for the field */
   Component:PropTypes.elementType.isRequired,
-
-  /** Name attribute for the input */
-  name:PropTypes.string.isRequired,
-
-  /** Label content for the input, defaults to component name */
-  label:PropTypes.string,
-
-  /** Description or additional information below the input */
-  description:PropTypes.string,
-
-  /** Whether the input is optional or not */
-  optional:PropTypes.bool,
-
-  /** Whether the text input should be disabled */
-  disabled:PropTypes.bool,
-
-  /** Validation function for the input, passed to formik `useField` */
-  validate:PropTypes.func,
-
-  /** Column span for the label */
-  spanLabel:PropTypes.number,
-
-  /** Desktop column span for the label */
-  spanLabelDesktop:PropTypes.number,
-
-  /** Column span for the content */
-  spanContent:PropTypes.number,
-
-  /** Desktop column span for the content */
-  spanContentDesktop:PropTypes.number,
 
   /** Indicates if a mock label with `<p>` is used,
    * This is useful when the field renders several `<inputs>`
@@ -181,12 +155,6 @@ Wrapper.propTypes = {
 
   /** Options that will be passed to the `useField` hook in the wrapper. */
   hookOptions:PropTypes.instanceOf(Object),
-
-  /**
-   * The autoComplete value that the browser should watch for the input <br>
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
-   */
-  autoComplete:PropTypes.string.isRequired,
 }
 
 export default Wrapper

@@ -9,6 +9,9 @@ import * as PropTypes from 'prop-types'
 import styleNames from '@aztlan/bem'
 
 import { withFieldWrapper } from '../common/index.ts'
+import {
+  FormInputPropTypes, WrapperPropTypes,
+} from '../../PropTypes.ts'
 
 // Local Definitions
 
@@ -19,7 +22,7 @@ const componentClassName = 'textarea'
 /**
  * This is the component description.
  */
-function Textarea({
+function RawTextarea({
   className: userClassName,
   style,
   rows = 4,
@@ -53,21 +56,20 @@ function Textarea({
   )
 }
 
-Textarea.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
+RawTextarea.propTypes = {
+  ...FormInputPropTypes,
+  ...WrapperPropTypes,
 
-  /**
-   * The HTML class names for this element
-   */
+  /** The HTML class names for this component */
   className:PropTypes.string,
 
-  /**
-   * The React-written, css properties for this element.
-   */
-  style:PropTypes.objectOf(PropTypes.string),
+  /** The number of rows for the input */
+  rows:PropTypes.number,
+
+  /** The inline styles for the component */
+  style:PropTypes.instanceOf(Object),
 }
 
-export default withFieldWrapper(Textarea)
+export { RawTextarea }
+
+export default withFieldWrapper(RawTextarea)

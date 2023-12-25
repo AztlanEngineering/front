@@ -8,6 +8,9 @@ import * as PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem'
 import { withFieldWrapper } from '../common/index.ts'
+import {
+  FormInputPropTypes, WrapperPropTypes,
+} from '../../PropTypes.ts'
 
 // Local Definitions
 
@@ -20,11 +23,8 @@ const componentClassName = 'checkbox'
  * However as we add more features to the TextInput,
  * it will diverge
  */
-function Checkbox({
-  className: userClassName,
-  style,
-  children,
-  ...otherProps
+function RawCheckbox({
+  className: userClassName, style, ...otherProps
 }) {
   useInsertionEffect(
     () => {
@@ -53,28 +53,19 @@ function Checkbox({
   )
 }
 
-Checkbox.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
+RawCheckbox.propTypes = {
+  ...FormInputPropTypes,
+  ...WrapperPropTypes,
 
-  /**
-   * The HTML class names for this element
-   */
+  /** The HTML class names for this element */
   className:PropTypes.string,
 
-  /**
-   * The React-written, css properties for this element.
-   */
+  /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
-
-  /**
-   *  The children JSX
-   */
-  children:PropTypes.node,
 }
 
+export { RawCheckbox }
+
 export default withFieldWrapper(
-  Checkbox, { hookOptions: { type: 'checkbox' } },
+  RawCheckbox, { hookOptions: { type: 'checkbox' } },
 )

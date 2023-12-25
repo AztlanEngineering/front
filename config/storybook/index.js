@@ -46,6 +46,7 @@ const template = (inputs) => ({
   stories:[
     '../src/**/*.mdx',
     '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../src/**/stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons   :inputs.addons.map((addonName) => getAbsolutePath(addonName)),
   framework:{

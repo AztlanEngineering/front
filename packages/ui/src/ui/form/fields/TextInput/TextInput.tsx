@@ -8,6 +8,10 @@ import * as PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem'
 import { withFieldWrapper } from '../common/index.ts'
+import { htmlTypes } from '../../constants.ts'
+import {
+  FormInputPropTypes, WrapperPropTypes,
+} from '../../PropTypes.ts'
 
 // Local Definitions
 
@@ -18,8 +22,11 @@ const componentClassName = 'text-input'
 /**
  * This is the component description.
  */
-function TextInput({
-  className: userClassName, style, ...otherProps
+function RawTextInput({
+  className: userClassName,
+  style,
+  type: inputType,
+  ...otherProps
 }) {
   useInsertionEffect(
     () => {
@@ -40,31 +47,28 @@ function TextInput({
       style={style}
       // {...otherProps}
     >
-      <input {...otherProps} />
+      <input
+        type={inputType}
+        {...otherProps}
+      />
     </div>
   )
 }
 
-TextInput.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
+RawTextInput.propTypes = {
+  ...FormInputPropTypes,
+  ...WrapperPropTypes,
 
-  /**
-   * The HTML class names for this element
-   */
+  /** The HTML class names for this element */
   className:PropTypes.string,
 
-  /**
-   * The React-written, css properties for this element.
-   */
+  /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
 
-  /**
-   *  The children JSX
-   */
-  children:PropTypes.node,
+  /** The type of the input */
+  type:PropTypes.oneOf(htmlTypes),
 }
 
-export default withFieldWrapper(TextInput)
+export { RawTextInput }
+
+export default withFieldWrapper(RawTextInput)

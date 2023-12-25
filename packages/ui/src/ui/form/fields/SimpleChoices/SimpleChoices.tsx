@@ -9,6 +9,9 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import { withFieldWrapper } from '../common/index.ts'
+import {
+  FormInputPropTypes, WrapperPropTypes,
+} from '../../PropTypes.ts'
 
 // Local Definitions
 
@@ -19,7 +22,7 @@ const componentClassName = 'simple-choices'
 /**
  * This is the component description.
  */
-function SimpleChoices({
+function RawSimpleChoices({
   className: userClassName,
   style,
   multiple,
@@ -74,28 +77,35 @@ function SimpleChoices({
   )
 }
 
-SimpleChoices.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
+RawSimpleChoices.propTypes = {
+  ...FormInputPropTypes,
+  ...WrapperPropTypes,
 
-  /**
-   * The HTML class names for this element
-   */
+  /** The HTML class names for this element */
   className:PropTypes.string,
 
-  /**
-   * The React-written, css properties for this element.
-   */
+  /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
 
-  /**
-   *  The children JSX
-   */
-  children:PropTypes.node,
+  /** Whether the input can have multiple values */
+  multiple:PropTypes.bool,
+
+  /** The choice options */
+  options:PropTypes.arrayOf(PropTypes.shape({
+    value   :PropTypes.string,
+    label   :PropTypes.string,
+    disabled:PropTypes.bool,
+  }).isRequired),
+
+  /** The function to get the id for the option input */
+  getOptionInputId:PropTypes.func.isRequired,
+
+  /** The function to get the id for the option label */
+  getOptionLabelId:PropTypes.func.isRequired,
 }
 
+export { RawSimpleChoices }
+
 export default withFieldWrapper(
-  SimpleChoices, { mockLabel: true },
+  RawSimpleChoices, { mockLabel: true },
 )

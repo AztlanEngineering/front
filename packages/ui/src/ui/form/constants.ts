@@ -7,7 +7,6 @@ export const htmlTypes = [
   'datetime',
   'month',
   'tel',
-  'checkbox',
 ]
 
 export const allTypes = [
@@ -17,6 +16,7 @@ export const allTypes = [
   'choices',
   'simple-choices',
   'textarea',
+  'checkbox',
   // 'query-combobox',
   // 'query-select',
 ]

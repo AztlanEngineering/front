@@ -15,6 +15,7 @@ import {
   Choices,
 } from '../fields/index.ts'
 import { allTypes } from '../constants.ts'
+import { FormInputPropTypes } from '../PropTypes.ts'
 
 // @ts-ignore
 
@@ -81,12 +82,7 @@ FormInput.propTypes = {
   /** The type of the input */
   type:PropTypes.oneOf(allTypes),
 
-  /** A function shaped as `(formValues) => boolean`
-   * that returns whether the input should be rendered.
-   * Useful for conditional input rendering.
-   * Without this prop, the input will always be rendered.
-   */
-  condition:PropTypes.func,
+  ...FormInputPropTypes,
 }
 
 export default FormInput

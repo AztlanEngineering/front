@@ -8,8 +8,9 @@ import * as PropTypes from 'prop-types'
 // @ts-ignore
 import styleNames from '@aztlan/bem'
 import { withFieldWrapper } from '../common/index.ts'
-
-// Local Definitions
+import {
+  FormInputPropTypes, WrapperPropTypes,
+} from '../../PropTypes.ts'
 
 const baseClassName = styleNames.base
 
@@ -18,8 +19,11 @@ const componentClassName = 'select'
 /**
  * This is the component description.
  */
-function Select({
-  className: userClassName, style, options, ...otherProps
+function RawSelect({
+  className: userClassName,
+  style,
+  options,
+  ...otherProps
 }) {
   useInsertionEffect(
     () => {
@@ -55,11 +59,9 @@ function Select({
   )
 }
 
-Select.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
+RawSelect.propTypes = {
+  ...FormInputPropTypes,
+  ...WrapperPropTypes,
 
   /**
    * The HTML class names for this element
@@ -72,7 +74,7 @@ Select.propTypes = {
   style:PropTypes.objectOf(PropTypes.string),
 
   /**
-   * The options of the select input
+   * The choice options
    */
   options:PropTypes.arrayOf(PropTypes.shape({
     value   :PropTypes.string,
@@ -81,4 +83,6 @@ Select.propTypes = {
   }).isRequired),
 }
 
-export default withFieldWrapper(Select)
+export { RawSelect }
+
+export default withFieldWrapper(RawSelect)
