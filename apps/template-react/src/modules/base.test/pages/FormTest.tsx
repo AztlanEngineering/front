@@ -5,7 +5,10 @@ import {
   defineMessages, useIntl, FormattedMessage,
 } from 'react-intl'
 import {
-  SimpleForm, addGraphQLValidation, validateEmail,
+  SimpleForm,
+  addGraphQLValidation,
+  validateEmail,
+  addGraphQLOptions,
 } from '@aztlan/ui'
 import {
   Formik, Field,
@@ -28,10 +31,7 @@ const m = defineMessages({
 function Home() {
   const { formatMessage } = useIntl()
   return (
-    <Template
-      title={formatMessage(m.title)}
-      className
-    >
+    <Template title={formatMessage(m.title)}>
       <h2 className="container">Form Test</h2>
       <SimpleForm
         debug
@@ -71,6 +71,48 @@ function Home() {
                   errorMessage  :'There was an error while checking the username availability',
                   minLength     :4,
                 },
+              ),
+            ],
+          },
+          {
+            name        :'fruits',
+            label       :"What's your favorite fruit?",
+            autoComplete:'off',
+            type        :'select',
+            options     :[
+              {
+                label   :'Apple',
+                value   :'apple',
+                disabled:false,
+              },
+              {
+                label   :'Banana',
+                value   :'banana',
+                disabled:false,
+              },
+              {
+                label   :'Orange',
+                value   :'orange',
+                disabled:false,
+              },
+              {
+                label   :'Pineapple',
+                value   :'pineapple',
+                disabled:true,
+              },
+            ],
+            extensions:[
+              addGraphQLOptions(
+                graphql`
+                  query FormTestFruitsQuery {
+                    fruits {
+                      value
+                      label
+                      disabled
+                    }
+                  }
+                `,
+                'fruits',
               ),
             ],
           },

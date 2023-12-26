@@ -56,7 +56,7 @@ function LocaleSwitcher({
       // {...otherProps}
     >
       {Object.keys(locales).map((localeName) => (
-        <li>
+        <li key={localeName}>
           <a
             onClick={() => setLocale(localeName)}
             className={isLocale(localeName) ? 'bold' : ''}

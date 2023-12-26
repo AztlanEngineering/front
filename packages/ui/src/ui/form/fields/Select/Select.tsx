@@ -21,6 +21,7 @@ function RawSelect({
   className: userClassName,
   style,
   options,
+  loading,
   ...otherProps
 }) {
   useInsertionEffect(
@@ -43,7 +44,7 @@ function RawSelect({
       // {...otherProps}
     >
       <select {...otherProps}>
-        {options.map((option) => (
+        {options?.map((option) => (
           <option
             key={option.value}
             value={option.value}

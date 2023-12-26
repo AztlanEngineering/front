@@ -1,4 +1,7 @@
 type Query {
+  """Retrieve a list of fruits with optional disabled state."""
+  fruits: [FruitType]
+
   """Check if the username is available"""
   isUsernameAvailable(value: String!): Boolean
 
@@ -21,6 +24,20 @@ type Query {
     """The ID of the object"""
     id: ID!
   ): Node
+}
+
+"""
+Graphene type representing a fruit with value, label, and optional disabled state.
+"""
+type FruitType {
+  """The slug representing the fruit."""
+  value: String
+
+  """The human-readable name of the fruit."""
+  label: String
+
+  """Whether the fruit option is disabled."""
+  disabled: Boolean!
 }
 
 """

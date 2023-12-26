@@ -58,7 +58,7 @@ function ThemeSwitcher({
         <p>{theme}</p>
       </li>
       {Object.keys(themes).map((themeName) => (
-        <li>
+        <li key={themeName}>
           <a
             onClick={() => setTheme(themeName)}
             className={isTheme(themeName) ? 'bold' : ''}

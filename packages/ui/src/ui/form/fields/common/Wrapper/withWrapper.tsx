@@ -14,7 +14,11 @@ const areEqual = (
   if (prevProps.meta !== nextProps.meta) {
     return false
   }
-  return true
+  /*
+  if (prevProps.loading !== nextProps.loading) {
+    return false
+  } */
+  return true // Props are equal, no need to rerender
 }
 
 type WithWrapperOptions = { [key: string]: any }

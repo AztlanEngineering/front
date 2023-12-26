@@ -5,7 +5,9 @@ import {
   Meta, StoryFn,
 } from '@storybook/react'
 import * as decorators from 'story-utils/decorators.tsx'
+import { graphql } from 'react-relay'
 import Component, { RawSelect as RawComponent } from './Select.tsx'
+import { addGraphQLOptions } from '../../extensions/index.ts'
 
 export default {
   title     :'form/fields/Select',
@@ -40,6 +42,46 @@ Base.args = {
     {
       value:'yellow',
       label:'Yellow',
+    },
+  ],
+}
+
+export const Extensions: StoryFn<typeof Component> = Template.bind({})
+Extensions.args = {
+  name   :'color',
+  label  :'Favourite color',
+  options:[
+    {
+      value:'red',
+      label:'Red',
+    },
+    {
+      value:'green',
+      label:'Green',
+    },
+    {
+      value:'blue',
+      label:'Blue',
+    },
+    {
+      value:'yellow',
+      label:'Yellow',
+    },
+  ],
+  extensions:[
+    addGraphQLOptions(graphql`
+      query SelectColorOptionsQuery {
+        colors {
+          value
+          label
+          disabled
+        }
+      }
+    `),
+    'colors',
+    {
+      variables   :{},
+      errorMessage:'Error fetching colors',
     },
   ],
 }
