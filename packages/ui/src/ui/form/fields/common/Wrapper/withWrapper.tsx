@@ -14,10 +14,9 @@ const areEqual = (
   if (prevProps.meta !== nextProps.meta) {
     return false
   }
-  /*
   if (prevProps.loading !== nextProps.loading) {
     return false
-  } */
+  }
   return true // Props are equal, no need to rerender
 }
 

@@ -1,112 +1,83 @@
 import * as React from 'react'
 import {
-  useState, useEffect, useCallback,
+  useEffect, useRef, useState,
 } from 'react'
-import {
-  fetchQuery, GraphQLTaggedNode,
-} from 'react-relay'
-import { useRelayEnvironment } from 'react-relay/hooks'
-import { useFormikContext } from 'formik'
-
-type OptionsQueryData = {
-  options:Array<{ label: string; value: string; disabled?: boolean }>;
-}
+import { GraphQLTaggedNode } from 'react-relay'
+import useGraphQLFieldOptionsFetcher from './useGraphQLFieldOptionsFetcher.ts' // Adjust the import path as necessary
+import useFieldError from './useFieldError.ts' // Adjust the import path as necessary
 
 type GraphQLOptionsExtensionOptions = {
-  variables?   :{ [key: string]: any };
-  errorMessage?:string;
+  fetchError?   :string;
+  responseError?:string;
+  variables?    :{ [key: string]: any };
 }
 
 /**
- * addGraphQLOptions is an extension for form inputs like Select
- * that fetches options from the backend via a GraphQL query.
- * It handles fetching, error, and loading states and provides
- * the fetched options to the WrappedComponent.
- *
- * @param {GraphQLTaggedNode} QUERY - The GraphQL query used to fetch the validation rules.
- * @param {string} accessor - The key in the GraphQL response that contains the validation data.
- * @param {GraphQLOptionsExtensionOptions} options - Optional settings
- * including variables for the query and an error message.
- * @returns {Function} A React HOC returning
- * an enhanced component with additional options fetched from the GraphQL query.
+ * Creates a Higher-Order Component (HOC) that fetches options for form inputs like Select
+ * from the backend via a GraphQL query.
+ * @param {GraphQLTaggedNode} QUERY - The GraphQL query used to fetch options.
+ * @param {string} accessor - The key in the GraphQL response that contains the options.
+ * @param {GraphQLOptionsExtensionOptions} options - Settings including custom error messages.
+ * @returns {Function} - A React HOC returning an enhanced component
+ * with additional options fetched from the GraphQL query.
  */
 const addGraphQLOptions = (
   QUERY: GraphQLTaggedNode,
   accessor: string,
   options: GraphQLOptionsExtensionOptions = {},
 ) => {
+  // Destructure options with defaults in the function body.
   const {
-    variables = {}, errorMessage = 'Error fetching options',
+    fetchError = 'Error fetching options from the server',
+    responseError = 'Invalid response from the server',
+    variables = {},
   } = options
 
   return (WrappedComponent: React.ComponentType<any>) => function OptionsEnhancedComponent({
     name, ...props
   }: any) {
-    const environment = useRelayEnvironment()
-    const {
-      setStatus, status,
-    } = useFormikContext()
+    const setError = useFieldError(name)
+    const refetchRef = useRef<Function>()
     const [
       fieldOptions,
       setFieldOptions,
-    ] = useState<
-    Array<{ label: string; value: string; disabled?: boolean }>
-    >([])
+    ] = useState<any[]>([])
+
     const [
       loading,
       setLoading,
     ] = useState(true)
 
-    const fetchOptions = useCallback(
-      () => {
-        setLoading(true)
-        fetchQuery<OptionsQueryData>(
-          environment, QUERY, variables,
-        )
-          .toPromise()
-          .then((data) => {
-            if (data && data[accessor]) {
-              setFieldOptions(data[accessor])
-              if (status?.refetch && status.refetch[name]) {
-                const {
-                  [name]: omit, ...restRefetch
-                } = status.refetch
-                setStatus({
-                  ...status,
-                  refetch:restRefetch,
-                })
-              }
-            }
-            setLoading(false)
-          })
-          .catch((error) => {
-            console.error(
-              errorMessage, error,
-            )
-            setLoading(false)
-            setStatus({
-              ...status,
-              refetch:{
-                ...(status?.refetch || {}),
-                [name]:fetchOptions,
-              },
-            })
-          })
-      }, [
-        environment,
-        QUERY,
-        variables,
-        errorMessage,
-        name,
-        status,
-        setStatus,
-      ],
+    // onSuccess and onError callbacks
+    const onSuccess = (fetchedFieldOptions: any[]) => {
+      setFieldOptions(fetchedFieldOptions)
+      setLoading(false)
+      setError(undefined)
+    }
+
+    const onError = (errorMessage: string) => {
+      setError(
+        errorMessage, refetchRef,
+      )
+      setLoading(false)
+    }
+
+    const fetchOptions = useGraphQLFieldOptionsFetcher(
+      QUERY,
+      accessor,
+      onSuccess,
+      onError,
+      {
+        fetchError,
+        responseError,
+      },
     )
 
     useEffect(
       () => {
-        fetchOptions()
-      }, [],
+        refetchRef.current = () => fetchOptions(variables)
+        fetchOptions(variables)
+      }, [variables],
     )
 
     return (

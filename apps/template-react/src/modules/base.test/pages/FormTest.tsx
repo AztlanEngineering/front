@@ -67,9 +67,10 @@ function Home() {
                 `,
                 'isUsernameAvailable',
                 {
-                  invalidMessage:'This username is already taken',
-                  errorMessage  :'There was an error while checking the username availability',
-                  minLength     :4,
+                  invalidError :'This username is already taken',
+                  fetchError   :'There was an error while checking the username availability',
+                  responseError:"The server didn't return a valid response",
+                  minLength    :4,
                 },
               ),
             ],

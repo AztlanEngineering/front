@@ -6,17 +6,19 @@ import {
 import { useRelayEnvironment } from 'react-relay/hooks'
 
 type UseGraphQLValidatorOptions = {
-  minLength   :number;
-  debounceWait:number;
+  minLength    :number;
+  debounceWait :number;
+  fetchError   :string;
+  responseError:string;
 }
 
 /**
  * Custom hook to manage execution and refetching of a GraphQL validation query.
- * @param QUERY {GraphQLTaggedNode} - GraphQL query used for validation.
- * @param accessor {string} - Key in the GraphQL response containing validation data.
- * @param onSuccess {Function} - Callback executed on successful validation.
- * @param onError {Function} - Callback executed on validation error.
- * @param options {UseGraphQLValidatorOptions} - Configuration for the validation.
+ * @param {GraphQLTaggedNode} QUERY - GraphQL query used for validation.
+ * @param {string} accessor - Key in the GraphQL response containing validation data.
+ * @param {Function} onSuccess - Callback executed on successful validation.
+ * @param {Function} onError - Callback executed on validation error.
+ * @param {UseGraphQLValidatorOptions} options - Configuration for the validation.
  * @returns {Function} - A callback function to trigger the validation.
  */
 const useGraphQLValidator = (
@@ -28,11 +30,11 @@ const useGraphQLValidator = (
 ) => {
   const environment = useRelayEnvironment()
   const {
-    minLength, debounceWait,
+    minLength, debounceWait, fetchError, responseError,
   } = options
 
   const fetchGraphQLValidationQuery = useCallback(
-    (value) => fetchQuery(
+    (value: string) => fetchQuery(
       environment, QUERY, { value },
     ).toPromise(),
     [
@@ -42,12 +44,9 @@ const useGraphQLValidator = (
   )
 
   const validate = debounce(
-    async (value) => {
-      console.log(
-        'validating, db', value,
-      )
+    async (value: string) => {
       if (value.length < minLength) {
-        return // Do not validate if value is shorter than minLength
+        return
       }
       try {
         const data = await fetchGraphQLValidationQuery(value)
@@ -58,13 +57,13 @@ const useGraphQLValidator = (
           console.error(
             '[useGraphQLValidator] Invalid response:', data,
           )
-          onError('Invalid response from server')
+          onError(responseError)
         }
       } catch (error) {
         console.error(
           '[useGraphQLValidator] Error:', error,
         )
-        onError('Error during validation')
+        onError(fetchError)
       }
     }, debounceWait,
   )
