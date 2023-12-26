@@ -37,7 +37,7 @@ function Main() {
   )
   TokenStateManager.initialize()
 
-  console.log('[CLI] : Render')
+  // console.log('[CLI] : Render')
 
   return (
     <RelayEnvironmentProvider environment={relayEnvironment}>
