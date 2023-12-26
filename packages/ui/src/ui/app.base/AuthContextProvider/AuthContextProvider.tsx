@@ -98,9 +98,10 @@ function AuthContextProvider({
     }, [],
   )
 
+  /*
   console.log(
     '[ACP] : Render', viewerQueryReference,
-  )
+  ) */
 
   return (
     <AuthContext.Provider

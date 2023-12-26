@@ -1,14 +1,11 @@
-// REF 4: addGraphQLValidation.tsx
 import * as React from 'react'
 import {
-  useEffect, useCallback,
+  useEffect, useRef,
 } from 'react'
-import debounce from 'lodash.debounce'
-import {
-  fetchQuery, GraphQLTaggedNode,
-} from 'react-relay'
 import { useFormikContext } from 'formik'
-import { useRelayEnvironment } from 'react-relay/hooks'
+import { GraphQLTaggedNode } from 'react-relay'
+import useGraphQLValidator from './useGraphQLFieldValidator.tsx'
+import useFieldError from './useFieldError.ts' // Adjust the import path as necessary
 
 type GraphQLValidationExtensionOptions = {
   invalidMessage?:string;
@@ -19,24 +16,19 @@ type GraphQLValidationExtensionOptions = {
 
 /**
  * Creates a Higher-Order Component (HOC) that adds GraphQL validation to a wrapped component.
+ * Dynamically validates the component's value against a GraphQL query and manages the validation
+ * state using Formik context.
  *
- * This HOC provides dynamic validation by fetching validation rules from a GraphQL server
- * and applying them to the wrapped component. It uses the Formik context to manage validation
- * state and provides a method to handle re-fetching or retrying the validation if needed.
- *
- * @param {GraphQLTaggedNode} QUERY - The GraphQL query used to fetch the validation rules.
- * @param {string} accessor - The key in the GraphQL response that contains the validation data.
- * @param {GraphQLValidationExtensionOptions} configuration options for the validation,
- * including messages, minimum length for validation to occur, and debounce wait time.
- * @returns {Function} A React HOC returning
- *  an enhanced component that validates its value against a GraphQL query.
+ * @param QUERY {GraphQLTaggedNode} - GraphQL query used to fetch validation rules.
+ * @param accessor {string} - Key in the GraphQL response containing the validation data.
+ * @param options {GraphQLValidationExtensionOptions} - Configuration for the validation.
+ * @returns {React.ComponentType} - A React component enhanced with GraphQL validation logic.
  */
 const addGraphQLValidation = (
   QUERY: GraphQLTaggedNode,
   accessor: string,
   options: GraphQLValidationExtensionOptions = {},
 ) => {
-  // Destructuring options one level up with defaults
   const {
     invalidMessage = 'Invalid input',
     errorMessage = 'Error during validation',
@@ -45,88 +37,51 @@ const addGraphQLValidation = (
   } = options
 
   return (WrappedComponent: React.ComponentType<any>) => function ValidatedComponent({
-    name, value, ...props
+    name, ...props
   }: any) {
-    const environment = useRelayEnvironment()
-    const {
-      errors, setFieldError, setStatus, status,
-    } = useFormikContext()
+    const { values } = useFormikContext()
+    const value = values[name]
+    const setError = useFieldError(name)
+    const validateRef = useRef<Function>()
 
-    const setError = useCallback(
-      (error) => {
-        setFieldError(
-          name, error,
-        )
-        if (error) {
-          // Set refetch in status for error handling
-          setStatus({
-            ...status,
-            refetch:{
-              ...(status?.refetch || {}),
-              [name]:validate, // Provide a way to refetch
-            },
-          })
-        } else if (status?.refetch && status.refetch[name]) {
-          // Clear any refetch request from status if successful
-          const {
-            [name]: omit, ...restRefetch
-          } = status.refetch
-          setStatus({
-            ...status,
-            refetch:restRefetch,
-          })
-        }
+    const onSuccess = (isValid: boolean) => {
+      if (isValid) {
+        setError(undefined) // Clear error for valid case without passing refetch reference
+      } else {
+        setError(
+          invalidMessage, validateRef,
+        ) // Set error for invalid case and pass refetch reference
+      }
+    }
+    const onError = () => setError(
+      errorMessage, validateRef,
+    )
+
+    const validate = useGraphQLValidator(
+      QUERY,
+      accessor,
+      onSuccess,
+      onError,
+      {
+        minLength,
+        debounceWait,
       },
-      [
-        name,
-        status,
-        setStatus,
-        setFieldError,
-      ],
     )
 
-    const validate = debounce(
-      async (currentValue: string) => {
-        if (currentValue.length < minLength) {
-          return
-        }
-        try {
-          const data = await fetchQuery(
-            environment, QUERY, { value: currentValue },
-          ).toPromise()
-          const isValid = data[accessor]
-          if (typeof isValid === 'boolean') {
-            if (!isValid) setError(invalidMessage)
-            else if (errors[name]) setError(undefined)
-          } else {
-            console.error(
-              '[addGraphQLValidation] Returned value is not a boolean:',
-              isValid,
-            )
-            setError(errorMessage)
-          }
-        } catch (error) {
-          console.error(
-            '[addGraphQLValidation] Error fetching data:', error,
-          )
-          setError(errorMessage)
-        }
-      }, debounceWait,
-    )
+    // Function hoisting to avoid stale closure
+    // And pass the refetch reference to the formik context
+    validateRef.current = () => validate(value)
 
     useEffect(
       () => {
         validate(value)
-      }, [
-        value,
-        validate,
-      ],
-    )
+        return validate.cancel
+      }, [value],
+    ) // Dependency on the value changes
 
     return (
       <WrappedComponent
         name={name}
-        value={value}
         {...props}
       />
     )
