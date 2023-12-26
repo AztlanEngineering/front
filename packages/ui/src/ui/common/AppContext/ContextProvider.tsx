@@ -40,9 +40,6 @@ function AppContextProvider({
   )
 
   const isMaintenanceMode = useMaintenance(maintenance)
-  console.log(
-    'MMM', isMaintenanceMode,
-  )
 
   if (isMaintenanceMode) {
     return <div>This site is currently not available.</div>

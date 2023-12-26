@@ -2,3 +2,4 @@
 export { default as Form } from './Form.tsx'
 export { default as FormContext } from './Context.ts'
 export { default as useForm } from './useForm.ts'
+export { default as SimpleForm } from './SimpleForm.tsx'

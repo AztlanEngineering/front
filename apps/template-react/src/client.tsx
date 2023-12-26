@@ -63,6 +63,8 @@ function Main() {
   )
 }
 
+export { relayEnvironment }
+
 loadableReady(() => {
   if (container.hasChildNodes()) {
     hydrateRoot(

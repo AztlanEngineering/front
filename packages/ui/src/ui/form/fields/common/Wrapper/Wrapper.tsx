@@ -135,7 +135,7 @@ function Wrapper({
       >
         {description && <Description {...descriptionProps} />}
         <Component {...fieldProps} />
-        {meta.error && meta.touched && <Description {...stateProps} />}
+        {meta.error && <Description {...stateProps} />}
       </div>
       {/* Error handling and other common functionalities */}
     </>

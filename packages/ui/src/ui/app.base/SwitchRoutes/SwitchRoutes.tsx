@@ -16,7 +16,6 @@ function SwitchRoutes({
 }) {
   // @ts-ignore
   const { viewerQueryReference } = useAuth()
-  console.log('SR')
 
   return (
     <Switch

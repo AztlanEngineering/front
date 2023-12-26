@@ -45,6 +45,12 @@ export const WrapperPropTypes = {
    * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
    */
   autoComplete:PropTypes.string.isRequired,
+
+  /**
+   * An array of HOC components that will be applied in reverse order
+   * (the first one will be the final wrapper)
+   */
+  extensions:PropTypes.arrayOf(PropTypes.func),
 }
 
 export const sharedPropTypes = {

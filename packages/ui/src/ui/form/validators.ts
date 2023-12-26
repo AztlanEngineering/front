@@ -16,6 +16,7 @@ interface ValidatorOptions {
 /**
  * Creates a field validator that checks the input value against a GraphQL query.
  *
+ * @deprecated There are two limitations to this approach: formik fires the function on every keystroke and it's not possible to read isValidating except for the whole form (no loading state possible).
  * @param relayEnvironment - The Relay environment for executing the query.
  * @param query - The pre-tagged GraphQL query to be executed.
  * @param accessor - The key to access the boolean value in the query response.
@@ -36,24 +37,18 @@ export const createGraphQLFieldValidator = (
   } = options
 
   const validatorFunction = async (value: string) => {
-    console.log(
-      'validating', value,
-    )
     if (value.length < minLength) {
       // Not enough characters to check against backend
       return undefined // or return a specific "too short" message if desired
     }
 
-    const variables = { payload: value }
+    const variables = { value }
     try {
       const data = await fetchQuery(
         relayEnvironment,
         query,
         variables,
       ).toPromise()
-      console.log(
-        'RETURNED', data,
-      )
       if (typeof data[accessor] === 'boolean') {
         return data[accessor] ? undefined : invalidMessage
       }
