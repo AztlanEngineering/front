@@ -74,7 +74,9 @@ function Base({
       <div className="background near span-4 fit-content">
         <h1>{title}</h1>
         <ThemeSwitcher />
+        {/* TMP
         <LocaleSwitcher />
+          */}
         <a onClick={logout}>
           <h2>
             Logout

@@ -34,7 +34,7 @@ function Home() {
     <Template title={formatMessage(m.title)}>
       <h2 className="container">Form Test</h2>
       <SimpleForm
-        debug
+        // debug
         className="container"
         inputProps={{
           spanLabel         :6,
@@ -43,6 +43,7 @@ function Home() {
           spanContentDesktop:5,
         }}
         inputs={[
+          /*
           {
             name        :'name',
             label       :'Your name',
@@ -74,7 +75,7 @@ function Home() {
                 },
               ),
             ],
-          },
+          }, */
           {
             name        :'fruits',
             label       :"What's your favorite fruit?",

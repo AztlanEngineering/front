@@ -1,4 +1,5 @@
 import { loadable } from '../common/utils'
+import FormTest from './pages/FormTest.tsx'
 
 export default [
   /*
@@ -14,7 +15,8 @@ export default [
   }, */
   {
     path     :'/formtest',
-    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/FormTest.tsx')),
+    component:FormTest,
+    // component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/FormTest.tsx')),
     exact    :true,
   },
 ]

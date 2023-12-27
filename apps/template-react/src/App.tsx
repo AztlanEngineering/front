@@ -6,12 +6,8 @@ import {
   AuthContextProvider,
   SwitchRoutes,
 } from '@aztlan/ui'
-import {
-  useTheme,
-} from '@aztlan/react-helpers'
-import {
-  IntlProvider,
-} from 'react-intl'
+import { useTheme } from '@aztlan/react-helpers'
+import { IntlProvider } from 'react-intl'
 import {
   useEffect, useState, useCallback,
 } from 'react'
@@ -27,27 +23,28 @@ function Wireframe({
   // ...routeProps,
 }) {
   return (
-    <Base title={wireframeTitle || 'Loading'} wireframe>
+    <Base
+      title={wireframeTitle || 'Loading'}
+      wireframe
+    >
       Loading user
     </Base>
   )
 }
 
 function App() {
-  const {
-    theme,
-  } = useApp()
-  console.log('[APP] : Render')
+  const { theme } = useApp()
+  // console.log('[APP] : Render')
   return (
-    <AuthContextProvider>
-      <main className={`${theme || ''} background far`}>
-        <SwitchRoutes
-          items={routes}
-          NotFoundPage={Status404Page}
-          Wireframe={Wireframe}
-        />
-      </main>
-    </AuthContextProvider>
+    // <AuthContextProvider>
+    <main className={`${theme || ''} background far`}>
+      <SwitchRoutes
+        items={routes}
+        NotFoundPage={Status404Page}
+        Wireframe={Wireframe}
+      />
+    </main>
+    // </AuthContextProvider>
   )
 }
 

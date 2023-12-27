@@ -29,12 +29,13 @@ const container = document.getElementById('main')
 const defaultLocale = window.__LOCALE__ || 'es'
 
 function Main() {
+  /* TMP
   const {
     locale, messages, ...useLocaleProps
   } = useLocale(
     defaultLocale,
     loadMessages,
-  )
+  ) */
   TokenStateManager.initialize()
 
   // console.log('[CLI] : Render')
@@ -42,16 +43,16 @@ function Main() {
   return (
     <RelayEnvironmentProvider environment={relayEnvironment}>
       <BrowserRouter>
-        <IntlProvider
-          locale={locale}
-          messages={messages}
-        >
+        <IntlProvider>
           <HelmetProvider>
             <AppContextProvider
-              value={{
-                locale,
-                ...useLocaleProps,
-              }}
+              value={
+                {
+                  // TMP
+                  // locale,
+                  // ...useLocaleProps,
+                }
+              }
               maintenance={config.maintenance}
             >
               <App />
