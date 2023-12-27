@@ -104,7 +104,8 @@ function Wrapper({
 
   const stateProps = {
     name,
-    meta,
+    isError :!!meta.error,
+    children:meta.error,
     ...ariaProps.state,
   }
 

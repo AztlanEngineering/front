@@ -21,8 +21,8 @@ const componentClassName = 'description'
 function Description({
   className: userClassName,
   style,
-  meta,
   name,
+  isError,
   children,
   // ...otherProps
 }) {
@@ -32,8 +32,6 @@ function Description({
       import('./styles.scss')
     }, [],
   )
-
-  const isError = !!meta?.error
 
   return (
     <div
@@ -49,7 +47,7 @@ function Description({
       style={style}
       // {...otherProps}
     >
-      {meta?.error || children}
+      {children}
     </div>
   )
 }
