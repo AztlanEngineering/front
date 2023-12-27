@@ -1,10 +1,12 @@
 import { useCallback } from 'react'
 import { useFormikContext } from 'formik'
+import { rerenderAllowedStatusKey as statusKey } from '../constants.ts'
 
 /**
  * Custom hook to manage registration and cleanup of refetch function in Formik's status.
  * @param {string} name - The name of the field related to the refetch function.
- * @returns {{ registerRefetch: Function, clearRefetch: Function }} Object containing functions to register and clear the refetch function.
+ * @returns {{ registerRefetch: Function, clearRefetch: Function }} Object containing
+ * functions to register and clear the refetch function.
  */
 const useFieldRefetch = (name: string) => {
   const {
@@ -12,18 +14,17 @@ const useFieldRefetch = (name: string) => {
   } = useFormikContext()
 
   const registerRefetch = useCallback(
-    (refetchFn: Function) => {
-      if (status?.refetch?.[name] !== refetchFn) {
+    () => {
+      if (!status?.[statusKey]?.[name] === true) {
         setStatus({
           ...status,
-          refetch:{
-            ...(status?.refetch || {}),
-            [name]:refetchFn,
+          [statusKey]:{
+            ...(status?.[statusKey] || {}),
+            [name]:true,
           },
         })
       }
-    },
-    [
+    }, [
       name,
       status,
       setStatus,
@@ -32,10 +33,10 @@ const useFieldRefetch = (name: string) => {
 
   const clearRefetch = useCallback(
     () => {
-      if (status?.refetch?.[name]) {
+      if (status?.[statusKey]?.[name]) {
         const {
           [name]: omit, ...restRefetch
-        } = status.refetch
+        } = status[statusKey]
         setStatus({
           ...status,
           refetch:restRefetch,

@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import {
   useFormikContext, FormikHelpers,
 } from 'formik'
+import { useCurrentUnixTime } from '@aztlan/react-helpers'
 import Wrapper from './Wrapper.tsx'
 
 const areEqual = (
@@ -71,9 +72,16 @@ const withWrapper = (
       [extensions],
     )
 
+    const [
+      key,
+      rerender,
+    ] = useCurrentUnixTime()
+
     return (
       <Wrapper
         Component={ExtendedComponent}
+        key={key}
+        rerender={rerender}
         {...options}
         {...props}
       />

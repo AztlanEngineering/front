@@ -74,4 +74,4 @@ Description.propTypes = {
   children:PropTypes.node,
 }
 
-export default Description
+export default React.memo(Description)

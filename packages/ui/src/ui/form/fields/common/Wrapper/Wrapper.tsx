@@ -1,14 +1,16 @@
 /* @aztlan/generator-front 0.6.0 */
 import * as React from 'react'
-import { useMemo } from 'react'
+import {
+  useState, useMemo,
+} from 'react'
 import * as PropTypes from 'prop-types'
 import {
   useFormikContext, useField,
 } from 'formik'
+import { rerenderAllowedStatusKey } from '../../../constants.ts'
 
 import { Label } from '../Label/index.ts'
 import { Description } from '../Description/index.ts'
-import { htmlTypes } from '../../../constants.ts'
 import { WrapperPropTypes } from '../../../PropTypes.ts'
 
 const span = (
@@ -39,6 +41,7 @@ function Wrapper({
   spanContentDesktop = 8,
   mockLabel = false,
   hookOptions,
+  rerender,
   autoComplete,
   ...otherProps
 }) {
@@ -105,25 +108,21 @@ function Wrapper({
     ...ariaProps.description,
   }
 
-  const testChildren = useMemo(
-    () => (
+  function TestChildren() {
+    return (
       <span>
         {meta.error}
-        {status?.refetch?.[name] && (
-          <button onClick={status?.refetch?.[name]}>{Refetch}</button>
+        {status?.[rerenderAllowedStatusKey]?.[name] && (
+          <button onClick={rerender}>refetch</button>
         )}
       </span>
-    ),
-    [
-      meta.error,
-      status?.refetch?.[name],
-    ],
-  )
+    )
+  }
 
   const stateProps = {
     name,
     isError :!!meta.error,
-    children:meta.error,
+    children:<TestChildren />,
     ...ariaProps.state,
   }
 

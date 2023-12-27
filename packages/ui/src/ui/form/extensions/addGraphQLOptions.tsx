@@ -3,6 +3,7 @@ import {
   useEffect, useRef, useState,
 } from 'react'
 import { GraphQLTaggedNode } from 'react-relay'
+import { useFormikContext } from 'formik'
 import useGraphQLFieldOptionsFetcher from './useGraphQLFieldOptionsFetcher.ts' // Adjust the import path as necessary
 import useFieldError from './useFieldError.ts' // Adjust the import path as necessary
 
@@ -38,6 +39,8 @@ const addGraphQLOptions = (
   }: any) {
     const setError = useFieldError(name)
     const refetchRef = useRef<Function>()
+
+    const { status } = useFormikContext()
     const [
       fieldOptions,
       setFieldOptions,
@@ -51,7 +54,7 @@ const addGraphQLOptions = (
     // onSuccess and onError callbacks
     const onSuccess = (fetchedFieldOptions: any[]) => {
       setFieldOptions(fetchedFieldOptions)
-      setLoading(false)
+      // setLoading(false)
       setError(undefined)
     }
 
@@ -59,7 +62,7 @@ const addGraphQLOptions = (
       setError(
         errorMessage, refetchRef,
       )
-      setLoading(false)
+      // setLoading(false)
     }
 
     const fetchOptions = useGraphQLFieldOptionsFetcher(

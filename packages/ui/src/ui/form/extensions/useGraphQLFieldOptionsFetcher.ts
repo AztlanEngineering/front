@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import {
   fetchQuery, GraphQLTaggedNode,
 } from 'react-relay'
+import { useFormikContext } from 'formik'
 import { useRelayEnvironment } from 'react-relay/hooks'
 
 /**
@@ -38,9 +39,6 @@ const useGraphQLFieldOptionsFetcher = (
         const options = data[accessor]
         if (Array.isArray(options)) {
           onSuccess(options)
-          console.log(
-            'options', options,
-          )
         } else {
           console.error(
             '[useGraphQLFieldOptionsFetcher] Invalid response:',

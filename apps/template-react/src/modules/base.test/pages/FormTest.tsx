@@ -43,7 +43,6 @@ function Home() {
           spanContentDesktop:5,
         }}
         inputs={[
-          /*
           {
             name        :'name',
             label       :'Your name',
@@ -75,7 +74,7 @@ function Home() {
                 },
               ),
             ],
-          }, */
+          },
           {
             name        :'fruits',
             label       :"What's your favorite fruit?",
