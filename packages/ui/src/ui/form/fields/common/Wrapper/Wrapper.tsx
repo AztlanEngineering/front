@@ -2,8 +2,9 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import * as PropTypes from 'prop-types'
-
-import { useField } from 'formik'
+import {
+  useFormikContext, useField,
+} from 'formik'
 
 import { Label } from '../Label/index.ts'
 import { Description } from '../Description/index.ts'
@@ -49,6 +50,8 @@ function Wrapper({
     validate,
     ...hookOptions,
   })
+
+  const { status } = useFormikContext()
 
   const isError = !!meta.error
 
@@ -101,6 +104,21 @@ function Wrapper({
     children:description,
     ...ariaProps.description,
   }
+
+  const testChildren = useMemo(
+    () => (
+      <span>
+        {meta.error}
+        {status?.refetch?.[name] && (
+          <button onClick={status?.refetch?.[name]}>{Refetch}</button>
+        )}
+      </span>
+    ),
+    [
+      meta.error,
+      status?.refetch?.[name],
+    ],
+  )
 
   const stateProps = {
     name,
