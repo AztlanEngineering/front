@@ -1,0 +1,3 @@
+.ds.choices{display:flex;flex-wrap:wrap;gap:var(--gap)}.ds.choices input{opacity:0;position:absolute;visibility:none;z-index:-1}.ds.choices input+label{cursor:pointer}.ds.choices input:checked+label{color:red}
+
+/*# sourceMappingURL=77.css.map*/

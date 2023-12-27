@@ -1,0 +1,1 @@
+{"version":3,"file":"979.css","mappings":"AAKE,sBACE,U","sources":["webpack://@aztlan/template-react/../../packages/ui/dist/esm/ui/form/fields/common/Description/styles.scss"],"sourcesContent":["/* @aztlan/generator-front 0.5.0 */\n\n@use \"@aztlan/bem\";\n\n.#{bem.$base}.description {\n  &.#{bem.$modifier-error} {\n    color: red;\n  }\n}\n\n\n"],"names":[],"sourceRoot":""}
