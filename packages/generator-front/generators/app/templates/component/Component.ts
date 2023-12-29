@@ -53,24 +53,16 @@ const <%= name %> = ({
 
 <% if (!optionDiet) { %>
 <%= name %>.propTypes = {
-  /**
-   * The HTML id for this element
-   */
+  /** The HTML id for this element */
   id: PropTypes.string,
   
-  /**
-   * The HTML class names for this element
-   */
+  /** The HTML class names for this element */
   className: PropTypes.string,
   
-  /**
-   * The React-written, css properties for this element.
-   */
+  /** The React-written, css properties for this element. */
   style: PropTypes.objectOf(PropTypes.string),
   
-  /**
-   *  The children JSX
-   */
+  /** The children JSX */
   children: PropTypes.node,
 }
 <% } %>
