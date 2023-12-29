@@ -1,0 +1,11 @@
+/* @aztlan/generator-front 0.8.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.text {
+  input {
+    width: 100%;
+  }
+}
+
+

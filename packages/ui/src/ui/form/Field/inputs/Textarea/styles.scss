@@ -1,0 +1,16 @@
+/* @aztlan/generator-front 0.8.0 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.textarea {
+  textarea {
+    resize: vertical;
+    width: 100%;
+
+    &:disabled {
+      resize: none;
+    }
+  }
+}
+
+

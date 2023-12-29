@@ -4,9 +4,12 @@ import { IntlProvider } from 'react-intl'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
 import environment from '@aztlan/storybook-addon-relay/src/decorators/environment'
 import { Formik } from 'formik'
+import {
+  useForm, FormProvider,
+} from 'react-hook-form'
 import { AppContextProvider } from '../ui/common/index.ts'
 import { AuthContextProvider } from '../ui/app.base/index.ts'
-import Debugger from '../ui/form/Debugger.ts'
+import Debugger from '../ui/form-formik/Debugger.ts'
 
 export const app = (StoryFn) => (
   <AppContextProvider>
@@ -61,7 +64,7 @@ export const auth = (StoryFn) => (
 
 export const grid = (StoryFn) => <div className="grid">{StoryFn()}</div>
 
-export const form = (StoryFn) => (
+export const formik = (StoryFn) => (
   <Formik
     initialValues={{
       name    :'',
@@ -75,3 +78,23 @@ export const form = (StoryFn) => (
     </>
   </Formik>
 )
+
+export const form = (StoryFn) => {
+  const methods = useForm({ mode: 'onChange' })
+  const onSubmit = (data) => console.log(
+    '[FORM SUBMIT]', data,
+  )
+
+  return (
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
+        {StoryFn()}
+        <br />
+        <input
+          type="submit"
+          value="Print in console"
+        />
+      </form>
+    </FormProvider>
+  )
+}
