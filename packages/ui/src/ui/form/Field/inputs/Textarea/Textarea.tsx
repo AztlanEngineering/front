@@ -27,6 +27,7 @@ function Textarea({
   style,
   rows = 4,
   name,
+  registerProps,
   ...otherProps
 }: InferProps<typeof Textarea.propTypes>): React.ReactElement {
   useInsertionEffect(
@@ -51,7 +52,9 @@ function Textarea({
     >
       <textarea
         rows={rows}
-        {...register(name)}
+        {...register(
+          name, registerProps,
+        )}
         {...otherProps}
       />
     </div>

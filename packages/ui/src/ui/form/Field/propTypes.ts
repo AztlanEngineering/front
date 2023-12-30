@@ -33,6 +33,9 @@ export const WrapperPropTypes = {
   /** Description or additional information below the input */
   description:PropTypes.string,
 
+  /** An object of shape [`RegisterOptions`](https://www.react-hook-form.com/ts/#RegisterOptions) that will be passed to the registration function of the input */
+  registerProps:PropTypes.object,
+
   ...sharedWrapperPropTypes,
 }
 

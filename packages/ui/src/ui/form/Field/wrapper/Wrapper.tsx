@@ -52,6 +52,7 @@ function Wrapper({
   spanContent = 8,
   spanContentDesktop = 8,
   mockLabel = false,
+  registerProps,
   ...otherProps
 }: InferProps<typeof Wrapper.propTypes>) {
   // const { register } = useFormContext()
@@ -92,6 +93,7 @@ function Wrapper({
       >
         <Component
           name={name}
+          registerProps={registerProps}
           {...ariaProps.input}
           {...otherProps}
         />

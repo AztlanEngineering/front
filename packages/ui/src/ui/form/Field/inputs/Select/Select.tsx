@@ -24,7 +24,9 @@ const componentClassName = 'select'
 function Select({
   className: userClassName,
   style,
+  name,
   options,
+  registerProps,
   ...otherProps
 }: InferProps<typeof Select.propTypes>): React.ReactElement {
   useInsertionEffect(
@@ -33,6 +35,8 @@ function Select({
       import('./styles.scss')
     }, [],
   )
+
+  const { register } = useFormContext()
 
   return (
     <div
@@ -45,7 +49,12 @@ function Select({
         .join(' ')}
       style={style}
     >
-      <select {...otherProps}>
+      <select
+        {...register(
+          name, registerProps,
+        )}
+        {...otherProps}
+      >
         {options?.map((option) => (
           <option
             key={option.value}

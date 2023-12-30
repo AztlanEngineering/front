@@ -19,8 +19,10 @@ const baseClassName = styleNames.base
 
 const componentClassName = 'form'
 
+// TODO add propTypes and types using https://www.react-hook-form.com/ts/#RegisterOptions
 /**
- * This is the component description.
+ * A simple form that uses react-hook-form and displays a fieldMap.
+ * All props that are not-declared are passed to the useForm hook. Read more [here](https://www.react-hook-form.com/api/useform/)
  */
 function SimpleForm({
   id,
@@ -28,8 +30,8 @@ function SimpleForm({
   style,
   fields,
   fieldProps: sharedFieldProps,
-}: // ...otherProps
-InferProps<typeof SimpleForm.propTypes>): React.ReactElement {
+  ...otherProps
+}: InferProps<typeof SimpleForm.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -37,7 +39,12 @@ InferProps<typeof SimpleForm.propTypes>): React.ReactElement {
     }, [],
   )
 
-  const methods = useForm({ mode: 'onChange' })
+  const methods = useForm({
+    mode                     :'onChange',
+    shouldUseNativeValidation:true,
+    ...otherProps,
+  })
+
   const onSubmit = (data) => console.log(
     '[FORM SUBMIT]', data,
   )

@@ -25,6 +25,7 @@ function Checkbox({
   name,
   className: userClassName,
   style,
+  registerProps,
   ...otherProps
 }: InferProps<typeof Checkbox.propTypes>): React.ReactElement {
   useInsertionEffect(
@@ -49,7 +50,9 @@ function Checkbox({
     >
       <input
         type="checkbox"
-        {...register(name)}
+        {...register(
+          name, registerProps,
+        )}
         {...otherProps}
       />
     </div>

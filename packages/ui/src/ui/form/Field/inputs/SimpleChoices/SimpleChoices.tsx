@@ -24,6 +24,7 @@ function Option({
   disabled,
   type,
   register,
+  registerProps,
   // ...otherProps
 }) {
   const ariaProps = useOptionAriaProps(
@@ -38,7 +39,9 @@ function Option({
         value={value}
         disabled={disabled || false}
         type={type}
-        {...register(name)}
+        {...register(
+          name, registerProps,
+        )}
         {...ariaProps.input}
       />
       <label {...ariaProps.label}>{label}</label>
@@ -55,7 +58,9 @@ Option.propTypes = {
     'checkbox',
     'radio',
   ]),
-  register:PropTypes.func,
+  register     :PropTypes.func,
+  // eslint-disable-next-line react/forbid-prop-types
+  registerProps:PropTypes.object,
 }
 
 /**
@@ -68,6 +73,7 @@ function SimpleChoices({
   multiple = false,
   disabled,
   options,
+  registerProps,
   // ...otherProps
 }) {
   useInsertionEffect(
@@ -98,6 +104,7 @@ function SimpleChoices({
           name={name}
           type={type}
           register={register}
+          registerProps={registerProps}
           value={option.value}
           label={option.label}
           disabled={disabled || option.disabled}

@@ -26,6 +26,7 @@ function Text({
   style,
   type: inputType,
   name,
+  registerProps,
   ...otherProps
 }: InferProps<typeof Text.propTypes>): React.ReactElement {
   useInsertionEffect(
@@ -51,12 +52,7 @@ function Text({
       <input
         type={inputType}
         {...register(
-          name, {
-            required:{
-              value  :true,
-              message:'this input is required',
-            },
-          },
+          name, registerProps,
         )}
         {...otherProps}
       />

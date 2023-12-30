@@ -15,18 +15,19 @@ type Options<T> = {
 const withWrapper = (
   Component: React.ComponentType<any>,
   options: Options<React.ComponentProps<typeof Wrapper>> = {},
-) =>
-  // const { name } = options
-  function (props: any) {
+) => {
+  const MemoizedComponent = React.memo(Component)
+  return function (props: any) {
     // const { register } = useFormContext()
 
     return (
       <Wrapper
-        Component={Component}
+        Component={MemoizedComponent}
         {...props}
         {...options}
       />
     )
   }
+}
 
 export default withWrapper
