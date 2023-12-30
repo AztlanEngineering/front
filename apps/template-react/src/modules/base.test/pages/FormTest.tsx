@@ -5,10 +5,7 @@ import {
   defineMessages, useIntl, FormattedMessage,
 } from 'react-intl'
 import {
-  SimpleForm,
-  addGraphQLValidation,
-  validateEmail,
-  addGraphQLOptions,
+  SimpleForm, addGraphQLOptions, withErrorHandling,
 } from '@aztlan/ui'
 import {
   Formik, Field,
@@ -34,15 +31,14 @@ function Home() {
     <Template title={formatMessage(m.title)}>
       <h2 className="container">Form Test</h2>
       <SimpleForm
-        debug
         className="container"
-        inputProps={{
+        fieldProps={{
           spanLabel         :6,
           spanLabelDesktop  :3,
           spanContent       :8,
           spanContentDesktop:5,
         }}
-        inputs={[
+        fields={[
           {
             name        :'name',
             label       :'Your name',
@@ -52,8 +48,8 @@ function Home() {
             name        :'email',
             label       :'Your email',
             autoComplete:'email',
-            validate    :validateEmail,
           },
+          /*
           {
             name        :'username',
             label       :'Username',
@@ -74,12 +70,13 @@ function Home() {
                 },
               ),
             ],
-          },
+          }, */
           {
             name        :'fruits',
             label       :"What's your favorite fruit?",
             autoComplete:'off',
             type        :'select',
+            /*
             options     :[
               {
                 label   :'Apple',
@@ -101,8 +98,9 @@ function Home() {
                 value   :'pineapple',
                 disabled:true,
               },
-            ],
-            extensions:[
+            ], */
+            extensions  :[
+              withErrorHandling,
               addGraphQLOptions(
                 graphql`
                   query FormTestFruitsQuery {
@@ -115,14 +113,10 @@ function Home() {
                 `,
                 'fruits',
               ),
+              withErrorHandling,
             ],
           },
         ]}
-        initialValues={{
-          name    :'John',
-          email   :'',
-          username:'johndoe',
-        }}
       />
       {/*
       <h2 className="container">Vanilla </h2>

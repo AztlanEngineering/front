@@ -1,29 +1,33 @@
 /* <%= pkg %> <%= version %> */
-import * as React from 'react'
-<% if (!optionNoStyles) { %>
+import * as React from 'react'<% if (!optionNoStyles) { %>
 import { useInsertionEffect } from 'react'
 <% } %>
 import * as PropTypes from 'prop-types'
+import { InferProps } from 'prop-types'
 <% if (!optionNoStyles) { %>
 import styleNames from '@<%= npmOrg %>/bem'
 <% } %>
 
-// Local Definitions
 <% if (!optionDiet || !optionNoStyles) { %>
-const baseClassName = styleNames.base
-<% } %>
+const baseClassName = styleNames.base<% } %>
 const componentClassName = '<%= lower %>'
 
 /**
- * This is the component description.
+ * description
+ * @param {InferProps<typeof <%= name %>.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Textarea
  */
-const <%= name %> = ({
+function <%= name %>({
   id,
   className:userClassName,
   style,
   children,
   //...otherProps
-}) => {
+<% if (!optionDiet) { %>
+}: InferProps<typeof Textarea.propTypes>): React.ReactElement {
+  <% else { %>
+  }): React.ReactElement {<% } %>
+
 <% if (!optionNoStyles) { %>
   useInsertionEffect(() => {
     // @ts-ignore

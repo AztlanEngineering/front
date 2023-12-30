@@ -1,9 +1,11 @@
-import { Environment, RecordSource, Store } from 'relay-runtime'
+import {
+  Environment, RecordSource, Store,
+} from 'relay-runtime'
 
 import {
   RelayNetworkLayer,
   urlMiddleware,
-  // loggerMiddleware,
+  loggerMiddleware,
   retryMiddleware,
   errorMiddleware,
   perfMiddleware,
@@ -21,11 +23,15 @@ const source = new RecordSource(queryRecords)
 const store = new Store(source)
 
 const getEnvironment = (url) => new Environment({
-  network: new RelayNetworkLayer([
+  network:new RelayNetworkLayer([
     urlMiddleware({
       url,
-      credentials: 'include',
+      credentials:'include',
     }),
+    // loggerMiddleware(),
+    errorMiddleware(),
+    perfMiddleware(),
+    /*
     retryMiddleware({
       fetchTimeout: 15000,
       retryDelays: (attempt) => 2 ** (attempt + 4) * 100,
@@ -54,11 +60,11 @@ const getEnvironment = (url) => new Environment({
         // console.log(`call 'forceRelayRetry()' for immediately retry! Or wait ${delay} ' ms.`);
       },
       statusCodes: [500, 503, 504],
-    }),
-    perfMiddleware(),
+    }), */
     refreshTokenMiddleware(),
-    errorMiddleware(),
-  ]),
+  ],
+    // { noThrow: true },
+  ),
   store,
 })
 
