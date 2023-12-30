@@ -37,7 +37,6 @@ function Option({
         type={type}
         {...register(name)}
         {...ariaProps.input}
-        // {...otherProps}
       />
       <label {...ariaProps.label}>{label}</label>
     </>
@@ -80,7 +79,7 @@ InferProps<typeof Choices.propTypes>): React.ReactElement {
   const type = multiple ? 'checkbox' : 'radio'
 
   return (
-    <div
+    <fieldset
       className={[
         baseClassName,
         componentClassName,
@@ -101,7 +100,7 @@ InferProps<typeof Choices.propTypes>): React.ReactElement {
           disabled={disabled || option.disabled}
         />
       ))}
-    </div>
+    </fieldset>
   )
 }
 

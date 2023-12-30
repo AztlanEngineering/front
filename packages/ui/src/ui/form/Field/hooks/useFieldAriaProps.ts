@@ -11,7 +11,7 @@ const useFieldAriaProps = (
   name: string, isError: boolean,
 ) => useMemo(
   () => {
-    const baseId = ID_PREFIX
+    const baseId = `${ID_PREFIX}-${name}`
     const labelId = `${baseId}-label`
     const descriptionId = `${baseId}-description`
     const errorId = `${baseId}-error`

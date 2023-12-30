@@ -1,6 +1,9 @@
 import * as React from 'react'
 import Wrapper from './Wrapper.tsx'
-// import { useFormContext } from 'react-hook-form'
+
+type Options<T> = {
+  [K in keyof T]?: T[K];
+}
 
 /**
  * @description a HOC that wraps a raw field and provides the base form methods to it.
@@ -11,7 +14,7 @@ import Wrapper from './Wrapper.tsx'
  */
 const withWrapper = (
   Component: React.ComponentType<any>,
-  options: Record<string, any> = {},
+  options: Options<React.ComponentProps<typeof Wrapper>> = {},
 ) =>
   // const { name } = options
   function (props: any) {
@@ -21,6 +24,7 @@ const withWrapper = (
       <Wrapper
         Component={Component}
         {...props}
+        {...options}
       />
     )
   }

@@ -82,7 +82,7 @@ function SimpleChoices({
   const type = multiple ? 'checkbox' : 'radio'
 
   return (
-    <div
+    <fieldset
       className={[
         baseClassName,
         componentClassName,
@@ -103,7 +103,7 @@ function SimpleChoices({
           disabled={disabled || option.disabled}
         />
       ))}
-    </div>
+    </fieldset>
   )
 }
 
