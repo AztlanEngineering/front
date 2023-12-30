@@ -23,6 +23,7 @@ type ComponentProps = InferProps<typeof componentPropTypes>
 interface FetchOptions {
   fetchError?   :string;
   responseError?:string;
+  initialData?  :any;
   variables?    :{ [key: string]: any };
 }
 
@@ -35,13 +36,14 @@ const useFetcher = (
     fetchError = messages.fetchError(),
     responseError = messages.responseError(),
     variables = {},
+    initialData = null,
   } = options
 
   const environment = useRelayEnvironment()
   const [
     data,
     setData,
-  ] = useState<Options | null>(null)
+  ] = useState<Options | typeof initialData>(initialData)
   const [
     loading,
     setLoading,
@@ -104,9 +106,10 @@ const addGraphQLOptions = (
     const {
       fetchData, data, loading, error,
     } = useFetcher(
-      QUERY,
-      accessor,
-      options,
+      QUERY, accessor, {
+        initialData:[],
+        ...options,
+      },
     )
 
     useEffect(
@@ -152,6 +155,4 @@ const addGraphQLOptions = (
   return EnhancedComponent
 }
 
-export {
-  addGraphQLOptions, useFetcher,
-}
+export default addGraphQLOptions

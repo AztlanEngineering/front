@@ -91,7 +91,7 @@ SimpleForm.propTypes = {
 
   /** An object of field props that will be applied to all the fields */
   fieldProps:PropTypes.shape({
-    ...formPropTypes.baseShared,
+    ...formPropTypes.wrapperShared,
     ...formPropTypes.inputShared, // Kinda
   }),
 }

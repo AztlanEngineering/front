@@ -58,7 +58,7 @@ function Wrapper({
   mockLabel = false,
   registerProps: userRegisterProps = {},
   ...otherProps
-}: InferProps<typeof Wrapper.propTypes>) {
+}: InferProps<typeof Wrapper.propTypes>): React.ReactElement {
   // const { register } = useFormContext()
   const { errors } = useFormState()
   const isError = !!errors[name]

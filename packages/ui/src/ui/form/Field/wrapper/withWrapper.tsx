@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useMemo } from 'react'
+import { InferProps } from 'prop-types'
 import Wrapper from './Wrapper.tsx'
+import * as formPropTypes from '../propTypes.ts'
 
 type Options<T> = {
   [K in keyof T]?: T[K];
@@ -15,12 +17,13 @@ type Options<T> = {
  */
 const withWrapper = (
   Component: React.ComponentType<any>,
-  options: Options<React.ComponentProps<typeof Wrapper>> = {},
+  options: Options<InferProps<typeof formPropTypes.wrapperShared>> = {},
 ) => {
   const MemoizedComponent = React.memo(Component)
-  return function ({
-    extensions = [], ...props
-  }) {
+  return function WrappedComponent({
+    extensions = [],
+    ...props
+  }: InferProps<typeof formPropTypes.baseShared>): React.ReactElement {
     // const { register } = useFormContext()
     const ExtendedComponent = useMemo(
       () => extensions

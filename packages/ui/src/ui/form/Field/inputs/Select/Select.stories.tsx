@@ -3,9 +3,12 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import * as decorators from 'story-utils/decorators.tsx'
-// import { graphql } from 'react-relay'
+import { graphql } from 'react-relay'
 import Component from './Select.tsx'
-// import { addGraphQLOptions } from '../../extensions/index.ts'
+import {
+  addGraphQLOptions,
+  withErrorHandling,
+} from '../../../extensions/index.ts'
 
 export default {
   title     :'form/inputs/Select',
@@ -86,43 +89,25 @@ export const DisabledValue: StoryObj<typeof Component> = {
   },
 }
 
-/*
-export const Extensions: StoryFn<typeof Component> = Template.bind({})
-Extensions.args = {
-  name   :'color',
-  label  :'Favourite color',
-  options:[
-    {
-      value:'red',
-      label:'Red',
-    },
-    {
-      value:'green',
-      label:'Green',
-    },
-    {
-      value:'blue',
-      label:'Blue',
-    },
-    {
-      value:'yellow',
-      label:'Yellow',
-    },
-  ],
-  extensions:[
-    addGraphQLOptions(graphql`
-      query SelectFruitOptionsQuery {
-        fruits {
-          value
-          label
-          disabled
-        }
-      }
-    `),
-    'fruits',
-    {
-      variables   :{},
-      errorMessage:'Error fetching colors',
-    },
-  ],
-} */
+export const Extensions: StoryObj<typeof Component> = {
+  args:{
+    name      :'color',
+    label     :'Favourite fruit',
+    extensions:[
+      withErrorHandling,
+      addGraphQLOptions(
+        graphql`
+          query SelectFruitOptionsQuery {
+            fruits {
+              value
+              label
+              disabled
+            }
+          }
+        `,
+        'fruits',
+        { variables: {} },
+      ),
+    ],
+  },
+}
