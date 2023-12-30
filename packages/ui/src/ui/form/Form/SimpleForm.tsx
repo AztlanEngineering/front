@@ -10,7 +10,7 @@ import {
 import styleNames from '@aztlan/bem'
 
 import { Field } from '../Field/index.ts'
-import * as formPropTypes from '../../propTypes.ts'
+import * as formPropTypes from '../Field/propTypes.ts'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'

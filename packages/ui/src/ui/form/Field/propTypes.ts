@@ -6,7 +6,7 @@ export const Field = {
 }
 
 /** These are props that are can be safely shared between several fields in the same form */
-export const sharedWrapperPropTypes = {
+export const wrapperShared = {
   /** Whether the input is optional or not */
   optional:PropTypes.bool,
 
@@ -39,7 +39,7 @@ export const Wrapper = {
   /** An object of shape [`RegisterOptions`](https://www.react-hook-form.com/ts/#RegisterOptions) that will be passed to the registration function of the input */
   registerProps:PropTypes.object,
 
-  ...sharedWrapperPropTypes,
+  ...wrapperShared,
 }
 
 export const baseShared = {
@@ -62,4 +62,7 @@ export const optionsShared = {
     label   :PropTypes.string,
     disabled:PropTypes.bool,
   }).isRequired),
+
+  /** Whether the component is in a loading state */
+  loading:PropTypes.bool,
 }

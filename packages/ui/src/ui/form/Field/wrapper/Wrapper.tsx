@@ -10,7 +10,7 @@ import Label from './Label.tsx'
 import Description from './Description.tsx'
 import useFieldAriaProps from '../hooks/useFieldAriaProps.ts'
 import * as messages from '../../messages.ts'
-import * as formPropTypes from '../../propTypes.ts'
+import * as formPropTypes from '../propTypes.ts'
 
 /**
  * Constructs a className string based on column span parameters.

@@ -2,13 +2,13 @@ import * as React from 'react'
 import { InferProps } from 'prop-types'
 import { UseSectionsReturnType } from '@aztlan/react-helpers'
 
-import { sharedWrapperPropTypes } from '../Field/propTypes.ts'
+import * as formPropTypes from '../Field/propTypes.ts'
 
 /**
  * Extends the UseSectionsReturnType with additional form-specific context.
  */
 export interface FormContextType extends UseSectionsReturnType {
-  sharedFieldProps?:InferProps<typeof sharedWrapperPropTypes>;
+  sharedFieldProps?:InferProps<typeof formPropTypes.wrapperShared>;
   type             :'default' | 'multipart';
 }
 

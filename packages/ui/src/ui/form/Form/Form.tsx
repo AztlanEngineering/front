@@ -16,7 +16,7 @@ import Context from './Context.ts'
 import Navigation from './common/Navigation.tsx'
 import Content from './common/Content.tsx'
 
-import * as formPropTypes from '../../propTypes.ts'
+import * as formPropTypes from '../Field/propTypes.ts'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'
