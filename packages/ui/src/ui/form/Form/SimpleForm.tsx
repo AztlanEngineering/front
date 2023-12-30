@@ -4,19 +4,15 @@ import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-import styleNames from '@aztlan/bem'
 import {
   useForm, FormProvider,
 } from 'react-hook-form'
+import styleNames from '@aztlan/bem'
 
 import { Field } from '../Field/index.ts'
-import Wrapper from '../Field/wrapper/Wrapper.tsx'
 import { sharedWrapperPropTypes } from '../Field/propTypes.ts'
 
-// Local Definitions
-
 const baseClassName = styleNames.base
-
 const componentClassName = 'form'
 
 // TODO add propTypes and types using https://www.react-hook-form.com/ts/#RegisterOptions
@@ -40,8 +36,8 @@ function SimpleForm({
   )
 
   const methods = useForm({
-    mode                     :'onChange',
-    shouldUseNativeValidation:true,
+    mode:'onChange',
+    // shouldUseNativeValidation:true,
     ...otherProps,
   })
 

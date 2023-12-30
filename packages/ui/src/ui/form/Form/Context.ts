@@ -1,0 +1,19 @@
+import * as React from 'react'
+import { InferProps } from 'prop-types'
+import { UseSectionsReturnType } from '@aztlan/react-helpers'
+
+import { sharedWrapperPropTypes } from '../Field/propTypes.ts'
+
+/**
+ * Extends the UseSectionsReturnType with additional form-specific context.
+ */
+export interface FormContextType extends UseSectionsReturnType {
+  sharedFieldProps?:InferProps<typeof sharedWrapperPropTypes>;
+  type             :'default' | 'multipart';
+}
+
+/**
+ * The context for providing form-wide state and functions.
+ * Initializes with an empty object but should be provided with a valid initial state when used.
+ */
+export default React.createContext<FormContextType>({} as FormContextType)

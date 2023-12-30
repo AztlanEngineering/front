@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
+import * as messages from '../../messages.ts'
 
 /**
  * Label component for form inputs, supporting optional styling and custom HTML tags.
@@ -32,7 +33,14 @@ function Label({
       {...otherProps}
     >
       {children || name}
-      {optional && <span> (Optional)</span>}
+      {optional && (
+      <span>
+        {' '}
+        (
+        {messages.optional()}
+        )
+      </span>
+      )}
     </Element>
   )
 }

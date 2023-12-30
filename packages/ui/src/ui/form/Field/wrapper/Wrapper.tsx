@@ -1,12 +1,16 @@
 import * as React from 'react'
+import { useMemo } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
-import { useFormState } from 'react-hook-form'
+import {
+  useFormState, RegisterOptions,
+} from 'react-hook-form'
 import Label from './Label.tsx'
 import Description from './Description.tsx'
 import useFieldAriaProps from '../hooks/useFieldAriaProps.ts'
 import { WrapperPropTypes } from '../propTypes.ts'
+import * as messages from '../../messages.ts'
 
 /**
  * Constructs a className string based on column span parameters.
@@ -52,7 +56,7 @@ function Wrapper({
   spanContent = 8,
   spanContentDesktop = 8,
   mockLabel = false,
-  registerProps,
+  registerProps: userRegisterProps = {},
   ...otherProps
 }: InferProps<typeof Wrapper.propTypes>) {
   // const { register } = useFormContext()
@@ -60,6 +64,28 @@ function Wrapper({
   const isError = !!errors[name]
   const ariaProps = useFieldAriaProps(
     name, isError,
+  )
+
+  // Todo if !optional add generic required validation to registerprops
+
+  const registerProps = useMemo(
+    () => {
+      const props: RegisterOptions = {}
+      if (!optional) {
+        props.required = {
+          value  :true,
+          message:messages.required(name),
+        }
+      }
+      return {
+        ...props,
+        ...userRegisterProps,
+      }
+    }, [
+      name,
+      userRegisterProps,
+      optional,
+    ],
   )
 
   return (

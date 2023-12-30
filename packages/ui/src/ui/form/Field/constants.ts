@@ -9,6 +9,7 @@ export const BUILT_IN_HTML_TYPES = [
   'datetime',
   'month',
   'tel',
+  'url',
 ]
 
 export const AVAILABLE_TYPES = [
