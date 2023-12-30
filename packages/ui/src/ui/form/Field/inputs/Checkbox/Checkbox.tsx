@@ -9,7 +9,7 @@ import { useFormContext } from 'react-hook-form'
 
 import styleNames from '@aztlan/bem'
 import withWrapper from '../../wrapper/withWrapper.tsx'
-import { sharedPropTypes } from '../../propTypes.ts'
+import * as formPropTypes from '../../propTypes.ts'
 
 // Local Definitions
 
@@ -60,13 +60,8 @@ function Checkbox({
 }
 
 Checkbox.propTypes = {
-  ...sharedPropTypes,
-
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
+  ...formPropTypes.baseShared,
+  ...formPropTypes.inputShared,
 }
 
 export default withWrapper(Checkbox)

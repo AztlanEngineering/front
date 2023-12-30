@@ -10,7 +10,7 @@ import {
 import styleNames from '@aztlan/bem'
 
 import { Field } from '../Field/index.ts'
-import { sharedWrapperPropTypes } from '../Field/propTypes.ts'
+import * as formPropTypes from '../../propTypes.ts'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'
@@ -90,7 +90,10 @@ SimpleForm.propTypes = {
   fields:PropTypes.arrayOf(PropTypes.shape(Field.propTypes)),
 
   /** An object of field props that will be applied to all the fields */
-  fieldProps:PropTypes.shape(sharedWrapperPropTypes),
+  fieldProps:PropTypes.shape({
+    ...formPropTypes.baseShared,
+    ...formPropTypes.inputShared, // Kinda
+  }),
 }
 
 export default SimpleForm

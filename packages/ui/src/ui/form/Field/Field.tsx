@@ -7,7 +7,7 @@ import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import { AVAILABLE_TYPES } from './constants.ts'
-import { FieldPropTypes } from './propTypes.ts'
+import * as formPropTypes from './propTypes.ts'
 
 import {
   Checkbox,
@@ -83,6 +83,9 @@ function Field({
   }
 }
 
-Field.propTypes = {}
+Field.propTypes = {
+  ...formPropTypes.Field,
+  ...formPropTypes.Wrapper,
+}
 
 export default Field

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useMemo } from 'react'
 import Wrapper from './Wrapper.tsx'
 
 type Options<T> = {
@@ -6,7 +7,7 @@ type Options<T> = {
 }
 
 /**
- * @description a HOC that wraps a raw field and provides the base form methods to it.
+ * A HOC that wraps a raw field and provides the base form methods to it.
  *
  * @param {React.ComponentType<any>} Component - the raw field component
  * @param {Record<string, any>} options - the options object
@@ -17,12 +18,25 @@ const withWrapper = (
   options: Options<React.ComponentProps<typeof Wrapper>> = {},
 ) => {
   const MemoizedComponent = React.memo(Component)
-  return function (props: any) {
+  return function ({
+    extensions = [], ...props
+  }) {
     // const { register } = useFormContext()
+    const ExtendedComponent = useMemo(
+      () => extensions
+        .reverse()
+        .reduce<React.ComponentType<any>>(
+        (
+          AccumulatedComponent, hoc,
+        ) => hoc(AccumulatedComponent),
+        MemoizedComponent,
+      ),
+      [extensions],
+    )
 
     return (
       <Wrapper
-        Component={MemoizedComponent}
+        Component={ExtendedComponent}
         {...props}
         {...options}
       />

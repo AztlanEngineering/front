@@ -11,7 +11,7 @@ import styleNames from '@aztlan/bem'
 
 import withWrapper from '../../wrapper/withWrapper.tsx'
 import { BUILT_IN_HTML_TYPES } from '../../constants.ts'
-import { sharedPropTypes } from '../../propTypes.ts'
+import * as formPropTypes from '../../propTypes.ts'
 
 const baseClassName = styleNames.base
 const componentClassName = 'text'
@@ -61,13 +61,8 @@ function Text({
 }
 
 Text.propTypes = {
-  ...sharedPropTypes,
-
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
+  ...formPropTypes.baseShared,
+  ...formPropTypes.inputShared,
 
   /** The type of the input */
   type:PropTypes.oneOf(BUILT_IN_HTML_TYPES),

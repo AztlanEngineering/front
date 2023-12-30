@@ -1,6 +1,9 @@
 import * as PropTypes from 'prop-types'
 
-export const FieldPropTypes = {}
+export const Field = {
+  /** An array of HOC to transform the input */
+  extensions:PropTypes.arrayOf(PropTypes.func),
+}
 
 /** These are props that are can be safely shared between several fields in the same form */
 export const sharedWrapperPropTypes = {
@@ -23,7 +26,7 @@ export const sharedWrapperPropTypes = {
   spanContentDesktop:PropTypes.number,
 }
 
-export const WrapperPropTypes = {
+export const Wrapper = {
   /** Name attribute for the input */
   name:PropTypes.string.isRequired,
 
@@ -39,7 +42,24 @@ export const WrapperPropTypes = {
   ...sharedWrapperPropTypes,
 }
 
-export const sharedPropTypes = {
-  ...FieldPropTypes,
-  ...WrapperPropTypes,
+export const baseShared = {
+  ...Field,
+  ...Wrapper,
+}
+
+export const inputShared = {
+  /** The HTML class names for this element */
+  className:PropTypes.string,
+
+  /** The React-written, css properties for this element. */
+  style:PropTypes.objectOf(PropTypes.string),
+}
+
+export const optionsShared = {
+  /** The options for the input */
+  options:PropTypes.arrayOf(PropTypes.shape({
+    value   :PropTypes.string,
+    label   :PropTypes.string,
+    disabled:PropTypes.bool,
+  }).isRequired),
 }

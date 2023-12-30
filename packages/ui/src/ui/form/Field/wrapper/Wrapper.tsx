@@ -9,8 +9,8 @@ import {
 import Label from './Label.tsx'
 import Description from './Description.tsx'
 import useFieldAriaProps from '../hooks/useFieldAriaProps.ts'
-import { WrapperPropTypes } from '../propTypes.ts'
 import * as messages from '../../messages.ts'
+import * as formPropTypes from '../../propTypes.ts'
 
 /**
  * Constructs a className string based on column span parameters.
@@ -140,7 +140,7 @@ function Wrapper({
 }
 
 Wrapper.propTypes = {
-  ...WrapperPropTypes,
+  ...formPropTypes.Wrapper,
 
   /** The front Component for the field */
   Component:PropTypes.elementType.isRequired,

@@ -9,7 +9,7 @@ import { useFormContext } from 'react-hook-form'
 
 import styleNames from '@aztlan/bem'
 import withWrapper from '../../wrapper/withWrapper.tsx'
-import { sharedPropTypes } from '../../propTypes.ts'
+import * as formPropTypes from '../../propTypes.ts'
 import useOptionAriaProps from '../../hooks/useOptionAriaProps.ts'
 
 // Local Definitions
@@ -112,26 +112,15 @@ InferProps<typeof Choices.propTypes>): React.ReactElement {
 }
 
 Choices.propTypes = {
-  ...sharedPropTypes,
-
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
+  ...formPropTypes.baseShared,
+  ...formPropTypes.inputShared,
+  ...formPropTypes.optionsShared,
 
   /** Whether the input can have multiple values */
   multiple:PropTypes.bool,
 
   /** Whether the input is disabled */
   disabled:PropTypes.bool,
-
-  /** The choice options */
-  options:PropTypes.arrayOf(PropTypes.shape({
-    value   :PropTypes.string,
-    label   :PropTypes.string,
-    disabled:PropTypes.bool,
-  }).isRequired),
 }
 
 export default withWrapper(

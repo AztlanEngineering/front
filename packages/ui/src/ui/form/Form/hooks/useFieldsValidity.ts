@@ -24,7 +24,7 @@ const useFormValidity = (
   shouldFocus: boolean = true,
 ): UseFormValidityReturnType => {
   const {
-    formState, trigger, setFocus,
+    formState, trigger,
   } = useFormContext()
 
   const {
@@ -35,9 +35,6 @@ const useFormValidity = (
 
   const state = useMemo(
     (): MemoizedState => {
-      console.log(
-        'HK', errors, touchedFields,
-      )
       const fieldsWithErrors: string[] = []
       const fieldsToBeValidated: string[] = []
 
@@ -54,9 +51,6 @@ const useFormValidity = (
           if (!isTouched) {
             fieldsToBeValidated.push(field.name)
           }
-          console.log(
-            'RR', fieldsWithErrors, fieldsToBeValidated,
-          )
           isValid = false
         }
       })

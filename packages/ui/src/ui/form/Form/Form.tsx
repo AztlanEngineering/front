@@ -16,7 +16,7 @@ import Context from './Context.ts'
 import Navigation from './common/Navigation.tsx'
 import Content from './common/Content.tsx'
 
-import { sharedWrapperPropTypes } from '../Field/propTypes.ts'
+import * as formPropTypes from '../../propTypes.ts'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'
@@ -114,7 +114,10 @@ Form.propTypes = {
   ]),
 
   /** An object of field props that will be applied to all the fields */
-  fieldProps:PropTypes.shape(sharedWrapperPropTypes),
+  fieldProps:PropTypes.shape({
+    ...formPropTypes.baseShared,
+    ...formPropTypes.inputShared, // Kinda
+  }),
 
   /** The form sections to be rendered */
   /* eslint-disable-next-line react/forbid-prop-types */

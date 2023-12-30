@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-import * as PropTypes from 'prop-types'
+// import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import { useFormContext } from 'react-hook-form'
@@ -10,7 +10,7 @@ import { useFormContext } from 'react-hook-form'
 // @ts-ignore
 import styleNames from '@aztlan/bem'
 import withWrapper from '../../wrapper/withWrapper.tsx'
-import { sharedPropTypes } from '../../propTypes.ts'
+import * as formPropTypes from '../../propTypes.ts'
 
 const baseClassName = styleNames.base
 
@@ -70,22 +70,9 @@ function Select({
 }
 
 Select.propTypes = {
-  ...sharedPropTypes,
-
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
-
-  /** The options for the input */
-  options:PropTypes.arrayOf(PropTypes.shape({
-    value   :PropTypes.string,
-    label   :PropTypes.string,
-    disabled:PropTypes.bool,
-  }).isRequired),
+  ...formPropTypes.baseShared,
+  ...formPropTypes.inputShared,
+  ...formPropTypes.optionsShared,
 }
-
-export { Select }
 
 export default withWrapper(Select)

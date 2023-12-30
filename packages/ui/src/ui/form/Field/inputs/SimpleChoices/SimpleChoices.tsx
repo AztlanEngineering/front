@@ -9,7 +9,7 @@ import { useFormContext } from 'react-hook-form'
 
 import styleNames from '@aztlan/bem'
 import withWrapper from '../../wrapper/withWrapper.tsx'
-import { sharedPropTypes } from '../../propTypes.ts'
+import * as formPropTypes from '../../propTypes.ts'
 import useOptionAriaProps from '../../hooks/useOptionAriaProps.ts'
 
 // Local Definitions
@@ -64,7 +64,9 @@ Option.propTypes = {
 }
 
 /**
- * This is the component description.
+ *
+ * @param {InferProps<typeof SimpleChoices.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Textarea
  */
 function SimpleChoices({
   name,
@@ -74,8 +76,8 @@ function SimpleChoices({
   disabled,
   options,
   registerProps,
-  // ...otherProps
-}) {
+}: // ...otherProps
+InferProps<typeof SimpleChoices.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -115,26 +117,15 @@ function SimpleChoices({
 }
 
 SimpleChoices.propTypes = {
-  ...sharedPropTypes,
-
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
+  ...formPropTypes.baseShared,
+  ...formPropTypes.inputShared,
+  ...formPropTypes.optionsShared,
 
   /** Whether the input can have multiple values */
   multiple:PropTypes.bool,
 
   /** Whether the input is disabled */
   disabled:PropTypes.bool,
-
-  /** The choice options */
-  options:PropTypes.arrayOf(PropTypes.shape({
-    value   :PropTypes.string,
-    label   :PropTypes.string,
-    disabled:PropTypes.bool,
-  }).isRequired),
 }
 
 export default withWrapper(
