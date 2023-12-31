@@ -5,11 +5,11 @@ import {
   defineMessages, useIntl, FormattedMessage,
 } from 'react-intl'
 import {
-  SimpleForm, addGraphQLOptions, withErrorHandling,
+  SimpleForm,
+  addGraphQLOptions,
+  withErrorHandling,
+  addGraphQLValidation,
 } from '@aztlan/ui'
-import {
-  Formik, Field,
-} from 'formik'
 import { graphql } from 'relay-runtime'
 import Template from '../../common/templates/Base.tsx'
 import { relayEnvironment } from '../../../client.tsx'
@@ -49,7 +49,6 @@ function Home() {
             label       :'Your email',
             autoComplete:'email',
           },
-          /*
           {
             name        :'username',
             label       :'Username',
@@ -70,7 +69,7 @@ function Home() {
                 },
               ),
             ],
-          }, */
+          },
           {
             name        :'fruits',
             label       :"What's your favorite fruit?",
