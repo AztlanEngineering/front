@@ -18,6 +18,7 @@ function Description({
   style,
   children,
   isError,
+  loading,
   ...otherProps
 }: InferProps<typeof Description.propTypes>): React.ReactElement {
   return (
@@ -34,6 +35,7 @@ function Description({
       role={isError ? 'alert' : undefined}
       {...otherProps}
     >
+      {loading && <p>Loading...</p>}
       <p>{children}</p>
     </div>
   )
@@ -51,6 +53,9 @@ Description.propTypes = {
 
   /** Whether the input is in an error state. */
   isError:PropTypes.bool,
+
+  /** Whether the input is in a loading state. */
+  loading:PropTypes.bool,
 }
 
 export default React.memo(Description)

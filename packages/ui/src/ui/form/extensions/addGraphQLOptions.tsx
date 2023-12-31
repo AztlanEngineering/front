@@ -12,7 +12,7 @@ const componentPropTypes = {
   ...formPropTypes.optionsShared,
 }
 
-type InputOptions = InferProps<typeof optionsPropType>
+type InputOptions = Array<InferProps<typeof optionsPropType>>
 type ComponentProps = InferProps<typeof componentPropTypes>
 
 interface ExtensionOptions {
@@ -38,8 +38,8 @@ const addGraphQLOptions = (
     variables, fallback = <span>Loading</span>,
   } = options
 
-  return (WrappedComponent: React.ComponentType<InferProps<ComponentProps>>) => {
-    function ExtendedComponent(props: ComponentProps) {
+  return (WrappedComponent: React.ComponentType<ComponentProps>) => {
+    function ExtendedComponent(props: ComponentProps): React.ReactElement {
       const data = useLazyLoadQuery(
         QUERY, variables || {}, { fetchPolicy: 'store-and-network' },
       )

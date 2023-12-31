@@ -56,9 +56,6 @@ function ErrorBoundary({
   name    :string;
 }) {
   const { setError } = useFormContext()
-  console.log(
-    'ErrorBoundary', name, setError,
-  )
 
   const handleError = (error: Error) => {
     // Convert the JavaScript error into a form error

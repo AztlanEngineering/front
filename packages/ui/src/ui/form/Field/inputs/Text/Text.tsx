@@ -27,6 +27,7 @@ function Text({
   type: inputType,
   name,
   registerProps,
+  loading = false,
   ...otherProps
 }: InferProps<typeof Text.propTypes>): React.ReactElement {
   useInsertionEffect(
@@ -56,6 +57,7 @@ function Text({
         )}
         {...otherProps}
       />
+      {loading && 'Loading...'}
     </div>
   )
 }

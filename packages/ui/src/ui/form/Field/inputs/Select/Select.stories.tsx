@@ -14,6 +14,7 @@ export default {
   title     :'form/inputs/Select',
   component :Component,
   decorators:[
+    decorators.relay,
     decorators.grid,
     decorators.form,
   ],

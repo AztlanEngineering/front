@@ -9,6 +9,7 @@ export default {
   title     :'form/inputs/Choices',
   component :Component,
   decorators:[
+    decorators.relay,
     decorators.grid,
     decorators.form,
   ],

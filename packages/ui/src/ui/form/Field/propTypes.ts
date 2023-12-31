@@ -53,6 +53,9 @@ export const inputShared = {
 
   /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
+
+  /** Whether some loading state is in progress */
+  loading:PropTypes.bool,
 }
 
 export const optionsShared = {
