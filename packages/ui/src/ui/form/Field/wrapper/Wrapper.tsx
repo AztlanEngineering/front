@@ -60,7 +60,7 @@ function Wrapper({
   ...otherProps
 }: InferProps<typeof Wrapper.propTypes>): React.ReactElement {
   // const { register } = useFormContext()
-  const { errors } = useFormState()
+  const { errors } = useFormState({ name })
   const isError = !!errors[name]
   const ariaProps = useFieldAriaProps(
     name, isError,

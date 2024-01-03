@@ -3,6 +3,13 @@ import * as PropTypes from 'prop-types'
 export const Field = {
   /** An array of HOC to transform the input */
   extensions:PropTypes.arrayOf(PropTypes.func),
+
+  /** A tuple of [dependencies, conditionFunction] to decide whether to render the input */
+
+  condition:PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.func,
+  ])),
 }
 
 /** These are props that are can be safely shared between several fields in the same form */

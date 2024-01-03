@@ -133,15 +133,11 @@ const addGraphQLValidation = (
         ],
       )
 
-      console.log(
-        'RETURN', loading,
-      )
-
-      return (
-        <WrappedComponent
-          loading={loading}
-          {...props}
-        />
+      return React.createElement(
+        WrappedComponent, {
+          loading,
+          ...props,
+        },
       )
     }
     return ExtendedComponent

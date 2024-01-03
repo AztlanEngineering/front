@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import { InferProps } from 'prop-types'
 import Wrapper from './Wrapper.tsx'
 import * as formPropTypes from '../propTypes.ts'
+import withConditionalDisplay, { WithConditionalDisplayProps } from './withConditionalDisplay.ts'
 
 type Options<T> = {
   [K in keyof T]?: T[K];
@@ -20,11 +21,12 @@ const withWrapper = (
   options: Options<InferProps<typeof formPropTypes.wrapperShared>> = {},
 ) => {
   const MemoizedComponent = React.memo(Component)
-  return function WrappedComponent({
+
+  function WrappedComponent({
     extensions = [],
+    condition,
     ...props
   }: InferProps<typeof formPropTypes.baseShared>): React.ReactElement {
-    // const { register } = useFormContext()
     const ExtendedComponent = useMemo(
       () => extensions
         .reverse()
@@ -34,7 +36,10 @@ const withWrapper = (
         ) => hoc(AccumulatedComponent),
         MemoizedComponent,
       ),
-      [extensions],
+      [
+        extensions,
+        MemoizedComponent,
+      ],
     )
 
     return (
@@ -45,6 +50,10 @@ const withWrapper = (
       />
     )
   }
+  return withConditionalDisplay(
+    WrappedComponent,
+    options.condition as WithConditionalDisplayProps,
+  )
 }
 
 export default withWrapper

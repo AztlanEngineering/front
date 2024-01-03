@@ -74,6 +74,7 @@ export const Base: StoryObj<typeof Component> = {
             description  :'Try something @gmail.com',
             autoComplete :'email',
             registerProps:{
+              /*
               minLength:{
                 value  :8,
                 message:'email must have at least 8 characters',
@@ -81,7 +82,7 @@ export const Base: StoryObj<typeof Component> = {
               pattern:{
                 value  :/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
                 message:'Please enter a valid email address',
-              },
+              }, */
             },
           },
           {
@@ -90,6 +91,10 @@ export const Base: StoryObj<typeof Component> = {
             name        :'phone',
             description :'this field should only appear is an email ending with gmail.com is entered',
             autoComplete:'tel',
+            condition   :[
+              ['email'],
+              ([email]) => email?.endsWith('gmail.com'),
+            ],
           },
         ],
       },
