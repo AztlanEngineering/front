@@ -71,7 +71,7 @@ export const optionsShared = {
     value   :PropTypes.string,
     label   :PropTypes.string,
     disabled:PropTypes.bool,
-  }).isRequired),
+  }).isRequired).isRequired,
 
   /** Whether the component is in a loading state */
   loading:PropTypes.bool,

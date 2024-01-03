@@ -1,47 +1,46 @@
-/* <%= pkg %> <%= version %> */
-import * as React from 'react'<% if (!optionNoStyles) { %>
+/* @aztlan/generator-front 0.9.1 */
+import * as React from 'react'
 import { useInsertionEffect } from 'react'
-<% } %>
+
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-<% if (!optionNoStyles) { %>
-import styleNames from '@<%= npmOrg %>/bem'
-<% } %>
 
-<% if (!optionDiet || !optionNoStyles) { %>
-const baseClassName = styleNames.base<% } %>
-const componentClassName = '<%= lower %>'
+import styleNames from '@aztlan/bem'
+
+
+
+const baseClassName = styleNames.base
+const componentClassName = 'combobox'
 
 /**
  * description
- * @param {InferProps<typeof <%= name %>.propTypes>} props -
- * @returns {React.ReactElement} - Rendered <%= name %>
+ * @param {InferProps<typeof Combobox.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Textarea
  */
-function <%= name %>({
+function Combobox({
   id,
   className:userClassName,
   style,
   children,
   //...otherProps
-<% if (!optionDiet) { %>
-}: InferProps<typeof <%= name %>.propTypes>): React.ReactElement {<% } %>
-  <% if(optionDiet) { %>
-  }): React.ReactElement {<% } %>
 
-<% if (!optionNoStyles) { %>
+}: InferProps<typeof Textarea.propTypes>): React.ReactElement {
+  
+
+
   useInsertionEffect(() => {
     // @ts-ignore
     import('./styles.scss')
   }, [])
-<% } %>
+
   
   return(
     <div
       id={id}
       className={[
-        <% if (!optionDiet || !optionNoStyles) { %>
+        
         baseClassName,
-        <% } %>
+        
         componentClassName,
         userClassName,
       ]
@@ -55,8 +54,8 @@ function <%= name %>({
   )
 }
 
-<% if (!optionDiet) { %>
-<%= name %>.propTypes = {
+
+Combobox.propTypes = {
   /** The HTML id for this element */
   id: PropTypes.string,
   
@@ -69,7 +68,7 @@ function <%= name %>({
   /** The children JSX */
   children: PropTypes.node,
 }
-<% } %>
 
-export default <%= name %>
+
+export default Combobox
 
