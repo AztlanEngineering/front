@@ -63,7 +63,10 @@ export const auth = (StoryFn) => (
 export const grid = (StoryFn) => <div className="grid">{StoryFn()}</div>
 
 export const form = (StoryFn) => {
-  const methods = useForm({ mode: 'onChange' })
+  const methods = useForm({
+    mode         :'onChange',
+    defaultValues:{ color: 'red' },
+  })
   const onSubmit = (data) => console.log(
     '[FORM SUBMIT]', data,
   )

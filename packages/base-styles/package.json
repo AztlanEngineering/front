@@ -15,17 +15,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/postcss-config": "^0.3.0",
-    "@aztlan/stylelint-config": "^0.3.0",
-    "cssnano": "^6.0.2",
+    "@aztlan/postcss-config": "^0.6.0",
+    "@aztlan/stylelint-config": "^0.6.0",
+    "cssnano": "^6.0.3",
     "postcss-cli": "^11.0.0",
     "postcss-preset-env": "^9.3.0",
-    "sass": "^1.69.5"
+    "sass": "^1.69.7"
   },
   "dependencies": {
-    "@aztlan/grid": "^0.3.0",
-    "@aztlan/mixins": "^0.3.0",
-    "@aztlan/swatch": "^0.2.5"
+    "@aztlan/grid": "^0.6.0",
+    "@aztlan/mixins": "^0.6.0",
+    "@aztlan/swatch": "^0.6.0"
   },
   "stylelint": {
     "extends": "@aztlan/stylelint-config"

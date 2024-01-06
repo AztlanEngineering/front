@@ -25,6 +25,8 @@ const loaders = {
   },
 }
 
+console.log(require.resolve('@storybook/addon-links'))
+
 const defaultInputs = {
   addons:[
     '@storybook/addon-links',

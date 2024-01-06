@@ -2,9 +2,10 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.form{
+.#{bem.$base}.form {
+  .#{bem.$base}.#{bem.$element-navigation}{
 
+  }
 }
-
 
 

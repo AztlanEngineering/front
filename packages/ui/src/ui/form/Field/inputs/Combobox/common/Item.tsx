@@ -12,7 +12,7 @@ import styleNames from '@aztlan/bem'
 import * as formPropTypes from '../../propTypes.ts'
 
 const baseClassName = styleNames.base
-const componentClassName = 'item'
+const componentClassName = styleNames.elementItem
 
 /**
  * description

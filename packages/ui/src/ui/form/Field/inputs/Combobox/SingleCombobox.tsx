@@ -1,68 +1,148 @@
-/* @aztlan/generator-front 0.9.1 */
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
-
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-
-import { useController } from 'react-hook-form'
-import { useCombobox } from 'downshift'
-
+import {
+  useState, useEffect, useCallback, useRef,
+} from 'react'
+import PropTypes, { InferProps } from 'prop-types'
+import {
+  useController, useFormState,
+} from 'react-hook-form'
+import {
+  useCombobox,
+  UseComboboxStateChange,
+  UseComboboxState,
+  UseComboboxStateChangeOptions,
+} from 'downshift'
 import styleNames from '@aztlan/bem'
 import * as formPropTypes from '../../propTypes.ts'
 
-const baseClassName = styleNames.base
-const componentClassName = 'combobox'
+interface ComboboxOption {
+  value    :string;
+  label    :string;
+  disabled?:boolean;
+}
 
-/**
- * description
- * @param {InferProps<typeof SingleCombobox.propTypes>} props -
- * @returns {React.ReactElement} - Rendered Textarea
- */
+const baseClassName = styleNames.base
+const componentClassName = 'text'
+
+/*
+const stateReducer = (
+  state: UseComboboxState<ComboboxOption>,
+  actionAndChanges: UseComboboxStateChangeOptions<ComboboxOption>,
+) => {
+  const {
+    type, changes,
+  } = actionAndChanges
+  switch (type) {
+    case useCombobox.stateChangeTypes.ItemClick:
+    case useCombobox.stateChangeTypes.InputKeyDownEnter:
+      return {
+        ...changes, // default Downshift changes
+        inputValue:changes.selectedItem,
+      }
+      // case useCombobox.stateChangeTypes.FunctionSelectItem:
+
+    default:
+      return changes // otherwise return unmodified changes
+  }
+} */
+
 function SingleCombobox({
   className: userClassName,
   style,
   registerProps,
-  options: items, // Exceptional renaming to make our interface with downshift more legible.
+  options,
   name,
   disabled = false,
+  openOnReset = false,
   placeholder,
-}: // ...otherProps
-
-InferProps<typeof SingleCombobox.propTypes>): React.ReactElement {
-  useInsertionEffect(
-    () => {
-    // @ts-ignore
-      import('./styles.scss')
-    }, [],
-  )
-  // It is important to remember that useController hook
-  // uses a slightly different API as the register function
-  const { field } = useController({
+  valueKey = 'value',
+  convertItemToString = (item) => (item ? item.label : ''),
+  convertValueToItem = (
+    string, items,
+  ) => items?.find((item) => item[valueKey] === string),
+}: InferProps<typeof SingleCombobox.propTypes>): React.ReactElement {
+  const {
+    field: {
+      onChange, onBlur, ref: RHFRef, value: RHFValue,
+    },
+  } = useController({
     name,
     rules:registerProps,
-    disabled,
   })
+
+  const handleSelectedItemChange = useCallback(
+    (changes: UseComboboxStateChange<ComboboxOption>) => {
+      onChange(changes.selectedItem?.[valueKey] || undefined)
+    },
+    [onChange],
+  )
 
   const {
     isOpen,
-    getToggleButtonProps,
+    inputValue,
+    openMenu,
+    // setInputValue,
+    // getToggleButtonProps,
+    selectItem,
+    selectedItem,
     getMenuProps,
     getInputProps,
     highlightedIndex,
     getItemProps,
-    selectedItem,
   } = useCombobox({
-    onSelectedItemChange:({ sItem }) => console.log(sItem),
-    /*
-      onInputValueChange({inputValue}) {
-        setItems(books.filter(getBooksFilter(inputValue))) */
-    // items,
-    items               :items.map((item) => item.label),
-    itemToString(item) {
-      return item || ''
-    },
+    items               :options,
+    // selectedItem        :RHFValue,
+    onSelectedItemChange:handleSelectedItemChange,
+    // stateReducer,
+    // onInputValueChange  :({ inputValue }) => setLocalValue(inputValue || ''),
+    initialSelectedItem :convertValueToItem(
+      RHFValue, options,
+    ),
+    itemToString:convertItemToString,
   })
+
+  console.log(
+    'IV', inputValue,
+  )
+
+  const inputRef = useRef<HTMLInputElement>(null) // Create your own ref to manage focus
+
+  const setCombinedRef = useCallback(
+    (instance) => {
+      RHFRef(instance)
+      inputRef.current = instance
+    },
+    [RHFRef],
+  )
+
+  useEffect(
+    () => {
+      (async () => {
+        if (RHFValue !== selectedItem?.[valueKey]) {
+          const newItem = await convertValueToItem(
+            RHFValue, options,
+          )
+          selectItem(newItem)
+        }
+      })()
+    }, [
+      RHFValue,
+    // valueKey,
+    // convertValueToItem,
+    // options,
+    ],
+  )
+
+  const resetAndFocusInput = useCallback(
+    () => {
+      selectItem(undefined)
+      onChange('')
+      inputRef.current?.focus()
+      if (openOnReset) {
+        openMenu()
+      }
+    }, [inputRef.current],
+  )
 
   return (
     <div
@@ -71,44 +151,52 @@ InferProps<typeof SingleCombobox.propTypes>): React.ReactElement {
         componentClassName,
         userClassName,
       ]
-        .filter((e) => e)
+        .filter(Boolean)
         .join(' ')}
       style={style}
-      // {...otherProps}
     >
       <input
         {...getInputProps({
-          ...field,
           disabled,
           placeholder,
+          onBlur,
+          ref:setCombinedRef,
         })}
       />
       <button
+        type="button"
+        onClick={resetAndFocusInput}
+      >
+        X
+      </button>
+      {/*
+      <button
+        type="button"
         {...getToggleButtonProps()}
         aria-label="toggle menu"
       >
         &#8595;
-      </button>
-      {selectedItem}
+      </button> */}
       <ul {...getMenuProps()}>
         {isOpen
-          && items
-            .filter((item) => !field.value || item.value.includes(field.value))
+          && options
+            .filter((item) => !inputValue
+                || item.label.toLowerCase().includes(inputValue.toLowerCase()))
             .map((
               item, index,
             ) => (
               <li
                 {...getItemProps({
-                  key  :`${item.value}${index}`,
                   item,
                   index,
+                  key  :`${item.value}${index}`,
                   style:{
                     backgroundColor:highlightedIndex === index ? 'lightgray' : 'white',
-                    fontWeight     :selectedItem === item ? 'bold' : 'normal',
+                    fontWeight     :RHFValue === item ? 'bold' : 'normal',
                   },
                 })}
               >
-                {item.value}
+                {convertItemToString(item)}
               </li>
             ))}
       </ul>
@@ -120,9 +208,14 @@ SingleCombobox.propTypes = {
   ...formPropTypes.baseShared,
   ...formPropTypes.inputShared,
   ...formPropTypes.optionsShared,
-
-  /** placeholder */
-  placeholder:PropTypes.string,
+  /** Whether to open the menu when the input is reset */
+  openOnReset        :PropTypes.bool,
+  /** The key to use for the value of each option */
+  valueKey           :PropTypes.string,
+  /** A function that takes an option and returns its string value for display purposes */
+  convertItemToString:PropTypes.func,
+  /** A function that takes a value and returns the matching option */
+  convertValueToItem :PropTypes.func,
 }
 
 export default SingleCombobox

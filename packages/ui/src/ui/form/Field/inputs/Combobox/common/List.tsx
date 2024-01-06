@@ -12,14 +12,14 @@ import styleNames from '@aztlan/bem'
 import * as formPropTypes from '../../propTypes.ts'
 
 const baseClassName = styleNames.base
-const componentClassName = 'menu'
+const componentClassName = styleNames.elementList
 
 /**
  * description
- * @param {InferProps<typeof Menu.propTypes>} props -
+ * @param {InferProps<typeof List.propTypes>} props -
  * @returns {React.ReactElement} - Rendered Textarea
  */
-function Menu({
+function List({
   className: userClassName,
   style,
   registerProps,
@@ -28,7 +28,7 @@ function Menu({
   disabled = false,
 }: // ...otherProps
 
-InferProps<typeof Menu.propTypes>): React.ReactElement {
+InferProps<typeof List.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -50,10 +50,10 @@ InferProps<typeof Menu.propTypes>): React.ReactElement {
   )
 }
 
-Menu.propTypes = {
+List.propTypes = {
   ...formPropTypes.baseShared,
   ...formPropTypes.inputShared,
   ...formPropTypes.optionsShared,
 }
 
-export default Menu
+export default List

@@ -2,9 +2,12 @@
 
 @use "@aztlan/bem";
 
-.#{bem.$base}.combobox{
+.#{bem.$base}.combobox {
+  .#{bem.$base}.#{bem.$element-list}{
+  }
+  .#{bem.$base}.#{bem.$element-item}{
 
+  }
 }
-
 
 

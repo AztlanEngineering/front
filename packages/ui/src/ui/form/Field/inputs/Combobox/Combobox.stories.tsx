@@ -23,9 +23,10 @@ export default {
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    name   :'Color',
-    label  :'Your favorite color',
-    options:[
+    name       :'color',
+    label      :'Your favorite color',
+    openOnReset:true,
+    options    :[
       {
         value:'red',
         label:'Red',

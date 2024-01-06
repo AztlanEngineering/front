@@ -7,7 +7,7 @@ import styleNames from '@aztlan/bem'
 import useForm from '../hooks/useForm.ts'
 
 const baseClassName = styleNames.base
-const componentClassName = 'form-menu'
+const componentClassName = styleNames.elementNavigation
 
 /**
  * This is the component description.
