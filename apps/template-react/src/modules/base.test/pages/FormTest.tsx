@@ -32,6 +32,7 @@ function Home() {
       <h2 className="container">Form Test</h2>
       <SimpleForm
         className="container"
+        defaultValues={{ fruits2: 'watermelon' }}
         fieldProps={{
           spanLabel         :6,
           spanLabelDesktop  :3,
@@ -113,6 +114,26 @@ function Home() {
                 'fruits',
               ),
               withErrorHandling,
+            ],
+          },
+          {
+            name      :'fruits2',
+            label     :"What's your favorite fruit?",
+            type      :'combobox',
+            extensions:[
+              withErrorHandling,
+              addGraphQLOptions(
+                graphql`
+                  query FormTestFruitsQuery {
+                    fruits {
+                      value
+                      label
+                      disabled
+                    }
+                  }
+                `,
+                'fruits',
+              ),
             ],
           },
         ]}
