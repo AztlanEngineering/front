@@ -44,9 +44,6 @@ const useFetchQuery = (
     loading:false,
     error  :null as string | null,
   })
-  console.log(
-    'INIT HOOK', state,
-  )
 
   const fetchData = useCallback(
     async (overrideVariables: { [key: string]: any } = {}) => {

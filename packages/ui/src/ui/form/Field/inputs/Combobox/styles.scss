@@ -3,7 +3,10 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.combobox {
-  .#{bem.$base}.#{bem.$element-list}{
+  .#{bem.$base}.#{bem.$element-list} {
+    &:not(.#{bem.$modifier-open}) {
+      display: none;
+    }
   }
   .#{bem.$base}.#{bem.$element-item}{
 

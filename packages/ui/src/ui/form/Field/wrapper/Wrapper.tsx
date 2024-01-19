@@ -12,6 +12,7 @@ import useFieldAriaProps from '../hooks/useFieldAriaProps.ts'
 import * as messages from '../../messages.ts'
 import * as formPropTypes from '../propTypes.ts'
 
+const defaultObject = {}
 /**
  * Constructs a className string based on column span parameters.
  * @param {number} defaultSpan - The column span for mobile and general view.
@@ -44,7 +45,6 @@ const span = (
  * description props, span props, etc...
  * @returns {React.ReactElement} - Rendered Wrapper component
  */
-
 function Wrapper({
   Component,
   label,
@@ -56,7 +56,7 @@ function Wrapper({
   spanContent = 8,
   spanContentDesktop = 8,
   mockLabel = false,
-  registerProps: userRegisterProps = {},
+  registerProps: userRegisterProps = defaultObject,
   ...otherProps
 }: InferProps<typeof Wrapper.propTypes>): React.ReactElement {
   // const { register } = useFormContext()

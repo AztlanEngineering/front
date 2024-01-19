@@ -76,3 +76,17 @@ export const optionsShared = {
   /** Whether the component is in a loading state */
   loading:PropTypes.bool,
 }
+
+export const comboboxShared = {
+  /** Whether to open the menu when the input is reset */
+  openOnReset:PropTypes.bool,
+
+  /** The key to use for the value of each option */
+  valueKey:PropTypes.string,
+
+  /** A function that takes an option and returns its string value for display purposes */
+  convertItemToString:PropTypes.func,
+
+  /** A function that takes a value and returns the matching option */
+  convertValueToItem:PropTypes.func,
+}

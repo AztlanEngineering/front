@@ -2,27 +2,33 @@ import * as React from 'react'
 import {
   useState, useEffect, useCallback, useRef,
 } from 'react'
-import PropTypes, { InferProps } from 'prop-types'
+import * as PropTypes from 'prop-types'
+import { InferProps } from 'prop-types'
 import {
   useController, useFormState,
 } from 'react-hook-form'
 import {
   useCombobox,
   UseComboboxStateChange,
-  UseComboboxState,
-  UseComboboxStateChangeOptions,
+  // UseComboboxState,
+  // UseComboboxStateChangeOptions,
 } from 'downshift'
 import styleNames from '@aztlan/bem'
 import * as formPropTypes from '../../propTypes.ts'
+import ResetButton from './common/ResetButton.tsx'
+import List from './common/List.tsx'
 
-interface ComboboxOption {
-  value    :string;
-  label    :string;
+import {
+  Item,
+  defaultValueKey,
+  defaultConvertItemToString,
+  defaultConvertValueToItem,
+  defaultFilterItems,
+} from './defaults.ts'
+
+interface ComboboxOption extends Item {
   disabled?:boolean;
 }
-
-const baseClassName = styleNames.base
-const componentClassName = 'text'
 
 /*
 const stateReducer = (
@@ -47,7 +53,7 @@ const stateReducer = (
 } */
 
 function SingleCombobox({
-  className: userClassName,
+  className,
   style,
   registerProps,
   options,
@@ -55,12 +61,15 @@ function SingleCombobox({
   disabled = false,
   openOnReset = false,
   placeholder,
-  valueKey = 'value',
-  convertItemToString = (item) => (item ? item.label : ''),
-  convertValueToItem = (
-    string, items,
-  ) => items?.find((item) => item[valueKey] === string),
+  valueKey = defaultValueKey,
+  convertItemToString = defaultConvertItemToString,
+  convertValueToItem = defaultConvertValueToItem,
 }: InferProps<typeof SingleCombobox.propTypes>): React.ReactElement {
+  const [
+    items,
+    setItems,
+  ] = useState(options)
+
   const {
     field: {
       onChange, onBlur, ref: RHFRef, value: RHFValue,
@@ -79,7 +88,7 @@ function SingleCombobox({
 
   const {
     isOpen,
-    inputValue,
+    // inputValue,
     openMenu,
     // setInputValue,
     // getToggleButtonProps,
@@ -90,20 +99,18 @@ function SingleCombobox({
     highlightedIndex,
     getItemProps,
   } = useCombobox({
-    items               :options,
+    items,
     // selectedItem        :RHFValue,
     onSelectedItemChange:handleSelectedItemChange,
     // stateReducer,
-    // onInputValueChange  :({ inputValue }) => setLocalValue(inputValue || ''),
-    initialSelectedItem :convertValueToItem(
+    onInputValueChange  :({ inputValue }) => setItems(defaultFilterItems(
+      items, inputValue,
+    )),
+    initialSelectedItem:convertValueToItem(
       RHFValue, options,
     ),
     itemToString:convertItemToString,
   })
-
-  console.log(
-    'IV', inputValue,
-  )
 
   const inputRef = useRef<HTMLInputElement>(null) // Create your own ref to manage focus
 
@@ -135,8 +142,8 @@ function SingleCombobox({
 
   const resetAndFocusInput = useCallback(
     () => {
-      selectItem(undefined)
       onChange('')
+      selectItem(undefined)
       inputRef.current?.focus()
       if (openOnReset) {
         openMenu()
@@ -146,13 +153,7 @@ function SingleCombobox({
 
   return (
     <div
-      className={[
-        baseClassName,
-        componentClassName,
-        userClassName,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className={className}
       style={style}
     >
       <input
@@ -163,12 +164,7 @@ function SingleCombobox({
           ref:setCombinedRef,
         })}
       />
-      <button
-        type="button"
-        onClick={resetAndFocusInput}
-      >
-        X
-      </button>
+      <ResetButton onClick={resetAndFocusInput} />
       {/*
       <button
         type="button"
@@ -177,29 +173,16 @@ function SingleCombobox({
       >
         &#8595;
       </button> */}
-      <ul {...getMenuProps()}>
-        {isOpen
-          && options
-            .filter((item) => !inputValue
-                || item.label.toLowerCase().includes(inputValue.toLowerCase()))
-            .map((
-              item, index,
-            ) => (
-              <li
-                {...getItemProps({
-                  item,
-                  index,
-                  key  :`${item.value}${index}`,
-                  style:{
-                    backgroundColor:highlightedIndex === index ? 'lightgray' : 'white',
-                    fontWeight     :RHFValue === item ? 'bold' : 'normal',
-                  },
-                })}
-              >
-                {convertItemToString(item)}
-              </li>
-            ))}
-      </ul>
+      <List
+        isOpen={isOpen}
+        getMenuProps={getMenuProps}
+        getItemProps={getItemProps}
+        items={items}
+        highlightedIndex={highlightedIndex}
+        fieldValue={RHFValue}
+        convertItemToString={convertItemToString}
+        valueKey={valueKey}
+      />
     </div>
   )
 }
@@ -208,14 +191,7 @@ SingleCombobox.propTypes = {
   ...formPropTypes.baseShared,
   ...formPropTypes.inputShared,
   ...formPropTypes.optionsShared,
-  /** Whether to open the menu when the input is reset */
-  openOnReset        :PropTypes.bool,
-  /** The key to use for the value of each option */
-  valueKey           :PropTypes.string,
-  /** A function that takes an option and returns its string value for display purposes */
-  convertItemToString:PropTypes.func,
-  /** A function that takes a value and returns the matching option */
-  convertValueToItem :PropTypes.func,
+  ...formPropTypes.comboboxShared,
 }
 
 export default SingleCombobox

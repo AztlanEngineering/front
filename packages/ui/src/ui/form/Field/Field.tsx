@@ -11,6 +11,7 @@ import * as formPropTypes from './propTypes.ts'
 
 import {
   Checkbox,
+  Combobox,
   Text,
   Textarea,
   Select,
@@ -20,6 +21,7 @@ import {
 
 type UnionInputProps =
   | React.ComponentProps<typeof Checkbox>
+  | React.ComponentProps<typeof Combobox>
   | React.ComponentProps<typeof Text>
   | React.ComponentProps<typeof Textarea>
   | React.ComponentProps<typeof Select>
@@ -73,6 +75,8 @@ function Field({
       return <SimpleChoices {...fieldProps} />
     case 'choices':
       return <Choices {...fieldProps} />
+    case 'combobox':
+      return <Combobox {...fieldProps} />
     default:
       return (
         <Text
