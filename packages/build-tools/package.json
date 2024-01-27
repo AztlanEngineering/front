@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/build-tools",
-  "version": "0.9.3",
+  "version": "0.10.0",
   "description": "a",
   "main": "src/index.babel.mjs",
   "module": "src/index.babel.mjs",
@@ -13,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/babel-plugin-replace-import-extension": "^0.9.3",
-    "@aztlan/eslint-config-base": "^0.9.3",
-    "@aztlan/typescript-config": "^0.9.3",
+    "@aztlan/babel-plugin-replace-import-extension": "^0.10.0",
+    "@aztlan/eslint-config-base": "^0.10.0",
+    "@aztlan/typescript-config": "^0.10.0",
     "@babel/core": "^7.23.9",
     "babel-plugin-replace-import-extension": "^1.1.4",
     "copyfiles": "^2.4.1",
@@ -28,6 +28,6 @@
     "extends": "@aztlan/eslint-config-base"
   },
   "dependencies": {
-    "@aztlan/babel-preset-react": "^0.9.3"
+    "@aztlan/babel-preset-react": "^0.10.0"
   }
 }
