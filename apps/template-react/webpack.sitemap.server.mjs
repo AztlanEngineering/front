@@ -1,6 +1,4 @@
-import {
-  configureSharedConfig,
-} from '@aztlan/webpack-config'
+import { configureSharedConfig } from '@aztlan/webpack-config'
 
 const {
   entry,
@@ -20,9 +18,10 @@ export default {
   entry,
   resolve,
   output,
-  plugins:[plugins.Dotenv, plugins.Nodemon],
-  module :{
-    rules:[rules.ts],
-  },
+  plugins:[
+    plugins.Dotenv,
+    plugins.Nodemon,
+  ],
+  module:{ rules: [rules.ts] },
 
 }

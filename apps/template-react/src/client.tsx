@@ -7,25 +7,20 @@ import { loadableReady } from '@loadable/component'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { IntlProvider } from 'react-intl'
-import {
-  useEffect, useState, useCallback,
-} from 'react'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
-import getEnvironment from '@aztlan/react-helpers/relay/client'
 import { useLocale } from '@aztlan/react-helpers'
 import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
-import App from './App'
-import loadMessages from './locales/loadMessages'
-import ErrorBoundary from './modules/common/ui/ErrorBoundary'
+import App from './App.tsx'
+import loadMessages from './locales/loadMessages.ts'
 import config from './config.ts'
+import relayEnvironment from './environment.ts'
 
 // import "./main.scss";
 import '@aztlan/base-styles'
 
-const relayEnvironment = getEnvironment(process.env.GRAPHQL_ENDPOINT)
-
 const container = document.getElementById('main')
 
+// eslint-disable-next-line no-underscore-dangle
 const defaultLocale = window.__LOCALE__ || 'es'
 
 function Main() {
@@ -62,8 +57,6 @@ function Main() {
     </RelayEnvironmentProvider>
   )
 }
-
-export { relayEnvironment }
 
 loadableReady(() => {
   if (container.hasChildNodes()) {

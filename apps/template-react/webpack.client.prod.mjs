@@ -1,6 +1,4 @@
-import {
-  configureSharedConfig,
-} from '@aztlan/webpack-config'
+import { configureSharedConfig } from '@aztlan/webpack-config'
 import LoadablePlugin from '@loadable/webpack-plugin'
 
 /*
@@ -20,9 +18,7 @@ const {
   plugins,
   resolve,
   rules,
-} = configureSharedConfig({
-  entry:'src/client.tsx',
-})
+} = configureSharedConfig({ entry: 'src/client.tsx' })
 
 export default {
   mode   :'production',
@@ -46,7 +42,10 @@ export default {
   ],
 
   module:{
-    rules:[rules.ts, rules.scssProd],
+    rules:[
+      rules.ts,
+      rules.scssProd,
+    ],
   },
 
 }

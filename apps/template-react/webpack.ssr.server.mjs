@@ -1,7 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import {
-  configureSharedConfig,
-} from '@aztlan/webpack-config'
+import { configureSharedConfig } from '@aztlan/webpack-config'
 
 const {
   entry,

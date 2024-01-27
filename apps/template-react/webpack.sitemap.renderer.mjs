@@ -1,6 +1,4 @@
-import {
-  configureSharedConfig,
-} from '@aztlan/webpack-config'
+import { configureSharedConfig } from '@aztlan/webpack-config'
 
 const {
   entry,
@@ -24,7 +22,5 @@ export default {
   experiments,
   externals,
   plugins:[],
-  module :{
-    rules:[rules.ts],
-  },
+  module :{ rules: [rules.ts] },
 }

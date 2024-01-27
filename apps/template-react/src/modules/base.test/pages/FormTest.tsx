@@ -12,7 +12,6 @@ import {
 } from '@aztlan/ui'
 import { graphql } from 'relay-runtime'
 import Template from '../../common/templates/Base.tsx'
-import { relayEnvironment } from '../../../client.tsx'
 
 const m = defineMessages({
   title:{

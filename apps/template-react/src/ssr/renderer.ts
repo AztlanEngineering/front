@@ -4,7 +4,7 @@ import getEnvironment from '@aztlan/react-helpers/relay/server'
 import Renderer from '@aztlan/react-helpers/ssr/Renderer'
 import Base from './Base.tsx'
 import template from '../assets/html/index.html'
-import loadMessages from '../locales/loadMessages'
+import loadMessages from '../locales/loadMessages.ts'
 import stats from '../../public/loadable-stats.json'
 
 /*

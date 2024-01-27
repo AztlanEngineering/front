@@ -1,23 +1,11 @@
 import * as React from 'react'
 import {
-  Button,
-  useApp,
-  AppContextProvider,
-  AuthContextProvider,
-  SwitchRoutes,
+  useApp, AuthContextProvider, SwitchRoutes,
 } from '@aztlan/ui'
-import {
-  useTheme,
-} from '@aztlan/react-helpers'
-import {
-  IntlProvider,
-} from 'react-intl'
-import {
-  useEffect, useState, useCallback,
-} from 'react'
-import routes from './modules/routes'
+import { useTheme } from '@aztlan/react-helpers'
+import routes from './modules/routes.ts'
 import Status404Page from './modules/common/pages/Status404.tsx'
-import Base from './modules/common/templates/Base'
+import Base from './modules/common/templates/Base.tsx'
 
 function Wireframe({
   wireframeTitle,
@@ -27,17 +15,17 @@ function Wireframe({
   // ...routeProps,
 }) {
   return (
-    <Base title={wireframeTitle || 'Loading'} wireframe>
+    <Base
+      title={wireframeTitle || 'Loading'}
+      wireframe
+    >
       Loading user
     </Base>
   )
 }
 
 function App() {
-  const {
-    theme,
-  } = useApp()
-  console.log('[APP] : Render')
+  const { theme } = useApp()
   return (
     <AuthContextProvider>
       <main className={`${theme || ''} background far`}>
@@ -52,5 +40,3 @@ function App() {
 }
 
 export default App
-// <React.Suspense fallback={<h1>Loading</h1>}>
-//  </React.Suspense>

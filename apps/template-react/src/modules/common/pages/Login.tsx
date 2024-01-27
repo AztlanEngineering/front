@@ -1,21 +1,12 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
+import { useLocation } from 'react-router-dom'
+import { useLazyLoadQuery } from 'react-relay'
 import {
-  useEffect,
-} from 'react'
-import {
-  useHistory, useLocation,
-} from 'react-router-dom'
-import {
-  useLazyLoadQuery,
-} from 'react-relay'
-import {
-  defineMessages, useIntl, FormattedMessage,
+  defineMessages, useIntl,
 } from 'react-intl'
-import {
-  LoginButton,
-} from '@aztlan/ui'
-import Template from '../templates/Base'
+import { LoginButton } from '@aztlan/ui'
+import Template from '../templates/Base.tsx'
 
 const m = defineMessages({
   title:{
@@ -36,15 +27,9 @@ function Login() {
 
   let fullHostname
   if (typeof process === 'undefined') {
-    const {
-      protocol,
-    } = window.location // 'http:' or 'https:'
-    const {
-      hostname,
-    } = window.location // 'ash.779.mx'
-    const {
-      port,
-    } = window.location // '3002'
+    const { protocol } = window.location // 'http:' or 'https:'
+    const { hostname } = window.location // 'ash.779.mx'
+    const { port } = window.location // '3002'
 
     fullHostname = `${protocol}//${hostname}${port ? `:${port}` : ''}`
   } else {
@@ -57,17 +42,11 @@ function Login() {
 
   const data = useLazyLoadQuery(
     LoginButton.QUERY,
-    {
-      resource,
-    },
-    {
-      fetchPolicy:'store-or-network',
-    },
+    { resource },
+    { fetchPolicy: 'store-or-network' },
   )
 
-  const {
-    formatMessage,
-  } = useIntl()
+  const { formatMessage } = useIntl()
   return (
     <Template title={formatMessage(m.title)}>
       <div className="container">

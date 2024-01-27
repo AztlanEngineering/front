@@ -1,6 +1,4 @@
-import {
-  configureSharedConfig,
-} from '@aztlan/webpack-config'
+import { configureSharedConfig } from '@aztlan/webpack-config'
 
 /*
 const staticFilesLocations = [
@@ -18,9 +16,7 @@ const {
   plugins,
   resolve,
   rules,
-} = configureSharedConfig({
-  entry:'src/client.tsx',
-})
+} = configureSharedConfig({ entry: 'src/client.tsx' })
 
 export default {
   mode   :'development',
@@ -31,10 +27,16 @@ export default {
   output,
   devServer,
 
-  plugins:[plugins.Dotenv, plugins.HtmlWebpack],
+  plugins:[
+    plugins.Dotenv,
+    plugins.HtmlWebpack,
+  ],
 
   module:{
-    rules:[rules.ts, rules.scssDev],
+    rules:[
+      rules.ts,
+      rules.scssDev,
+    ],
   },
 
 }

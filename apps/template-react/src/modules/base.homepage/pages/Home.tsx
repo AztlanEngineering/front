@@ -1,13 +1,12 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
-import { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useLazyLoadQuery } from 'react-relay'
 import {
-  defineMessages, useIntl, FormattedMessage,
+  defineMessages, useIntl,
 } from 'react-intl'
-import Template from '../../common/templates/Base'
-import { QueryTester } from '../ui'
+import { QueryTesterQuery } from '../ui/QueryTester/__generated__/QueryTesterQuery.graphql.ts'
+import Template from '../../common/templates/Base.tsx'
+import { QueryTester } from '../ui/index.ts'
 
 const m = defineMessages({
   title:{
@@ -25,7 +24,7 @@ function Home() {
     QueryTester.QUERY,
     {},
     { fetchPolicy: 'store-or-network' },
-  )
+  ) as QueryTesterQuery['response']
 
   const { formatMessage } = useIntl()
   return (

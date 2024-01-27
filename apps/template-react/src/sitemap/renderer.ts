@@ -1,12 +1,8 @@
 /* eslint-disable prefer-template -- for legibility */
-import {
-  format,
-} from 'date-fns'
-import getters from '../modules/sitemap'
+import { format } from 'date-fns'
+import getters from '../modules/sitemap.ts'
 
-const config = {
-  CANONICAL:'https://domain.com',
-}
+const config = { CANONICAL: 'https://domain.com' }
 
 const template = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -27,16 +23,11 @@ const createMap = async () => {
 }
 
 const formatMap = (items) => items.map(({
-  loc,
-  lastmod,
-  changefreq,
-  priority,
+  loc, lastmod, changefreq, priority,
 }) => ({
-  loc:loc.length
-    ? new URL(
-      loc, config.CANONICAL,
-    ).href
-    : config.CANONICAL,
+  loc:loc.length ? new URL(
+    loc, config.CANONICAL,
+  ).href : config.CANONICAL,
   lastmod:format(
     lastmod, 'yyyy-MM-dd',
   ),
@@ -55,17 +46,17 @@ export default async (
     'Content-Type', 'text/xml',
   )
 
-  return res.send(template
-    .replace(
-      '</urlset>',
-      sitemap.map(({
+  return res.send(template.replace(
+    '</urlset>',
+    sitemap
+      .map(({
         loc, lastmod, changefreq, priority,
       }) => `<url>   
   <loc>${loc}</loc>
   <lastmod>${lastmod}</lastmod>
   <changefreq>${changefreq}</changefreq>
   <priority>${priority}</priority>
-</url>`).join('\n')
-        + '\n</urlset>',
-    ))
+</url>`)
+      .join('\n') + '\n</urlset>',
+  ))
 }

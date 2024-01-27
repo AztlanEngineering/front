@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types -- singleton */
 import * as React from 'react'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
 import { StaticRouter } from 'react-router-dom'
@@ -5,8 +6,8 @@ import { HelmetProvider } from 'react-helmet-async'
 import { useLocale } from '@aztlan/react-helpers'
 import { AppContextProvider } from '@aztlan/ui'
 import { IntlProvider } from 'react-intl'
-import App from '../App'
-import loadMessages from '../locales/loadMessages'
+import App from '../App.tsx'
+import loadMessages from '../locales/loadMessages.ts'
 import config from '../config.ts'
 
 export default function ({

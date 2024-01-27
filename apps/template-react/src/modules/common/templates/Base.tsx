@@ -1,9 +1,8 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
-import { useEffect } from 'react'
-import {
-  Link, useHistory,
-} from 'react-router-dom'
+import * as PropTypes from 'prop-types'
+import { InferProps } from 'prop-types'
+import { Link } from 'react-router-dom'
 import {
   useAuth, ThemeSwitcher, LocaleSwitcher,
 } from '@aztlan/ui'
@@ -35,9 +34,26 @@ const routeMap = [
   },
 ]
 
+function Navigation(): React.ReactElement {
+  return (
+    <ul className="inline">
+      {routeMap.map(({
+        path, title: routeTitle,
+      }) => (
+        <li key={path}>
+          <Link to={path}>{routeTitle}</Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function Base({
-  title, wireframe, children,
-}) {
+  title,
+  wireframe,
+  wireframeTitle,
+  children,
+}: InferProps<typeof Base.propTypes>): React.ReactElement {
   const {
     logout, isLogoutInFlight,
   } = useAuth()
@@ -45,7 +61,7 @@ function Base({
     return (
       <main className="grid">
         <div className="background near span-3 fit-content">
-          <h1>{title}</h1>
+          <h1>{wireframeTitle || title}</h1>
 
           <a onClick={logout}>
             <h2>
@@ -55,15 +71,7 @@ function Base({
           </a>
         </div>
         <div className="background near span-5 md-start-6 md-span-8 fit-content grid">
-          <ul className="inline">
-            {routeMap.map(({
-              path, title,
-            }) => (
-              <li key={path}>
-                <Link to={path}>{title}</Link>
-              </li>
-            ))}
-          </ul>
+          <Navigation />
           <div style={{ minHeight: '300px' }}>WF</div>
         </div>
       </main>
@@ -83,19 +91,18 @@ function Base({
         </a>
       </div>
       <div className="background near span-5 md-start-6 md-span-8 fit-content grid container">
-        <ul className="inline span-8">
-          {routeMap.map(({
-            path, title,
-          }) => (
-            <li key={path}>
-              <Link to={path}>{title}</Link>
-            </li>
-          ))}
-        </ul>
+        <Navigation />
         {children}
       </div>
     </main>
   )
+}
+
+Base.propTypes = {
+  title         :PropTypes.node,
+  wireframe     :PropTypes.node,
+  wireframeTitle:PropTypes.node,
+  children      :PropTypes.node,
 }
 
 export default Base
