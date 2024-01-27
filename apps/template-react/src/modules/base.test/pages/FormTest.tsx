@@ -1,8 +1,7 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
-import { useLazyLoadQuery } from 'react-relay'
 import {
-  defineMessages, useIntl, FormattedMessage,
+  defineMessages, useIntl,
 } from 'react-intl'
 import {
   SimpleForm,

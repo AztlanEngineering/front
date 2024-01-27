@@ -1,6 +1,4 @@
-import {
-  loadable,
-} from '../common/utils'
+import { loadable } from '../common/utils/index.ts'
 
 export default [
   /*

@@ -1,4 +1,3 @@
-// Array of functions
 const getter = () => [
   /*
   {
