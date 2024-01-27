@@ -17,6 +17,7 @@
     "release:prerelease": "./scripts/release.sh prerelease",
     "storybook": "lerna run storybook --parallel",
     "test": "exit 0",
+    "ncu": "lerna exec 'ncu -i' --concurrency 1",
     "test:eslint": "lerna run test:eslint --parallel",
     "test:eslint:fix": "lerna run test:eslint:fix --parallel",
     "test:jest": "lerna run test:jest --parallel",
@@ -28,7 +29,7 @@
   },
   "devDependencies": {
     "jsonlint": "^1.6.3",
-    "lerna": "=8.0.1"
+    "lerna": "=8.0.2"
   },
   "babel": {
     "presets": [
