@@ -1,21 +1,13 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
-import {
-  useEffect,
-} from 'react'
-import {
-  useHistory,
-} from 'react-router-dom'
-import {
-  useLazyLoadQuery,
-} from 'react-relay'
+import { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useLazyLoadQuery } from 'react-relay'
 import {
   defineMessages, useIntl, FormattedMessage,
 } from 'react-intl'
 import Template from '../../common/templates/Base'
-import {
-  QueryTester,
-} from '../ui'
+import { QueryTester } from '../ui'
 
 const m = defineMessages({
   title:{
@@ -32,14 +24,10 @@ function Home() {
   const data = useLazyLoadQuery(
     QueryTester.QUERY,
     {},
-    {
-      fetchPolicy:'store-or-network',
-    },
+    { fetchPolicy: 'store-or-network' },
   )
 
-  const {
-    formatMessage,
-  } = useIntl()
+  const { formatMessage } = useIntl()
   return (
     <Template title={formatMessage(m.title)}>
       <React.Suspense fallback="Loading">
@@ -47,9 +35,7 @@ function Home() {
       </React.Suspense>
       <p className="container">
         {formatMessage(
-          m.welcome, {
-            name:'guest',
-          },
+          m.welcome, { name: 'pg' },
         )}
       </p>
     </Template>
