@@ -122,7 +122,7 @@ function Home() {
               withErrorHandling,
               addGraphQLOptions(
                 graphql`
-                  query FormTestFruitsQuery {
+                  query FormTestFruits2Query {
                     fruits {
                       value
                       label

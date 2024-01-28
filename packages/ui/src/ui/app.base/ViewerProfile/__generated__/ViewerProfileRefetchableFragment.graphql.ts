@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<afa78339900872c4d26926664882611b>>
+ * @generated SignedSource<<b57dc1e84e88c549a588ea902ece0f1e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -114,14 +114,14 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "createdAt",
+                "name": "created",
                 "storageKey": null
               },
               {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "updatedAt",
+                "name": "updated",
                 "storageKey": null
               },
               {
@@ -148,16 +148,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "b951df9383378d83d831bb81233d2b28",
+    "cacheID": "a9fb24be616a467700feae47f4624d21",
     "id": null,
     "metadata": {},
     "name": "ViewerProfileRefetchableFragment",
     "operationKind": "query",
-    "text": "query ViewerProfileRefetchableFragment(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ViewerProfileFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  id\n}\n"
+    "text": "query ViewerProfileRefetchableFragment(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...ViewerProfileFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ee746ca48303b1d9adf56e37eba6f847";
+(node as any).hash = "a5ccbce58a8019cca15c43e55145ff66";
 
 export default node;

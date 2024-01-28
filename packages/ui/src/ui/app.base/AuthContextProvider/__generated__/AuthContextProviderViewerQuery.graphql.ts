@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<966032e4762551b181fbec5125bb6563>>
+ * @generated SignedSource<<143d54d420596207c54ccd0c5aa33b2d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -93,14 +93,14 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "createdAt",
+            "name": "created",
             "storageKey": null
           },
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "updatedAt",
+            "name": "updated",
             "storageKey": null
           },
           {
@@ -172,12 +172,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e4e96925e7ef87a11b0ca68b5c7b6842",
+    "cacheID": "990817c1cf9157af8fe1cd4c5849d57c",
     "id": null,
     "metadata": {},
     "name": "AuthContextProviderViewerQuery",
     "operationKind": "query",
-    "text": "query AuthContextProviderViewerQuery {\n  viewer {\n    ...ViewerProfileFragment\n    ...useViewerFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  id\n}\n\nfragment useViewerFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  isActive\n  groups {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n  id\n}\n"
+    "text": "query AuthContextProviderViewerQuery {\n  viewer {\n    ...ViewerProfileFragment\n    ...useViewerFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  id\n}\n\nfragment useViewerFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  groups {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n  id\n}\n"
   }
 };
 })();

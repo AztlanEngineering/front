@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b660609ba098261b50d1959e49a82c99>>
+ * @generated SignedSource<<2e1b96af8b60d949f2981e22dac72032>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -80,14 +80,14 @@ const node: ConcreteRequest = {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "createdAt",
+            "name": "created",
             "storageKey": null
           },
           {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "updatedAt",
+            "name": "updated",
             "storageKey": null
           },
           {
@@ -117,12 +117,12 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "f189adab0db3fa8cf050915b509fe910",
+    "cacheID": "406f952bea743b65d2aecc891022cfea",
     "id": null,
     "metadata": {},
     "name": "ViewerProfileQuery",
     "operationKind": "query",
-    "text": "query ViewerProfileQuery {\n  viewer {\n    ...ViewerProfileFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  id\n}\n"
+    "text": "query ViewerProfileQuery {\n  viewer {\n    ...ViewerProfileFragment\n    id\n  }\n}\n\nfragment ViewerProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  id\n}\n"
   }
 };
 

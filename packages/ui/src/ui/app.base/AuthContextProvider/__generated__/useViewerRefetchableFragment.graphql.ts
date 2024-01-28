@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<298ac9369a92e503073d897ed62ddeb9>>
+ * @generated SignedSource<<b117db2dfa9501a2c791d666ca43a4c6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -115,14 +115,14 @@ return {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "createdAt",
+                "name": "created",
                 "storageKey": null
               },
               {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
-                "name": "updatedAt",
+                "name": "updated",
                 "storageKey": null
               },
               {
@@ -197,16 +197,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "ccd8d4a49dde3ace7bfedc871985e14b",
+    "cacheID": "96f5a87b75d0ea8f08eb3c43d9d0e83c",
     "id": null,
     "metadata": {},
     "name": "useViewerRefetchableFragment",
     "operationKind": "query",
-    "text": "query useViewerRefetchableFragment(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...useViewerFragment\n    id\n  }\n}\n\nfragment useViewerFragment on UserNode {\n  firstName\n  lastName\n  createdAt\n  updatedAt\n  email\n  profilePicture\n  isActive\n  groups {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n  id\n}\n"
+    "text": "query useViewerRefetchableFragment(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...useViewerFragment\n    id\n  }\n}\n\nfragment useViewerFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  groups {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "c6bb2438811dc124e62ee46fddc60b0d";
+(node as any).hash = "09b5248c1f1aa3507d713165ba3546d3";
 
 export default node;

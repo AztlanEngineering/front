@@ -2,6 +2,9 @@ type Query {
   """Retrieve a list of fruits with optional disabled state."""
   fruits: [FruitType]
 
+  """Retrieve a fruit by its value."""
+  fruit(value: String!): FruitType
+
   """Check if the username is available"""
   isUsernameAvailable(value: String!): Boolean
 
@@ -74,8 +77,12 @@ type UserNode implements Node {
   """
   isActive: Boolean!
   dateJoined: DateTime!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
 
   """The ID of the object"""
   id: ID!
@@ -130,7 +137,7 @@ type GroupNode implements Node {
   """
   The groups this user belongs to. A user will get all permissions granted to each of their groups.
   """
-  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, createdAt_Gte: DateTime, createdAt_Gt: DateTime, createdAt_Lte: DateTime, createdAt_Lt: DateTime): UserNodeConnection!
+  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
 }
 
 type UserNodeConnection {

@@ -35,7 +35,7 @@ export default {
     plugins.Copy,
     plugins.DotenvProd,
     plugins.HtmlWebpack,
-    plugins.LoadablePlugin,
+    // plugins.LoadablePlugin,
     new LoadablePlugin(),
     plugins.MiniCssExtract,
     plugins.BundleAnalyzer,

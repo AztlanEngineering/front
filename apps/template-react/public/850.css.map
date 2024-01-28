@@ -1,0 +1,1 @@
+{"version":3,"file":"850.css","mappings":"AAKE,kBACE,W","sources":["webpack://@aztlan/template-react/../../packages/ui/dist/esm/ui/form/Field/inputs/Select/styles.scss"],"sourcesContent":["/* @aztlan/generator-front 0.5.0 */\n\n@use \"@aztlan/bem\";\n\n.#{bem.$base}.select {\n  select {\n    width: 100%;\n  }\n}\n\n\n"],"names":[],"sourceRoot":""}

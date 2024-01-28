@@ -1,12 +1,6 @@
-import {
-  useCallback,
-} from 'react'
-import {
-  usePreloadedQuery,
-} from 'react-relay'
-import {
-  graphql,
-} from 'relay-runtime'
+import { useCallback } from 'react'
+import { usePreloadedQuery } from 'react-relay'
+import { graphql } from 'relay-runtime'
 
 import useAuth from './useAuth.ts'
 
@@ -15,8 +9,8 @@ const FRAGMENT = graphql`
     @refetchable(queryName: "useViewerRefetchableFragment") {
     firstName
     lastName
-    createdAt
-    updatedAt
+    created
+    updated
     email
     profilePicture
     isActive

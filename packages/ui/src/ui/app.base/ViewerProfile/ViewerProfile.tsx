@@ -25,8 +25,8 @@ const FRAGMENT = graphql`
     @refetchable(queryName: "ViewerProfileRefetchableFragment") {
     firstName
     lastName
-    createdAt
-    updatedAt
+    created
+    updated
     email
     profilePicture
   }

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ec6cfa59e0a7ddd1db40ae8a8167ce57>>
+ * @generated SignedSource<<66598595cd9a67816dc2f3a7dc6531f9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,7 +11,7 @@
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type useViewerFragment$data = {
-  readonly createdAt: any;
+  readonly created: any;
   readonly email: string;
   readonly firstName: string;
   readonly groups: {
@@ -26,7 +26,7 @@ export type useViewerFragment$data = {
   readonly isActive: boolean;
   readonly lastName: string;
   readonly profilePicture: string | null | undefined;
-  readonly updatedAt: any;
+  readonly updated: any;
   readonly " $fragmentType": "useViewerFragment";
 };
 export type useViewerFragment$key = {
@@ -78,14 +78,14 @@ return {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "createdAt",
+      "name": "created",
       "storageKey": null
     },
     {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "updatedAt",
+      "name": "updated",
       "storageKey": null
     },
     {
@@ -157,6 +157,6 @@ return {
 };
 })();
 
-(node as any).hash = "c6bb2438811dc124e62ee46fddc60b0d";
+(node as any).hash = "09b5248c1f1aa3507d713165ba3546d3";
 
 export default node;
