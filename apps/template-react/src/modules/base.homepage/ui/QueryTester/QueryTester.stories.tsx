@@ -21,7 +21,7 @@ const relayConfig = {
     data,
   ],
   variables    :{},
-  mockResolvers:{ time: (ctx) => '2023-11-16T17:10:13.357101' },
+  mockResolvers:{ Query: (ctx) => ({ time: '2023-11-16T17:10:13.357101' }) },
 }
 
 export const Default: StoryObj<typeof Component> = { parameters: { relay: relayConfig } }
