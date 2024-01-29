@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useLocale } from '@aztlan/react-helpers'
+import { useLocale } from '@aztlan/react-hooks'
 import { IntlProvider } from 'react-intl'
 import { RelayEnvironmentProvider } from 'react-relay/hooks'
 import environment from '@aztlan/storybook-addon-relay/src/decorators/environment'

@@ -73,6 +73,7 @@
     "@aztlan/base-styles": "^0.10.0",
     "@aztlan/bem": "^0.6.0",
     "@aztlan/react-helpers": "^0.10.0",
+    "@aztlan/react-hooks": "^0.10.0",
     "@aztlan/storybook-addon-relay": "^0.10.0",
     "babel-plugin-formatjs": "^10.5.13",
     "babel-plugin-relay": "^16.2.0",

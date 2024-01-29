@@ -2,7 +2,6 @@ import * as React from 'react'
 import {
   useApp, AuthContextProvider, SwitchRoutes,
 } from '@aztlan/ui'
-import { useTheme } from '@aztlan/react-helpers'
 import routes from './modules/routes.ts'
 import Status404Page from './modules/common/pages/Status404.tsx'
 import Base from './modules/common/templates/Base.tsx'

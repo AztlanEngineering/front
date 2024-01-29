@@ -83,6 +83,8 @@
   "dependencies": {
     "@aztlan/assets": "^0.10.0",
     "@aztlan/base-styles": "^0.10.0",
+    "@aztlan/react-hooks": "^0.10.0",
+    "@aztlan/react-ssr": "^0.10.0",
     "@aztlan/storybook-config": "^0.10.0",
     "@aztlan/storybook-helpers": "^0.10.0",
     "@aztlan/ui": "^0.10.0",

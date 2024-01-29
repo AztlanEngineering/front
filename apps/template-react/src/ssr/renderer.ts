@@ -1,10 +1,10 @@
-import * as React from 'react'
-
 import getEnvironment from '@aztlan/react-helpers/relay/server'
-import Renderer from '@aztlan/react-helpers/ssr/Renderer'
+import { JSXRenderer } from '@aztlan/react-ssr'
 import Base from './Base.tsx'
+// @ts-ignore
 import template from '../assets/html/index.html'
 import loadMessages from '../locales/loadMessages.ts'
+// @ts-ignore
 import stats from '../../public/loadable-stats.json'
 
 /*
@@ -14,7 +14,7 @@ properly configured with CSS Modules', styleNames, styleNames.base)
       console.log(req.headers['accept-language'])
 */
 
-const r = new Renderer(
+const renderer = new JSXRenderer(
   Base, template, stats, {
     getEnvironment,
     defaultLocale:'en',
@@ -22,4 +22,4 @@ const r = new Renderer(
   },
 )
 // console.log(r)
-export default r.render
+export default renderer.render
