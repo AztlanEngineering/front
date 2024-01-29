@@ -38,6 +38,7 @@
     "lint:tsc": "tsc",
     "lint:eslint": "eslint --ext .cjs,.mjs,.js,.tsx,.ts ./ --quiet",
     "format:eslint": "npm run test:eslint -- --fix",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly --declaration --outDir ./dist/types",
     "build:cjs": "node ./build.mjs --format cjs",
     "build:cjs:watch": "node ./build.mjs --format cjs --watch",
     "build:esm": "node ./build.mjs --format esm",
