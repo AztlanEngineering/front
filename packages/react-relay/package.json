@@ -1,10 +1,9 @@
 {
-  "name": "@aztlan/react-hooks",
+  "name": "@aztlan/react-relay",
   "version": "0.10.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:tsc": "tsc --noEmit",
@@ -22,7 +21,9 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "react-relay-network-modern": "^6.2.2",
+    "relay-runtime": "^16.2.0"
   },
   "eslintConfig": {
     "extends": "@aztlan/eslint-config-base"
