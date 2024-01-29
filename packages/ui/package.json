@@ -19,7 +19,7 @@
     "relay:debug": "relay-compiler --output debug",
     "schema:development": "fetch-schema",
     "schema:production": "fetch-schema --ref production",
-    "prepare": "npm run build",
+    "prepare": "npm run build && npm run copy-css",
     "storybook": "storybook dev -p 6006 --debug --no-open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:tsc": "tsc",
