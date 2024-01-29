@@ -4,10 +4,11 @@ import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-
 import { useFormContext } from 'react-hook-form'
-
 import styleNames from '@aztlan/bem'
+import { propTypes } from './types.js'
+import type { TProps } from './types.js'
+
 import withWrapper from '../../wrapper/withWrapper.js'
 import * as formPropTypes from '../../propTypes.js'
 import useOptionAriaProps from '../../hooks/useOptionAriaProps.js'
@@ -71,8 +72,7 @@ function Choices({
   disabled,
   options,
   registerProps,
-}: // ...otherProps
-InferProps<typeof Choices.propTypes>): React.ReactElement {
+}: TProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -111,17 +111,7 @@ InferProps<typeof Choices.propTypes>): React.ReactElement {
   )
 }
 
-Choices.propTypes = {
-  ...formPropTypes.baseShared,
-  ...formPropTypes.inputShared,
-  ...formPropTypes.optionsShared,
-
-  /** Whether the input can have multiple values */
-  multiple:PropTypes.bool,
-
-  /** Whether the input is disabled */
-  disabled:PropTypes.bool,
-}
+Choices.propTypes = propTypes
 
 export default withWrapper(
   Choices, { mockLabel: true },

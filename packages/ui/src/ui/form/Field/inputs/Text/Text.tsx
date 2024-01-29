@@ -2,16 +2,13 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-
 import { useFormContext } from 'react-hook-form'
 
 import styleNames from '@aztlan/bem'
+import { propTypes } from './types.js'
+import type { TProps } from './types.js'
 
 import withWrapper from '../../wrapper/withWrapper.js'
-import { BUILT_IN_HTML_TYPES } from '../../constants.js'
-import * as formPropTypes from '../../propTypes.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'text'
@@ -29,7 +26,7 @@ function Text({
   registerProps,
   loading = false,
   ...otherProps
-}: InferProps<typeof Text.propTypes>): React.ReactElement {
+}: TProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -62,18 +59,6 @@ function Text({
   )
 }
 
-Text.propTypes = {
-  ...formPropTypes.baseShared,
-  ...formPropTypes.inputShared,
-
-  /** The type of the input */
-  type:PropTypes.oneOf(BUILT_IN_HTML_TYPES),
-
-  /**
-   * The autoComplete value that the browser should watch for the input <br>
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
-   */
-  autoComplete:PropTypes.string.isRequired,
-}
+Text.propTypes = propTypes
 
 export default withWrapper(Text)

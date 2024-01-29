@@ -2,15 +2,13 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-// import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-
 import { useFormContext } from 'react-hook-form'
+import styleNames from '@aztlan/bem'
+import { propTypes } from './types.js'
+import type { TProps } from './types.js'
 
 // @ts-ignore
-import styleNames from '@aztlan/bem'
 import withWrapper from '../../wrapper/withWrapper.js'
-import * as formPropTypes from '../../propTypes.js'
 
 const baseClassName = styleNames.base
 
@@ -28,7 +26,7 @@ function Select({
   options,
   registerProps,
   ...otherProps
-}: InferProps<typeof Select.propTypes>): React.ReactElement {
+}: TProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -69,10 +67,6 @@ function Select({
   )
 }
 
-Select.propTypes = {
-  ...formPropTypes.baseShared,
-  ...formPropTypes.inputShared,
-  ...formPropTypes.optionsShared,
-}
+Select.propTypes = propTypes
 
 export default withWrapper(Select)

@@ -2,15 +2,12 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-
 import { useFormContext } from 'react-hook-form'
-
 import styleNames from '@aztlan/bem'
+import { propTypes } from './types.js'
+import type { TProps } from './types.js'
 
 import withWrapper from '../../wrapper/withWrapper.js'
-import * as formPropTypes from '../../propTypes.js'
 
 // Local Definitions
 
@@ -29,7 +26,7 @@ function Textarea({
   name,
   registerProps,
   ...otherProps
-}: InferProps<typeof Textarea.propTypes>): React.ReactElement {
+}: TProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -61,12 +58,6 @@ function Textarea({
   )
 }
 
-Textarea.propTypes = {
-  ...formPropTypes.baseShared,
-  ...formPropTypes.inputShared,
-
-  /** The number of rows for the input */
-  rows:PropTypes.number,
-}
+Textarea.propTypes = propTypes
 
 export default withWrapper(Textarea)

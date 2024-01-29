@@ -12,7 +12,7 @@ const meta: Meta<typeof Component> = {
     decorators.grid,
     decorators.form,
   ],
-  argTypes:{ backgroundColor: { control: 'color' } },
+  // argTypes:{ backgroundColor: { control: 'color' } },
 }
 
 export default meta

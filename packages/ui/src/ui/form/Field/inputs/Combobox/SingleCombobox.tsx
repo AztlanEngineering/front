@@ -2,11 +2,7 @@ import * as React from 'react'
 import {
   useState, useEffect, useCallback, useRef,
 } from 'react'
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-import {
-  useController, useFormState,
-} from 'react-hook-form'
+import { useController } from 'react-hook-form'
 import {
   useCombobox,
   UseComboboxStateChange,
@@ -14,7 +10,8 @@ import {
   // UseComboboxStateChangeOptions,
 } from 'downshift'
 import styleNames from '@aztlan/bem'
-import * as formPropTypes from '../../propTypes.js'
+import type { TSingleComboboxProps } from './types.js'
+import { basePropTypes } from './types.js'
 import ResetButton from './common/ResetButton.js'
 import List from './common/List.js'
 
@@ -64,7 +61,7 @@ function SingleCombobox({
   valueKey = defaultValueKey,
   convertItemToString = defaultConvertItemToString,
   convertValueToItem = defaultConvertValueToItem,
-}: InferProps<typeof SingleCombobox.propTypes>): React.ReactElement {
+}: TSingleComboboxProps): React.ReactElement {
   const [
     items,
     setItems,
@@ -187,11 +184,6 @@ function SingleCombobox({
   )
 }
 
-SingleCombobox.propTypes = {
-  ...formPropTypes.baseShared,
-  ...formPropTypes.inputShared,
-  ...formPropTypes.optionsShared,
-  ...formPropTypes.comboboxShared,
-}
+SingleCombobox.propTypes = basePropTypes
 
 export default SingleCombobox

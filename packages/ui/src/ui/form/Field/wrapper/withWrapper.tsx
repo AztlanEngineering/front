@@ -1,13 +1,9 @@
 import * as React from 'react'
 import { useMemo } from 'react'
-import { InferProps } from 'prop-types'
 import Wrapper from './Wrapper.js'
-import * as formPropTypes from '../propTypes.js'
-import withConditionalDisplay, { WithConditionalDisplayProps } from './withConditionalDisplay.js'
-
-type Options<T> = {
-  [K in keyof T]?: T[K];
-}
+import type { FieldProps } from '../types.js'
+import type { TWrapperProps } from './types.js'
+import withConditionalDisplay from './withConditionalDisplay.js'
 
 /**
  * A HOC that wraps a raw field and provides the base form methods to it.
@@ -18,15 +14,14 @@ type Options<T> = {
  */
 const withWrapper = (
   Component: React.ComponentType<any>,
-  options: Options<InferProps<typeof formPropTypes.wrapperShared>> = {},
+  options?: TWrapperProps, // TODO check consistency with withConditionalDisplay
 ) => {
   const MemoizedComponent = React.memo(Component)
 
   function WrappedComponent({
     extensions = [],
-    condition,
     ...props
-  }: InferProps<typeof formPropTypes.baseShared>): React.ReactElement {
+  }: FieldProps): React.ReactElement {
     const ExtendedComponent = useMemo(
       () => extensions
         .reverse()
@@ -50,10 +45,7 @@ const withWrapper = (
       />
     )
   }
-  return withConditionalDisplay(
-    WrappedComponent,
-    options.condition as WithConditionalDisplayProps,
-  )
+  return withConditionalDisplay(WrappedComponent)
 }
 
 export default withWrapper

@@ -3,13 +3,14 @@ import { InferProps } from 'prop-types'
 import { UseSectionsReturnType } from '@aztlan/react-hooks'
 
 import * as formPropTypes from '../Field/propTypes.js'
+import * as FormPropTypes from './types.js'
 
 /**
  * Extends the UseSectionsReturnType with additional form-specific context.
  */
-export interface FormContextType extends UseSectionsReturnType {
+export type FormContextType = UseSectionsReturnType &
+InferProps<typeof FormPropTypes.typeShared> & {
   sharedFieldProps?:InferProps<typeof formPropTypes.wrapperShared>;
-  type             :'default' | 'multipart';
 }
 
 /**

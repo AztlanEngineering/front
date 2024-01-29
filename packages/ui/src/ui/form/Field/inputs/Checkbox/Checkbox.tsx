@@ -2,14 +2,12 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-// import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-
 import { useFormContext } from 'react-hook-form'
-
 import styleNames from '@aztlan/bem'
+import { propTypes } from './types.js'
+import type { TProps } from './types.js'
+
 import withWrapper from '../../wrapper/withWrapper.js'
-import * as formPropTypes from '../../propTypes.js'
 
 // Local Definitions
 
@@ -27,7 +25,7 @@ function Checkbox({
   style,
   registerProps,
   ...otherProps
-}: InferProps<typeof Checkbox.propTypes>): React.ReactElement {
+}: TProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -59,9 +57,6 @@ function Checkbox({
   )
 }
 
-Checkbox.propTypes = {
-  ...formPropTypes.baseShared,
-  ...formPropTypes.inputShared,
-}
+Checkbox.propTypes = propTypes
 
 export default withWrapper(Checkbox)

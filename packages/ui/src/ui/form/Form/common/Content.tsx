@@ -12,8 +12,25 @@ import Paginator from './Paginator.js'
 const baseClassName = styleNames.base
 const componentClassName = 'form-inputs'
 
+const propTypes = {
+  /** The HTML id for this element */
+  id:PropTypes.string,
+
+  /** The HTML class names for this element */
+  className:PropTypes.string,
+
+  /** The React-written, css properties for this element. */
+  style:PropTypes.objectOf(PropTypes.string),
+
+  /** The children JSX */
+  children:PropTypes.node,
+}
+
+export type TProps = InferProps<typeof propTypes>
+
 /**
- * The content of the form that should be displayed. It is a simple wrapper around Section that consumes the Sections api state management.
+ * The content of the form that should be displayed. It is a simple wrapper around Section
+ * that consumes the Sections api state management.
  * @param {InferProps<typeof Content.propTypes>} props -
  * @return {React.ReactElement} - The rendered component
  */
@@ -21,7 +38,7 @@ function Content({
   id,
   className: userClassName,
   style,
-}: InferProps<typeof Content.propTypes>): React.ReactElement {
+}: TProps): React.ReactElement {
   const {
     state, type: formType,
   } = useForm()
@@ -67,18 +84,8 @@ function Content({
   )
 }
 
-Content.propTypes = {
-  /** The HTML id for this element */
-  id:PropTypes.string,
+Content.propTypes = propTypes
 
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
-
-  /** The children JSX */
-  children:PropTypes.node,
-}
+export { Content }
 
 export default React.memo(Content)

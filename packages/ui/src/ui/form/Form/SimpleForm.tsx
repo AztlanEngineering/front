@@ -8,6 +8,7 @@ import {
   useForm, FormProvider,
 } from 'react-hook-form'
 import styleNames from '@aztlan/bem'
+import type { FieldProps } from '../Field/types.js'
 
 import { Field } from '../Field/index.js'
 import * as formPropTypes from '../Field/propTypes.js'
@@ -63,8 +64,8 @@ function SimpleForm({
         {fields.map((fieldProps) => (
           <Field
             key={fieldProps.name}
-            {...fieldProps}
-            {...sharedFieldProps}
+            {...fieldProps as Partial<FieldProps>}
+            {...sharedFieldProps as Partial<FieldProps>}
           />
         ))}
         <input

@@ -1,14 +1,11 @@
 import React from 'react'
-import { InferProps } from 'prop-types'
 import useConditionalDisplay from '../hooks/useConditionalDisplay.js'
-import * as formPropTypes from '../propTypes.js'
+import type { FieldProps } from '../types.js'
 
 export type WithConditionalDisplayProps = [
   string[] | undefined, // dependencies
   (depsValues: any[]) => boolean, // conditionFunction
 ]
-
-type FieldComponentProps = InferProps<typeof formPropTypes.baseShared>
 
 /**
  * A higher-order component that conditionally renders the WrappedComponent
@@ -22,8 +19,8 @@ type FieldComponentProps = InferProps<typeof formPropTypes.baseShared>
  * and returns a boolean indicating if the component should be displayed.
  * @returns {Function} - A higher-order component that conditionally renders the wrapped component.
  */
-function withConditionalDisplay(WrappedComponent: React.ComponentType<FieldComponentProps>) {
-  function ExtendedComponent(props: FieldComponentProps): React.ReactElement | null {
+function withConditionalDisplay(WrappedComponent: React.ComponentType<FieldProps>) {
+  function ExtendedComponent(props: FieldProps): React.ReactElement | null {
     const {
       name, condition,
     } = props

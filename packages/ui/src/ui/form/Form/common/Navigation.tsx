@@ -2,6 +2,7 @@
 import * as React from 'react'
 
 import * as PropTypes from 'prop-types'
+import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import useForm from '../hooks/useForm.js'
@@ -9,15 +10,24 @@ import useForm from '../hooks/useForm.js'
 const baseClassName = styleNames.base
 const componentClassName = styleNames.elementNavigation
 
+const propTypes = {
+  /** The HTML id for this element */
+  id:PropTypes.string,
+
+  /** The HTML class names for this element */
+  className:PropTypes.string,
+
+  /** The React-written, css properties for this element. */
+  style:PropTypes.objectOf(PropTypes.string),
+}
+
+export type TProps = InferProps<typeof propTypes>
 /**
  * This is the component description.
  */
 function Navigation({
-  id,
-  className: userClassName,
-  style,
-  // ...otherProps
-}) {
+  id, className: userClassName, style,
+}: TProps) {
   const {
     setIndex, state,
   } = useForm()
@@ -83,26 +93,8 @@ function Navigation({
   )
 }
 
-Navigation.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
+Navigation.propTypes = propTypes
 
-  /**
-   * The HTML class names for this element
-   */
-  className:PropTypes.string,
-
-  /**
-   * The React-written, css properties for this element.
-   */
-  style:PropTypes.objectOf(PropTypes.string),
-
-  /**
-   *  The children JSX
-   */
-  children:PropTypes.node,
-}
+export { Navigation }
 
 export default React.memo(Navigation)

@@ -1,16 +1,15 @@
 import * as React from 'react'
 import { useMemo } from 'react'
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-
 import {
   useFormState, RegisterOptions,
 } from 'react-hook-form'
+import { WrapperPropTypes } from './types.js'
+import type { TWrapperProps } from './types.js'
+
 import Label from './Label.js'
 import Description from './Description.js'
 import useFieldAriaProps from '../hooks/useFieldAriaProps.js'
 import * as messages from '../../messages.js'
-import * as formPropTypes from '../propTypes.js'
 
 const defaultObject = {}
 /**
@@ -58,7 +57,7 @@ function Wrapper({
   mockLabel = false,
   registerProps: userRegisterProps = defaultObject,
   ...otherProps
-}: InferProps<typeof Wrapper.propTypes>): React.ReactElement {
+}: TWrapperProps): React.ReactElement {
   // const { register } = useFormContext()
   const { errors } = useFormState({ name })
   const isError = !!errors[name]
@@ -139,16 +138,6 @@ function Wrapper({
   )
 }
 
-Wrapper.propTypes = {
-  ...formPropTypes.Wrapper,
-
-  /** The front Component for the field */
-  Component:PropTypes.elementType.isRequired,
-
-  /** Indicates if a mock label with `<legend>` is used,
-   * This is useful when the field renders several `<inputs>`
-   * and the "real" HTML labels are next to them. */
-  mockLabel:PropTypes.bool,
-}
+Wrapper.propTypes = WrapperPropTypes
 
 export default Wrapper

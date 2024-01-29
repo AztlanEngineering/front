@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
-import * as formPropTypes from '../../propTypes.js'
+import { wrapperPropTypes } from './types.js'
+import type { TProps } from './types.js'
 import MultipleCombobox from './MultipleCombobox.js'
 import SingleCombobox from './SingleCombobox.js'
 import withWrapper from '../../wrapper/withWrapper.js'
@@ -16,7 +15,7 @@ function Combobox({
   className: userClassName,
   multiple,
   ...props
-}: InferProps<typeof Combobox.propTypes>): React.ReactElement {
+}: TProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -42,13 +41,6 @@ function Combobox({
   return <SingleCombobox {...fieldProps} />
 }
 
-Combobox.propTypes = {
-  ...formPropTypes.baseShared,
-  ...formPropTypes.inputShared,
-  ...formPropTypes.optionsShared,
-
-  /** Whether to allow multiple selections */
-  multiple:PropTypes.bool,
-}
+Combobox.propTypes = wrapperPropTypes
 
 export default withWrapper(Combobox)

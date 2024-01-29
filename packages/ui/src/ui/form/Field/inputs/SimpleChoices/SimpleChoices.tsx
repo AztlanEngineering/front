@@ -1,15 +1,14 @@
 /* @aztlan/generator-front 0.7.2 */
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
-
 import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-
 import { useFormContext } from 'react-hook-form'
-
 import styleNames from '@aztlan/bem'
+import { propTypes } from './types.js'
+import type { TProps } from './types.js'
+
 import withWrapper from '../../wrapper/withWrapper.js'
-import * as formPropTypes from '../../propTypes.js'
+// import * as formPropTypes from '../../propTypes.js'
 import useOptionAriaProps from '../../hooks/useOptionAriaProps.js'
 
 // Local Definitions
@@ -76,8 +75,7 @@ function SimpleChoices({
   disabled,
   options,
   registerProps,
-}: // ...otherProps
-InferProps<typeof SimpleChoices.propTypes>): React.ReactElement {
+}:TProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -116,17 +114,7 @@ InferProps<typeof SimpleChoices.propTypes>): React.ReactElement {
   )
 }
 
-SimpleChoices.propTypes = {
-  ...formPropTypes.baseShared,
-  ...formPropTypes.inputShared,
-  ...formPropTypes.optionsShared,
-
-  /** Whether the input can have multiple values */
-  multiple:PropTypes.bool,
-
-  /** Whether the input is disabled */
-  disabled:PropTypes.bool,
-}
+SimpleChoices.propTypes = propTypes
 
 export default withWrapper(
   SimpleChoices, { mockLabel: true },

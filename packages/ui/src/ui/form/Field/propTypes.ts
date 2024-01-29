@@ -1,4 +1,5 @@
 import * as PropTypes from 'prop-types'
+import { Validator } from 'prop-types'
 import { AVAILABLE_TYPES } from './constants.js'
 
 export const globalType = {
@@ -6,16 +7,31 @@ export const globalType = {
   type:PropTypes.oneOf(AVAILABLE_TYPES),
 }
 
+function conditionPropType(
+  props, propName, componentName,
+) {
+  const condition = props[propName]
+  if (!Array.isArray(condition) || condition.length !== 2) {
+    return new Error(`Invalid prop \`${propName}\` supplied to \`${componentName}\`. Validation failed.`)
+  }
+  if (
+    !Array.isArray(condition[0])
+    || !condition[0].every((item) => typeof item === 'string')
+  ) {
+    return new Error(`First element of prop \`${propName}\` supplied to \`${componentName}\` must be an array of strings.`)
+  }
+  if (typeof condition[1] !== 'function') {
+    return new Error(`Second element of prop \`${propName}\` supplied to \`${componentName}\` must be a function.`)
+  }
+  return null
+}
+
 export const Field = {
   /** An array of HOC to transform the input */
   extensions:PropTypes.arrayOf(PropTypes.func),
 
   /** A tuple of [dependencies, conditionFunction] to decide whether to render the input */
-
-  condition:PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.func,
-  ])),
+  condition:conditionPropType,
 }
 
 /** These are props that are can be safely shared between several fields in the same form */
@@ -49,6 +65,14 @@ export const Wrapper = {
   /** Description or additional information below the input */
   description:PropTypes.string,
 
+  /** Indicates if a mock label with `<legend>` is used,
+   * This is useful when the field renders several `<inputs>`
+   * and the "real" HTML labels are next to them.
+   * Even if this prop can be passed on field instantiation, it is better to
+   * "hard-code" it in the HOC call, passing options:{ mockLabel:true }
+   */
+  mockLabel:PropTypes.bool,
+
   /** An object of shape [`RegisterOptions`](https://www.react-hook-form.com/ts/#RegisterOptions) that will be passed to the registration function of the input */
   registerProps:PropTypes.object,
 
@@ -71,13 +95,38 @@ export const inputShared = {
   loading:PropTypes.bool,
 }
 
+const optionType = PropTypes.shape({
+  value   :PropTypes.string.isRequired,
+  label   :PropTypes.string.isRequired,
+  disabled:PropTypes.bool,
+})
+
+const optionsWithExtensionsValidator: Validator<any[]> = (
+  props,
+  propName,
+  componentName,
+) => {
+  const options = props[propName]
+
+  if (!Array.isArray(options)) {
+    return new Error(`Invalid prop \`${propName}\` of type \`${typeof options}\` supplied to \`${componentName}\`, expected an array.`)
+  }
+
+  options.forEach((option) => {
+    PropTypes.checkPropTypes(
+      { option: optionType },
+      { option },
+      'option',
+      componentName,
+    )
+  })
+
+  return null
+}
+
 export const optionsShared = {
   /** The options for the input */
-  options:PropTypes.arrayOf(PropTypes.shape({
-    value   :PropTypes.string,
-    label   :PropTypes.string,
-    disabled:PropTypes.bool,
-  }).isRequired).isRequired,
+  options:optionsWithExtensionsValidator,
 
   /** Whether the component is in a loading state */
   loading:PropTypes.bool,

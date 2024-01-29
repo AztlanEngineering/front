@@ -6,8 +6,8 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import { AVAILABLE_TYPES } from './constants.js'
 import * as formPropTypes from './propTypes.js'
+import type { FieldProps } from './types.js'
 
 import {
   Checkbox,
@@ -18,17 +18,6 @@ import {
   SimpleChoices,
   Choices,
 } from './inputs/index.js'
-
-type UnionInputProps =
-  | React.ComponentProps<typeof Checkbox>
-  | React.ComponentProps<typeof Combobox>
-  | React.ComponentProps<typeof Text>
-  | React.ComponentProps<typeof Textarea>
-  | React.ComponentProps<typeof Select>
-  | React.ComponentProps<typeof SimpleChoices>
-  | React.ComponentProps<typeof Choices>
-
-type FieldProps = UnionInputProps & { type: typeof AVAILABLE_TYPES[number] }
 
 // Local Definitions
 

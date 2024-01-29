@@ -4,20 +4,18 @@ import {
   useInsertionEffect, useMemo,
 } from 'react'
 
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
 import {
   useForm, FormProvider,
 } from 'react-hook-form'
 import { useSections } from '@aztlan/react-hooks'
 // @ts-ignore
 import styleNames from '@aztlan/bem'
+import type { TFormProps } from './types.js'
+import { FormPropTypes } from './types.js'
 
 import Context from './Context.js'
 import Navigation from './common/Navigation.js'
 import Content from './common/Content.js'
-
-import * as formPropTypes from '../Field/propTypes.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'
@@ -35,7 +33,7 @@ function Form({
   type: formType = 'default',
 
   ...otherProps
-}: InferProps<typeof Form.propTypes>): React.ReactElement {
+}: TFormProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -58,7 +56,7 @@ function Form({
   const contextValue = useMemo(
     () => ({
       ...sectionsProps,
-      sharedFieldProps,
+      // sharedFieldProps,
       type:formType,
     }),
     [
@@ -95,37 +93,7 @@ function Form({
   )
 }
 
-Form.propTypes = {
-  /** The HTML id for this element */
-  id:PropTypes.string,
-
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
-
-  /** The children JSX */
-  children:PropTypes.node,
-
-  /** Whether the form is multipart or not */
-  type:PropTypes.oneOf([
-    'default',
-    'multipart',
-  ]),
-
-  /** An object of field props that will be applied to all the fields */
-  fieldProps:PropTypes.shape({
-    ...formPropTypes.globalType,
-    ...formPropTypes.wrapperShared,
-    ...formPropTypes.inputShared, // Kinda
-    ...formPropTypes.optional,
-  }),
-
-  /** The form sections to be rendered */
-  /* eslint-disable-next-line react/forbid-prop-types */
-  items:PropTypes.arrayOf(PropTypes.object),
-}
+Form.propTypes = FormPropTypes
 
 Form.Navigation = Navigation
 Form.Content = Content

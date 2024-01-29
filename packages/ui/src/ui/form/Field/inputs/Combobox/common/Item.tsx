@@ -51,12 +51,12 @@ InferProps<typeof Item.propTypes>): React.ReactElement {
     getItemProps,
     selectedItem,
   } = useCombobox({
-    onSelectedItemChange:({ sItem }) => console.log(sItem),
+    // onSelectedItemChange:({ sItem }) => console.log(sItem),
     /*
       onInputValueChange({inputValue}) {
         setItems(books.filter(getBooksFilter(inputValue))) */
     // items,
-    items               :items.map((item) => item.label),
+    items:items.map((item) => item.label),
     itemToString(item) {
       return item || ''
     },
