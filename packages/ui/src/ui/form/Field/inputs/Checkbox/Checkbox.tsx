@@ -2,14 +2,14 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-import * as PropTypes from 'prop-types'
+// import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import { useFormContext } from 'react-hook-form'
 
 import styleNames from '@aztlan/bem'
-import withWrapper from '../../wrapper/withWrapper.tsx'
-import * as formPropTypes from '../../propTypes.ts'
+import withWrapper from '../../wrapper/withWrapper.js'
+import * as formPropTypes from '../../propTypes.js'
 
 // Local Definitions
 

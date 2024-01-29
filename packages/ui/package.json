@@ -6,7 +6,9 @@
   "module": "dist/esm/ui/index.mjs",
   "type": "module",
   "scripts": {
-    "build": "npm run build:cjs && npm run build:esm",
+    "xbuild": "npm run build:cjs && npm run build:esm",
+    "build": "tsc",
+    "copy-css": "copyfiles -u 2 src/ui/**/*.scss dist",
     "build-storybook": "storybook build",
     "build:cjs": "node ./build.mjs --format cjs",
     "build:cjs:watch": "node ./build.mjs --format cjs --watch",
@@ -49,7 +51,6 @@
     "@storybook/addon-storyshots": "^7.6.10",
     "@storybook/addon-themes": "^7.6.10",
     "@storybook/blocks": "^7.6.10",
-    "@storybook/react": "^7.6.10",
     "@storybook/react-webpack5": "^7.6.10",
     "@storybook/testing-library": "^0.2.2",
     "@stylistic/eslint-plugin": "^1.5.4",
@@ -85,10 +86,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.3",
+    "react-intl": "^6.6.2",
     "react-relay": "^16.2.0",
     "react-router-dom": "^5.3.4",
     "relay-compiler": "^16.2.0",
-    "relay-runtime": "^16.2.0"
+    "relay-runtime": "^16.2.0",
+    "@storybook/react": "^7.6.10"
   },
   "relay": {
     "src": "./src",

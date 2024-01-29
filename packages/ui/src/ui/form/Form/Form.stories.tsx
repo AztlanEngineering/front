@@ -1,20 +1,21 @@
 /* @aztlan/generator-front 0.9.0 */
 import * as React from 'react'
-
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import Component from './Form.tsx'
-// import * as decorators from "story-utils/decorators.tsx";
+import Component from './Form.js'
+// import * as decorators from "story-utils/decorators.js";
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'form/Form',
   component :Component,
   decorators:[
     // decorators.app,
   ],
-  argTypes:{ backgroundColor: { control: 'color' } },
-} as Meta<typeof Component>
+  //argTypes:{ backgroundColor: { control: 'color' } },
+}
+
+export default meta
 
 const Form = Component
 

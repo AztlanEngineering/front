@@ -2,14 +2,14 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-import * as PropTypes from 'prop-types'
+// import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import { useController } from 'react-hook-form'
 import { useCombobox } from 'downshift'
 
 import styleNames from '@aztlan/bem'
-import * as formPropTypes from '../../propTypes.ts'
+import * as formPropTypes from '../../../propTypes.js'
 
 const baseClassName = styleNames.base
 const componentClassName = styleNames.elementItem
@@ -25,8 +25,8 @@ function Item({
   registerProps,
   options: items, // Exceptional renaming to make our interface with downshift more legible.
   name,
-  disabled = false,
-}: // ...otherProps
+}: // disabled = false,
+// ...otherProps
 
 InferProps<typeof Item.propTypes>): React.ReactElement {
   useInsertionEffect(

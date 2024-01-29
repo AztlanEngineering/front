@@ -1,9 +1,10 @@
 import { useCallback } from 'react'
-import { usePreloadedQuery } from 'react-relay'
-import { graphql } from 'relay-runtime'
+import {
+  usePreloadedQuery, PreloadedQuery,
+} from 'react-relay'
+import useAuth from './useAuth.js'
 
-import useAuth from './useAuth.ts'
-
+/*
 const FRAGMENT = graphql`
   fragment useViewerFragment on UserNode
     @refetchable(queryName: "useViewerRefetchableFragment") {
@@ -23,8 +24,12 @@ const FRAGMENT = graphql`
       }
     }
   }
-`
+` */
 
+/**
+ * A hook to interact with the viewer's data.
+ * Provides functionalities to check viewer's permissions and group memberships.
+ */
 const useViewer = () => {
   const {
     viewerQueryReference, QUERY_VIEWER,
@@ -34,26 +39,44 @@ const useViewer = () => {
     QUERY_VIEWER, viewerQueryReference,
   )
 
+  /**
+   * Checks if the viewer has any of the specified permissions.
+   * @param permissions - Array of permissions to check against.
+   * @returns True if the viewer has any of the specified permissions.
+   */
   const hasPermissions = useCallback(
-    (permissions) => {
-      const viewerPermissions = data?.viewer?.permissions?.edges
-      return permissions.some((permission) => viewerPermissions.includes(permission))
+    (permissions: string[]) => {
+      // @ts-ignore TODO
+      const viewerPermissions = data?.viewer?.userPermissions?.edges.map((edge) => edge?.node?.name)
+      return permissions.some((permission) => viewerPermissions?.includes(permission))
     },
     [data],
   )
 
+  /**
+   * Checks if the viewer is part of any of the specified groups.
+   * @param groups - Array of group names to check against.
+   * @returns True if the viewer is in any of the specified groups.
+   */
   const isInGroups = useCallback(
-    (groups) => {
-      const viewerGroups = data?.viewer?.groups?.edges
+    (groups: string[]) => {
+      // @ts-ignore TODO
+      const viewerGroups = data?.viewer?.groups?.edges.map((edge) => edge?.node?.name)
       return viewerGroups
-        ? viewerGroups.some((edge) => groups?.includes(edge?.node?.name))
+        ? viewerGroups.some((groupName) => groups.includes(groupName))
         : false
     },
     [data],
   )
 
+  /**
+   * Executes a test function against the viewer data.
+   * @param fn - A function to execute with the viewer data.
+   * @returns The result of the function execution or false if no data.
+   */
   const test = useCallback(
-    (fn) => (data ? fn(data.viewer) : false), [data],
+    (fn: (viewer: any) => boolean) => (data ? fn(data.viewer) : false),
+    [data],
   )
 
   return {

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import ErrorBoundary from '../Field/ErrorBoundary.tsx'
+import ErrorBoundary from '../Field/ErrorBoundary.js'
 
 /**
  * Higher-order component that wraps a given component with FieldErrorBoundary

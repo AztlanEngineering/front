@@ -2,17 +2,19 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.tsx'
-import Component from './Checkbox.tsx'
+import * as decorators from 'story-utils/decorators.js'
+import Component from './Checkbox.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'form/inputs/Checkbox',
   component :Component,
   decorators:[
     decorators.grid,
     decorators.form,
   ],
-} as Meta<typeof Component>
+}
+
+export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{

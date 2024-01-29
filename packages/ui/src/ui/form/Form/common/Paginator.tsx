@@ -8,8 +8,8 @@ import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
 import {
   useForm, useFieldsValidity,
-} from '../hooks/index.ts'
-import * as messages from '../../messages.ts'
+} from '../hooks/index.js'
+import * as messages from '../../messages.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'paginator'

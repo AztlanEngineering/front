@@ -14,9 +14,9 @@ import {
   // UseComboboxStateChangeOptions,
 } from 'downshift'
 import styleNames from '@aztlan/bem'
-import * as formPropTypes from '../../propTypes.ts'
-import ResetButton from './common/ResetButton.tsx'
-import List from './common/List.tsx'
+import * as formPropTypes from '../../propTypes.js'
+import ResetButton from './common/ResetButton.js'
+import List from './common/List.js'
 
 import {
   Item,
@@ -24,7 +24,7 @@ import {
   defaultConvertItemToString,
   defaultConvertValueToItem,
   defaultFilterItems,
-} from './defaults.ts'
+} from './defaults.js'
 
 interface ComboboxOption extends Item {
   disabled?:boolean;

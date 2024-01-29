@@ -9,9 +9,9 @@ import { useFormContext } from 'react-hook-form'
 
 import styleNames from '@aztlan/bem'
 
-import withWrapper from '../../wrapper/withWrapper.tsx'
-import { BUILT_IN_HTML_TYPES } from '../../constants.ts'
-import * as formPropTypes from '../../propTypes.ts'
+import withWrapper from '../../wrapper/withWrapper.js'
+import { BUILT_IN_HTML_TYPES } from '../../constants.js'
+import * as formPropTypes from '../../propTypes.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'text'

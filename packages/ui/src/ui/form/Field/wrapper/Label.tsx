@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
-import * as messages from '../../messages.ts'
+import * as messages from '../../messages.js'
 
 /**
  * Label component for form inputs, supporting optional styling and custom HTML tags.

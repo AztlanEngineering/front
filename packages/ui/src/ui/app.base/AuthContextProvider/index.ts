@@ -1,13 +1,13 @@
 /* @aztlan/generator-front 0.4.3 */
 export {
   default as AuthContextProvider,
-} from './AuthContextProvider.tsx'
+} from './AuthContextProvider.js'
 export {
   default as AuthContext,
-} from './Context.ts'
+} from './Context.js'
 export {
   default as useAuth,
-} from './useAuth.ts'
+} from './useAuth.js'
 export {
   default as useViewer,
-} from './useViewer.ts'
+} from './useViewer.js'

@@ -1,2 +1,2 @@
-export { default as useForm } from './useForm.ts'
-export { default as useFieldsValidity } from './useFieldsValidity.ts'
+export { default as useForm } from './useForm.js'
+export { default as useFieldsValidity } from './useFieldsValidity.js'

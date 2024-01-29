@@ -6,11 +6,11 @@ import { InferProps } from 'prop-types'
 import {
   useFormState, RegisterOptions,
 } from 'react-hook-form'
-import Label from './Label.tsx'
-import Description from './Description.tsx'
-import useFieldAriaProps from '../hooks/useFieldAriaProps.ts'
-import * as messages from '../../messages.ts'
-import * as formPropTypes from '../propTypes.ts'
+import Label from './Label.js'
+import Description from './Description.js'
+import useFieldAriaProps from '../hooks/useFieldAriaProps.js'
+import * as messages from '../../messages.js'
+import * as formPropTypes from '../propTypes.js'
 
 const defaultObject = {}
 /**

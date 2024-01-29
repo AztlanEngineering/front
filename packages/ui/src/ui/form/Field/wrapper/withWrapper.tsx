@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import { InferProps } from 'prop-types'
-import Wrapper from './Wrapper.tsx'
-import * as formPropTypes from '../propTypes.ts'
-import withConditionalDisplay, { WithConditionalDisplayProps } from './withConditionalDisplay.ts'
+import Wrapper from './Wrapper.js'
+import * as formPropTypes from '../propTypes.js'
+import withConditionalDisplay, { WithConditionalDisplayProps } from './withConditionalDisplay.js'
 
 type Options<T> = {
   [K in keyof T]?: T[K];

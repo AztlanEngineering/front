@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ID_PREFIX } from '../constants.ts'
+import { ID_PREFIX } from '../constants.js'
 
 /**
  * Generates common ARIA properties for form field elements including input, label, description, and error state.

@@ -1,13 +1,14 @@
 import * as React from 'react'
 import { useLocale } from '@aztlan/react-hooks'
 import { IntlProvider } from 'react-intl'
-import { RelayEnvironmentProvider } from 'react-relay/hooks'
+import { RelayEnvironmentProvider } from 'react-relay'
+// @ts-ignore
 import environment from '@aztlan/storybook-addon-relay/src/decorators/environment'
 import {
   useForm, FormProvider,
 } from 'react-hook-form'
-import { AppContextProvider } from '../ui/common/index.ts'
-import { AuthContextProvider } from '../ui/app.base/index.ts'
+import { AppContextProvider } from '../ui/common/index.js'
+import { AuthContextProvider } from '../ui/app.base/index.js'
 
 export const app = (StoryFn) => (
   <AppContextProvider>

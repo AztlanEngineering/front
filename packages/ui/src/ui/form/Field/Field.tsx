@@ -6,8 +6,8 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import { AVAILABLE_TYPES } from './constants.ts'
-import * as formPropTypes from './propTypes.ts'
+import { AVAILABLE_TYPES } from './constants.js'
+import * as formPropTypes from './propTypes.js'
 
 import {
   Checkbox,
@@ -17,7 +17,7 @@ import {
   Select,
   SimpleChoices,
   Choices,
-} from './inputs/index.ts'
+} from './inputs/index.js'
 
 type UnionInputProps =
   | React.ComponentProps<typeof Checkbox>
@@ -88,6 +88,7 @@ function Field({
 }
 
 Field.propTypes = {
+  ...formPropTypes.globalType,
   ...formPropTypes.Field,
   ...formPropTypes.Wrapper,
 }

@@ -5,9 +5,9 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import useForm from '../hooks/useForm.ts'
+import useForm from '../hooks/useForm.js'
 
-import { Field } from '../../Field/index.ts'
+import { Field } from '../../Field/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'

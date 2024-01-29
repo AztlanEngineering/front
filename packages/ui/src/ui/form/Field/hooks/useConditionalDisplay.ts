@@ -1,5 +1,5 @@
 // REF [41.1]
-// useConditionalDisplay.ts
+// useConditionalDisplay.js
 import {
   useState, useEffect,
 } from 'react'

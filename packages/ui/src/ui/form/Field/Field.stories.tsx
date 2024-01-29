@@ -2,11 +2,11 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.tsx'
-import Component from './Field.tsx'
-import { AVAILABLE_TYPES } from './constants.ts'
+import * as decorators from 'story-utils/decorators.js'
+import Component from './Field.js'
+import { AVAILABLE_TYPES } from './constants.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'form/Field',
   component :Component,
   decorators:[
@@ -19,7 +19,9 @@ export default {
       options:AVAILABLE_TYPES,
     },
   },
-} as Meta<typeof Component>
+}
+
+export default meta 
 
 export const Base: StoryObj<typeof Component> = {
   args:{

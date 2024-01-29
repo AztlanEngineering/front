@@ -2,4 +2,4 @@
 export {
   RawViewerProfile,
   default as ViewerProfile,
-} from './ViewerProfile.tsx'
+} from './ViewerProfile.js'

@@ -2,15 +2,15 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.tsx'
+import * as decorators from 'story-utils/decorators.js'
 import { graphql } from 'react-relay'
-import Component from './Select.tsx'
+import Component from './Select.js'
 import {
   addGraphQLOptions,
   withErrorHandling,
-} from '../../../extensions/index.ts'
+} from '../../../extensions/index.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'form/inputs/Select',
   component :Component,
   decorators:[
@@ -18,7 +18,9 @@ export default {
     decorators.grid,
     decorators.form,
   ],
-} as Meta<typeof Component>
+}
+
+export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{

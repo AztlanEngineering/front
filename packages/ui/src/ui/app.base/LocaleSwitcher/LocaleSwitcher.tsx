@@ -7,7 +7,7 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-import { useApp } from '../../common/index.ts'
+import { useApp } from '../../common/index.js'
 
 // Local Definitions
 
@@ -27,7 +27,6 @@ function LocaleSwitcher({
   id,
   className: userClassName,
   style,
-  children,
   // ...otherProps
 }) {
   useInsertionEffect(
@@ -38,7 +37,9 @@ function LocaleSwitcher({
   )
 
   const {
-    locale, isLocale, setLocale,
+    // locale,
+    isLocale,
+    setLocale,
   } = useApp()
 
   return (
@@ -70,25 +71,11 @@ function LocaleSwitcher({
 }
 
 LocaleSwitcher.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
+  /** The HTML id for this element */ id:PropTypes.string,
 
-  /**
-   * The HTML class names for this element
-   */
-  className:PropTypes.string,
+  /** The HTML class names for this element */ className:PropTypes.string,
 
-  /**
-   * The React-written, css properties for this element.
-   */
-  style:PropTypes.objectOf(PropTypes.string),
-
-  /**
-   *  The children JSX
-   */
-  children:PropTypes.node,
+  /** The React-written, css properties for this element. */ style:PropTypes.objectOf(PropTypes.string),
 }
 
 export default LocaleSwitcher

@@ -4,7 +4,7 @@ import * as React from 'react'
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import useForm from '../hooks/useForm.ts'
+import useForm from '../hooks/useForm.js'
 
 const baseClassName = styleNames.base
 const componentClassName = styleNames.elementNavigation

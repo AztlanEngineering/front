@@ -2,17 +2,19 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.tsx'
-import Component from './SimpleChoices.tsx'
+import * as decorators from 'story-utils/decorators.js'
+import Component from './SimpleChoices.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'form/inputs/SimpleChoices',
   component :Component,
   decorators:[
     decorators.grid,
     decorators.form,
   ],
-} as Meta<typeof Component>
+}
+
+export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{

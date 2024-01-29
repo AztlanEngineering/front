@@ -5,8 +5,8 @@ import * as PropTypes from 'prop-types'
 import {
   Switch, Route,
 } from 'react-router-dom'
-import PrivateRoute from './PrivateRoute.tsx'
-import { useAuth } from '../AuthContextProvider/index.ts'
+import PrivateRoute from './PrivateRoute.js'
+import { useAuth } from '../AuthContextProvider/index.js'
 /* eslint-disable react/no-children-prop */
 
 function SwitchRoutes({
@@ -30,6 +30,7 @@ function SwitchRoutes({
           <Suspense
             fallback={(
               <Wireframe
+                    // @ts-ignore TODO
                 groups={groups}
                 testFunction={testFunction}
                 wireframeTitle={wireframeTitle}
@@ -59,10 +60,7 @@ function SwitchRoutes({
 }
 
 SwitchRoutes.propTypes = {
-  /**
-   * The routes to render
-   */
-
+  /** The routes to render */
   items:PropTypes.arrayOf(PropTypes.shape({
     path:PropTypes.string.isRequired,
     // title:PropTypes.string.isRequired,
@@ -75,7 +73,10 @@ SwitchRoutes.propTypes = {
    * a component that returns a 404 code.
    */
 
-  NotFound:PropTypes.node,
+  NotFoundPage:PropTypes.node,
+
+  /** A component to display while the user is being fetched */
+  Wireframe:PropTypes.node,
 }
 
 export default SwitchRoutes

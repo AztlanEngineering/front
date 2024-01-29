@@ -11,7 +11,7 @@ import {
 import { useFragment } from 'react-relay'
 import {
   useViewer, useAuth,
-} from '../AuthContextProvider/index.ts'
+} from '../AuthContextProvider/index.js'
 
 // Local Definitions
 

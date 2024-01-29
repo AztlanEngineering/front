@@ -4,13 +4,15 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.tsx'
-import Component from './ThemeSwitcher.tsx'
+import * as decorators from 'story-utils/decorators.js'
+import Component from './ThemeSwitcher.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'common/ThemeSwitcher',
   component :Component,
   decorators:[decorators.app],
-} as Meta<typeof Component>
+}
+
+export default meta
 
 export const Base: StoryObj<typeof Component> = { args: {} }

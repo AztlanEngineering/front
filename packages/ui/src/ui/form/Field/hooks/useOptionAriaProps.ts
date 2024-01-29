@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ID_PREFIX } from '../constants.ts'
+import { ID_PREFIX } from '../constants.js'
 
 /**
  * Generates ARIA properties for a specific option in a field.

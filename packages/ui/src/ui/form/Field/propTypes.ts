@@ -1,4 +1,10 @@
 import * as PropTypes from 'prop-types'
+import { AVAILABLE_TYPES } from './constants.js'
+
+export const globalType = {
+  /** The type of the input */
+  type:PropTypes.oneOf(AVAILABLE_TYPES),
+}
 
 export const Field = {
   /** An array of HOC to transform the input */
@@ -89,4 +95,11 @@ export const comboboxShared = {
 
   /** A function that takes a value and returns the matching option */
   convertValueToItem:PropTypes.func,
+}
+
+/** These are props that can or can not be present when iterating over a map of inputs.
+ * Specific inputs have specific requirements, for instance required autoComplete */
+export const optional = {
+  /** Whether the input is optional or not */
+  autoComplete:PropTypes.string,
 }

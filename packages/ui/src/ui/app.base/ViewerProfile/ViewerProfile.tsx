@@ -1,18 +1,15 @@
 /* @aztlan/generator-front 0.4.3 */
 import * as React from 'react'
 
-import {
-  useEffect, useInsertionEffect,
-} from 'react'
+import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import {
-  useRefetchableFragment, useFragment,
-} from 'react-relay'
+import { useFragment } from 'react-relay'
 import { graphql } from 'relay-runtime'
-import { useViewer } from '../AuthContextProvider/index.ts'
+import { useViewer } from '../AuthContextProvider/index.js'
+import { ViewerProfileFragment$key } from './__generated__/ViewerProfileFragment.graphql.js'
 
 // Local Definitions
 
@@ -46,7 +43,6 @@ function RawViewerProfile({
   id,
   className: userClassName,
   style,
-  children,
   data,
   // ...otherProps
 }) {
@@ -57,8 +53,9 @@ function RawViewerProfile({
     }, [],
   )
   const result = useFragment(
-    FRAGMENT, data.viewer,
-  )
+    FRAGMENT,
+    data.viewer,
+  ) as ViewerProfileFragment$key
 
   return (
     <div
@@ -90,25 +87,26 @@ function RawViewerProfile({
 }
 
 RawViewerProfile.propTypes = {
-  /**
-   * The HTML id for this element
-   */
+  /** The HTML id for this element */
   id:PropTypes.string,
 
-  /**
-   * The HTML class names for this element
-   */
+  /** The HTML class names for this element */
   className:PropTypes.string,
 
-  /**
-   * The React-written, css properties for this element.
-   */
+  /** The React-written, css properties for this element. */
   style:PropTypes.objectOf(PropTypes.string),
 
-  /**
-   *  The children JSX
-   */
-  children:PropTypes.node,
+  /** The data for this component */
+  data:PropTypes.shape({
+    viewer:PropTypes.shape({
+      firstName     :PropTypes.string,
+      lastName      :PropTypes.string,
+      created       :PropTypes.string,
+      updated       :PropTypes.string,
+      email         :PropTypes.string,
+      profilePicture:PropTypes.string,
+    }),
+  }),
 }
 
 RawViewerProfile.QUERY = QUERY

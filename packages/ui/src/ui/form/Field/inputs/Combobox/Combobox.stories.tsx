@@ -3,10 +3,10 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.tsx'
-import Component from './Combobox.tsx'
+import * as decorators from 'story-utils/decorators.js'
+import Component from './Combobox.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'form/inputs/Combobox',
   component :Component,
   decorators:[
@@ -14,12 +14,14 @@ export default {
     decorators.grid,
     decorators.form,
   ],
-  argTypes:{ backgroundColor: { control: 'color' } },
+  //argTypes:{ backgroundColor: { control: 'color' } },
   /*
   parameters: {
     layout: 'centered|fullscreen|padded(default)',
   }, */
-} as Meta<typeof Component>
+}
+
+export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{

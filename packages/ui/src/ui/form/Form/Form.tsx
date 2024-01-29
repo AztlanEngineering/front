@@ -13,11 +13,11 @@ import { useSections } from '@aztlan/react-hooks'
 // @ts-ignore
 import styleNames from '@aztlan/bem'
 
-import Context from './Context.ts'
-import Navigation from './common/Navigation.tsx'
-import Content from './common/Content.tsx'
+import Context from './Context.js'
+import Navigation from './common/Navigation.js'
+import Content from './common/Content.js'
 
-import * as formPropTypes from '../Field/propTypes.ts'
+import * as formPropTypes from '../Field/propTypes.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'
@@ -116,8 +116,10 @@ Form.propTypes = {
 
   /** An object of field props that will be applied to all the fields */
   fieldProps:PropTypes.shape({
+    ...formPropTypes.globalType,
     ...formPropTypes.wrapperShared,
     ...formPropTypes.inputShared, // Kinda
+    ...formPropTypes.optional,
   }),
 
   /** The form sections to be rendered */

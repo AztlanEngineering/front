@@ -3,9 +3,9 @@ import {
 } from 'react'
 import {
   fetchQuery, GraphQLTaggedNode,
+  useRelayEnvironment,
 } from 'react-relay'
-import { useRelayEnvironment } from 'react-relay/hooks'
-import * as messages from '../messages.ts'
+import * as messages from '../messages.js'
 
 // Combined state interface and default messages
 export interface UseFetchQueryOptions {

@@ -11,7 +11,9 @@ import { useHistory } from 'react-router-dom'
 
 import * as PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-relay'
-import AuthContext from './Context.ts'
+import AuthContext from './Context.js'
+import { AuthContextProviderViewerQuery } from './__generated__/AuthContextProviderViewerQuery.graphql.js'
+import { AuthContextProviderViewerLogoutMutation } from './__generated__/AuthContextProviderViewerLogoutMutation.graphql.js'
 
 // @ts-ignore
 
@@ -54,14 +56,16 @@ function AuthContextProvider({
     viewerQueryReference,
     loadViewerQuery,
     disposeViewerQuery,
-  ] = useQueryLoader(QUERY_VIEWER)
+  ] = useQueryLoader<AuthContextProviderViewerQuery>(QUERY_VIEWER)
 
   const [
     commitLogout,
     isLogoutInFlight,
-  ] = useMutation(MUTATION_LOGOUT)
+  ] = useMutation<
+  AuthContextProviderViewerLogoutMutation
+  >(MUTATION_LOGOUT)
 
-  const history = useHistory()
+  // const history = useHistory()
 
   const logout = useCallback(
     () => {
@@ -123,25 +127,11 @@ function AuthContextProvider({
 }
 
 AuthContextProvider.propTypes = {
-  /**
-   * The HTML id for this element
-   */
-  id:PropTypes.string,
-
-  /**
-   * The HTML class names for this element
-   */
-  className:PropTypes.string,
-
-  /**
-   * The React-written, css properties for this element.
-   */
-  style:PropTypes.objectOf(PropTypes.string),
-
-  /**
-   *  The children JSX
-   */
+  /** The children JSX */
   children:PropTypes.node,
+
+  /** The path to the login page */
+  loginPath:PropTypes.string,
 }
 
 export default AuthContextProvider

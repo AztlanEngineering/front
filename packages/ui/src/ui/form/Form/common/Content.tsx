@@ -5,9 +5,9 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import useForm from '../hooks/useForm.ts'
-import Section from './Section.tsx'
-import Paginator from './Paginator.tsx'
+import useForm from '../hooks/useForm.js'
+import Section from './Section.js'
+import Paginator from './Paginator.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form-inputs'

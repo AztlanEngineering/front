@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-// import * as formPropTypes from '../../propTypes.ts'
+// import * as formPropTypes from '../../propTypes.js'
 
 const baseClassName = styleNames.base
 const componentClassName = styleNames.elementList

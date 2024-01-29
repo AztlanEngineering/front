@@ -1,7 +1,7 @@
 import React from 'react'
 import { InferProps } from 'prop-types'
-import useConditionalDisplay from '../hooks/useConditionalDisplay.ts'
-import * as formPropTypes from '../propTypes.ts'
+import useConditionalDisplay from '../hooks/useConditionalDisplay.js'
+import * as formPropTypes from '../propTypes.js'
 
 export type WithConditionalDisplayProps = [
   string[] | undefined, // dependencies

@@ -5,8 +5,8 @@ import {
 import { useFormContext } from 'react-hook-form'
 import { GraphQLTaggedNode } from 'react-relay'
 import PropTypes, { InferProps } from 'prop-types'
-import useFetchQuery, { UseFetchQueryOptions } from './useFetchQuery.ts'
-import * as formPropTypes from '../Field/propTypes.ts'
+import useFetchQuery, { UseFetchQueryOptions } from './useFetchQuery.js'
+import * as formPropTypes from '../Field/propTypes.js'
 
 type ComponentProps = InferProps<typeof componentPropTypes>
 

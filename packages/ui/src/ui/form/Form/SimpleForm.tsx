@@ -9,8 +9,8 @@ import {
 } from 'react-hook-form'
 import styleNames from '@aztlan/bem'
 
-import { Field } from '../Field/index.ts'
-import * as formPropTypes from '../Field/propTypes.ts'
+import { Field } from '../Field/index.js'
+import * as formPropTypes from '../Field/propTypes.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form'
@@ -91,8 +91,10 @@ SimpleForm.propTypes = {
 
   /** An object of field props that will be applied to all the fields */
   fieldProps:PropTypes.shape({
+    ...formPropTypes.globalType,
     ...formPropTypes.wrapperShared,
     ...formPropTypes.inputShared, // Kinda
+    ...formPropTypes.optional,
   }),
 }
 

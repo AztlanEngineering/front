@@ -1,3 +1,3 @@
-export * from './common/index.ts'
-export * from './app.base/index.ts'
-export * from './form/index.ts'
+export * from './common/index.js'
+export * from './app.base/index.js'
+export * from './form/index.js'

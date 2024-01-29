@@ -4,7 +4,7 @@ import {
 } from 'react-relay'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-import * as formPropTypes from '../Field/propTypes.ts' // Your existing imports
+import * as formPropTypes from '../Field/propTypes.js' // Your existing imports
 
 const optionsPropType = PropTypes.arrayOf(formPropTypes.optionsShared.options)
 const componentPropTypes = {

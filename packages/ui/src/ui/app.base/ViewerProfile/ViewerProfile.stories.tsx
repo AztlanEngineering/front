@@ -4,18 +4,20 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.tsx'
-import { RawViewerProfile as Component } from './ViewerProfile.tsx'
+import * as decorators from 'story-utils/decorators.js'
+import { RawViewerProfile as Component } from './ViewerProfile.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'base.profile/ViewerProfile',
   component :Component,
   decorators:[
     // Needed for storyshots, not for storybook itself
     decorators.auth,
   ],
-  argTypes:{ backgroundColor: { control: 'color' } },
-} as Meta<typeof Component>
+  //argTypes:{ backgroundColor: { control: 'color' } },
+}
+
+export default meta
 
 const relayConfig = {
   query            :Component.QUERY,

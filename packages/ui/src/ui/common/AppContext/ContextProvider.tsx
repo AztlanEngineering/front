@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { useMemo } from 'react'
 import * as PropTypes from 'prop-types'
 
 import { useTheme } from '@aztlan/react-hooks'
-import Context from './Context.ts'
-import useMaintenance from './useMaintenance.ts'
+import Context from './Context.js'
+import useMaintenance from './useMaintenance.js'
 
 function AppContextProvider({
   children,
@@ -20,16 +21,18 @@ function AppContextProvider({
     return <div>This site is currently not available.</div>
   }
 
-  return (
-    <Context.Provider
-      value={{
-        ...value,
-        ...theme,
-      }}
-    >
-      {children}
-    </Context.Provider>
+  const contextValue = useMemo(
+    () => ({
+      ...value,
+      ...theme,
+    }),
+    [
+      value,
+      theme,
+    ],
   )
+
+  return <Context.Provider value={contextValue}>{children}</Context.Provider>
 }
 
 AppContextProvider.propTypes = {
@@ -44,7 +47,7 @@ AppContextProvider.propTypes = {
   initialTheme:PropTypes.string,
 
   /**
-   * A dictionnary containing settings and preferences to be used application-wide
+   * A dictionnary containing settings and preferences to be used application-wide TODO Nest ?
    */
   value:PropTypes.shape({
     APP:PropTypes.shape({
@@ -59,6 +62,7 @@ AppContextProvider.propTypes = {
       YOUTUBE  :PropTypes.string,
     }),
     CONSTANTS:PropTypes.shape({}),
+    locale   :PropTypes.string,
   }).isRequired,
 
   /**

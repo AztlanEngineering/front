@@ -1,1 +1,1 @@
-export * from './AppContext/index.ts'
+export * from './AppContext/index.js'

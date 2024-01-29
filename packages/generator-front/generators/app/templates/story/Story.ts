@@ -7,7 +7,7 @@ import Component from "./<%= name %>.tsx";
 //import * as decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 //import * as decorators from "story-utils/decorators.tsx";
 
-export default {
+const meta: Meta<typeof Component> {
   title: "<%= fullname %>",
   component: Component,
   decorators: [
@@ -21,7 +21,9 @@ export default {
   parameters: {
     layout: 'centered|fullscreen|padded(default)',
   },*/
-} as Meta<typeof Component>;
+};
+
+export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args: {

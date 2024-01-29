@@ -1,4 +1,4 @@
-// useFormValidity.ts
+// useFormValidity.js
 import {
   useMemo, useCallback,
 } from 'react'

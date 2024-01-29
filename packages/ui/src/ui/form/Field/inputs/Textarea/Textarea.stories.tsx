@@ -2,10 +2,10 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.tsx'
-import Component from './Textarea.tsx'
+import * as decorators from 'story-utils/decorators.js'
+import Component from './Textarea.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title     :'form/inputs/Textarea',
   component :Component,
   decorators:[
@@ -13,7 +13,9 @@ export default {
     decorators.form,
   ],
   argTypes:{ backgroundColor: { control: 'color' } },
-} as Meta<typeof Component>
+}
+
+export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{

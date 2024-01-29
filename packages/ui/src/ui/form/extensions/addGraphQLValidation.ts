@@ -6,8 +6,8 @@ import { useFormContext } from 'react-hook-form'
 import { InferProps } from 'prop-types'
 import { GraphQLTaggedNode } from 'react-relay'
 import debounce from 'lodash.debounce'
-import useFetchQuery, { UseFetchQueryOptions } from './useFetchQuery.ts'
-import * as formPropTypes from '../Field/propTypes.ts' // Your existing imports
+import useFetchQuery, { UseFetchQueryOptions } from './useFetchQuery.js'
+import * as formPropTypes from '../Field/propTypes.js' // Your existing imports
 
 type ComponentProps = InferProps<typeof componentPropTypes>
 
