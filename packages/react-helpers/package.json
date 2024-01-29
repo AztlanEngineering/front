@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/react-helpers",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
