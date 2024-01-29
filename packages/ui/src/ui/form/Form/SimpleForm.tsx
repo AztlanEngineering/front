@@ -2,12 +2,13 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
 import {
   useForm, FormProvider,
 } from 'react-hook-form'
 import styleNames from '@aztlan/bem'
+import type { TSimpleFormProps } from './types.js'
+import { SimpleFormPropTypes } from './types.js'
+
 import type { FieldProps } from '../Field/types.js'
 
 import { Field } from '../Field/index.js'
@@ -28,7 +29,7 @@ function SimpleForm({
   fields,
   fieldProps: sharedFieldProps,
   ...otherProps
-}: InferProps<typeof SimpleForm.propTypes>): React.ReactElement {
+}: TSimpleFormProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -77,26 +78,6 @@ function SimpleForm({
   )
 }
 
-SimpleForm.propTypes = {
-  /** The HTML id for this element */
-  id:PropTypes.string,
-
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
-
-  /** The fields to be rendered */
-  fields:PropTypes.arrayOf(PropTypes.shape(Field.propTypes)),
-
-  /** An object of field props that will be applied to all the fields */
-  fieldProps:PropTypes.shape({
-    ...formPropTypes.globalType,
-    ...formPropTypes.wrapperShared,
-    ...formPropTypes.inputShared, // Kinda
-    ...formPropTypes.optional,
-  }),
-}
+SimpleForm.propTypes = SimpleFormPropTypes
 
 export default SimpleForm

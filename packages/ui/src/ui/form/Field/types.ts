@@ -21,5 +21,5 @@ export type UnionInputProps =
 
 export type FieldProps = UnionInputProps &
 InferProps<typeof formPropTypes.globalType> & {
-  className:string;
+  className?:string;
 }

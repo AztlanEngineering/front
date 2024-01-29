@@ -8,6 +8,7 @@
   "scripts": {
     "xbuild": "npm run build:cjs && npm run build:esm",
     "build": "tsc",
+    "build:verbose": "tsc --noErrorTruncation",
     "copy-css": "copyfiles -u 2 src/ui/**/*.scss dist",
     "build-storybook": "storybook build",
     "build:cjs": "node ./build.mjs --format cjs",

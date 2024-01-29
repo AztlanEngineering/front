@@ -37,7 +37,7 @@ export const typeShared = {
   ]),
 }
 
-export const FormPropTypes = {
+const basePropTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -50,8 +50,6 @@ export const FormPropTypes = {
   /** The children JSX */
   children:PropTypes.node,
 
-  ...typeShared,
-
   /** An object of field props that will be applied to all the fields */
   fieldProps:PropTypes.shape({
     ...formPropTypes.globalType,
@@ -60,8 +58,28 @@ export const FormPropTypes = {
     ...formPropTypes.optional,
   }),
 
-  /** The form sections to be rendered */
+  /** The default values for the form */
+  defaultValues:PropTypes.objectOf(PropTypes.any),
+}
+
+export const FormPropTypes = {
+  ...basePropTypes,
+  ...typeShared,
   items:sectionTypeValidator,
 }
 
+export const SimpleFormPropTypes = {
+  ...basePropTypes,
+
+  /** The fields to be rendered */
+  fields:PropTypes.arrayOf(PropTypes.shape({
+    ...formPropTypes.globalType,
+    ...formPropTypes.baseShared,
+    ...formPropTypes.inputShared, // Kinda
+    ...formPropTypes.optional,
+  })),
+}
+
 export type TFormProps = InferProps<typeof FormPropTypes>
+
+export type TSimpleFormProps = InferProps<typeof SimpleFormPropTypes>
