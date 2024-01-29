@@ -1,3 +1,3 @@
-export { default as Server } from './Server'
-export { default as JSXRenderer } from './JSXRenderer'
-export { default as SitemapRenderer } from './SitemapRenderer'
+export { default as Server } from './Server.js'
+export { default as JSXRenderer } from './JSXRenderer.js'
+export { default as SitemapRenderer } from './SitemapRenderer.js'

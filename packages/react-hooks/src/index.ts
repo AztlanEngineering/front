@@ -1,4 +1,4 @@
-export { default as useTheme } from './useTheme'
-export { default as useLocale } from './useLocale'
-export { default as useSections } from './useSections'
-export type { UseSectionsReturnType } from './useSections'
+export { default as useTheme } from './useTheme.js'
+export { default as useLocale } from './useLocale.js'
+export { default as useSections } from './useSections.js'
+export type { UseSectionsReturnType } from './useSections.js'
