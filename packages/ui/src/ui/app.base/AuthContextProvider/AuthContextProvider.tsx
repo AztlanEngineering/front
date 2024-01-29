@@ -11,6 +11,7 @@ import { useHistory } from 'react-router-dom'
 
 import * as PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-relay'
+// import { graphql } from 'babel-plugin-relay/macro.js'
 import AuthContext from './Context.js'
 import { AuthContextProviderViewerQuery } from './__generated__/AuthContextProviderViewerQuery.graphql.js'
 import { AuthContextProviderViewerLogoutMutation } from './__generated__/AuthContextProviderViewerLogoutMutation.graphql.js'
