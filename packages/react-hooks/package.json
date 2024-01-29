@@ -1,0 +1,29 @@
+{
+  "name": "@aztlan/react-hooks",
+  "version": "0.10.0",
+  "description": "",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:tsc": "tsc",
+    "lint:eslint": "eslint --ext .cjs,.mjs,.js,.tsx,.ts ./ --quiet",
+    "format:eslint": "npm run test:eslint -- --fix",
+    "build": "tsc",
+    "build:watch": "npm run build -- --watch",
+    "prepare": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aztlan/eslint-config-base": "^0.10.0",
+    "@aztlan/typescript-config": "^0.10.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
+  }
+}
