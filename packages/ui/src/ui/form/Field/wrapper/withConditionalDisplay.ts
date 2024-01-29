@@ -22,7 +22,9 @@ export type WithConditionalDisplayProps = [
 function withConditionalDisplay(WrappedComponent: React.ComponentType<FieldProps>) {
   function ExtendedComponent(props: FieldProps): React.ReactElement | null {
     const {
-      name, condition,
+      name,
+      condition,
+      ...otherProps
     } = props
 
     const {
@@ -35,7 +37,11 @@ function withConditionalDisplay(WrappedComponent: React.ComponentType<FieldProps
 
     return ignore || shouldDisplay
       ? React.createElement(
-        WrappedComponent, props,
+        WrappedComponent,
+        {
+          name,
+          ...otherProps,
+        },
       )
       : null
   }

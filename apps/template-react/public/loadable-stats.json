@@ -1,20 +1,20 @@
 {
-  "hash": "6146fa98e1ee5b550c5b",
+  "hash": "84f359dfad3d4593fd19",
   "publicPath": "/",
   "outputPath": "/home/adrian/code/aztlan/front/apps/template-react/public",
   "assetsByChunkName": {
     "main": [
       "main.css",
-      "main.js?57b72"
+      "main.js?8567c"
     ],
     "common": [
-      "common.js?ce616"
+      "common.js?6a436"
     ],
     "base.homepage": [
-      "base.homepage.js?17df0"
+      "base.homepage.js?e194b"
     ],
     "index.js": [
-      "index.js.js?f38cc"
+      "index.js.js?b7714"
     ],
     "tslib.es6.mjs": [
       "tslib.es6.mjs.js?7d86b"
@@ -68,25 +68,25 @@
       "downshift.esm.js.js?de1b4"
     ],
     "parser.js": [
-      "parser.js.js?f5e22"
+      "parser.js.js?d2108"
     ]
   },
   "assets": [
     {
       "type": "asset",
-      "name": "main.js?57b72",
-      "size": 351050,
+      "name": "main.js?8567c",
+      "size": 306673,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "57b72",
+        "chunkhash": "8567c",
         "javascriptModule": false,
         "minimized": true,
         "related": {
           "license": "main.js.LICENSE.txt",
-          "sourceMap": "main.js.map?57b72"
+          "sourceMap": "main.js.map?8567c"
         }
       },
       "chunkNames": [
@@ -446,18 +446,18 @@
     },
     {
       "type": "asset",
-      "name": "index.js.js?f38cc",
+      "name": "index.js.js?b7714",
       "size": 17752,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "f38cc",
+        "chunkhash": "b7714",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "index.js.js.map?f38cc"
+          "sourceMap": "index.js.js.map?b7714"
         }
       },
       "chunkNames": [
@@ -494,18 +494,18 @@
     },
     {
       "type": "asset",
-      "name": "parser.js.js?f5e22",
+      "name": "parser.js.js?d2108",
       "size": 16751,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "f5e22",
+        "chunkhash": "d2108",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "parser.js.js.map?f5e22"
+          "sourceMap": "parser.js.js.map?d2108"
         }
       },
       "chunkNames": [
@@ -872,18 +872,18 @@
     },
     {
       "type": "asset",
-      "name": "base.homepage.js?17df0",
-      "size": 7214,
+      "name": "base.homepage.js?e194b",
+      "size": 6887,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "17df0",
+        "chunkhash": "e194b",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "base.homepage.js.map?17df0"
+          "sourceMap": "base.homepage.js.map?e194b"
         }
       },
       "chunkNames": [
@@ -990,18 +990,18 @@
     },
     {
       "type": "asset",
-      "name": "common.js?ce616",
-      "size": 1795,
+      "name": "common.js?6a436",
+      "size": 1803,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "ce616",
+        "chunkhash": "6a436",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "common.js.map?ce616"
+          "sourceMap": "common.js.map?6a436"
         }
       },
       "chunkNames": [
@@ -1107,14 +1107,14 @@
     },
     {
       "type": "asset",
-      "name": "173.css",
+      "name": "583.css",
       "size": 253,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "related": {
-          "sourceMap": "173.css.map"
+          "sourceMap": "583.css.map"
         }
       },
       "chunkNames": [],
@@ -1123,20 +1123,20 @@
       "auxiliaryChunkIdHints": [],
       "filteredRelated": 1,
       "chunks": [
-        173
+        583
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "116.css",
+      "name": "182.css",
       "size": 128,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "related": {
-          "sourceMap": "116.css.map"
+          "sourceMap": "182.css.map"
         }
       },
       "chunkNames": [],
@@ -1145,20 +1145,20 @@
       "auxiliaryChunkIdHints": [],
       "filteredRelated": 1,
       "chunks": [
-        116
+        182
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "116.js?215ca",
+      "name": "112.js?ee57e",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "215ca",
+        "chunkhash": "ee57e",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1167,20 +1167,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        116
+        112
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "249.js?d8ffe",
+      "name": "182.js?462e2",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "d8ffe",
+        "chunkhash": "462e2",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1189,20 +1189,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        249
+        182
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "259.js?e770e",
+      "name": "214.js?53b1b",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "e770e",
+        "chunkhash": "53b1b",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1211,20 +1211,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        259
+        214
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "322.js?6770c",
+      "name": "320.js?9e6a3",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "6770c",
+        "chunkhash": "9e6a3",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1233,20 +1233,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        322
+        320
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "378.js?e92f7",
+      "name": "353.js?c7507",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "e92f7",
+        "chunkhash": "c7507",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1255,20 +1255,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        378
+        353
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "381.js?6e659",
+      "name": "402.js?a7421",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "6e659",
+        "chunkhash": "a7421",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1277,20 +1277,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        381
+        402
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "697.js?89885",
+      "name": "485.js?b9e1d",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "89885",
+        "chunkhash": "b9e1d",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1299,20 +1299,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        697
+        485
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "817.js?83b78",
+      "name": "583.js?b172d",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "83b78",
+        "chunkhash": "b172d",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1321,29 +1321,7 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        817
-      ],
-      "auxiliaryChunks": []
-    },
-    {
-      "type": "asset",
-      "name": "850.js?576f7",
-      "size": 122,
-      "emitted": false,
-      "comparedForEmit": false,
-      "cached": true,
-      "info": {
-        "immutable": true,
-        "chunkhash": "576f7",
-        "javascriptModule": false,
-        "minimized": true
-      },
-      "chunkNames": [],
-      "chunkIdHints": [],
-      "auxiliaryChunkNames": [],
-      "auxiliaryChunkIdHints": [],
-      "chunks": [
-        850
+        583
       ],
       "auxiliaryChunks": []
     },
@@ -1371,14 +1349,14 @@
     },
     {
       "type": "asset",
-      "name": "945.js?b9bf8",
+      "name": "852.js?0ca5b",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "b9bf8",
+        "chunkhash": "0ca5b",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1387,20 +1365,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        945
+        852
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "946.js?ed9e8",
+      "name": "862.js?2ef9f",
       "size": 122,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "ed9e8",
+        "chunkhash": "2ef9f",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1409,20 +1387,42 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        946
+        862
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "173.js?1e68a",
+      "name": "939.js?5e630",
+      "size": 122,
+      "emitted": false,
+      "comparedForEmit": false,
+      "cached": true,
+      "info": {
+        "immutable": true,
+        "chunkhash": "5e630",
+        "javascriptModule": false,
+        "minimized": true
+      },
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "chunks": [
+        939
+      ],
+      "auxiliaryChunks": []
+    },
+    {
+      "type": "asset",
+      "name": "18.js?946ad",
       "size": 121,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "1e68a",
+        "chunkhash": "946ad",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1431,20 +1431,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        173
+        18
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "28.js?0c284",
+      "name": "63.js?bacdd",
       "size": 121,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "0c284",
+        "chunkhash": "bacdd",
         "javascriptModule": false,
         "minimized": true
       },
@@ -1453,20 +1453,20 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        28
+        63
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "259.css",
+      "name": "214.css",
       "size": 82,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "related": {
-          "sourceMap": "259.css.map"
+          "sourceMap": "214.css.map"
         }
       },
       "chunkNames": [],
@@ -1475,20 +1475,20 @@
       "auxiliaryChunkIdHints": [],
       "filteredRelated": 1,
       "chunks": [
-        259
+        214
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "850.css",
+      "name": "862.css",
       "size": 65,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "related": {
-          "sourceMap": "850.css.map"
+          "sourceMap": "862.css.map"
         }
       },
       "chunkNames": [],
@@ -1497,20 +1497,20 @@
       "auxiliaryChunkIdHints": [],
       "filteredRelated": 1,
       "chunks": [
-        850
+        862
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "28.css",
-      "size": 61,
+      "name": "402.css",
+      "size": 62,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "related": {
-          "sourceMap": "28.css.map"
+          "sourceMap": "402.css.map"
         }
       },
       "chunkNames": [],
@@ -1519,13 +1519,13 @@
       "auxiliaryChunkIdHints": [],
       "filteredRelated": 1,
       "chunks": [
-        28
+        402
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "249.css",
+      "name": "112.css",
       "size": 1,
       "emitted": false,
       "comparedForEmit": false,
@@ -1536,13 +1536,13 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        249
+        112
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "322.css",
+      "name": "18.css",
       "size": 1,
       "emitted": false,
       "comparedForEmit": false,
@@ -1553,13 +1553,13 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        322
+        18
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "378.css",
+      "name": "320.css",
       "size": 1,
       "emitted": false,
       "comparedForEmit": false,
@@ -1570,13 +1570,13 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        378
+        320
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "381.css",
+      "name": "353.css",
       "size": 1,
       "emitted": false,
       "comparedForEmit": false,
@@ -1587,13 +1587,13 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        381
+        353
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "697.css",
+      "name": "485.css",
       "size": 1,
       "emitted": false,
       "comparedForEmit": false,
@@ -1604,13 +1604,13 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        697
+        485
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "817.css",
+      "name": "63.css",
       "size": 1,
       "emitted": false,
       "comparedForEmit": false,
@@ -1621,7 +1621,7 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        817
+        63
       ],
       "auxiliaryChunks": []
     },
@@ -1644,7 +1644,7 @@
     },
     {
       "type": "asset",
-      "name": "945.css",
+      "name": "852.css",
       "size": 1,
       "emitted": false,
       "comparedForEmit": false,
@@ -1655,13 +1655,13 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        945
+        852
       ],
       "auxiliaryChunks": []
     },
     {
       "type": "asset",
-      "name": "946.css",
+      "name": "939.css",
       "size": 1,
       "emitted": false,
       "comparedForEmit": false,
@@ -1672,7 +1672,7 @@
       "auxiliaryChunkNames": [],
       "auxiliaryChunkIdHints": [],
       "chunks": [
-        946
+        939
       ],
       "auxiliaryChunks": []
     },
@@ -1725,7 +1725,7 @@
       ],
       "assets": [
         {
-          "name": "index.js.js?f38cc"
+          "name": "index.js.js?b7714"
         },
         {
           "name": "tslib.es6.mjs.js?7d86b"
@@ -1779,13 +1779,13 @@
           "name": "downshift.esm.js.js?de1b4"
         },
         {
-          "name": "parser.js.js?f5e22"
+          "name": "parser.js.js?d2108"
         },
         {
           "name": "main.css"
         },
         {
-          "name": "main.js?57b72"
+          "name": "main.js?8567c"
         }
       ],
       "filteredAssets": 0,
@@ -1836,7 +1836,7 @@
       ],
       "assets": [
         {
-          "name": "common.js?ce616"
+          "name": "common.js?6a436"
         }
       ],
       "filteredAssets": 0,
@@ -1853,7 +1853,7 @@
       ],
       "assets": [
         {
-          "name": "base.homepage.js?17df0"
+          "name": "base.homepage.js?e194b"
         }
       ],
       "filteredAssets": 0,
@@ -1870,110 +1870,110 @@
       "id": 179,
       "files": [
         "main.css",
-        "main.js?57b72"
+        "main.js?8567c"
       ]
     },
     {
-      "id": 817,
+      "id": 852,
       "files": [
-        "817.css",
-        "817.js?83b78"
+        "852.css",
+        "852.js?0ca5b"
       ]
     },
     {
-      "id": 322,
+      "id": 485,
       "files": [
-        "322.css",
-        "322.js?6770c"
+        "485.css",
+        "485.js?b9e1d"
       ]
     },
     {
-      "id": 378,
+      "id": 939,
       "files": [
-        "378.css",
-        "378.js?e92f7"
+        "939.css",
+        "939.js?5e630"
       ]
     },
     {
-      "id": 946,
+      "id": 320,
       "files": [
-        "946.css",
-        "946.js?ed9e8"
+        "320.css",
+        "320.js?9e6a3"
       ]
     },
     {
-      "id": 697,
+      "id": 18,
       "files": [
-        "697.css",
-        "697.js?89885"
+        "18.css",
+        "18.js?946ad"
       ]
     },
     {
-      "id": 28,
+      "id": 402,
       "files": [
-        "28.css",
-        "28.js?0c284"
+        "402.css",
+        "402.js?a7421"
       ]
     },
     {
-      "id": 116,
+      "id": 182,
       "files": [
-        "116.css",
-        "116.js?215ca"
+        "182.css",
+        "182.js?462e2"
       ]
     },
     {
-      "id": 850,
+      "id": 862,
       "files": [
-        "850.css",
-        "850.js?576f7"
+        "862.css",
+        "862.js?2ef9f"
       ]
     },
     {
-      "id": 249,
+      "id": 63,
       "files": [
-        "249.css",
-        "249.js?d8ffe"
+        "63.css",
+        "63.js?bacdd"
       ]
     },
     {
-      "id": 173,
+      "id": 583,
       "files": [
-        "173.css",
-        "173.js?1e68a"
+        "583.css",
+        "583.js?b172d"
       ]
     },
     {
-      "id": 381,
+      "id": 112,
       "files": [
-        "381.css",
-        "381.js?6e659"
+        "112.css",
+        "112.js?ee57e"
       ]
     },
     {
-      "id": 259,
+      "id": 214,
       "files": [
-        "259.css",
-        "259.js?e770e"
+        "214.css",
+        "214.js?53b1b"
       ]
     },
     {
-      "id": 945,
+      "id": 353,
       "files": [
-        "945.css",
-        "945.js?b9bf8"
+        "353.css",
+        "353.js?c7507"
       ]
     },
     {
       "id": 592,
       "files": [
-        "common.js?ce616"
+        "common.js?6a436"
       ]
     },
     {
       "id": 300,
       "files": [
-        "base.homepage.js?17df0"
+        "base.homepage.js?e194b"
       ]
     },
     {
@@ -1998,7 +1998,7 @@
     {
       "id": 976,
       "files": [
-        "index.js.js?f38cc"
+        "index.js.js?b7714"
       ]
     },
     {
@@ -2106,7 +2106,7 @@
     {
       "id": 226,
       "files": [
-        "parser.js.js?f5e22"
+        "parser.js.js?d2108"
       ]
     }
   ]

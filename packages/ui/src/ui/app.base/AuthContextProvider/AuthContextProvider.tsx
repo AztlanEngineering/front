@@ -23,7 +23,7 @@ const DEFAULT_QUERY_VIEWER = graphql`
   query AuthContextProviderViewerQuery {
     viewer {
       ...ViewerProfileFragment
-      ...useViewerFragment
+      #...useViewerFragment
     }
   }
 `

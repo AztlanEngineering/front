@@ -53,6 +53,7 @@ const template = (inputs) => ({
       'react-dom'       :getAbsolutePath('react-dom'),
       'react-router-dom':getAbsolutePath('react-router-dom'),
       'react-relay'     :getAbsolutePath('react-relay'),
+      '.graphql'        :'.graphql.js',
       ...inputs.resolveAlias,
     },
     roots:[path.join(inputs.dirname, 'src')],

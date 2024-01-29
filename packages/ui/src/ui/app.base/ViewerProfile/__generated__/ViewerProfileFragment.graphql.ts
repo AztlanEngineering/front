@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<afb7205111e68e806926b79ce483a427>>
+ * @generated SignedSource<<8ce575cf2a11234e244d7b3c7375680f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -25,6 +25,8 @@ export type ViewerProfileFragment$key = {
   readonly " $fragmentSpreads": FragmentRefs<"ViewerProfileFragment">;
 };
 
+import ViewerProfileRefetchableFragment_graphql from './ViewerProfileRefetchableFragment.graphql';
+
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
@@ -34,7 +36,7 @@ const node: ReaderFragment = {
       "fragmentPathInResult": [
         "node"
       ],
-      "operation": require('./ViewerProfileRefetchableFragment.graphql'),
+      "operation": ViewerProfileRefetchableFragment_graphql,
       "identifierInfo": {
         "identifierField": "id",
         "identifierQueryVariableName": "id"

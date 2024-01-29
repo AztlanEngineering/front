@@ -9,6 +9,7 @@
     "xbuild": "npm run build:cjs && npm run build:esm",
     "build": "tsc",
     "build:verbose": "tsc --noErrorTruncation",
+    "babel": "babel src --out-dir dist --extensions \".ts,.tsx,.js,.jsx\"",
     "copy-css": "copyfiles -u 1 src/ui/**/*.scss dist",
     "build-storybook": "storybook build",
     "build:cjs": "node ./build.mjs --format cjs",
@@ -43,7 +44,9 @@
     "@aztlan/stylelint-config": "^0.6.0",
     "@aztlan/typescript-config": "^0.11.0",
     "@aztlan/webpack-config": "^0.11.0",
+    "@babel/cli": "^7.23.9",
     "@babel/core": "^7.23.9",
+    "@babel/plugin-transform-typescript": "^7.23.6",
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.6.10",
@@ -58,6 +61,7 @@
     "@types/jest": "^29.5.11",
     "@types/prop-types": "^15.7.11",
     "babel-jest": "^29.7.0",
+    "babel-plugin-relay": "^16.2.0",
     "css-loader": "^6.9.1",
     "eslint": "^8.56.0",
     "identity-obj-proxy": "^3.0.0",
@@ -81,7 +85,6 @@
     "@aztlan/storybook-addon-relay": "^0.11.0",
     "@storybook/react": "^7.6.10",
     "babel-plugin-formatjs": "^10.5.13",
-    "babel-plugin-relay": "^16.2.0",
     "downshift": "^8.3.1",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.8.1",
@@ -97,7 +100,8 @@
   "relay": {
     "src": "./src",
     "schema": "./schema.graphql",
-    "language": "typescript"
+    "language": "typescript",
+    "eagerEsModules":true
   },
   "babel": {
     "presets": [
@@ -105,6 +109,15 @@
     ],
     "plugins": [
       "relay",
+      [                                          
+        "@aztlan/replace-import-extension",
+        {
+          "extMapping":{
+            ".graphql":".graphql.js"
+          },
+          "disableDyanmicImportTransform":true   
+        }
+      ],
       "formatjs"
     ]
   },
