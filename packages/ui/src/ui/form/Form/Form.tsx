@@ -9,7 +9,8 @@ import { InferProps } from 'prop-types'
 import {
   useForm, FormProvider,
 } from 'react-hook-form'
-import { useSections } from '@aztlan/react-helpers'
+import { useSections } from '@aztlan/react-hooks'
+// @ts-ignore
 import styleNames from '@aztlan/bem'
 
 import Context from './Context.ts'

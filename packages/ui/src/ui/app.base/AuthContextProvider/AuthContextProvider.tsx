@@ -7,10 +7,10 @@ import {
 import {
   useMutation, useQueryLoader,
 } from 'react-relay'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 import * as PropTypes from 'prop-types'
-import { TokenStateManager } from '@aztlan/react-helpers/relay/auth'
+import { TokenStateManager } from '@aztlan/react-relay'
 import AuthContext from './Context.ts'
 
 // @ts-ignore

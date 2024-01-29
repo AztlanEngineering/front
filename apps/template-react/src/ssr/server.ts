@@ -1,4 +1,4 @@
-import Server from '@aztlan/react-helpers/ssr/Server'
+import { Server } from '@aztlan/react-ssr'
 import renderer from './renderer.ts'
 
 const server = new Server(

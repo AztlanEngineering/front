@@ -1,4 +1,4 @@
-import getEnvironment from '@aztlan/react-helpers/relay/server'
+import { getServerEnvironment } from '@aztlan/react-relay'
 import { JSXRenderer } from '@aztlan/react-ssr'
 import Base from './Base.tsx'
 // @ts-ignore
@@ -16,7 +16,7 @@ properly configured with CSS Modules', styleNames, styleNames.base)
 
 const renderer = new JSXRenderer(
   Base, template, stats, {
-    getEnvironment,
+    getServerEnvironment,
     defaultLocale:'en',
     loadMessages,
   },

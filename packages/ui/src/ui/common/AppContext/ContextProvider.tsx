@@ -1,43 +1,18 @@
 import * as React from 'react'
-import {
-  useReducer, useContext,
-} from 'react'
 import * as PropTypes from 'prop-types'
 
-import { useTheme } from '@aztlan/react-helpers'
+import { useTheme } from '@aztlan/react-hooks'
 import Context from './Context.ts'
 import useMaintenance from './useMaintenance.ts'
-
-// Helper Definitions
-const reducer = (
-  state, action,
-) => {
-  switch (action.type) {
-    case 'UPDATE_STATE':
-      return {
-        ...state,
-        ...action.payload,
-      }
-    default:
-      return state
-  }
-}
 
 function AppContextProvider({
   children,
   initialTheme,
   value,
-  initialState = {},
   maintenance = false,
   // ...otherProps
 }) {
   const theme = useTheme(initialTheme)
-  const [
-    state,
-    dispatch,
-  ] = useReducer(
-    reducer, initialState,
-  )
 
   const isMaintenanceMode = useMaintenance(maintenance)
 
@@ -85,11 +60,6 @@ AppContextProvider.propTypes = {
     }),
     CONSTANTS:PropTypes.shape({}),
   }).isRequired,
-
-  /**
-   * Application context initial state
-   */
-  initialState:PropTypes.objectOf(PropTypes.string),
 
   /**
    * Maintenance mode. If true, the website will be in maintenance mode.

@@ -1,0 +1,29 @@
+{
+  "name": "@aztlan/react-scripts",
+  "version": "0.11.0",
+  "description": "",
+  "bin": {
+    "fetch-schema": "./scripts/fetchSchema.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:tsc": "tsc",
+    "lint:eslint": "eslint --ext .cjs,.mjs,.js,.tsx,.ts ./ --quiet",
+    "format:eslint": "npm run test:eslint -- --fix",
+    "build": "exit 0",
+    "prepare": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aztlan/eslint-config-base": "^0.11.0",
+    "@aztlan/typescript-config": "^0.11.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.1"
+  },
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
+  }
+}

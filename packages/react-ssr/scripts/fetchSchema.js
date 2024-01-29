@@ -5,7 +5,9 @@ const fs = require('fs')
 const dotenv = require('dotenv')
 const path = require('path')
 
-const dotenvConfigPath = path.join(process.cwd(), '.env.scripts')
+const dotenvConfigPath = path.join(
+  process.cwd(), '.env.scripts',
+)
 dotenv.config({ path: dotenvConfigPath })
 
 const {
@@ -30,15 +32,21 @@ const filename = 'schema.graphql'
 const processContent = (data) => {
   if (data.content) {
     if (isDebug) {
-      console.log(Buffer.from(data.content, 'base64').toString('utf-8'))
+      console.log(Buffer.from(
+        data.content, 'base64',
+      ).toString('utf-8'))
     }
-    fs.writeFile(filename, Buffer.from(data.content, 'base64'), 'utf8', (err) => {
-      if (err) {
-        console.log(err)
-      } else {
-        console.log(`${filename} successfully saved`)
-      }
-    })
+    fs.writeFile(
+      filename, Buffer.from(
+        data.content, 'base64',
+      ), 'utf8', (err) => {
+        if (err) {
+          console.log(err)
+        } else {
+          console.log(`${filename} successfully saved`)
+        }
+      },
+    )
   } else {
     console.error('Error in downloading the schema.')
   }
@@ -56,21 +64,27 @@ function performRequest(success) {
     },
   }
 
-  const req = https.request(options, (res) => {
-    res.setEncoding('utf-8')
+  const req = https.request(
+    options, (res) => {
+      res.setEncoding('utf-8')
 
-    let responseString = ''
+      let responseString = ''
 
-    res.on('data', (data) => {
-      responseString += data
-    })
+      res.on(
+        'data', (data) => {
+          responseString += data
+        },
+      )
 
-    res.on('end', () => {
-      // console.log(responseString)
-      const responseObject = JSON.parse(responseString)
-      success(responseObject)
-    })
-  })
+      res.on(
+        'end', () => {
+          // console.log(responseString)
+          const responseObject = JSON.parse(responseString)
+          success(responseObject)
+        },
+      )
+    },
+  )
 
   // req.write()
   req.end()

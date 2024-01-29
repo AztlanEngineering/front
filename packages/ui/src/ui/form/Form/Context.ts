@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { InferProps } from 'prop-types'
-import { UseSectionsReturnType } from '@aztlan/react-helpers'
+import { UseSectionsReturnType } from '@aztlan/react-hooks'
 
 import * as formPropTypes from '../Field/propTypes.ts'
 
