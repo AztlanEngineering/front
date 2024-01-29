@@ -1,4 +1,4 @@
-import log from './log.ts'
+import log from './log.js'
 
 const storage: Storage = typeof process === 'undefined' ? localStorage : {}
 const keys = {

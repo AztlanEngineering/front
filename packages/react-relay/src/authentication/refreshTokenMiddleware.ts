@@ -1,5 +1,5 @@
-import fetchAccessToken from './fetchAccessToken'
-import TokenStateManager from './TokenStateManager'
+import fetchAccessToken from './fetchAccessToken.js'
+import TokenStateManager from './TokenStateManager.js'
 
 const defaults = {
   mutation :'mutation { refreshToken(input:{clientMutationId:"das"}){payload refreshExpiresIn}}',
