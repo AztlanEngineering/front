@@ -3,9 +3,10 @@ import { configureSharedConfig } from '@aztlan/webpack-config'
 
 const {
   entry,
+  experiments,
+  plugins,
   resolve,
   rules,
-  plugins,
   outputSSRServer: output,
 } = configureSharedConfig({
   entry            :'src/ssr/server.ts',
@@ -19,6 +20,7 @@ export default {
   entry,
   resolve,
   output,
+  experiments,
   plugins:[
     plugins.Dotenv,
     plugins.Nodemon,

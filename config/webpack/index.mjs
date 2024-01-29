@@ -78,15 +78,21 @@ const template = (inputs) => ({
   },
   // This is for the SSR executable file
   outputSSRRenderer:{
-    path         :path.resolve(inputs.dirname, 'api/'),
-    filename     :inputs.outputSSRFilename,
+    path    :path.resolve(inputs.dirname, 'api/'),
+    filename:inputs.outputSSRFilename,
     // https://webpack.js.org/configuration/output/#librarytarget-module
-    libraryTarget:'module',
+    library :{
+      type:'module',
+    },
   },
   // This is for the temporary SSR dev server (wrapper around the renderer)
   outputSSRServer:{
-    path    :path.resolve(inputs.dirname, 'tmp/'),
-    filename:inputs.outputSSRFilename,
+    path       :path.resolve(inputs.dirname, 'tmp/'),
+    filename   :inputs.outputSSRFilename,
+    chunkFormat:'module',
+    library    :{
+      type:'module',
+    },
   },
 
   experiments:{
