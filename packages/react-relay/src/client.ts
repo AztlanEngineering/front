@@ -5,13 +5,13 @@ import {
 import {
   RelayNetworkLayer,
   urlMiddleware,
-  loggerMiddleware,
-  retryMiddleware,
+  // loggerMiddleware,
+  // retryMiddleware,
   errorMiddleware,
   perfMiddleware,
 } from 'react-relay-network-modern/es/index.js'
 
-import { refreshTokenMiddleware } from './auth/index.ts'
+import { refreshTokenMiddleware } from './authentication/index.js'
 
 /* eslint-disable no-underscore-dangle -- special case */
 // @ts-ignore
@@ -61,6 +61,7 @@ const getEnvironment = (url) => new Environment({
       },
       statusCodes: [500, 503, 504],
     }), */
+    // @ts-ignore
     refreshTokenMiddleware(),
   ],
     // { noThrow: true },
