@@ -1,20 +1,20 @@
 {
-  "hash": "8726f3426012e5d72eef",
+  "hash": "6146fa98e1ee5b550c5b",
   "publicPath": "/",
   "outputPath": "/home/adrian/code/aztlan/front/apps/template-react/public",
   "assetsByChunkName": {
     "main": [
       "main.css",
-      "main.js?bf674"
+      "main.js?57b72"
     ],
     "common": [
-      "common.js?405b4"
+      "common.js?ce616"
     ],
     "base.homepage": [
-      "base.homepage.js?b29c0"
+      "base.homepage.js?17df0"
     ],
     "index.js": [
-      "index.js.js?d6689"
+      "index.js.js?f38cc"
     ],
     "tslib.es6.mjs": [
       "tslib.es6.mjs.js?7d86b"
@@ -74,19 +74,19 @@
   "assets": [
     {
       "type": "asset",
-      "name": "main.js?bf674",
-      "size": 351758,
+      "name": "main.js?57b72",
+      "size": 351050,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "bf674",
+        "chunkhash": "57b72",
         "javascriptModule": false,
         "minimized": true,
         "related": {
           "license": "main.js.LICENSE.txt",
-          "sourceMap": "main.js.map?bf674"
+          "sourceMap": "main.js.map?57b72"
         }
       },
       "chunkNames": [
@@ -446,18 +446,18 @@
     },
     {
       "type": "asset",
-      "name": "index.js.js?d6689",
+      "name": "index.js.js?f38cc",
       "size": 17752,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "d6689",
+        "chunkhash": "f38cc",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "index.js.js.map?d6689"
+          "sourceMap": "index.js.js.map?f38cc"
         }
       },
       "chunkNames": [
@@ -872,18 +872,18 @@
     },
     {
       "type": "asset",
-      "name": "base.homepage.js?b29c0",
-      "size": 7212,
+      "name": "base.homepage.js?17df0",
+      "size": 7214,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "b29c0",
+        "chunkhash": "17df0",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "base.homepage.js.map?b29c0"
+          "sourceMap": "base.homepage.js.map?17df0"
         }
       },
       "chunkNames": [
@@ -990,18 +990,18 @@
     },
     {
       "type": "asset",
-      "name": "common.js?405b4",
-      "size": 1793,
+      "name": "common.js?ce616",
+      "size": 1795,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "405b4",
+        "chunkhash": "ce616",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "common.js.map?405b4"
+          "sourceMap": "common.js.map?ce616"
         }
       },
       "chunkNames": [
@@ -1725,7 +1725,7 @@
       ],
       "assets": [
         {
-          "name": "index.js.js?d6689"
+          "name": "index.js.js?f38cc"
         },
         {
           "name": "tslib.es6.mjs.js?7d86b"
@@ -1785,7 +1785,7 @@
           "name": "main.css"
         },
         {
-          "name": "main.js?bf674"
+          "name": "main.js?57b72"
         }
       ],
       "filteredAssets": 0,
@@ -1836,7 +1836,7 @@
       ],
       "assets": [
         {
-          "name": "common.js?405b4"
+          "name": "common.js?ce616"
         }
       ],
       "filteredAssets": 0,
@@ -1853,7 +1853,7 @@
       ],
       "assets": [
         {
-          "name": "base.homepage.js?b29c0"
+          "name": "base.homepage.js?17df0"
         }
       ],
       "filteredAssets": 0,
@@ -1870,7 +1870,7 @@
       "id": 179,
       "files": [
         "main.css",
-        "main.js?bf674"
+        "main.js?57b72"
       ]
     },
     {
@@ -1967,13 +1967,13 @@
     {
       "id": 592,
       "files": [
-        "common.js?405b4"
+        "common.js?ce616"
       ]
     },
     {
       "id": 300,
       "files": [
-        "base.homepage.js?b29c0"
+        "base.homepage.js?17df0"
       ]
     },
     {
@@ -1998,7 +1998,7 @@
     {
       "id": 976,
       "files": [
-        "index.js.js?d6689"
+        "index.js.js?f38cc"
       ]
     },
     {
