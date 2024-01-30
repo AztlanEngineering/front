@@ -130,7 +130,8 @@ const template = (inputs) => ({
       '../../packages',
     ],
     allowlist:[
-      /^@aztlan\/ui/, // TODO be more selective to only include
+      // /^@aztlan\/ui/, // TODO be more selective to only include
+      /^@aztlan/, // TODO be more selective to only include
     ],
   })],
   optimization:{
