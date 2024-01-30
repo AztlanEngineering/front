@@ -36,9 +36,9 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install dependencies
-      if: steps.cache-modules.outputs.cache-hit != 'true'
+      #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        npm ci
+        npm install
       
     #- name: Lint SCSS
     #  run: npm run test:stylelint

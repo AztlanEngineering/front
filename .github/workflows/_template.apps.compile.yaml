@@ -42,9 +42,9 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install dependencies
-      if: steps.cache-modules.outputs.cache-hit != 'true'
+      #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        npm ci
+        npm install
 
     #- name: Test
     #  env:
@@ -68,8 +68,6 @@ jobs:
 
     - uses: nelonoel/branch-name@v1.0.1
 
-    - run: npm ci
-
     - name: Cache
       id: cache-modules
       uses: actions/cache@v1
@@ -80,14 +78,10 @@ jobs:
     - name: Install dependencies
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        cd ${{ inputs.working-directory }} && npm install
-
-    - name: Link
-      run: npm link && cd ${{ inputs.working-directory }} && npm link @aztlan/react-hooks
+        npm install && cd ${{ inputs.working-directory }} && npm install
 
     - name: Create local changes
       run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
-
 
     - name: Configure CI Git User
       run: |     
