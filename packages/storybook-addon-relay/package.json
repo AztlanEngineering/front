@@ -67,8 +67,8 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "compile": "vite build",
-    "postinstall": "npm run compile"
+    "build": "vite build",
+    "prepublishOnly": "npm run build"
   },
   "resolutions": {
     "jest-mock": "^28"
