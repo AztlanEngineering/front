@@ -13,5 +13,8 @@
     "@loadable/babel-plugin": "^5.16.1",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-relay": "^16.2.0"
+  },
+  "dependencies": {
+    "0": "^0.0.0"
   }
 }

@@ -24,6 +24,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "0": "^0.0.0",
     "@babel/core": "^7.23.9",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.4.1",

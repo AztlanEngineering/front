@@ -28,6 +28,7 @@
     "extends": "@aztlan/eslint-config-base"
   },
   "dependencies": {
+    "0": "^0.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-relay": "^16.2.0",

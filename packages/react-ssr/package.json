@@ -25,6 +25,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "0": "^0.0.0",
     "@loadable/server": "^5.16.2",
     "@pareto-engineering/react-ssr-prepass": "^1.6.0",
     "date-fns": "^3.3.1",
