@@ -36,6 +36,7 @@ class Builder {
     this.entryPoints = glob.sync(
       this.config.entryPoints, { ignore: this.config.ignore },
     )
+    this.outputExtension = this.config.format === 'cjs' ? '.cjs' : '.mjs'
   }
 
   /**
@@ -138,10 +139,10 @@ class Builder {
               '@aztlan/replace-import-extension',
               {
                 extMapping:{
-                  '.graphql':'.graphql.js',
-                  '.ts'     :this.config.format === 'cjs' ? '.cjs' : '.mjs',
-                  '.tsx'    :this.config.format === 'cjs' ? '.cjs' : '.mjs',
-                  '.js'     :this.config.format === 'cjs' ? '.cjs' : '.mjs',
+                  '.graphql':`.graphql${this.outputExtension}`,
+                  '.ts'     :this.outputExtension,
+                  '.tsx'    :this.outputExtension,
+                  '.js'     :this.outputExtension,
                 },
                 disableDyanmicImportTransform:true,
               },
@@ -171,17 +172,14 @@ class Builder {
    * @param {Object} result - The result object from Babel transformation.
    */
   async writeFile(result) {
-    const outputExtension = this.config.format === 'cjs' ? '.cjs' : '.mjs'
-    const extension = result.options.filename.includes('.graphql') ? '.js' : outputExtension
-
     const relativeFilename = path.relative(
       process.cwd(), result.options.filename,
     )
     const outputFilename = path.basename(relativeFilename).replace(
-      /\.(tsx?|jsx?)$/, extension,
+      /\.(tsx?|jsx?)$/, this.outputExtension,
     )
     const outputFolder = path.join(
-      'dist', this.config.format, path.dirname(relativeFilename).split('/').slice(this.config.up).join('/'),
+      'dist', this.config.format, path.dirname(relativeFilename).split('/').slice(this.config.up + 1).join('/'),
     )
     const outputPath = path.join(
       outputFolder, outputFilename,
@@ -215,7 +213,7 @@ class Builder {
           `${process.cwd()}/dist/${this.config.format}`,
         ],
         {
-          up     :this.config.up || 2,
+          up     :this.config.up + 1 || 2,
           verbose:true,
         },
         (err) => {
