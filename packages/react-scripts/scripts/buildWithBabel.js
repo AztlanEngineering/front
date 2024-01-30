@@ -141,6 +141,7 @@ class Builder {
                   '.graphql':'.graphql.js',
                   '.ts'     :this.config.format === 'cjs' ? '.cjs' : '.mjs',
                   '.tsx'    :this.config.format === 'cjs' ? '.cjs' : '.mjs',
+                  '.js'     :this.config.format === 'cjs' ? '.cjs' : '.mjs',
                 },
                 disableDyanmicImportTransform:true,
               },

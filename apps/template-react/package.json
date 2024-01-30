@@ -117,12 +117,7 @@
       "@aztlan/react"
     ],
     "plugins": [
-      [
-        "relay",
-        {
-          "eagerEsModules": true
-        }
-      ],
+      "relay",
       "formatjs"
     ]
   },

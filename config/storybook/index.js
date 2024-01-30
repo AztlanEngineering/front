@@ -5,6 +5,7 @@
 const path = require('path')
 const { fileURLlToPath } = require('url')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const ResolveTypeScriptPlugin = require('resolve-typescript-plugin')
 
 function getAbsolutePath(value) {
   return path.dirname(require.resolve(path.join(value, 'package.json')))
@@ -63,6 +64,7 @@ const template = (inputs) => ({
   },
   resolve:{
     alias:inputs.alias.reduce((a, e) => {
+      // console.info(e)
       a[e] = getAbsolutePath(e)
       return a
     }, {}),
@@ -91,13 +93,35 @@ const template = (inputs) => ({
   }),
   pushTsconfigPathsPlugin:(config) => {
     if (config.resolve) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'story-utils':path.resolve(process.cwd(), 'src/story-utils'),
+      }
+
+      /* Enable this long term fix when Webpack > 5.74.0
+       https://github.com/webpack/webpack/releases/tag/v5.74.0
+       https://github.com/storybookjs/storybook/issues/15962
+
+      config.resolve.extensionAlias = {
+        ...config.resolve.extensionAlias,
+        '.js':['.ts', '.js'],
+      }, */
+
       config.resolve.plugins = [
         ...(config.resolve.plugins || []),
-        new TsconfigPathsPlugin({
-          extensions:config.resolve.extensions,
+        // new TsconfigPathsPlugin({
+        //  extensions:config.resolve.extensions,
+        // }),
+        /**
+       * See https://github.com/storybookjs/storybook/issues/15962
+       * and https://github.com/softwareventures/resolve-typescript-plugin
+       */
+        new ResolveTypeScriptPlugin({
         }),
+
       ]
     }
+    console.log(config.resolve)
   },
 })
 

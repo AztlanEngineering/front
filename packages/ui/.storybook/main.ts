@@ -11,6 +11,7 @@ const {
   pushTsconfigPathsPlugin,
   staticDirs,
   stories,
+  resolve,
   typescript,
 } = configureSharedConfig({
   location:__dirname,
@@ -18,20 +19,20 @@ const {
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config: StorybookConfig = {
-  stories,
-  staticDirs,
-  addons:[
-    ...addons,
-    getAbsolutePath("@aztlan/storybook-addon-relay")
+  addons:[ 
+    ...addons, 
+    getAbsolutePath("@aztlan/storybook-addon-relay") 
   ],
-  framework,
-  docs,
   core,
+  docs,
+  framework,
+  staticDirs,
+  stories,
   typescript,
-  webpackFinal: async (config, { configType }) => {
-    pushScss(config)
-    pushTsconfigPathsPlugin(config)
-    return config;
+  webpackFinal: async (c, { configType }) => {
+    pushScss(c)
+    pushTsconfigPathsPlugin(c)
+    return c;
   },
 };
 

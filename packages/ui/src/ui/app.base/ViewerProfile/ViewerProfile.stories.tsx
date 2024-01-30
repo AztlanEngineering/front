@@ -14,7 +14,7 @@ const meta: Meta<typeof Component> = {
     // Needed for storyshots, not for storybook itself
     decorators.auth,
   ],
-  //argTypes:{ backgroundColor: { control: 'color' } },
+  // argTypes:{ backgroundColor: { control: 'color' } },
 }
 
 export default meta

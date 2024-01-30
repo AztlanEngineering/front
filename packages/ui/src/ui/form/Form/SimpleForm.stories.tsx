@@ -11,7 +11,7 @@ const meta: Meta<typeof Component> = {
   decorators:[
     // decorators.app,
   ],
-  //argTypes:{ backgroundColor: { control: 'color' } },
+  // argTypes:{ backgroundColor: { control: 'color' } },
 }
 
 export default meta

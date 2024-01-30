@@ -21,7 +21,7 @@ const meta: Meta<typeof Component> = {
   },
 }
 
-export default meta 
+export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{

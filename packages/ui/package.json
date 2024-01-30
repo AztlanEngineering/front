@@ -6,12 +6,11 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "xbuild": "npm run build:cjs && npm run build:esm && npm run build:types",
-    "build": "exit 0",
-    "build-storybook": "storybook build",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "build:cjs": "build-with-babel --format cjs",
     "build:esm": "build-with-babel --format esm",
     "build:types": "tsc --emitDeclarationOnly",
+    "build-storybook": "storybook build",
     "relay": "relay-compiler",
     "relay:debug": "relay-compiler --output debug",
     "schema:development": "fetch-schema",
@@ -105,15 +104,6 @@
     ],
     "plugins": [
       "relay",
-      [
-        "@aztlan/replace-import-extension",
-        {
-          "extMapping": {
-            ".graphql": ".graphql.js"
-          },
-          "disableDyanmicImportTransform": true
-        }
-      ],
       "formatjs"
     ]
   },
