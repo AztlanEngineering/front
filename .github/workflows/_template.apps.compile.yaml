@@ -68,7 +68,7 @@ jobs:
 
     - uses: nelonoel/branch-name@v1.0.1
 
-    - run: npm ci --install-strategy=nested
+    - run: npm ci
 
     - name: Cache
       id: cache-modules

@@ -31,4 +31,7 @@ We use a shared build script (made available with `"bin":` in package.json)
 }
 ```
 
+## Build
+
+To build for npm, we have decided to use the `prepare` over `prepublishOnly`. Otherwise, npm install will not compile the packages on the CI. The downside of prepare is that the build scripts will be run on install, and this will fail if the build of the module fails, needing temporarily to rename the build script and replace it with a dummy.
 

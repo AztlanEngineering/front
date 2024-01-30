@@ -9,8 +9,5 @@
     "@aztlan/eslint-config": "^0.2.0",
     "resolve-typescript-plugin": "^2.0.1",
     "tsconfig-paths-webpack-plugin": "^4.1.0"
-  },
-  "dependencies": {
-    "0": "^0.0.0"
   }
 }

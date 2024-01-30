@@ -28,6 +28,7 @@
     "build:cjs": "build-with-babel --format cjs",
     "build:esm": "build-with-babel --format esm",
     "build:types": "tsc --emitDeclarationOnly",
+    "postinstall": "npm run build",
     "prepublishOnly": "npm run build"
   },
   "author": "",
@@ -39,7 +40,6 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "0": "^0.0.0",
     "react": "^18.2.0",
     "react-relay-network-modern": "^6.2.2",
     "relay-runtime": "^16.2.0"
