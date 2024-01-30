@@ -16,9 +16,10 @@ properly configured with CSS Modules', styleNames, styleNames.base)
 
 const renderer = new JSXRenderer(
   Base, template, stats, {
-    getServerEnvironment,
-    defaultLocale:'en',
+    getEnvironment    :getServerEnvironment,
+    defaultLocale     :'en',
     loadMessages,
+    graphqlEndpointUrl:process.env.GRAPHQL_ENDPOINT,
   },
 )
 // console.log(r)

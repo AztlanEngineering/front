@@ -6,9 +6,10 @@ import ReactDOMServer from 'react-dom/server'
 import ssrPrepass from '@pareto-engineering/react-ssr-prepass'
 
 interface RendererOptions {
-  loadMessages?  :(locale: string) => Promise<any>;
-  getEnvironment?:(endpoint: string) => any;
-  defaultLocale? :string;
+  loadMessages?      :(locale: string) => Promise<any>;
+  getEnvironment?    :(endpoint: string) => any;
+  defaultLocale?     :string;
+  graphqlEndpointUrl?:string;
 }
 
 class Renderer {
@@ -31,6 +32,8 @@ class Renderer {
   private helmet:any
 
   private queryRecords:any
+
+  private graphqlEndpointUrl:string
 
   private locale:string
 
@@ -91,7 +94,7 @@ class Renderer {
 
   prepareRelay() {
     if (this.options.getEnvironment) {
-      this.environment = this.options.getEnvironment(process.env.GRAPHQL_ENDPOINT)
+      this.environment = this.options.getEnvironment(this.options.graphqlEndpointUrl)
     }
   }
 

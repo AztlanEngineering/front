@@ -114,9 +114,10 @@ const template = (inputs) => ({
     Loadable:new LoadablePlugin({
     }), */
     Nodemon:new NodemonPlugin({
-      watch  :path.resolve(inputs.dirname, 'src'),
-      ext    :'ts,tsx,graphql',
-      verbose:true,
+      watch   :path.resolve(inputs.dirname, 'src'),
+      ext     :'ts,tsx,graphql',
+      verbose :true,
+      nodeArgs:['--inspect'],
     }),
     LimitChunkCount:new webpack.optimize.LimitChunkCountPlugin({
       maxChunks:1,
