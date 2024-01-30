@@ -96,6 +96,7 @@ const template = (inputs) => ({
       config.resolve.alias = {
         ...config.resolve.alias,
         'story-utils':path.resolve(process.cwd(), 'src/story-utils'),
+        //'@aztlan/react-hooks':getAbsolutePath('@aztlan/react-hooks'),
       }
 
       /* Enable this long term fix when Webpack > 5.74.0
