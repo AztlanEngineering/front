@@ -83,7 +83,7 @@ jobs:
         cd ${{ inputs.working-directory }} && npm install
 
     - name: Link
-      run: npm link && cd ${{ inputs.working-directory }} && npm link @aztlan/react-hooks @aztlan/ui
+      run: npm link && cd ${{ inputs.working-directory }} && npm link @aztlan/react-hooks
 
     - name: Create local changes
       run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
