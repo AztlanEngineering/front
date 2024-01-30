@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/react-relay",
-  "version": "0.12.3",
+  "version": "0.12.4",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -34,7 +34,7 @@
   "license": "ISC",
   "devDependencies": {
     "@aztlan/eslint-config-base": "^0.12.0",
-    "@aztlan/react-scripts": "^0.12.3",
+    "@aztlan/react-scripts": "^0.12.4",
     "@aztlan/typescript-config": "^0.12.0",
     "typescript": "^5.3.3"
   },
