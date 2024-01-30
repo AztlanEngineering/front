@@ -30,17 +30,11 @@ const defaultInputs = {
   publicDir    :'public', // relative path
 }
 
-const isResourceBEM = (resourcePath) => resourcePath.includes('aztlan/bem') || resourcePath.includes('bem/exports')
-
 const loaders = {
   'css-loader':{
     loader :'css-loader',
     options:{
-      url    :false,
-      modules:{
-        // We only activate CSS modules for the file containing the BEM rules
-        auto:isResourceBEM,
-      },
+      url:false,
     },
   },
 }
@@ -87,12 +81,18 @@ const template = (inputs) => ({
   },
   // This is for the temporary SSR dev server (wrapper around the renderer)
   outputSSRServer:{
-    path       :path.resolve(inputs.dirname, 'tmp/'),
-    filename   :inputs.outputSSRFilename,
-    chunkFormat:'module',
-    library    :{
+    path               :path.resolve(inputs.dirname, 'tmp/'),
+    filename           :inputs.outputSSRFilename,
+    chunkFormat        :'module',
+    enabledLibraryTypes:['module'],
+    environment        :{
+      // The environment supports arrow functions ('() => { ... }').
+      module:true,
+    },
+    library:{
       type:'module',
     },
+    libraryTarget:'module',
   },
 
   experiments:{
@@ -134,12 +134,14 @@ const template = (inputs) => ({
   },
   externals:[nodeExternals({
     additionalModuleDirs:[
+      '.node_modules',
       '../../node_modules',
       '../../packages',
     ],
+    /*
     allowlist:[
       /^@aztlan/, // TODO be more selective to only include
-    ],
+    ], */
   })],
   optimization:{
     splitChunks:{
@@ -171,9 +173,17 @@ const template = (inputs) => ({
   },
   rules:{
     ts:{
-      test   :/\.(j|t)s(x?)$/,
-      exclude:/node_modules\/(?!react-intl|intl-messageformat|@formatjs\/icu-messageformat-parser)/,
-      use    :'babel-loader',
+      test:/\.(j|t)s(x?)$/,
+      // exclude:/node_modules\/(?!react-intl|@loadable|intl-messageformat|@formatjs\/icu-messageformat-parser)/,
+      use :{
+        loader:'babel-loader',
+        /*
+        options:{
+          presets:[
+            ['@babel/preset-env', { modules: false }],
+          ],
+        }, */
+      },
     },
     scssDev:{
       test:/\.(s?)css$/,
@@ -195,29 +205,6 @@ const template = (inputs) => ({
     scssIgnore:{
       test:/\.(s?)css$/,
       use :'ignore-loader',
-    },
-    scssServerSideBEM:{
-      // test:/bem\/exports\.module\.(s?)css$/i,
-      test:/aztlan\/bem/i,
-      use :[
-        {
-          loader :'css-loader',
-          options:{
-            url    :false,
-            modules:{
-              // We only activate CSS modules for the file containing the BEM rules
-              auto            :isResourceBEM,
-              exportOnlyLocals:true,
-            },
-          },
-        },
-        'sass-loader',
-      ],
-    },
-    scssIgnoreExceptBEM:{
-      test   :/\.(s?)css$/,
-      exclude:/bem\/exports/,
-      use    :'ignore-loader',
     },
     htmlRaw:{
       test:/\.html$/,

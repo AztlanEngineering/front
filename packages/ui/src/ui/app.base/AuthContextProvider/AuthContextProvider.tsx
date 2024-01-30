@@ -7,7 +7,6 @@ import {
 import {
   useMutation, useQueryLoader,
 } from 'react-relay'
-import { useHistory } from 'react-router-dom'
 
 import * as PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-relay'

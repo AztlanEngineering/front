@@ -4,6 +4,7 @@ import { configureSharedConfig } from '@aztlan/webpack-config'
 const {
   entry,
   experiments,
+  externals,
   plugins,
   resolve,
   rules,
@@ -15,12 +16,13 @@ const {
 
 export default {
   mode   :'development',
-  target :'node',
+  target :'node20',
   watch  :true,
   entry,
   resolve,
   output,
   experiments,
+  externals,
   plugins:[
     plugins.Dotenv,
     plugins.Nodemon,
@@ -30,8 +32,7 @@ export default {
     rules:[
       rules.ts,
       rules.mdx,
-      rules.scssServerSideBEM,
-      rules.scssIgnoreExceptBEM,
+      rules.scssIgnore,
       rules.htmlRaw,
     ],
   },

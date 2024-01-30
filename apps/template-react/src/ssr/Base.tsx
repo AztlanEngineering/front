@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types -- singleton */
 import * as React from 'react'
-import { RelayEnvironmentProvider } from 'react-relay/hooks'
+import { RelayEnvironmentProvider } from 'react-relay'
 import { StaticRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { useLocale } from '@aztlan/react-hooks'

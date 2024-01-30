@@ -1,6 +1,6 @@
-export default function (api) {
+module.exports = function (api) {
   if (api) {
-    api.cache(true)
+    api.cache(false)
     api.debug = process.env.NODE_ENV === 'development' || false
   }
 

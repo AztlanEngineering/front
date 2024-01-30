@@ -9,7 +9,7 @@ import {
   // retryMiddleware,
   errorMiddleware,
   perfMiddleware,
-} from 'react-relay-network-modern/es/index.js'
+} from 'react-relay-network-modern'
 
 import { refreshTokenMiddleware } from './authentication/index.js'
 

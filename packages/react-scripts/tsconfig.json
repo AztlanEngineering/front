@@ -1,9 +1,9 @@
 {
   "extends":"@aztlan/typescript-config",
-  "compilerOptions": {
-     "baseUrl":"src",
-     "noEmit": false,
-     "noEmitOnError": false,
+  "compilerOptions":{
+    "baseUrl":"src",
+    "declarationDir": "dist/types",
+    "outDir": "dist",
   },
   "include":["src"],
   "exclude": [

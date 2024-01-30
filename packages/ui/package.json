@@ -41,7 +41,7 @@
     "@aztlan/eslint-config-base": "^0.11.0",
     "@aztlan/jest-config": "^0.11.0",
     "@aztlan/storybook-config": "^0.11.0",
-    "@aztlan/stylelint-config": "^0.6.0",
+    "@aztlan/stylelint-config": "^0.9.0",
     "@aztlan/typescript-config": "^0.11.0",
     "@aztlan/webpack-config": "^0.11.0",
     "@babel/cli": "^7.23.9",
@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "@aztlan/base-styles": "^0.11.0",
-    "@aztlan/bem": "^0.6.0",
+    "@aztlan/bem": "^0.9.0",
     "@aztlan/react-hooks": "^0.11.0",
     "@aztlan/react-relay": "^0.11.0",
     "@aztlan/react-scripts": "^0.11.0",

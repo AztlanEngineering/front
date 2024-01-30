@@ -16,22 +16,21 @@ const {
 
 export default {
   mode   :'production',
-  target :'node18',
+  target :'node20',
   entry,
   resolve,
   output,
   experiments,
   externals,
   plugins:[
-    // plugins.Dotenv,
+    plugins.Dotenv,
     plugins.LimitChunkCount,
   ],
   module:{
     rules:[
       rules.mdx,
       rules.ts,
-      rules.scssServerSideBEM,
-      rules.scssIgnoreExceptBEM,
+      rules.scssIgnore,
       rules.htmlRaw,
     ],
   },
