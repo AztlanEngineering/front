@@ -65,20 +65,9 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install dependencies
-      if: steps.cache-modules.outputs.cache-hit != 'true'
+      #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        npm install
-
-    - name: Link
-      run: npm link
-
-    - name: LINK
-      run: |
-        cd ${{ inputs.working-directory }} && npm link @aztlan/react-hooks
-
-    - name: I2
-      run: |
-        cd ${{ inputs.working-directory }} && npm install
+        npm install && npm run build
 
     - name: Publish to Chromatic
       uses: chromaui/action@v1

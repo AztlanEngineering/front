@@ -76,12 +76,12 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install dependencies
-      if: steps.cache-modules.outputs.cache-hit != 'true'
+      #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        npm install && cd ${{ inputs.working-directory }} && npm install
+        npm install && npm run build
 
     - name: Create local changes
-      run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
+      run: cd ${{ inputs.working-directory }} && npm run compile:all
 
     - name: Configure CI Git User
       run: |     
