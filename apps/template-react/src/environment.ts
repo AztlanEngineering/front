@@ -1,4 +1,4 @@
-import { getClientEnvironment } from '@aztlan/react-relay'
+import getClientEnvironment from '@aztlan/react-relay/client'
 
 const relayEnvironment = getClientEnvironment(process.env.GRAPHQL_ENDPOINT)
 

@@ -1,4 +1,4 @@
-import { getServerEnvironment } from '@aztlan/react-relay'
+import getServerEnvironment from '@aztlan/react-relay/server'
 import { JSXRenderer } from '@aztlan/react-ssr'
 import Base from './Base.tsx'
 // @ts-ignore

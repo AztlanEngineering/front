@@ -179,7 +179,7 @@ class Builder {
       /\.(tsx?|jsx?)$/, this.outputExtension,
     )
     const outputFolder = path.join(
-      'dist', this.config.format, path.dirname(relativeFilename).split('/').slice(this.config.up + 1).join('/'),
+      'dist', this.config.format, path.dirname(relativeFilename).split('/').slice(this.config.up).join('/'),
     )
     const outputPath = path.join(
       outputFolder, outputFilename,
@@ -213,7 +213,7 @@ class Builder {
           `${process.cwd()}/dist/${this.config.format}`,
         ],
         {
-          up     :this.config.up + 1 || 2,
+          up     :this.config.up || 2,
           verbose:true,
         },
         (err) => {

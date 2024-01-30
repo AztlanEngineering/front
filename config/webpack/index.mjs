@@ -81,18 +81,8 @@ const template = (inputs) => ({
   },
   // This is for the temporary SSR dev server (wrapper around the renderer)
   outputSSRServer:{
-    path               :path.resolve(inputs.dirname, 'tmp/'),
-    filename           :inputs.outputSSRFilename,
-    chunkFormat        :'module',
-    enabledLibraryTypes:['module'],
-    environment        :{
-      // The environment supports arrow functions ('() => { ... }').
-      module:true,
-    },
-    library:{
-      type:'module',
-    },
-    libraryTarget:'module',
+    path    :path.resolve(inputs.dirname, 'tmp/'),
+    filename:inputs.outputSSRFilename,
   },
 
   experiments:{
@@ -138,10 +128,9 @@ const template = (inputs) => ({
       '../../node_modules',
       '../../packages',
     ],
-    /*
     allowlist:[
-      /^@aztlan/, // TODO be more selective to only include
-    ], */
+      /^@aztlan\/ui/, // TODO be more selective to only include
+    ],
   })],
   optimization:{
     splitChunks:{
