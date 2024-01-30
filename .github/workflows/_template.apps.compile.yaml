@@ -80,7 +80,7 @@ jobs:
     - name: Install dependencies
       #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        cd ${{ inputs.working-directory }} && npm ci --install-stragy=nested && pwd && tree -d node_modules
+        cd ${{ inputs.working-directory }} && npm ci --install-stragy=nested && pwd && tree -d
 
     - name: Link
       run: npm link
