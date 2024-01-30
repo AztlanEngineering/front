@@ -83,6 +83,9 @@ jobs:
     - name: Link
       run: npm link
 
+    - name: DEBUG
+      run: "ls -la node_modules/@aztlan && ls -la apps/template-react/node_modules"
+
     - name: Create local changes
       run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
 
