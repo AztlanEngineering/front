@@ -78,16 +78,13 @@ jobs:
     - name: Install dependencies
       if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        cd ${{ inputs.working-directory }} && npm install
+        cd ${{ inputs.working-directory }} && npm ci --install-stragy=nested && pwd && tree -d node_modules
 
     - name: Link
       run: npm link
 
-    - name: DEBUG
-      run: sudo apt-get install tree && tree
-
     - name: Create local changes
-      run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
+      run: cd ${{ inputs.working-directory }} && npm run compile:all
 
 
     - name: Configure CI Git User
