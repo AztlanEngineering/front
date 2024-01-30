@@ -76,7 +76,7 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install dependencies
-      if: steps.cache-modules.outputs.cache-hit != 'true'
+      #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
         cd ${{ inputs.working-directory }} && npm ci --install-stragy=nested && pwd && tree -d node_modules
 
