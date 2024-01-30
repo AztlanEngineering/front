@@ -1,1 +1,1 @@
-export * as decorators from './decorators/index.ts'
+export * as decorators from './decorators/index.js'

@@ -2,23 +2,26 @@
   "name": "@aztlan/react-relay",
   "version": "0.11.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "type": "module",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:tsc": "tsc --noEmit",
     "lint:eslint": "eslint --ext .tsx,.ts ./ --quiet",
     "format:eslint": "npm run test:eslint -- --fix",
-    "build": "tsc",
-    "build:watch": "npm run build -- --watch",
-    "prepare": "npm run build"
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "build-with-babel --format cjs",
+    "build:esm": "build-with-babel --format esm",
+    "build:types": "tsc --emitDeclarationOnly",
+    "prepublishOnly": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@aztlan/eslint-config-base": "^0.11.0",
     "@aztlan/typescript-config": "^0.11.0",
+    "@aztlan/react-scripts": "^0.11.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
@@ -28,5 +31,9 @@
   },
   "eslintConfig": {
     "extends": "@aztlan/eslint-config-base"
+  },
+  "buildConfig": {
+    "entryPoints": ["./src/**/*.{ts,tsx,js,jsx}"],
+    "up": 1
   }
 }

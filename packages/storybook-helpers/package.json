@@ -9,19 +9,18 @@
     "test:tsc": "tsc",
     "test:eslint": "eslint --ext .mjs,.js,.tsx,.ts ./",
     "test:eslint:fix": "npm run test:eslint -- --fix",
-    "build:cjs": "node ./build.mjs --format cjs",
-    "build:cjs:watch": "node ./build.mjs --format cjs --watch",
-    "build:esm": "node ./build.mjs --format esm",
-    "build:esm:watch": "node ./build.mjs --format esm --watch",
-    "build": "npm run build:cjs && npm run build:esm",
-    "prepare": "npm run build"
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "build-with-babel --format cjs",
+    "build:esm": "build-with-babel --format esm",
+    "build:types": "tsc --emitDeclarationOnly",
+    "prepublishOnly": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/build-tools": "^0.11.0",
     "@aztlan/eslint-config-base": "^0.11.0",
     "@aztlan/typescript-config": "^0.11.0",
+    "@aztlan/react-scripts": "^0.11.0",
     "typescript": "^5.3.3"
   },
   "eslintConfig": {
@@ -32,5 +31,9 @@
     "react-dom": "^18.2.0",
     "react-relay": "^16.2.0",
     "relay-test-utils": "^16.2.0"
+  },
+  "buildConfig": {
+    "entryPoints": ["./src/**/*.{ts,tsx,js,jsx}"],
+    "up": 1
   }
 }

@@ -1,12 +1,21 @@
 #!/usr/bin/env node
-/* eslint-disable import/no-extraneous-dependencies */
-const https = require('https')
-const fs = require('fs')
-const dotenv = require('dotenv')
-const path = require('path')
+/**
+ * A Node.js script to fetch and save the GraphQL schema from a GitHub repository.
+ * It uses environment variables for configuration and
+ * supports fetching from a specific git reference.
+ */
 
-const dotenvConfigPath = path.join(process.cwd(), '.env.scripts')
-dotenv.config({ path: dotenvConfigPath })
+import https from 'https'
+import fs from 'fs/promises'
+import dotenv from 'dotenv'
+import path from 'path'
+
+// Load environment variables from .env.scripts
+dotenv.config({
+  path:path.join(
+    process.cwd(), '.env.scripts',
+  ),
+})
 
 const {
   GITHUB_BACKEND_ORG,
@@ -15,39 +24,52 @@ const {
   DEBUG,
 } = process.env
 
+// Convert DEBUG env variable to boolean
 const isDebug = DEBUG === 'True'
 
-const host = 'api.github.com'
+// GitHub API information
+const githubApiHost = 'api.github.com'
 const contentEndpoint = `/repos/${GITHUB_BACKEND_ORG}/${GITHUB_BACKEND_REPO}/contents/schema.graphql`
 const authToken = GITHUB_READONLY_PAT
-
 const defaultBranch = 'development'
-const indexOfRefArg = process.argv.findIndex((arg) => arg === '--ref')
-const selectedRef = (indexOfRefArg > -1) ? process.argv[indexOfRefArg + 1] : defaultBranch
+
+// Get the git reference from command line arguments, or use the default
+const selectedRef = process.argv.includes('--ref')
+  ? process.argv[process.argv.indexOf('--ref') + 1]
+  : defaultBranch
 
 const filename = 'schema.graphql'
 
-const processContent = (data) => {
+/**
+ * Process and save the GraphQL schema content.
+ * @param {Object} data - The data object from GitHub API response.
+ */
+async function processContent(data) {
   if (data.content) {
+    const decodedContent = Buffer.from(
+      data.content, 'base64',
+    ).toString('utf-8')
     if (isDebug) {
-      console.log(Buffer.from(data.content, 'base64').toString('utf-8'))
+      console.log(decodedContent)
     }
-    fs.writeFile(filename, Buffer.from(data.content, 'base64'), 'utf8', (err) => {
-      if (err) {
-        console.log(err)
-      } else {
-        console.log(`${filename} successfully saved`)
-      }
-    })
+    await fs.writeFile(
+      filename, decodedContent, 'utf8',
+    )
+    console.log(`${filename} successfully saved`)
   } else {
     console.error('Error in downloading the schema.')
   }
 }
 
-function performRequest(success) {
+/**
+ * Perform an HTTPS request to fetch the schema.
+ * @param {Function} successCallback - The callback function to process the response.
+ */
+function performRequest(successCallback) {
   console.log(`Fetching schema from ref=${selectedRef}`)
-  const options = {
-    host,
+
+  const requestOptions = {
+    host   :githubApiHost,
     path   :`${contentEndpoint}?ref=${selectedRef}`,
     method :'GET',
     headers:{
@@ -56,23 +78,25 @@ function performRequest(success) {
     },
   }
 
-  const req = https.request(options, (res) => {
-    res.setEncoding('utf-8')
+  const req = https.request(
+    requestOptions, (res) => {
+      res.setEncoding('utf-8')
+      let responseString = ''
 
-    let responseString = ''
+      res.on(
+        'data', (chunk) => {
+          responseString += chunk
+        },
+      )
 
-    res.on('data', (data) => {
-      responseString += data
-    })
+      res.on(
+        'end', () => {
+          successCallback(JSON.parse(responseString))
+        },
+      )
+    },
+  )
 
-    res.on('end', () => {
-      // console.log(responseString)
-      const responseObject = JSON.parse(responseString)
-      success(responseObject)
-    })
-  })
-
-  // req.write()
   req.end()
 }
 

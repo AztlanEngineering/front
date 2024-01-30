@@ -2,8 +2,11 @@
   "name": "@aztlan/react-scripts",
   "version": "0.11.0",
   "description": "",
+  "type": "module",
   "bin": {
-    "fetch-schema": "./scripts/fetchSchema.js"
+    "fetch-schema": "./scripts/fetchSchema.js",
+    "build-with-babel": "./scripts/buildWithBabel.js",
+    "build-with-esbuild": "./scripts/buildWithESBuild.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,7 +24,11 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "dotenv": "^16.4.1"
+    "@babel/core": "^7.23.9",
+    "copyfiles": "^2.4.1",
+    "dotenv": "^16.4.1",
+    "resolve-glob": "^1.0.0",
+    "yargs": "^17.7.2"
   },
   "eslintConfig": {
     "extends": "@aztlan/eslint-config-base"

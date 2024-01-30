@@ -1,1 +1,1 @@
-export * from './hooks/index.ts'
+export default {}

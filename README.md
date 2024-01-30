@@ -17,6 +17,7 @@ In this case, ideally the js build should come from a simple well-configured `ts
 - The biggest issue comes from importing server-side cjs only packages. Named imports work but only on some cases. They don't work on `react-relay` or `relay-runtime`. 
 [Read this post](https://simonplend.com/node-js-now-supports-named-imports-from-commonjs-modules-but-what-does-that-mean/) for more information about this issue in node. While the ES versions of relay packages are a bit overdue, this is a limitation since these packages always need a default `import Relay from 'react-relay'`. While it is doable to apply a codemode, it would need to also encompass the generated files by the relay compiler. This seems a step too much in trying to make ES builds work with Relay.
 - On the other side, it is to be noted that the chain of ES only packages did work **fully** on the front-end side.
+- Because of this reason, the migration away from webpack to esbuild on the server side is not yet possible, and esbuild usage can be skipped altogether, to prefer direct babel calls on module compilation.
 
 ### Decided architecture
 
