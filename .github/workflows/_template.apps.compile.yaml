@@ -78,15 +78,15 @@ jobs:
         key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install dependencies
-      #if: steps.cache-modules.outputs.cache-hit != 'true'
+      if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        cd ${{ inputs.working-directory }} && npm ci --install-stragy=nested && pwd && tree -d
+        cd ${{ inputs.working-directory }} && npm install
 
     - name: Link
-      run: npm link
+      run: npm link && cd ${{ inputs.working-directory }} && npm link @aztlan/react-hooks @aztlan/ui
 
     - name: Create local changes
-      run: cd ${{ inputs.working-directory }} && npm run compile:all
+      run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
 
 
     - name: Configure CI Git User
