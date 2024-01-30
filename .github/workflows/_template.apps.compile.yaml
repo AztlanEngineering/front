@@ -87,7 +87,7 @@ jobs:
       run: cd ${{ inputs.working-directory }} && npm install && npm run compile:all
 
     - name:DEBUG
-      run: "sudo apt-get install tree && tree"
+      run: sudo apt-get install tree && tree
 
     - name: Configure CI Git User
       run: |     
