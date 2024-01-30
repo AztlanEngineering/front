@@ -34,7 +34,7 @@ const defaultInputs = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-themes',
-    '@storybook/addon-storyshots',
+    // '@storybook/addon-storyshots',
   ],
   alias:[],
 }
