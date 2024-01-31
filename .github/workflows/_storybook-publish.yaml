@@ -14,9 +14,6 @@ on:
         description: The version of Node.js to use
         type: string
     secrets:
-      GITHUB_TOKEN:
-        required: true
-        description: GitHub token for authentication
       PROJECT_TOKEN:
         required: true
         description: Chromatic project token for publishing
