@@ -79,7 +79,7 @@ jobs:
         run: cd ${{ inputs.working-directory }} &&  npm run compile:all
       - name: Configure CI Git User
         run: |
-          git config user.name "${{ github.actor }}"                         
+          git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
       - name: Commit files
         run: |
