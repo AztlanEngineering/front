@@ -39,7 +39,7 @@ jobs:
       - name: Commit and Push Changes
         run: |
           cd ${{ inputs.working-directory }} && git add -- ./api/* ./public/*
-          git commit -m '[CI] Compilation Successful'
+          git commit --reuse-message
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
