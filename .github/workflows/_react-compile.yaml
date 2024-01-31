@@ -28,8 +28,16 @@ jobs:
           node-version: ${{ inputs.node-version }}
           cache: npm
           cache-dependency-path: package-lock.json
+      - name: Cache
+        id: cache-modules
+        uses: actions/cache@v1
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        run: npm install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: |
+          npm install
       - uses: nelonoel/branch-name@v1.0.1
       - name: Compile the project
         run: cd ${{ inputs.working-directory }} && npm run compile:all
