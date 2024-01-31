@@ -1,5 +1,5 @@
+---
 name: _template.apps.compile
-
 on:
   workflow_call:
     inputs:
@@ -9,7 +9,6 @@ on:
     secrets:
       PROJECT_TOKEN:
         required: true
-        
 jobs:
   #  test:
   #    runs-on: ubuntu-latest
@@ -36,45 +35,40 @@ jobs:
   #        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
   #
   #    - name: Install dependencies
-  #      #if: steps.cache-modules.outputs.cache-hit != 'true'
+  #       # if: steps.cache-modules.outputs.cache-hit != 'true'
   #      run: |
   #        npm install 
   #      
-  #    #- name: Lint SCSS
-  #    #  run: npm run test:stylelint
+  #  #- name: Lint SCSS
+  #  #  run: npm run test:stylelint
   #
-  #    #- name: Test with Storyshots (Take Snapshots -> Compare)
-  #    #  run: npm run test:jest
+  #  #- name: Test with Storyshots (Take Snapshots -> Compare)
+  #  #  run: npm run test:jest
   #
-  #    #- name: Test with Eslint
-  #    #  run: npm run test:eslint
-
-
+  #  #- name: Test with Eslint
+  #  #  run: npm run test:eslint
   publish:
-    #needs: test
+    # needs: test
     runs-on: ubuntu-latest
-    #env:
+    # env:
     #  GRAPHQL_ENDPOINT: ${{ inputs.GRAPHQL_ENDPOINT }} 
     steps:
-    - uses: actions/checkout@v1
-
-    - id: cache-modules
-      uses: actions/cache@v1
-      with:
-        path: ./node_modules
-        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-
-    - name: Install dependencies
-      if: steps.cache-modules.outputs.cache-hit != 'true'
-      run: |
-        npm install
-
-    - name: Publish to Chromatic
-      uses: chromaui/action@v1
+      - uses: actions/checkout@v1
+      - id: cache-modules
+        uses: actions/cache@v1
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: |
+          npm install
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
       # Chromatic GitHub Action options
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
         # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-        projectToken: ${{ secrets.PROJECT_TOKEN }}
-        exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing, in case there are changes (but no errors)
-        workingDir: ${{ inputs.working-directory }}
+          projectToken: ${{ secrets.PROJECT_TOKEN }}
+          exitZeroOnChanges: true  # 👈 Option to prevent the workflow from failing, in case there are changes (but no errors)
+          workingDir: ${{ inputs.working-directory }}

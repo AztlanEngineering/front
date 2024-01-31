@@ -1,19 +1,15 @@
+---
 name: apps.site.test-compile.production
-
 on:
   push:
-    branches:
-      - production
-    paths:
-      - "apps/template-react/**"
-
+    branches: [production]
+    paths: [apps/template-react/**]
 defaults:
   run:
     working-directory: apps/template-react
-
 jobs:
   test-compile:
     uses: ./.github/workflows/_template.apps.compile.yaml
     with:
       working-directory: apps/template-react
-      GRAPHQL_ENDPOINT: ${{ vars.PRODUCTION_GRAPHQL_ENDPOINT }} 
+      GRAPHQL_ENDPOINT: ${{ vars.PRODUCTION_GRAPHQL_ENDPOINT }}

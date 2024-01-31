@@ -1,21 +1,18 @@
+---
 name: packages.ui.storybook.publish
-  
 on:
   push:
-    branches:                          
-      - '**' # This excludes tags
-    paths:
-      - "packages/ui/**"
-
+    branches:
+      - '**'  # This excludes tags
+    paths: [packages/ui/**]
 defaults:
   run:
     working-directory: packages/ui
-
 jobs:
   test-compile:
     uses: ./.github/workflows/_template.storybook.publish.yaml
     secrets:
       PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
-        #PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
+        # PROJECT_TOKEN: ${{ secrets.DESIGN_SYSTEM_CHROMATIC_PROJECT }}
     with:
       working-directory: packages/ui

@@ -1,16 +1,13 @@
+---
 name: apps.template-react.storybook.publish
-
 on:
   push:
-    branches:                          
-      - '**' # This excludes tags
-    paths:
-      - "apps/template-react/**"
-
+    branches:
+      - '**'  # This excludes tags
+    paths: [apps/template-react/**]
 defaults:
   run:
     working-directory: apps/template-react
-
 jobs:
   test-compile:
     uses: ./.github/workflows/_template.storybook.publish.yaml
