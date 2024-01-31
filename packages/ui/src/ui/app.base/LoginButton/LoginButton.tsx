@@ -9,6 +9,7 @@ import styleNames from '@aztlan/bem'
 
 import { useFragment } from 'react-relay'
 import { graphql } from 'relay-runtime'
+import { LoginButtonFragment$data } from './__generated__/LoginButtonFragment.graphql.js'
 
 // Local Definitions
 const baseClassName = styleNames.base
@@ -47,8 +48,9 @@ function LoginButton({
   )
 
   const { oAuth2Links } = useFragment(
-    FRAGMENT, data,
-  )
+    FRAGMENT,
+    data,
+  ) as LoginButtonFragment$data
   const { google } = oAuth2Links
 
   return (

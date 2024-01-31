@@ -139,9 +139,11 @@ class Builder {
               '@aztlan/replace-import-extension',
               {
                 extMapping:{
-                  '.graphql':'.graphql.js',
-                  '.ts'     :this.outputExtension,
-                  '.tsx'    :this.outputExtension,
+                  '.graphql'   :`.graphql${this.outputExtension}`,
+                  '.graphql.js':`.graphql${this.outputExtension}`,
+                  '.js'        :this.outputExtension,
+                  '.ts'        :this.outputExtension,
+                  '.tsx'       :this.outputExtension,
                 },
                 disableDyanmicImportTransform:true,
               },
@@ -175,7 +177,8 @@ class Builder {
       process.cwd(), result.options.filename,
     )
 
-    const fileExtension = result.options.filename.includes('.graphql') ? '.js' : this.outputExtension
+    // const fileExtension = result.options.filename.includes('.graphql') ? '.js' : this.outputExtension
+    const fileExtension = this.outputExtension
 
     const outputFilename = path.basename(relativeFilename).replace(
       /\.(tsx?|jsx?)$/, fileExtension,
