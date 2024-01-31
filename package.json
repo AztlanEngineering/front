@@ -19,7 +19,6 @@
     "test": "exit 0",
     "ncu": "lerna exec 'ncu -i' --concurrency 1",
     "build": "lerna run build --parallel",
-    "prepare": "npm run build",
     "test:eslint": "lerna run test:eslint --parallel",
     "test:eslint:fix": "lerna run test:eslint:fix --parallel",
     "test:jest": "lerna run test:jest --parallel",

@@ -38,7 +38,7 @@ jobs:
     - name: Install dependencies
       #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        npm install
+        npm install && npm run build
       
     #- name: Lint SCSS
     #  run: npm run test:stylelint
@@ -67,7 +67,7 @@ jobs:
     - name: Install dependencies
       #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        npm install
+        npm install && npm run build
 
     - name: Publish to Chromatic
       uses: chromaui/action@v1
