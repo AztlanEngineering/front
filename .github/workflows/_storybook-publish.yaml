@@ -1,0 +1,45 @@
+---
+# This is a template for publishing Storybook to Chromatic
+name: _storybook-publish.yaml
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        required: true
+        description: The directory where Storybook should be published from
+        type: string
+      node-version:
+        required: false
+        default: '20'
+        description: The version of Node.js to use
+        type: string
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+        description: GitHub token for authentication
+      PROJECT_TOKEN:
+        required: true
+        description: Chromatic project token for publishing
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # defaults:
+    #   run:
+    #     working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm install
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.PROJECT_TOKEN }}
+          exitZeroOnChanges: true
+          workingDir: ${{ inputs.working-directory }}

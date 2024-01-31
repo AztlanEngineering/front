@@ -1,0 +1,49 @@
+---
+# This is a template for compiling applications with customizable parameters
+name: _react-compile
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        required: true
+        description: The directory to run the compile commands in
+        type: string
+      node-version:
+        required: false
+        default: '20'
+        description: The version of Node.js to use
+        type: string
+      GRAPHQL_ENDPOINT:
+        required: false
+        description: The GraphQL endpoint to use for the application
+        type: string
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm install
+      - name: Compile the project
+        run: cd ${{ inputs.working-directory }} && npm run compile:all
+      - name: Configure CI Git User
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Commit and Push Changes
+        run: |
+          cd ${{ inputs.working-directory }} && git add -- ./api/* ./public/*
+          git commit -m '[CI] Compilation Successful'
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ env.BRANCH_NAME }}-build
+          force: true
+        env:
+          GRAPHQL_ENDPOINT: ${{ inputs.GRAPHQL_ENDPOINT }}

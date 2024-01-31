@@ -9,7 +9,7 @@ defaults:
     working-directory: apps/template-react
 jobs:
   test-compile:
-    uses: ./.github/workflows/_template.apps.compile.yaml
+    uses: ./.github/workflows/_react-compile.yaml
     with:
       working-directory: apps/template-react
       GRAPHQL_ENDPOINT: ${{ vars.PRODUCTION_GRAPHQL_ENDPOINT }}
