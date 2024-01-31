@@ -72,11 +72,12 @@ const template = (inputs) => ({
   },
   // This is for the SSR executable file
   outputSSRRenderer:{
-    path    :path.resolve(inputs.dirname, 'api/'),
-    filename:inputs.outputSSRFilename,
+    path       :path.resolve(inputs.dirname, 'api/'),
+    filename   :inputs.outputSSRFilename,
     // https://webpack.js.org/configuration/output/#librarytarget-module
-    library :{
-      type:'module',
+    chunkFormat:'commonjs',
+    library    :{
+      type:'commonjs',
     },
   },
   // This is for the temporary SSR dev server (wrapper around the renderer)
@@ -114,10 +115,10 @@ const template = (inputs) => ({
     Loadable:new LoadablePlugin({
     }), */
     Nodemon:new NodemonPlugin({
-      watch   :path.resolve(inputs.dirname, 'src'),
-      ext     :'ts,tsx,graphql',
-      verbose :true,
-      nodeArgs:['--inspect'],
+      watch  :path.resolve(inputs.dirname, 'src'),
+      ext    :'ts,tsx,graphql',
+      verbose:true,
+      // nodeArgs:['--inspect'],
     }),
     LimitChunkCount:new webpack.optimize.LimitChunkCountPlugin({
       maxChunks:1,
@@ -131,7 +132,7 @@ const template = (inputs) => ({
     ],
     allowlist:[
       // /^@aztlan\/ui/, // TODO be more selective to only include
-      /^@aztlan/, // TODO be more selective to only include
+      // /^@aztlan/, // TODO be more selective to only include
     ],
   })],
   optimization:{

@@ -111,15 +111,6 @@
     "language": "typescript",
     "eagerEsModules": true
   },
-  "babel": {
-    "presets": [
-      "@aztlan/react"
-    ],
-    "plugins": [
-      "relay",
-      "formatjs"
-    ]
-  },
   "stylelint": {
     "extends": "@aztlan/stylelint-config"
   },

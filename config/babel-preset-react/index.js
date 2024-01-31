@@ -2,15 +2,7 @@ const utils = require('@babel/helper-plugin-utils')
 
 const config = {
   presets:[
-    [
-      '@babel/preset-env',
-      {
-        modules:false,
-        targets:{
-          esmodules:true,
-        },
-      },
-    ],
+    '@babel/preset-env',
     '@babel/preset-react',
     '@babel/preset-typescript',
   ],

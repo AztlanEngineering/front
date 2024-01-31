@@ -139,7 +139,7 @@ class Builder {
               '@aztlan/replace-import-extension',
               {
                 extMapping:{
-                  '.graphql':`.graphql${this.outputExtension}`,
+                  '.graphql':'.graphql.js',
                   '.ts'     :this.outputExtension,
                   '.tsx'    :this.outputExtension,
                   '.js'     :this.outputExtension,
@@ -175,8 +175,11 @@ class Builder {
     const relativeFilename = path.relative(
       process.cwd(), result.options.filename,
     )
+
+    const fileExtension = result.options.filename.includes('.graphql') ? '.js' : this.outputExtension
+
     const outputFilename = path.basename(relativeFilename).replace(
-      /\.(tsx?|jsx?)$/, this.outputExtension,
+      /\.(tsx?|jsx?)$/, fileExtension,
     )
     const outputFolder = path.join(
       'dist', this.config.format, path.dirname(relativeFilename).split('/').slice(this.config.up).join('/'),

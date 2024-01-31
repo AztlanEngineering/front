@@ -15,7 +15,8 @@ const {
 })
 
 export default {
-  mode   :'production',
+  // mode   :'production',
+  mode   :'development',
   target :'node20',
   entry,
   resolve,
