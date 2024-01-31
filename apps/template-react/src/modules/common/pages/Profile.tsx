@@ -6,7 +6,7 @@ import {
 } from 'react-intl'
 */
 import { ViewerProfile } from '@aztlan/ui'
-import Template from '../templates/Base.tsx'
+import Template from '../templates/Base.js'
 
 /*
 const m = defineMessages({

@@ -10,7 +10,7 @@ import {
   addGraphQLValidation,
 } from '@aztlan/ui'
 import { graphql } from 'relay-runtime'
-import Template from '../../common/templates/Base.tsx'
+import Template from '../../common/templates/Base.js'
 
 const m = defineMessages({
   title:{

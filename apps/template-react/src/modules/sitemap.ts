@@ -1,3 +1,3 @@
-import baseHomepageGetter from './base.homepage/sitemap'
+import baseHomepageGetter from './base.homepage/sitemap.js'
 
 export default [baseHomepageGetter]

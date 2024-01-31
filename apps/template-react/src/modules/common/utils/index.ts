@@ -1,1 +1,1 @@
-export { default as loadable } from './loadable.tsx'
+export { default as loadable } from './loadable.js'

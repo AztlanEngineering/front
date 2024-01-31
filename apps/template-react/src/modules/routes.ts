@@ -1,6 +1,6 @@
-import commonRoutes from './common/routes.ts'
-import baseHomepageRoutes from './base.homepage/routes.ts'
-import baseTestRoutes from './base.test/routes.ts'
+import commonRoutes from './common/routes.js'
+import baseHomepageRoutes from './base.homepage/routes.js'
+import baseTestRoutes from './base.test/routes.js'
 
 export default [
   ...baseHomepageRoutes,

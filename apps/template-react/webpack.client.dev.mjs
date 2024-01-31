@@ -28,6 +28,7 @@ export default {
   devServer,
 
   plugins:[
+    // plugins.ResolveTypeScript,
     plugins.Dotenv,
     plugins.HtmlWebpack,
   ],

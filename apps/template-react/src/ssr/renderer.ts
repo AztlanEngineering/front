@@ -1,9 +1,9 @@
 import getServerEnvironment from '@aztlan/react-relay/server'
 import { JSXRenderer } from '@aztlan/react-ssr'
-import Base from './Base.tsx'
+import Base from './Base.js'
 // @ts-ignore
 import template from '../assets/html/index.html'
-import loadMessages from '../locales/loadMessages.ts'
+import loadMessages from '../locales/loadMessages.js'
 // @ts-ignore
 import stats from '../../public/loadable-stats.json'
 

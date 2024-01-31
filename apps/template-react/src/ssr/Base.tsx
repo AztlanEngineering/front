@@ -6,9 +6,9 @@ import { HelmetProvider } from 'react-helmet-async'
 import { useLocale } from '@aztlan/react-hooks'
 import { AppContextProvider } from '@aztlan/ui'
 import { IntlProvider } from 'react-intl'
-import App from '../App.tsx'
-import loadMessages from '../locales/loadMessages.ts'
-import config from '../config.ts'
+import App from '../App.js'
+import loadMessages from '../locales/loadMessages.js'
+import config from '../config.js'
 
 export default function ({
   environment,

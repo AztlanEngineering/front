@@ -14,7 +14,7 @@ export default [
   }, */
   {
     path     :'/formtest',
-    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/FormTest.tsx')),
+    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/FormTest.js')),
     exact    :true,
   },
 ]

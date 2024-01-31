@@ -1,4 +1,4 @@
-import { loadable } from '../common/utils/index.ts'
+import { loadable } from '../common/utils/index.js'
 
 export default [
   /*
@@ -14,7 +14,7 @@ export default [
   }, */
   {
     path     :'/',
-    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/Home.tsx')),
+    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/Home.js')),
     exact    :true,
   },
 ]

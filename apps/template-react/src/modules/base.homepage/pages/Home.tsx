@@ -4,9 +4,9 @@ import { useLazyLoadQuery } from 'react-relay'
 import {
   defineMessages, useIntl,
 } from 'react-intl'
-import { QueryTesterQuery } from '../ui/QueryTester/__generated__/QueryTesterQuery.graphql.ts'
-import Template from '../../common/templates/Base.tsx'
-import { QueryTester } from '../ui/index.ts'
+import { QueryTesterQuery } from '../ui/QueryTester/__generated__/QueryTesterQuery.graphql.js'
+import Template from '../../common/templates/Base.js'
+import { QueryTester } from '../ui/index.js'
 
 const m = defineMessages({
   title:{

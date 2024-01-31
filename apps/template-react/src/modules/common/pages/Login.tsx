@@ -6,7 +6,7 @@ import {
   defineMessages, useIntl,
 } from 'react-intl'
 import { LoginButton } from '@aztlan/ui'
-import Template from '../templates/Base.tsx'
+import Template from '../templates/Base.js'
 
 const m = defineMessages({
   title:{

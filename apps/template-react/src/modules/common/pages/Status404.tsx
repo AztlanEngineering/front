@@ -3,7 +3,7 @@ import * as React from 'react'
 import {
   defineMessages, useIntl,
 } from 'react-intl'
-import Template from '../templates/Base.tsx'
+import Template from '../templates/Base.js'
 
 const m = defineMessages({ notFound: { defaultMessage: 'The page you requested is not found.' } })
 
