@@ -1,17 +1,17 @@
 {
-  "hash": "e84789abb7edb373e6b7",
+  "hash": "3f6de9fd50015e7cd339",
   "publicPath": "/",
   "outputPath": "/home/adrian/code/aztlan/front/apps/template-react/public",
   "assetsByChunkName": {
     "main": [
       "main.css",
-      "main.js?013bd"
+      "main.js?f1063"
     ],
     "common": [
-      "common.js?7dc66"
+      "common.js?bd297"
     ],
     "base.homepage": [
-      "base.homepage.js?f7dd7"
+      "base.homepage.js?861b4"
     ],
     "index.js": [
       "index.js.js?d44bd"
@@ -104,19 +104,19 @@
   "assets": [
     {
       "type": "asset",
-      "name": "main.js?013bd",
+      "name": "main.js?f1063",
       "size": 351171,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "013bd",
+        "chunkhash": "f1063",
         "javascriptModule": false,
         "minimized": true,
         "related": {
           "license": "main.js.LICENSE.txt",
-          "sourceMap": "main.js.map?013bd"
+          "sourceMap": "main.js.map?f1063"
         }
       },
       "chunkNames": [
@@ -1244,18 +1244,18 @@
     },
     {
       "type": "asset",
-      "name": "base.homepage.js?f7dd7",
+      "name": "base.homepage.js?861b4",
       "size": 7062,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "f7dd7",
+        "chunkhash": "861b4",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "base.homepage.js.map?f7dd7"
+          "sourceMap": "base.homepage.js.map?861b4"
         }
       },
       "chunkNames": [
@@ -1377,18 +1377,18 @@
     },
     {
       "type": "asset",
-      "name": "common.js?7dc66",
+      "name": "common.js?bd297",
       "size": 1846,
       "emitted": false,
       "comparedForEmit": false,
       "cached": true,
       "info": {
         "immutable": true,
-        "chunkhash": "7dc66",
+        "chunkhash": "bd297",
         "javascriptModule": false,
         "minimized": true,
         "related": {
-          "sourceMap": "common.js.map?7dc66"
+          "sourceMap": "common.js.map?bd297"
         }
       },
       "chunkNames": [
@@ -2176,7 +2176,7 @@
           "name": "main.css"
         },
         {
-          "name": "main.js?013bd"
+          "name": "main.js?f1063"
         }
       ],
       "filteredAssets": 0,
@@ -2227,7 +2227,7 @@
       ],
       "assets": [
         {
-          "name": "common.js?7dc66"
+          "name": "common.js?bd297"
         }
       ],
       "filteredAssets": 0,
@@ -2244,7 +2244,7 @@
       ],
       "assets": [
         {
-          "name": "base.homepage.js?f7dd7"
+          "name": "base.homepage.js?861b4"
         }
       ],
       "filteredAssets": 0,
@@ -2261,7 +2261,7 @@
       "id": 179,
       "files": [
         "main.css",
-        "main.js?013bd"
+        "main.js?f1063"
       ]
     },
     {
@@ -2358,13 +2358,13 @@
     {
       "id": 592,
       "files": [
-        "common.js?7dc66"
+        "common.js?bd297"
       ]
     },
     {
       "id": 300,
       "files": [
-        "base.homepage.js?f7dd7"
+        "base.homepage.js?861b4"
       ]
     },
     {
