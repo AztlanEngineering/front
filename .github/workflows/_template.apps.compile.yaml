@@ -78,7 +78,7 @@ jobs:
     - name: Install dependencies
       #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        npm install && npm run build || true
+        npm install
 
     - name: Create local changes
       run: cd ${{ inputs.working-directory }} && npm install &&  npm run compile:all
