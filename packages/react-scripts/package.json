@@ -21,6 +21,7 @@
   "devDependencies": {
     "@aztlan/eslint-config-base": "^0.13.0",
     "@aztlan/typescript-config": "^0.13.0",
+    "@aztlan/babel-plugin-replace-import-extension": "^0.13.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {

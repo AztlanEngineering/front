@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/babel-plugin-replace-import-extension",
-  "version": "0.13.0",
+  "version": "0.13.2",
   "description": "Babel plugin to replace extension of file name written in import statement and dynamic import",
   "main": "src/index.js",
   "repository": {
