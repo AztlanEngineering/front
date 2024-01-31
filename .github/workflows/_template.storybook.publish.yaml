@@ -38,7 +38,7 @@ jobs:
     - name: Install dependencies
       #if: steps.cache-modules.outputs.cache-hit != 'true'
       run: |
-        npm install && npm run build
+        npm install 
       
     #- name: Lint SCSS
     #  run: npm run test:stylelint
