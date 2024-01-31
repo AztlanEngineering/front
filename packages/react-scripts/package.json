@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/react-scripts",
-  "version": "0.13.3",
+  "version": "1.0.0",
   "description": "",
   "type": "module",
   "bin": {
@@ -19,9 +19,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/babel-plugin-replace-import-extension": "^0.13.2",
-    "@aztlan/eslint-config-base": "^0.13.0",
-    "@aztlan/typescript-config": "^0.13.0",
+    "@aztlan/babel-plugin-replace-import-extension": "^1.0.0",
+    "@aztlan/eslint-config-base": "^1.0.0",
+    "@aztlan/typescript-config": "^1.0.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
