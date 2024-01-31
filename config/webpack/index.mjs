@@ -50,7 +50,10 @@ const template = (inputs) => ({
       '.graphql'        :'.graphql.js',
       ...inputs.resolveAlias,
     },
-    roots:[path.join(inputs.dirname, 'src')],
+    roots         :[path.join(inputs.dirname, 'src')],
+    extensionAlias:{
+      '.js':['.ts', '.tsx', '.js', '.graphql', '.graphql.js'],
+    },
   },
   devServer:{
     static:[
@@ -104,7 +107,6 @@ const template = (inputs) => ({
       patterns:[
         ...inputs.staticFilesLocations.map((location) => ({ from: location, to: './' })),
       ],
-
     }),
     MiniCssExtract:new MiniCssExtractPlugin(),
     BundleAnalyzer:new BundleAnalyzerPlugin({
