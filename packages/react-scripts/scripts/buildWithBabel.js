@@ -142,7 +142,6 @@ class Builder {
                   '.graphql':'.graphql.js',
                   '.ts'     :this.outputExtension,
                   '.tsx'    :this.outputExtension,
-                  '.js'     :this.outputExtension,
                 },
                 disableDyanmicImportTransform:true,
               },
