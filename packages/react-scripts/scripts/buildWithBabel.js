@@ -151,7 +151,12 @@ class Builder {
             [
               'relay',
               {
-                eagerEsModules:this.config.format === 'esm',
+                // Ideally we would use this.config.format === 'esm' here, but
+                // that causes the build to fail with the following error since the .graphql
+                // extension is not transformed to .graphql.(cjs|mjs) by babel.
+                // We rely on babel to transform (!)
+                // the ES artifact to CJS instead of outputting directly cjs.
+                eagerEsModules:true, // this.config.format === 'esm',
                 codegenCommand:'exit 0',
               },
             ],
