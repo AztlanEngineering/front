@@ -4,4 +4,5 @@ storybook-static
 tmp
 
 .env
+.env.prod
 .env.scripts
