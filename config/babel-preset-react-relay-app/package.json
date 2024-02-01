@@ -6,8 +6,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@aztlan/eslint-config": "^0.2.0"
+  },
+  "dependencies": {
     "@aztlan/babel-preset-react": "^1.0.7",
-    "@aztlan/eslint-config": "^0.2.0",
-    "babel-plugin-relay": "^16.2.0"
+    "babel-plugin-relay": "^16.2.0",
+    "babel-plugin-formatjs": "^10.5.13"
   }
 }
