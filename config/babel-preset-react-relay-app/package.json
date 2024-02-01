@@ -1,13 +1,13 @@
 {
   "name": "@aztlan/babel-preset-react-relay-app",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "",
   "main": "index.js",
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@aztlan/babel-preset-react": "^1.0.7",
     "@aztlan/eslint-config": "^0.2.0",
-    "@aztlan/babel-preset-react": "^1.0.0",
     "babel-plugin-relay": "^16.2.0"
   }
 }
