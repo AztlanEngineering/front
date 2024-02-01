@@ -106,7 +106,10 @@ module.exports = class extends Generator {
       npmOrg,
     }
 
-    if (['comp', 'component'].includes(generateType)) {
+    if ([
+      'comp',
+      'component',
+    ].includes(generateType)) {
       this._generateComponent(templateVars)
     }
 
@@ -166,7 +169,7 @@ module.exports = class extends Generator {
   _generateComponent(templateVars) {
     this.log(`Will generate the component ${templateVars.fullname}`)
 
-    const stringToAppendToIndex = `export * from './${templateVars.name}/index.ts'\n`
+    const stringToAppendToIndex = `export * from './${templateVars.name}/index.js'\n`
     this._touchOrAppendToIndex(stringToAppendToIndex)
 
     const targetFolder = `./${templateVars.name}/`
