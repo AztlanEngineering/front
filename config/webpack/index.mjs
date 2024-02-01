@@ -112,6 +112,7 @@ const template = (inputs) => ({
     BundleAnalyzer:new BundleAnalyzerPlugin({
       analyzerMode     :'static',
       generateStatsFile:true,
+      openAnalyzer     :false,
     }),
     /* TODO when modular config doesnt write properly.
     Loadable:new LoadablePlugin({
