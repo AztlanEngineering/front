@@ -32,19 +32,5 @@
   "devDependencies": {
     "jsonlint": "^1.6.3",
     "lerna": "=8.0.2"
-  },
-  "babel": {
-    "presets": [
-      "@aztlan/react"
-    ],
-    "plugins": [
-      "relay",
-      [
-        "formatjs",
-        {
-          "ast": true
-        }
-      ]
-    ]
   }
 }

@@ -29,7 +29,7 @@
   "license": "ISC",
   "devDependencies": {
     "@aztlan/assets": "^1.0.0",
-    "@aztlan/babel-preset-react": "^1.0.0",
+    "@aztlan/babel-preset-react-relay-app": "^1.0.0",
     "@aztlan/eslint-config-base": "^1.0.0",
     "@aztlan/react-scripts": "^1.0.0",
     "@aztlan/storybook-config": "^1.0.6",
@@ -90,11 +90,7 @@
   },
   "babel": {
     "presets": [
-      "@aztlan/react"
-    ],
-    "plugins": [
-      "relay",
-      "formatjs"
+      "@aztlan/react-relay-app"
     ]
   },
   "stylelint": {

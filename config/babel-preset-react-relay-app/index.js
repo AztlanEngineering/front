@@ -2,14 +2,14 @@ const utils = require('@babel/helper-plugin-utils')
 
 const config = {
   presets:[
-    '@babel/preset-env',
-    '@babel/preset-react',
-    '@babel/preset-typescript',
+    '@aztlan/react',
   ],
   plugins:[
-    ['module-resolver', {
-      root:['./src'],
+    'relay',
+    ['formatjs', {
+      ast:true,
     }],
+    '@loadable/babel-plugin',
   ],
 }
 
