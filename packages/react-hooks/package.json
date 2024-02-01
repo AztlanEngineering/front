@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/react-hooks",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -19,8 +19,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/eslint-config-base": "^1.0.8",
-    "@aztlan/react-scripts": "^1.0.8",
+    "@aztlan/eslint-config-base": "^1.0.9",
+    "@aztlan/react-scripts": "^1.0.9",
     "@aztlan/typescript-config": "^1.0.0",
     "typescript": "^5.3.3"
   },

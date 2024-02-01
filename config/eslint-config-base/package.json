@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/eslint-config-base",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "main": "index.js",
   "author": "",
@@ -10,7 +10,7 @@
     "lint-eslint-fix": "eslint --ext .mjs,.js,.tsx,.ts ./ --fix"
   },
   "dependencies": {
-    "@aztlan/babel-preset-react": "^1.0.7",
+    "@aztlan/babel-preset-react": "^1.0.9",
     "@stylistic/eslint-plugin": "^1.5.4",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "@typescript-eslint/parser": "^6.20.0",
