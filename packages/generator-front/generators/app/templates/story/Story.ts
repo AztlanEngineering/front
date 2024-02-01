@@ -9,12 +9,12 @@ import Component from "./<%= name %>.js";
 
 const meta: Meta<typeof Component> = {
   title: "<%= fullname %>",
-  component: Component,
+  component: Component
+  /*
   decorators: [
     //decorators.app,
     //storyfn => <div className="">{ storyfn() }</div>,
   ]
-  /*
   argTypes: {
     backgroundColor: { control: "color" }
   }
