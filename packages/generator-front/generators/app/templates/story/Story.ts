@@ -13,11 +13,11 @@ const meta: Meta<typeof Component> = {
   decorators: [
     //decorators.app,
     //storyfn => <div className="">{ storyfn() }</div>,
-  ],
+  ]
+  /*
   argTypes: {
     backgroundColor: { control: "color" }
   }
-  /*
   parameters: {
     layout: 'centered|fullscreen|padded(default)',
   },*/
@@ -27,9 +27,7 @@ export default meta;
 
 export const Base: StoryObj<typeof Component> = {
   args: {
-    type: "text",
-    name: "name",
-    label: "Your name"
+    children: "Sample <%= name %>"
   }
 };
 
