@@ -7,7 +7,7 @@ import Component from "./<%= name %>.tsx";
 //import * as decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
 //import * as decorators from "story-utils/decorators.tsx";
 
-const meta: Meta<typeof Component> {
+const meta: Meta<typeof Component> = {
   title: "<%= fullname %>",
   component: Component,
   decorators: [
