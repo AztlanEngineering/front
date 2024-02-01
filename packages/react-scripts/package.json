@@ -19,12 +19,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/babel-plugin-replace-import-extension": "^1.0.9",
     "@aztlan/eslint-config-base": "^1.0.9",
     "@aztlan/typescript-config": "^1.0.0",
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@aztlan/babel-plugin-replace-import-extension": "^1.0.9",
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.23.9",
     "copyfiles": "^2.4.1",
