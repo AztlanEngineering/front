@@ -4,7 +4,6 @@
  */
 const path = require('path')
 const { fileURLlToPath } = require('url')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const ResolveTypeScriptPlugin = require('resolve-typescript-plugin')
 
 function getAbsolutePath(value) {
@@ -122,7 +121,6 @@ const template = (inputs) => ({
 
       ]
     }
-    console.log(config.resolve)
   },
 })
 
