@@ -35,7 +35,6 @@
   "private": true,
   "devDependencies": {
     "@aztlan/babel-preset-react-relay-app": "^1.0.9",
-    "@aztlan/bem": "^0.9.0",
     "@aztlan/eslint-config-base": "^1.0.9",
     "@aztlan/storybook-addon-relay": "^1.0.0",
     "@aztlan/stylelint-config": "^0.9.0",
@@ -67,6 +66,7 @@
   },
   "dependencies": {
     "@aztlan/assets": "^1.0.0",
+    "@aztlan/bem": "^0.9.0",
     "@aztlan/base-styles": "^1.0.0",
     "@aztlan/react-hooks": "^1.0.10",
     "@aztlan/react-relay": "^1.0.10",
