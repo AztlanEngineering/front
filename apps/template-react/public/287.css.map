@@ -1,1 +1,0 @@
-{"version":3,"file":"287.css","mappings":"AAKE,eACE,W","sources":["webpack://@aztlan/template-react/../../packages/ui/dist/esm/form/Field/inputs/Text/styles.scss"],"sourcesContent":["/* @aztlan/generator-front 0.8.0 */\n\n@use \"@aztlan/bem\";\n\n.#{bem.$base}.text {\n  input {\n    width: 100%;\n  }\n}\n\n\n"],"names":[],"sourceRoot":""}

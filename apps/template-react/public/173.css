@@ -1,3 +1,0 @@
-.ui.choices{display:flex;flex-wrap:wrap;gap:var(--gap)}.ui.choices input{opacity:0;position:absolute;visibility:none;z-index:-1}.ui.choices input:disabled+label{color:#a9a9a9}.ui.choices input:checked+label{color:red}
-
-/*# sourceMappingURL=173.css.map*/
