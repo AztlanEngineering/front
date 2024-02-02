@@ -46,15 +46,10 @@
     "@storybook/testing-library": "^0.2.2",
     "@stylistic/eslint-plugin": "^1.5.4",
     "@types/prop-types": "^15.7.11",
-    "css-loader": "^6.10.0",
-    "eslint": "^8.56.0",
     "postcss-scss": "^4.0.9",
     "sass": "^1.70.0",
-    "sass-loader": "^14.1.0",
     "storybook": "^7.6.11",
-    "style-loader": "^3.3.4",
-    "typescript": "^5.3.3",
-    "typescript-plugin-css-modules": "^5.0.2"
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@aztlan/base-styles": "^1.0.0",
