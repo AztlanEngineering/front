@@ -23,9 +23,9 @@
     "sass": "^1.70.0"
   },
   "dependencies": {
-    "@aztlan/grid": "^0.9.0",
-    "@aztlan/mixins": "^0.9.0",
-    "@aztlan/swatch": "^0.9.0"
+    "@aztlan/grid": "^0.9.1",
+    "@aztlan/mixins": "^0.9.1",
+    "@aztlan/swatch": "^0.9.1"
   },
   "stylelint": {
     "extends": "@aztlan/stylelint-config"
