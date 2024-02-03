@@ -54,6 +54,10 @@ function Field({
     className,
   }
 
+  console.log(
+    'Field', fieldProps, inputType,
+  )
+
   switch (inputType) {
     case 'textarea':
       return <Textarea {...fieldProps} />
