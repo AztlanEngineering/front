@@ -40,7 +40,7 @@ const useFormValidity = (
 
       fields.forEach((field) => {
         const isVisible = true // TODO !field.condition || field.condition();
-        const isRequired = !field.optional
+        const isRequired = field.type !== 'hidden' && !field.optional
         const isTouched = touchedFields[field.name]
         const hasError = errors[field.name]
 

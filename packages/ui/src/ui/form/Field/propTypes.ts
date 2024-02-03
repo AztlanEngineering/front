@@ -55,9 +55,16 @@ export const wrapperShared = {
   spanContentDesktop:PropTypes.number,
 }
 
-export const Wrapper = {
+export const baseWrapper = {
   /** Name attribute for the input */
   name:PropTypes.string.isRequired,
+
+  /** An object of shape [`RegisterOptions`](https://www.react-hook-form.com/ts/#RegisterOptions) that will be passed to the registration function of the input */
+  registerProps:PropTypes.object,
+}
+
+export const Wrapper = {
+  ...baseWrapper,
 
   /** Label content for the input, defaults to component name */
   label:PropTypes.string,
@@ -72,9 +79,6 @@ export const Wrapper = {
    * "hard-code" it in the HOC call, passing options:{ mockLabel:true }
    */
   mockLabel:PropTypes.bool,
-
-  /** An object of shape [`RegisterOptions`](https://www.react-hook-form.com/ts/#RegisterOptions) that will be passed to the registration function of the input */
-  registerProps:PropTypes.object,
 
   ...wrapperShared,
 }

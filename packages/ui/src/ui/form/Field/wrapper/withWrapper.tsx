@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useMemo } from 'react'
-import Wrapper from './Wrapper.js'
+import DefaultWrapper from './Wrapper.js'
 import type { FieldProps } from '../types.js'
 import type { TWrapperProps } from './types.js'
 import withConditionalDisplay from './withConditionalDisplay.js'
@@ -15,6 +15,7 @@ import withConditionalDisplay from './withConditionalDisplay.js'
 const withWrapper = (
   Component: React.ComponentType<any>,
   options?: TWrapperProps, // TODO check consistency with withConditionalDisplay
+  Wrapper: React.ComponentType<any> = DefaultWrapper,
 ) => {
   const MemoizedComponent = React.memo(Component)
 

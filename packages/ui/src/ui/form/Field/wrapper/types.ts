@@ -10,4 +10,10 @@ export const WrapperPropTypes = {
   Component:PropTypes.elementType.isRequired,
 }
 
+export const InvisibleWrapperPropTypes = WrapperPropTypes
+
 export type TWrapperProps = InferProps<typeof WrapperPropTypes>
+
+export type TInvisibleWrapperProps = InferProps<
+  typeof InvisibleWrapperPropTypes
+>

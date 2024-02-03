@@ -63,10 +63,12 @@ export const auth = (StoryFn) => (
 
 export const grid = (StoryFn) => <div className="grid">{StoryFn()}</div>
 
-export const form = (StoryFn) => {
+const baseFormDecorator = (
+  StoryFn, defaultValues = { color: 'red' },
+) => {
   const methods = useForm({
-    mode         :'onChange',
-    defaultValues:{ color: 'red' },
+    mode:'onChange',
+    defaultValues,
   })
   const onSubmit = (data) => console.log(
     '[FORM SUBMIT]', data,
@@ -85,3 +87,9 @@ export const form = (StoryFn) => {
     </FormProvider>
   )
 }
+
+export const form = (StoryFn) => baseFormDecorator(StoryFn)
+
+export const getFormDecorator = (defaultValues) => (StoryFn) => baseFormDecorator(
+  StoryFn, defaultValues,
+)

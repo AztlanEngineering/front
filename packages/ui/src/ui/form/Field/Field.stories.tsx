@@ -135,3 +135,10 @@ export const ChoicesMultiple: StoryObj<typeof Component> = {
     multiple:true,
   },
 }
+
+export const Hidden: StoryObj<typeof Component> = {
+  args:{
+    type:'hidden',
+    name:'latitude',
+  },
+}
