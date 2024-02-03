@@ -191,11 +191,13 @@ module.exports = class extends Generator {
       templateVars,
     )
 
-    this.fs.copyTpl(
-      this.templatePath('story/Story.ts'),
-      this.destinationPath(`${templateVars.name}.stories.tsx`),
-      templateVars,
-    )
+    if (templateVars.stories) {
+      this.fs.copyTpl(
+        this.templatePath('story/Story.ts'),
+        this.destinationPath(`${templateVars.name}.stories.tsx`),
+        templateVars,
+      )
+    }
 
     this.fs.copyTpl(
       this.templatePath('component/index.ts'),
