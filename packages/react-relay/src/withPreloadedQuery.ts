@@ -27,9 +27,11 @@ const withPreloadedQuery = (
 ) => function ({
   queryRef, ...props
 }: WithPreloadedQueryProps) {
-  const data = usePreloadedQuery(
+  const result = usePreloadedQuery(
     query, queryRef,
   )
+
+  const data = accessor ? result[accessor] : result
 
   return React.createElement(
     Component, {
