@@ -22,6 +22,7 @@ export type UnionInputProps =
   | SimpleChoicesProps
 
 export type FieldProps = UnionInputProps &
+InferProps<typeof formPropTypes.Field> &
 InferProps<typeof formPropTypes.globalType> & {
   className?:string;
 }
