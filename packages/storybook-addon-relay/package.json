@@ -8,7 +8,8 @@
   "files": [
     "dist",
     "README.md",
-    "preset.js"
+    "preset.js",
+    "src"
   ],
   "keywords": [
     "storybook-addons",
