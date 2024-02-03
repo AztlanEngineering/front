@@ -12,7 +12,7 @@
     "build": "lerna run build --parallel",
     "lerna": "lerna",
     "link": "lerna link",
-    "ncu": "lerna exec 'ncu -i' --concurrency 1",
+    "ncu": "lerna exec 'ncu -i --reject react-router-dom --install never' --concurrency 1",
     "prepare": "npm run build",
     "release:major": "./scripts/release.sh major",
     "release:minor": "./scripts/release.sh minor",

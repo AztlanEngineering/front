@@ -12,6 +12,7 @@ import {
 interface WithPreloadedQueryOptions {
   WrappedComponent:ElementType;
   QUERY           :GraphQLTaggedNode;
+  accessor?       :string;
 }
 
 /**
@@ -32,14 +33,16 @@ interface WithPreloadedQueryProps {
 function withPreloadedQuery({
   WrappedComponent,
   QUERY,
+  accessor,
 }: WithPreloadedQueryOptions) {
   return function ComponentWithPreloadedQuery(props: WithPreloadedQueryProps) {
     const {
       queryRef, ...otherProps
     } = props
-    const data = usePreloadedQuery(
+    const result = usePreloadedQuery(
       QUERY, queryRef,
     )
+    const data = accessor ? result[accessor] : result
 
     // Use React.createElement instead of JSX
     return React.createElement(

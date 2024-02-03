@@ -7,8 +7,8 @@
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/esm/authentication/index.mjs",
-      "require": "./dist/cjs/authentication/index.cjs"
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
     },
     "./client": {
       "import": "./dist/esm/client.mjs",
@@ -17,7 +17,8 @@
     "./server": {
       "import": "./dist/esm/server.mjs",
       "require": "./dist/cjs/server.cjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
