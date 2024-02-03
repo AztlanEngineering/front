@@ -32,6 +32,9 @@ export const Field = {
 
   /** A tuple of [dependencies, conditionFunction] to decide whether to render the input */
   condition:conditionPropType,
+
+  /** A component to render the input */
+  Component:PropTypes.elementType,
 }
 
 /** These are props that are can be safely shared between several fields in the same form */

@@ -69,6 +69,8 @@ function Field({
       return <Combobox {...fieldProps} />
     case 'hidden':
       return <Hidden {...fieldProps} />
+    case 'custom':
+      return <otherProps.Component {...fieldProps} />
     default:
       return (
         <Text
