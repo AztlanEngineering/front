@@ -64,6 +64,14 @@ module.exports = class extends Generator {
     )
 
     this.option(
+      'stories', {
+        type :Boolean,
+        alias:'s',
+        desc :'Whether to generate stories for the component. Only applies if type=comp|component',
+      },
+    )
+
+    this.option(
       'npmOrg', {
         type   :String,
         alias  :'o',
@@ -180,6 +188,12 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('component/Component.ts'),
       this.destinationPath(`${templateVars.name}.tsx`),
+      templateVars,
+    )
+
+    this.fs.copyTpl(
+      this.templatePath('story/Story.ts'),
+      this.destinationPath(`${templateVars.name}.stories.tsx`),
       templateVars,
     )
 
