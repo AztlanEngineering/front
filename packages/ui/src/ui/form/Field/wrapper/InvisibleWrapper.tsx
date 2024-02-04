@@ -62,13 +62,11 @@ function InvisibleWrapper({
   )
 
   return (
-    <div>
-      <Component
-        name={name}
-        registerProps={registerProps}
-        {...otherProps}
-      />
-    </div>
+    <Component
+      name={name}
+      registerProps={registerProps}
+      {...otherProps}
+    />
   )
 }
 

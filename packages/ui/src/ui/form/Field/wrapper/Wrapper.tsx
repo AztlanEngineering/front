@@ -55,6 +55,7 @@ function Wrapper({
   spanContent = 8,
   spanContentDesktop = 8,
   mockLabel = false,
+  nested = false,
   registerProps: userRegisterProps = defaultObject,
   ...otherProps
 }: TWrapperProps): React.ReactElement {
@@ -112,6 +113,7 @@ function Wrapper({
           ...span(
             spanContent, spanContentDesktop,
           ),
+          nested && 'container',
         ]
           .filter(Boolean)
           .join(' ')}
@@ -130,7 +132,10 @@ function Wrapper({
             {...ariaProps.error}
             isError
           >
-            {errors[name]?.message.toString()}
+
+            {JSON.stringify(errors)}
+
+            {/* errors[name]?.message.toString() */}
           </Description>
         )}
       </div>
