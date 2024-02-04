@@ -67,6 +67,7 @@ function Wrapper({
   const { errors } = useFormState({ name })
 
   const fieldTree = name.split('.')
+
   const fieldError = useMemo(
     ():FieldError | Merge<FieldError, FieldErrorsImpl> => fieldTree.reduce(
       (
@@ -138,7 +139,7 @@ function Wrapper({
           ...span(
             spanContent, spanContentDesktop,
           ),
-          nested && 'container',
+          nested && 'grid',
         ]
           .filter(Boolean)
           .join(' ')}

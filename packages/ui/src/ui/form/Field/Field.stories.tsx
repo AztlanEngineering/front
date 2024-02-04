@@ -175,16 +175,18 @@ export const Nested: StoryObj<typeof Component> = {
           },
         ]
         return (
-          <div>
+          <>
             {fieldMap.map((field) => (
               <Component
                 key={field.name}
                 nestedRegisterProps={registerProps}
+                spanLabelDesktop={3}
+                spanContentDesktop={5}
                 {...props}
                 {...field}
               />
             ))}
-          </div>
+          </>
         )
       },
       { nested: true },
