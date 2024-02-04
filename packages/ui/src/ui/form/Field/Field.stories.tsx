@@ -173,6 +173,18 @@ export const Nested: StoryObj<typeof Component> = {
             label       :'Zip',
             autoComplete:'postal-code',
           },
+          {
+            type     :'checkbox',
+            name     :'address.confirm',
+            label    :'I confirm this is my address',
+            condition:[
+              [
+                'address.street',
+                'address.city',
+              ],
+              (array) => array.every((e) => e),
+            ],
+          },
         ]
         return (
           <>
