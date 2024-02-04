@@ -49,7 +49,7 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
       - name: Commit and Push Changes
         run: |
-          cd ${{ inputs.working-directory }} && git add -- ./api/* ./public/*
+          cd ${{ inputs.working-directory }} && git add --force -- ./api/* ./public/*
           git commit --reuse-message ${{ env.BRANCH_NAME }}
       - name: Push changes
         uses: ad-m/github-push-action@master
