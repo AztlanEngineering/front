@@ -65,8 +65,8 @@ function SimpleForm({
         {fields.map((fieldProps) => (
           <Field
             key={fieldProps.name}
-            {...fieldProps as Partial<FieldProps>}
             {...sharedFieldProps as Partial<FieldProps>}
+            {...fieldProps as Partial<FieldProps>}
           />
         ))}
         <input

@@ -32,6 +32,7 @@ const componentClassName = 'input'
 function Field({
   className: userClassName,
   type: inputType = 'text',
+  Component,
   ...otherProps
 }: FieldProps): React.ReactElement {
   useInsertionEffect(
@@ -54,10 +55,6 @@ function Field({
     className,
   }
 
-  console.log(
-    'Field', fieldProps, inputType,
-  )
-
   switch (inputType) {
     case 'textarea':
       return <Textarea {...fieldProps} />
@@ -74,7 +71,7 @@ function Field({
     case 'hidden':
       return <Hidden {...fieldProps} />
     case 'custom':
-      return <otherProps.Component {...fieldProps} />
+      return <Component {...fieldProps} />
     default:
       return (
         <Text

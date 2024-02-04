@@ -83,6 +83,9 @@ export const Wrapper = {
    */
   mockLabel:PropTypes.bool,
 
+  /** Whether the input requires a nested grid */
+  nested:PropTypes.bool,
+
   ...wrapperShared,
 }
 

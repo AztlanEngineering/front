@@ -55,8 +55,8 @@ function Section({
       {fields.map((fieldProps) => (
         <Field
           key={fieldProps.name}
-          {...fieldProps}
           {...sharedFieldProps}
+          {...fieldProps}
         />
       ))}
     </Element>
