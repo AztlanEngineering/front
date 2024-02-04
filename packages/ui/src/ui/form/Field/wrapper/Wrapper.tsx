@@ -2,6 +2,9 @@ import * as React from 'react'
 import { useMemo } from 'react'
 import {
   useFormState, RegisterOptions,
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
 } from 'react-hook-form'
 import { WrapperPropTypes } from './types.js'
 import type { TWrapperProps } from './types.js'
@@ -61,7 +64,29 @@ function Wrapper({
 }: TWrapperProps): React.ReactElement {
   // const { register } = useFormContext()
   const { errors } = useFormState({ name })
-  const isError = !!errors[name]
+
+  const fieldError = useMemo(
+    ():FieldError | Merge<FieldError, FieldErrorsImpl> => {
+      const fieldTree = name.split('.')
+      return fieldTree.reduce(
+        (
+          acc, key,
+        ) => {
+          if (acc) {
+            return acc[key]
+          }
+          return undefined
+        },
+        errors,
+      )
+    }, [
+      errors,
+      name,
+    ],
+  )
+
+  const isError = !!fieldError
+
   const ariaProps = useFieldAriaProps(
     name, isError,
   )
@@ -86,10 +111,6 @@ function Wrapper({
       userRegisterProps,
       optional,
     ],
-  )
-
-  console.log(
-    'WRAPPER ERRORS', name, errors,
   )
 
   return (
@@ -136,7 +157,7 @@ function Wrapper({
             {...ariaProps.error}
             isError
           >
-            {/* errors[name]?.message.toString() */}
+            {fieldError?.message.toString() }
           </Description>
         )}
       </div>
