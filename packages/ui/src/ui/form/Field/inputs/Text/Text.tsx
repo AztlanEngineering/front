@@ -35,6 +35,9 @@ function Text({
   )
 
   const { register } = useFormContext()
+  console.log(
+    'TI', name, registerProps,
+  )
 
   return (
     <div

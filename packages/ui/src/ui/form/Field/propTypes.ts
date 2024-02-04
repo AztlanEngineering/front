@@ -64,6 +64,13 @@ export const baseWrapper = {
 
   /** An object of shape [`RegisterOptions`](https://www.react-hook-form.com/ts/#RegisterOptions) that will be passed to the registration function of the input */
   registerProps:PropTypes.object,
+
+  /** Register props to pass down the tree when the input displays nested inputs
+   * For instance : (place.streetAddress, place.city)
+   * This take the exact same API as registerProps, the only difference
+   * being they will be overwritten by registerProps. This way the nested logic does not have
+   * priority over the local one. */
+  nestedRegisterProps:PropTypes.object,
 }
 
 export const Wrapper = {

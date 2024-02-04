@@ -60,27 +60,26 @@ function Wrapper({
   mockLabel = false,
   nested = false,
   registerProps: userRegisterProps = defaultObject,
+  nestedRegisterProps = defaultObject,
   ...otherProps
 }: TWrapperProps): React.ReactElement {
   // const { register } = useFormContext()
   const { errors } = useFormState({ name })
 
+  const fieldTree = name.split('.')
   const fieldError = useMemo(
-    ():FieldError | Merge<FieldError, FieldErrorsImpl> => {
-      const fieldTree = name.split('.')
-      return fieldTree.reduce(
-        (
-          acc, key,
-        ) => {
-          if (acc) {
-            return acc[key]
-          }
-          return undefined
-        },
-        errors,
-      )
-    }, [
+    ():FieldError | Merge<FieldError, FieldErrorsImpl> => fieldTree.reduce(
+      (
+        acc, key,
+      ) => {
+        if (acc) {
+          return acc[key]
+        }
+        return undefined
+      },
       errors,
+    ), [
+      errors[fieldTree[0]],
       name,
     ],
   )
@@ -99,10 +98,11 @@ function Wrapper({
       if (!optional) {
         props.required = {
           value  :true,
-          message:messages.required(name),
+          message:messages.required(label || name),
         }
       }
       return {
+        ...nestedRegisterProps,
         ...props,
         ...userRegisterProps,
       }
@@ -157,7 +157,7 @@ function Wrapper({
             {...ariaProps.error}
             isError
           >
-            {fieldError?.message.toString() }
+            {fieldError?.message?.toString() }
           </Description>
         )}
       </div>

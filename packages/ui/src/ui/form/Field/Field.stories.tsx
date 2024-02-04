@@ -1,9 +1,11 @@
 /* @aztlan/generator-front 0.9.0 */
+import * as React from 'react'
 import {
   Meta, StoryObj,
 } from '@storybook/react'
 import * as decorators from 'story-utils/decorators.js'
 import Component from './Field.js'
+import withWrapper from './wrapper/withWrapper.js'
 import { AVAILABLE_TYPES } from './constants.js'
 
 const meta: Meta<typeof Component> = {
@@ -140,5 +142,52 @@ export const Hidden: StoryObj<typeof Component> = {
   args:{
     type:'hidden',
     name:'latitude',
+  },
+}
+
+export const Nested: StoryObj<typeof Component> = {
+  args:{
+    type     :'custom',
+    name     :'address',
+    label    :'Address',
+    Component:withWrapper(
+      ({
+        registerProps, ...props
+      }) => {
+        const fieldMap = [
+          {
+            type        :'text',
+            name        :'address.street',
+            label       :'Street',
+            autoComplete:'address-line1',
+          },
+          {
+            type        :'text',
+            name        :'address.city',
+            label       :'City',
+            autoComplete:'address-level2',
+          },
+          {
+            type        :'text',
+            name        :'address.zip',
+            label       :'Zip',
+            autoComplete:'postal-code',
+          },
+        ]
+        return (
+          <div>
+            {fieldMap.map((field) => (
+              <Component
+                key={field.name}
+                nestedRegisterProps={registerProps}
+                {...props}
+                {...field}
+              />
+            ))}
+          </div>
+        )
+      },
+      { nested: true },
+    ),
   },
 }
