@@ -88,6 +88,10 @@ function Wrapper({
     ],
   )
 
+  console.log(
+    'WRAPPER ERRORS', name, errors,
+  )
+
   return (
     <>
       <div
@@ -132,9 +136,6 @@ function Wrapper({
             {...ariaProps.error}
             isError
           >
-
-            {JSON.stringify(errors)}
-
             {/* errors[name]?.message.toString() */}
           </Description>
         )}
