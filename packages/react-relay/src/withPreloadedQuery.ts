@@ -9,8 +9,8 @@ import {
  * Type definition for the props expected by the HOC returned component
  */
 interface WithPreloadedQueryProps {
-  queryRef     :PreloadedQuery<any>;
-  [key: string]:any; // Additional props
+  queryReference:PreloadedQuery<any>;
+  [key: string] :any; // Additional props
 }
 
 /**
@@ -25,10 +25,10 @@ const withPreloadedQuery = (
   query: GraphQLTaggedNode,
   accessor?: string,
 ) => function ({
-  queryRef, ...props
+  queryReference, ...props
 }: WithPreloadedQueryProps) {
   const result = usePreloadedQuery(
-    query, queryRef,
+    query, queryReference,
   )
 
   const data = accessor ? result[accessor] : result
