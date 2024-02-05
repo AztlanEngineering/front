@@ -7,6 +7,7 @@ import environment from '@aztlan/storybook-addon-relay/src/decorators/environmen
 import {
   useForm, FormProvider,
 } from 'react-hook-form'
+import { HashRouter as Router } from 'react-router-dom'
 import { AppContextProvider } from '../ui/common/index.js'
 import { AuthContextProvider } from '../ui/app.base/index.js'
 
@@ -59,6 +60,12 @@ export const auth = (StoryFn) => (
   <AuthContextProvider>
     <StoryFn />
   </AuthContextProvider>
+)
+
+export const router = (StoryFn) => (
+  <Router>
+    <StoryFn />
+  </Router>
 )
 
 export const grid = (StoryFn) => <div className="grid">{StoryFn()}</div>

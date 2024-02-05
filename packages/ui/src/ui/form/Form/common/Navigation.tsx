@@ -29,12 +29,14 @@ function Navigation({
   id, className: userClassName, style,
 }: TProps) {
   const {
-    setIndex, state,
+    sectionsState, sectionsMethods,
   } = useForm()
 
   const {
     sections, currentIndex,
-  } = state
+  } = sectionsState
+
+  const { setIndex } = sectionsMethods
 
   return (
     <nav

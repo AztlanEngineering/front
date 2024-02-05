@@ -3,16 +3,13 @@ import * as React from 'react'
 import {
   Meta, StoryObj,
 } from '@storybook/react'
+import * as decorators from 'story-utils/decorators.js'
 import Component from './Form.js'
-// import * as decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
   title     :'form/Form',
   component :Component,
-  decorators:[
-    // decorators.app,
-  ],
-  //argTypes:{ backgroundColor: { control: 'color' } },
+  decorators:[decorators.router],
 }
 
 export default meta
@@ -21,8 +18,9 @@ const Form = Component
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    className:'grid',
-    children :[
+    className     :'grid',
+    loadInitialUrl:true,
+    children      :[
       <Form.Navigation
         className="span-8 md-span-5"
         key="menu"
@@ -42,6 +40,7 @@ export const Base: StoryObj<typeof Component> = {
       {
         label      :'Personal Information',
         description:"Let's get to know you",
+        path       :'/personal', // Only used for multipart
         fields     :[
           {
             type         :'text',
@@ -102,6 +101,7 @@ export const Base: StoryObj<typeof Component> = {
       {
         label      :"Your Company's Information",
         description:"Let's get to know your company",
+        path       :'/company', // Only used for multipart
         fields     :[
           {
             type         :'text',
@@ -134,6 +134,7 @@ export const Base: StoryObj<typeof Component> = {
       {
         label      :'Your website',
         description:'Tell us more about your site',
+        path       :'/site', // Only used for multipart
         fields     :[
           {
             type        :'text',

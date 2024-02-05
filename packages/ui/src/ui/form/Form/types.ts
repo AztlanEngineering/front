@@ -65,7 +65,8 @@ const basePropTypes = {
 export const FormPropTypes = {
   ...basePropTypes,
   ...typeShared,
-  items:sectionTypeValidator,
+  items         :sectionTypeValidator,
+  loadInitialUrl:PropTypes.bool,
 }
 
 export const SimpleFormPropTypes = {

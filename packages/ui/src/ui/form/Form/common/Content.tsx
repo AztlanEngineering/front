@@ -40,12 +40,12 @@ function Content({
   style,
 }: TProps): React.ReactElement {
   const {
-    state, type: formType,
+    sectionsState, type: formType,
   } = useForm()
 
   const {
     currentSection, currentIndex, sections,
-  } = state
+  } = sectionsState
 
   return (
     <div

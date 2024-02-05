@@ -3,7 +3,7 @@ import {
   useCallback, useReducer,
 } from 'react'
 
-export type SectionType = {
+export interface SectionConfig {
   label                      :string;
   hideBack?                  :boolean;
   hideNext?                  :boolean;
@@ -11,25 +11,33 @@ export type SectionType = {
   [key: string]              :any;
 }
 
-type ConfigType = SectionType[]
+export type SectionsConfig = SectionConfig[]
 
 export interface SectionState {
   currentIndex      :number;
-  currentSection    :SectionType | null;
-  sections          :ConfigType;
+  currentSection    :SectionConfig | null;
+  sections          :SectionsConfig;
   isFirst           :boolean;
   isLast            :boolean;
   progressPercentage:number;
 }
 
-const ACTIONS = { SET_SECTION_INDEX: 'SET_SECTION_INDEX' } as const // Using 'as const' for a literal type
+export interface SectionsController {
+  setIndex   :(index: number) => void;
+  setNext    :() => void;
+  setPrevious:() => void;
+}
 
-type SectionAction = {
-  type   :keyof typeof ACTIONS; // Referencing the literal type of ACTIONS
+export type SectionsReturn = [SectionState, SectionsController]
+
+const ACTIONS = { SET_SECTION_INDEX: 'SET_SECTION_INDEX' } as const
+
+export type SectionsReducerAction = {
+  type   :keyof typeof ACTIONS;
   payload:number;
 }
 
-const initialState = (config: ConfigType): SectionState => ({
+const initialState = (config: SectionsConfig): SectionState => ({
   currentIndex      :0,
   currentSection    :config[0] || null,
   sections          :config,
@@ -38,9 +46,10 @@ const initialState = (config: ConfigType): SectionState => ({
   isLast            :config.length <= 1,
 })
 
-const reducer = (
-  state: SectionState, action: SectionAction,
-): SectionState => {
+export const reducer = <T extends SectionState>(
+  state: T,
+  action: SectionsReducerAction,
+): T => {
   switch (action.type) {
     case ACTIONS.SET_SECTION_INDEX:
       return {
@@ -59,19 +68,12 @@ const reducer = (
   }
 }
 
-export interface UseSectionsReturnType {
-  state      :SectionState;
-  setIndex   :(index: number) => void;
-  setNext    :() => void;
-  setPrevious:() => void;
-}
-
 /**
  * Custom hook to manage state in components that require sequential section display.
- * @param {ConfigType} config - Array of section configuraion objects
- * @returns {UseSectionsReturnType} - Hook return type with state and control functions
+ * @param {SectionsConfig} config - Array of section configuraion objects
+ * @returns {SectionsReturn} - Hook return type with state and control functions
  */
-function useSections(config: ConfigType): UseSectionsReturnType {
+function useSections(config: SectionsConfig): SectionsReturn {
   const [
     state,
     dispatch,
@@ -107,12 +109,16 @@ function useSections(config: ConfigType): UseSectionsReturnType {
     }, [state.currentIndex],
   )
 
-  return {
-    state,
+  const methods: SectionsController = {
     setIndex,
     setNext,
     setPrevious,
   }
+
+  return [
+    state,
+    methods,
+  ]
 }
 
 export default useSections

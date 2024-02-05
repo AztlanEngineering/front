@@ -25,12 +25,16 @@ function Paginator({
   style,
 }: InferProps<typeof Paginator.propTypes>): React.ReactElement {
   const {
-    state, setNext, setPrevious,
+    sectionsState, sectionsMethods,
   } = useForm()
 
   const {
+    setNext, setPrevious,
+  } = sectionsMethods
+
+  const {
     currentSection, isFirst, isLast,
-  } = state
+  } = sectionsState
 
   const displayBack = useMemo(
     () => !isFirst && !currentSection.hideBack, [currentSection],

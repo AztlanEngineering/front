@@ -7,9 +7,9 @@ import {
 import {
   useForm, FormProvider,
 } from 'react-hook-form'
-import { useSections } from '@aztlan/react-hooks'
-// @ts-ignore
 import styleNames from '@aztlan/bem'
+import { useNavigableSections } from './hooks/index.js'
+// @ts-ignore
 import type { TFormProps } from './types.js'
 import { FormPropTypes } from './types.js'
 
@@ -30,6 +30,7 @@ function Form({
   children,
   items,
   fieldProps: sharedFieldProps,
+  loadInitialUrl,
   type: formType = 'default',
 
   ...otherProps
@@ -51,16 +52,22 @@ function Form({
     '[FORM SUBMIT]', data,
   )
 
-  const sectionsProps = useSections(items)
+  const [
+    sectionsState,
+    sectionsMethods,
+  ] = useNavigableSections(
+    items, { loadInitialUrl },
+  )
 
   const contextValue = useMemo(
     () => ({
-      ...sectionsProps,
-      // sharedFieldProps,
+      sectionsState,
+      sectionsMethods,
       type:formType,
     }),
     [
-      sectionsProps,
+      sectionsState,
+      sectionsMethods,
       sharedFieldProps,
       formType,
     ],

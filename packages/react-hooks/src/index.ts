@@ -1,5 +1,14 @@
 export { default as useTheme } from './useTheme.js'
 export { default as useLocale } from './useLocale.js'
-export { default as useSections } from './useSections.js'
 export { default as UNSTABLE_useURLParameterState } from './UNSTABLE_useURLParameterState.js'
-export type { UseSectionsReturnType } from './useSections.js'
+export {
+  default as useSections,
+  reducer as sectionsReducer,
+} from './useSections.js'
+export type {
+  SectionConfig,
+  SectionsConfig,
+  SectionsReturn,
+  SectionsController,
+  SectionState,
+} from './useSections.js'
