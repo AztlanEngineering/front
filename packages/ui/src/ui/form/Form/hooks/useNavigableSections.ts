@@ -59,16 +59,15 @@ function useNavigableSections(
             ], [],
           ))}`)
         }
+        const initialSection = initialConfig[initialIndex]
         return {
           sections          :initialConfig,
-          currentIndex      :initialIndex >= 0 ? initialIndex : 0,
-          currentSection    :initialIndex >= 0 ? initialConfig[initialIndex] : config[0] || null,
+          currentIndex      :initialIndex,
+          currentSection    :initialSection,
           isFirst           :initialIndex === 0,
-          isLast            :initialConfig.length <= 1,
-          progressPercentage:initialIndex >= 0
-            && initialConfig[initialIndex]?.overrideProgressPercentage
-            ? initialConfig[initialIndex].overrideProgressPercentage
-            : 100 / config.length,
+          isLast            :initialIndex === initialConfig.length - 1,
+          progressPercentage:initialConfig[initialIndex]?.overrideProgressPercentage
+          || 100 / config.length,
         }
       }
       return {
@@ -120,11 +119,12 @@ function useNavigableSections(
 
   useEffect(
     () => {
-      history.push(config[state.currentIndex]?.path)
+      if (state.currentSection.path !== location.pathname) {
+        history.push(config[state.currentIndex].path)
+      }
     }, [
       state.currentIndex,
       config,
-      history,
     ],
   )
 
@@ -137,13 +137,7 @@ function useNavigableSections(
           setIndex(sectionIndex)
         }
       }
-    }, [
-      location.pathname,
-      config,
-      loadInitialUrl,
-      state.currentIndex,
-      setIndex,
-    ],
+    }, [],
   )
 
   return [
