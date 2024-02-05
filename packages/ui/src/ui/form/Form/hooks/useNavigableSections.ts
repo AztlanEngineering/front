@@ -130,14 +130,14 @@ function useNavigableSections(
 
   useEffect(
     () => {
-      if (loadInitialUrl) {
-        const currentPath = location.pathname
-        const sectionIndex = config.findIndex((section) => section.path === currentPath)
-        if (sectionIndex >= 0 && sectionIndex !== state.currentIndex) {
-          setIndex(sectionIndex)
-        }
+      if (location.pathname !== state.currentSection.path) {
+        const newIndex = config.findIndex((section) => section.path === location.pathname)
+        dispatch({
+          type   :'SET_SECTION_INDEX',
+          payload:newIndex,
+        })
       }
-    }, [],
+    }, [location.pathname],
   )
 
   return [
