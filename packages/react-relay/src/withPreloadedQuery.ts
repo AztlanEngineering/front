@@ -16,6 +16,7 @@ interface WithPreloadedQueryOptions {
 
 interface WithPreloadedQueryProps {
   queryReference:PreloadedQuery<any>;
+  QUERY         :GraphQLTaggedNode;
   [key: string] :any; // Additional props
 }
 
@@ -30,14 +31,14 @@ interface WithPreloadedQueryProps {
  */
 const withPreloadedQuery = (
   Component: ComponentType<any>,
-  query: GraphQLTaggedNode,
   options: WithPreloadedQueryOptions = {},
 ) => function WithPreloadedQueryComponent({
   queryReference,
+  QUERY,
   ...props
 }: WithPreloadedQueryProps) {
   const result = usePreloadedQuery(
-    query, queryReference,
+    QUERY, queryReference,
   )
   const data = options.accessor ? result[options.accessor] : result
 
@@ -52,7 +53,7 @@ const withPreloadedQuery = (
   return React.createElement(
     Component, {
       data,
-      QUERY:query,
+      QUERY,
       ...props,
     },
   )
