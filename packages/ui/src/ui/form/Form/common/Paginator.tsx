@@ -2,6 +2,8 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
@@ -33,14 +35,15 @@ function Paginator({
   } = sectionsMethods
 
   const {
-    currentSection, isFirst, isLast,
+    currentSection, isLast, isFirst,
   } = sectionsState
 
-  const displayBack = useMemo(
-    () => !isFirst && !currentSection.hideBack, [currentSection],
+  const hasPreviousButton = useMemo(
+    () => !isFirst && !currentSection.hideBack,
+    [currentSection],
   )
 
-  const displayNext = useMemo(
+  const hasNextButton = useMemo(
     () => !isLast && !currentSection.hideNext, [currentSection],
   )
 
@@ -48,11 +51,10 @@ function Paginator({
     validateFields, isValid: isFormSectionValid,
   } = useFieldsValidity(currentSection.fields)
 
-  const onClickNext = () => {
-    if (isFormSectionValid) {
+  const onClickNext = async (e) => {
+    const valid = await validateFields()
+    if (valid) {
       setNext()
-    } else {
-      validateFields()
     }
   }
 
@@ -70,7 +72,7 @@ function Paginator({
       style={style}
       // {...otherProps}
     >
-      {displayBack ? (
+      {hasPreviousButton ? (
         <button
           onClick={setPrevious}
           type="button"
@@ -80,7 +82,7 @@ function Paginator({
       ) : (
         <span />
       )}
-      {displayNext ? (
+      {hasNextButton ? (
         <button
           onClick={onClickNext}
           type="button"

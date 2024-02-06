@@ -2,6 +2,7 @@ import {
   useEffect,
   useCallback,
   useReducer,
+  useMemo,
 } from 'react'
 import type {
   SectionConfig,
@@ -9,7 +10,9 @@ import type {
   SectionState,
 } from '@aztlan/react-hooks'
 import { sectionsReducer } from '@aztlan/react-hooks'
-import { useHistory } from 'react-router-dom'
+import {
+  useHistory, useLocation,
+} from 'react-router-dom'
 
 export interface NavigableSectionConfig extends SectionConfig {
   path:string;
@@ -24,6 +27,8 @@ export interface NavigableSectionsOptions {
 export interface NavigableSectionsState extends SectionState {
   currentSection:NavigableSectionConfig | null;
   sections      :NavigableSectionsConfig;
+  nextLink?     :string;
+  previousLink? :string;
 }
 
 export type NavigableSectionsReturn = [NavigableSectionsState, SectionsController]
@@ -42,7 +47,7 @@ function useNavigableSections(
 ): NavigableSectionsReturn {
   const { loadInitialUrl = false } = options
   const history = useHistory()
-  const { location } = history
+  const location = useLocation()
 
   const initialState = useCallback(
     (initialConfig: NavigableSectionsConfig): NavigableSectionsState => {
@@ -132,16 +137,31 @@ function useNavigableSections(
     () => {
       if (location.pathname !== state.currentSection.path) {
         const newIndex = config.findIndex((section) => section.path === location.pathname)
-        dispatch({
-          type   :'SET_SECTION_INDEX',
-          payload:newIndex,
-        })
+        setIndex(newIndex)
       }
     }, [location.pathname],
   )
 
+  const links = useMemo(
+    () => {
+      if (state.currentIndex === 0) {
+        return { nextLink: config[state.currentIndex + 1].path }
+      }
+      if (state.currentIndex === config.length - 1) {
+        return { previousLink: config[state.currentIndex - 1].path }
+      }
+      return {
+        previousLink:config[state.currentIndex - 1].path,
+        nextLink    :config[state.currentIndex + 1].path,
+      }
+    }, [state.currentIndex],
+  )
+
   return [
-    state,
+    {
+      ...state,
+      ...links,
+    },
     {
       setIndex,
       setNext,

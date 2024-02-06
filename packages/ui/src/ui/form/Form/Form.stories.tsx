@@ -18,9 +18,9 @@ const Form = Component
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    className:'grid',
-    // loadInitialUrl:true,
-    children :[
+    className     :'grid',
+    loadInitialUrl:true,
+    children      :[
       <Form.Navigation
         className="span-8 md-span-5"
         key="menu"

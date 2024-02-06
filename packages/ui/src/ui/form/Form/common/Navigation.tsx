@@ -4,6 +4,7 @@ import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
+import { Link } from 'react-router-dom'
 import styleNames from '@aztlan/bem'
 import useForm from '../hooks/useForm.js'
 
@@ -28,15 +29,11 @@ export type TProps = InferProps<typeof propTypes>
 function Navigation({
   id, className: userClassName, style,
 }: TProps) {
-  const {
-    sectionsState, sectionsMethods,
-  } = useForm()
+  const { sectionsState } = useForm()
 
   const {
-    sections, currentIndex,
+    sections, currentIndex, previousLink, nextLink,
   } = sectionsState
-
-  const { setIndex } = sectionsMethods
 
   return (
     <nav
@@ -62,12 +59,7 @@ function Navigation({
                 className={styleNames.modifierPrevious}
                 key={payload}
               >
-                <button
-                  onClick={() => setIndex(index)}
-                  type="button"
-                >
-                  {payload}
-                </button>
+                <Link to={section.path}>{payload}</Link>
               </li>
             )
           }

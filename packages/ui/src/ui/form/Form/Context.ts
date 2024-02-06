@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { InferProps } from 'prop-types'
-import { SectionsReturn } from '@aztlan/react-hooks'
+import type { NavigableSectionsReturn } from './hooks/useNavigableSections.ts'
 
 import * as formPropTypes from '../Field/propTypes.js'
 import * as FormPropTypes from './types.js'
@@ -9,8 +9,8 @@ import * as FormPropTypes from './types.js'
  * Extends the UseSectionsReturnType with additional form-specific context.
  */
 export type FormContextType = {
-  sectionsState  :SectionsReturn[0];
-  sectionsMethods:SectionsReturn[1];
+  sectionsState  :NavigableSectionsReturn[0];
+  sectionsMethods:NavigableSectionsReturn[1];
 } & InferProps<typeof FormPropTypes.typeShared> & {
   sharedFieldProps?:InferProps<typeof formPropTypes.wrapperShared>;
 }

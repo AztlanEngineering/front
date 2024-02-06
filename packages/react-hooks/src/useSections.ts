@@ -38,12 +38,12 @@ export type SectionsReducerAction = {
 }
 
 const initialState = (config: SectionsConfig): SectionState => ({
+  sections          :config,
   currentIndex      :0,
   currentSection    :config[0] || null,
-  sections          :config,
-  progressPercentage:config[0]?.overrideProgressPercentage || 100 / config.length,
   isFirst           :true,
   isLast            :config.length <= 1,
+  progressPercentage:config[0]?.overrideProgressPercentage || 100 / config.length,
 })
 
 export const reducer = <T extends SectionState>(

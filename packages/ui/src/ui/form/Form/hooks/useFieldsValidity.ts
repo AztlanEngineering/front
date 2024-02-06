@@ -1,12 +1,14 @@
 // useFormValidity.js
 import {
-  useMemo, useCallback,
+  useMemo, useCallback, useState, useEffect,
 } from 'react'
-import { useFormContext } from 'react-hook-form'
+import {
+  useFormContext, useWatch,
+} from 'react-hook-form'
 
 interface MemoizedState {
-  fieldsToBeValidated:string[];
-  fieldsWithErrors   :string[];
+  fieldsToBeTouched:string[];
+  fieldsWithErrors :string[];
 }
 
 export interface UseFormValidityReturnType extends MemoizedState {
@@ -24,54 +26,82 @@ const useFormValidity = (
   shouldFocus: boolean = true,
 ): UseFormValidityReturnType => {
   const {
-    formState, trigger,
+    formState, trigger, watch,
   } = useFormContext()
 
   const {
     errors, touchedFields,
   } = formState
 
-  let isValid = true
+  const [
+    isValid,
+    setIsValid,
+  ] = useState(true)
 
-  const state = useMemo(
-    (): MemoizedState => {
-      const fieldsWithErrors: string[] = []
-      const fieldsToBeValidated: string[] = []
-
-      fields.forEach((field) => {
-        const isVisible = true // TODO !field.condition || field.condition();
+  const fieldInfo = useMemo(
+    () => fields.reduce(
+      (
+        a, field,
+      ) => {
+        let isVisible
+        if (field.condition) {
+          const watchedValues = watch(field.condition[0])
+          isVisible = field.condition[1](watchedValues)
+        } else {
+          isVisible = true
+        }
         const isRequired = field.type !== 'hidden' && !field.optional
         const isTouched = touchedFields[field.name]
         const hasError = errors[field.name]
 
-        if (isVisible && isRequired && (!isTouched || hasError)) {
+        if (isVisible && isRequired) {
+          a.fieldsToBeValidated.push(field.name)
           if (hasError) {
-            fieldsWithErrors.push(field.name)
+            a.fieldsWithErrors.push(field.name)
           }
           if (!isTouched) {
-            fieldsToBeValidated.push(field.name)
+            a.fieldsToBeTouched.push(field.name)
           }
-          isValid = false
         }
-      })
+        return a
+      },
+      {
+        fieldsWithErrors   :[],
+        fieldsToBeTouched  :[],
+        fieldsToBeValidated:[],
+      },
+    ),
+    [
+      formState,
+      fields,
+      touchedFields,
+      errors,
+    ],
+  )
 
-      return {
-        fieldsToBeValidated,
-        fieldsWithErrors,
+  useEffect(
+    () => {
+      if (fieldInfo.fieldsToBeValidated.length) {
+        setIsValid(false)
+      } else {
+        setIsValid(true)
       }
     }, [
-      fields,
-      formState,
+      fieldInfo.fieldsWithErrors,
+      setIsValid,
     ],
   )
 
   const validateFields = useCallback(
-    (): Promise<null | boolean> => {
-      if (!state.fieldsToBeValidated.length) return Promise.resolve(true)
-      return trigger(
-        state.fieldsToBeValidated, { shouldFocus },
-      )
+    (): Promise<boolean | null> => {
+      if (fieldInfo.fieldsToBeValidated.length) {
+        return trigger(
+          fieldInfo.fieldsToBeValidated, { shouldFocus },
+        )
+      }
+      return Promise.resolve(null)
     }, [
+      fieldInfo.fieldsToBeValidated,
       formState,
       trigger,
     ],
@@ -80,7 +110,7 @@ const useFormValidity = (
   return {
     isValid,
     validateFields,
-    ...state,
+    ...fieldInfo,
   }
 }
 
