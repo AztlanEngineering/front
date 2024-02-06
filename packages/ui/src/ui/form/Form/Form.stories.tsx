@@ -40,7 +40,7 @@ export const Base: StoryObj<typeof Component> = {
       {
         label      :'Personal Information',
         description:"Let's get to know you",
-        path       :'/personal', // Only used for multipart
+        path       :'/', // Only used for multipart
         fields     :[
           {
             type         :'text',
