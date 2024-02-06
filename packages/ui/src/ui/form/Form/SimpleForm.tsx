@@ -70,6 +70,7 @@ function SimpleForm({
           />
         ))}
         <input
+        className="container"
           type="submit"
           value="Print in console"
         />
