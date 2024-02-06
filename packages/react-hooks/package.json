@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/react-hooks",
-  "version": "1.0.10",
+  "version": "1.2.15",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",

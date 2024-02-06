@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/ui",
-  "version": "1.2.14",
+  "version": "1.2.15",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -54,7 +54,7 @@
   "dependencies": {
     "@aztlan/base-styles": "^1.0.12",
     "@aztlan/bem": "^0.9.1",
-    "@aztlan/react-hooks": "^1.0.10",
+    "@aztlan/react-hooks": "^1.2.15",
     "@aztlan/react-relay": "^1.2.14",
     "@aztlan/storybook-addon-relay": "^1.1.1",
     "@storybook/react": "^7.6.12",
