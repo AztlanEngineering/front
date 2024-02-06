@@ -53,7 +53,10 @@ function useNavigableSections(
     (initialConfig: NavigableSectionsConfig): NavigableSectionsState => {
       if (loadInitialUrl) {
         const currentPath = location.pathname
-        const initialIndex = initialConfig.findIndex((section) => section.path === currentPath)
+        const initialIndex = Math.max(
+          initialConfig.findIndex((section) => section.path === currentPath), 0,
+        )
+        /*
         if (initialIndex < 0) {
           throw new Error(`Initial path not found in the sections config: ${currentPath} tried: ${JSON.stringify(initialConfig.reduce(
             (
@@ -63,7 +66,7 @@ function useNavigableSections(
               e.path,
             ], [],
           ))}`)
-        }
+        } */
         const initialSection = initialConfig[initialIndex]
         return {
           sections          :initialConfig,

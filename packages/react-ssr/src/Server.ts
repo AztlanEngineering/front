@@ -39,7 +39,7 @@ class Server {
 
     this.app = express()
     this.app.use(
-      '[-a-z1-9/]+', renderer,
+      '[-a-z0-9/]+', renderer,
     )
     this.app.use(logRequestStart)
 

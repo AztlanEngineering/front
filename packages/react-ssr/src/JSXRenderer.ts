@@ -101,7 +101,7 @@ class Renderer {
   async render(
     req, res,
   ) {
-    const routerContext = {}
+    const routerContext = {} as { status?: number }
     // @ts-ignore
     const helmetContext = {}
     const location = req.originalUrl || req.url
@@ -131,6 +131,8 @@ class Renderer {
     this.scriptTags = this.extractor.getScriptTags() // or extractor.getScriptElements();
     this.linkTags = this.extractor.getLinkTags() // or extractor.getLinkElements();
     this.styleTags = this.extractor.getStyleTags() // or extractor.getStyleElements();
+
+    res.status(routerContext.status || 200)
 
     res.send(this.renderTemplate())
   }
