@@ -91,6 +91,7 @@ export const Base: StoryObj<typeof Component> = {
             name        :'phone',
             description :'this field should only appear is an email ending with gmail.com is entered',
             autoComplete:'tel',
+            // unregisterOnUnmount:true,
             condition   :[
               ['email'],
               ([email]) => email?.endsWith('gmail.com'),

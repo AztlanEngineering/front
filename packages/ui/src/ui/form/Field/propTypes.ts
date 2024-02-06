@@ -93,6 +93,9 @@ export const Wrapper = {
   /** Whether the input requires a nested grid */
   nested:PropTypes.bool,
 
+  /** Whether to unregister the input on unmount */
+  unregisterOnUnmount:PropTypes.bool,
+
   ...wrapperShared,
 }
 

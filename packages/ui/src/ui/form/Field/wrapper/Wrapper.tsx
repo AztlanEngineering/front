@@ -4,6 +4,7 @@ import {
   useFormState, RegisterOptions,
   FieldError,
   FieldErrorsImpl,
+  useFormContext,
   Merge,
 } from 'react-hook-form'
 import { WrapperPropTypes } from './types.js'
@@ -61,6 +62,7 @@ function Wrapper({
   nested = false,
   registerProps: userRegisterProps = defaultObject,
   nestedRegisterProps = defaultObject,
+  unregisterOnUnmount = false,
   ...otherProps
 }: TWrapperProps): React.ReactElement {
   // const { register } = useFormContext()
@@ -112,6 +114,13 @@ function Wrapper({
       userRegisterProps,
       optional,
     ],
+  )
+
+  const { unregister } = useFormContext()
+
+  React.useEffect(
+    () => () => (unregisterOnUnmount ? unregister(name) : undefined),
+    [],
   )
 
   return (
