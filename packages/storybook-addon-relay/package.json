@@ -40,7 +40,7 @@
     "@storybook/react-vite": "^7.6.12",
     "@storybook/testing-library": "^0.2.2",
     "@types/react-relay": "^16",
-    "@types/relay-runtime": "^14.1.22",
+    "@types/relay-runtime": "^14.1.23",
     "@types/relay-test-utils": "^14.1.4",
     "@vitejs/plugin-react": "^3.1.0",
     "prop-types": "^15.8.1",
@@ -76,6 +76,6 @@
   },
   "dependencies": {
     "0": "^0.0.0",
-    "type-fest": "^4.10.1"
+    "type-fest": "^4.10.2"
   }
 }

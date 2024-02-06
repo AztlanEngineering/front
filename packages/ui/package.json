@@ -44,7 +44,7 @@
     "@storybook/blocks": "^7.6.12",
     "@storybook/react-webpack5": "^7.6.12",
     "@storybook/testing-library": "^0.2.2",
-    "@stylistic/eslint-plugin": "^1.5.4",
+    "@stylistic/eslint-plugin": "^1.6.0",
     "@types/prop-types": "^15.7.11",
     "postcss-scss": "^4.0.9",
     "sass": "^1.70.0",
