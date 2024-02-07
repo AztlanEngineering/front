@@ -87,6 +87,7 @@ module.exports = class extends Generator {
       `diet:${this.options.diet}`,
       `nostyles:${this.options.nostyles}`,
       `npmOrg:${this.options.npmOrg}`,
+      `stories:${this.options.stories}`,
     )
   }
 
