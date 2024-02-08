@@ -10,6 +10,7 @@ const meta: Meta<typeof Component> = {
   title     :'form/Form',
   component :Component,
   decorators:[decorators.router],
+  parameters:{ layout: 'fullscreen' },
 }
 
 export default meta
@@ -21,11 +22,18 @@ export const Base: StoryObj<typeof Component> = {
     className     :'grid',
     loadInitialUrl:true,
     children      :[
-      <Form.Navigation
-        className="span-8 md-span-5"
-        key="menu"
+      ,
+      ,
+      /*
+      <Form.Navigation.Footer
+        fixed
+        hideOnDesktop={false}
+        key="footer"
       />,
-      <Form.Content
+      <Form.Navigation.VerticalMenu
+        desktopOnly={false}
+        key="vm"
+      /> */ <Form.Content
         className="span-8 md-span-9"
         key="inputs"
       />,
@@ -165,6 +173,42 @@ export const Base: StoryObj<typeof Component> = {
 export const Multipart: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
+    fieldProps:{
+      spanLabel         :8,
+      spanLabelDesktop  :3,
+      spanContent       :8,
+      spanContentDesktop:7,
+    },
+    children:[
+      <div
+        style={{ height: '2em' }}
+        className="container"
+        key="spacer"
+      />,
+      <Form.Navigation.Header
+        fixed
+        hideOnDesktop={false}
+        key="header"
+      />,
+      <Form.Navigation.Footer
+        fixed
+        hideOnDesktop={false}
+        key="footer"
+      />,
+      <Form.Navigation.VerticalMenu
+        // desktopOnly={false}
+        key="vm"
+        className="md-span-3"
+      />,
+      <Form.Content
+        className="span-8 md-span-11"
+        key="inputs"
+      />,
+      <Form.Navigation.Paginator
+        className="span-8 md-start-4 md-span-11"
+        key="ipaginator"
+      />,
+    ],
     type:'multipart',
   },
 }

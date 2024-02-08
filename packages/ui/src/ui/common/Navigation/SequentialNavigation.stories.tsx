@@ -18,9 +18,10 @@ export default meta
 export const Base: StoryObj<typeof Component> = {
   args:{
     children:[
-      <Component.Header />,
-      <Component.VerticalMenu />,
-      <Component.Footer />,
+      <Component.Header key="header" />,
+      <Component.VerticalMenu key="vm" />,
+      <Component.Paginator key="pagi" />,
+      <Component.Footer key="footer" />,
     ],
     items:[
       {
@@ -47,15 +48,56 @@ export const AlwaysDisplay: StoryObj<typeof Component> = {
   args:{
     ...Base.args,
     children:[
-      <Component.Header hideOnDesktop={false} />,
-      <Component.VerticalMenu desktopOnly={false} />,
-      <Component.Footer hideOnDesktop={false} />,
+      <Component.Header
+        hideOnDesktop={false}
+        key="header"
+      />,
+      <Component.VerticalMenu
+        desktopOnly={false}
+        key="vm"
+      />,
+      <Component.Paginator
+        desktopOnly={false}
+        key="pagi"
+      />,
+      <Component.Footer
+        hideOnDesktop={false}
+        key="footer"
+      />,
     ],
   },
 }
+
 export const Fixed: StoryObj<typeof Component> = {
   args:{
     ...AlwaysDisplay.args,
+    children:[
+      <div
+        style={{
+          height:'2em',
+          width :'100',
+        }}
+        key="spacer"
+      />,
+      // @ts-ignore
+      ...AlwaysDisplay.args.children,
+    ],
     fixed:true,
+  },
+}
+
+export const CustomNextHandler: StoryObj<typeof Component> = {
+  args:{
+    ...AlwaysDisplay.args,
+    handlerNext:() => alert('You clicked next. This function should include a navigation action.'),
+  },
+}
+
+export const HidePreviousButton: StoryObj<typeof Component> = {
+  args:{
+    ...Fixed.args,
+    hidePreviousButton:true,
+    hideNextButton    :false,
+    fixed             :true,
   },
 }

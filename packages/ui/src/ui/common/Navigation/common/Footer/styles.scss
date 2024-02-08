@@ -5,8 +5,8 @@
 .#{bem.$base}.navigation-footer {
   border-top: 2px solid black;
   &.#{bem.$modifier-fixed} {
+    bottom: 0;
     position: fixed;
-    bottm: 0;
     width: 100%;
   }
 }

@@ -63,6 +63,7 @@ function Form({
     () => ({
       sectionsState,
       sectionsMethods,
+      sharedFieldProps,
       type:formType,
     }),
     [
@@ -89,12 +90,14 @@ function Form({
         style={style}
       >
         <Context.Provider value={contextValue}>
-          {children}
-          <input
-            className="container"
-            type="submit"
-            value="Print in console"
-          />
+          <Navigation>
+            {children}
+            <input
+              className="container"
+              type="submit"
+              value="Print in console"
+            />
+          </Navigation>
         </Context.Provider>
       </form>
     </FormProvider>

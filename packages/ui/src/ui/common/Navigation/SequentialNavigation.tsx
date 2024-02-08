@@ -14,6 +14,7 @@ import type { ItemType } from './SequentialNavigationContext.js'
 
 import {
   Header, Footer, VerticalMenu,
+  Paginator,
 } from './common/index.js'
 
 // const baseClassName = styleNames.base
@@ -29,12 +30,15 @@ function SequentialNavigationHeader(props) {
   const {
     previous, next, currentContent: content,
     fixed,
+    hidePreviousButton,
+    hideNextButton,
   } = useContext(Context)
   return (
     <Header
-      previous={previous}
-      next={next}
+      previous={!hidePreviousButton && previous}
+      next={!hideNextButton && next}
       content={content}
+      fixed={fixed}
       {...props}
     />
   )
@@ -44,11 +48,28 @@ function SequentialNavigationFooter(props) {
   const {
     currentContent: content, next,
     fixed,
+    hideNextButton,
   } = useContext(Context)
   return (
     <Footer
       content={content}
-      next={next}
+      next={!hideNextButton && next}
+      fixed={fixed}
+      {...props}
+    />
+  )
+}
+
+function SequentialNavigationPaginator(props) {
+  const {
+    previous, next,
+    hidePreviousButton,
+    hideNextButton,
+  } = useContext(Context)
+  return (
+    <Paginator
+      previous={!hidePreviousButton && previous}
+      next={!hideNextButton && next}
       {...props}
     />
   )
@@ -72,9 +93,12 @@ function SequentialNavigationVerticalMenu(props) {
 function SequentialNavigation({
   children,
   items,
-  canContinue = true,
   menuLabel,
   fixed = false,
+  handlerNext,
+  handlerPrevious,
+  hideNextButton = false,
+  hidePreviousButton = false,
 }: SequentialNavigationProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -106,45 +130,62 @@ function SequentialNavigation({
     ],
   )
 
-  const PreviousComponent = useCallback(
-    (props) => {
+  const previous = useMemo(
+    () => {
       const previousIndex = currentIndex - 1
       if (previousIndex < 0) return null
-      const previousComponent = React.createElement(
-        Link,
-        {
-          ...props,
-          to:items[previousIndex].url,
-        },
-        items[previousIndex].label,
-      )
+
+      const previousItem = items[previousIndex]
+      const previousComponent = handlerPrevious
+        ? React.createElement(
+          'button',
+          {
+            type   :'button',
+            onClick:handlerPrevious,
+          },
+          previousItem.label,
+        )
+        : React.createElement(
+          Link,
+          { to: previousItem.url },
+          previousItem.label,
+        )
       return previousComponent
     },
     [
+      handlerPrevious,
       currentIndex,
       items,
     ],
   )
 
-  const NextComponent = useCallback(
-    (props) => {
-      if (!canContinue) return null
+  const next = useMemo(
+    () => {
       const nextIndex = currentIndex + 1
       if (nextIndex >= items.length) return null
-      const nextComponent = React.createElement(
-        Link,
-        {
-          ...props,
-          to:items[nextIndex].url,
-        },
-        items[nextIndex].label,
-      )
+
+      const nextItem = items[nextIndex]
+
+      const nextComponent = handlerNext
+        ? React.createElement(
+          'button',
+          {
+            type   :'button',
+            onClick:handlerNext,
+          },
+          nextItem.label,
+        )
+        : React.createElement(
+          Link,
+          { to: nextItem.url },
+          nextItem.label,
+        )
       return nextComponent
     },
     [
+      handlerNext,
       currentIndex,
       items,
-      canContinue,
     ],
   )
 
@@ -158,17 +199,19 @@ function SequentialNavigation({
 
   const value = useMemo(
     () => ({
-      previous:<PreviousComponent />,
-      next    :<NextComponent />,
+      previous,
+      next,
       currentContent,
-      items   :transformedItems,
+      items:transformedItems,
       menuLabel,
       currentIndex,
       fixed,
+      hidePreviousButton,
+      hideNextButton,
     }),
     [
-      PreviousComponent,
-      NextComponent,
+      previous,
+      next,
       currentContent,
       transformedItems,
       menuLabel,
@@ -184,6 +227,7 @@ SequentialNavigation.propTypes = SequentialNavigationPropTypes
 
 SequentialNavigation.Header = React.memo(SequentialNavigationHeader)
 SequentialNavigation.Footer = React.memo(SequentialNavigationFooter)
+SequentialNavigation.Paginator = React.memo(SequentialNavigationPaginator)
 SequentialNavigation.VerticalMenu = React.memo(SequentialNavigationVerticalMenu)
 
 export default SequentialNavigation

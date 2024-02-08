@@ -1,0 +1,25 @@
+/* @aztlan/generator-front 1.2.22 */
+
+@use "@aztlan/bem";
+@use "@aztlan/mixins/src/media" as media;
+
+.#{bem.$base}.navigation-paginator {
+  //display: flex;
+  //justify-content: space-between;
+  > :first-child {
+    @include media.media($from: 801px) {
+      grid-column-end: span var(--span-desktop);
+    }
+    grid-column-end: span var(--span);
+  }
+
+  > :last-child {
+    @include media.media($from: 801px) {
+      grid-column-end: span var(--span-desktop);
+      grid-column-start: calc(var(--span-desktop) * -1 - 1);
+    }
+    grid-column-end: span var(--span);
+  }
+}
+
+

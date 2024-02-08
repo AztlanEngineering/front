@@ -1,94 +1,133 @@
-/* @aztlan/generator-front 0.7.2 */
+/* @aztlan/generator-front 1.1.4 */
 import * as React from 'react'
+import { useMemo } from 'react'
 
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
-import { Link } from 'react-router-dom'
-import styleNames from '@aztlan/bem'
-import useForm from '../hooks/useForm.js'
+import { SequentialNavigation } from '../../../common/Navigation'
 
-const baseClassName = styleNames.base
-const componentClassName = styleNames.elementNavigation
+import {
+  useForm, useFieldsValidity,
+} from '../hooks/index.js'
 
-const propTypes = {
-  /** The HTML id for this element */
-  id:PropTypes.string,
-
-  /** The HTML class names for this element */
-  className:PropTypes.string,
-
-  /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
-}
-
-export type TProps = InferProps<typeof propTypes>
 /**
- * This is the component description.
+ * description
+ * @param {InferProps<typeof Navigation.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Navigation
  */
-function Navigation({
-  id, className: userClassName, style,
-}: TProps) {
-  const { sectionsState } = useForm()
 
-  const {
-    sections, currentIndex, previousLink, nextLink,
-  } = sectionsState
+/*
+function FormNavigationHeader(props) {
+  // const { previous, next, currentContent: content, fixed, } = useContext(Context)
 
   return (
-    <nav
-      id={id}
-      className={[
-        baseClassName,
-        componentClassName,
-        userClassName,
-      ]
-        .filter((e) => e)
-        .join(' ')}
-      style={style}
-      // {...otherProps}
-    >
-      <ul>
-        {sections.map((
-          section, index,
-        ) => {
-          const payload = section.label
-          if (index < currentIndex) {
-            return (
-              <li
-                className={styleNames.modifierPrevious}
-                key={payload}
-              >
-                <Link to={section.path}>{payload}</Link>
-              </li>
-            )
-          }
-          if (index === currentIndex) {
-            return (
-              <li
-                className={styleNames.modifierActive}
-                key={payload}
-              >
-                {payload}
-              </li>
-            )
-          }
-          return (
-            <li
-              className={styleNames.modifierNext}
-              key={payload}
-            >
-              {payload}
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
+    <SequentialNavigation.Header
+      previous={previous}
+      next={next}
+      content={content}
+      {...props}
+    />
   )
 }
 
-Navigation.propTypes = propTypes
+function FormNavigationFooter(props) {
+  // const { currentContent: content, next, fixed, } = useContext(Context)
+  return (
+    <SequentialNavigation.Footer
+      content={content}
+      next={next}
+      {...props}
+    />
+  )
+} */
 
-export { Navigation }
+/*
+function FormNavigationVerticalMenu(props) {
+  // const { items, currentIndex, menuLabel, } = useContext(Context)
 
-export default React.memo(Navigation)
+  return (
+    <SequentialNavigation.VerticalMenu
+      items={items}
+      currentIndex={currentIndex}
+      label={menuLabel}
+      {...props}
+    />
+  )
+}
+   */
+
+function FormNavigation({
+  children,
+  ...props
+}: InferProps<typeof FormNavigation.propTypes>): React.ReactElement {
+  const {
+    sectionsState, sectionsMethods,
+  } = useForm()
+
+  const {
+    sections, previousLink, nextLink,
+  } = sectionsState
+
+  const items = useMemo(
+    () => sections.map((section) => ({
+      label   :section.label,
+      url     :section.path,
+      disabled:section.disabled,
+    })),
+    [sections],
+  )
+
+  const {
+    currentSection, isLast, isFirst,
+  } = sectionsState
+
+  const {
+    setNext, setPrevious,
+  } = sectionsMethods
+
+  const {
+    validateFields, isValid: isFormSectionValid,
+  } = useFieldsValidity(currentSection.fields)
+
+  const showPreviousButton = useMemo(
+    () => !isFirst && !currentSection.hideBack,
+    [currentSection],
+  )
+
+  const showNextButton = useMemo(
+    () => !isLast && !currentSection.hideNext, [currentSection],
+  )
+
+  const handlerNext = async (e) => {
+    const valid = await validateFields()
+    if (valid) {
+      setNext()
+    }
+  }
+
+  return (
+    <SequentialNavigation
+      {...props}
+      items={items}
+      handlerNext={handlerNext}
+      handlerPrevious={setPrevious}
+      hidePreviousButton={!showPreviousButton}
+      hideNextButton={!showNextButton}
+    >
+      {children}
+    </SequentialNavigation>
+  )
+}
+
+FormNavigation.propTypes = {
+  /* The children of the FormNavigation */
+  children:PropTypes.node.isRequired,
+}
+
+FormNavigation.Header = SequentialNavigation.Header
+FormNavigation.Footer = SequentialNavigation.Footer
+FormNavigation.VerticalMenu = SequentialNavigation.VerticalMenu
+FormNavigation.Paginator = SequentialNavigation.Paginator
+
+export default FormNavigation

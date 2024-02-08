@@ -18,13 +18,15 @@ export type ItemType = {
 }
 
 export type ContextValue = {
-  previous      :React.ReactElement;
-  next          :React.ReactElement;
-  menuLabel?    :string;
-  currentIndex  :number;
-  currentContent:React.ReactNode;
-  items         :ItemType[];
-  fixed         :boolean;
+  previous          :React.ReactElement;
+  next              :React.ReactElement;
+  menuLabel?        :string;
+  currentIndex      :number;
+  currentContent    :React.ReactNode;
+  items             :ItemType[];
+  fixed             :boolean;
+  hideNextButton    :boolean;
+  hidePreviousButton:boolean;
 }
 
 export default React.createContext<ContextValue>({} as ContextValue)

@@ -7,7 +7,6 @@ import { InferProps } from 'prop-types'
 import styleNames from '@aztlan/bem'
 import useForm from '../hooks/useForm.js'
 import Section from './Section.js'
-import Paginator from './Paginator.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'form-inputs'
@@ -72,13 +71,10 @@ function Content({
           />
         ))
       ) : (
-        <>
-          <Section
-            index={currentIndex}
-            {...currentSection}
-          />
-          <Paginator />
-        </>
+        <Section
+          index={currentIndex}
+          {...currentSection}
+        />
       )}
     </div>
   )

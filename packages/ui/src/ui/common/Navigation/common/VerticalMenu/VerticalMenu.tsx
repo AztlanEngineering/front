@@ -39,7 +39,7 @@ function VerticalMenu({
         componentClassName,
         userClassName,
         desktopOnly && 'desktop-only',
-        'grid work',
+        'grid',
       ]
         .filter((e) => e)
         .join(' ')}
