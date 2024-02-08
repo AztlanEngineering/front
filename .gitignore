@@ -9,3 +9,5 @@ apps/**/api
 .env
 .env.prod
 .env.scripts
+
+lerna-debug.log
