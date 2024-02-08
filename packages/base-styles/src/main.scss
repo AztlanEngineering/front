@@ -10,6 +10,7 @@
 );
 @use "@aztlan/mixins/src/reset" as reset;
 @use "@aztlan/mixins/src/font" as font;
+@use "@aztlan/mixins/src/media" as media;
 
 $import-font-map:(
   "paragraph":(
@@ -108,6 +109,18 @@ p {
   :root {
     --columns: 14;
     --column-width: calc((100vw - (14 + 1) * 1rem) / 14);
+  }
+}
+
+@include media.media($to: 800px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+@include media.media($from: 801px) {
+  .desktop-hidden {
+    display: none;
   }
 }
 

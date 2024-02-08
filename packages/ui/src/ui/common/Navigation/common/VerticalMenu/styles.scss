@@ -1,0 +1,13 @@
+/* @aztlan/generator-front 1.2.22 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.vertical-menu {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+

@@ -1,0 +1,9 @@
+/* @aztlan/generator-front 1.2.22 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.navigation-header {
+  border-bottom: 2px solid black;
+}
+
+
