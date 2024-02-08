@@ -3,8 +3,8 @@ import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
 import styleNames from '@aztlan/bem'
-import { HeaderPropTypes } from '../../types.js'
-import type { HeaderProps } from '../../types.js'
+import { ComponentPropTypes } from './types.js'
+import type { ComponentProps } from './types.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'navigation-header'
@@ -24,7 +24,7 @@ function Header({
   content,
   next,
   hideOnDesktop = true,
-}: HeaderProps): React.ReactElement {
+}: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -55,6 +55,6 @@ function Header({
   )
 }
 
-Header.propTypes = HeaderPropTypes
+Header.propTypes = ComponentPropTypes
 
 export default Header

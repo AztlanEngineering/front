@@ -4,8 +4,8 @@ import { useInsertionEffect } from 'react'
 
 import { Link } from 'react-router-dom'
 import styleNames from '@aztlan/bem'
-import { VerticalMenuPropTypes } from '../../types.js'
-import type { VerticalMenuProps } from '../../types.js'
+import { ComponentPropTypes } from './types.js'
+import type { ComponentProps } from './types.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'vertical-menu'
@@ -23,7 +23,7 @@ function VerticalMenu({
   label,
   items,
   desktopOnly = true,
-}: VerticalMenuProps): React.ReactElement {
+}: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -65,6 +65,6 @@ function VerticalMenu({
   )
 }
 
-VerticalMenu.propTypes = VerticalMenuPropTypes
+VerticalMenu.propTypes = ComponentPropTypes
 
 export default VerticalMenu

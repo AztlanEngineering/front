@@ -3,8 +3,8 @@ import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
 import styleNames from '@aztlan/bem'
-import { PaginatorPropTypes } from '../../types.js'
-import type { PaginatorProps } from '../../types.js'
+import { ComponentPropTypes } from './types.js'
+import type { ComponentProps } from './types.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'navigation-paginator'
@@ -25,7 +25,7 @@ function Paginator({
   span = 4,
   spanDesktop = 3,
   // children,
-}: PaginatorProps): React.ReactElement {
+}: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -58,6 +58,6 @@ function Paginator({
   )
 }
 
-Paginator.propTypes = PaginatorPropTypes
+Paginator.propTypes = ComponentPropTypes
 
 export default Paginator

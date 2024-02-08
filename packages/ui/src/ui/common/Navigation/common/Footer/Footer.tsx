@@ -3,8 +3,8 @@ import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
 import styleNames from '@aztlan/bem'
-import { FooterPropTypes } from '../../types.js'
-import type { FooterProps } from '../../types.js'
+import { ComponentPropTypes } from './types.js'
+import type { ComponentProps } from './types.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'navigation-footer'
@@ -23,7 +23,7 @@ function Footer({
   content,
   next,
   hideOnDesktop = true,
-}: FooterProps): React.ReactElement {
+}: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -53,6 +53,6 @@ function Footer({
   )
 }
 
-Footer.propTypes = FooterPropTypes
+Footer.propTypes = ComponentPropTypes
 
 export default Footer

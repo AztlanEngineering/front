@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
-const htmlPropTypes = {
+export const htmlShared = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -12,36 +12,36 @@ const htmlPropTypes = {
   style:PropTypes.objectOf(PropTypes.string),
 }
 
-const asPropTypes = {
+export const asShared = {
   /* The HTML tag to render */
   as:PropTypes.elementType,
 }
 
-const fixedPropTypes = {
+export const fixedShared = {
   /* Whether this element should display in a fixed position */
   fixed:PropTypes.bool,
 }
 
-const nextPropTypes = {
+export const nextShared = {
   /* A React element to represent the next navigation element */
   next:PropTypes.node,
 }
 
-const prevPropTypes = {
+export const prevShared = {
   /* A React element to represent the previous navigation element */
   previous:PropTypes.node,
 }
 
-const desktopOnlyPropTypes = {
+export const desktopOnlyShared = {
   /** Whether to show this menu only on desktop */
   desktopOnly:PropTypes.bool,
 }
 
-export const FooterPropTypes = {
-  ...htmlPropTypes,
-  ...asPropTypes,
-  ...fixedPropTypes,
-  ...nextPropTypes,
+export const footerShared = {
+  ...htmlShared,
+  ...asShared,
+  ...fixedShared,
+  ...nextShared,
 
   /* A React element to represent the current navigation location */
   content:PropTypes.node.isRequired,
@@ -50,43 +50,8 @@ export const FooterPropTypes = {
   hideOnDesktop:PropTypes.bool,
 }
 
-export const HeaderPropTypes = {
-  ...FooterPropTypes,
-  ...prevPropTypes,
-}
-
-export const PaginatorPropTypes = {
-  ...htmlPropTypes,
-  ...prevPropTypes,
-  ...nextPropTypes,
-  ...desktopOnlyPropTypes,
-  ...asPropTypes,
-
-  /* The column span of the buttons */
-  span:PropTypes.number,
-
-  /* The desktop column span of the buttons */
-  spanDesktop:PropTypes.number,
-}
-
-export const VerticalMenuPropTypes = {
-  ...htmlPropTypes,
-  ...asPropTypes,
-  ...desktopOnlyPropTypes,
-
-  /** The name of the menu */
-  label:PropTypes.string,
-
-  /** The items for the menu. Array of { name, url, disabled } */
-  items:PropTypes.arrayOf(PropTypes.shape({
-    label   :PropTypes.string.isRequired,
-    url     :PropTypes.string,
-    disabled:PropTypes.bool.isRequired,
-  })),
-}
-
 export const SequentialNavigationPropTypes = {
-  ...fixedPropTypes,
+  ...fixedShared,
   /* The children to render */
   children:PropTypes.node.isRequired,
 
@@ -116,10 +81,6 @@ export const SequentialNavigationPropTypes = {
   handlerNext:PropTypes.func,
 }
 
-export type HeaderProps = InferProps<typeof HeaderPropTypes>
-export type FooterProps = InferProps<typeof FooterPropTypes>
-export type PaginatorProps = InferProps<typeof PaginatorPropTypes>
-export type VerticalMenuProps = InferProps<typeof VerticalMenuPropTypes>
 export type SequentialNavigationProps = InferProps<
   typeof SequentialNavigationPropTypes
 >
