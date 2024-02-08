@@ -5,7 +5,7 @@ import { useMemo } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 
-import { SequentialNavigation } from '../../../common/Navigation'
+import { SequentialNavigation } from '../../../common/Navigation/index.js'
 
 import {
   useForm, useFieldsValidity,
