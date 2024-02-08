@@ -24,6 +24,7 @@ export type ContextValue = {
   currentIndex  :number;
   currentContent:React.ReactNode;
   items         :ItemType[];
+  fixed         :boolean;
 }
 
 export default React.createContext<ContextValue>({} as ContextValue)

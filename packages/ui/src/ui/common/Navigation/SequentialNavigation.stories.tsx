@@ -10,6 +10,7 @@ const meta: Meta<typeof Component> = {
   title     :'common/Navigation/SequentialNavigation',
   component :Component,
   decorators:[decorators.router],
+  parameters:{ layout: 'fullscreen' },
 }
 
 export default meta
@@ -50,5 +51,11 @@ export const AlwaysDisplay: StoryObj<typeof Component> = {
       <Component.VerticalMenu desktopOnly={false} />,
       <Component.Footer hideOnDesktop={false} />,
     ],
+  },
+}
+export const Fixed: StoryObj<typeof Component> = {
+  args:{
+    ...AlwaysDisplay.args,
+    fixed:true,
   },
 }

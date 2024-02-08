@@ -21,15 +21,25 @@ const meta: Meta<typeof Component> = {
     backgroundColor: { control: "color" }
   }
   parameters: {
-    layout: 'centered|fullscreen|padded(default)',
-  }, */
+    layout: 'fullscreen',
+  } */
+
+  parameters:{ layout: 'fullscreen' },
 }
 
 export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    content:'Complete all the fields to continue',
-    next   :'Next',
+    content      :'Complete all the fields to continue',
+    next         :'Next',
+    hideOnDesktop:false,
+  },
+}
+
+export const Fixed: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    fixed:true,
   },
 }

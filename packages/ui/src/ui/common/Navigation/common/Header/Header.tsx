@@ -19,6 +19,7 @@ function Header({
   className: userClassName,
   style,
   as: Wrapper = 'nav',
+  fixed,
   previous,
   content,
   next,
@@ -39,6 +40,7 @@ function Header({
         componentClassName,
         userClassName,
         hideOnDesktop && 'desktop-hidden',
+        fixed && styleNames.modifierFixed,
         'grid',
       ]
         .filter((e) => e)

@@ -17,9 +17,15 @@ const asPropTypes = {
   as:PropTypes.elementType,
 }
 
+const fixedPropTypes = {
+  /* Whether this element should display in a fixed position */
+  fixed:PropTypes.bool,
+}
+
 export const FooterPropTypes = {
   ...htmlPropTypes,
   ...asPropTypes,
+  ...fixedPropTypes,
   /* A React element to represent the next navigation element */
   next:PropTypes.node,
 
@@ -55,13 +61,14 @@ export const VerticalMenuPropTypes = {
 }
 
 export const SequentialNavigationPropTypes = {
+  ...fixedPropTypes,
   /* The children to render */
   children:PropTypes.node.isRequired,
 
   /* The array of navigation elements to be passed to the navigation context */
   items:PropTypes.arrayOf(PropTypes.shape({
     label:PropTypes.string.isRequired,
-    url  :PropTypes.string,
+    url  :PropTypes.string.isRequired,
   })),
 
   /* Whether the user can continue to the next step */

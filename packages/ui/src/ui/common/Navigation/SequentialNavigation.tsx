@@ -28,6 +28,7 @@ import {
 function SequentialNavigationHeader(props) {
   const {
     previous, next, currentContent: content,
+    fixed,
   } = useContext(Context)
   return (
     <Header
@@ -42,6 +43,7 @@ function SequentialNavigationHeader(props) {
 function SequentialNavigationFooter(props) {
   const {
     currentContent: content, next,
+    fixed,
   } = useContext(Context)
   return (
     <Footer
@@ -72,6 +74,7 @@ function SequentialNavigation({
   items,
   canContinue = true,
   menuLabel,
+  fixed = false,
 }: SequentialNavigationProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -161,6 +164,7 @@ function SequentialNavigation({
       items   :transformedItems,
       menuLabel,
       currentIndex,
+      fixed,
     }),
     [
       PreviousComponent,
@@ -169,6 +173,7 @@ function SequentialNavigation({
       transformedItems,
       menuLabel,
       currentIndex,
+      fixed,
     ],
   )
 

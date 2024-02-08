@@ -10,8 +10,8 @@ import Component from './Header.js'
 // import * as decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
-  title    :'common/Navigation/common/Header',
-  component:Component,
+  title     :'common/Navigation/common/Header',
+  component :Component,
   /*
   decorators: [
     //decorators.app,
@@ -20,17 +20,24 @@ const meta: Meta<typeof Component> = {
   argTypes: {
     backgroundColor: { control: "color" }
   }
-  parameters: {
-    layout: 'centered|fullscreen|padded(default)',
   }, */
+  parameters:{ layout: 'fullscreen' },
 }
 
 export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    content :'Shipping information',
-    next    :'Next',
-    previous:'Previous',
+    content      :'Shipping information',
+    next         :'Next',
+    previous     :'Previous',
+    hideOnDesktop:false,
+  },
+}
+
+export const Fixed: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    fixed:true,
   },
 }

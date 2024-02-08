@@ -19,6 +19,7 @@ function Footer({
   className: userClassName,
   style,
   as: Wrapper = 'nav',
+  fixed,
   content,
   next,
   hideOnDesktop = true,
@@ -38,6 +39,7 @@ function Footer({
         componentClassName,
         userClassName,
         hideOnDesktop && 'desktop-hidden',
+        fixed && styleNames.modifierFixed,
         'grid',
       ]
         .filter((e) => e)
