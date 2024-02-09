@@ -10,6 +10,7 @@ const m = defineMessages({ notFound: { defaultMessage: 'The page you requested i
 function Status404({ staticContext }: { staticContext?: { status?: number } }) {
   const { formatMessage } = useIntl()
   if (staticContext) staticContext.status = 404
+  console.log('Status404')
   return (
     <Template title="Error 404">
       <p className="container">{formatMessage(m.notFound)}</p>

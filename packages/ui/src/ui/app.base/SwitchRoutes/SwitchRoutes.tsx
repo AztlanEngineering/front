@@ -1,5 +1,7 @@
 import * as React from 'react'
-import { Suspense } from 'react'
+import {
+  useMemo, useCallback, Suspense,
+} from 'react'
 import * as PropTypes from 'prop-types'
 
 import {
@@ -17,42 +19,60 @@ function SwitchRoutes({
   // @ts-ignore
   const { viewerQueryReference } = useAuth()
 
+  const PrivateRouteWrapper = useCallback(
+    ({
+      groups, testFunction, wireframeTitle, ...routeProps
+    }) => (
+      <Suspense
+        fallback={(
+          <Wireframe
+            // @ts-ignore TODO
+            groups={groups}
+            testFunction={testFunction}
+            wireframeTitle={wireframeTitle}
+            {...routeProps}
+          />
+        )}
+      >
+        {viewerQueryReference && (
+        <PrivateRoute
+          groups={groups}
+          testFunction={testFunction}
+          {...routeProps}
+        />
+        )}
+      </Suspense>
+    ),
+    [viewerQueryReference],
+  )
+
+  const routes = useMemo(
+    () => items.map(({
+      isPrivate, groups, testFunction, wireframeTitle, ...routeProps
+    }) => (isPrivate ? (
+      <PrivateRouteWrapper
+        key={routeProps.path}
+        groups={groups}
+        testFunction={testFunction}
+        wireframeTitle={wireframeTitle}
+        {...routeProps}
+      />
+    ) : (
+      <Route
+        key={routeProps.path}
+        {...routeProps}
+      />
+    ))),
+    [
+      items,
+      viewerQueryReference,
+    ],
+  )
+
   return (
     <Switch
       children={[
-        ...items.map(({
-          isPrivate,
-          groups,
-          testFunction,
-          wireframeTitle,
-          ...routeProps
-        }) => (isPrivate ? (
-          <Suspense
-            fallback={(
-              <Wireframe
-                    // @ts-ignore TODO
-                groups={groups}
-                testFunction={testFunction}
-                wireframeTitle={wireframeTitle}
-                {...routeProps}
-              />
-                )}
-          >
-            {viewerQueryReference && (
-            <PrivateRoute
-              key={routeProps.path}
-              groups={groups}
-              testFunction={testFunction}
-              {...routeProps}
-            />
-            )}
-          </Suspense>
-        ) : (
-          <Route
-            key={routeProps.path}
-            {...routeProps}
-          />
-        ))),
+        ...routes,
         ...(NotFoundPage ? [<Route component={NotFoundPage} />] : []),
       ]}
     />
@@ -73,10 +93,10 @@ SwitchRoutes.propTypes = {
    * a component that returns a 404 code.
    */
 
-  NotFoundPage:PropTypes.node,
+  NotFoundPage:PropTypes.elementType,
 
   /** A component to display while the user is being fetched */
-  Wireframe:PropTypes.node,
+  Wireframe:PropTypes.elementType,
 }
 
 export default SwitchRoutes
