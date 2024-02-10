@@ -22,8 +22,6 @@ export const Base: StoryObj<typeof Component> = {
     className     :'grid',
     loadInitialUrl:true,
     children      :[
-      ,
-      ,
       /*
       <Form.Navigation.Footer
         fixed

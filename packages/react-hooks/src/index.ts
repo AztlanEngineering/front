@@ -12,3 +12,4 @@ export type {
   SectionsController,
   SectionState,
 } from './useSections.js'
+export { default as useDebug } from './useDebug.js'
