@@ -39,6 +39,7 @@ InferProps<typeof NavigationDebugBar.propTypes>): React.ReactElement {
         baseClassName,
         componentClassName,
         userClassName,
+        'container',
         'in-progress',
       ]
         .filter((e) => e)
