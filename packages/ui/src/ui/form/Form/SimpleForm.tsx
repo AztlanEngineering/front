@@ -6,6 +6,7 @@ import {
   useForm, FormProvider,
 } from 'react-hook-form'
 import styleNames from '@aztlan/bem'
+import { useDebug } from '@aztlan/react-hooks'
 import type { TSimpleFormProps } from './types.js'
 import { SimpleFormPropTypes } from './types.js'
 
@@ -43,6 +44,8 @@ function SimpleForm({
     ...otherProps,
   })
 
+  const isDebug = useDebug()
+
   const onSubmit = (data) => console.log(
     '[FORM SUBMIT]', data,
   )
@@ -69,11 +72,14 @@ function SimpleForm({
             {...fieldProps as Partial<FieldProps>}
           />
         ))}
-        <input
-          className="container"
-          type="submit"
-          value="Print in console"
-        />
+        { isDebug
+            && (
+            <input
+              className="container"
+              type="submit"
+              value="[DEBUG] console.log"
+            />
+            )}
       </form>
     </FormProvider>
   )

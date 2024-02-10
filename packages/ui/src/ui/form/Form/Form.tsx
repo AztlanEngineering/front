@@ -8,6 +8,7 @@ import {
   useForm, FormProvider,
 } from 'react-hook-form'
 import styleNames from '@aztlan/bem'
+import { useDebug } from '@aztlan/react-hooks'
 import { useNavigableSections } from './hooks/index.js'
 // @ts-ignore
 import type { TFormProps } from './types.js'
@@ -47,6 +48,8 @@ function Form({
     // shouldUseNativeValidation:true,
     ...otherProps,
   })
+
+  const isDebug = useDebug()
 
   const onSubmit = (data) => console.log(
     '[FORM SUBMIT]', data,
@@ -92,11 +95,14 @@ function Form({
         <Context.Provider value={contextValue}>
           <Navigation>
             {children}
+            { isDebug
+            && (
             <input
               className="container"
               type="submit"
-              value="Print in console"
+              value="[DEBUG] console.log"
             />
+            )}
           </Navigation>
         </Context.Provider>
       </form>
