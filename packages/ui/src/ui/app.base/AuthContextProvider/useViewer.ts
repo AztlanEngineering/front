@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import * as Relay from 'react-relay'
+import { usePreloadedQuery } from 'react-relay'
 import useAuth from './useAuth.js'
 
 /*
@@ -33,7 +33,7 @@ const useViewer = () => {
     viewerQueryReference, QUERY_VIEWER,
   } = useAuth()
 
-  const data = Relay.usePreloadedQuery(
+  const data = usePreloadedQuery(
     QUERY_VIEWER, viewerQueryReference,
   )
 
