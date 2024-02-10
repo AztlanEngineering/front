@@ -19,6 +19,7 @@
     "release:patch": "./scripts/release.sh patch",
     "release:prerelease": "./scripts/release.sh prerelease",
     "storybook": "lerna run storybook --parallel",
+    "relay": "lerna run relay --parallel",
     "test": "exit 0",
     "test:eslint": "lerna run test:eslint --parallel",
     "test:eslint:fix": "lerna run test:eslint:fix --parallel",

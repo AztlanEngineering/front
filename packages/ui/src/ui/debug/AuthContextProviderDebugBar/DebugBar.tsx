@@ -17,9 +17,11 @@ import {
   DebugBarViewerFragment$key,
 } from './__generated__/DebugBarViewerFragment.graphql.js'
 import { DebugBarViewerQuery$data } from './__generated__/DebugBarViewerQuery.graphql.js'
-import useAuth from '../../useAuth.js'
-import useAuthenticationResource from '../../useAuthenticationResource.js'
-import { LoginButton } from '../../../LoginButton/index.js'
+import {
+  useAuthenticationResource,
+  useAuth,
+} from '../../app.base/AuthContextProvider/index.js'
+import { LoginButton } from '../../app.base/LoginButton/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'debug-bar'
@@ -58,6 +60,13 @@ function RawLoggedInDebugBar({
 }: // ...otherProps
 
 InferProps<typeof RawLoggedInDebugBar.propTypes>): React.ReactElement {
+  useInsertionEffect(
+    () => {
+    // @ts-ignore
+      import('./styles.scss')
+    }, [],
+  )
+
   const result = useFragment(
     FRAGMENT,
     data.viewer as DebugBarViewerFragment$key,
@@ -86,6 +95,7 @@ InferProps<typeof RawLoggedInDebugBar.propTypes>): React.ReactElement {
         componentClassName,
         userClassName,
         'grid container',
+        'success',
       ]
         .filter((e) => e)
         .join(' ')}
@@ -144,6 +154,12 @@ function RawLoggedOutDebugBar({
   data,
 }: // ...otherProps
 InferProps<typeof RawLoggedOutDebugBar.propTypes>): React.ReactElement {
+  useInsertionEffect(
+    () => {
+    // @ts-ignore
+      import('./styles.scss')
+    }, [],
+  )
   return (
     <div
       id={id}
@@ -152,6 +168,7 @@ InferProps<typeof RawLoggedOutDebugBar.propTypes>): React.ReactElement {
         componentClassName,
         userClassName,
         'grid container',
+        'error',
       ]
         .filter((e) => e)
         .join(' ')}
@@ -197,13 +214,6 @@ RawLoggedOutDebugBar.propTypes = {
 }
 
 function DebugBar(props) {
-  useInsertionEffect(
-    () => {
-    // @ts-ignore
-      import('./styles.scss')
-    }, [],
-  )
-
   const resource = useAuthenticationResource(true)
 
   const data = useLazyLoadQuery(

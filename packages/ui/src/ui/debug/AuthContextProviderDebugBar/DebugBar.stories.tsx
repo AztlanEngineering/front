@@ -9,7 +9,7 @@ import * as decorators from 'story-utils/decorators.js'
 import { RawLoggedInDebugBar as Component } from './DebugBar.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'app.base/AuthContextProvider/DebugBar',
+  title     :'debug/AuthContextProviderDebugBar',
   component :Component,
   decorators:[decorators.router],
   parameters:{ layout: 'fullscreen' },
