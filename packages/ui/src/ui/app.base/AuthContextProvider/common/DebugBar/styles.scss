@@ -1,0 +1,9 @@
+/* @aztlan/generator-front 1.2.22 */
+
+@use "@aztlan/bem";
+
+.#{bem.$base}.debug-bar {
+  background: red;
+}
+
+

@@ -5,7 +5,9 @@ import { useLazyLoadQuery } from 'react-relay'
 import {
   defineMessages, useIntl,
 } from 'react-intl'
-import { LoginButton } from '@aztlan/ui'
+import {
+  useAuthenticationResource, LoginButton,
+} from '@aztlan/ui'
 import Template from '../templates/Base.js'
 
 const m = defineMessages({
@@ -20,25 +22,10 @@ const m = defineMessages({
   },
 })
 
-const DEFAULT_REDIRECT = '/profile'
-
 function Login() {
   const location = useLocation()
 
-  let fullHostname
-  if (typeof process === 'undefined') {
-    const { protocol } = window.location // 'http:' or 'https:'
-    const { hostname } = window.location // 'ash.779.mx'
-    const { port } = window.location // '3002'
-
-    fullHostname = `${protocol}//${hostname}${port ? `:${port}` : ''}`
-  } else {
-    fullHostname = 'http://test.com'
-  }
-
-  const resource = `${fullHostname}${
-    location.state?.from ? location.state.from : DEFAULT_REDIRECT
-  }`
+  const resource = useAuthenticationResource()
 
   const data = useLazyLoadQuery(
     LoginButton.QUERY,

@@ -36,7 +36,7 @@ const routeMap = [
 
 function Navigation(): React.ReactElement {
   return (
-    <ul className="inline">
+    <ul className="">
       {routeMap.map(({
         path, title: routeTitle,
       }) => (
@@ -48,59 +48,64 @@ function Navigation(): React.ReactElement {
   )
 }
 
-function Base({
-  title,
-  wireframe,
-  wireframeTitle,
-  children,
-}: InferProps<typeof Base.propTypes>): React.ReactElement {
+function Wrapper({
+  title, children, sidebar,
+}) {
   const {
     logout, isLogoutInFlight,
   } = useAuth()
-  if (wireframe) {
-    return (
-      <main className="grid">
-        <div className="background near span-3 fit-content">
-          <h1>{wireframeTitle || title}</h1>
-
-          <a onClick={logout}>
-            <h2>
-              Logout
-              {isLogoutInFlight && '...'}
-            </h2>
-          </a>
-        </div>
-        <div className="background near span-5 md-start-6 md-span-8 fit-content grid">
-          <Navigation />
-          <div style={{ minHeight: '300px' }}>WF</div>
-        </div>
-      </main>
-    )
-  }
   return (
-    <main className="grid">
-      <div className="background near span-4 fit-content">
+    <main
+      className="grid"
+      style={{ padding: '0 1em' }}
+    >
+      <div className="background near span-8 md-span-3 fit-content">
         <h1>{title}</h1>
+        {sidebar}
+        <Navigation />
         <ThemeSwitcher />
         <LocaleSwitcher />
-        <a onClick={logout}>
-          <h2>
-            Logout
-            {isLogoutInFlight && '...'}
-          </h2>
-        </a>
+        <button
+          onClick={logout}
+          disabled={isLogoutInFlight}
+          type="button"
+        >
+          Logout
+          {isLogoutInFlight && '...'}
+        </button>
       </div>
-      <div className="background near span-5 md-start-6 md-span-8 fit-content grid container">
-        <Navigation />
+      <div className="background near span-8 md-span-9 fit-content grid">
         {children}
       </div>
     </main>
   )
 }
 
+Wrapper.propTypes = {
+  title   :PropTypes.node,
+  children:PropTypes.node,
+  sidebar :PropTypes.node,
+}
+
+function Base({
+  title,
+  wireframe,
+  wireframeTitle,
+  children,
+}: InferProps<typeof Base.propTypes>): React.ReactElement {
+  if (wireframe) {
+    return (
+      <Wrapper title={wireframeTitle || title}>
+        <div style={{ minHeight: '300px' }}>WIREFRAME MODE</div>
+      </Wrapper>
+    )
+  }
+  return <Wrapper title={title}>{children}</Wrapper>
+}
+
 Base.propTypes = {
   title         :PropTypes.node,
-  wireframe     :PropTypes.node,
+  wireframe     :PropTypes.bool,
   wireframeTitle:PropTypes.node,
   children      :PropTypes.node,
 }

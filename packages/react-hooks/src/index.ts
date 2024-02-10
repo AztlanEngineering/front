@@ -13,3 +13,4 @@ export type {
   SectionState,
 } from './useSections.js'
 export { default as useDebug } from './useDebug.js'
+export { default as useFullHostname } from './useFullHostname.js'

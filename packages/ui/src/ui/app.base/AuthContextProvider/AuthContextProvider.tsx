@@ -48,6 +48,7 @@ const DEFAULT_MUTATION_LOGOUT = graphql`
 function AuthContextProvider({
   children,
   loginPath = '/login',
+  defaultRedirectionAfterLogin = '/profile',
   QUERY_VIEWER = DEFAULT_QUERY_VIEWER,
   MUTATION_LOGOUT = DEFAULT_MUTATION_LOGOUT,
   // ...otherProps
@@ -113,6 +114,7 @@ function AuthContextProvider({
         logout,
         isLogoutInFlight,
         loginPath,
+        defaultRedirectionAfterLogin,
 
         viewerQueryReference,
         loadViewerQuery,
@@ -132,6 +134,9 @@ AuthContextProvider.propTypes = {
 
   /** The path to the login page */
   loginPath:PropTypes.string,
+
+  /** The default redirection after login */
+  defaultRedirectionAfterLogin:PropTypes.string,
 }
 
 export default AuthContextProvider
