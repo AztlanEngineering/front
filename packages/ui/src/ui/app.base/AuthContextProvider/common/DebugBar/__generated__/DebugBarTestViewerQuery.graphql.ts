@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<078abb993c26051da9ce9f340255beb2>>
+ * @generated SignedSource<<e8ce8c6cb520512cd45a4f766950aefe>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,47 +10,24 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type DebugBarViewerQuery$variables = {
-  resource: string;
-};
-export type DebugBarViewerQuery$data = {
+export type DebugBarTestViewerQuery$variables = Record<PropertyKey, never>;
+export type DebugBarTestViewerQuery$data = {
   readonly viewer: {
     readonly " $fragmentSpreads": FragmentRefs<"DebugBarViewerFragment">;
   } | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"LoginButtonFragment">;
 };
-export type DebugBarViewerQuery = {
-  response: DebugBarViewerQuery$data;
-  variables: DebugBarViewerQuery$variables;
+export type DebugBarTestViewerQuery = {
+  response: DebugBarTestViewerQuery$data;
+  variables: DebugBarTestViewerQuery$variables;
 };
 
-const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "resource"
-  }
-],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "resource",
-    "variableName": "resource"
-  }
-];
-return {
+const node: ConcreteRequest = {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "DebugBarViewerQuery",
+    "name": "DebugBarTestViewerQuery",
     "selections": [
-      {
-        "args": (v1/*: any*/),
-        "kind": "FragmentSpread",
-        "name": "LoginButtonFragment"
-      },
       {
         "alias": null,
         "args": null,
@@ -73,28 +50,10 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "DebugBarViewerQuery",
+    "name": "DebugBarTestViewerQuery",
     "selections": [
-      {
-        "alias": null,
-        "args": (v1/*: any*/),
-        "concreteType": "OAuth2LinksProvider",
-        "kind": "LinkedField",
-        "name": "oAuth2Links",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "google",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      },
       {
         "alias": null,
         "args": null,
@@ -158,16 +117,15 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8b500210600d7d497a3a77ba42705a79",
+    "cacheID": "eca60092ce1547ef9118e1219f71ab97",
     "id": null,
     "metadata": {},
-    "name": "DebugBarViewerQuery",
+    "name": "DebugBarTestViewerQuery",
     "operationKind": "query",
-    "text": "query DebugBarViewerQuery(\n  $resource: String!\n) {\n  ...LoginButtonFragment_1AFwKl\n  viewer {\n    ...DebugBarViewerFragment\n    id\n  }\n}\n\nfragment DebugBarViewerFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  id\n}\n\nfragment LoginButtonFragment_1AFwKl on Query {\n  oAuth2Links(resource: $resource) {\n    google\n  }\n}\n"
+    "text": "query DebugBarTestViewerQuery {\n  viewer {\n    ...DebugBarViewerFragment\n    id\n  }\n}\n\nfragment DebugBarViewerFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  id\n}\n"
   }
 };
-})();
 
-(node as any).hash = "b382b203dcf4a04c1cddfc06729e3e5b";
+(node as any).hash = "427c940c0f9ff26b98411232b65485ac";
 
 export default node;

@@ -1,4 +1,7 @@
-import { useMemo } from 'react'
+import * as React from 'react'
+import {
+  useMemo, ComponentType,
+} from 'react'
 
 /**
  * A React hook to determine if the application is in debug mode.
@@ -40,4 +43,14 @@ function useDebug(key: string = 'debug'): boolean {
   return isDebugMode
 }
 
+const withDebug = (Component: ComponentType) => function WrapperComponent(props) {
+  const isDebug = useDebug()
+  if (!isDebug) return null
+  return React.createElement(
+    Component, props,
+  )
+}
+
 export default useDebug
+
+export { withDebug }
