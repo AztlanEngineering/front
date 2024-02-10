@@ -29,6 +29,7 @@ function SimpleForm({
   style,
   fields,
   fieldProps: sharedFieldProps,
+  onSubmit,
   ...otherProps
 }: TSimpleFormProps): React.ReactElement {
   useInsertionEffect(
@@ -45,10 +46,6 @@ function SimpleForm({
   })
 
   const isDebug = useDebug()
-
-  const onSubmit = (data) => console.log(
-    '[FORM SUBMIT]', data,
-  )
 
   return (
     <FormProvider {...methods}>
@@ -72,14 +69,14 @@ function SimpleForm({
             {...fieldProps as Partial<FieldProps>}
           />
         ))}
-        { isDebug
+        {/* isDebug
             && (
             <input
               className="container"
               type="submit"
               value="[DEBUG] console.log"
             />
-            )}
+            ) */}
       </form>
     </FormProvider>
   )

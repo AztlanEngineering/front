@@ -33,7 +33,7 @@ function Form({
   fieldProps: sharedFieldProps,
   loadInitialUrl,
   type: formType = 'default',
-
+  onSubmit,
   ...otherProps
 }: TFormProps): React.ReactElement {
   useInsertionEffect(
@@ -50,10 +50,6 @@ function Form({
   })
 
   const isDebug = useDebug()
-
-  const onSubmit = (data) => console.log(
-    '[FORM SUBMIT]', data,
-  )
 
   const [
     sectionsState,

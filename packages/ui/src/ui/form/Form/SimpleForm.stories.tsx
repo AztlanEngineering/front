@@ -24,6 +24,9 @@ export const Base: StoryObj<typeof Component> = {
       email       :'',
       phone       :'',
     },
+    onSubmit:(data) => alert(JSON.stringify(
+      data, null, 2,
+    )),
     fields:[
       {
         type         :'text',

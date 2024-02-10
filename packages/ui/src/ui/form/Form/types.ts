@@ -67,6 +67,7 @@ export const FormPropTypes = {
   ...typeShared,
   items         :sectionTypeValidator,
   loadInitialUrl:PropTypes.bool,
+  onSubmit      :PropTypes.func,
 }
 
 export const SimpleFormPropTypes = {
@@ -79,6 +80,7 @@ export const SimpleFormPropTypes = {
     ...formPropTypes.inputShared, // Kinda
     ...formPropTypes.optional,
   })),
+  onSubmit:PropTypes.func,
 }
 
 export type TFormProps = InferProps<typeof FormPropTypes>
