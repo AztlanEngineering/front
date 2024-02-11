@@ -96,7 +96,14 @@ function FormNavigation({
   )
 
   const showNextButton = useMemo(
-    () => !isLast && !currentSection.hideNext, [currentSection],
+    () => !currentSection.hideNext, [currentSection],
+  )
+
+  const submit = useMemo(
+    () => React.createElement(
+      'button', { type: 'submit' }, 'Submit',
+    ),
+    [],
   )
 
   const handlerNext = async (e) => {
@@ -114,6 +121,7 @@ function FormNavigation({
       handlerPrevious={setPrevious}
       hidePreviousButton={!showPreviousButton}
       hideNextButton={!showNextButton}
+      submit={submit}
     >
       {children}
     </SequentialNavigation>

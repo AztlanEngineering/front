@@ -6,14 +6,14 @@
 .#{bem.$base}.navigation-paginator {
   //display: flex;
   //justify-content: space-between;
-  > :first-child {
+  > span:first-child {
     @include media.media($from: 801px) {
       grid-column-end: span var(--span-desktop);
     }
     grid-column-end: span var(--span);
   }
 
-  > :last-child {
+  > span:last-child {
     @include media.media($from: 801px) {
       grid-column-end: span var(--span-desktop);
       grid-column-start: calc(var(--span-desktop) * -1 - 1);

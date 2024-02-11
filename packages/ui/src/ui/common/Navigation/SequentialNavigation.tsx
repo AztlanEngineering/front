@@ -66,6 +66,9 @@ function SequentialNavigationPaginator(props) {
     hidePreviousButton,
     hideNextButton,
   } = useContext(Context)
+  console.log(
+    'NEXT', next,
+  )
   return (
     <Paginator
       previous={!hidePreviousButton && previous}
@@ -99,6 +102,7 @@ function SequentialNavigation({
   handlerPrevious,
   hideNextButton = false,
   hidePreviousButton = false,
+  submit,
 }: SequentialNavigationProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -162,7 +166,11 @@ function SequentialNavigation({
   const next = useMemo(
     () => {
       const nextIndex = currentIndex + 1
-      if (nextIndex >= items.length) return null
+      if (nextIndex > items.length) return null
+      if (nextIndex === items.length) {
+        if (!submit) return null
+        return submit
+      }
 
       const nextItem = items[nextIndex]
 

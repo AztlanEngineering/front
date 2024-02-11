@@ -52,8 +52,14 @@ function Paginator({
       }}
       // {...otherProps}
     >
-      { previous || <span />}
-      { next || <span />}
+      { previous ? <span>{previous}</span> : <span />}
+      { next ? (
+        <span>
+          {' '}
+          { next }
+          {' '}
+        </span>
+      ) : <span />}
     </Wrapper>
   )
 }

@@ -82,6 +82,10 @@ export const SequentialNavigationPropTypes = {
    * so it is crucial that a navigation action is provided on that handler,
    * for instance to the next section. */
   handlerNext:PropTypes.func,
+
+  /* A component to display on the last page instead of the next button.
+   * This can for instance be a submit button, or a link to a different place */
+  submit:PropTypes.element,
 }
 
 export type SequentialNavigationProps = InferProps<
