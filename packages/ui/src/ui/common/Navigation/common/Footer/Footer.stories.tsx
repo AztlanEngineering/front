@@ -43,3 +43,10 @@ export const Fixed: StoryObj<typeof Component> = {
     fixed:true,
   },
 }
+
+export const Padded: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    UNSTABLE_padded:true,
+  },
+}

@@ -23,6 +23,7 @@ function Footer({
   content,
   next,
   hideOnDesktop = true,
+  UNSTABLE_padded,
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -40,6 +41,8 @@ function Footer({
         userClassName,
         hideOnDesktop && 'desktop-hidden',
         fixed && styleNames.modifierFixed,
+        fixed && 'default-columns',
+        UNSTABLE_padded && 'section padded',
         'grid',
       ]
         .filter((e) => e)

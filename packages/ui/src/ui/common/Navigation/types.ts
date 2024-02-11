@@ -48,6 +48,9 @@ export const footerShared = {
 
   /* Whether to hide this navigation element on desktop */
   hideOnDesktop:PropTypes.bool,
+
+  /* Whether the element is padded */
+  UNSTABLE_padded:PropTypes.bool,
 }
 
 export const SequentialNavigationPropTypes = {
