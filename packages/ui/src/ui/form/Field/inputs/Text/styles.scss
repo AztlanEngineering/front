@@ -1,10 +1,35 @@
 /* @aztlan/generator-front 0.8.0 */
 
 @use "@aztlan/bem";
+@use "@aztlan/mixins/src/media";
 
 .#{bem.$base}.text {
-  input {
-    width: 100%;
+  --current-prefix-span: var(--prefix-span);
+  --current-suffix-span: var(--suffix-span);
+  @include media.media($from: 801px) {
+    --current-prefix-span: var(--prefix-span-desktop);
+    --current-suffix-span: var(--suffix-span-desktop);
+  }
+
+  > .grid {
+    // If there is a suffix
+    input:first-child:not(:only-child) {
+      grid-column-end: span calc(-1 - var(--columns) - var(--current-suffix-span));
+    }
+    // If there is a prefix
+    input:last-child:not(:only-child) {
+      grid-column-end: span calc(-1 - var(--columns));
+    }
+    // If there is both prefix and suffix
+    input:not(:first-child):not(:last-child) {
+      grid-column-end: span calc(
+        var(--columns) - var(--current-prefix-span) - var(--current-suffix-span)
+      );
+    }
+    // If there is neither prefix or suffix
+    input:only-child {
+      grid-column: 1/-1;
+    }
   }
 }
 

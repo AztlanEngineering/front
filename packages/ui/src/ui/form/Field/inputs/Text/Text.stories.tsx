@@ -53,3 +53,19 @@ export const Disabled: StoryObj<typeof Component> = {
     autoComplete:'off',
   },
 }
+
+export const PrefixAndSuffix: StoryObj<typeof Component> = {
+  args:{
+    type             :'text',
+    name             :'domain',
+    label            :'Domain name',
+    placeholder      :'example',
+    prefix           :'https://',
+    suffix           :'.com',
+    prefixSpan       :2,
+    prefixSpanDesktop:3,
+    suffixSpan       :2,
+    suffixSpanDesktop:3,
+    autoComplete     :'off',
+  },
+}

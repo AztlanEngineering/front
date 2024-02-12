@@ -25,6 +25,12 @@ function Text({
   name,
   registerProps,
   loading = false,
+  prefix,
+  prefixSpan = 2,
+  prefixSpanDesktop = 2,
+  suffix,
+  suffixSpan = 2,
+  suffixSpanDesktop = 2,
   ...otherProps
 }: TProps): React.ReactElement {
   useInsertionEffect(
@@ -45,15 +51,33 @@ function Text({
       ]
         .filter((e) => e)
         .join(' ')}
-      style={style}
+      style={{
+        ...style,
+        '--prefix-span'        :prefixSpan,
+        '--prefix-span-desktop':prefixSpanDesktop,
+        '--suffix-span'        :suffixSpan,
+        '--suffix-span-desktop':suffixSpanDesktop,
+      } as React.CSSProperties}
     >
-      <input
-        type={inputType}
-        {...register(
-          name, registerProps,
+      <div className="grid">
+        {prefix && (
+        <span className={`span-${prefixSpan} md-span-${prefixSpanDesktop}`}>
+          {prefix}
+        </span>
         )}
-        {...otherProps}
-      />
+        <input
+          type={inputType}
+          {...register(
+            name, registerProps,
+          )}
+          {...otherProps}
+        />
+        {suffix && (
+        <span className={`span-${suffixSpan} md-span-${suffixSpanDesktop}`}>
+          {suffix}
+        </span>
+        )}
+      </div>
       {loading && 'Loading...'}
     </div>
   )

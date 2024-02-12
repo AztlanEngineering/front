@@ -19,6 +19,24 @@ export const propTypes = {
 
   /** The placeholder text */
   placeholder:PropTypes.string,
+
+  /** A prefix to display before the input */
+  prefix:PropTypes.node,
+
+  /** How many columns should the prefix span */
+  prefixSpan:PropTypes.number,
+
+  /** How many columns should the suffix span  on desktop */
+  prefixSpanDesktop:PropTypes.number,
+
+  /** A suffix to display after the input */
+  suffix:PropTypes.node,
+
+  /** How many columns should the suffix span */
+  suffixSpan:PropTypes.number,
+
+  /** How many columns should the suffix span  on desktop */
+  suffixSpanDesktop:PropTypes.number,
 }
 
 export type TProps = InferProps<typeof propTypes>
