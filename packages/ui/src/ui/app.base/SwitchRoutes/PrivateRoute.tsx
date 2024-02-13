@@ -21,7 +21,7 @@ const componentClassName = 'private-route'
  * This is the component description.
  */
 function PrivateRoute({
-  groups = [], testFunction, ...otherProps
+  groups = [], test, ...otherProps
 }) {
   // @ts-ignore
   const {
@@ -37,7 +37,7 @@ function PrivateRoute({
   )
 
   const {
-    data, isInGroups, test,
+    data, meetsConditions: userMeetsConditions,
   } = useViewer()
 
   const history = useHistory()
@@ -66,22 +66,13 @@ function PrivateRoute({
   )
 
   const arePermissionsValid = useMemo(
-    () => {
-      const conditions = []
-
-      const isViewerInGroups = isInGroups(groups)
-      if (groups.length) conditions.push(isViewerInGroups)
-
-      if (testFunction) {
-        const additionalTestResult = test(testFunction)
-        conditions.push(additionalTestResult)
-      }
-      return conditions.every(Boolean) // true if length 0
-    // @ts-ignore
-    }, [
+    () => userMeetsConditions({
       groups,
-      testFunction,
-      data.viewer,
+      test,
+    }),
+    [
+      groups,
+      test,
     ],
   )
 

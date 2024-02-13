@@ -7,6 +7,9 @@ export interface RouteConfig {
   QUERY?                :GraphQLTaggedNode;
   prepareQueryVariables?:(params: { [key: string]: string }) => any;
   isPrivate?            :boolean;
+  permissions?          :string[];
+  groups?               :string[];
+  test?                 :(viewer: any) => boolean;
 }
 
 export type RoutesConfig = RouteConfig[]

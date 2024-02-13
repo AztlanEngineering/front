@@ -11,6 +11,7 @@ import {
   fetchQuery, useRelayEnvironment,
 } from 'react-relay'
 import { useApp } from '../../common/AppContext/index.js' // Adjust the import path as necessary
+import { useViewer } from '../AuthContextProvider/index.js'
 
 /**
  * description
@@ -22,6 +23,9 @@ function PrefetchLink({
   ...otherProps
 }: InferProps<typeof PrefetchLink.propTypes>): React.ReactElement {
   const { routes } = useApp() // Assuming routes are part of what useApp returns
+  const {
+    isLoggedIn, meetsConditions,
+  } = useViewer()
 
   const environment = useRelayEnvironment()
 
@@ -35,7 +39,18 @@ function PrefetchLink({
         },
       ))
 
-      if (route && route.QUERY) {
+      if (route && route.QUERY && (isLoggedIn || !route.isPrivate)) {
+        if (isLoggedIn && (route.groups || route.test || route.permissions)) {
+          if (
+            !meetsConditions({
+              groups     :route.groups,
+              test       :route.test,
+              permissions:route.permissions,
+            })
+          ) {
+            return
+          }
+        }
         const match = matchPath(
           to.toString(), {
             path :route.path,

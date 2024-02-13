@@ -77,12 +77,32 @@ const useViewer = () => {
     [data],
   )
 
+  const meetsConditions = useCallback(
+    ({
+      permissions = [], groups = [], test: testFn = null,
+    } = {}): boolean => {
+      if (!data?.viewer) return false
+      const conditions = []
+      if (permissions.length) conditions.push(hasPermissions(permissions))
+      if (groups.length) conditions.push(isInGroups(groups))
+      if (testFn) conditions.push(test(testFn))
+      return conditions.every(Boolean)
+    },
+    [
+      data,
+      hasPermissions,
+      isInGroups,
+      test,
+    ],
+  )
+
   return {
     data,
     isLoggedIn:!!data?.viewer,
     hasPermissions,
     isInGroups,
     test,
+    meetsConditions,
   }
 }
 
