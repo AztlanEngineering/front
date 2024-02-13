@@ -14,18 +14,20 @@ function useRouteMatch(
 ): Return {
   const result = useMemo(
     () => {
-      const route = routes.find((routeConfig) => matchPath(
+      const route = routes?.find((routeConfig) => matchPath(
         to.toString(), {
           path :routeConfig.path,
           exact:routeConfig.exact,
         },
       ))
-      const match = matchPath(
-        to.toString(), {
-          path :route.path,
-          exact:route.exact,
-        },
-      )
+      const match = route
+        ? matchPath(
+          to.toString(), {
+            path :route.path,
+            exact:route.exact,
+          },
+        )
+        : null
       return {
         match,
         route,
