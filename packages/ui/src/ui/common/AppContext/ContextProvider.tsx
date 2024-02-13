@@ -11,6 +11,7 @@ function AppContextProvider({
   initialTheme,
   value,
   maintenance = false,
+  routes,
   // ...otherProps
 }) {
   const theme = useTheme(initialTheme)
@@ -25,6 +26,7 @@ function AppContextProvider({
     () => ({
       ...value,
       ...theme,
+      routes,
     }),
     [
       value,
@@ -75,6 +77,15 @@ AppContextProvider.propTypes = {
       end  :PropTypes.instanceOf(Date),
     }),
   ]),
+
+  /** The routes of the application - this will only be used for prefetch link */
+  routes:PropTypes.arrayOf(PropTypes.shape({
+    path                 :PropTypes.string.isRequired,
+    exact                :PropTypes.bool,
+    component            :PropTypes.elementType,
+    QUERY                :PropTypes.object,
+    prepareQueryVariables:PropTypes.func,
+  })),
 }
 
 export default AppContextProvider
