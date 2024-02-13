@@ -45,6 +45,7 @@ export default (inputs) => ({
       'react-dom'       :getAbsolutePath('react-dom'),
       'react-router-dom':getAbsolutePath('react-router-dom'),
       'react-relay'     :getAbsolutePath('react-relay'),
+      'react-hook-form' :getAbsolutePath('react-hook-form'),
     },
     roots:[
       path.resolve(
