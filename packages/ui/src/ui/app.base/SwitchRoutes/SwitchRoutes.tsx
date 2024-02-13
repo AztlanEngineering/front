@@ -21,14 +21,14 @@ function SwitchRoutes({
 
   const PrivateRouteWrapper = useCallback(
     ({
-      groups, testFunction, wireframeTitle, ...routeProps
+      groups, test, wireframeTitle, permissions, ...routeProps
     }) => (
       <Suspense
         fallback={(
           <Wireframe
             // @ts-ignore TODO
             groups={groups}
-            testFunction={testFunction}
+            test={test}
             wireframeTitle={wireframeTitle}
             {...routeProps}
           />
@@ -37,7 +37,8 @@ function SwitchRoutes({
         {viewerQueryReference && (
         <PrivateRoute
           groups={groups}
-          testFunction={testFunction}
+          permissions={permissions}
+          test={test}
           {...routeProps}
         />
         )}
@@ -48,12 +49,18 @@ function SwitchRoutes({
 
   const routes = useMemo(
     () => items.map(({
-      isPrivate, groups, testFunction, wireframeTitle, ...routeProps
+      isPrivate,
+      groups,
+      permissions,
+      testFunction,
+      wireframeTitle,
+      ...routeProps
     }) => (isPrivate ? (
       <PrivateRouteWrapper
         key={routeProps.path}
         groups={groups}
-        testFunction={testFunction}
+        test={test}
+        permissions={permissions}
         wireframeTitle={wireframeTitle}
         {...routeProps}
       />
