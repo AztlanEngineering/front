@@ -4,6 +4,7 @@ import { useLazyLoadQuery } from 'react-relay'
 import {
   defineMessages, useIntl,
 } from 'react-intl'
+import { PrefetchLink } from '@aztlan/ui'
 import { QueryTesterQuery } from '../ui/QueryTester/__generated__/QueryTesterQuery.graphql.js'
 import Template from '../../common/templates/Base.js'
 import { QueryTester } from '../ui/index.js'
@@ -36,6 +37,7 @@ function Home() {
         {formatMessage(
           m.welcome, { name: 'pg6.78' },
         )}
+        <PrefetchLink to="/formtest">PREFETCH</PrefetchLink>
       </p>
     </Template>
   )

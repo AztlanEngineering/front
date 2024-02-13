@@ -12,6 +12,21 @@ import {
 import { graphql } from 'relay-runtime'
 import Template from '../../common/templates/Base.js'
 
+const QUERY_LOAD_FRUIT_OPTIONS = graphql`
+  query FormTestFruitsQuery {
+    fruits {
+      value
+      label
+      disabled
+    }
+  }
+`
+const QUERY_USERNAME_AVAILABILITY = graphql`
+  query FormTestValidationQuery($value: String!) {
+    isUsernameAvailable(value: $value)
+  }
+`
+
 const m = defineMessages({
   title:{
     // id: `${messagesPrefix}.title`,
@@ -23,7 +38,7 @@ const m = defineMessages({
   },
 })
 
-function Home() {
+function FormTest() {
   const { formatMessage } = useIntl()
   return (
     <Template title={formatMessage(m.title)}>
@@ -54,11 +69,7 @@ function Home() {
             autoComplete:'email',
             extensions  :[
               addGraphQLValidation(
-                graphql`
-                  query FormTestValidationQuery($value: String!) {
-                    isUsernameAvailable(value: $value)
-                  }
-                `,
+                QUERY_USERNAME_AVAILABILITY,
                 'isUsernameAvailable',
                 {
                   invalidError :'This username is already taken',
@@ -100,16 +111,7 @@ function Home() {
             extensions  :[
               withErrorHandling,
               addGraphQLOptions(
-                graphql`
-                  query FormTestFruitsQuery {
-                    fruits {
-                      value
-                      label
-                      disabled
-                    }
-                  }
-                `,
-                'fruits',
+                QUERY_LOAD_FRUIT_OPTIONS, 'fruits',
               ),
               withErrorHandling,
             ],
@@ -121,16 +123,7 @@ function Home() {
             extensions:[
               withErrorHandling,
               addGraphQLOptions(
-                graphql`
-                  query FormTestFruits2Query {
-                    fruits {
-                      value
-                      label
-                      disabled
-                    }
-                  }
-                `,
-                'fruits',
+                QUERY_LOAD_FRUIT_OPTIONS, 'fruits',
               ),
             ],
           },
@@ -158,4 +151,6 @@ function Home() {
   )
 }
 
-export default Home
+FormTest.QUERY = QUERY_LOAD_FRUIT_OPTIONS
+
+export default FormTest

@@ -14,6 +14,7 @@ import App from './App.js'
 import loadMessages from './locales/loadMessages.js'
 import config from './config.js'
 import relayEnvironment from './environment.js'
+import routes from './modules/routes.js'
 
 // import "./main.scss";
 import '@aztlan/base-styles'
@@ -48,6 +49,7 @@ function Main() {
                 ...useLocaleProps,
               }}
               maintenance={config.maintenance}
+              routes={routes}
             >
               <App />
             </AppContextProvider>
