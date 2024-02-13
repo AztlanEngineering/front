@@ -1,6 +1,8 @@
 /* @aztlan/generator-front 0.8.0 */
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
+import {
+  useInsertionEffect, useMemo,
+} from 'react'
 
 import { useFormContext } from 'react-hook-form'
 
@@ -42,6 +44,19 @@ function Text({
 
   const { register } = useFormContext()
 
+  const loadingMessage = useMemo(
+    () => {
+      if (typeof loading === 'string') {
+        return loading
+      }
+      if (loading) {
+        return 'Loading...'
+      }
+      return null
+    },
+    [loading],
+  )
+
   return (
     <div
       className={[
@@ -78,7 +93,7 @@ function Text({
         </span>
         )}
       </div>
-      {loading && 'Loading...'}
+      {loadingMessage}
     </div>
   )
 }

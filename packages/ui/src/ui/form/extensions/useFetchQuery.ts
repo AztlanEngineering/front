@@ -2,7 +2,8 @@ import {
   useState, useCallback, useEffect,
 } from 'react'
 import {
-  fetchQuery, GraphQLTaggedNode,
+  fetchQuery,
+  GraphQLTaggedNode,
   useRelayEnvironment,
 } from 'react-relay'
 import * as messages from '../messages.js'
@@ -14,6 +15,13 @@ export interface UseFetchQueryOptions {
   initialData?        :any;
   variables?          :{ [key: string]: any };
   deriveErrorFromData?:(data: any) => string | null;
+  loadingMessage?     :string;
+}
+
+export type State = {
+  data   :any;
+  loading:boolean | string;
+  error  :string | null;
 }
 
 /**
@@ -43,13 +51,13 @@ const useFetchQuery = (
     data   :options.initialData,
     loading:false,
     error  :null as string | null,
-  })
+  } as State)
 
   const fetchData = useCallback(
     async (overrideVariables: { [key: string]: any } = {}) => {
       setState((prev) => ({
         ...prev,
-        loading:true,
+        loading:options.loadingMessage || true,
       }))
       try {
         const variables = {

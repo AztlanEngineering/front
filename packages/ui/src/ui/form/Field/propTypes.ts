@@ -112,7 +112,10 @@ export const inputShared = {
   style:PropTypes.objectOf(PropTypes.string),
 
   /** Whether some loading state is in progress */
-  loading:PropTypes.bool,
+  loading:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
 }
 
 const optionType = PropTypes.shape({
@@ -149,7 +152,10 @@ export const optionsShared = {
   options:optionsWithExtensionsValidator,
 
   /** Whether the component is in a loading state */
-  loading:PropTypes.bool,
+  loading:PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
 }
 
 export const comboboxShared = {

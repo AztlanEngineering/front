@@ -7,6 +7,7 @@ import { InferProps } from 'prop-types'
 import { GraphQLTaggedNode } from 'react-relay'
 import debounce from 'lodash.debounce'
 import useFetchQuery, { UseFetchQueryOptions } from './useFetchQuery.js'
+import useFieldError from '../Field/hooks/useFieldError.js'
 import * as formPropTypes from '../Field/propTypes.js' // Your existing imports
 
 type ComponentProps = InferProps<typeof componentPropTypes>
@@ -51,6 +52,8 @@ const addGraphQLValidation = (
       const {
         setError, clearErrors, watch,
       } = useFormContext()
+
+      const fieldError = useFieldError(name)
 
       const value = watch(name)
       const deriveErrorFromData = useCallback<DeriveErrorFunction>(
@@ -98,7 +101,7 @@ const addGraphQLValidation = (
 
       useEffect(
         () => {
-          if (value && value.length >= minLength) {
+          if (!fieldError && value && value.length >= minLength) {
             debouncedFetchData({ value })
           }
 
@@ -106,6 +109,7 @@ const addGraphQLValidation = (
             debouncedFetchData.cancel()
           }
         }, [
+          fieldError,
           value,
           minLength,
         ],
@@ -118,7 +122,7 @@ const addGraphQLValidation = (
               clearErrors(name)
             } else if (error) {
               setFieldError(error)
-            } else {
+            } else if (value && value.length >= minLength) {
               setFieldError(invalidError)
             }
           }
@@ -128,6 +132,8 @@ const addGraphQLValidation = (
           error,
           name,
           clearErrors,
+          value,
+          minLength,
           setFieldError,
           invalidError,
         ],

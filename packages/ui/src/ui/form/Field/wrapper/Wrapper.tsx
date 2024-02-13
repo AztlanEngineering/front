@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 import {
-  useFormState, RegisterOptions,
-  FieldError,
-  FieldErrorsImpl,
+  RegisterOptions,
   useFormContext,
-  Merge,
 } from 'react-hook-form'
 import { WrapperPropTypes } from './types.js'
 import type { TWrapperProps } from './types.js'
 
 import Label from './Label.js'
 import Description from './Description.js'
-import useFieldAriaProps from '../hooks/useFieldAriaProps.js'
+import {
+  useFieldAriaProps,
+  useFieldError,
+} from '../hooks/index.js'
 import * as messages from '../../messages.js'
 
 const defaultObject = {}
@@ -66,28 +66,7 @@ function Wrapper({
   ...otherProps
 }: TWrapperProps): React.ReactElement {
   // const { register } = useFormContext()
-  const { errors } = useFormState({ name })
-
-  const fieldTree = name.split('.')
-
-  const fieldError = useMemo(
-    ():FieldError | Merge<FieldError, FieldErrorsImpl> => fieldTree.reduce(
-      (
-        acc, key,
-      ) => {
-        if (acc) {
-          return acc[key]
-        }
-        return undefined
-      },
-      errors,
-    ), [
-      errors[fieldTree[0]],
-      errors[fieldTree[0]]?.[fieldTree[1]],
-      errors[fieldTree[0]]?.[fieldTree[1]]?.[fieldTree[2]],
-      name,
-    ],
-  )
+  const fieldError = useFieldError(name)
 
   const isError = !!fieldError
 
