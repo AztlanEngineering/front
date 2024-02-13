@@ -6,6 +6,7 @@ export interface RouteConfig {
   exact?                :boolean;
   QUERY?                :GraphQLTaggedNode;
   prepareQueryVariables?:(params: { [key: string]: string }) => any;
+  isPrivate?            :boolean;
 }
 
 export type RoutesConfig = RouteConfig[]
