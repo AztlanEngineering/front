@@ -60,8 +60,9 @@ export const SequentialNavigationPropTypes = {
 
   /* The array of navigation elements to be passed to the navigation context */
   items:PropTypes.arrayOf(PropTypes.shape({
-    label:PropTypes.string.isRequired,
-    url  :PropTypes.string.isRequired,
+    label        :PropTypes.string.isRequired,
+    url          :PropTypes.string.isRequired,
+    footerContent:PropTypes.string,
   })),
 
   /** The label of the menu */
@@ -86,6 +87,9 @@ export const SequentialNavigationPropTypes = {
   /* A component to display on the last page instead of the next button.
    * This can for instance be a submit button, or a link to a different place */
   submit:PropTypes.element,
+
+  /* The current footer content */
+  currentFooterContent:PropTypes.string,
 }
 
 export type SequentialNavigationProps = InferProps<

@@ -121,6 +121,7 @@ function FormNavigation({
       handlerPrevious={setPrevious}
       hidePreviousButton={!showPreviousButton}
       hideNextButton={!showNextButton}
+      // currentFooterContent="Continue"
       submit={submit}
     >
       {children}

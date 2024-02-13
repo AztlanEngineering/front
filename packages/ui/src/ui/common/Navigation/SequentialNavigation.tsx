@@ -46,7 +46,8 @@ function SequentialNavigationHeader(props) {
 
 function SequentialNavigationFooter(props) {
   const {
-    currentContent: content, next,
+    currentFooterContent:content,
+    next,
     fixed,
     hideNextButton,
   } = useContext(Context)
@@ -66,9 +67,6 @@ function SequentialNavigationPaginator(props) {
     hidePreviousButton,
     hideNextButton,
   } = useContext(Context)
-  console.log(
-    'NEXT', next,
-  )
   return (
     <Paginator
       previous={!hidePreviousButton && previous}
@@ -102,6 +100,7 @@ function SequentialNavigation({
   handlerPrevious,
   hideNextButton = false,
   hidePreviousButton = false,
+  currentFooterContent:userCurrentFooterContent,
   submit,
 }: SequentialNavigationProps): React.ReactElement {
   useInsertionEffect(
@@ -205,11 +204,25 @@ function SequentialNavigation({
     ],
   )
 
+  const currentFooterContent = useMemo(
+    // UNSTABLE - unsure whether the userCurrentFooterContent should be the default or the item one
+    () => ((typeof userCurrentFooterContent !== undefined)
+      ? userCurrentFooterContent
+      : items[currentIndex].footerContent
+    ),
+    [
+      items,
+      currentIndex,
+      userCurrentFooterContent,
+    ],
+  )
+
   const value = useMemo(
     () => ({
       previous,
       next,
       currentContent,
+      currentFooterContent,
       items:transformedItems,
       menuLabel,
       currentIndex,
@@ -221,6 +234,7 @@ function SequentialNavigation({
       previous,
       next,
       currentContent,
+      currentFooterContent,
       transformedItems,
       menuLabel,
       currentIndex,
