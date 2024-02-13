@@ -1,12 +1,13 @@
 /* @aztlan/generator-front 1.4.1 */
 import * as React from 'react'
+import {
+  useEffect, useCallback,
+} from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
+import throttle from 'lodash.throttle'
 
-import { useCallback } from 'react'
-import {
-  Link, matchPath,
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useApp } from '../../common/AppContext/index.js' // Adjust the import path as necessary
 import useRouteMatch from './useRouteMatch.js'
 import usePrefetchQuery from './usePrefetchQuery.js'
@@ -17,10 +18,16 @@ import {
 const sharedPropTypes = {
   /* The path to link to */
   to:PropTypes.string.isRequired,
+
+  /* The minimum wait time before two calls */
+  throttleMs:PropTypes.number,
 }
+
+const defaultThrottleMs = 5000
 
 function PublicPrefetchLink({
   to,
+  throttleMs = defaultThrottleMs,
   ...otherProps
 }: InferProps<typeof sharedPropTypes>): React.ReactElement {
   const { routes } = useApp()
@@ -49,10 +56,25 @@ function PublicPrefetchLink({
       to,
     ],
   )
+
+  const throttledPrefetchData = useCallback(
+    throttle(
+      prefetchData, throttleMs,
+    ),
+    [prefetchData],
+  )
+
+  useEffect(
+    () => () => {
+      // @ts-ignore
+      throttledPrefetchData.cancel()
+    },
+    [throttledPrefetchData],
+  )
   return (
     <Link
       to={to}
-      onMouseOver={prefetchData}
+      onMouseOver={throttledPrefetchData}
       {...otherProps}
     />
   )
@@ -60,6 +82,7 @@ function PublicPrefetchLink({
 
 function PrivatePrefetchLink({
   to,
+  throttleMs = defaultThrottleMs,
   ...otherProps
 }: InferProps<typeof sharedPropTypes>): React.ReactElement {
   const { routes } = useApp() // Assuming routes are part of what useApp returns
@@ -102,10 +125,26 @@ function PrivatePrefetchLink({
       to,
     ],
   )
+
+  const throttledPrefetchData = useCallback(
+    throttle(
+      prefetchData, throttleMs,
+    ),
+    [prefetchData],
+  )
+
+  useEffect(
+    () => () => {
+      // @ts-ignore
+      throttledPrefetchData.cancel()
+    },
+    [throttledPrefetchData],
+  )
+
   return (
     <Link
       to={to}
-      onMouseOver={prefetchData}
+      onMouseOver={throttledPrefetchData}
       {...otherProps}
     />
   )
