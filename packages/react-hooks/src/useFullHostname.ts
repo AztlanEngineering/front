@@ -9,7 +9,7 @@ import { useMemo } from 'react'
  *
  * @returns {string} The full hostname (protocol, hostname, and port if available).
  */
-function useFullHostname(): string {
+function useFullHostname(ssrHostname: string = undefined): string {
   const fullHostname = useMemo(
     () => {
       if (typeof process === 'undefined') {
@@ -20,7 +20,7 @@ function useFullHostname(): string {
         return `${protocol}//${hostname}${port ? `:${port}` : ''}`
       }
       // Server-side logic
-      return 'http://test.com'
+      return ssrHostname || 'http://example.com'
     }, [],
   ) // Dependencies are empty because the output doesn't depend on props or state.
 

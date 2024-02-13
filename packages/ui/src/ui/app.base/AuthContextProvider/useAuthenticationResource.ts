@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useFullHostname } from '@aztlan/react-hooks'
+import { useApp } from '../../common/AppContext/index.js'
 import useAuth from './useAuth.js'
 
 /**
@@ -13,7 +13,7 @@ import useAuth from './useAuth.js'
  */
 function useAuthenticationResource(redirectLocally: boolean = false): string {
   const location = useLocation()
-  const fullHostname = useFullHostname()
+  const { hostname } = useApp()
   const { defaultRedirectionAfterLogin } = useAuth()
 
   const resource = useMemo(
@@ -22,9 +22,9 @@ function useAuthenticationResource(redirectLocally: boolean = false): string {
       const path = redirectLocally
         ? location.pathname
         : location.state?.from || defaultRedirectionAfterLogin
-      return `${fullHostname}${path}`
+      return `${hostname}${path}`
     }, [
-      fullHostname,
+      hostname,
       location.state,
       defaultRedirectionAfterLogin,
       redirectLocally,

@@ -6,7 +6,8 @@ import type { RoutesConfig } from './types.js'
 
 type ContextType = ReturnType<typeof useLocale> &
 ReturnType<typeof useTheme> & {
-  routes:RoutesConfig;
+  routes   :RoutesConfig;
+  hostname?:string;
 }
 
 export default React.createContext<Partial<ContextType>>({})

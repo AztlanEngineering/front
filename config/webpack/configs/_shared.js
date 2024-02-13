@@ -180,6 +180,7 @@ export default (inputs) => ({
       ),
       ext    :'ts,tsx,graphql',
       verbose:true,
+      // args   :[`-p ${process.env.PORT}`],
       // nodeArgs:['--inspect'],
     }),
     LimitChunkCount:new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),

@@ -20,7 +20,7 @@
     "start": "npm run client:serve",
     "sitemap:serve": "webpack-execute -t sitemap -c serve -e ./src/sitemap/server.ts -o tmp/sitemap.js && node tmp/sitemap.js",
     "sitemap:build": "webpack-execute -t sitemap -c build -e ./src/sitemap/renderer.ts -o api/sitemap.js",
-    "ssr:serve": "webpack-execute -t ssr -c serve -e ./src/ssr/server.ts -o tmp/ssr.js && node tmp/ssr.js",
+    "ssr:serve": "webpack-execute -t ssr -c serve -e ./src/ssr/server.ts -o tmp/ssr.js && node tmp/ssr.js -p 3005",
     "ssr:build": "webpack-execute -t ssr -c build -e ./src/ssr/renderer.ts -o api/ssr.js",
     "storybook": "storybook dev -p 6007 --no-open",
     "test": "echo \"Error: no test specified\" && exit 1",

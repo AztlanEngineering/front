@@ -14,7 +14,7 @@ export default (inputs) => {
   return {
     mode   :'development',
     target :'node20',
-    watch  :true,
+    // watch  :true,
     entry,
     resolve,
     output,
@@ -22,7 +22,7 @@ export default (inputs) => {
     externals,
     plugins:[
       plugins.Dotenv,
-      plugins.Nodemon,
+      // plugins.Nodemon,
       plugins.LimitChunkCount,
     ],
     module:{

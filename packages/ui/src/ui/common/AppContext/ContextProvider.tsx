@@ -2,7 +2,9 @@ import * as React from 'react'
 import { useMemo } from 'react'
 import * as PropTypes from 'prop-types'
 
-import { useTheme } from '@aztlan/react-hooks'
+import {
+  useTheme, useFullHostname,
+} from '@aztlan/react-hooks'
 import Context from './Context.js'
 import useMaintenance from './useMaintenance.js'
 
@@ -12,11 +14,14 @@ function AppContextProvider({
   value,
   maintenance = false,
   routes,
+  ssrHostname,
   // ...otherProps
 }) {
   const theme = useTheme(initialTheme)
 
   const isMaintenanceMode = useMaintenance(maintenance)
+
+  const hostname = useFullHostname(ssrHostname)
 
   if (isMaintenanceMode) {
     return <div>This site is currently not available.</div>
@@ -26,6 +31,7 @@ function AppContextProvider({
     () => ({
       ...value,
       ...theme,
+      hostname,
       routes,
     }),
     [
@@ -86,6 +92,9 @@ AppContextProvider.propTypes = {
     QUERY                :PropTypes.object,
     prepareQueryVariables:PropTypes.func,
   })),
+
+  /* The hostname, provided in SSR. */
+  ssrHostname:PropTypes.string,
 }
 
 export default AppContextProvider

@@ -104,6 +104,10 @@ class WebpackExecutor {
         'help', 'h',
       )
       .parse()
+    // Required for the SSR server only
+    if (this.argv.port) {
+      process.env.PORT = this.argv.port.toString()
+    }
   }
 
   async loadConfig() {
@@ -130,7 +134,7 @@ class WebpackExecutor {
     ]
     this.compiler = Webpack(this.config)
     if (!this.argv.quiet) {
-      console.log('Adding progress plugin')
+      // console.log('Adding progress plugin')
       /* Not working atm */
       new ProgressPlugin((
         percentage, msg,
@@ -175,6 +179,7 @@ class WebpackExecutor {
     console.log(
       'EXE', this.config,
     )
+
     if (this.config.devServer) {
       await this.runDevServer()
     } else {

@@ -19,7 +19,7 @@ export default (inputs) => {
     output,
     plugins:[
       plugins.Dotenv,
-      plugins.Nodemon,
+      // plugins.Nodemon,
     ],
     module:{ rules: [rules.ts] },
 
