@@ -72,25 +72,30 @@ function AuthContextProvider({
     () => {
     // @ts-ignore
       commitLogout({
+        updater:(store) => {
+        // Access the root field of the store
+          const root = store.getRoot()
+          // Set the viewer to null directly in the store
+          root.setValue(
+            null, 'viewer',
+          )
+        },
+        optimisticUpdater(store) {
+        // Access the root field of the store
+          const root = store.getRoot()
+          // Set the viewer to null directly in the store
+          root.setValue(
+            null, 'viewer',
+          )
+        },
         onCompleted() {
           TokenStateManager.logout()
-          // disposeViewerQuery()
-          loadViewerQuery(
-            {}, { fetchPolicy: 'network-only' },
-          )
+        // disposeViewerQuery()
+        // loadViewerQuery(
+        //  {}, { fetchPolicy: 'store-or-network' },
+        // )
         // history.go(0)
         },
-      /*
-      updater(store) {
-        console.log(
-          'ACP - before',
-          getRoot().getLinkedRecord("viewer")updating store',
-          store,
-        )
-        const record = store.getRoot().getLinkedRecord('viewer')
-        store.delete(record._dataId)
-        console.log('ACP - 2', record._dataId, record, store.getRoot())
-      }, */
       })
     }, [commitLogout],
   )

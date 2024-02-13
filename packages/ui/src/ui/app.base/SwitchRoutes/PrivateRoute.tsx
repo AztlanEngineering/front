@@ -24,7 +24,9 @@ function PrivateRoute({
   groups = [], testFunction, ...otherProps
 }) {
   // @ts-ignore
-  const { loginPath } = useAuth()
+  const {
+    loginPath, isLogoutInFlight,
+  } = useAuth()
 
   useEffect(
     () => {
@@ -45,7 +47,7 @@ function PrivateRoute({
   useEffect(
     () => {
     // @ts-ignore
-      if (!data.viewer) {
+      if (isLogoutInFlight || !data.viewer) {
         history.push({
           pathname:loginPath,
           state   :{
