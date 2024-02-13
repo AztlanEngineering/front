@@ -48,16 +48,21 @@ function PrivateRoute({
     () => {
     // @ts-ignore
       if (isLogoutInFlight || !data.viewer) {
-        history.push({
-          pathname:loginPath,
-          state   :{
-            reason:'You must be logged in to view this page.',
-            from  :location.pathname,
-          },
-        })
+        if (location.pathname !== loginPath) {
+          history.push({
+            pathname:loginPath,
+            state   :{
+              reason:'You must be logged in to view this page.',
+              from  :location.pathname,
+            },
+          })
+        }
       }
     // @ts-ignore
-    }, [data.viewer],
+    }, [
+      data.viewer,
+      isLogoutInFlight,
+    ],
   )
 
   const arePermissionsValid = useMemo(
