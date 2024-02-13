@@ -52,7 +52,7 @@ function SwitchRoutes({
       isPrivate,
       groups,
       permissions,
-      testFunction,
+      test,
       wireframeTitle,
       ...routeProps
     }) => (isPrivate ? (
