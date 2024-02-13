@@ -16,7 +16,7 @@ import InvisibleWrapper from '../../wrapper/InvisibleWrapper.js'
 function Hidden({
   name,
   registerProps,
-  ...otherProps
+  // ...otherProps
 }: TProps): React.ReactElement {
   const { register } = useFormContext()
 
@@ -26,7 +26,7 @@ function Hidden({
       {...register(
         name, registerProps,
       )}
-      {...otherProps}
+      // {...otherProps}
     />
   )
 }

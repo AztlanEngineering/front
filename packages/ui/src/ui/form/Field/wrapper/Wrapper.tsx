@@ -83,6 +83,8 @@ function Wrapper({
       errors,
     ), [
       errors[fieldTree[0]],
+      errors[fieldTree[0]]?.[fieldTree[1]],
+      errors[fieldTree[0]]?.[fieldTree[1]]?.[fieldTree[2]],
       name,
     ],
   )
