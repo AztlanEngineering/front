@@ -84,6 +84,13 @@ class WebpackExecutor {
           ),
         },
       )
+      .option(
+        'port', {
+          alias   :'p',
+          describe:'Port number',
+          type    :'number',
+        },
+      )
       .help()
       .alias(
         'help', 'h',
@@ -126,7 +133,10 @@ class WebpackExecutor {
 
   runDevServer() {
     const server = new WebpackDevServer(
-      this.config.devServer, this.compiler,
+      {
+        ...this.config.devServer,
+        port:this.argv.port,
+      }, this.compiler,
     )
     server.start()
   }

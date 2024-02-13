@@ -14,7 +14,7 @@
     "schema:development": "fetch-schema",
     "schema:production": "fetch-schema --ref production",
     "client:base": "webpack-execute -t client -a @aztlan/assets/fonts -e ./src/client.tsx",
-    "client:serve": "npm run client:base -- -c serve",
+    "client:serve": "npm run client:base -- -c serve -p 3001",
     "client:build": "npm run client:base -- -c build",
     "start": "npm run client:serve",
     "sitemap:serve": "webpack-execute -t sitemap -c serve -e ./src/sitemap/server.ts -o tmp/sitemap.js && node tmp/sitemap.js",
