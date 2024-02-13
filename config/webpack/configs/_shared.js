@@ -70,7 +70,7 @@ export default (inputs) => ({
         cwd, location,
       )),
     ],
-    port              :3002,
+    port              :process.env.PORT || 3002,
     host              :'0.0.0.0',
     allowedHosts      :'all',
     historyApiFallback:true, // allows react app to be served on all routes, not only index

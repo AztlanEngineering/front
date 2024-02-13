@@ -148,10 +148,8 @@ class WebpackExecutor {
 
   runDevServer() {
     const server = new WebpackDevServer(
-      {
-        ...this.config.devServer,
-        port:this.argv.port,
-      }, this.compiler,
+      this.config.devServer,
+      , this.compiler,
     )
     server.start()
   }
