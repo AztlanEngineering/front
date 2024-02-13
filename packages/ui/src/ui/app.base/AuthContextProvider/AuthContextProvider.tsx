@@ -74,7 +74,7 @@ function AuthContextProvider({
       commitLogout({
         onCompleted() {
           TokenStateManager.logout()
-          disposeViewerQuery()
+          // disposeViewerQuery()
           loadViewerQuery(
             {}, { fetchPolicy: 'network-only' },
           )
