@@ -149,7 +149,7 @@ class WebpackExecutor {
   runDevServer() {
     const server = new WebpackDevServer(
       this.config.devServer,
-      , this.compiler,
+      this.compiler,
     )
     server.start()
   }
