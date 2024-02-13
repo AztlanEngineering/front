@@ -77,6 +77,14 @@ const useViewer = () => {
     [data],
   )
 
+  /**
+   * Checks if the viewer meets the specified conditions.
+   * @param options - Object with the conditions to check against.
+   * @param options.permissions - Array of permissions to check against.
+   * @param options.groups - Array of group names to check against.
+   * @param options.test - A function to execute with the viewer data.
+   * @returns True if the viewer meets all the specified conditions.
+   */
   const meetsConditions = useCallback(
     ({
       permissions = [], groups = [], test: testFn = null,
