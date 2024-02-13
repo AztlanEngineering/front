@@ -65,7 +65,7 @@ class Renderer {
         `${`${
           this.scriptTags
         }<script> window.__RELAY_PAYLOADS__ = ${JSON.stringify(this.queryRecords)}; 
-        window.__LOCALE__ = ${this.locale}
+        window.__LOCALE__ = "${this.locale}";
         </script>`}</body>`,
       )
       .replace(

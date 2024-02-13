@@ -15,13 +15,19 @@ export default function ({
   routerContext,
   location,
   helmetContext,
-  locale,
-  messages,
+  locale: requestLocale,
+  // messages:allMessages,
 }) {
-  const {
-    locale: locale2, messages: messages2, ...useLocaleProps
-  } = useLocale(
+  const initialLocale = [
+    'en',
     'es',
+  ].includes(requestLocale)
+    ? requestLocale
+    : 'en'
+  const {
+    locale, messages, ...useLocaleProps
+  } = useLocale(
+    initialLocale,
     loadMessages,
   )
   return (

@@ -42,7 +42,7 @@ export default function useTheme(
         setIsSystemTheme(true)
         return getSystemTheme() || initialTheme
       }
-      return initialTheme
+      return initialTheme || defaultMap.light
     }, [
       initialTheme,
       isClient,

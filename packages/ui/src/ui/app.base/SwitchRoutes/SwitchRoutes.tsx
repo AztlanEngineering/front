@@ -89,7 +89,7 @@ function SwitchRoutes({
 SwitchRoutes.propTypes = {
   /** The routes to render */
   items:PropTypes.arrayOf(PropTypes.shape({
-    path:PropTypes.oneOf([
+    path:PropTypes.oneOfType([
       PropTypes.string.isRequired,
       PropTypes.arrayOf(PropTypes.string.isRequired),
     ]).isRequired,
