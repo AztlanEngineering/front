@@ -91,6 +91,14 @@ class WebpackExecutor {
           type    :'number',
         },
       )
+      // Add mode development|production string, default undefined
+      .option(
+        'mode', {
+          alias   :'m',
+          describe:'Mode <development|production>',
+          type    :'string',
+        },
+      )
       .help()
       .alias(
         'help', 'h',
@@ -109,6 +117,9 @@ class WebpackExecutor {
     )
     this.baseConfig = m.default(this.argv)
     this.config = this.baseConfig
+    if (this.argv.mode) {
+      this.config.mode = this.argv.mode
+    }
   }
 
   prepareCompiler() {
