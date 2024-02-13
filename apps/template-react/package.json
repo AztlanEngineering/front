@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/template-react",
-  "version": "1.4.12",
+  "version": "1.4.13",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -65,7 +65,7 @@
     "@aztlan/react-ssr": "^1.4.1",
     "@aztlan/storybook-config": "^1.0.11",
     "@aztlan/storybook-helpers": "^1.4.1",
-    "@aztlan/ui": "^1.4.12",
+    "@aztlan/ui": "^1.4.13",
     "@loadable/component": "^5.16.3",
     "@loadable/server": "^5.16.2",
     "date-fns": "^3.3.1",
