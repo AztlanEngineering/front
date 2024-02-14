@@ -13,8 +13,8 @@ export default (inputs) => {
   } = configureSharedConfig(inputs)
 
   return {
-    mode   :'production',
-    devtool:'source-map',
+    mode:'production',
+    // devtool:'source-map',
 
     entry,
     resolve,
