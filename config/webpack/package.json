@@ -37,5 +37,8 @@
   },
   "eslintConfig": {
     "extends": "@aztlan/eslint-config-base"
+  },
+  "devDependencies": {
+    "null-loader": "^4.0.1"
   }
 }

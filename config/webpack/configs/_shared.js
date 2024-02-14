@@ -126,6 +126,21 @@ export default (inputs) => ({
           priority          :-20,
           reuseExistingChunk:true,
         },
+        jsonFiles:{
+          test    :/\.json$/,
+          type    :'json',
+          priority:10,
+          name(module) {
+            // Keeping the original name for JSON files
+            const moduleName = module.identifier()
+            const baseName = moduleName.split('/').reverse()[0]
+            return baseName.replace(
+              '.json', '',
+            )
+          },
+          chunks :'all',
+          enforce:true,
+        },
       },
     },
   },
