@@ -37,6 +37,8 @@ function Home() {
         {formatMessage(
           m.welcome, { name: 'pg7.03' },
         )}
+      </p>
+      <p className="container">
         <PrefetchLink to="/formtest">PREFETCH</PrefetchLink>
       </p>
     </Template>
