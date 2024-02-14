@@ -122,7 +122,7 @@ export default (inputs) => ({
           },
         },
         default:{
-          minChunks         :2,
+          minChunks         :1,
           priority          :-20,
           reuseExistingChunk:true,
         },
