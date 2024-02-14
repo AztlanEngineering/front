@@ -159,6 +159,7 @@ class WebpackExecutor {
     compiler.run((
       err, stats,
     ) => {
+      console.log(stats)
       if (err) {
         console.error(err)
         return

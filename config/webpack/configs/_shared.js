@@ -102,6 +102,37 @@ export default (inputs) => ({
   experiments :{ outputModule: true },
   optimization:{
     splitChunks:{
+      chunks                :'all',
+      minSize               :20000,
+      maxSize               :200000,
+      minChunks             :1,
+      maxAsyncRequests      :15,
+      maxInitialRequests    :10,
+      automaticNameDelimiter:'~',
+      cacheGroups           :{
+        defaultVendors:{
+          test              :/[\\/]node_modules[\\/]/,
+          priority          :-10,
+          reuseExistingChunk:true,
+          name(module) {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
+            return `vendor.${packageName.replace(
+              '@', '',
+            )}`
+          },
+        },
+        default:{
+          minChunks         :2,
+          priority          :-20,
+          reuseExistingChunk:true,
+        },
+      },
+    },
+  },
+
+  /*
+  optimization:{
+    splitChunks:{
       // We retake here most of the default config
       // https://webpack.js.org/plugins/split-chunks-plugin/
       // We code split for all node_modules
@@ -117,7 +148,7 @@ export default (inputs) => ({
         vendors:{
           test  :/[\\/]node_modules[\\/]/,
           chunks:'all',
-          name  :(module /* chunks, cacheGroupKey */) => {
+          name  :(module /* chunks, cacheGroupKey ) => {
             const moduleFileName = module
               .identifier()
               .split('/')
@@ -127,7 +158,7 @@ export default (inputs) => ({
         },
       },
     },
-  },
+}, */
   externals:[
     NodeExternals({
       additionalModuleDirs:[

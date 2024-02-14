@@ -22,6 +22,7 @@ export default (inputs) => {
     // devServer,
 
     optimization,
+    stats:'normal',
 
     plugins:[
       plugins.Copy,
