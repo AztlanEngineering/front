@@ -104,10 +104,10 @@ export default (inputs) => ({
     splitChunks:{
       chunks                :'all',
       minSize               :20000,
-      maxSize               :80000,
+      maxSize               :60000,
       minChunks             :1,
       maxAsyncRequests      :15,
-      maxInitialRequests    :18,
+      maxInitialRequests    :24,
       automaticNameDelimiter:'~',
       cacheGroups           :{
         defaultVendors:{
