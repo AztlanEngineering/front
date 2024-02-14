@@ -6,7 +6,9 @@ import {
   useTheme, useFullHostname,
 } from '@aztlan/react-hooks'
 import Context from './Context.js'
-import useMaintenance from './useMaintenance.js'
+import {
+  useSubdomain, useMaintenance,
+} from './hooks/index.js'
 
 function AppContextProvider({
   children,
@@ -22,6 +24,7 @@ function AppContextProvider({
   const isMaintenanceMode = useMaintenance(maintenance)
 
   const hostname = useFullHostname(ssrHostname)
+  const subdomain = useSubdomain(hostname)
 
   if (isMaintenanceMode) {
     return <div>This site is currently not available.</div>
@@ -32,6 +35,7 @@ function AppContextProvider({
       ...value,
       ...theme,
       hostname,
+      subdomain,
       routes,
     }),
     [
