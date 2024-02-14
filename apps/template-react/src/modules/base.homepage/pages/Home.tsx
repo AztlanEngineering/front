@@ -35,7 +35,7 @@ function Home() {
       </React.Suspense>
       <p className="container">
         {formatMessage(
-          m.welcome, { name: 'pg7.01' },
+          m.welcome, { name: 'pg7.02' },
         )}
         <PrefetchLink to="/formtest">PREFETCH</PrefetchLink>
       </p>
