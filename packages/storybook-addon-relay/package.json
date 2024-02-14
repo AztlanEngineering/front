@@ -1,7 +1,7 @@
 {
   "name": "@aztlan/storybook-addon-relay",
   "type": "commonjs",
-  "version": "1.4.1",
+  "version": "1.6.0",
   "description": "A Storybook add-on to write stories for Relay components.",
   "main": "dist/preset.js",
   "types": "dist/index.d.ts",
