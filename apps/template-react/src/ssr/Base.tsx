@@ -16,6 +16,7 @@ export default function ({
   location,
   helmetContext,
   locale: requestLocale,
+  hostname,
   // messages:allMessages,
 }) {
   const initialLocale = [
@@ -48,6 +49,7 @@ export default function ({
                   ...useLocaleProps,
                 }}
                 maintenance={config.maintenance}
+                ssrHostname={hostname}
               >
                 <App />
               </AppContextProvider>

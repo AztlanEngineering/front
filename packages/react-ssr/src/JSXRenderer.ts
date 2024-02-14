@@ -105,7 +105,7 @@ class Renderer {
       'http:' :80,
       'https:':443,
     }
-    const protocol = `${req.protocol}:`
+    const protocol = `${req.protocol || 'https'}:`
     const { host } = req.headers
     const port = host.split(':')[1]
     const hasNonDefaultPort = port && defaultPorts[protocol] !== parseInt(
