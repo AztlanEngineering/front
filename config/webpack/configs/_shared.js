@@ -74,7 +74,8 @@ export default (inputs) => ({
     port              :process.env.PORT || 3002,
     host              :'0.0.0.0',
     allowedHosts      :'all',
-    historyApiFallback:true, // allows react app to be served on all routes, not only index
+    // historyApiFallback:true, // allows react app to be served on all routes, not only index
+    historyApiFallback:{ disableDotRule: true },
   },
   output:{
     path:path.resolve(

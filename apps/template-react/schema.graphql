@@ -1885,30 +1885,61 @@ type OrganizationMembershipNode implements Node {
 
   """The ID of the object"""
   id: ID!
+  user: UserNode!
 
   """The Role of the user relative to the Actor."""
   role: ActivitystreamsOrganizationMembershipRoleChoices!
+
+  """The user who invited the user to the Actor."""
+  invitedBy: UserNode
 
   """The organization that this user is a member of."""
   organization: OrganizationNode!
 }
 
-"""An enumeration."""
-enum ActivitystreamsOrganizationMembershipRoleChoices {
-  """Owner"""
-  OWNER
+type UserNode implements Node {
+  lastLogin: DateTime
 
-  """Admin"""
-  ADMIN
+  """
+  Designates that this user has all permissions without explicitly assigning them.
+  """
+  isSuperuser: Boolean!
 
-  """Moderator"""
-  MODERATOR
+  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
 
-  """Member"""
-  MEMBER
+  """Designates whether the user can log into this admin site."""
+  isStaff: Boolean!
 
-  """Follower"""
-  FOLLOWER
+  """
+  Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+  """
+  isActive: Boolean!
+  dateJoined: DateTime!
+
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  profilePicture: String
+  groupMemberships(offset: Int, before: String, after: String, first: Int, last: Int): GroupMembershipNodeConnection!
+
+  """The user who invited the user to the Actor."""
+  groupMembershipsOfInvitedUsers(offset: Int, before: String, after: String, first: Int, last: Int): GroupMembershipNodeConnection!
+  organizationMemberships(offset: Int, before: String, after: String, first: Int, last: Int): OrganizationMembershipNodeConnection!
+
+  """The user who invited the user to the Actor."""
+  organizationMembershipsOfInvitedUsers(offset: Int, before: String, after: String, first: Int, last: Int): OrganizationMembershipNodeConnection!
+
+  """The users that are members of this organization."""
+  organizationSet(offset: Int, before: String, after: String, first: Int, last: Int): OrganizationNodeConnection!
 }
 
 type GroupMembershipNodeConnection {
@@ -1938,9 +1969,13 @@ type GroupMembershipNode implements Node {
 
   """The ID of the object"""
   id: ID!
+  user: UserNode!
 
   """The Role of the user relative to the Actor."""
   role: ActivitystreamsGroupMembershipRoleChoices!
+
+  """The user who invited the user to the Actor."""
+  invitedBy: UserNode
 
   """The group that this user is a member of."""
   group: GroupNode!
@@ -1948,6 +1983,24 @@ type GroupMembershipNode implements Node {
 
 """An enumeration."""
 enum ActivitystreamsGroupMembershipRoleChoices {
+  """Owner"""
+  OWNER
+
+  """Admin"""
+  ADMIN
+
+  """Moderator"""
+  MODERATOR
+
+  """Member"""
+  MEMBER
+
+  """Follower"""
+  FOLLOWER
+}
+
+"""An enumeration."""
+enum ActivitystreamsOrganizationMembershipRoleChoices {
   """Owner"""
   OWNER
 
@@ -2088,110 +2141,6 @@ type ObjectNode implements Node & ObjectInterface {
 
   """The ID of the object"""
   id: ID!
-}
-
-type UserNode implements Node {
-  lastLogin: DateTime
-
-  """
-  Designates that this user has all permissions without explicitly assigning them.
-  """
-  isSuperuser: Boolean!
-
-  """
-  The groups this user belongs to. A user will get all permissions granted to each of their groups.
-  """
-  groups(offset: Int, before: String, after: String, first: Int, last: Int, name: String): GroupNodeConnection!
-
-  """Specific permissions for this user."""
-  userPermissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
-
-  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
-  username: String!
-  firstName: String!
-  lastName: String!
-  email: String!
-
-  """Designates whether the user can log into this admin site."""
-  isStaff: Boolean!
-
-  """
-  Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-  """
-  isActive: Boolean!
-  dateJoined: DateTime!
-
-  """The date and time at which the object was created."""
-  created: DateTime!
-
-  """The date and time at which the object was last updated."""
-  updated: DateTime!
-
-  """The ID of the object"""
-  id: ID!
-  profilePicture: String
-}
-
-type GroupNodeConnection {
-  """Pagination data for this connection."""
-  pageInfo: PageInfo!
-
-  """Contains the nodes in this connection."""
-  edges: [GroupNodeEdge]!
-}
-
-"""A Relay edge containing a `GroupNode` and its cursor."""
-type GroupNodeEdge {
-  """The item at the end of the edge"""
-  node: GroupNode
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-type PermissionNodeConnection {
-  """Pagination data for this connection."""
-  pageInfo: PageInfo!
-
-  """Contains the nodes in this connection."""
-  edges: [PermissionNodeEdge]!
-}
-
-"""A Relay edge containing a `PermissionNode` and its cursor."""
-type PermissionNodeEdge {
-  """The item at the end of the edge"""
-  node: PermissionNode
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-type PermissionNode implements Node {
-  """The ID of the object"""
-  id: ID!
-  name: String!
-  codename: String!
-  groupSet(offset: Int, before: String, after: String, first: Int, last: Int, name: String): GroupNodeConnection!
-
-  """Specific permissions for this user."""
-  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
-}
-
-type UserNodeConnection {
-  """Pagination data for this connection."""
-  pageInfo: PageInfo!
-
-  """Contains the nodes in this connection."""
-  edges: [UserNodeEdge]!
-}
-
-"""A Relay edge containing a `UserNode` and its cursor."""
-type UserNodeEdge {
-  """The item at the end of the edge"""
-  node: UserNode
-
-  """A cursor for use in pagination"""
-  cursor: String!
 }
 
 """
