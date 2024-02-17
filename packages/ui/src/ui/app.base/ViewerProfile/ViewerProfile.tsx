@@ -17,7 +17,7 @@ const baseClassName = styleNames.base
 
 const componentClassName = 'viewer-profile'
 
-const FRAGMENT = graphql`
+const DEFAULT_FRAGMENT = graphql`
   fragment ViewerProfileFragment on UserNode
     @refetchable(queryName: "ViewerProfileRefetchableFragment") {
     firstName
@@ -28,7 +28,7 @@ const FRAGMENT = graphql`
     profilePicture
   }
 `
-const QUERY = graphql`
+const DEFAULT_QUERY = graphql`
   query ViewerProfileQuery {
     viewer {
       ...ViewerProfileFragment
@@ -43,6 +43,7 @@ function RawViewerProfile({
   id,
   className: userClassName,
   style,
+  FRAGMENT = DEFAULT_FRAGMENT,
   data,
   // ...otherProps
 }) {
@@ -107,10 +108,13 @@ RawViewerProfile.propTypes = {
       profilePicture:PropTypes.string,
     }),
   }),
+
+  /** The fragment for this component */
+  FRAGMENT:PropTypes.any,
 }
 
-RawViewerProfile.QUERY = QUERY
-RawViewerProfile.FRAGMENT = FRAGMENT
+RawViewerProfile.QUERY = DEFAULT_QUERY
+RawViewerProfile.FRAGMENT = DEFAULT_FRAGMENT
 
 function ViewerProfile(props) {
   const { data } = useViewer()
