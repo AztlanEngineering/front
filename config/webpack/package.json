@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/webpack-config",
-  "version": "1.6.3",
+  "version": "1.8.0",
   "description": "",
   "main": "_shared.mjs",
   "author": "",
