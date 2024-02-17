@@ -21,4 +21,12 @@ export default [
     // - here it depends on the component which goes against the idea of loading it dynamically
     QUERY    :FormTest.QUERY,
   },
+  {
+    path     :'/fileupload',
+    component:loadable(() => import(/* webpackChunkName: `base.homepage` */ './pages/FileUpload.js')),
+    exact    :true,
+    // Ideally we would store the query in a separate file
+    // - here it depends on the component which goes against the idea of loading it dynamically
+    QUERY    :FormTest.QUERY,
+  },
 ]

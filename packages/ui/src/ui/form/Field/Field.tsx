@@ -12,6 +12,7 @@ import type { FieldProps } from './types.js'
 import {
   Checkbox,
   Combobox,
+  File,
   Hidden,
   Text,
   Textarea,
@@ -68,6 +69,8 @@ function Field({
       return <Choices {...fieldProps} />
     case 'combobox':
       return <Combobox {...fieldProps} />
+    case 'file':
+      return <File {...fieldProps} />
     case 'hidden':
       return <Hidden {...fieldProps} />
     case 'custom':

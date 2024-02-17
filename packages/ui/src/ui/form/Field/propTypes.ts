@@ -63,7 +63,8 @@ export const baseWrapper = {
   name:PropTypes.string.isRequired,
 
   /** An object of shape [`RegisterOptions`](https://www.react-hook-form.com/ts/#RegisterOptions) that will be passed to the registration function of the input */
-  registerProps:PropTypes.object,
+  // TODO add validate, object of functions
+  registerProps:PropTypes.any, // shape({ validate: PropTypes.objectOf(PropTypes.func) }),
 
   /** Register props to pass down the tree when the input displays nested inputs
    * For instance : (place.streetAddress, place.city)

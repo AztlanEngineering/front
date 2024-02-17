@@ -32,6 +32,10 @@ const routeMap = [
     title:'Form Test',
   },
   {
+    path :'fileupload',
+    title:'File Upload',
+  },
+  {
     path :'404',
     title:'Test 404',
   },

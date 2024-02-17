@@ -13,6 +13,79 @@ type Query {
 
   """The current time"""
   time: DateTime
+
+  """Checks if a subdomain is available."""
+  isSubdomainAvailable(value: String!): Boolean
+
+  """Resolves geographic coordinates from a given postal address."""
+  geocode(input: PostalAddressInput!): GeoCoordinates
+  object(
+    """The ID of the object"""
+    id: ID!
+  ): ObjectInterface
+  objects(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection
+  simpleObject(
+    """The ID of the object"""
+    id: ID!
+  ): ObjectNode
+  link(
+    """The ID of the object"""
+    id: ID!
+  ): LinkNode
+  groupMembership(
+    """The ID of the object"""
+    id: ID!
+  ): GroupMembershipNode
+  group(
+    """The ID of the object"""
+    id: ID!
+  ): GroupNode
+  organizationMembership(
+    """The ID of the object"""
+    id: ID!
+  ): OrganizationMembershipNode
+  organization(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): OrganizationNode
+  collection(
+    """The ID of the object"""
+    id: ID!
+  ): CollectionNode
+  article(
+    """The ID of the object"""
+    id: ID!
+  ): ArticleNode
+  event(
+    """The ID of the object"""
+    id: ID!
+  ): EventNode
+  image(
+    """The ID of the object"""
+    id: ID!
+  ): ImageNode
+  note(
+    """The ID of the object"""
+    id: ID!
+  ): NoteNode
+  page(
+    """The ID of the object"""
+    id: ID!
+  ): PageNode
+  place(
+    """The ID of the object"""
+    id: ID!
+  ): PlaceNode
+  profile(
+    """The ID of the object"""
+    id: ID!
+  ): ProfileNode
   viewer: UserNode
 
   """Retrieve OAuth2 authentication URLs for various providers"""
@@ -50,6 +123,1973 @@ value as specified by
 """
 scalar DateTime
 
+"""
+GeoCoordinates is a type that represents a pair of latitude and longitude coordinates.
+"""
+type GeoCoordinates {
+  latitude: Float!
+  longitude: Float!
+}
+
+"""
+PostalAddressInput is an input type that represents a postal address.
+https://schema.org/PostalAddress
+"""
+input PostalAddressInput {
+  streetAddress: String
+  addressLocality: String
+  addressRegion: String
+  postalCode: String
+  addressCountry: String
+}
+
+"""
+ObjectInterface is the base interface for all GraphQL types that
+represent Django models based on Object. It provides the ability to resolve different
+GraphQL types based on the Django model's type, especially useful for
+this case of polymorphic models.
+"""
+interface ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+}
+
+"""An enumeration."""
+enum ActivitystreamsObjectTypeChoices {
+  """Activity"""
+  ACTIVITY
+
+  """IntransitiveActivity"""
+  INTRANSITIVEACTIVITY
+
+  """Object"""
+  OBJECT
+
+  """Collection"""
+  COLLECTION
+
+  """OrderedCollection"""
+  ORDEREDCOLLECTION
+
+  """CollectionPage"""
+  COLLECTIONPAGE
+
+  """OrderedCollectionPage"""
+  ORDEREDCOLLECTIONPAGE
+
+  """Application"""
+  APPLICATION
+
+  """Group"""
+  GROUP
+
+  """Organization"""
+  ORGANIZATION
+
+  """Person"""
+  PERSON
+
+  """Service"""
+  SERVICE
+
+  """Article"""
+  ARTICLE
+
+  """Audio"""
+  AUDIO
+
+  """Document"""
+  DOCUMENT
+
+  """Event"""
+  EVENT
+
+  """Image"""
+  IMAGE
+
+  """Note"""
+  NOTE
+
+  """Page"""
+  PAGE
+
+  """Place"""
+  PLACE
+
+  """Profile"""
+  PROFILE
+
+  """Relationship"""
+  RELATIONSHIP
+
+  """Tombstone"""
+  TOMBSTONE
+
+  """Video"""
+  VIDEO
+}
+
+type ObjectInterfaceConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ObjectInterfaceEdge]!
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""A Relay edge containing a `ObjectInterface` and its cursor."""
+type ObjectInterfaceEdge {
+  """The item at the end of the edge"""
+  node: ObjectInterface
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type LinkNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [LinkNodeEdge]!
+}
+
+"""A Relay edge containing a `LinkNode` and its cursor."""
+type LinkNodeEdge {
+  """The item at the end of the edge"""
+  node: LinkNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""
+GraphQL node representing an indirect, qualified reference to a resource identified by a URL.
+"""
+type LinkNode implements Node {
+  """The ID of the object"""
+  id: ID!
+
+  """The target resource pointed to by a Link."""
+  href: String!
+
+  """
+  Hints as to the language used by the target resource. Value must be a [BCP47] Language-Tag.
+  """
+  hreflang: String
+
+  """Identifies the MIME media type of the referenced resource."""
+  mediaType: String
+
+  """A human-readable name for the link."""
+  name: String
+
+  """
+  On a Link, specifies a hint as to the rendering height in device-independent pixels of the linked resource.
+  """
+  height: Int
+
+  """
+  On a Link, specifies a hint as to the rendering width in device-independent pixels of the linked resource.
+  """
+  width: Int
+
+  """Identifies an entity that provides a preview of this object."""
+  preview: ObjectInterface
+
+  """
+  A link relation associated with a Link. The value must conform to both the [HTML5] and [RFC5988] 'link relation' definitions.
+  """
+  rel: String
+
+  """Indicates an entity that describes an icon for this object."""
+  relIconOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  relImageOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+}
+
+"""An object with an ID"""
+interface Node {
+  """The ID of the object"""
+  id: ID!
+}
+
+"""GraphQL node representing a formal or informal collective of Actors."""
+type GroupNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+
+  """The group that this user is a member of."""
+  groupmembershipSet(offset: Int, before: String, after: String, first: Int, last: Int): GroupMembershipNodeConnection!
+}
+
+"""GraphQL node representing an organization."""
+type OrganizationNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+
+  """The main place of the organization."""
+  xMainPlace: PlaceNode
+
+  """The cultural category of the organization."""
+  xCulturalCategory: String
+
+  """The organization that this user is a member of."""
+  organizationmembershipSet(offset: Int, before: String, after: String, first: Int, last: Int): OrganizationMembershipNodeConnection!
+}
+
+type CollectionNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CollectionNodeEdge]!
+}
+
+"""A Relay edge containing a `CollectionNode` and its cursor."""
+type CollectionNodeEdge {
+  """The item at the end of the edge"""
+  node: CollectionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""GraphQL node representing a collection of objects."""
+type CollectionNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+
+  """
+  A non-negative integer specifying the total number of objects contained by the logical view of the collection. This number might not reflect the actual number of items serialized within the Collection object instance.
+  """
+  totalItems: Int!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  items(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+  xOwner: ObjectInterface!
+}
+
+type ArticleNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+}
+
+type EventNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+}
+
+type ImageNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+}
+
+type NoteNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+}
+
+type PageNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+}
+
+type PlaceNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+
+  """The latitude of the place."""
+  latitude: Float!
+
+  """The longitude of the place."""
+  longitude: Float!
+
+  """The altitude of the place in meters above sea level."""
+  altitude: Float
+
+  """The accuracy level of the location coordinates in meters."""
+  accuracy: Float
+
+  """The spatial radius of the place in meters."""
+  radius: Float
+
+  """
+  The units of measurement for altitude, accuracy, and radius. Default is meters (m).
+  """
+  units: String!
+
+  """The address of the place."""
+  xPostalAddress: PostalAddressNode
+
+  """The main place of the organization."""
+  xRelOrganizations(offset: Int, before: String, after: String, first: Int, last: Int): OrganizationNodeConnection!
+}
+
+type ProfileNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+  objectPtr: ObjectInterface!
+}
+
+"""GraphQL node representing a physical mailing address."""
+type PostalAddressNode implements Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The street address of the place."""
+  streetAddress: String!
+
+  """The locality of the place."""
+  addressLocality: String!
+
+  """The region of the place."""
+  addressRegion: String
+
+  """The postal code of the place."""
+  postalCode: String
+
+  """The country of the place."""
+  addressCountry: String
+
+  """The address of the place."""
+  places(offset: Int, before: String, after: String, first: Int, last: Int): PlaceNodeConnection!
+}
+
+type PlaceNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PlaceNodeEdge]!
+}
+
+"""A Relay edge containing a `PlaceNode` and its cursor."""
+type PlaceNodeEdge {
+  """The item at the end of the edge"""
+  node: PlaceNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type OrganizationNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [OrganizationNodeEdge]!
+}
+
+"""A Relay edge containing a `OrganizationNode` and its cursor."""
+type OrganizationNodeEdge {
+  """The item at the end of the edge"""
+  node: OrganizationNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type OrganizationMembershipNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [OrganizationMembershipNodeEdge]!
+}
+
+"""A Relay edge containing a `OrganizationMembershipNode` and its cursor."""
+type OrganizationMembershipNodeEdge {
+  """The item at the end of the edge"""
+  node: OrganizationMembershipNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""
+GraphQL node representing a relationship between an Organization and a User.
+"""
+type OrganizationMembershipNode implements Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The Role of the user relative to the Actor."""
+  role: ActivitystreamsOrganizationMembershipRoleChoices!
+
+  """The organization that this user is a member of."""
+  organization: OrganizationNode!
+}
+
+"""An enumeration."""
+enum ActivitystreamsOrganizationMembershipRoleChoices {
+  """Owner"""
+  OWNER
+
+  """Admin"""
+  ADMIN
+
+  """Moderator"""
+  MODERATOR
+
+  """Member"""
+  MEMBER
+
+  """Follower"""
+  FOLLOWER
+}
+
+type GroupMembershipNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GroupMembershipNodeEdge]!
+}
+
+"""A Relay edge containing a `GroupMembershipNode` and its cursor."""
+type GroupMembershipNodeEdge {
+  """The item at the end of the edge"""
+  node: GroupMembershipNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""GraphQL node representing a relationship between a Group and a User."""
+type GroupMembershipNode implements Node {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+
+  """The Role of the user relative to the Actor."""
+  role: ActivitystreamsGroupMembershipRoleChoices!
+
+  """The group that this user is a member of."""
+  group: GroupNode!
+}
+
+"""An enumeration."""
+enum ActivitystreamsGroupMembershipRoleChoices {
+  """Owner"""
+  OWNER
+
+  """Admin"""
+  ADMIN
+
+  """Moderator"""
+  MODERATOR
+
+  """Member"""
+  MEMBER
+
+  """Follower"""
+  FOLLOWER
+}
+
+type ObjectNode implements Node & ObjectInterface {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The date and time at which the object was published."""
+  published: DateTime
+
+  """The Object type based on ActivityStreams specification."""
+  type: ActivitystreamsObjectTypeChoices!
+
+  """
+  A simple, human-readable, plain-text name for the object. HTML markup must not be included.
+  """
+  name: String
+
+  """
+  A natural language summarization of the object encoded as HTML. Multiple language tagged summaries may be provided.
+  """
+  summary: String
+
+  """
+  The content or textual representation of the Object encoded as a JSON string. By default, the value of content is HTML. The mediaType property can be used in the object to indicate a different content type.
+  """
+  content: String
+
+  """
+  When used on an Object, identifies the MIME media type of the value of the content property.
+  """
+  mediaType: String
+
+  """Identifies one or more links to representations of the object."""
+  url: String
+
+  """
+  The date and time describing the actual or expected ending time of the object.
+  """
+  endTime: DateTime
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  attachment(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  attributedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  audience(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  context: ObjectInterface
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  tag(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  location(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Indicates an entity that describes an icon for this object."""
+  icon(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """Indicates an entity that describes an image for this object."""
+  image(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+
+  """
+  Identifies the context within which the object exists or an activity was performed.
+  """
+  relContextOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies a resource attached or related to an object that potentially requires special handling. The intent is to provide a model that is at least semantically similar to attachments in email.
+  """
+  relAttachedTo(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies one or more entities to which this object is attributed."""
+  relAttributes(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more entities that represent the total population of entities for which the object can considered to be relevant.
+  """
+  relAudienceOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  One or more 'tags' that have been associated with an objects. A tag can be any kind of Object. The key difference between attachment and tag is that the former implies association by inclusion, while the latter implies associated by reference.
+  """
+  relTaggedIn(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """
+  Identifies one or more physical or logical locations associated with the object.
+  """
+  relLocationOf(offset: Int, before: String, after: String, first: Int, last: Int): ObjectInterfaceConnection!
+
+  """Identifies an entity that provides a preview of this object."""
+  relPreviewsLinks(offset: Int, before: String, after: String, first: Int, last: Int): LinkNodeConnection!
+  group: GroupNode
+  organization: OrganizationNode
+  xCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+
+  """
+  Identifies the items contained in a collection. The items might be ordered or unordered.
+  """
+  relInCollections(offset: Int, before: String, after: String, first: Int, last: Int): CollectionNodeConnection!
+  collection: CollectionNode
+  article: ArticleNode
+  event: EventNode
+  imagesRelated: ImageNode
+  note: NoteNode
+  page: PageNode
+  place: PlaceNode
+  profile: ProfileNode
+
+  """The ID of the object"""
+  id: ID!
+}
+
 type UserNode implements Node {
   lastLogin: DateTime
 
@@ -62,6 +2102,9 @@ type UserNode implements Node {
   The groups this user belongs to. A user will get all permissions granted to each of their groups.
   """
   groups(offset: Int, before: String, after: String, first: Int, last: Int, name: String): GroupNodeConnection!
+
+  """Specific permissions for this user."""
+  userPermissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
 
   """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
   username: String!
@@ -89,35 +2132,12 @@ type UserNode implements Node {
   profilePicture: String
 }
 
-"""An object with an ID"""
-interface Node {
-  """The ID of the object"""
-  id: ID!
-}
-
 type GroupNodeConnection {
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
   """Contains the nodes in this connection."""
   edges: [GroupNodeEdge]!
-}
-
-"""
-The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
-"""
-type PageInfo {
-  """When paginating forwards, are there more items?"""
-  hasNextPage: Boolean!
-
-  """When paginating backwards, are there more items?"""
-  hasPreviousPage: Boolean!
-
-  """When paginating backwards, the cursor to continue."""
-  startCursor: String
-
-  """When paginating forwards, the cursor to continue."""
-  endCursor: String
 }
 
 """A Relay edge containing a `GroupNode` and its cursor."""
@@ -129,14 +2149,31 @@ type GroupNodeEdge {
   cursor: String!
 }
 
-type GroupNode implements Node {
+type PermissionNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PermissionNodeEdge]!
+}
+
+"""A Relay edge containing a `PermissionNode` and its cursor."""
+type PermissionNodeEdge {
+  """The item at the end of the edge"""
+  node: PermissionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PermissionNode implements Node {
   """The ID of the object"""
   id: ID!
   name: String!
+  codename: String!
+  groupSet(offset: Int, before: String, after: String, first: Int, last: Int, name: String): GroupNodeConnection!
 
-  """
-  The groups this user belongs to. A user will get all permissions granted to each of their groups.
-  """
+  """Specific permissions for this user."""
   userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
 }
 
@@ -169,11 +2206,77 @@ type OAuth2LinksProvider {
 }
 
 type Mutation {
+  registerOrganization(input: RegisterOrganizationInput!): OrganizationNode
+  upload2(input: FileInput!): Upload2Mutation
+  upload3(input: FileInput!): Upload3Mutation
   verifyToken(input: VerifyInput!): VerifyPayload
   refreshToken(input: RefreshInput!): RefreshPayload
   deleteTokenCookie(input: DeleteJSONWebTokenCookieInput!): DeleteJSONWebTokenCookiePayload
   deleteRefreshTokenCookie(input: DeleteRefreshTokenCookieInput!): DeleteRefreshTokenCookiePayload
   revokeToken(input: RevokeInput!): RevokePayload
+}
+
+"""
+Aggregated input type for registering an organization, combining owner, place,
+and organization data into a single structure for streamlined processing.
+"""
+input RegisterOrganizationInput {
+  owner: OwnerInput!
+  place: PlaceInput!
+  organization: OrganizationInput!
+}
+
+"""
+Input type for the owner's information, excluding the email field as authentication
+is handled through the user's session, enhancing security by using the current authenticated user.
+"""
+input OwnerInput {
+  firstName: String!
+  lastName: String!
+}
+
+"""
+Input type for place data, containing location details for an organization.
+Includes both address components and geolocation data.
+"""
+input PlaceInput {
+  latitude: Float!
+  longitude: Float!
+  xPostalAddress: PostalAddressInput!
+}
+
+"""
+Input type for organization data, designed to capture essential details
+for creating or updating an organization's record.
+"""
+input OrganizationInput {
+  url: String!
+  name: String!
+  xCulturalCategory: String!
+}
+
+type Upload2Mutation {
+  """S"""
+  success: String
+}
+
+"""
+Aggregated input type for registering an organization, combining owner, place,
+and organization data into a single structure for streamlined processing.
+"""
+input FileInput {
+  file: Upload!
+}
+
+"""
+Create scalar that ignores normal serialization/deserialization, since
+that will be handled by the multipart request spec
+"""
+scalar Upload
+
+type Upload3Mutation {
+  """Indicates if the upload was successful."""
+  success: Boolean
 }
 
 type VerifyPayload {

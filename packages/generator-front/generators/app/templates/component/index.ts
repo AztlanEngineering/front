@@ -1,2 +1,2 @@
 /* <%= pkg %> <%= version %> */
-export { default as <%= name %> } from './<%= name %>.tsx'
+export { default as <%= name %> } from './<%= name %>.js'
