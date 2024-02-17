@@ -23,18 +23,6 @@ const queryRecords = getRecords()
 const source = new RecordSource(queryRecords)
 const store = new Store(source)
 
-const multipartFormDataMiddleware = () => (next) => async (req) => {
-  console.log(
-    'multipartFormDataMiddleware() req:', req, req.fetchOpts,
-  )
-  req.fetchOpts.headers = {
-    ...req.fetchOpts.headers,
-    'Content-Type':'multipart/form-data',
-  }
-
-  return next(req)
-}
-
 const getEnvironment = (url) => new Environment({
   network:new RelayNetworkLayer([
     urlMiddleware({

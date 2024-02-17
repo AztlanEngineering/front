@@ -25,14 +25,13 @@ const QUERY_LOAD_FRUIT_OPTIONS = graphql`
   }
 ` */
 
-/*
 const MUTATION_UPLOAD_FILE = graphql`
   mutation FileUploadMutation($input: FileInput!) {
     upload3(input: $input) {
       success
     }
   }
-` */
+`
 
 const m = defineMessages({
   title:{
@@ -47,12 +46,6 @@ const m = defineMessages({
 
 function FileUpload() {
   const { formatMessage } = useIntl()
-  return (
-    <Template title={formatMessage(m.title)}>
-      <h1>Test</h1>
-    </Template>
-  )
-  /*
   const [
     commit,
     isInFlight,
@@ -96,15 +89,20 @@ function FileUpload() {
             autoComplete:'name',
           },
           {
-            name :'image',
-            label:'Image',
-            type :'file',
+            name              :'image',
+            label             :'Image',
+            type              :'file',
+            acceptContentTypes:[
+              'image/png',
+              'image/jpeg',
+              'image/webp',
+            ],
+            sizeLimit:1024 * 1024 * 1,
           },
         ]}
       />
-
     </Template>
-  ) */
+  )
 }
 
 export default FileUpload

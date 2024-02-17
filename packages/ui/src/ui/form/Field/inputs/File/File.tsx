@@ -84,14 +84,14 @@ function File({
     () => {
       const props = userRegisterProps || {}
       const validate = props.validate || {}
-      if (sizeLimit) {
-        validate.validateFileSize = (fileList) => validateFileSize(
-          fileList, sizeLimit,
-        )
-      }
       if (acceptContentTypes) {
         validate.validateContentType = (fileList) => validateContentType(
           fileList, acceptContentTypes,
+        )
+      }
+      if (sizeLimit) {
+        validate.validateFileSize = (fileList) => validateFileSize(
+          fileList, sizeLimit,
         )
       }
       return {
@@ -99,7 +99,11 @@ function File({
         validate,
       }
     },
-    [userRegisterProps],
+    [
+      userRegisterProps,
+      acceptContentTypes,
+      sizeLimit,
+    ],
   )
 
   return (

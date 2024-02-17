@@ -1,16 +1,18 @@
 /* <%= pkg %> <%= version %> */
-import { urljoin as _u, loadable } from 'utils'
+import { urljoin as _u, loadable } from "utils/index.js";
 
-import MODULE_URLS from './urls'
+import MODULE_URLS from "./urls";
 
-const moduleName = 'app.<%= lower %>'
+const moduleName = "app.<%= lower %>";
 
 export default [
   {
     path: MODULE_URLS.HOME,
-    component: loadable(() => import(/* webpackChunkName: `app.<%= lower %>` */ './pages/Home.jsx')),
-    exact: true,
-  },
+    component: loadable(() =>
+      import(/* webpackChunkName: `app.<%= lower %>` */ "./pages/Home.js")
+    ),
+    exact: true
+  }
 
   /*
   {
@@ -20,4 +22,4 @@ export default [
     //test:(user) => user.id
   },
   */
-]
+];
