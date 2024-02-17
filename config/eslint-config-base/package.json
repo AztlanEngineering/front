@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@aztlan/babel-preset-react": "^1.0.9",
-    "@stylistic/eslint-plugin": "^1.6.1",
+    "@stylistic/eslint-plugin": "^1.6.2",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
     "eslint": "^8.56.0",
@@ -21,6 +21,6 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-relay": "^1.8.3",
-    "eslint-plugin-storybook": "^0.6.15"
+    "eslint-plugin-storybook": "^0.8.0"
   }
 }
