@@ -32,6 +32,6 @@
   },
   "devDependencies": {
     "jsonlint": "^1.6.3",
-    "lerna": "=8.0.2"
+    "lerna": "=8.1.2"
   }
 }
