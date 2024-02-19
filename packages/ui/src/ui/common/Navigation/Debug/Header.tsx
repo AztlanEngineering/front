@@ -50,7 +50,10 @@ InferProps<typeof DebugHeader.propTypes>): React.ReactElement {
       desktop
       // {...otherProps}
     >
-      <ul className="inline">
+      <ul
+        className="inline"
+        style={{ flexWrap: 'wrap' }}
+      >
         {items.map((item) => (
           <li key={item.label}>
             <Link to={item.path}>{item.label}</Link>
