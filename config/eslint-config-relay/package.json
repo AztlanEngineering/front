@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/eslint-config-relay",
-  "version": "2.0.0",
+  "version": "2.0.9",
   "description": "",
   "main": "index.js",
   "author": "",
@@ -14,7 +14,7 @@
     "eslint-plugin-graphql": "^4.0.0"
   },
   "dependencies": {
-    "@aztlan/eslint-config-base": "^2.0.0",
+    "@aztlan/eslint-config-base": "^2.0.9",
     "eslint-plugin-babel": "^5.3.1"
   }
 }
