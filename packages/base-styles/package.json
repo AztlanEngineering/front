@@ -23,7 +23,7 @@
     "sass": "^1.71.0"
   },
   "dependencies": {
-    "@aztlan/grid": "^0.9.5",
+    "@aztlan/grid": "^0.9.7",
     "@aztlan/mixins": "^0.9.1",
     "@aztlan/swatch": "^0.9.1"
   },
