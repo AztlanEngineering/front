@@ -8,12 +8,13 @@ import { InferProps } from 'prop-types'
 import throttle from 'lodash.throttle'
 
 import { Link } from 'react-router-dom'
-import { useApp } from '../../common/AppContext/index.js' // Adjust the import path as necessary
+import { useApplicationContext } from '../../common/index.js' // Adjust the import path as necessary
 import useRouteMatch from './useRouteMatch.js'
 import usePrefetchQuery from './usePrefetchQuery.js'
 import {
-  useViewer, useAuth,
-} from '../AuthContextProvider/index.js'
+  useViewer,
+  useAuthenticationContext,
+} from '../Authentication/index.js'
 
 const sharedPropTypes = {
   /* The path to link to */
@@ -30,7 +31,7 @@ function PublicPrefetchLink({
   throttleMs = defaultThrottleMs,
   ...otherProps
 }: InferProps<typeof sharedPropTypes>): React.ReactElement {
-  const { routes } = useApp()
+  const { routes } = useApplicationContext()
 
   const {
     route, match,
@@ -85,7 +86,7 @@ function PrivatePrefetchLink({
   throttleMs = defaultThrottleMs,
   ...otherProps
 }: InferProps<typeof sharedPropTypes>): React.ReactElement {
-  const { routes } = useApp() // Assuming routes are part of what useApp returns
+  const { routes } = useApplicationContext() // Assuming routes are part of what useApp returns
   const {
     isLoggedIn, meetsConditions,
   } = useViewer()
@@ -153,7 +154,7 @@ function PrivatePrefetchLink({
 function PrefetchLinkWrapper(props: InferProps<typeof sharedPropTypes>): React.ReactElement {
   // This means the prefetch link only works when the user has been fetch
   // Whether it is logged in or not
-  const { viewerQueryReference } = useAuth()
+  const { viewerQueryReference } = useAuthenticationContext()
   return viewerQueryReference ? (
     <PrivatePrefetchLink {...props} />
   ) : (

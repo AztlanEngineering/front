@@ -8,7 +8,7 @@ import * as PropTypes from 'prop-types'
 import styleNames from '@aztlan/bem'
 import { useFragment } from 'react-relay'
 import { graphql } from 'relay-runtime'
-import { useViewer } from '../AuthContextProvider/index.js'
+import { useViewer } from '../Authentication/index.js'
 import { ViewerProfileFragment$key } from './__generated__/ViewerProfileFragment.graphql.js'
 
 // Local Definitions

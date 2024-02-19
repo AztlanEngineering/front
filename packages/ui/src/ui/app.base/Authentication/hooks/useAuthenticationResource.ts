@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useApp } from '../../common/AppContext/index.js'
-import useAuth from './useAuth.js'
+import { useApplicationContext } from '../../../common/index.js'
+import useAuthenticationContext from './useAuthenticationContext.js'
 
 /**
  * A React hook to generate a resource URL combining the full hostname with
@@ -13,8 +13,8 @@ import useAuth from './useAuth.js'
  */
 function useAuthenticationResource(redirectLocally: boolean = false): string {
   const location = useLocation()
-  const { hostname } = useApp()
-  const { defaultRedirectionAfterLogin } = useAuth()
+  const { hostname } = useApplicationContext()
+  const { defaultRedirectionAfterLogin } = useAuthenticationContext()
 
   const resource = useMemo(
     () => {

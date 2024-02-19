@@ -7,7 +7,7 @@ import {
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import {
-  useFragment, graphql, useLazyLoadQuery,
+  useFragment, graphql,
 } from 'react-relay'
 import { withDebug } from '@aztlan/react-hooks'
 
@@ -15,15 +15,16 @@ import styleNames from '@aztlan/bem'
 import {
   useViewer,
   useAuthenticationResource,
-  useAuth,
-} from '../../app.base/AuthContextProvider/index.js'
-import { NavigationHeader } from '../../common/Navigation/index.js'
+  useAuthenticationContext,
+} from '../hooks/index.js'
+import { NavigationHeader } from '../../../common/Navigation/index.js'
 import {
   HeaderViewerFragment$data,
   HeaderViewerFragment$key,
 } from './__generated__/HeaderViewerFragment.graphql.js'
 import { HeaderViewerQuery$data } from './__generated__/HeaderViewerQuery.graphql.js'
-import { LoginButton } from '../../app.base/LoginButton/index.js'
+/* Exceptional cross dependency _ UNSTABLE */
+import { LoginButton } from '../../LoginButton/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'debug-bar'
@@ -87,7 +88,7 @@ InferProps<typeof RawLoggedInHeader.propTypes>): React.ReactElement {
 
   const {
     logout, isLogoutInFlight,
-  } = useAuth()
+  } = useAuthenticationContext()
 
   return (
     <NavigationHeader

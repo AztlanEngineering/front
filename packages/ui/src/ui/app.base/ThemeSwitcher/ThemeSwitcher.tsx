@@ -6,7 +6,7 @@ import { useInsertionEffect } from 'react'
 import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
-import { useApp } from '../../common/index.js'
+import { useApplicationContext } from '../../common/index.js'
 
 // Local Definitions
 
@@ -38,7 +38,7 @@ function ThemeSwitcher({
 
   const {
     theme, isTheme, setTheme,
-  } = useApp()
+  } = useApplicationContext()
 
   return (
     <ul

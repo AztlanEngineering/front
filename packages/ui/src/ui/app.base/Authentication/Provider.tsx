@@ -11,15 +11,15 @@ import {
 import * as PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-relay'
 // import { graphql } from 'babel-plugin-relay/macro.js'
-import AuthContext from './Context.js'
-import { AuthContextProviderViewerQuery } from './__generated__/AuthContextProviderViewerQuery.graphql.js'
-import { AuthContextProviderViewerLogoutMutation } from './__generated__/AuthContextProviderViewerLogoutMutation.graphql.js'
+import Context from './Context.js'
+import { ProviderAuthenticationViewerQuery } from './__generated__/ProviderAuthenticationViewerQuery.graphql.js'
+import { ProviderAuthenticationViewerLogoutMutation } from './__generated__/ProviderAuthenticationViewerLogoutMutation.graphql.js'
 
 // @ts-ignore
 
 // Local Definitions
 const DEFAULT_QUERY_VIEWER = graphql`
-  query AuthContextProviderViewerQuery {
+  query ProviderAuthenticationViewerQuery {
     viewer {
       ...ViewerProfileFragment
       #...useViewerFragment
@@ -28,7 +28,7 @@ const DEFAULT_QUERY_VIEWER = graphql`
 `
 // @ts-ignore
 const DEFAULT_MUTATION_LOGOUT = graphql`
-  mutation AuthContextProviderViewerLogoutMutation {
+  mutation ProviderAuthenticationViewerLogoutMutation {
     deleteTokenCookie(input: { clientMutationId: "logout-delete-access" }) {
       deleted
       clientMutationId
@@ -45,7 +45,7 @@ const DEFAULT_MUTATION_LOGOUT = graphql`
 /**
  * This is the component description.
  */
-function AuthContextProvider({
+function Provider({
   children,
   loginPath = '/login',
   defaultRedirectionAfterLogin = '/profile',
@@ -57,13 +57,13 @@ function AuthContextProvider({
     viewerQueryReference,
     loadViewerQuery,
     disposeViewerQuery,
-  ] = useQueryLoader<AuthContextProviderViewerQuery>(QUERY_VIEWER)
+  ] = useQueryLoader<ProviderAuthenticationViewerQuery>(QUERY_VIEWER)
 
   const [
     commitLogout,
     isLogoutInFlight,
   ] = useMutation<
-  AuthContextProviderViewerLogoutMutation
+  ProviderAuthenticationViewerLogoutMutation
   >(MUTATION_LOGOUT)
 
   // const history = useHistory()
@@ -114,7 +114,7 @@ function AuthContextProvider({
   ) */
 
   return (
-    <AuthContext.Provider
+    <Context.Provider
       value={{
         logout,
         isLogoutInFlight,
@@ -129,11 +129,11 @@ function AuthContextProvider({
       }}
     >
       {children}
-    </AuthContext.Provider>
+    </Context.Provider>
   )
 }
 
-AuthContextProvider.propTypes = {
+Provider.propTypes = {
   /** The children JSX */
   children:PropTypes.node,
 
@@ -144,4 +144,4 @@ AuthContextProvider.propTypes = {
   defaultRedirectionAfterLogin:PropTypes.string,
 }
 
-export default AuthContextProvider
+export default Provider

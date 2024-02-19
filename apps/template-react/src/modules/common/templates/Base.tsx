@@ -4,10 +4,10 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import { Link } from 'react-router-dom'
 import {
-  useAuth,
+  useAuthentication,
   ThemeSwitcher,
   LocaleSwitcher,
-  DebugAuthenticationHeader,
+  AuthenticationDebugHeader,
 } from '@aztlan/ui'
 
 const routeMap = [
@@ -60,13 +60,13 @@ function Wrapper({
 }) {
   const {
     logout, isLogoutInFlight,
-  } = useAuth()
+  } = useAuthentication()
   return (
     <main
       className="grid"
       style={{ padding: '0 1em' }}
     >
-      <DebugAuthenticationHeader />
+      <AuthenticationDebugHeader />
       <div className="background near span-8 md-span-3 fit-content">
         <h1>{title}</h1>
         {sidebar}

@@ -10,8 +10,9 @@ import {
 } from 'react-router-dom'
 import { useFragment } from 'react-relay'
 import {
-  useViewer, useAuth,
-} from '../AuthContextProvider/index.js'
+  useViewer,
+  useAuthenticationContext,
+} from '../Authentication/index.js'
 
 // Local Definitions
 
@@ -26,7 +27,7 @@ function PrivateRoute({
   // @ts-ignore
   const {
     loginPath, isLogoutInFlight,
-  } = useAuth()
+  } = useAuthenticationContext()
 
   useEffect(
     () => {

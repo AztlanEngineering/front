@@ -8,13 +8,13 @@ import {
   useForm, FormProvider,
 } from 'react-hook-form'
 import { HashRouter as Router } from 'react-router-dom'
-import { AppContextProvider } from '../ui/common/index.js'
-import { AuthContextProvider } from '../ui/app.base/index.js'
+import { ApplicationProvider } from '../ui/common/index.js'
+import { AuthenticationProvider } from '../ui/app.base/index.js'
 
 export const app = (StoryFn) => (
-  <AppContextProvider>
+  <ApplicationProvider>
     <StoryFn />
-  </AppContextProvider>
+  </ApplicationProvider>
 )
 
 function loadLocaleData(locale: string) {
@@ -44,22 +44,22 @@ export const intlApp = (StoryFn) => {
       locale={locale}
       messages={messages}
     >
-      <AppContextProvider
+      <ApplicationProvider
         value={{
           locale,
           ...useLocaleProps,
         }}
       >
         <StoryFn />
-      </AppContextProvider>
+      </ApplicationProvider>
     </IntlProvider>
   )
 }
 
 export const auth = (StoryFn) => (
-  <AuthContextProvider>
+  <AuthenticationProvider>
     <StoryFn />
-  </AuthContextProvider>
+  </AuthenticationProvider>
 )
 
 export const router = (StoryFn) => (

@@ -10,7 +10,7 @@ import {
   useSubdomain, useMaintenance,
 } from './hooks/index.js'
 
-function AppContextProvider({
+function Provider({
   children,
   initialTheme,
   value,
@@ -47,7 +47,7 @@ function AppContextProvider({
   return <Context.Provider value={contextValue}>{children}</Context.Provider>
 }
 
-AppContextProvider.propTypes = {
+Provider.propTypes = {
   /**
    *  The children JSX
    */
@@ -101,4 +101,4 @@ AppContextProvider.propTypes = {
   ssrHostname:PropTypes.string,
 }
 
-export default AppContextProvider
+export default Provider

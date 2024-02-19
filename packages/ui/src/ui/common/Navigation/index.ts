@@ -7,3 +7,4 @@ export {
   VerticalMenu as NavigationVerticalMenu,
   Paginator as NavigationPaginator,
 } from './common/index.js'
+export { Header as NavigationDebugHeader } from './Debug/index.js'

@@ -8,7 +8,7 @@ import {
   Switch, Route,
 } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute.js'
-import { useAuth } from '../AuthContextProvider/index.js'
+import { useAuthenticationContext } from '../Authentication/index.js'
 /* eslint-disable react/no-children-prop */
 
 function SwitchRoutes({
@@ -17,7 +17,7 @@ function SwitchRoutes({
   Wireframe = () => <h1>Loading user</h1>,
 }) {
   // @ts-ignore
-  const { viewerQueryReference } = useAuth()
+  const { viewerQueryReference } = useAuthenticationContext()
 
   const PrivateRouteWrapper = useCallback(
     ({

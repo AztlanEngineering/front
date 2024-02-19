@@ -2,12 +2,12 @@ import * as React from 'react'
 import { PreloadedQuery } from 'react-relay'
 import { OperationType } from 'relay-runtime'
 
-import { AuthContextProviderViewerQuery } from './__generated__/AuthContextProviderViewerQuery.graphql.js'
-import { AuthContextProviderViewerLogoutMutation } from './__generated__/AuthContextProviderViewerLogoutMutation.graphql.js'
+import { ProviderAuthenticationViewerQuery } from './__generated__/ProviderAuthenticationViewerQuery.graphql.js'
+import { ProviderAuthenticationViewerLogoutMutation } from './__generated__/ProviderAuthenticationViewerLogoutMutation.graphql.js'
 
 export interface AuthContextType<
-  TQuery extends OperationType = AuthContextProviderViewerQuery,
-  TMutation = AuthContextProviderViewerLogoutMutation,
+  TQuery extends OperationType = ProviderAuthenticationViewerQuery,
+  TMutation = ProviderAuthenticationViewerLogoutMutation,
 > {
   logout                      :() => void;
   isLogoutInFlight            :boolean;

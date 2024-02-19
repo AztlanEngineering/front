@@ -7,7 +7,7 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-import { useApp } from '../../common/index.js'
+import { useApplicationContext } from '../../common/index.js'
 
 // Local Definitions
 
@@ -40,7 +40,7 @@ function LocaleSwitcher({
     // locale,
     isLocale,
     setLocale,
-  } = useApp()
+  } = useApplicationContext()
 
   return (
     <ul

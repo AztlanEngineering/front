@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { matchPath } from 'react-router-dom'
 import {
   RoutesConfig, RouteConfig,
-} from '../../common/AppContext/types.js'
+} from '../../common/Application/types.js'
 
 type Return = {
   match:ReturnType<typeof matchPath>;

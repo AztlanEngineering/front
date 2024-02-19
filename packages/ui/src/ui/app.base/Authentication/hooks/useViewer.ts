@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { usePreloadedQuery } from 'react-relay'
-import useAuth from './useAuth.js'
+import useAuthenticationContext from './useAuthenticationContext.js'
 
 /*
 const FRAGMENT = graphql`
@@ -31,7 +31,7 @@ const FRAGMENT = graphql`
 const useViewer = () => {
   const {
     viewerQueryReference, QUERY_VIEWER,
-  } = useAuth()
+  } = useAuthenticationContext()
 
   const data = usePreloadedQuery(
     QUERY_VIEWER, viewerQueryReference,
