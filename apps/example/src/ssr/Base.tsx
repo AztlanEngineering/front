@@ -4,9 +4,9 @@ import { RelayEnvironmentProvider } from 'react-relay'
 import { StaticRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { useLocale } from '@aztlan/react-hooks'
-import { AppContextProvider } from '@aztlan/ui'
+import { ApplicationProvider } from '@aztlan/ui'
 import { IntlProvider } from 'react-intl'
-import App from '../App.js'
+import Application from '../Application.js'
 import loadMessages from '../locales/loadMessages.js'
 import config from '../config.js'
 
@@ -43,7 +43,7 @@ export default function ({
             messages={messages}
           >
             <HelmetProvider>
-              <AppContextProvider
+              <ApplicationProvider
                 value={{
                   locale,
                   ...useLocaleProps,
@@ -51,8 +51,8 @@ export default function ({
                 maintenance={config.maintenance}
                 ssrHostname={hostname}
               >
-                <App />
-              </AppContextProvider>
+                <Application />
+              </ApplicationProvider>
             </HelmetProvider>
           </IntlProvider>
         </StaticRouter>

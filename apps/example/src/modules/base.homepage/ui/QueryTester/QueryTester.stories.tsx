@@ -5,14 +5,16 @@ import {
 } from '@storybook/react'
 
 // import * as decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-import Component from './QueryTester.tsx'
+import Component from './QueryTester.js'
 
-export default {
+const meta: Meta<typeof Component> = {
   title    :'common/QueryTester',
   component:Component,
   // decorators: [decorators.app],
   argTypes :{ backgroundColor: { control: 'color' } },
-} as Meta<typeof Component>
+}
+
+export default meta
 
 const relayConfig = {
   query            :Component.QUERY,

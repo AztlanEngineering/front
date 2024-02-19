@@ -1,6 +1,8 @@
 import * as React from 'react'
 import {
-  useApp, AuthenticationProvider, SwitchRoutes,
+  useApplicationContext,
+  AuthenticationProvider,
+  SwitchRoutes,
 } from '@aztlan/ui'
 import routes from './modules/routes.js'
 import Status404Page from './modules/common/pages/Status404.js'
@@ -24,7 +26,7 @@ function Wireframe({
 }
 
 function App() {
-  const { theme } = useApp()
+  const { theme } = useApplicationContext()
   return (
     <AuthenticationProvider>
       <main className={`${theme || ''} background far`}>

@@ -2,7 +2,7 @@ import * as React from 'react'
 import {
   createRoot, hydrateRoot,
 } from 'react-dom/client'
-import { AppContextProvider } from '@aztlan/ui'
+import { ApplicationProvider } from '@aztlan/ui'
 import { loadableReady } from '@loadable/component'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
@@ -10,7 +10,7 @@ import { IntlProvider } from 'react-intl'
 import { RelayEnvironmentProvider } from 'react-relay'
 import { useLocale } from '@aztlan/react-hooks'
 import { TokenStateManager } from '@aztlan/react-relay'
-import App from './App.js'
+import Application from './Application.js'
 import loadMessages from './locales/loadMessages.js'
 import config from './config.js'
 import relayEnvironment from './environment.js'
@@ -43,7 +43,7 @@ function Main() {
           messages={messages}
         >
           <HelmetProvider>
-            <AppContextProvider
+            <ApplicationProvider
               value={{
                 locale,
                 ...useLocaleProps,
@@ -51,8 +51,8 @@ function Main() {
               maintenance={config.maintenance}
               routes={routes}
             >
-              <App />
-            </AppContextProvider>
+              <Application />
+            </ApplicationProvider>
           </HelmetProvider>
         </IntlProvider>
       </BrowserRouter>

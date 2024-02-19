@@ -7,7 +7,9 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-import { useFragment } from 'react-relay'
+import {
+  graphql, useFragment,
+} from 'react-relay'
 // import { Button } from '@aztlan/ui'
 
 // Local Definitions

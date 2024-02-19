@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import { Link } from 'react-router-dom'
 import {
-  useAuthentication,
+  useAuthenticationContext,
   ThemeSwitcher,
   LocaleSwitcher,
   AuthenticationDebugHeader,
@@ -60,7 +60,7 @@ function Wrapper({
 }) {
   const {
     logout, isLogoutInFlight,
-  } = useAuthentication()
+  } = useAuthenticationContext()
   return (
     <main
       className="grid"
