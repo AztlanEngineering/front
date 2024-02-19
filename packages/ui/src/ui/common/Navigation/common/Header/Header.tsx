@@ -38,7 +38,6 @@ function Header({
     <Wrapper
       id={id}
       className={[
-  border-top: 2px solid black;
         baseClassName,
         componentClassName,
         userClassName,
