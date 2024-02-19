@@ -10,6 +10,7 @@ import {
   useFragment, graphql,
 } from 'react-relay'
 import { withDebug } from '@aztlan/react-hooks'
+import { Link } from 'react-router-dom'
 
 import styleNames from '@aztlan/bem'
 import {
@@ -24,7 +25,6 @@ import {
 } from './__generated__/HeaderViewerFragment.graphql.js'
 import { HeaderViewerQuery$data } from './__generated__/HeaderViewerQuery.graphql.js'
 /* Exceptional cross dependency _ UNSTABLE */
-import { LoginButton } from '../../LoginButton/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'debug-bar'
@@ -43,7 +43,6 @@ const DEFAULT_FRAGMENT = graphql`
 
 const QUERY = graphql`
   query HeaderViewerQuery($resource: String!) {
-    ...LoginButtonFragment @arguments(resource: $resource)
     viewer {
       ...HeaderViewerFragment
     }
@@ -172,6 +171,7 @@ InferProps<typeof RawLoggedOutHeader.propTypes>): React.ReactElement {
       import('./styles.scss')
     }, [],
   )
+  const { loginPath } = useAuthenticationContext()
   return (
     <NavigationHeader
       id={id}
@@ -185,12 +185,7 @@ InferProps<typeof RawLoggedOutHeader.propTypes>): React.ReactElement {
         .join(' ')}
       style={style}
       desktop
-      right={(
-        <React.Suspense fallback="Loading">
-          {/* @ts-ignore */}
-          <LoginButton data={data} />
-        </React.Suspense>
-      )}
+      right={<Link to={loginPath}>Login</Link>}
       // {...otherProps}
     >
       <div className="span-8 md-span-10">Not logged in</div>
