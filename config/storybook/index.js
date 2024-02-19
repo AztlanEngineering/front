@@ -42,7 +42,8 @@ const template = (inputs) => ({
   staticDirs:[
     // '../../../node_modules/@aztlan/assets/images',
     // '../../../node_modules/@aztlan/assets/fonts',
-    `${getAbsolutePath('@aztlan/assets')}/fonts`,
+    ...inputs.assets,
+    // `${getAbsolutePath('@aztlan/assets')}/fonts`,
     '../src/assets',
   ],
   stories:[

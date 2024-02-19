@@ -15,6 +15,7 @@ const {
   typescript,
 } = configureSharedConfig({
   location:__dirname,
+  assets:[`${getAbsolutePath('@aztlan/assets')}/fonts`]
 })
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
