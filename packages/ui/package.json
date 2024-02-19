@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/ui",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -32,7 +32,7 @@
     "@aztlan/babel-preset-react-relay-app": "^2.0.0",
     "@aztlan/eslint-config-base": "^2.0.0",
     "@aztlan/react-scripts": "^2.0.0",
-    "@aztlan/storybook-config": "^2.0.0",
+    "@aztlan/storybook-config": "^2.0.4",
     "@aztlan/stylelint-config": "^0.9.0",
     "@aztlan/typescript-config": "^2.0.0",
     "@aztlan/webpack-config": "^2.0.0",
