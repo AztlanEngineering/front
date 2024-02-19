@@ -68,6 +68,11 @@
     "language": "typescript",
     "eagerEsModules": true
   },
+  "babel": {
+    "presets": [
+      "@aztlan/react-relay-app"
+    ]
+  },
   "stylelint": {
     "extends": "@aztlan/stylelint-config"
   },
