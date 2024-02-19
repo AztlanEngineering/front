@@ -24,6 +24,7 @@ export const ComponentPropTypes = {
   extras:PropTypes.arrayOf(PropTypes.shape({
     key      :PropTypes.string,
     Component:PropTypes.node.isRequired,
+    disabled :PropTypes.bool,
   })),
 }
 

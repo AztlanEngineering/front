@@ -1,5 +1,5 @@
 /* @aztlan/generator-front 1.2.22 */
-// import * as React from 'react'
+import * as React from 'react'
 
 import {
   Meta, StoryObj,
