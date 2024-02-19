@@ -29,8 +29,8 @@ export default meta
 export const Base: StoryObj<typeof Component> = {
   args:{
     content      :'Shipping information',
-    next         :'Next',
-    previous     :'Previous',
+    right        :'Next',
+    left         :'Previous',
     hideOnDesktop:false,
   },
 }

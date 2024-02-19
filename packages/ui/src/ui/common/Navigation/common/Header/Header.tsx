@@ -20,9 +20,9 @@ function Header({
   style,
   as: Wrapper = 'nav',
   fixed,
-  previous,
+  left,
   content,
-  next,
+  right,
   hideOnDesktop = true,
   UNSTABLE_padded,
 }: ComponentProps): React.ReactElement {
@@ -51,9 +51,9 @@ function Header({
       style={style}
       // {...otherProps}
     >
-      <span className="span-2 md-span-3">{previous}</span>
+      <span className="span-2 md-span-3">{left}</span>
       <span className="span-4 md-span-8">{content}</span>
-      <span className="span-2 md-span-3">{next}</span>
+      <span className="span-2 md-span-3">{right}</span>
     </Wrapper>
   )
 }

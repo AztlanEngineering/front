@@ -35,8 +35,8 @@ function SequentialNavigationHeader(props) {
   } = useContext(Context)
   return (
     <Header
-      previous={!hidePreviousButton && previous}
-      next={!hideNextButton && next}
+      left={!hidePreviousButton && previous}
+      right={!hideNextButton && next}
       content={content}
       fixed={fixed}
       {...props}
@@ -54,7 +54,7 @@ function SequentialNavigationFooter(props) {
   return (
     <Footer
       content={content}
-      next={!hideNextButton && next}
+      right={!hideNextButton && next}
       fixed={fixed}
       {...props}
     />

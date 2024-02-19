@@ -22,14 +22,20 @@ export const fixedShared = {
   fixed:PropTypes.bool,
 }
 
-export const nextShared = {
+export const rightShared = {
   /* A React element to represent the next navigation element */
-  next:PropTypes.node,
+  right:PropTypes.node,
+
+  /* The span of this element on desktop */
+  desktopRightSpan:PropTypes.number,
 }
 
-export const prevShared = {
+export const leftShared = {
   /* A React element to represent the previous navigation element */
-  previous:PropTypes.node,
+  left:PropTypes.node,
+
+  /* The span of this element on desktop */
+  desktopLeftSpan:PropTypes.number,
 }
 
 export const desktopOnlyShared = {
@@ -37,11 +43,12 @@ export const desktopOnlyShared = {
   desktopOnly:PropTypes.bool,
 }
 
-export const footerShared = {
+export const barsShared = {
   ...htmlShared,
   ...asShared,
   ...fixedShared,
-  ...nextShared,
+  ...rightShared,
+  ...leftShared,
 
   /* A React element to represent the current navigation location */
   content:PropTypes.node.isRequired,

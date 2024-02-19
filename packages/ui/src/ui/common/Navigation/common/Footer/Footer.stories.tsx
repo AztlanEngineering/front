@@ -32,7 +32,7 @@ export default meta
 export const Base: StoryObj<typeof Component> = {
   args:{
     content      :'Complete all the fields to continue',
-    next         :'Next',
+    right        :'Next',
     hideOnDesktop:false,
   },
 }

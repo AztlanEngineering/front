@@ -29,22 +29,22 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    next       :<span>Next</span>,
-    previous   :<span>Previous</span>,
+    right      :<span>Next</span>,
+    left       :<span>Previous</span>,
     desktopOnly:false,
   },
 }
 
 export const OnlyPrevious: StoryObj<typeof Component> = {
   args:{
-    previous   :<span>Previous</span>,
+    left       :<span>Previous</span>,
     desktopOnly:false,
   },
 }
 
 export const OnlyNext: StoryObj<typeof Component> = {
   args:{
-    next       :<span>Next</span>,
+    right      :<span>Next</span>,
     desktopOnly:false,
   },
 }

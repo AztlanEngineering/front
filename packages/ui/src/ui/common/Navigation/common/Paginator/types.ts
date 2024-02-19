@@ -3,16 +3,16 @@ import { InferProps } from 'prop-types'
 
 import {
   htmlShared,
-  prevShared,
-  nextShared,
+  leftShared,
+  rightShared,
   desktopOnlyShared,
   asShared,
 } from '../../types.js'
 
 export const ComponentPropTypes = {
   ...htmlShared,
-  ...prevShared,
-  ...nextShared,
+  ...leftShared,
+  ...rightShared,
   ...desktopOnlyShared,
   ...asShared,
 

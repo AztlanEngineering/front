@@ -19,8 +19,8 @@ function Paginator({
   className: userClassName,
   style,
   as: Wrapper = 'nav',
-  next,
-  previous,
+  left,
+  right,
   desktopOnly,
   span = 4,
   spanDesktop = 3,
@@ -52,14 +52,8 @@ function Paginator({
       }}
       // {...otherProps}
     >
-      { previous ? <span>{previous}</span> : <span />}
-      { next ? (
-        <span>
-          {' '}
-          { next }
-          {' '}
-        </span>
-      ) : <span />}
+      <span>{left}</span>
+      <span>{right}</span>
     </Wrapper>
   )
 }

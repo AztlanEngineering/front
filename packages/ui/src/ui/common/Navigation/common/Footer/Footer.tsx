@@ -21,7 +21,7 @@ function Footer({
   as: Wrapper = 'nav',
   fixed,
   content,
-  next,
+  right,
   hideOnDesktop = true,
   UNSTABLE_padded,
 }: ComponentProps): React.ReactElement {
@@ -51,7 +51,7 @@ function Footer({
       // {...otherProps}
     >
       <span className="span-6 md-span-11">{content}</span>
-      <span className="span-2 md-span-3">{next}</span>
+      <span className="span-2 md-span-3">{right}</span>
     </Wrapper>
   )
 }
