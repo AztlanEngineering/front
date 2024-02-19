@@ -17,6 +17,7 @@ function Provider({
   maintenance = false,
   routes,
   ssrHostname,
+  extraComponents,
   // ...otherProps
 }) {
   const theme = useTheme(initialTheme)
@@ -37,10 +38,12 @@ function Provider({
       hostname,
       subdomain,
       routes,
+      extraComponents,
     }),
     [
       value,
       theme,
+      extraComponents,
     ],
   )
 
@@ -99,6 +102,11 @@ Provider.propTypes = {
 
   /* The hostname, provided in SSR. */
   ssrHostname:PropTypes.string,
+
+  extraComponents:PropTypes.arrayOf(PropTypes.shape({
+    key      :PropTypes.string.isRequired,
+    component:PropTypes.node,
+  })),
 }
 
 export default Provider

@@ -9,6 +9,7 @@ ReturnType<typeof useTheme> & {
   routes    :RoutesConfig;
   hostname? :string;
   subdomain?:string;
+  extraComponents:Record<string, React.ElementType>;
 }
 
 export default React.createContext<Partial<ContextType>>({})
