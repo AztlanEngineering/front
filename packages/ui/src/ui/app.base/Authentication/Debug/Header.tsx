@@ -42,7 +42,7 @@ const DEFAULT_FRAGMENT = graphql`
 `
 
 const QUERY = graphql`
-  query HeaderViewerQuery($resource: String!) {
+  query HeaderViewerQuery {
     viewer {
       ...HeaderViewerFragment
     }

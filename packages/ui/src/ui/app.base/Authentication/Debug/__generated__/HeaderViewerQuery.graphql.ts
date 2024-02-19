@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<cd4ac148339081cbdad8a6925baaf04f>>
+ * @generated SignedSource<<f6adaa5ca372e5d46f2b5f5e711ab15c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,47 +10,24 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type HeaderViewerQuery$variables = {
-  resource: string;
-};
+export type HeaderViewerQuery$variables = Record<PropertyKey, never>;
 export type HeaderViewerQuery$data = {
   readonly viewer: {
     readonly " $fragmentSpreads": FragmentRefs<"HeaderViewerFragment">;
   } | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"LoginButtonFragment">;
 };
 export type HeaderViewerQuery = {
   response: HeaderViewerQuery$data;
   variables: HeaderViewerQuery$variables;
 };
 
-const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "resource"
-  }
-],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "resource",
-    "variableName": "resource"
-  }
-];
-return {
+const node: ConcreteRequest = {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
     "name": "HeaderViewerQuery",
     "selections": [
-      {
-        "args": (v1/*: any*/),
-        "kind": "FragmentSpread",
-        "name": "LoginButtonFragment"
-      },
       {
         "alias": null,
         "args": null,
@@ -73,28 +50,10 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "kind": "Operation",
     "name": "HeaderViewerQuery",
     "selections": [
-      {
-        "alias": null,
-        "args": (v1/*: any*/),
-        "concreteType": "OAuth2LinksProvider",
-        "kind": "LinkedField",
-        "name": "oAuth2Links",
-        "plural": false,
-        "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "google",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      },
       {
         "alias": null,
         "args": null,
@@ -158,16 +117,15 @@ return {
     ]
   },
   "params": {
-    "cacheID": "bc4a4b35ae59e1497bd7e07241d7ed65",
+    "cacheID": "40416a83aff5c13e77b2337ac77450ff",
     "id": null,
     "metadata": {},
     "name": "HeaderViewerQuery",
     "operationKind": "query",
-    "text": "query HeaderViewerQuery(\n  $resource: String!\n) {\n  ...LoginButtonFragment_1AFwKl\n  viewer {\n    ...HeaderViewerFragment\n    id\n  }\n}\n\nfragment HeaderViewerFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  id\n}\n\nfragment LoginButtonFragment_1AFwKl on Query {\n  oAuth2Links(resource: $resource) {\n    google\n  }\n}\n"
+    "text": "query HeaderViewerQuery {\n  viewer {\n    ...HeaderViewerFragment\n    id\n  }\n}\n\nfragment HeaderViewerFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  id\n}\n"
   }
 };
-})();
 
-(node as any).hash = "2745104af60ebff0e05ebf1da24ed9b0";
+(node as any).hash = "8a6ef39e1c25bf621682355a5901c705";
 
 export default node;
