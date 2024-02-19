@@ -28,10 +28,10 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    content      :'Shipping information',
-    right        :'Next',
-    left         :'Previous',
-    hideOnDesktop:false,
+    children:'Shipping information',
+    right   :'Next',
+    left    :'Previous',
+    desktop :true,
   },
 }
 

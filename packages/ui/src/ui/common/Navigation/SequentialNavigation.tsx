@@ -28,7 +28,7 @@ import {
 
 function SequentialNavigationHeader(props) {
   const {
-    previous, next, currentContent: content,
+    previous, next, currentContent: children,
     fixed,
     hidePreviousButton,
     hideNextButton,
@@ -37,27 +37,29 @@ function SequentialNavigationHeader(props) {
     <Header
       left={!hidePreviousButton && previous}
       right={!hideNextButton && next}
-      content={content}
       fixed={fixed}
       {...props}
-    />
+    >
+      {children}
+    </Header>
   )
 }
 
 function SequentialNavigationFooter(props) {
   const {
-    currentFooterContent:content,
+    currentFooterContent:children,
     next,
     fixed,
     hideNextButton,
   } = useContext(Context)
   return (
     <Footer
-      content={content}
       right={!hideNextButton && next}
       fixed={fixed}
       {...props}
-    />
+    >
+      {children}
+    </Footer>
   )
 }
 

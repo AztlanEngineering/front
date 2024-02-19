@@ -6,7 +6,7 @@ import {
 } from '@storybook/react'
 import { graphql } from 'react-relay'
 import * as decorators from 'story-utils/decorators.js'
-import { RawLoggedInDebugBar as Component } from './DebugBar.js'
+import { RawLoggedInHeader as Component } from './Header.js'
 
 const meta: Meta<typeof Component> = {
   title     :'debug/AuthContextProviderDebugBar',
@@ -17,9 +17,9 @@ const meta: Meta<typeof Component> = {
 
 const relayConfig = {
   query:graphql`
-    query DebugBarTestViewerQuery {
+    query HeaderViewerTestQuery {
       viewer {
-        ...DebugBarViewerFragment
+        ...HeaderViewerFragment
       }
     }
   `,

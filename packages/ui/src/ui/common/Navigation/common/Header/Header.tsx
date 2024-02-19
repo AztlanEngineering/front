@@ -21,9 +21,9 @@ function Header({
   as: Wrapper = 'nav',
   fixed,
   left,
-  content,
+  children,
   right,
-  hideOnDesktop = true,
+  desktop,
   UNSTABLE_padded,
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
@@ -40,7 +40,7 @@ function Header({
         baseClassName,
         componentClassName,
         userClassName,
-        hideOnDesktop && 'desktop-hidden',
+        !desktop && 'desktop-hidden',
         fixed && styleNames.modifierFixed,
         fixed && 'default-columns',
         UNSTABLE_padded && 'section padded',
@@ -52,7 +52,7 @@ function Header({
       // {...otherProps}
     >
       <span className="span-2 md-span-3">{left}</span>
-      <span className="span-4 md-span-8">{content}</span>
+      <span className="span-4 md-span-8">{children}</span>
       <span className="span-2 md-span-3">{right}</span>
     </Wrapper>
   )

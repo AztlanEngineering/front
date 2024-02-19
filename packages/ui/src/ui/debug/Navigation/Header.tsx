@@ -6,25 +6,26 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import { Link } from 'react-router-dom'
 import { withDebug } from '@aztlan/react-hooks'
-
 import styleNames from '@aztlan/bem'
+import { NavigationHeader } from '../../common/Navigation/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'navigation-debug-bar'
 
 /**
  * Ensure debug=1 in localstorage or url params
- * @param {InferProps<typeof NavigationDebugBar.propTypes>} props -
- * @returns {React.ReactElement} - Rendered NavigationDebugBar
+ * @param {InferProps<typeof NavigationDebugHeader.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered NavigationDebugHeader
+  AuthContextProviderDebugBar,
  */
-function NavigationDebugBar({
+function NavigationDebugHeader({
   id,
   className: userClassName,
   style,
   items,
 }: // ...otherProps
 
-InferProps<typeof NavigationDebugBar.propTypes>): React.ReactElement {
+InferProps<typeof NavigationDebugHeader.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -33,7 +34,7 @@ InferProps<typeof NavigationDebugBar.propTypes>): React.ReactElement {
   )
 
   return (
-    <nav
+    <NavigationHeader
       id={id}
       className={[
         baseClassName,
@@ -45,6 +46,8 @@ InferProps<typeof NavigationDebugBar.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
+      left="Debug Menu"
+      desktop
       // {...otherProps}
     >
       <ul className="inline">
@@ -54,11 +57,11 @@ InferProps<typeof NavigationDebugBar.propTypes>): React.ReactElement {
           </li>
         ))}
       </ul>
-    </nav>
+    </NavigationHeader>
   )
 }
 
-NavigationDebugBar.propTypes = {
+NavigationDebugHeader.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -75,4 +78,4 @@ NavigationDebugBar.propTypes = {
   })),
 }
 
-export default withDebug(NavigationDebugBar)
+export default withDebug(NavigationDebugHeader)

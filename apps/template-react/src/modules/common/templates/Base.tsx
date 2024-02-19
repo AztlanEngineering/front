@@ -7,7 +7,7 @@ import {
   useAuth,
   ThemeSwitcher,
   LocaleSwitcher,
-  AuthContextProviderDebugBar,
+  DebugAuthenticationHeader,
 } from '@aztlan/ui'
 
 const routeMap = [
@@ -66,7 +66,7 @@ function Wrapper({
       className="grid"
       style={{ padding: '0 1em' }}
     >
-      <AuthContextProviderDebugBar />
+      <DebugAuthenticationHeader />
       <div className="background near span-8 md-span-3 fit-content">
         <h1>{title}</h1>
         {sidebar}

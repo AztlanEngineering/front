@@ -20,9 +20,9 @@ function Footer({
   style,
   as: Wrapper = 'nav',
   fixed,
-  content,
+  children,
   right,
-  hideOnDesktop = true,
+  desktop,
   UNSTABLE_padded,
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
@@ -39,7 +39,7 @@ function Footer({
         baseClassName,
         componentClassName,
         userClassName,
-        hideOnDesktop && 'desktop-hidden',
+        !desktop && 'desktop-hidden',
         fixed && styleNames.modifierFixed,
         fixed && 'default-columns',
         UNSTABLE_padded && 'section padded',
@@ -50,7 +50,7 @@ function Footer({
       style={style}
       // {...otherProps}
     >
-      <span className="span-6 md-span-11">{content}</span>
+      <span className="span-6 md-span-11">{children}</span>
       <span className="span-2 md-span-3">{right}</span>
     </Wrapper>
   )

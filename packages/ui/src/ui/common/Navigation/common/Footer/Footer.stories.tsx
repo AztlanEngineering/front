@@ -31,9 +31,9 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    content      :'Complete all the fields to continue',
-    right        :'Next',
-    hideOnDesktop:false,
+    children:'Complete all the fields to continue',
+    right   :'Next',
+    desktop :true,
   },
 }
 

@@ -13,22 +13,24 @@ import { withDebug } from '@aztlan/react-hooks'
 
 import styleNames from '@aztlan/bem'
 import {
-  DebugBarViewerFragment$data,
-  DebugBarViewerFragment$key,
-} from './__generated__/DebugBarViewerFragment.graphql.js'
-import { DebugBarViewerQuery$data } from './__generated__/DebugBarViewerQuery.graphql.js'
-import {
+  useViewer,
   useAuthenticationResource,
   useAuth,
 } from '../../app.base/AuthContextProvider/index.js'
+import { NavigationHeader } from '../../common/Navigation/index.js'
+import {
+  HeaderViewerFragment$data,
+  HeaderViewerFragment$key,
+} from './__generated__/HeaderViewerFragment.graphql.js'
+import { HeaderViewerQuery$data } from './__generated__/HeaderViewerQuery.graphql.js'
 import { LoginButton } from '../../app.base/LoginButton/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'debug-bar'
 
 const FRAGMENT = graphql`
-  fragment DebugBarViewerFragment on UserNode
-    @refetchable(queryName: "DebugBarViewerRefetchQuery") {
+  fragment HeaderViewerFragment on UserNode
+    @refetchable(queryName: "HeaderViewerRefetchQuery") {
     firstName
     lastName
     created
@@ -39,27 +41,27 @@ const FRAGMENT = graphql`
 `
 
 const QUERY = graphql`
-  query DebugBarViewerQuery($resource: String!) {
+  query HeaderViewerQuery($resource: String!) {
     ...LoginButtonFragment @arguments(resource: $resource)
     viewer {
-      ...DebugBarViewerFragment
+      ...HeaderViewerFragment
     }
   }
 `
 
 /**
  * description
- * @param {InferProps<typeof DebugBar.propTypes>} props -
- * @returns {React.ReactElement} - Rendered DebugBar
+ * @param {InferProps<typeof Header.propTypes>} props -
+ * @returns {React.ReactElement} - Rendered Header
  */
-function RawLoggedInDebugBar({
+function RawLoggedInHeader({
   id,
   className: userClassName,
   style,
   data,
 }: // ...otherProps
 
-InferProps<typeof RawLoggedInDebugBar.propTypes>): React.ReactElement {
+InferProps<typeof RawLoggedInHeader.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -69,8 +71,8 @@ InferProps<typeof RawLoggedInDebugBar.propTypes>): React.ReactElement {
 
   const result = useFragment(
     FRAGMENT,
-    data.viewer as DebugBarViewerFragment$key,
-  ) as DebugBarViewerFragment$data
+    data.viewer as HeaderViewerFragment$key,
+  ) as HeaderViewerFragment$data
 
   const log = useCallback(
     () => {
@@ -88,7 +90,7 @@ InferProps<typeof RawLoggedInDebugBar.propTypes>): React.ReactElement {
   } = useAuth()
 
   return (
-    <div
+    <NavigationHeader
       id={id}
       className={[
         baseClassName,
@@ -100,31 +102,37 @@ InferProps<typeof RawLoggedInDebugBar.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
+      left="viewer"
+      desktop
+      right={(
+        <button
+          type="button"
+          onClick={log}
+        >
+          console.log
+        </button>
+      )}
       // {...otherProps}
     >
-      <div className="span-8 md-span-10">
-        {`User ${email} (${firstName} ${lastName})`}
+      <div className="grid container">
+        <div className="span-4 md-span-5">
+          {`${email} (${firstName} ${lastName})`}
+        </div>
+        <span className="span-2 md-span-3">
+          <button
+            type="button"
+            onClick={logout}
+            disabled={isLogoutInFlight}
+          >
+            Logout
+          </button>
+        </span>
       </div>
-      <button
-        className="span-4 md-span-2"
-        type="button"
-        onClick={log}
-      >
-        console.log
-      </button>
-      <button
-        className="span-4 md-span-2"
-        type="button"
-        onClick={logout}
-        disabled={isLogoutInFlight}
-      >
-        Logout
-      </button>
-    </div>
+    </NavigationHeader>
   )
 }
 
-RawLoggedInDebugBar.propTypes = {
+RawLoggedInHeader.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -147,13 +155,13 @@ RawLoggedInDebugBar.propTypes = {
   }),
 }
 
-function RawLoggedOutDebugBar({
+function RawLoggedOutHeader({
   id,
   className: userClassName,
   style,
   data,
 }: // ...otherProps
-InferProps<typeof RawLoggedOutDebugBar.propTypes>): React.ReactElement {
+InferProps<typeof RawLoggedOutHeader.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -161,7 +169,7 @@ InferProps<typeof RawLoggedOutDebugBar.propTypes>): React.ReactElement {
     }, [],
   )
   return (
-    <div
+    <NavigationHeader
       id={id}
       className={[
         baseClassName,
@@ -173,22 +181,21 @@ InferProps<typeof RawLoggedOutDebugBar.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
+      desktop
+      right={(
+        <React.Suspense fallback="Loading">
+          {/* @ts-ignore */}
+          <LoginButton data={data} />
+        </React.Suspense>
+      )}
       // {...otherProps}
     >
-      <div className="span-8 md-span-10">User is not logged in</div>
-
-      <React.Suspense fallback="Loading">
-        {/* @ts-ignore */}
-        <LoginButton
-          data={data}
-          className="span-4 md-span-4"
-        />
-      </React.Suspense>
-    </div>
+      <div className="span-8 md-span-10">Not logged in</div>
+    </NavigationHeader>
   )
 }
 
-RawLoggedOutDebugBar.propTypes = {
+RawLoggedOutHeader.propTypes = {
   /** The HTML id for this element */
   id:PropTypes.string,
 
@@ -213,24 +220,20 @@ RawLoggedOutDebugBar.propTypes = {
   }), */
 }
 
-function DebugBar(props) {
+function Header(props) {
   const resource = useAuthenticationResource(true)
 
-  const data = useLazyLoadQuery(
-    QUERY,
-    { resource },
-    { fetchPolicy: 'store-or-network' },
-  ) as DebugBarViewerQuery$data
+  const { data } = useViewer()
 
   return (
     <React.Suspense fallback="Loading">
       {data.viewer ? (
-        <RawLoggedInDebugBar
+        <RawLoggedInHeader
           data={data}
           {...props}
         />
       ) : (
-        <RawLoggedOutDebugBar
+        <RawLoggedOutHeader
           data={data}
           {...props}
         />
@@ -240,7 +243,7 @@ function DebugBar(props) {
 }
 
 export {
-  RawLoggedInDebugBar, RawLoggedOutDebugBar,
+  RawLoggedInHeader, RawLoggedOutHeader,
 }
 
-export default withDebug(DebugBar)
+export default withDebug(Header)
