@@ -71,8 +71,8 @@ function SequentialNavigationPaginator(props) {
   } = useContext(Context)
   return (
     <Paginator
-      previous={!hidePreviousButton && previous}
-      next={!hideNextButton && next}
+      left={!hidePreviousButton && previous}
+      right={!hideNextButton && next}
       {...props}
     />
   )

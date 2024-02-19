@@ -4,6 +4,7 @@
 @use "@aztlan/mixins/src/media" as media;
 
 .#{bem.$base}.navigation-header {
+  background: var(--near);
   &.#{bem.$modifier-fixed} {
     left: 0;
     position: fixed;
