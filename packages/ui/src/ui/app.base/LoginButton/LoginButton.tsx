@@ -7,8 +7,9 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
-import { useFragment } from 'react-relay'
-import { graphql } from 'relay-runtime'
+import {
+  useFragment, graphql,
+} from 'react-relay'
 import { LoginButtonFragment$data } from './__generated__/LoginButtonFragment.graphql.js'
 
 // Local Definitions

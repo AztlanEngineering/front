@@ -29,7 +29,7 @@ import { LoginButton } from '../../LoginButton/index.js'
 const baseClassName = styleNames.base
 const componentClassName = 'debug-bar'
 
-const FRAGMENT = graphql`
+const DEFAULT_FRAGMENT = graphql`
   fragment HeaderViewerFragment on UserNode
     @refetchable(queryName: "HeaderViewerRefetchQuery") {
     firstName
@@ -59,6 +59,7 @@ function RawLoggedInHeader({
   id,
   className: userClassName,
   style,
+  FRAGMENT = DEFAULT_FRAGMENT,
   data,
 }: // ...otherProps
 
@@ -153,6 +154,9 @@ RawLoggedInHeader.propTypes = {
       profilePicture:PropTypes.string,
     }),
   }),
+
+  /** The fragment to use */
+  FRAGMENT:PropTypes.any,
 }
 
 function RawLoggedOutHeader({
@@ -206,6 +210,7 @@ RawLoggedOutHeader.propTypes = {
 
   /** The data for this component */
   data:PropTypes.any,
+
   /*
   data:PropTypes.shape({
     viewer:PropTypes.shape({

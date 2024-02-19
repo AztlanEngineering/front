@@ -11,6 +11,7 @@ import {
 import * as PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-relay'
 // import { graphql } from 'babel-plugin-relay/macro.js'
+import { graphql } from 'react-relay'
 import Context from './Context.js'
 import { ProviderAuthenticationViewerQuery } from './__generated__/ProviderAuthenticationViewerQuery.graphql.js'
 import { ProviderAuthenticationViewerLogoutMutation } from './__generated__/ProviderAuthenticationViewerLogoutMutation.graphql.js'
