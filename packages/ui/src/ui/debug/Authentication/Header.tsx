@@ -97,7 +97,6 @@ InferProps<typeof RawLoggedInHeader.propTypes>): React.ReactElement {
         componentClassName,
         userClassName,
         'grid container',
-        'success',
       ]
         .filter((e) => e)
         .join(' ')}
@@ -176,7 +175,6 @@ InferProps<typeof RawLoggedOutHeader.propTypes>): React.ReactElement {
         componentClassName,
         userClassName,
         'grid container',
-        'error',
       ]
         .filter((e) => e)
         .join(' ')}
