@@ -19,6 +19,12 @@ export const ComponentPropTypes = {
     url     :PropTypes.string,
     disabled:PropTypes.bool.isRequired,
   })),
+
+  /** Extras items to append to the end of the menu */
+  extras:PropTypes.arrayOf(PropTypes.shape({
+    key      :PropTypes.string,
+    Component:PropTypes.node.isRequired,
+  })),
 }
 
 export type ComponentProps = InferProps<typeof ComponentPropTypes>

@@ -45,6 +45,16 @@ export const Base: StoryObj<typeof Component> = {
         disabled:true,
       },
     ],
+    extras:[
+      {
+        key      :'Extra',
+        Component:<h1>Extra</h1>,
+      },
+      {
+        key      :'Extra2',
+        Component:<h2>Logout</h2>,
+      },
+    ],
   },
 }
 

@@ -23,6 +23,7 @@ function VerticalMenu({
   label,
   items,
   desktopOnly = true,
+  extras,
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -47,7 +48,7 @@ function VerticalMenu({
       // {...otherProps}
     >
       {label && <span>{label}</span>}
-      <ul className="grid container">
+      <ul className="container">
         {items?.map((item) => (
           <li
             key={`${item.label}${item.url || ''}`}
@@ -61,6 +62,21 @@ function VerticalMenu({
           </li>
         ))}
       </ul>
+      { extras
+      && (
+      <ul className="container">
+        {extras.map((
+          extra, i,
+        ) => (
+          <li
+            key={extra.key || i}
+            className={extra.disabled ? 'disabled' : ''}
+          >
+            {extra.Component}
+          </li>
+        ))}
+      </ul>
+      )}
     </Wrapper>
   )
 }
