@@ -116,7 +116,10 @@ export default (inputs) => ({
           priority          :-10,
           reuseExistingChunk:true,
           name(module) {
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
+            const match = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)
+            // TODO Investigate why suddenly the package name is not being extracted on some packages,
+            // (with module.context === null)
+            const packageName = match ? match[1] : 'pkg'
             return `vendor.${packageName.replace(
               '@', '',
             )}`
