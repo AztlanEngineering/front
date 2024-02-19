@@ -24,6 +24,7 @@ function Footer({
   right,
   desktop,
   UNSTABLE_padded,
+  UNSTABLE_borders,
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -43,6 +44,7 @@ function Footer({
         fixed && styleNames.modifierFixed,
         fixed && 'default-columns',
         UNSTABLE_padded && 'section padded',
+        UNSTABLE_borders && 'borders',
         'grid',
       ]
         .filter((e) => e)

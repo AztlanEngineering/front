@@ -56,6 +56,9 @@ export const barsShared = {
   /* Whether to hide this navigation element on desktop */
   desktop:PropTypes.bool,
 
+  /* Whether to display borders */
+  UNSTABLE_borders:PropTypes.bool,
+
   /* Whether the element is padded */
   UNSTABLE_padded:PropTypes.bool,
 }

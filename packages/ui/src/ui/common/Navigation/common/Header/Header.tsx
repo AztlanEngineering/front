@@ -24,6 +24,7 @@ function Header({
   children,
   right,
   desktop,
+  UNSTABLE_borders,
   UNSTABLE_padded,
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
@@ -37,6 +38,7 @@ function Header({
     <Wrapper
       id={id}
       className={[
+  border-top: 2px solid black;
         baseClassName,
         componentClassName,
         userClassName,
@@ -44,6 +46,7 @@ function Header({
         fixed && styleNames.modifierFixed,
         fixed && 'default-columns',
         UNSTABLE_padded && 'section padded',
+        UNSTABLE_borders && 'borders',
         'grid',
       ]
         .filter((e) => e)

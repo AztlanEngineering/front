@@ -4,12 +4,15 @@
 @use "@aztlan/mixins/src/media" as media;
 
 .#{bem.$base}.navigation-header {
-  border-bottom: 2px solid black;
   &.#{bem.$modifier-fixed} {
     left: 0;
     position: fixed;
     top: 0;
     width: 100%;
+  }
+
+  &.border {
+    border-bottom: 2px solid black;
   }
 
   //> span > button {

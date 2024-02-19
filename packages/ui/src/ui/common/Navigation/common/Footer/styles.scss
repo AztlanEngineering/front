@@ -3,12 +3,15 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.navigation-footer {
-  border-top: 2px solid black;
   &.#{bem.$modifier-fixed} {
     bottom: 0;
     left: 0;
     position: fixed;
     width: 100%;
+  }
+
+  &.border {
+    border-bottom: 2px solid black;
   }
 
   //> span > button {
