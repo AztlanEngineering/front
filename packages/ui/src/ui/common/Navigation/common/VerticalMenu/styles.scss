@@ -3,6 +3,8 @@
 @use "@aztlan/bem";
 
 .#{bem.$base}.vertical-menu {
+  grid-template-rows: auto auto 1fr;
+
   ul {
     align-content: baseline;
     list-style: none;

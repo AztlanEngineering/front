@@ -22,8 +22,10 @@ function VerticalMenu({
   as: Wrapper = 'nav',
   label,
   items,
-  desktopOnly = true,
   extras,
+  onItemMouseEnterHandler,
+  onItemMouseLeaveHandler,
+  ...otherProps
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -39,20 +41,21 @@ function VerticalMenu({
         baseClassName,
         componentClassName,
         userClassName,
-        desktopOnly && 'desktop-only',
         'grid',
       ]
         .filter((e) => e)
         .join(' ')}
       style={style}
-      // {...otherProps}
+      {...otherProps}
     >
-      {label && <span>{label}</span>}
+      {label && <span className="container">{label}</span>}
       <ul className="container">
         {items?.map((item) => (
           <li
             key={`${item.label}${item.url || ''}`}
             className={item.disabled ? 'disabled container' : 'container'}
+            onMouseEnter={onItemMouseEnterHandler?.(item)}
+            // onMouseLeave={onItemMouseLeaveHandler?.(item)}
           >
             {item.url && !item.disabled ? (
               <Link to={item.url}>{item.label}</Link>

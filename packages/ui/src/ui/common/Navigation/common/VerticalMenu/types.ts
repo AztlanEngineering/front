@@ -26,6 +26,12 @@ export const ComponentPropTypes = {
     Component:PropTypes.node.isRequired,
     disabled :PropTypes.bool,
   })),
+
+  /** A function that takes the current item is executed on mouse enter */
+  onItemMouseEnterHandler:PropTypes.func,
+
+  /** A function that takes the current item is executed on mouse leave */
+  onItemMouseLeaveHandler:PropTypes.func,
 }
 
 export type ComponentProps = InferProps<typeof ComponentPropTypes>
