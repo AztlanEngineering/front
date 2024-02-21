@@ -6,18 +6,20 @@ import {
   useReducer,
 } from 'react'
 
+import { useLocation } from 'react-router-dom'
+import Context from './Context.js'
+import { propTypes } from './types.js'
+import type { Props } from './types.js'
 import {
-  useLocation, Link, useHistory,
-} from 'react-router-dom'
-import Context from './NestedNavigationContext.js'
-import { NestedNavigationPropTypes } from './types.js'
-import type { NestedNavigationProps } from './types.js'
-import type { ItemType } from './NestedNavigationContext.js'
-
+  findInitialCurrentTree, prepareNavigationData,
+} from './utils.js'
+import reducer from './reducer.js'
 import {
-  Header, Footer, VerticalMenu,
-  Paginator,
-} from './common/index.js'
+  Header,
+  // Footer,
+  VerticalMenu,
+  // Paginator,
+} from '../../common/index.js'
 
 // const baseClassName = styleNames.base
 // const componentClassName = 'navigation'
@@ -31,7 +33,7 @@ import {
 function NestedNavigationHeader(props) {
   const {
     previous = 'Previous',
-    content:children = 'children',
+    title:children = 'children',
     fixed,
   } = useContext(Context)
   return (
@@ -81,19 +83,15 @@ function NestedNavigationPaginator(props) {
 function NestedNavigationVerticalMenu(props) {
   const {
     items,
-    currentIndex,
+    // currentIndex,
     menuLabel,
     currentTree,
     hoverTree,
-    maxLevel,
-    selectUrl,
+    // maxLevel,
+    // selectUrl,
     onItemMouseEnterHandler,
     onMenuMouseLeave,
   } = useContext(Context)
-
-  console.log(
-    'JT', hoverTree,
-  )
 
   const map = [
     <VerticalMenu
@@ -109,11 +107,11 @@ function NestedNavigationVerticalMenu(props) {
   map.push(...mapSubject.slice(
     0, mapSubject.length,
   ).map(({
-    items, menuLabel,
+    items:subitems,
     ...itemProps
-  }) => items && (
+  }) => subitems && (
     <VerticalMenu
-      items={items}
+      items={subitems}
       label={menuLabel}
       onItemMouseEnterHandler={onItemMouseEnterHandler}
       {...itemProps}
@@ -130,144 +128,17 @@ function NestedNavigationVerticalMenu(props) {
   )
 }
 
-function prepareNavigationData(
-  items, currentLevel = 0, urlIndex = {}, parentUrl = null,
-) {
-  /**
-   * Enhances navigation items with depth levels, compiles a URL index for direct item access,
-   * and annotates each item with a reference to its parent URL.
-   *
-   * @param {Array} items - The navigation items to process.
-   * @param {number} [currentLevel=0] - The current depth level, starting from 0.
-   * @param {Object} [urlIndex={}] - Accumulates mappings from URLs to items.
-   * @param {string|null} [parentUrl=null] - The URL of the parent item.
-   * @returns {Object} Contains annotated items, the maximum depth, and a URL index.
-   */
-  let maxLevel = currentLevel
-
-  const preparedItems = items.reduce(
-    (
-      acc, item,
-    ) => {
-      const newItem = {
-        ...item,
-        level:currentLevel,
-        parentUrl,
-      }
-      if (item.url) {
-        urlIndex[item.url] = newItem
-      }
-      if (item.items) {
-        const childData = prepareNavigationData(
-          item.items, currentLevel + 1, urlIndex, item.url,
-        )
-        newItem.items = childData.preparedItems
-        maxLevel = Math.max(
-          maxLevel, childData.maxLevel,
-        )
-      }
-      acc.push(newItem)
-      return acc
+function NestedNavigation({
+  children,
+  items,
+  menuLabel,
+}:Props): React.ReactElement {
+  useInsertionEffect(
+    () => {
+    // @ts-ignore
+      import('./styles.scss')
     }, [],
   )
-
-  return {
-    preparedItems,
-    maxLevel,
-    urlIndex,
-  }
-}
-function findInitialCurrentTree(
-  urlIndex, url,
-) {
-  /**
-   * Constructs the initial currentTree based on the current URL.
-   *
-   * @param {Object} urlIndex - A dictionary mapping URLs to their corresponding items.
-   * @param {string} url - The current URL to find in the urlIndex.
-   * @returns {Array} The path (array of items) from the root to the item matching the current URL.
-   */
-  const path = []
-  let currentItem = urlIndex[url]
-
-  while (currentItem) {
-    path.unshift(currentItem)
-    currentItem = urlIndex[currentItem.parentUrl]
-  }
-
-  return path
-}
-
-function navigationReducer(
-  state, action,
-) {
-  switch (action.type) {
-    case 'SELECT_URL': {
-      const url = action.payload
-      const item = state.urlIndex[url]
-      if (!item) return state // URL not found
-
-      // Calculate new currentTree based on the item's level
-      const updatedCurrentTree = [
-        ...state.currentTree.slice(
-          0, item.level,
-        ),
-        item,
-      ]
-
-      return {
-        ...state,
-        currentItem:item,
-        focus      :item.items ? item.level + 1 : 0,
-        currentTree:updatedCurrentTree,
-      }
-    }
-    case 'HOVER_ITEM': {
-      const url = action.payload
-      const item = state.urlIndex[url]
-      if (!item) return state
-
-      const isDifferentItem = state.hoverTree[state.hoverTree.length - 1]?.url !== url
-      const needsUpdate = isDifferentItem || state.hoverTree.length !== item.level + 1
-
-      if (needsUpdate) {
-        const updatedHoverTree = [
-          ...state.hoverTree.slice(
-            0, item.level,
-          ),
-          item,
-        ]
-
-        return {
-          ...state,
-          hoverTree:updatedHoverTree,
-        }
-      }
-
-      return state
-    }
-    case 'LEAVE_ITEM': {
-      return {
-        ...state,
-        hoverTree:[], // Clear hoverTree when mouse leaves the navigation menu
-      }
-    }
-    case 'RESET':
-      return {
-        ...state,
-        focus      :0,
-        currentItem:null,
-        currentTree:[],
-      }
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`)
-  }
-}
-
-function NestedNavigation({
-  children, items,
-  menuLabel,
-}) {
   const {
     preparedItems, maxLevel, urlIndex,
   } = useMemo(
@@ -298,7 +169,7 @@ function NestedNavigation({
     state,
     dispatch,
   ] = useReducer(
-    navigationReducer, initialStateWithPreparedItems,
+    reducer, initialStateWithPreparedItems,
   )
 
   const selectUrl = useCallback(
@@ -310,7 +181,7 @@ function NestedNavigation({
     }, [],
   )
   const onItemMouseEnterHandler = useCallback(
-    (item) => (e) => {
+    (item) => () => {
       console.log(
         'onItemMouseEnterHandler', item.url,
       )
@@ -370,7 +241,7 @@ function NestedNavigation({
   )
 }
 
-NestedNavigation.propTypes = NestedNavigationPropTypes
+NestedNavigation.propTypes = propTypes
 
 NestedNavigation.Header = React.memo(NestedNavigationHeader)
 // NestedNavigation.Footer = React.memo(NestedNavigationFooter)

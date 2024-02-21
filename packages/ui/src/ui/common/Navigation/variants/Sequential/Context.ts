@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+import type { ContextValue } from './types.js'
 /*
  import * as formPropTypes from '../Field/propTypes.js'
 import * as FormPropTypes from './types.js'
@@ -11,22 +12,5 @@ export type FormContextType = {
   sharedFieldProps?:InferProps<typeof formPropTypes.wrapperShared>;
 }
 */
-export type ItemType = {
-  label         :string;
-  url           :string;
-  disabled      :boolean;
-  items         :ItemType[];
-  footerContent?:React.ReactElement;
-}
-
-export type ContextValue = {
-  previous  :React.ReactElement;
-  next      :React.ReactElement;
-  menuLabel?:string;
-  items     :ItemType[];
-  fixed     :boolean;
-  // hideNextButton       :boolean;
-  // hidePreviousButton   :boolean;
-}
 
 export default React.createContext<ContextValue>({} as ContextValue)

@@ -4,10 +4,10 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import * as decorators from 'story-utils/decorators.js'
-import Component from './NestedNavigation.js'
+import Component from './Navigation.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'common/Navigation/NestedNavigation',
+  title     :'common/Navigation/Nested',
   component :Component,
   decorators:[decorators.router],
   parameters:{ layout: 'fullscreen' },
@@ -107,11 +107,9 @@ export const Base: StoryObj<typeof Component> = {
   },
 }
 
-export const AlwaysDisplay: StoryObj<typeof Component> = { args: { ...Base.args } }
-
 export const Fixed: StoryObj<typeof Component> = {
   args:{
-    ...AlwaysDisplay.args,
+    ...Base.args,
     children:[
       <div
         style={{
@@ -121,7 +119,7 @@ export const Fixed: StoryObj<typeof Component> = {
         key="spacer"
       />,
       // @ts-ignore
-      ...AlwaysDisplay.args.children,
+      ...Base.args.children,
     ],
     fixed:true,
   },

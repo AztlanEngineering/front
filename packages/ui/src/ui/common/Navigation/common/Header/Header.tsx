@@ -23,7 +23,6 @@ function Header({
   left,
   children,
   right,
-  desktop,
   UNSTABLE_borders,
   UNSTABLE_padded,
 }: ComponentProps): React.ReactElement {
@@ -41,7 +40,6 @@ function Header({
         baseClassName,
         componentClassName,
         userClassName,
-        !desktop && 'desktop-hidden',
         fixed && styleNames.modifierFixed,
         fixed && 'default-columns',
         UNSTABLE_padded && 'section padded',

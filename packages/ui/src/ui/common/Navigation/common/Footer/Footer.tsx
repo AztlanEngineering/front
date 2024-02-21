@@ -22,7 +22,6 @@ function Footer({
   fixed,
   children,
   right,
-  desktop,
   UNSTABLE_padded,
   UNSTABLE_borders,
 }: ComponentProps): React.ReactElement {
@@ -40,7 +39,6 @@ function Footer({
         baseClassName,
         componentClassName,
         userClassName,
-        !desktop && 'desktop-hidden',
         fixed && styleNames.modifierFixed,
         fixed && 'default-columns',
         UNSTABLE_padded && 'section padded',

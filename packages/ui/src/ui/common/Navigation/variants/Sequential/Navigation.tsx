@@ -1,21 +1,22 @@
 /* @aztlan/generator-front 1.1.4 */
 import * as React from 'react'
 import {
-  useInsertionEffect, useContext, useMemo, useCallback,
+  useInsertionEffect, useContext, useMemo,
 } from 'react'
 
 import {
   useLocation, Link,
 } from 'react-router-dom'
-import Context from './SequentialNavigationContext.js'
-import { SequentialNavigationPropTypes } from './types.js'
-import type { SequentialNavigationProps } from './types.js'
-import type { ItemType } from './SequentialNavigationContext.js'
+import Context from './Context.js'
+import { propTypes } from './types.js'
+import type {
+  Props, ItemType,
+} from './types.js'
 
 import {
   Header, Footer, VerticalMenu,
   Paginator,
-} from './common/index.js'
+} from '../../common/index.js'
 
 // const baseClassName = styleNames.base
 // const componentClassName = 'navigation'
@@ -104,14 +105,7 @@ function SequentialNavigation({
   hidePreviousButton = false,
   currentFooterContent:userCurrentFooterContent,
   submit,
-}: SequentialNavigationProps): React.ReactElement {
-  useInsertionEffect(
-    () => {
-    // @ts-ignore
-      import('./styles.scss')
-    }, [],
-  )
-
+}: Props): React.ReactElement {
   const location = useLocation()
 
   const currentIndex = useMemo(
@@ -247,7 +241,7 @@ function SequentialNavigation({
   return <Context.Provider value={value}>{children}</Context.Provider>
 }
 
-SequentialNavigation.propTypes = SequentialNavigationPropTypes
+SequentialNavigation.propTypes = propTypes
 
 SequentialNavigation.Header = React.memo(SequentialNavigationHeader)
 SequentialNavigation.Footer = React.memo(SequentialNavigationFooter)

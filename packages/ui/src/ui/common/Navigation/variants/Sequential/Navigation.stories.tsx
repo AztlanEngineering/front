@@ -4,10 +4,10 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import * as decorators from 'story-utils/decorators.js'
-import Component from './SequentialNavigation.js'
+import Component from './Navigation.js'
 
 const meta: Meta<typeof Component> = {
-  title     :'common/Navigation/SequentialNavigation',
+  title     :'common/Navigation/Sequential',
   component :Component,
   decorators:[decorators.router],
   parameters:{ layout: 'fullscreen' },
