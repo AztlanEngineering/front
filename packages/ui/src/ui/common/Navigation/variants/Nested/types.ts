@@ -29,6 +29,7 @@ export type ItemType = {
   url           :string;
   disabled      :boolean;
   parentUrl     :string;
+  level         :number;
   items         :ItemType[];
   footerContent?:React.ReactElement;
 }
@@ -51,13 +52,15 @@ export type ContextValue = {
   next                   :React.ReactElement;
   menuLabel?             :string;
   items                  :ItemType[];
-  currentIndex           :number;
+  currentItem            :ItemType;
   currentTree            :ItemType[];
   hoverTree              :ItemType[];
+  focus                  :number;
   maxLevel               :number;
   selectUrl              :string;
   fixed                  :boolean;
   title                  :string;
+  focusParent            :() => void;
   onItemMouseEnterHandler:(event: React.MouseEvent) => void;
   onMenuMouseLeave       :(event: React.MouseEvent) => void;
 }

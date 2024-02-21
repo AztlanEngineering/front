@@ -22,6 +22,23 @@ function reducer(
         currentTree:updatedCurrentTree,
       }
     }
+    case 'FOCUS_PARENT': {
+      if (state.currentTree.length < 1) {
+        return state
+      }
+
+      const updatedCurrentTree = state.currentTree.slice(
+        0, -1,
+      )
+      const parentItem = updatedCurrentTree[updatedCurrentTree.length - 1] || null
+
+      return {
+        ...state,
+        currentItem:parentItem,
+        focus      :parentItem ? parentItem.level + 1 : 0,
+        currentTree:updatedCurrentTree,
+      }
+    }
     case 'HOVER_ITEM': {
       const url = action.payload
       const item = state.urlIndex[url]

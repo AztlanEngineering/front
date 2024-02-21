@@ -32,15 +32,27 @@ import {
 
 function NestedNavigationHeader(props) {
   const {
-    previous = 'Previous',
+    // previous = 'Previous',
     title:children = 'children',
+    focusParent,
+    focus,
     fixed,
   } = useContext(Context)
+
   return (
     <Header
       fixed={fixed}
+      left={focus > Number(0) ? (
+        <button
+          onClick={focusParent}
+          type="button"
+        >
+          previous
+        </button>
+      ) : null}
       {...props}
     >
+      {JSON.stringify(focus)}
       {children}
     </Header>
   )
@@ -180,15 +192,19 @@ function NestedNavigation({
       })
     }, [],
   )
+  const focusParent = useCallback(
+    () => {
+      dispatch({ type: 'FOCUS_PARENT' })
+    }, [],
+  )
   const onItemMouseEnterHandler = useCallback(
     (item) => () => {
-      console.log(
-        'onItemMouseEnterHandler', item.url,
-      )
-      dispatch({
-        type   :'HOVER_ITEM',
-        payload:item.url,
-      })
+      if (item.items) {
+        dispatch({
+          type   :'HOVER_ITEM',
+          payload:item.url,
+        })
+      }
     }, [],
   )
   const onMenuMouseLeave = useCallback(
@@ -218,6 +234,7 @@ function NestedNavigation({
       ...state,
       selectUrl,
       resetNavigation,
+      focusParent,
       onItemMouseEnterHandler,
       onMenuMouseLeave,
       menuLabel,
@@ -227,6 +244,7 @@ function NestedNavigation({
       state,
       selectUrl,
       menuLabel,
+      focusParent,
       onItemMouseEnterHandler,
       onMenuMouseLeave,
       preparedItems,

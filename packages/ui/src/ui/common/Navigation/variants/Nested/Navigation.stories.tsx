@@ -20,7 +20,7 @@ export const Base: StoryObj<typeof Component> = {
     menuLabel:'Menu',
     children :[
       <div className="grid container background far">
-        <Component.Header />
+        <Component.Header className="container" />
         <Component.VerticalMenu className="span-8 md-span-3 background near" />
         <div className="grid container span-8 md-span-11">
           <h1>Content goes here</h1>

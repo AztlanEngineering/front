@@ -54,11 +54,15 @@ function VerticalMenu({
           <li
             key={`${item.label}${item.url || ''}`}
             className={item.disabled ? 'disabled container' : 'container'}
-            onMouseEnter={onItemMouseEnterHandler?.(item)}
             // onMouseLeave={onItemMouseLeaveHandler?.(item)}
           >
             {item.url && !item.disabled ? (
-              <Link to={item.url}>{item.label}</Link>
+              <Link
+                to={item.url}
+                onMouseEnter={onItemMouseEnterHandler?.(item)}
+              >
+                {item.label}
+              </Link>
             ) : (
               item.label
             )}
