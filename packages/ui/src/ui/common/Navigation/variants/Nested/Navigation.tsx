@@ -222,20 +222,19 @@ function NestedNavigation({
   const initialCurrentTree = useMemo(
     () => findCurrentTree(
       urlIndex, location.pathname,
-    ), [
-      urlIndex,
-      location.pathname,
-    ],
+    ), [urlIndex],
   )
 
-  const initialStateWithPreparedItems = {
-    currentDepth:0,
-    items       :preparedRoot.items,
-    currentTree :[...initialCurrentTree],
-    currentItem :urlIndex[location.pathname],
-    urlIndex,
-    hoverTree   :[],
-  }
+  const initialStateWithPreparedItems = useMemo(
+    () => ({
+      currentDepth:0,
+      // items       :preparedRoot.items,
+      currentTree :[...initialCurrentTree],
+      currentItem :urlIndex[location.pathname],
+      urlIndex,
+      hoverTree   :[],
+    }), [initialCurrentTree],
+  )
 
   console.log(
     'INITIAL STATE', initialStateWithPreparedItems,
@@ -318,7 +317,7 @@ function NestedNavigation({
       onItemMouseEnterHandler,
       onMenuMouseLeave,
       label,
-      items:preparedRoot.items,
+      // items:preparedRoot.items,
       maxDepth,
     }), [
       state,
@@ -327,7 +326,7 @@ function NestedNavigation({
       focusParent,
       onItemMouseEnterHandler,
       onMenuMouseLeave,
-      preparedRoot.items,
+      // preparedRoot.items,
       maxDepth,
     ],
   )
