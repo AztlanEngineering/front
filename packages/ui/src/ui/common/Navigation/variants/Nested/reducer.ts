@@ -8,6 +8,7 @@ function reducer(
       const url = action.payload
       const item = state.urlIndex[url]
       if (!item) return state // URL not found
+      if (!state.urlIndex[url]) return state // URL not found
 
       const updatedCurrentTree = [
         ...findCurrentTree(
