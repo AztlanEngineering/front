@@ -63,9 +63,9 @@ function NestedNavigation({
   const location = useLocation()
 
   const initialCurrentTree = useMemo(
-    () => findCurrentTree(
+    () => (urlIndex[location.pathname] ? findCurrentTree(
       urlIndex, location.pathname,
-    ), [urlIndex],
+    ) : [preparedRoot]), [urlIndex],
   )
 
   const initialStateWithPreparedItems = useMemo(
@@ -77,10 +77,6 @@ function NestedNavigation({
       urlIndex,
       hoverTree   :[],
     }), [initialCurrentTree],
-  )
-
-  console.log(
-    'INITIAL STATE', initialStateWithPreparedItems,
   )
 
   const [
