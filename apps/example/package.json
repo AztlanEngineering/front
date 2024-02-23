@@ -43,7 +43,7 @@
     "eslint": "^8.56.0",
     "graphql": "^16.8.1",
     "relay-compiler": "^16.2.0",
-    "storybook": "^7.6.16",
+    "storybook": "^7.6.17",
     "typescript": "^5.3.3"
   },
   "dependencies": {

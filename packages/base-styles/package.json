@@ -17,10 +17,10 @@
   "devDependencies": {
     "@aztlan/postcss-config": "^0.9.0",
     "@aztlan/stylelint-config": "^0.9.0",
-    "cssnano": "^6.0.3",
+    "cssnano": "^6.0.4",
     "postcss-cli": "^11.0.0",
-    "postcss-preset-env": "^9.3.0",
-    "sass": "^1.71.0"
+    "postcss-preset-env": "^9.4.0",
+    "sass": "^1.71.1"
   },
   "dependencies": {
     "@aztlan/grid": "^0.9.7",
