@@ -97,7 +97,9 @@ function NestedNavigationPaginator(props) {
   )
 } */
 
-function NestedNavigationVerticalMenu(props) {
+function NestedNavigationVerticalMenu({
+  groupClassName:userClassName, ...props
+}) {
   const {
     root,
     // currentIndex,
@@ -129,7 +131,7 @@ function NestedNavigationVerticalMenu(props) {
   ).map(({
     items:subitems,
     ...itemProps
-  }) => subitems && (
+  }) => (
     <VerticalMenu
       key={itemProps?.url}
       items={subitems}
@@ -145,7 +147,7 @@ function NestedNavigationVerticalMenu(props) {
       className={
         [
           'group grid',
-          props.className,
+          userClassName,
         ].filter(Boolean).join(' ')
       }
     >

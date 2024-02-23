@@ -23,7 +23,10 @@ export const Base: StoryObj<typeof Component> = {
       <>
         <Component.Header className="container" />
         <div className="main-row container grid">
-          <Component.VerticalMenu className="md-span-3 background near" />
+          <Component.VerticalMenu
+            groupClassName="md-span-9"
+            className="md-span-3 background near"
+          />
           <Component.Canvas>
             <div className="container">
               <h1>Content goes here</h1>
