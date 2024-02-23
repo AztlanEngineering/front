@@ -92,6 +92,12 @@ export const NestedNavigationVerticalMenuPropTypes = {
 export const NestedNavigationCanvasPropTypes = {
   ...basePropTypes.htmlShared,
 
+  /* the span of vertical menu single elements on desktop */
+  desktopVerticalMenuSingleSpan:PropTypes.number,
+
+  /* the span of vertical menu group elements on desktop */
+  desktopVerticalMenuGroupSpan:PropTypes.number,
+
   /* The children to render */
   children:PropTypes.node.isRequired,
 }

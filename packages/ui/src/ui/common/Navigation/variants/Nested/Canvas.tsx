@@ -13,6 +13,8 @@ function NestedNavigationCanvas({
   className: userClassName,
   style,
   children,
+  desktopVerticalMenuGroupSpan = 9,
+  desktopVerticalMenuSingleSpan = 3,
 }:NestedNavigationCanvasProps) {
   /*
   const {
@@ -31,8 +33,14 @@ function NestedNavigationCanvas({
   return (
     <div className="main-row container grid">
       <VerticalMenu
-        groupClassName="md-span-9"
-        className="md-span-3 background near"
+        groupClassName={`
+      md-span-${desktopVerticalMenuGroupSpan}`}
+        className={[
+          `md-span-${desktopVerticalMenuSingleSpan}`,
+          'background near',
+        ]
+          .filter(Boolean)
+          .join(' ')}
       />
       <div
         id={id}
