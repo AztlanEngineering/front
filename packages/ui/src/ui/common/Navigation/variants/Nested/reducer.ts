@@ -7,9 +7,6 @@ function reducer(
     case 'SELECT_URL': {
       const url = action.payload
       const item = state.urlIndex[url]
-      console.log(
-        'UCT', updatedCurrentTree, item, state.urlIndex, url,
-      )
       if (!item) return state // URL not found
 
       const updatedCurrentTree = [

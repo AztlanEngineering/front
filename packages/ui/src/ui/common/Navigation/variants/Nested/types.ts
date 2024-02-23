@@ -20,12 +20,13 @@ export const propTypes = {
   items:PropTypes.arrayOf(PropTypes.shape({
     label        :PropTypes.string.isRequired,
     url          :PropTypes.string.isRequired,
-    footerContent:PropTypes.string,
+    footerContent:PropTypes.node,
+    disabled     :PropTypes.bool,
     items        :PropTypes.array,
   })),
 
   /** The label of the menu */
-  label:PropTypes.string,
+  label:PropTypes.string.isRequired,
 
   /* The current footer content */
   currentFooterContent:PropTypes.string,
@@ -36,15 +37,19 @@ export const propTypes = {
 
 export type Props = InferProps<typeof propTypes>
 
-export type ItemType = {
+export interface Item {
   label         :string;
   url           :string;
-  disabled      :boolean;
-  parentUrl     :string;
-  depth         :number;
-  items         :ItemType[];
+  disabled?     :boolean;
+  items?        :Item[];
   footerContent?:React.ReactElement;
 }
+
+export interface PreparedItem extends Item {
+  parentUrl:string | null;
+  depth    :number;
+}
+
 /*
   const {
     items,
@@ -62,12 +67,12 @@ export type ItemType = {
 export type ContextValue = {
   previous               :React.ReactElement;
   next                   :React.ReactElement;
-  menuLabel?             :string;
-  root                   :ItemType;
-  currentItem            :ItemType;
-  currentTree            :ItemType[];
-  hoverTree              :ItemType[];
-  focus                  :number;
+  label?                 :string;
+  root                   :PreparedItem;
+  currentItem            :PreparedItem;
+  currentTree            :PreparedItem[];
+  hoverTree              :PreparedItem[];
+  currentDepth           :number;
   maxDepth               :number;
   selectUrl              :string;
   fixed                  :boolean;
@@ -77,4 +82,8 @@ export type ContextValue = {
   focusCanvas            :() => void;
   onItemMouseEnterHandler:(event: React.MouseEvent) => void;
   onMenuMouseLeave       :(event: React.MouseEvent) => void;
+}
+
+export type UrlIndex = {
+  [url: string]:PreparedItem;
 }

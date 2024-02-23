@@ -7,8 +7,10 @@
   @include media.media($to: 801px) {
     &.focus-canvas {
       .main-row {
+        //margin-left: 200%;
+
         > * {
-          left: calc(var(--tree-depth) * -100%) !important;
+          //left: calc(var(--tree-depth) + 1) * -100%) !important;
         }
       }
     }
@@ -23,15 +25,17 @@
       gap: 0;
       overflow-x: scroll;
       //transition: all 0.5s;
-      width: 100%;
+      width: auto;
 
       > * {
         flex: 0 0 100%;
+
+        left: calc(var(--offset) * -100%);
+        //left: 0;
+        //left: calc(var(--current-depth) * -100%);
         // Write flex code so that each child takes 100% of the viewport ?
         //flex: 0 0 auto;
         position: relative;
-
-        //left: calc(var(--focus-depth) * -100%);
         //transform: translateX(calc(var(--focus-depth) * -100%));
         //transform: translateX(calc(var(--tree-depth) * -100%));
         transition: left 0.3s;
@@ -40,20 +44,23 @@
       .group {
         display: flex;
         //overflow-x: visibl;
-        flex: var(--tree-depth) 0 calc(var(--tree-depth) * 100%);
+        //flex: calc(var(--tree-depth) - 1) 0 calc(var(--tree-depth) * 100%);
+        flex: 0 0 calc((var(--tree-depth) + 1) * 100%);
         gap: 0;
-        left: calc(var(--current-depth) * -100%);
         //transform: translateX(calc((1 / (var(--tree-depth))) * (var(--current-depth)) * -100%));
 
         > * {
-          flex: 0 0 calc(100% / var(--tree-depth));
+          flex: 0 0 calc(100% / calc(var(--tree-depth) + 1));
           //position: relative;
         }
       }
 
       .canvas {
         flex: 0 0 100%;
-        left: calc((var(--tree-depth) - 1) * -100%);
+        //left: 100%; //calc((var(--tree-depth) - 1) * -100%);
+        //position: absolute;
+        //left: -100%;
+        //left: calc((var(--tree-depth) - 1) * 100%);
         //transform: translateX(calc((1 / (var(--tree-depth))) * (var(--current-depth)) * -100%));
       }
     }

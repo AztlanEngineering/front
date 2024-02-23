@@ -12,7 +12,9 @@ import {
 import styleNames from '@aztlan/bem'
 import Context from './Context.js'
 import { propTypes } from './types.js'
-import type { Props } from './types.js'
+import type {
+  Item, Props,
+} from './types.js'
 import {
   findCurrentTree, prepareNavigationData,
 } from './utils.js'
@@ -45,7 +47,7 @@ function NestedNavigationHeader(props) {
   return (
     <Header
       fixed={fixed}
-      left={currentDepth != Number(0) ? (
+      left={currentDepth !== Number(0) ? (
         <button
           onClick={focusParent}
           type="button"
@@ -121,9 +123,6 @@ function NestedNavigationVerticalMenu(props) {
   ] */
 
   const mapSubject = hoverTree.length ? hoverTree : currentTree
-  console.log(
-    'VM', hoverTree, currentTree,
-  )
   const map = []
   map.push(...mapSubject.slice(
     0, mapSubject.length,
@@ -150,13 +149,16 @@ function NestedNavigationVerticalMenu(props) {
   )
 }
 
+const componentCanvasClassName = 'canvas'
+
 function NestedNavigationCanvas({
   children, ...props
 }) {
+  /*
   const {
     root,
     // currentIndex,
-    menuLabel,
+    //label,
     currentTree,
     hoverTree,
     // maxDepth,
@@ -164,9 +166,16 @@ function NestedNavigationCanvas({
     onItemMouseEnterHandler,
     onMenuMouseLeave,
   } = useContext(Context)
+   */
 
   return (
-    <div className={`grid ${props.className} container`}>
+    <div className={[
+      'grid container',
+      baseClassName,
+      componentCanvasClassName,
+      props.className,
+    ].filter(Boolean).join(' ')}
+    >
       {children}
     </div>
   )
@@ -191,9 +200,8 @@ function NestedNavigation({
   const root = {
     label,
     items,
-    depth:0,
     url,
-  }
+  } as Item
 
   const {
     preparedRoot, maxDepth, urlIndex,
@@ -274,9 +282,6 @@ function NestedNavigation({
 
   useEffect(
     () => {
-      console.log(
-        'location.pathname', location.pathname, state.currentItem?.url,
-      )
       if (location.pathname !== state.currentItem?.url) {
         selectUrl(location.pathname)
       }
@@ -329,10 +334,12 @@ function NestedNavigation({
           .filter((e) => e)
           .join(' ')}
         style={{
-          '--tree-depth'   :state.currentTree.length - 1,
-          '--current-depth':state.currentDepth,
+          '--tree-depth':state.currentTree.length - 1,
+          '--offset'    :state.currentDepth === -1
+            ? state.currentTree.length
+            : state.currentDepth,
           ...style,
-        }}
+        } as React.CSSProperties}
       >
         {children}
       </div>

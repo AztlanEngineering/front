@@ -1,31 +1,40 @@
 // REF 4.1
-import type { ItemType } from './types'
+import type {
+  Item, PreparedItem, UrlIndex,
+} from './types'
+
+interface PreparedNavigationData {
+  preparedRoot:PreparedItem;
+  maxDepth    :number;
+  urlIndex    :UrlIndex;
+}
 
 export function prepareNavigationData(
-  root: { label: string; items: ItemType[], url: string },
-  currentLevel = 1,
-  urlIndex: { [url: string]: ItemType } = {},
+  root: Item,
+  currentDepth = 0,
+  urlIndex: UrlIndex = {},
   // parentUrl: string | null = null,
-) {
-  let maxDepth = currentLevel
-  const {
-    label, items,
-    url,
-  } = root
+):PreparedNavigationData {
+  let maxDepth = currentDepth
+  const preparedRoot = {
+    ...root,
+    depth    :currentDepth,
+    parentUrl:null,
+  }
 
   urlIndex = {
-    [url]:root,
+    [preparedRoot.url]:preparedRoot,
     ...urlIndex,
   }
 
-  const preparedItems = items.reduce(
+  const preparedItems = preparedRoot.items.reduce(
     (
       acc, item,
     ) => {
       const newItem = {
         ...item,
-        depth    :currentLevel,
-        parentUrl:url,
+        depth    :currentDepth + 1,
+        parentUrl:preparedRoot.url,
       }
 
       if (item.url) {
@@ -39,7 +48,7 @@ export function prepareNavigationData(
             items:item.items,
             url  :item.url,
           },
-          currentLevel + 1,
+          currentDepth + 1,
           urlIndex,
         )
         newItem.items = childData.preparedRoot.items
@@ -57,12 +66,6 @@ export function prepareNavigationData(
     }, [],
   )
 
-  const preparedRoot = {
-    url,
-    label,
-    items:preparedItems,
-  }
-
   return {
     preparedRoot,
     maxDepth,
@@ -71,8 +74,8 @@ export function prepareNavigationData(
 }
 
 export function findCurrentTree(
-  urlIndex, url,
-) {
+  urlIndex:UrlIndex, url,
+):PreparedItem[] {
   /**
    * Constructs the initial currentTree based on the current URL.
    *
@@ -82,6 +85,7 @@ export function findCurrentTree(
    */
   const path = []
   let currentItem = urlIndex[url]
+  currentItem = currentItem.items ? currentItem : urlIndex[currentItem.parentUrl]
 
   while (currentItem) {
     path.unshift(currentItem)
