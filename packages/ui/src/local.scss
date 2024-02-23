@@ -1,5 +1,9 @@
 @use "@aztlan/base-styles";
 
+#storybook-root {
+  height: 100%;
+}
+
 .borders {
   border: 10px solid var(--hard-red) !important;
 }

@@ -4,6 +4,15 @@ import * as basePropTypes from '../../types.js'
 
 export const propTypes = {
   ...basePropTypes.fixedShared,
+  /* The current index */
+  id:PropTypes.string,
+
+  /* The class name */
+  className:PropTypes.string,
+
+  /* The style */
+  style:PropTypes.objectOf(PropTypes.string),
+
   /* The children to render */
   children:PropTypes.node.isRequired,
 
@@ -16,10 +25,13 @@ export const propTypes = {
   })),
 
   /** The label of the menu */
-  menuLabel:PropTypes.string,
+  label:PropTypes.string,
 
   /* The current footer content */
   currentFooterContent:PropTypes.string,
+
+  /* the url of the root item */
+  url:PropTypes.string,
 }
 
 export type Props = InferProps<typeof propTypes>
@@ -29,7 +41,7 @@ export type ItemType = {
   url           :string;
   disabled      :boolean;
   parentUrl     :string;
-  level         :number;
+  depth         :number;
   items         :ItemType[];
   footerContent?:React.ReactElement;
 }
@@ -40,7 +52,7 @@ export type ItemType = {
     menuLabel,
     currentTree,
     hoverTree,
-    maxLevel,
+    maxDepth,
     selectUrl,
     onItemMouseEnterHandler,
     onMenuMouseLeave,
@@ -51,16 +63,18 @@ export type ContextValue = {
   previous               :React.ReactElement;
   next                   :React.ReactElement;
   menuLabel?             :string;
-  items                  :ItemType[];
+  root                   :ItemType;
   currentItem            :ItemType;
   currentTree            :ItemType[];
   hoverTree              :ItemType[];
   focus                  :number;
-  maxLevel               :number;
+  maxDepth               :number;
   selectUrl              :string;
   fixed                  :boolean;
   title                  :string;
   focusParent            :() => void;
+  focusMenu              :() => void;
+  focusCanvas            :() => void;
   onItemMouseEnterHandler:(event: React.MouseEvent) => void;
   onMenuMouseLeave       :(event: React.MouseEvent) => void;
 }

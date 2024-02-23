@@ -6,12 +6,15 @@ import {
   useReducer,
 } from 'react'
 
-import { useLocation } from 'react-router-dom'
+import {
+  useHistory, useLocation,
+} from 'react-router-dom'
+import styleNames from '@aztlan/bem'
 import Context from './Context.js'
 import { propTypes } from './types.js'
 import type { Props } from './types.js'
 import {
-  findInitialCurrentTree, prepareNavigationData,
+  findCurrentTree, prepareNavigationData,
 } from './utils.js'
 import reducer from './reducer.js'
 import {
@@ -21,8 +24,8 @@ import {
   // Paginator,
 } from '../../common/index.js'
 
-// const baseClassName = styleNames.base
-// const componentClassName = 'navigation'
+const baseClassName = styleNames.base
+const componentClassName = 'nested-navigation'
 
 /**
  * description
@@ -35,14 +38,14 @@ function NestedNavigationHeader(props) {
     // previous = 'Previous',
     title:children = 'children',
     focusParent,
-    focus,
+    currentDepth,
     fixed,
   } = useContext(Context)
 
   return (
     <Header
       fixed={fixed}
-      left={focus > Number(0) ? (
+      left={currentDepth != Number(0) ? (
         <button
           onClick={focusParent}
           type="button"
@@ -52,7 +55,7 @@ function NestedNavigationHeader(props) {
       ) : null}
       {...props}
     >
-      {JSON.stringify(focus)}
+      {JSON.stringify(currentDepth)}
       {children}
     </Header>
   )
@@ -94,28 +97,34 @@ function NestedNavigationPaginator(props) {
 
 function NestedNavigationVerticalMenu(props) {
   const {
-    items,
+    root,
     // currentIndex,
-    menuLabel,
+    label,
     currentTree,
     hoverTree,
-    // maxLevel,
+    currentItem,
+    // maxDepth,
     // selectUrl,
     onItemMouseEnterHandler,
     onMenuMouseLeave,
   } = useContext(Context)
 
+  /*
   const map = [
     <VerticalMenu
+      key={currentItem?.url}
       items={items}
       label={menuLabel}
       onItemMouseEnterHandler={onItemMouseEnterHandler}
       {...props}
     />,
-  ]
+  ] */
 
   const mapSubject = hoverTree.length ? hoverTree : currentTree
-
+  console.log(
+    'VM', hoverTree, currentTree,
+  )
+  const map = []
   map.push(...mapSubject.slice(
     0, mapSubject.length,
   ).map(({
@@ -123,8 +132,9 @@ function NestedNavigationVerticalMenu(props) {
     ...itemProps
   }) => subitems && (
     <VerticalMenu
+      key={itemProps?.url}
       items={subitems}
-      label={menuLabel}
+      label={label}
       onItemMouseEnterHandler={onItemMouseEnterHandler}
       {...itemProps}
       {...props}
@@ -133,17 +143,43 @@ function NestedNavigationVerticalMenu(props) {
   return (
     <div
       onMouseLeave={onMenuMouseLeave}
-      className="container grid"
+      className="group grid container"
     >
       {map}
     </div>
   )
 }
 
+function NestedNavigationCanvas({
+  children, ...props
+}) {
+  const {
+    root,
+    // currentIndex,
+    menuLabel,
+    currentTree,
+    hoverTree,
+    // maxDepth,
+    // selectUrl,
+    onItemMouseEnterHandler,
+    onMenuMouseLeave,
+  } = useContext(Context)
+
+  return (
+    <div className={`grid ${props.className} container`}>
+      {children}
+    </div>
+  )
+}
+
 function NestedNavigation({
+  id,
+  className:userClassName,
+  style,
   children,
   items,
-  menuLabel,
+  label,
+  url,
 }:Props): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -151,16 +187,24 @@ function NestedNavigation({
       import('./styles.scss')
     }, [],
   )
+
+  const root = {
+    label,
+    items,
+    depth:0,
+    url,
+  }
+
   const {
-    preparedItems, maxLevel, urlIndex,
+    preparedRoot, maxDepth, urlIndex,
   } = useMemo(
-    () => prepareNavigationData(items), [items],
+    () => prepareNavigationData(root), [items],
   )
 
   const location = useLocation()
 
   const initialCurrentTree = useMemo(
-    () => findInitialCurrentTree(
+    () => findCurrentTree(
       urlIndex, location.pathname,
     ), [
       urlIndex,
@@ -169,12 +213,12 @@ function NestedNavigation({
   )
 
   const initialStateWithPreparedItems = {
-    focus      :0,
-    items      :preparedItems,
-    currentTree:initialCurrentTree,
-    currentItem:urlIndex[location.pathname],
+    currentDepth:0,
+    items       :preparedRoot.items,
+    currentTree :[...initialCurrentTree],
+    currentItem :urlIndex[location.pathname],
     urlIndex,
-    hoverTree  :[],
+    hoverTree   :[],
   }
 
   const [
@@ -184,39 +228,56 @@ function NestedNavigation({
     reducer, initialStateWithPreparedItems,
   )
 
+  const history = useHistory()
+
   const selectUrl = useCallback(
-    (url) => {
+    (u) => {
       dispatch({
         type   :'SELECT_URL',
-        payload:url,
+        payload:u,
       })
     }, [],
   )
   const focusParent = useCallback(
     () => {
+      history.push(state.currentItem.parentUrl)
       dispatch({ type: 'FOCUS_PARENT' })
-    }, [],
+    }, [state.currentItem],
   )
   const onItemMouseEnterHandler = useCallback(
     (item) => () => {
-      if (item.items) {
-        dispatch({
-          type   :'HOVER_ITEM',
-          payload:item.url,
-        })
-      }
+      // if (item.items) {
+      dispatch({
+        type   :'HOVER_ITEM',
+        payload:item.url,
+      })
+      // }
     }, [],
   )
   const onMenuMouseLeave = useCallback(
     () => {
-      console.log('onMenuMouseLeave')
-      dispatch({ type: 'LEAVE_ITEM' })
+      dispatch({ type: 'LEAVE_MENU' })
+    }, [],
+  )
+
+  const focusMenu = useCallback(
+    () => {
+      dispatch({ type: 'FOCUS_MENU' })
+    }, [],
+  )
+
+  const focusCanvas = useCallback(
+    () => {
+      dispatch({ type: 'FOCUS_CANVAS' })
     }, [],
   )
 
   useEffect(
     () => {
-      if (location.pathname !== state.currentItem.url) {
+      console.log(
+        'location.pathname', location.pathname, state.currentItem?.url,
+      )
+      if (location.pathname !== state.currentItem?.url) {
         selectUrl(location.pathname)
       }
     },
@@ -235,26 +296,46 @@ function NestedNavigation({
       selectUrl,
       resetNavigation,
       focusParent,
+      focusMenu,
+      focusCanvas,
       onItemMouseEnterHandler,
       onMenuMouseLeave,
-      menuLabel,
-      items:preparedItems,
-      maxLevel,
+      label,
+      items:preparedRoot.items,
+      maxDepth,
     }), [
       state,
       selectUrl,
-      menuLabel,
+      label,
       focusParent,
       onItemMouseEnterHandler,
       onMenuMouseLeave,
-      preparedItems,
-      maxLevel,
+      preparedRoot.items,
+      maxDepth,
     ],
   )
 
   return (
     <Context.Provider value={value}>
-      {children}
+      <div
+        id={id}
+        className={[
+          baseClassName,
+          componentClassName,
+          userClassName,
+          'grid container',
+          state.currentDepth === -1 && 'focus-canvas',
+        ]
+          .filter((e) => e)
+          .join(' ')}
+        style={{
+          '--tree-depth'   :state.currentTree.length - 1,
+          '--current-depth':state.currentDepth,
+          ...style,
+        }}
+      >
+        {children}
+      </div>
     </Context.Provider>
   )
 }
@@ -265,5 +346,6 @@ NestedNavigation.Header = React.memo(NestedNavigationHeader)
 // NestedNavigation.Footer = React.memo(NestedNavigationFooter)
 // NestedNavigation.Paginator = React.memo(NestedNavigationPaginator)
 NestedNavigation.VerticalMenu = React.memo(NestedNavigationVerticalMenu)
+NestedNavigation.Canvas = React.memo(NestedNavigationCanvas)
 
 export default NestedNavigation

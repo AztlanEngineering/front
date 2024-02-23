@@ -17,20 +17,25 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    menuLabel:'Menu',
-    children :[
-      <div className="grid container background far">
+    label   :'Menu',
+    url     :'/',
+    children:[
+      <>
         <Component.Header className="container" />
-        <Component.VerticalMenu className="span-8 md-span-3 background near" />
-        <div className="grid container span-8 md-span-11">
-          <h1>Content goes here</h1>
+        <div className="main-row container grid">
+          <Component.VerticalMenu className="md-span-3 background near" />
+          <Component.Canvas>
+            <div className="container">
+              <h1>Content goes here</h1>
+            </div>
+          </Component.Canvas>
         </div>
-      </div>,
+      </>,
     ],
     items:[
       {
         label:'Home',
-        url  :'/',
+        url  :'/home',
       },
       {
         label:'Organization Details',
@@ -38,7 +43,7 @@ export const Base: StoryObj<typeof Component> = {
       },
       {
         label:'Collections',
-        url  :'/org',
+        url  :'/coll',
       },
       {
         label:'Location',
@@ -56,11 +61,11 @@ export const Base: StoryObj<typeof Component> = {
       },
       {
         label:'Settings',
-        url  :'/settings',
+        url  :'/settingsa',
         items:[
           {
             label:'Account',
-            url  :'/account',
+            url  :'/accounta',
             items:[
               {
                 label:'Profile',
@@ -68,19 +73,19 @@ export const Base: StoryObj<typeof Component> = {
               },
               {
                 label:'Notifications',
-                url  :'/notifications',
+                url  :'/notificationsa',
               },
               {
                 label:'Security',
-                url  :'/security',
+                url  :'/securitya',
               },
               {
                 label:'Billing',
-                url  :'/billing',
+                url  :'/billinga',
               },
               {
                 label:'Logout',
-                url  :'/logout',
+                url  :'/logouta',
               },
             ],
           },

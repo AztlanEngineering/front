@@ -1,3 +1,5 @@
+import { findCurrentTree } from './utils.js'
+
 function reducer(
   state, action,
 ) {
@@ -5,65 +7,77 @@ function reducer(
     case 'SELECT_URL': {
       const url = action.payload
       const item = state.urlIndex[url]
+      console.log(
+        'UCT', updatedCurrentTree, item, state.urlIndex, url,
+      )
       if (!item) return state // URL not found
 
-      // Calculate new currentTree based on the item's level
       const updatedCurrentTree = [
-        ...state.currentTree.slice(
-          0, item.level,
+        ...findCurrentTree(
+          state.urlIndex, url,
         ),
-        item,
       ]
 
       return {
         ...state,
-        currentItem:item,
-        focus      :item.items ? item.level + 1 : 0,
-        currentTree:updatedCurrentTree,
+        currentItem :item,
+        hoverTree   :[],
+        currentDepth:item.items ? item.depth : -1,
+        currentTree :updatedCurrentTree,
+      }
+    }
+    case 'FOCUS_MENU': {
+      return {
+        ...state,
+        currentDepth:state.currentTree.length - 1,
+      }
+    }
+    case 'FOCUS_CANVAS': {
+      return {
+        ...state,
+        currentDepth:-1,
       }
     }
     case 'FOCUS_PARENT': {
-      if (state.currentTree.length < 1) {
+      if (state.currentTree.length <= 1) {
         return state
       }
 
-      const updatedCurrentTree = state.currentTree.slice(
-        0, -1,
+      const parentItem = state.urlIndex[state.currentItem.parentUrl]
+      console.log(
+        'parentItem',
+        parentItem,
+        state.currentItem,
+        state.urlIndex[state.currentItem.parentUrl],
       )
-      const parentItem = updatedCurrentTree[updatedCurrentTree.length - 1] || null
 
       return {
         ...state,
-        currentItem:parentItem,
-        focus      :parentItem ? parentItem.level + 1 : 0,
-        currentTree:updatedCurrentTree,
+        currentItem :parentItem,
+        // currentTree :updatedCurrentTree,
+        currentDepth:parentItem.depth,
       }
     }
+    // REF 8.1
     case 'HOVER_ITEM': {
       const url = action.payload
       const item = state.urlIndex[url]
-      if (!item) return state
+      if (!item) return state // Item not found
 
-      const isDifferentItem = state.hoverTree[state.hoverTree.length - 1]?.url !== url
-      const needsUpdate = isDifferentItem || state.hoverTree.length !== item.level + 1
+      // Recalculate the hover path for the item
+      const newHoverTree = [
+        ...findCurrentTree(
+          state.urlIndex, url,
+        ),
+      ]
 
-      if (needsUpdate) {
-        const updatedHoverTree = [
-          ...state.hoverTree.slice(
-            0, item.level,
-          ),
-          item,
-        ]
-
-        return {
-          ...state,
-          hoverTree:updatedHoverTree,
-        }
+      return {
+        ...state,
+        hoverTree:newHoverTree,
       }
-
-      return state
     }
-    case 'LEAVE_ITEM': {
+
+    case 'LEAVE_MENU': {
       return {
         ...state,
         hoverTree:[], // Clear hoverTree when mouse leaves the navigation menu
@@ -72,9 +86,9 @@ function reducer(
     case 'RESET':
       return {
         ...state,
-        focus      :0,
-        currentItem:null,
-        currentTree:[],
+        currentDepth:-1,
+        currentItem :null,
+        currentTree :[],
       }
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
