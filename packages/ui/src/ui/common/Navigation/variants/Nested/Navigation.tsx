@@ -142,7 +142,12 @@ function NestedNavigationVerticalMenu(props) {
   return (
     <div
       onMouseLeave={onMenuMouseLeave}
-      className="group grid container"
+      className={
+        [
+          'group grid',
+          props.className,
+        ].filter(Boolean).join(' ')
+      }
     >
       {map}
     </div>
@@ -170,7 +175,7 @@ function NestedNavigationCanvas({
 
   return (
     <div className={[
-      'grid container',
+      'grid',
       baseClassName,
       componentCanvasClassName,
       props.className,
