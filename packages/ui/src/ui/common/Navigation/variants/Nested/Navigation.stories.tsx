@@ -22,17 +22,9 @@ export const Base: StoryObj<typeof Component> = {
     children:[
       <React.Fragment key="fragment">
         <Component.Header className="container" />
-        <div className="main-row container grid">
-          <Component.VerticalMenu
-            groupClassName="md-span-9"
-            className="md-span-3 background near"
-          />
-          <Component.Canvas>
-            <div className="container">
-              <h1>Content goes here</h1>
-            </div>
-          </Component.Canvas>
-        </div>
+        <Component.Canvas>
+          <div className="container">Test content</div>
+        </Component.Canvas>
       </React.Fragment>,
     ],
     items:[

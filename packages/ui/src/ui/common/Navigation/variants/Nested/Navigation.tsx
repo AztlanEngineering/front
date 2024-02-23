@@ -19,12 +19,9 @@ import {
   findCurrentTree, prepareNavigationData,
 } from './utils.js'
 import reducer from './reducer.js'
-import {
-  Header,
-  // Footer,
-  VerticalMenu,
-  // Paginator,
-} from '../../common/index.js'
+import Canvas from './Canvas.js'
+import Header from './Header.js'
+import VerticalMenu from './VerticalMenu.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'nested-navigation'
@@ -34,160 +31,6 @@ const componentClassName = 'nested-navigation'
  * @param {InferProps<typeof NestedNavigation.propTypes>} props -
  * @returns {React.ReactElement} - Rendered NestedNavigation
  */
-
-function NestedNavigationHeader(props) {
-  const {
-    // previous = 'Previous',
-    title:children = 'children',
-    focusParent,
-    currentDepth,
-    fixed,
-  } = useContext(Context)
-
-  return (
-    <Header
-      fixed={fixed}
-      left={currentDepth !== Number(0) ? (
-        <button
-          onClick={focusParent}
-          type="button"
-        >
-          previous
-        </button>
-      ) : null}
-      {...props}
-    >
-      {JSON.stringify(currentDepth)}
-      {children}
-    </Header>
-  )
-}
-
-/*
-function NestedNavigationFooter(props) {
-  const {
-    //currentFooterContent:children,
-    next,
-    fixed,
-    hideNextButton,
-  } = useContext(Context)
-  return (
-    <Footer
-      right={!hideNextButton && next}
-      fixed={fixed}
-      {...props}
-    >
-      {children}
-    </Footer>
-  )
-}
-
-function NestedNavigationPaginator(props) {
-  const {
-    previous, next,
-    hidePreviousButton,
-    hideNextButton,
-  } = useContext(Context)
-  return (
-    <Paginator
-      left={!hidePreviousButton && previous}
-      right={!hideNextButton && next}
-      {...props}
-    />
-  )
-} */
-
-function NestedNavigationVerticalMenu({
-  groupClassName:userClassName, ...props
-}) {
-  const {
-    root,
-    // currentIndex,
-    label,
-    currentTree,
-    hoverTree,
-    currentItem,
-    // maxDepth,
-    // selectUrl,
-    onItemMouseEnterHandler,
-    onMenuMouseLeave,
-  } = useContext(Context)
-
-  /*
-  const map = [
-    <VerticalMenu
-      key={currentItem?.url}
-      items={items}
-      label={menuLabel}
-      onItemMouseEnterHandler={onItemMouseEnterHandler}
-      {...props}
-    />,
-  ] */
-
-  const mapSubject = hoverTree.length ? hoverTree : currentTree
-  const map = []
-  map.push(...mapSubject.slice(
-    0, mapSubject.length,
-  ).map(({
-    items:subitems,
-    parentUrl,
-    ...itemProps
-  }) => (
-    <VerticalMenu
-      key={itemProps?.url}
-      items={subitems}
-      label={label}
-      onItemMouseEnterHandler={onItemMouseEnterHandler}
-      {...itemProps}
-      {...props}
-    />
-  )))
-  return (
-    <div
-      onMouseLeave={onMenuMouseLeave}
-      className={
-        [
-          'group grid',
-          userClassName,
-        ].filter(Boolean).join(' ')
-      }
-    >
-      {map}
-    </div>
-  )
-}
-
-const componentCanvasClassName = 'canvas'
-
-function NestedNavigationCanvas({
-  children, ...props
-}) {
-  /*
-  const {
-    root,
-    // currentIndex,
-    //label,
-    currentTree,
-    hoverTree,
-    // maxDepth,
-    // selectUrl,
-    onItemMouseEnterHandler,
-    onMenuMouseLeave,
-  } = useContext(Context)
-   */
-
-  return (
-    <div className={[
-      'grid',
-      baseClassName,
-      componentCanvasClassName,
-      props.className,
-    ].filter(Boolean).join(' ')}
-    >
-      {children}
-    </div>
-  )
-}
 
 function NestedNavigation({
   id,
@@ -360,10 +203,44 @@ function NestedNavigation({
 
 NestedNavigation.propTypes = propTypes
 
-NestedNavigation.Header = React.memo(NestedNavigationHeader)
-// NestedNavigation.Footer = React.memo(NestedNavigationFooter)
-// NestedNavigation.Paginator = React.memo(NestedNavigationPaginator)
-NestedNavigation.VerticalMenu = React.memo(NestedNavigationVerticalMenu)
-NestedNavigation.Canvas = React.memo(NestedNavigationCanvas)
+NestedNavigation.Header = React.memo(Header)
+// NestedNavigation.Footer = React.memo(Footer)
+// NestedNavigation.Paginator = React.memo(Paginator)
+NestedNavigation.VerticalMenu = React.memo(VerticalMenu)
+NestedNavigation.Canvas = React.memo(Canvas)
 
 export default NestedNavigation
+
+/*
+function NestedNavigationFooter(props) {
+  const {
+    //currentFooterContent:children,
+    next,
+    fixed,
+    hideNextButton,
+  } = useContext(Context)
+  return (
+    <Footer
+      right={!hideNextButton && next}
+      fixed={fixed}
+      {...props}
+    >
+      {children}
+    </Footer>
+  )
+}
+
+function NestedNavigationPaginator(props) {
+  const {
+    previous, next,
+    hidePreviousButton,
+    hideNextButton,
+  } = useContext(Context)
+  return (
+    <Paginator
+      left={!hidePreviousButton && previous}
+      right={!hideNextButton && next}
+      {...props}
+    />
+  )
+} */

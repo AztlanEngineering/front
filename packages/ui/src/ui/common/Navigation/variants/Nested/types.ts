@@ -1,17 +1,12 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import * as basePropTypes from '../../types.js'
+import { ComponentPropTypes as VerticalMenuPropTypes } from '../../common/VerticalMenu/types.js'
+import { ComponentPropTypes as HeaderPropTypes } from '../../common/Header/types.js'
 
 export const propTypes = {
   ...basePropTypes.fixedShared,
-  /* The current index */
-  id:PropTypes.string,
-
-  /* The class name */
-  className:PropTypes.string,
-
-  /* The style */
-  style:PropTypes.objectOf(PropTypes.string),
+  ...basePropTypes.htmlShared,
 
   /* The children to render */
   children:PropTypes.node.isRequired,
@@ -87,3 +82,30 @@ export type ContextValue = {
 export type UrlIndex = {
   [url: string]:PreparedItem;
 }
+
+export const NestedNavigationVerticalMenuPropTypes = {
+  ...VerticalMenuPropTypes,
+  /* The class name for the group of vertical menus (the container) */
+  groupClassName:PropTypes.string,
+}
+
+export const NestedNavigationCanvasPropTypes = {
+  ...basePropTypes.htmlShared,
+
+  /* The children to render */
+  children:PropTypes.node.isRequired,
+}
+
+export const NestedNavigationHeaderPropTypes = { ...HeaderPropTypes }
+
+export type NestedNavigationVerticalMenuProps = InferProps<
+  typeof NestedNavigationVerticalMenuPropTypes
+>
+
+export type NestedNavigationCanvasProps = InferProps<
+  typeof NestedNavigationCanvasPropTypes
+>
+
+export type NestedNavigationHeaderProps = InferProps<
+  typeof NestedNavigationHeaderPropTypes
+>

@@ -15,17 +15,13 @@ function reducer(
         ),
       ]
 
-      const a = {
+      return {
         ...state,
         currentItem :item,
         hoverTree   :[],
         currentDepth:item.items ? item.depth : -1,
         currentTree :updatedCurrentTree,
       }
-      console.log(
-        'SELECT_URL', state, a,
-      )
-      return a
     }
     case 'FOCUS_MENU': {
       return {
@@ -45,23 +41,13 @@ function reducer(
       }
 
       const parentItem = state.urlIndex[state.currentItem.parentUrl]
-      console.log(
-        'parentItem',
-        parentItem,
-        state.currentItem,
-        state.urlIndex[state.currentItem.parentUrl],
-      )
 
-      const a = {
+      return {
         ...state,
         currentItem :parentItem,
         // currentTree :updatedCurrentTree,
         currentDepth:parentItem.depth,
       }
-      console.log(
-        'FOCUS_PARENT', state, a,
-      )
-      return a
     }
     // REF 8.1
     case 'HOVER_ITEM': {

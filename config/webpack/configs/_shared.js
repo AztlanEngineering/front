@@ -242,13 +242,16 @@ export default (inputs) => ({
       /* eslint-disable-next-line */
       // exclude:/node_modules\/(?!react-intl|@loadable|intl-messageformat|@formatjs\/icu-messageformat-parser)/,
       use :{
-        loader:'babel-loader',
-        /*
+        loader :'babel-loader',
         options:{
           presets:[
-            ['@babel/preset-env', { modules: false }],
+            [
+              '@babel/preset-env',
+              { modules: false },
+            ],
           ],
-        }, */
+          sourceMaps:true,
+        },
       },
     },
     scssDev:{
