@@ -20,7 +20,7 @@ export const Base: StoryObj<typeof Component> = {
     label   :'Menu',
     url     :'/',
     children:[
-      <>
+      <React.Fragment key="fragment">
         <Component.Header className="container" />
         <div className="main-row container grid">
           <Component.VerticalMenu
@@ -33,7 +33,7 @@ export const Base: StoryObj<typeof Component> = {
             </div>
           </Component.Canvas>
         </div>
-      </>,
+      </React.Fragment>,
     ],
     items:[
       {

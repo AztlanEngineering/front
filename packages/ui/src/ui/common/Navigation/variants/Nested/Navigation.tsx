@@ -130,6 +130,7 @@ function NestedNavigationVerticalMenu({
     0, mapSubject.length,
   ).map(({
     items:subitems,
+    parentUrl,
     ...itemProps
   }) => (
     <VerticalMenu
@@ -235,6 +236,10 @@ function NestedNavigation({
     urlIndex,
     hoverTree   :[],
   }
+
+  console.log(
+    'INITIAL STATE', initialStateWithPreparedItems,
+  )
 
   const [
     state,

@@ -17,7 +17,7 @@ export const ComponentPropTypes = {
   items:PropTypes.arrayOf(PropTypes.shape({
     label   :PropTypes.string.isRequired,
     url     :PropTypes.string,
-    disabled:PropTypes.bool.isRequired,
+    disabled:PropTypes.bool,
   })),
 
   /** Extras items to append to the end of the menu */
