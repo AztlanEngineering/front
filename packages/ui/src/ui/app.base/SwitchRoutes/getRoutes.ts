@@ -3,10 +3,10 @@ type RelativePaths = {
 }
 
 interface Paths {
-  absolute     :Record<string, string>;
-  all          :string[];
+  absolute:Record<string, string>;
+  all     :string[];
   relative:RelativePaths;
-  base         :string;
+  base    :string;
 }
 
 export default function getPaths(
