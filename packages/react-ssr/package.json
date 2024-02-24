@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/react-ssr",
-  "version": "2.1.1",
+  "version": "2.2.5",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -19,9 +19,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/eslint-config-base": "^2.0.9",
-    "@aztlan/react-scripts": "^2.1.1",
-    "@aztlan/typescript-config": "^2.0.9",
+    "@aztlan/eslint-config-base": "^2.2.5",
+    "@aztlan/react-scripts": "^2.2.5",
+    "@aztlan/typescript-config": "^2.2.5",
     "typescript": "^5.3.3"
   },
   "dependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/babel-plugin-replace-import-extension",
-  "version": "2.0.9",
+  "version": "2.2.5",
   "description": "Babel plugin to replace extension of file name written in import statement and dynamic import",
   "main": "src/index.js",
   "repository": {
@@ -44,7 +44,7 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
-    "@aztlan/eslint-config-base": "^2.0.9",
+    "@aztlan/eslint-config-base": "^2.2.5",
     "@babel/core": "^7.23.9",
     "@babel/plugin-transform-modules-commonjs": "^7.23.3",
     "jest": "^29.7.0"
