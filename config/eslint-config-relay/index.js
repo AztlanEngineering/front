@@ -2,20 +2,23 @@ const path = require('path')
 const fs = require('fs')
 
 module.exports = {
-  extends: [
+  extends:[
     '@aztlan/base',
     'plugin:relay/recommended',
   ],
-  parser: '@typescript-eslint/parser',
-  plugins: ['relay', 'graphql'],
-  env: {
-    browser: true,
-    node: true,
+  parser :'@typescript-eslint/parser',
+  plugins:[
+    'relay',
+    'graphql',
+  ],
+  env:{
+    browser:true,
+    node   :true,
   },
-  globals: {
+  globals:{
     // graphql:'readonly',
   },
-  rules: {
+  rules:{
     /*
     'graphql/template-strings':[2, {
       // Import default settings for your GraphQL client. Supported values:
