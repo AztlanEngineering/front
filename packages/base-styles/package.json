@@ -25,7 +25,7 @@
   "dependencies": {
     "@aztlan/grid": "^0.9.7",
     "@aztlan/mixins": "^0.9.1",
-    "@aztlan/swatch": "^0.9.1"
+    "@aztlan/swatch": "^0.9.8"
   },
   "stylelint": {
     "extends": "@aztlan/stylelint-config"

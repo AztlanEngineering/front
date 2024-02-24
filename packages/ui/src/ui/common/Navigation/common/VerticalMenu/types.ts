@@ -15,9 +15,10 @@ export const ComponentPropTypes = {
 
   /** The items for the menu. Array of { name, url, disabled } */
   items:PropTypes.arrayOf(PropTypes.shape({
-    label   :PropTypes.string.isRequired,
-    url     :PropTypes.string,
-    disabled:PropTypes.bool,
+    label    :PropTypes.string.isRequired,
+    url      :PropTypes.string,
+    disabled :PropTypes.bool,
+    className:PropTypes.string,
   })),
 
   /** Extras items to append to the end of the menu */
@@ -25,6 +26,7 @@ export const ComponentPropTypes = {
     key      :PropTypes.string,
     Component:PropTypes.node.isRequired,
     disabled :PropTypes.bool,
+    className:PropTypes.string,
   })),
 
   /** A function that takes the current item is executed on mouse enter */

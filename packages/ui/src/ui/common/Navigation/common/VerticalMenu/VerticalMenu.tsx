@@ -2,7 +2,9 @@
 import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
-import { Link } from 'react-router-dom'
+import {
+  Link, useLocation,
+} from 'react-router-dom'
 import styleNames from '@aztlan/bem'
 import { ComponentPropTypes } from './types.js'
 import type { ComponentProps } from './types.js'
@@ -33,6 +35,7 @@ function VerticalMenu({
       import('./styles.scss')
     }, [],
   )
+  const location = useLocation()
 
   return (
     <Wrapper
@@ -53,7 +56,12 @@ function VerticalMenu({
         {items?.map((item) => (
           <li
             key={`${item.label}${item.url || ''}`}
-            className={item.disabled ? 'disabled container' : 'container'}
+            className={[
+              item.disabled && styleNames.modifierDisabled,
+              location.pathname === item.url && styleNames.modifierSelected,
+              'container',
+              item.className,
+            ].filter(Boolean).join(' ')}
             // onMouseLeave={onItemMouseLeaveHandler?.(item)}
           >
             {item.url && !item.disabled ? (
@@ -77,7 +85,10 @@ function VerticalMenu({
         ) => (
           <li
             key={extra.key || i}
-            className={extra.disabled ? 'disabled' : ''}
+            className={[
+              extra.disabled && 'disabled',
+              extra.className,
+            ].filter(Boolean).join(' ')}
           >
             {extra.Component}
           </li>

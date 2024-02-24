@@ -12,6 +12,8 @@ export const propTypes = {
     label        :PropTypes.string.isRequired,
     url          :PropTypes.string.isRequired,
     footerContent:PropTypes.string,
+    disabled     :PropTypes.bool,
+    className    :PropTypes.string,
   })),
 
   /** The label of the menu */
@@ -44,9 +46,11 @@ export const propTypes = {
 export type Props = InferProps<typeof propTypes>
 
 export type ItemType = {
-  label   :string;
-  url     :string;
-  disabled:boolean;
+  label        :string;
+  url          :string;
+  disabled     :boolean;
+  footerContent:string;
+  className    :string;
 }
 
 export type ContextValue = {

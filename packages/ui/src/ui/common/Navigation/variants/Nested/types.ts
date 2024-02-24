@@ -36,6 +36,7 @@ export interface Item {
   label         :string;
   url           :string;
   disabled?     :boolean;
+  className?    :string;
   items?        :Item[];
   footerContent?:React.ReactElement;
 }

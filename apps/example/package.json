@@ -49,7 +49,7 @@
   "dependencies": {
     "@aztlan/assets": "^2.0.0",
     "@aztlan/base-styles": "^2.1.1",
-    "@aztlan/bem": "^0.9.6",
+    "@aztlan/bem": "^0.9.9",
     "@aztlan/react-hooks": "^2.2.5",
     "@aztlan/react-relay": "^2.2.5",
     "@aztlan/react-scripts": "^2.2.5",
