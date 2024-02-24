@@ -42,20 +42,29 @@ function PrivateRoute({
 
   const { component: Component } = routeProps
 
+  const ComposedComponent = useCallback(
+    (props) => (
+      <Suspense fallback={(
+        <Component
+          wireframe
+          {...props}
+        />
+)}
+      >
+        {viewerQueryReference && <PrivateComponent {...props} />}
+      </Suspense>
+    ),
+    [
+      viewerQueryReference,
+      PrivateComponent,
+      Component,
+    ],
+  )
+
   return (
     <Route
       {...routeProps}
-      component={(props) => (
-        <Suspense fallback={(
-          <Component
-            wireframe
-            {...props}
-          />
-)}
-        >
-          {viewerQueryReference && <PrivateComponent {...props} />}
-        </Suspense>
-      )}
+      component={ComposedComponent}
     />
   )
 }
