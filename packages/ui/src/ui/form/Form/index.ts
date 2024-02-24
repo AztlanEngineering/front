@@ -2,4 +2,5 @@
 export { default as Form } from './Form.js'
 export { default as SimpleForm } from './SimpleForm.js'
 export { default as FormContext } from './Context.js'
+export type * from './types.js'
 export * from './hooks/index.js'
