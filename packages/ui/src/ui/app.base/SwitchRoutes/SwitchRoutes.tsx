@@ -7,46 +7,63 @@ import * as PropTypes from 'prop-types'
 import {
   Switch, Route,
 } from 'react-router-dom'
-import PrivateRoute from './PrivateRoute.js'
+import withPrivateRoute from './withPrivateRoute.js'
 import { useAuthenticationContext } from '../Authentication/index.js'
 /* eslint-disable react/no-children-prop */
 
-function SwitchRoutes({
-  items,
-  NotFoundPage,
-  Wireframe = () => <h1>Loading user</h1>,
-}) {
-  // @ts-ignore
-  const { viewerQueryReference } = useAuthenticationContext()
+function withWireframe(Component) {
+  return function WireframeComponent(props) {
+    return (
+      <Component
+        wireframe
+        {...props}
+      />
+    )
+  }
+}
 
-  const PrivateRouteWrapper = useCallback(
-    ({
-      groups, test, wireframeTitle, permissions, ...routeProps
-    }) => (
-      <Suspense
-        fallback={(
-          <Wireframe
-            // @ts-ignore TODO
-            groups={groups}
-            test={test}
-            wireframeTitle={wireframeTitle}
-            {...routeProps}
-          />
-        )}
-      >
-        {viewerQueryReference && (
-        <PrivateRoute
-          groups={groups}
-          permissions={permissions}
-          test={test}
-          {...routeProps}
-        />
-        )}
-      </Suspense>
+function PrivateRoute({
+  groups, test, permissions, ...routeProps
+}) {
+  const { viewerQueryReference } = useAuthenticationContext()
+  const PrivateComponent = useCallback(
+    withPrivateRoute(
+      routeProps.component, {
+        groups,
+        test,
+      },
     ),
-    [viewerQueryReference],
+    [
+      routeProps.component,
+      groups,
+      test,
+    ],
   )
 
+  const { component: Component } = routeProps
+
+  return (
+    <Route
+      {...routeProps}
+      component={(props) => (
+        <Suspense fallback={(
+          <Component
+            wireframe
+            {...props}
+          />
+)}
+        >
+          {viewerQueryReference && <PrivateComponent {...props} />}
+        </Suspense>
+      )}
+    />
+  )
+}
+
+function SwitchRoutes({
+  items, NotFoundPage, wireframe = false,
+}) {
+  // @ts-ignore
   const routes = useMemo(
     () => items.map(({
       isPrivate,
@@ -56,24 +73,30 @@ function SwitchRoutes({
       wireframeTitle,
       ...routeProps
     }) => (isPrivate ? (
-      <PrivateRouteWrapper
+      <PrivateRoute
         key={routeProps.path}
         groups={groups}
         test={test}
         permissions={permissions}
-        wireframeTitle={wireframeTitle}
+        component={
+                wireframe
+                  ? withWireframe(routeProps.component)
+                  : routeProps.component
+              }
         {...routeProps}
       />
     ) : (
       <Route
         key={routeProps.path}
+        component={
+                wireframe
+                  ? withWireframe(routeProps.component)
+                  : routeProps.component
+              }
         {...routeProps}
       />
     ))),
-    [
-      items,
-      viewerQueryReference,
-    ],
+    [items],
   )
 
   return (
@@ -105,8 +128,8 @@ SwitchRoutes.propTypes = {
 
   NotFoundPage:PropTypes.elementType,
 
-  /** A component to display while the user is being fetched */
-  Wireframe:PropTypes.elementType,
+  /** Whether to render the wireframe or not */
+  wireframe:PropTypes.bool,
 }
 
 export default SwitchRoutes
