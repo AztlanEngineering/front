@@ -10,7 +10,7 @@ const config = {
     ['module-resolver', {
       root:['./src'],
     }],
-    '@babel/plugin-proposal-decorators',
+    ['@babel/plugin-proposal-decorators', { version: '2023-05' }],
   ],
 }
 
