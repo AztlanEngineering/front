@@ -1,30 +1,24 @@
-/* @aztlan/generator-front 1.2.22 */
+// REF 15.1: VerticalMenu.tsx Adjusted for Recursion and Original className API
 import * as React from 'react'
-import { useInsertionEffect } from 'react'
-
+import {
+  useInsertionEffect, useCallback,
+} from 'react'
 import {
   Link, useLocation,
 } from 'react-router-dom'
 import styleNames from '@aztlan/bem'
-import { ComponentPropTypes } from './types.js'
-import type { ComponentProps } from './types.js'
+import { ComponentPropTypes } from './types.js' // Keep original import
+import type { ComponentProps } from './types.js' // Keep original import for TypeScript types
 
 const baseClassName = styleNames.base
 const componentClassName = 'vertical-menu'
 
-/**
- * description
- * @param {InferProps<typeof VerticalMenu.propTypes>} props -
- * @returns {React.ReactElement} - Rendered VerticalMenu
- */
 function VerticalMenu({
   id,
   className: userClassName,
   style,
   as: Wrapper = 'nav',
-  label,
-  groups,
-  extras,
+  rootItem,
   onItemMouseEnterHandler,
   onItemMouseLeaveHandler,
   ...otherProps
@@ -35,7 +29,33 @@ function VerticalMenu({
       import('./styles.scss')
     }, [],
   )
+
   const location = useLocation()
+
+  const renderItem = useCallback(
+    (item) => (
+      <li
+        key={item.key || item.label}
+        className={[
+          item.disabled && styleNames.modifierDisabled,
+          item.url && (location.pathname === item.url) && styleNames.modifierActive,
+          item.displayItemsAs === 'group' && styleNames.elementGroup,
+          item.className,
+        ].filter(Boolean).join(' ')}
+        onMouseEnter={() => onItemMouseEnterHandler?.(item)}
+        onMouseLeave={() => onItemMouseLeaveHandler?.(item)}
+      >
+        {item.Component ? item.Component : item.url ? <Link to={item.url}>{item.label}</Link> : item.label}
+        {item.items && item.displayItemsAs === 'group' && (
+          <ul>{item.items.map(renderItem)}</ul>
+        )}
+      </li>
+    ), [
+      onItemMouseEnterHandler,
+      onItemMouseLeaveHandler,
+      location.pathname,
+    ],
+  )
 
   return (
     <Wrapper
@@ -44,43 +64,14 @@ function VerticalMenu({
         baseClassName,
         componentClassName,
         userClassName,
-        'grid',
       ]
-        .filter((e) => e)
+        .filter(Boolean)
         .join(' ')}
       style={style}
       {...otherProps}
     >
-      {label && <span className="container">{label}</span>}
-      {groups.map((group) => (
-        <ul
-          key={group.key || group.label}
-          className="container"
-        >
-          {group.label && <li className="group-label">{group.label}</li>}
-          {group.items.map((
-            item, index,
-          ) => (
-            <li
-              key={item.key || item.label || index}
-              className={[
-                item.disabled && styleNames.modifierDisabled,
-                location.pathname === item.url && styleNames.modifierSelected,
-                'item',
-                item.className,
-              ].filter(Boolean).join(' ')}
-              onMouseEnter={() => onItemMouseEnterHandler?.(item)}
-              onMouseLeave={() => onItemMouseLeaveHandler?.(item)}
-            >
-              {item.Component ? (
-                item.Component
-              ) : (
-                <Link to={item.url}>{item.label}</Link>
-              )}
-            </li>
-          ))}
-        </ul>
-      ))}
+      {rootItem.label && <span>{rootItem.label}</span>}
+      <ul>{rootItem.items.map(renderItem)}</ul>
     </Wrapper>
   )
 }

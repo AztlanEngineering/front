@@ -32,6 +32,12 @@ export const propTypes = {
 
 export type Props = InferProps<typeof propTypes>
 
+export interface Group {
+  key  :string;
+  label:string;
+  items:Item[];
+}
+
 export interface Item {
   label         :string;
   url           :string;

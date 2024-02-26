@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@aztlan/base-styles": "^2.3.1",
-    "@aztlan/bem": "^0.9.9",
+    "@aztlan/bem": "^0.9.10",
     "@aztlan/react-hooks": "^2.4.2",
     "@aztlan/react-relay": "^2.4.2",
     "@storybook/react": "^7.6.17",

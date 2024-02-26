@@ -5,35 +5,32 @@ import {
   htmlShared, desktopOnlyShared, asShared,
 } from '../../types.js'
 
+const itemShape = {
+  key           :PropTypes.string,
+  label         :PropTypes.string.isRequired,
+  url           :PropTypes.string,
+  disabled      :PropTypes.bool,
+  className     :PropTypes.string,
+  Component     :PropTypes.node,
+  displayItemsAs:PropTypes.oneOf([
+    'nested',
+    'group',
+  ]),
+  items:PropTypes.array,
+}
+
+const itemsValidator = PropTypes.arrayOf((...args) => PropTypes.shape(itemShape).isRequired(...args))
+
+itemShape.items = itemsValidator
+
+const rootItemPropType = PropTypes.shape(itemShape).isRequired
+
 export const ComponentPropTypes = {
   ...htmlShared,
   ...asShared,
   ...desktopOnlyShared,
-
-  /** The name of the menu */
-  label:PropTypes.string,
-
-  /** The items for the menu. Array of { name, url, disabled } */
-  groups:PropTypes.arrayOf(PropTypes.shape({
-    key  :PropTypes.string,
-    label:PropTypes.string,
-    items:PropTypes.arrayOf(PropTypes.shape({
-      key      :PropTypes.string,
-      label    :PropTypes.string,
-      url      :PropTypes.string,
-      disabled :PropTypes.bool,
-      className:PropTypes.string,
-      Component:PropTypes.node,
-    })).isRequired,
-  })).isRequired,
-
-  /** Extras items to append to the end of the menu */
-  extras:PropTypes.arrayOf(PropTypes.shape({
-    key      :PropTypes.string,
-    Component:PropTypes.node.isRequired,
-    disabled :PropTypes.bool,
-    className:PropTypes.string,
-  })),
+  /* the root item */
+  rootItem:rootItemPropType,
 
   /** A function that takes the current item is executed on mouse enter */
   onItemMouseEnterHandler:PropTypes.func,

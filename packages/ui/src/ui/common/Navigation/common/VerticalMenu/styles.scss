@@ -5,6 +5,10 @@
 .#{bem.$base}.vertical-menu {
   grid-template-rows: auto auto 1fr;
 
+  li.#{bem.$element-group} {
+    padding-top: var(--gap);
+  }
+
   ul {
     align-content: baseline;
     list-style: none;
