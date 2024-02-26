@@ -14,12 +14,18 @@ export const ComponentPropTypes = {
   label:PropTypes.string,
 
   /** The items for the menu. Array of { name, url, disabled } */
-  items:PropTypes.arrayOf(PropTypes.shape({
-    label    :PropTypes.string.isRequired,
-    url      :PropTypes.string,
-    disabled :PropTypes.bool,
-    className:PropTypes.string,
-  })),
+  groups:PropTypes.arrayOf(PropTypes.shape({
+    key  :PropTypes.string,
+    label:PropTypes.string,
+    items:PropTypes.arrayOf(PropTypes.shape({
+      key      :PropTypes.string,
+      label    :PropTypes.string,
+      url      :PropTypes.string,
+      disabled :PropTypes.bool,
+      className:PropTypes.string,
+      Component:PropTypes.node,
+    })).isRequired,
+  })).isRequired,
 
   /** Extras items to append to the end of the menu */
   extras:PropTypes.arrayOf(PropTypes.shape({

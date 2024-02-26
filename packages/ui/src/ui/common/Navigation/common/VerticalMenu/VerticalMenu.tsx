@@ -23,7 +23,7 @@ function VerticalMenu({
   style,
   as: Wrapper = 'nav',
   label,
-  items,
+  groups,
   extras,
   onItemMouseEnterHandler,
   onItemMouseLeaveHandler,
@@ -52,49 +52,35 @@ function VerticalMenu({
       {...otherProps}
     >
       {label && <span className="container">{label}</span>}
-      <ul className="container">
-        {items?.map((item) => (
-          <li
-            key={`${item.label}${item.url || ''}`}
-            className={[
-              item.disabled && styleNames.modifierDisabled,
-              location.pathname === item.url && styleNames.modifierSelected,
-              'container',
-              item.className,
-            ].filter(Boolean).join(' ')}
-            // onMouseLeave={onItemMouseLeaveHandler?.(item)}
-          >
-            {item.url && !item.disabled ? (
-              <Link
-                to={item.url}
-                onMouseEnter={onItemMouseEnterHandler?.(item)}
-              >
-                {item.label}
-              </Link>
-            ) : (
-              item.label
-            )}
-          </li>
-        ))}
-      </ul>
-      { extras
-      && (
-      <ul className="container">
-        {extras.map((
-          extra, i,
-        ) => (
-          <li
-            key={extra.key || i}
-            className={[
-              extra.disabled && 'disabled',
-              extra.className,
-            ].filter(Boolean).join(' ')}
-          >
-            {extra.Component}
-          </li>
-        ))}
-      </ul>
-      )}
+      {groups.map((group) => (
+        <ul
+          key={group.key || group.label}
+          className="container"
+        >
+          {group.label && <li className="group-label">{group.label}</li>}
+          {group.items.map((
+            item, index,
+          ) => (
+            <li
+              key={item.key || item.label || index}
+              className={[
+                item.disabled && styleNames.modifierDisabled,
+                location.pathname === item.url && styleNames.modifierSelected,
+                'item',
+                item.className,
+              ].filter(Boolean).join(' ')}
+              onMouseEnter={() => onItemMouseEnterHandler?.(item)}
+              onMouseLeave={() => onItemMouseLeaveHandler?.(item)}
+            >
+              {item.Component ? (
+                item.Component
+              ) : (
+                <Link to={item.url}>{item.label}</Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      ))}
     </Wrapper>
   )
 }
