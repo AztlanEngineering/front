@@ -38,7 +38,7 @@ function VerticalMenu({
       className={[
         item.disabled && styleNames.modifierDisabled,
         item.url && (location.pathname === item.url) && styleNames.modifierActive,
-        item.displayItemsAs === 'group' && styleNames.elementGroup,
+        !item.url && styleNames.elementGroup,
         item.className,
       ].filter(Boolean).join(' ')}
       onMouseLeave={() => onItemMouseLeaveHandler?.(item)}
@@ -70,8 +70,10 @@ function VerticalMenu({
       style={style}
       {...otherProps}
     >
-      {rootItem.label && <span>{rootItem.label}</span>}
-      <ul>{rootItem.items.map(renderItem)}</ul>
+      <ul>
+        {renderItem(rootItem)}
+        {rootItem.items.map(renderItem)}
+      </ul>
     </Wrapper>
   )
 }
