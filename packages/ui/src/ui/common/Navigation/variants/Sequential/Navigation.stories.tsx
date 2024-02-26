@@ -17,7 +17,8 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    children:[
+    menuLabel:'Navigation',
+    children :[
       <Component.Header key="header" />,
       <Component.VerticalMenu key="vm" />,
       <Component.Paginator key="pagi" />,

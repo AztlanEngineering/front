@@ -84,9 +84,22 @@ function SequentialNavigationVerticalMenu(props) {
     items, currentIndex, menuLabel,
   } = useContext(Context)
 
+  const groups = useMemo(
+    () => [
+      {
+        key:'_sequential-navigation-vertical-menu',
+        items,
+      },
+      ...props.groups || [],
+    ], [
+      items,
+      props.groups,
+    ],
+  )
+
   return (
     <VerticalMenu
-      items={items}
+      groups={groups}
       currentIndex={currentIndex}
       label={menuLabel}
       {...props}
