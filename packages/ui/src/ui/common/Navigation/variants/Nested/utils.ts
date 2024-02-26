@@ -4,71 +4,52 @@ import type {
 } from './types'
 
 interface PreparedNavigationData {
-  preparedRoot:PreparedItem;
-  maxDepth    :number;
-  urlIndex    :UrlIndex;
+  preparedRoot            :PreparedItem;
+  nearestNavigableAncestor:PreparedItem | null,
+  urlIndex                :UrlIndex;
 }
 
+/**
+ * Recursively prepares navigation data, setting correct depth, parent URL, and updating a URL index.
+ * It simplifies ancestor tracking by using recursive logic to handle navigation structuring.
+ *
+ * @param root The current item being processed in the navigation structure.
+ * @param nearestNavigableAncestor The closest ancestor item with a URL, used for context in recursion.
+ * @param urlIndex A collection for indexing items by their URL for efficient lookups.
+ * @returns {PreparedNavigationData} An object containing the prepared navigation structure.
+ */
 export function prepareNavigationData(
   root: Item,
-  currentDepth = 0,
+  nearestNavigableAncestor: PreparedItem | null = null,
   urlIndex: UrlIndex = {},
-  // parentUrl: string | null = null,
-):PreparedNavigationData {
-  let maxDepth = currentDepth
-  const preparedRoot = {
+): PreparedNavigationData {
+  // Prepare the root item with its depth and parent URL.
+  let preparedRoot: PreparedItem = {
     ...root,
-    depth    :currentDepth,
-    parentUrl:null,
+    depth    :nearestNavigableAncestor ? nearestNavigableAncestor.depth + 1 : 0,
+    parentUrl:nearestNavigableAncestor ? nearestNavigableAncestor.url : null,
   }
 
-  urlIndex = {
-    [preparedRoot.url]:preparedRoot,
-    ...urlIndex,
+  // If the root item has a URL, it becomes its own nearest navigable ancestor.
+  if (root.url) {
+    preparedRoot = {
+      ...preparedRoot,
+      depth:nearestNavigableAncestor ? nearestNavigableAncestor.depth + 1 : 0,
+    }
+    urlIndex[root.url] = preparedRoot
   }
 
-  const preparedItems = preparedRoot.items.reduce(
-    (
-      acc, item,
-    ) => {
-      const newItem = {
-        ...item,
-        depth    :currentDepth + 1,
-        parentUrl:preparedRoot.url,
-      }
+  // The nearest navigable ancestor for sub-items is either
+  // the current root (if navigable) or the passed ancestor.
+  const updatedNearestNavigableAncestor = root.url ? preparedRoot : nearestNavigableAncestor
 
-      if (item.url) {
-        urlIndex[item.url] = newItem
-      }
-
-      if (item.items) {
-        const childData = prepareNavigationData(
-          {
-            label:item.label,
-            items:item.items,
-            url  :item.url,
-          },
-          currentDepth + 1,
-          urlIndex,
-        )
-        newItem.items = childData.preparedRoot.items
-        maxDepth = Math.max(
-          maxDepth, childData.maxDepth,
-        )
-        urlIndex = {
-          ...urlIndex,
-          ...childData.urlIndex,
-        }
-      }
-
-      acc.push(newItem)
-      return acc
-    }, [],
-  )
-
+  // Recursively prepare each sub-item.
+  preparedRoot.items = root.items?.map((item) => prepareNavigationData(
+    item, updatedNearestNavigableAncestor, urlIndex,
+  ).preparedRoot)
   return {
     preparedRoot,
-    maxDepth,
+    nearestNavigableAncestor:updatedNearestNavigableAncestor,
     urlIndex,
   }
 }

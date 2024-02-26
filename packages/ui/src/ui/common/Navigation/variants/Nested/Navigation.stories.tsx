@@ -17,8 +17,6 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    label   :'Menu',
-    url     :'/',
     children:[
       <React.Fragment key="fragment">
         <Component.Header className="container" />
@@ -27,83 +25,97 @@ export const Base: StoryObj<typeof Component> = {
         </Component.Canvas>
       </React.Fragment>,
     ],
-    items:[
-      {
-        label:'Home',
-        url  :'/home',
-      },
-      {
-        label:'Organization Details',
-        url  :'/org',
-      },
-      {
-        label:'Collections',
-        url  :'/coll',
-      },
-      {
-        label:'Location',
-        url  :'/location',
-        items:[
-          {
-            label:'Address',
-            url  :'/address',
-          },
-          {
-            label:'Contact',
-            url  :'/contact',
-          },
-        ],
-      },
-      {
-        label:'Settings',
-        url  :'/settingsa',
-        items:[
-          {
-            label:'Account',
-            url  :'/accounta',
-            items:[
-              {
-                label:'Profile',
-                url  :'/profile',
-              },
-              {
-                label:'Notifications',
-                url  :'/notificationsa',
-              },
-              {
-                label:'Security',
-                url  :'/securitya',
-              },
-              {
-                label:'Billing',
-                url  :'/billinga',
-              },
-              {
-                label:'Logout',
-                url  :'/logouta',
-              },
-            ],
-          },
+    rootItem:{
+      label:'Navigation',
+      url  :'/',
+      items:[
+        {
+          label:'Home',
+          url  :'/home',
+        },
+        {
+          label:'Organization Details',
+          url  :'/org',
+        },
+        {
+          label         :'Collections',
+          displayItemsAs:'group',
+          items         :[
+            {
+              label:'All images',
+              url  :'/address2',
+            },
+            {
+              label:"User's images",
+              url  :'/contact2',
+            },
+          ],
+        },
+        {
+          label:'Location',
+          url  :'/location',
+          items:[
+            {
+              label:'Address',
+              url  :'/address',
+            },
+            {
+              label:'Contact',
+              url  :'/contact',
+            },
+          ],
+        },
+        {
+          label:'Settings',
+          url  :'/settingsa',
+          items:[
+            {
+              label:'Account',
+              url  :'/accounta',
+              items:[
+                {
+                  label:'Profile',
+                  url  :'/profile',
+                },
+                {
+                  label:'Notifications',
+                  url  :'/notificationsa',
+                },
+                {
+                  label:'Security',
+                  url  :'/securitya',
+                },
+                {
+                  label:'Billing',
+                  url  :'/billinga',
+                },
+                {
+                  label:'Logout',
+                  url  :'/logouta',
+                },
+              ],
+            },
 
-          {
-            label:'Notifications',
-            url  :'/notifications',
-          },
-          {
-            label:'Security',
-            url  :'/security',
-          },
-          {
-            label:'Billing',
-            url  :'/billing',
-          },
-          {
-            label:'Logout',
-            url  :'/logout',
-          },
-        ],
-      },
-    ],
+            {
+              label:'Notifications',
+              url  :'/notifications',
+            },
+            {
+              label:'Security',
+              url  :'/security',
+            },
+            {
+              label:'Billing',
+              url  :'/billing',
+            },
+            {
+              label:'Logout',
+              url  :'/logout',
+            },
+          ],
+        },
+      ],
+    },
   },
 }
 
@@ -124,19 +136,3 @@ export const Fixed: StoryObj<typeof Component> = {
     fixed:true,
   },
 }
-
-// export const CustomNextHandler: StoryObj<typeof Component> = {
-//   args:{
-//     ...AlwaysDisplay.args,
-//     handlerNext:() => alert('You clicked next. This function should include a navigation action.'),
-//   },
-// }
-//
-// export const HidePreviousButton: StoryObj<typeof Component> = {
-//   args:{
-//     ...Fixed.args,
-//     hidePreviousButton:true,
-//     hideNextButton    :false,
-//     fixed             :true,
-//   },
-// }

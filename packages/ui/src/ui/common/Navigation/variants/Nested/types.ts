@@ -1,7 +1,10 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import * as basePropTypes from '../../types.js'
-import { ComponentPropTypes as VerticalMenuPropTypes } from '../../common/VerticalMenu/types.js'
+import {
+  ComponentPropTypes as VerticalMenuPropTypes,
+  rootItemPropType,
+} from '../../common/VerticalMenu/types.js'
 import { ComponentPropTypes as HeaderPropTypes } from '../../common/Header/types.js'
 
 export const propTypes = {
@@ -12,39 +15,22 @@ export const propTypes = {
   children:PropTypes.node.isRequired,
 
   /* The array of navigation elements to be passed to the navigation context */
-  items:PropTypes.arrayOf(PropTypes.shape({
-    label        :PropTypes.string.isRequired,
-    url          :PropTypes.string.isRequired,
-    footerContent:PropTypes.node,
-    disabled     :PropTypes.bool,
-    items        :PropTypes.array,
-  })),
-
-  /** The label of the menu */
-  label:PropTypes.string.isRequired,
+  rootItem:rootItemPropType,
 
   /* The current footer content */
   currentFooterContent:PropTypes.string,
-
-  /* the url of the root item */
-  url:PropTypes.string,
 }
 
 export type Props = InferProps<typeof propTypes>
 
-export interface Group {
-  key  :string;
-  label:string;
-  items:Item[];
-}
-
 export interface Item {
-  label         :string;
-  url           :string;
-  disabled?     :boolean;
-  className?    :string;
-  items?        :Item[];
-  footerContent?:React.ReactElement;
+  label?         :string;
+  url?           :string;
+  disabled?      :boolean;
+  className?     :string;
+  items?         :Item[];
+  footerContent? :React.ReactElement;
+  displayItemsAs?:string; // Do not match propTypes : 'nested' | 'group';
 }
 
 export interface PreparedItem extends Item {
@@ -69,8 +55,7 @@ export interface PreparedItem extends Item {
 export type ContextValue = {
   previous               :React.ReactElement;
   next                   :React.ReactElement;
-  label?                 :string;
-  root                   :PreparedItem;
+  rootItem               :PreparedItem;
   currentItem            :PreparedItem;
   currentTree            :PreparedItem[];
   hoverTree              :PreparedItem[];

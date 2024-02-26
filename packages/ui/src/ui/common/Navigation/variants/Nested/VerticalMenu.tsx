@@ -10,7 +10,6 @@ function NestedNavigationVerticalMenu({
 }:NestedNavigationVerticalMenuProps) {
   const {
     // root,
-    label,
     currentTree,
     hoverTree,
     // currentItem,
@@ -25,14 +24,12 @@ function NestedNavigationVerticalMenu({
       0, mapSubject.length,
     )
     .map(({
-      items: subitems, parentUrl, ...itemProps
+      parentUrl, ...itemProps
     }) => (
       <VerticalMenu
         key={itemProps?.url}
-        items={subitems}
-        label={label}
+        rootItem={itemProps}
         onItemMouseEnterHandler={onItemMouseEnterHandler}
-        {...itemProps}
         {...props}
       />
     )))

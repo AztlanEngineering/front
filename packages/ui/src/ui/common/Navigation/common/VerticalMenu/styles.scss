@@ -6,7 +6,16 @@
   grid-template-rows: auto auto 1fr;
 
   li.#{bem.$element-group} {
-    padding-top: var(--gap);
+    display: flex;
+    flex-direction: column;
+
+    &:not(:last-child) {
+      margin-bottom: var(--gap);
+    }
+
+    &:not(:first-child) {
+      margin-top: var(--gap);
+    }
   }
 
   ul {

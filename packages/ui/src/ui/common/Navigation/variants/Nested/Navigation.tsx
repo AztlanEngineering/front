@@ -37,9 +37,7 @@ function NestedNavigation({
   className:userClassName,
   style,
   children,
-  items,
-  label,
-  url,
+  rootItem,
 }:Props): React.ReactElement {
   useInsertionEffect(
     () => {
@@ -48,16 +46,10 @@ function NestedNavigation({
     }, [],
   )
 
-  const root = {
-    label,
-    items,
-    url,
-  } as Item
-
   const {
-    preparedRoot, maxDepth, urlIndex,
+    preparedRoot, urlIndex,
   } = useMemo(
-    () => prepareNavigationData(root), [items],
+    () => prepareNavigationData(rootItem), [rootItem],
   )
 
   const location = useLocation()
@@ -103,13 +95,11 @@ function NestedNavigation({
     }, [state.currentItem],
   )
   const onItemMouseEnterHandler = useCallback(
-    (item) => () => {
-      // if (item.items) {
+    (item) => {
       dispatch({
         type   :'HOVER_ITEM',
         payload:item.url,
       })
-      // }
     }, [],
   )
   const onMenuMouseLeave = useCallback(
@@ -155,18 +145,12 @@ function NestedNavigation({
       focusCanvas,
       onItemMouseEnterHandler,
       onMenuMouseLeave,
-      label,
-      // items:preparedRoot.items,
-      maxDepth,
     }), [
       state,
       selectUrl,
-      label,
       focusParent,
       onItemMouseEnterHandler,
       onMenuMouseLeave,
-      // preparedRoot.items,
-      maxDepth,
     ],
   )
 

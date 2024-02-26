@@ -7,7 +7,7 @@ import {
 
 const itemShape = {
   key           :PropTypes.string,
-  label         :PropTypes.string.isRequired,
+  label         :PropTypes.string,
   url           :PropTypes.string,
   disabled      :PropTypes.bool,
   className     :PropTypes.string,
@@ -23,7 +23,7 @@ const itemsValidator = PropTypes.arrayOf((...args) => PropTypes.shape(itemShape)
 
 itemShape.items = itemsValidator
 
-const rootItemPropType = PropTypes.shape(itemShape).isRequired
+export const rootItemPropType = PropTypes.shape(itemShape).isRequired
 
 export const ComponentPropTypes = {
   ...htmlShared,

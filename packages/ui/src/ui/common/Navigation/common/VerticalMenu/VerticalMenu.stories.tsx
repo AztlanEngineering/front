@@ -46,23 +46,7 @@ export const WithNestedGroups: StoryObj<typeof Component> = {
     rootItem:{
       label:'Navigation',
       items:[
-        {
-          label:'Home',
-          url  :'/',
-        },
-        {
-          label:'About',
-          url  :'/about',
-        },
-        {
-          label:'Contact',
-          url  :'/contact',
-        },
-        {
-          label   :'Disabled',
-          url     :'/disabled',
-          disabled:true,
-        },
+        ...Base.args.rootItem.items,
         {
           label         :'User Menu',
           displayItemsAs:'group',
@@ -78,6 +62,47 @@ export const WithNestedGroups: StoryObj<typeof Component> = {
             {
               label    :'Logout',
               Component:<h2>Logout</h2>,
+            },
+          ],
+        },
+        {
+          label         :'Sth Menu',
+          displayItemsAs:'group',
+        },
+        {
+          label         :'Admin Menu',
+          displayItemsAs:'group',
+          items         :[
+            {
+              label:'Users',
+              url  :'/users',
+            },
+            {
+              label:'Roles',
+              url  :'/roles',
+            },
+            {
+              label:'Permissions',
+              url  :'/permissions',
+            },
+          ],
+        },
+        {
+          label         :'Disabled Menu',
+          displayItemsAs:'group',
+          disabled      :true,
+          items         :[
+            {
+              label:'Users',
+              url  :'/users3',
+            },
+            {
+              label:'Roles',
+              url  :'/roles2',
+            },
+            {
+              label:'Permissions',
+              url  :'/permissions4',
             },
           ],
         },
