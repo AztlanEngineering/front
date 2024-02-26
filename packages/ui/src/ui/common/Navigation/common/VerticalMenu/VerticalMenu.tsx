@@ -51,7 +51,7 @@ function VerticalMenu({
           {item.label}
         </Link>
       ) : item.label}
-      {item.items && item.displayItemsAs === 'group' && (
+      {item.items && !item.url && (
       <ul className="container">{item.items.map(renderItem)}</ul>
       )}
     </li>
