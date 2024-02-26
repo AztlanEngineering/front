@@ -37,6 +37,9 @@ export const ComponentPropTypes = {
 
   /** A function that takes the current item is executed on mouse leave */
   onItemMouseLeaveHandler:PropTypes.func,
+
+  /** Whether the last element displays at the end of the flexbox */
+  spaced:PropTypes.bool,
 }
 
 export type ComponentProps = InferProps<typeof ComponentPropTypes>

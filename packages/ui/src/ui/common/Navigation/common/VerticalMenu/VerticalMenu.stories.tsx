@@ -110,3 +110,11 @@ export const WithNestedGroups: StoryObj<typeof Component> = {
     },
   },
 }
+
+export const Spaced: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    spaced:true,
+    style :{ 'min-height': '500px' },
+  },
+}

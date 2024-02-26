@@ -19,6 +19,7 @@ function VerticalMenu({
   style,
   as: Wrapper = 'nav',
   rootItem,
+  spaced,
   onItemMouseEnterHandler,
   onItemMouseLeaveHandler,
   ...otherProps
@@ -64,6 +65,7 @@ function VerticalMenu({
         baseClassName,
         componentClassName,
         userClassName,
+        spaced && styleNames.modifierSpaced,
       ]
         .filter(Boolean)
         .join(' ')}
