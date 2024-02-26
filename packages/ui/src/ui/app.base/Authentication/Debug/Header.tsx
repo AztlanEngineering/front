@@ -163,6 +163,7 @@ function RawLoggedOutHeader({
   className: userClassName,
   style,
   data,
+  wireframe,
 }: // ...otherProps
 InferProps<typeof RawLoggedOutHeader.propTypes>): React.ReactElement {
   useInsertionEffect(
@@ -188,7 +189,11 @@ InferProps<typeof RawLoggedOutHeader.propTypes>): React.ReactElement {
       right={<Link to={loginPath}>Login</Link>}
       // {...otherProps}
     >
-      <div className="span-8 md-span-10">Not logged in</div>
+      {wireframe ? (
+        <div className="span-8 md-span-10">Loading User</div>
+      ) : (
+        <div className="span-8 md-span-10">Not logged in</div>
+      )}
     </NavigationHeader>
   )
 }
@@ -206,6 +211,8 @@ RawLoggedOutHeader.propTypes = {
   /** The data for this component */
   data:PropTypes.any,
 
+  /** The wireframe mode */
+  wireframe:PropTypes.bool,
   /*
   data:PropTypes.shape({
     viewer:PropTypes.shape({
@@ -219,26 +226,34 @@ RawLoggedOutHeader.propTypes = {
   }), */
 }
 
-function Header(props) {
-  const resource = useAuthenticationResource(true)
+function RawLoggedInHeaderWrapper(props) {
+  // const resource = useAuthenticationResource(true)
 
   const { data } = useViewer()
 
   return (
-    <React.Suspense fallback="Loading">
+    <React.Suspense fallback={<RawLoggedOutHeader wireframe />}>
       {data.viewer ? (
         <RawLoggedInHeader
           data={data}
           {...props}
         />
       ) : (
-        <RawLoggedOutHeader
-          data={data}
-          {...props}
-        />
+        <RawLoggedOutHeader {...props} />
       )}
     </React.Suspense>
   )
+}
+
+function Header(props) {
+  const resource = useAuthenticationResource(true)
+
+  const { viewerQueryReference } = useAuthenticationContext()
+
+  if (viewerQueryReference) {
+    return <RawLoggedInHeaderWrapper {...props} />
+  }
+  return <RawLoggedOutHeader {...props} />
 }
 
 export {
