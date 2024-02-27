@@ -30,10 +30,10 @@ export default function getPaths(
       all     :[],
     },
   )
-  const generatePath = reactRouterGeneratePath((
+  const generatePath = ((
     key, variables,
   ) => {
-    generatePath(
+    reactRouterGeneratePath(
       result.absolute[key], variables,
     )
   })
