@@ -65,7 +65,7 @@ function NestedNavigation({
       currentDepth:urlIndex[location.pathname]?.items ? urlIndex[location.pathname].depth : -1,
       // items       :preparedRoot.items,
       currentTree :[...initialCurrentTree],
-      currentItem :urlIndex[location.pathname],
+      currentItem :urlIndex[location.pathname] || preparedRoot,
       urlIndex,
       hoverTree   :[],
     }), [initialCurrentTree],
