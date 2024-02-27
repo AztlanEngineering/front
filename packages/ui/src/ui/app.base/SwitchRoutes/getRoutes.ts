@@ -9,7 +9,7 @@ interface Paths {
   all         :string[];
   relative    :RelativePaths;
   base        :string;
-  generatePath:(path: string, variables: Record<string, string>) => string;
+  generatePath:(path: string, variables: Record<string, any>) => string;
 }
 
 export default function getPaths(
@@ -32,11 +32,9 @@ export default function getPaths(
   )
   const generatePath = (
     key, variables,
-  ) => {
-    reactRouterGeneratePath(
-      result.absolute[key], variables,
-    )
-  }
+  ) => reactRouterGeneratePath(
+    result.absolute[key], variables,
+  )
 
   // Return the result along with the original relativePaths
   return {
