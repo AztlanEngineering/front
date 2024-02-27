@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/ui",
-  "version": "2.5.4",
+  "version": "2.5.5",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
