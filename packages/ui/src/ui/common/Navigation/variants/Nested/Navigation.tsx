@@ -90,9 +90,13 @@ function NestedNavigation({
   )
   const focusParent = useCallback(
     () => {
-      history.push(state.currentItem.parentUrl)
+      // The or condition is to handle the case where the menu is initialized to an unexisting url
+      history.push(state.currentItem.parentUrl || rootItem.url)
       dispatch({ type: 'FOCUS_PARENT' })
-    }, [state.currentItem],
+    }, [
+      state.currentItem,
+      rootItem,
+    ],
   )
   const onItemMouseEnterHandler = useCallback(
     (item) => {
