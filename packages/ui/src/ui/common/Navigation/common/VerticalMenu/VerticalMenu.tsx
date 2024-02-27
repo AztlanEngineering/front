@@ -33,8 +33,7 @@ function VerticalMenu({
 
   const location = useLocation()
 
-  const renderItem = (
-    item, isRoot = false,
+  const renderItem = (item, // isRoot = false,
   ) => (
     <li
       key={item.key || item.label}
