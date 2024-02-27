@@ -35,7 +35,7 @@ function Home() {
       </React.Suspense>
       <p className="container">
         {formatMessage(
-          m.welcome, { name: 'd2' },
+          m.welcome, { name: 'd3' },
         )}
       </p>
       <p className="container">
