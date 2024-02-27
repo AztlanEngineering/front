@@ -1,6 +1,10 @@
 ---
 # This is a template for compiling applications with customizable parameters
 name: _react-compile
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref
+    }}
+  cancel-in-progress: true
 on:
   workflow_call:
     inputs:

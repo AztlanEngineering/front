@@ -3,6 +3,9 @@ name: publish-to-npm
 on:
   push:
     tags: [v*]
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
 jobs:
   publish:
     if: startsWith(github.event.head_commit.message, 'auto-publish')
