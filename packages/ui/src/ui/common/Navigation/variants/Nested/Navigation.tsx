@@ -62,7 +62,7 @@ function NestedNavigation({
 
   const initialStateWithPreparedItems = useMemo(
     () => ({
-      currentDepth:urlIndex[location.pathname].items ? urlIndex[location.pathname].depth : -1,
+      currentDepth:urlIndex[location.pathname]?.items ? urlIndex[location.pathname].depth : -1,
       // items       :preparedRoot.items,
       currentTree :[...initialCurrentTree],
       currentItem :urlIndex[location.pathname],
