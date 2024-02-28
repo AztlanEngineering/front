@@ -10,9 +10,21 @@ import Component from './LocaleSwitcher.js'
 const meta: Meta<typeof Component> = {
   title     :'common/LocaleSwitcher',
   component :Component,
-  decorators:[decorators.intlApp],
+  decorators:[
+    decorators.intlApp,
+    decorators.relay,
+  ],
 }
 
 export default meta
 
-export const Base: StoryObj<typeof Component> = { args: {} }
+export const Base: StoryObj<typeof Component> = {
+  args:{
+    locales:{
+      en:'English',
+      es:'Español',
+      fr:'Français',
+      ru:'Русский',
+    },
+  },
+}

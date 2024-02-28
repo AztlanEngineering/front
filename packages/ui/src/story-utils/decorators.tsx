@@ -13,12 +13,7 @@ import { AuthenticationProvider } from '../ui/app.base/index.js'
 import {
   MUTATION_LOGOUT, FRAGMENT_VIEWER,
 } from './graphql.js'
-
-export const app = (StoryFn) => (
-  <ApplicationProvider>
-    <StoryFn />
-  </ApplicationProvider>
-)
+import { QUERY_APPLICATION } from './queries.js'
 
 function loadLocaleData(locale: string) {
   switch (locale) {
@@ -32,6 +27,14 @@ function loadLocaleData(locale: string) {
 export const relay = (StoryFn) => (
   <RelayEnvironmentProvider environment={environment}>
     {StoryFn()}
+  </RelayEnvironmentProvider>
+)
+
+export const app = (StoryFn) => (
+  <RelayEnvironmentProvider environment={environment}>
+    <ApplicationProvider QUERY_APPLICATION={QUERY_APPLICATION}>
+      <StoryFn />
+    </ApplicationProvider>
   </RelayEnvironmentProvider>
 )
 
@@ -52,6 +55,7 @@ export const intlApp = (StoryFn) => {
           locale,
           ...useLocaleProps,
         }}
+        QUERY_APPLICATION={QUERY_APPLICATION}
       >
         <StoryFn />
       </ApplicationProvider>

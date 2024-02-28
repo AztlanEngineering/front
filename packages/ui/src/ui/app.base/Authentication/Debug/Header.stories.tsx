@@ -6,6 +6,7 @@ import {
 } from '@storybook/react'
 import { graphql } from 'react-relay'
 import * as decorators from 'story-utils/decorators.js'
+import { QUERY_APPLICATION } from 'story-utils/graphql.js'
 import { RawLoggedInHeader as Component } from './Header.js'
 
 const meta: Meta<typeof Component> = {
@@ -15,28 +16,8 @@ const meta: Meta<typeof Component> = {
   parameters:{ layout: 'fullscreen' },
 }
 
-const relayConfig = {
-  query:graphql`
-    query HeaderViewerTestQuery {
-      viewer {
-        ...HeaderViewerFragment
-      }
-    }
-  `,
-  getReferenceEntry:(data) => [
-    'data',
-    data,
-  ],
-  variables    :{},
-  mockResolvers:{
-    UserNode:() => ({
-      firstName     :'Bogdan',
-      lastName      :'Bogdanov',
-      email         :'test@test.com',
-      profilePicture:'https://images.pexels.com/photos/18046342/pexels-photo-18046342/free-photo-of-snow-covering-mountain-side-in-desert.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    }),
-  },
-}
+export default meta
+
 const FRAGMENT = graphql`
   fragment HeaderViewerFragment on UserNode
     @refetchable(queryName: "HeaderViewerRefetchQuery") {
@@ -49,12 +30,40 @@ const FRAGMENT = graphql`
   }
 `
 
-export const Default: StoryObj<typeof Component> = { parameters: { relay: relayConfig } }
+const QUERY = graphql`
+  query HeaderViewerQuery {
+    viewer {
+      ...HeaderViewerFragment
+    }
+  }
+`
 
-export default meta
+const relayConfig = {
+  query            :QUERY,
+  getReferenceEntry:(data) => console.log(
+    'dd', data,
+  ) || [
+    'data',
+    data.viewer,
+  ],
+  variables    :{},
+  mockResolvers:{
+    UserNode:() => ({
+      firstName     :'Bogdan',
+      lastName      :'Bogdanov',
+      email         :'test@test.com',
+      profilePicture:'https://images.pexels.com/photos/18046342/pexels-photo-18046342/free-photo-of-snow-covering-mountain-side-in-desert.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    }),
+  },
+}
+
+export const Default: StoryObj<typeof Component> = {
+  args      :{ FRAGMENT },
+  parameters:{ relay: relayConfig },
+}
 
 export const Base: StoryObj<typeof Component> = {
-  args      :{ FRAGMENT },
+  args      :{ ...Default.args },
   parameters:{ relay: relayConfig },
 }
 

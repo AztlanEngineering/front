@@ -16,21 +16,6 @@ import { LoginButtonFragment$data } from './__generated__/LoginButtonFragment.gr
 const baseClassName = styleNames.base
 const componentClassName = 'login-button'
 
-const FRAGMENT = graphql`
-  fragment LoginButtonFragment on Query
-    @argumentDefinitions(resource: { type: "String!" }) {
-    oAuth2Links(resource: $resource) {
-      google
-    }
-  }
-`
-
-const QUERY = graphql`
-  query LoginButtonQuery($resource: String!) {
-    ...LoginButtonFragment @arguments(resource: $resource)
-  }
-`
-
 /**
  * This is the LoginButton component description.
  */
@@ -38,6 +23,7 @@ function LoginButton({
   id,
   className: userClassName,
   style,
+  FRAGMENT,
   data,
   ...otherProps
 }) {
@@ -93,8 +79,5 @@ LoginButton.propTypes = {
    */
   children:PropTypes.node,
 }
-
-LoginButton.FRAGMENT = FRAGMENT
-LoginButton.QUERY = QUERY
 
 export default LoginButton

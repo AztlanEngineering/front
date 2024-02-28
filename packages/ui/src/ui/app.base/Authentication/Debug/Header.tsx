@@ -39,9 +39,6 @@ function RawLoggedInHeader({
       import('./styles.scss')
     }, [],
   )
-  console.log(
-    'data', data,
-  )
 
   const result = useFragment(
     FRAGMENT, data,

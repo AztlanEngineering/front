@@ -15,11 +15,6 @@ const baseClassName = styleNames.base
 
 const componentClassName = 'locale-switcher'
 
-const locales = {
-  en:'English',
-  es:'Spanish',
-}
-
 /**
  * This is the component description.
  */
@@ -27,6 +22,10 @@ function LocaleSwitcher({
   id,
   className: userClassName,
   style,
+  locales = {
+    en:'English',
+    es:'Spanish',
+  },
   // ...otherProps
 }) {
   useInsertionEffect(
