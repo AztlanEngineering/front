@@ -33,30 +33,36 @@ function VerticalMenu({
 
   const location = useLocation()
 
-  const renderItem = (item, // isRoot = false,
-  ) => (
-    <li
-      key={item.key || item.label}
-      className={[
-        item.disabled && styleNames.modifierDisabled,
-        item.url && (location.pathname === item.url) && styleNames.modifierActive,
-        !item.url && styleNames.elementGroup,
-        item.className,
-      ].filter(Boolean).join(' ')}
-      onMouseLeave={() => onItemMouseLeaveHandler?.(item)}
-    >
-      {item.Component ? item.Component : item.url ? (
-        <Link
-          to={item.url}
-          onMouseEnter={() => onItemMouseEnterHandler?.(item)}
-        >
-          {item.label}
-        </Link>
-      ) : item.label}
-      {item.items && !item.url && (
-      <ul className="container">{item.items.map(renderItem)}</ul>
-      )}
-    </li>
+  const renderItem = useCallback(
+    (item, // isRoot = false,
+    ) => (
+      <li
+        key={item.key || item.label}
+        className={[
+          item.disabled && styleNames.modifierDisabled,
+          item.url && (location.pathname === item.url) && styleNames.modifierActive,
+          !item.url && styleNames.elementGroup,
+          item.className,
+        ].filter(Boolean).join(' ')}
+        onMouseLeave={() => onItemMouseLeaveHandler?.(item)}
+      >
+        {item.Component ? <item.Component item={item} /> : item.url ? (
+          <Link
+            to={item.url}
+            onMouseEnter={() => onItemMouseEnterHandler?.(item)}
+          >
+            {item.label}
+          </Link>
+        ) : item.label}
+        {item.items && !item.url && (
+        <ul className="container">{item.items.map(renderItem)}</ul>
+        )}
+      </li>
+    ), [
+      location.pathname,
+      onItemMouseEnterHandler,
+      onItemMouseLeaveHandler,
+    ],
   )
 
   return (
