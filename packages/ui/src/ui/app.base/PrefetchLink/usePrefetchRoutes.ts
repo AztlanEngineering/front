@@ -2,7 +2,6 @@ import { useCallback } from 'react'
 import throttle from 'lodash.throttle'
 import usePrefetchQuery from './usePrefetchQuery.js'
 import { useApplicationContext } from '../../common/index.js'
-import useRouteMatch from './useRouteMatch.js' // Ensure this is correctly imported
 
 type PrefetchRoutesOptions = {
   throttleMs?:number;
