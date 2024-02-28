@@ -4,6 +4,7 @@ import * as React from 'react'
 import { useInsertionEffect } from 'react'
 
 import * as PropTypes from 'prop-types'
+import { InferProps } from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 
@@ -24,10 +25,10 @@ function LocaleSwitcher({
   style,
   locales = {
     en:'English',
-    es:'Spanish',
+    es:'Español',
   },
-  // ...otherProps
-}) {
+}: // ...otherProps
+InferProps<typeof LocaleSwitcher.propTypes>): React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
@@ -75,6 +76,8 @@ LocaleSwitcher.propTypes = {
   /** The HTML class names for this element */ className:PropTypes.string,
 
   /** The React-written, css properties for this element. */ style:PropTypes.objectOf(PropTypes.string),
+
+  /** The data for this component */ locales:PropTypes.objectOf(PropTypes.string),
 }
 
 export default LocaleSwitcher

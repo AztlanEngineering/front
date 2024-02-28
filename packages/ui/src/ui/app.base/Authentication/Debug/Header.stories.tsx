@@ -6,7 +6,6 @@ import {
 } from '@storybook/react'
 import { graphql } from 'react-relay'
 import * as decorators from 'story-utils/decorators.js'
-import { QUERY_APPLICATION } from 'story-utils/graphql.js'
 import { RawLoggedInHeader as Component } from './Header.js'
 
 const meta: Meta<typeof Component> = {
@@ -40,9 +39,7 @@ const QUERY = graphql`
 
 const relayConfig = {
   query            :QUERY,
-  getReferenceEntry:(data) => console.log(
-    'dd', data,
-  ) || [
+  getReferenceEntry:(data) => [
     'data',
     data.viewer,
   ],
