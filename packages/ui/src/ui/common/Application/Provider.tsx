@@ -6,10 +6,11 @@ import {
 import * as PropTypes from 'prop-types'
 import type { InferProps } from 'prop-types'
 import { useQueryLoader } from 'react-relay'
-
 import {
   useTheme, useFullHostname,
 } from '@aztlan/react-hooks'
+import type { RoutesConfig } from './types.js'
+
 import Context from './Context.js'
 import {
   useSubdomain,
@@ -55,7 +56,7 @@ function Provider({
     }, [applicationQueryVariables],
   )
 
-  const matchRoute = useRouteMatch(routes)
+  const matchRoute = useRouteMatch(routes as RoutesConfig)
 
   const contextValue = useMemo(
     () => ({
