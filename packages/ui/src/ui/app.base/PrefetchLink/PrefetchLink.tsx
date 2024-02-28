@@ -1,169 +1,106 @@
 /* @aztlan/generator-front 1.4.1 */
 import * as React from 'react'
-import {
-  useEffect, useCallback,
-} from 'react'
+import { useCallback } from 'react'
 import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
-import throttle from 'lodash.throttle'
+import type { InferProps } from 'prop-types'
 
 import { Link } from 'react-router-dom'
-import { useApplicationContext } from '../../common/index.js' // Adjust the import path as necessary
-import useRouteMatch from './useRouteMatch.js'
-import usePrefetchQuery from './usePrefetchQuery.js'
+import usePrefetchLink from './usePrefetchLink.js'
+import type { PrefetchLinkOptions } from './usePrefetchLink.js'
+
 import {
-  useViewer,
   useAuthenticationContext,
+  useViewer,
 } from '../Authentication/index.js'
 
 const sharedPropTypes = {
-  /* The path to link to */
-  to:PropTypes.string.isRequired,
-
-  /* The minimum wait time before two calls */
-  throttleMs:PropTypes.number,
+  LinkComponent      :PropTypes.elementType,
+  to                 :PropTypes.string.isRequired,
+  prefetchLinkOptions:PropTypes.shape({
+    throttleMs    :PropTypes.number,
+    shouldPrefetch:PropTypes.func,
+  }),
 }
 
-const defaultThrottleMs = 5000
-
-function PublicPrefetchLink({
+export function BasePrefetchLink({
   to,
-  throttleMs = defaultThrottleMs,
+  prefetchLinkOptions = {},
+  LinkComponent = Link,
   ...otherProps
-}: InferProps<typeof sharedPropTypes>): React.ReactElement {
-  const { routes } = useApplicationContext()
-
-  const {
-    route, match,
-  } = useRouteMatch(
-    routes, to,
+}: InferProps<typeof sharedPropTypes> & {
+  prefetchLinkOptions?:PrefetchLinkOptions;
+}): React.ReactElement {
+  const prefetchLink = usePrefetchLink(
+    to, prefetchLinkOptions,
   )
 
-  const prefetchQuery = usePrefetchQuery()
-
-  // Prefetch data function wrapped in useCallback
-  const prefetchData = useCallback(
-    () => {
-      if (route && route.QUERY && !route.isPrivate) {
-        if (match) {
-          const queryVariables = route.prepareQueryVariables?.(match.params) || match.params
-          prefetchQuery(
-            route.QUERY, queryVariables,
-          )
-        }
-      }
-    }, [
-      routes,
-      to,
-    ],
-  )
-
-  const throttledPrefetchData = useCallback(
-    throttle(
-      prefetchData, throttleMs,
-    ),
-    [prefetchData],
-  )
-
-  useEffect(
-    () => () => {
-      // @ts-ignore
-      throttledPrefetchData.cancel()
-    },
-    [throttledPrefetchData],
-  )
   return (
-    <Link
+    <LinkComponent
       to={to}
-      onMouseOver={throttledPrefetchData}
+      onMouseOver={prefetchLink}
       {...otherProps}
     />
   )
 }
 
-function PrivatePrefetchLink({
-  to,
-  throttleMs = defaultThrottleMs,
-  ...otherProps
+BasePrefetchLink.propTypes = { ...sharedPropTypes }
+
+export function PrivatePrefetchLink({
+  prefetchLinkOptions:userPrefetchLinkOptions = {},
+  ...props
 }: InferProps<typeof sharedPropTypes>): React.ReactElement {
-  const { routes } = useApplicationContext() // Assuming routes are part of what useApp returns
   const {
     isLoggedIn, meetsConditions,
   } = useViewer()
 
-  const {
-    route, match,
-  } = useRouteMatch(
-    routes, to,
-  )
-
-  const prefetchQuery = usePrefetchQuery()
-
-  // Prefetch data function wrapped in useCallback
-  const prefetchData = useCallback(
-    () => {
-      if (route && route.QUERY && (isLoggedIn || !route.isPrivate)) {
-        if (isLoggedIn && (route.groups || route.test || route.permissions)) {
-          if (
-            !meetsConditions({
+  const prefetchLinkOptions = {
+    ...userPrefetchLinkOptions,
+    shouldPrefetch:useCallback(
+      (
+        route: any, match: any,
+      ) => {
+        if (!route || !match || !route.QUERY) return false
+        if (!route.isPrivate) return true // Default prefetching behavior for public routes
+        return (
+          isLoggedIn
+          && (!route.groups
+            || meetsConditions({
               groups     :route.groups,
               test       :route.test,
               permissions:route.permissions,
-            })
-          ) {
-            return
-          }
-        }
-        if (match) {
-          const queryVariables = route.prepareQueryVariables?.(match.params) || match.params
-          prefetchQuery(
-            route.QUERY, queryVariables,
-          )
-        }
-      }
-    }, [
-      routes,
-      to,
-    ],
-  )
-
-  const throttledPrefetchData = useCallback(
-    throttle(
-      prefetchData, throttleMs,
+            }))
+        )
+      },
+      [
+        isLoggedIn,
+        meetsConditions,
+      ],
     ),
-    [prefetchData],
-  )
-
-  useEffect(
-    () => () => {
-      // @ts-ignore
-      throttledPrefetchData.cancel()
-    },
-    [throttledPrefetchData],
-  )
+  }
 
   return (
-    <Link
-      to={to}
-      onMouseOver={throttledPrefetchData}
-      {...otherProps}
+    <BasePrefetchLink
+      prefetchLinkOptions={prefetchLinkOptions}
+      {...props}
     />
   )
 }
 
+PrivatePrefetchLink.propTypes = sharedPropTypes
+
 function PrefetchLinkWrapper(props: InferProps<typeof sharedPropTypes>): React.ReactElement {
-  // This means the prefetch link only works when the user has been fetch
-  // Whether it is logged in or not
   const { data } = useAuthenticationContext()
   return data ? (
-    <PrivatePrefetchLink {...props} />
+    <PrivatePrefetchLink
+      {...props}
+    />
   ) : (
-    <PublicPrefetchLink {...props} />
+    <BasePrefetchLink
+      {...props}
+    />
   )
 }
 
-PublicPrefetchLink.propTypes = sharedPropTypes
-PrivatePrefetchLink.propTypes = sharedPropTypes
 PrefetchLinkWrapper.propTypes = sharedPropTypes
 
 export default PrefetchLinkWrapper

@@ -107,7 +107,7 @@ const useViewer = () => {
 
   return {
     data,
-    isLoggedIn:!!data?.viewer,
+    isLoggedIn:!!data,
     hasPermissions,
     isInGroups,
     test,
