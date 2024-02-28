@@ -5,43 +5,14 @@ import {
   useEffect, useCallback,
 } from 'react'
 import {
-  useMutation, useQueryLoader,
+  useMutation, usePreloadedQuery,
 } from 'react-relay'
 
 import * as PropTypes from 'prop-types'
 import { TokenStateManager } from '@aztlan/react-relay'
 // import { graphql } from 'babel-plugin-relay/macro.js'
-import { graphql } from 'react-relay'
 import Context from './Context.js'
-import { ProviderAuthenticationViewerQuery } from './__generated__/ProviderAuthenticationViewerQuery.graphql.js'
-import { ProviderAuthenticationViewerLogoutMutation } from './__generated__/ProviderAuthenticationViewerLogoutMutation.graphql.js'
-
-// @ts-ignore
-
-// Local Definitions
-const DEFAULT_QUERY_VIEWER = graphql`
-  query ProviderAuthenticationViewerQuery {
-    viewer {
-      ...ViewerProfileFragment
-      #...useViewerFragment
-    }
-  }
-`
-// @ts-ignore
-const DEFAULT_MUTATION_LOGOUT = graphql`
-  mutation ProviderAuthenticationViewerLogoutMutation {
-    deleteTokenCookie(input: { clientMutationId: "logout-delete-access" }) {
-      deleted
-      clientMutationId
-    }
-    deleteRefreshTokenCookie(
-      input: { clientMutationId: "logout-delete-refresh" }
-    ) {
-      deleted
-      clientMutationId
-    }
-  }
-`
+import { useApplicationContext } from '../../common/Application/index.js'
 
 /**
  * This is the component description.
@@ -50,22 +21,23 @@ function Provider({
   children,
   loginPath = '/login',
   defaultRedirectionAfterLogin = '/profile',
-  QUERY_VIEWER = DEFAULT_QUERY_VIEWER,
-  MUTATION_LOGOUT = DEFAULT_MUTATION_LOGOUT,
+  MUTATION_LOGOUT,
+  FRAGMENT_VIEWER,
   // ...otherProps
 }) {
-  const [
-    viewerQueryReference,
-    loadViewerQuery,
-    disposeViewerQuery,
-  ] = useQueryLoader<ProviderAuthenticationViewerQuery>(QUERY_VIEWER)
+  const {
+    applicationQueryReference,
+    QUERY_APPLICATION,
+  } = useApplicationContext()
 
   const [
     commitLogout,
     isLogoutInFlight,
-  ] = useMutation<
-  ProviderAuthenticationViewerLogoutMutation
-  >(MUTATION_LOGOUT)
+  ] = useMutation(MUTATION_LOGOUT)
+
+  const data = usePreloadedQuery(
+    QUERY_APPLICATION, applicationQueryReference,
+  )
 
   // const history = useHistory()
 
@@ -101,19 +73,6 @@ function Provider({
     }, [commitLogout],
   )
 
-  useEffect(
-    () => {
-    // if (window.isAuthReady) {
-      loadViewerQuery({})
-    // }
-    }, [],
-  )
-
-  /*
-  console.log(
-    '[ACP] : Render', viewerQueryReference,
-  ) */
-
   return (
     <Context.Provider
       value={{
@@ -122,11 +81,8 @@ function Provider({
         loginPath,
         defaultRedirectionAfterLogin,
 
-        viewerQueryReference,
-        loadViewerQuery,
-        disposeViewerQuery,
-
-        QUERY_VIEWER,
+        data,
+        FRAGMENT_VIEWER,
       }}
     >
       {children}

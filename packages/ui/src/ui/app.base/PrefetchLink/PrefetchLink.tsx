@@ -154,8 +154,8 @@ function PrivatePrefetchLink({
 function PrefetchLinkWrapper(props: InferProps<typeof sharedPropTypes>): React.ReactElement {
   // This means the prefetch link only works when the user has been fetch
   // Whether it is logged in or not
-  const { viewerQueryReference } = useAuthenticationContext()
-  return viewerQueryReference ? (
+  const { data } = useAuthenticationContext()
+  return data ? (
     <PrivatePrefetchLink {...props} />
   ) : (
     <PublicPrefetchLink {...props} />

@@ -19,35 +19,9 @@ import {
   useAuthenticationContext,
 } from '../hooks/index.js'
 import { NavigationHeader } from '../../../common/Navigation/index.js'
-import {
-  HeaderViewerFragment$data,
-  HeaderViewerFragment$key,
-} from './__generated__/HeaderViewerFragment.graphql.js'
-import { HeaderViewerQuery$data } from './__generated__/HeaderViewerQuery.graphql.js'
-/* Exceptional cross dependency _ UNSTABLE */
 
 const baseClassName = styleNames.base
 const componentClassName = 'debug-bar'
-
-const DEFAULT_FRAGMENT = graphql`
-  fragment HeaderViewerFragment on UserNode
-    @refetchable(queryName: "HeaderViewerRefetchQuery") {
-    firstName
-    lastName
-    created
-    updated
-    email
-    profilePicture
-  }
-`
-
-const QUERY = graphql`
-  query HeaderViewerQuery {
-    viewer {
-      ...HeaderViewerFragment
-    }
-  }
-`
 
 /**
  * description
@@ -55,25 +29,23 @@ const QUERY = graphql`
  * @returns {React.ReactElement} - Rendered Header
  */
 function RawLoggedInHeader({
-  id,
-  className: userClassName,
-  style,
-  FRAGMENT = DEFAULT_FRAGMENT,
-  data,
-}: // ...otherProps
-
-InferProps<typeof RawLoggedInHeader.propTypes>): React.ReactElement {
+  id, className: userClassName, style, FRAGMENT, data,
+}, // ...otherProps
+): // InferProps<typeof RawLoggedInHeader.propTypes>
+  React.ReactElement {
   useInsertionEffect(
     () => {
     // @ts-ignore
       import('./styles.scss')
     }, [],
   )
+  console.log(
+    'data', data,
+  )
 
   const result = useFragment(
-    FRAGMENT,
-    data.viewer as HeaderViewerFragment$key,
-  ) as HeaderViewerFragment$data
+    FRAGMENT, data,
+  ) as any
 
   const log = useCallback(
     () => {
@@ -162,7 +134,7 @@ function RawLoggedOutHeader({
   id,
   className: userClassName,
   style,
-  data,
+  // data,
   wireframe,
 }: // ...otherProps
 InferProps<typeof RawLoggedOutHeader.propTypes>): React.ReactElement {
@@ -226,32 +198,18 @@ RawLoggedOutHeader.propTypes = {
   }), */
 }
 
-function RawLoggedInHeaderWrapper(props) {
-  // const resource = useAuthenticationResource(true)
-
-  const { data } = useViewer()
-
-  return (
-    <React.Suspense fallback={<RawLoggedOutHeader wireframe />}>
-      {data.viewer ? (
-        <RawLoggedInHeader
-          data={data}
-          {...props}
-        />
-      ) : (
-        <RawLoggedOutHeader {...props} />
-      )}
-    </React.Suspense>
-  )
-}
-
 function Header(props) {
   const resource = useAuthenticationResource(true)
 
-  const { viewerQueryReference } = useAuthenticationContext()
+  const { data } = useViewer()
 
-  if (viewerQueryReference) {
-    return <RawLoggedInHeaderWrapper {...props} />
+  if (data) {
+    return (
+      <RawLoggedInHeader
+        data={data}
+        {...props}
+      />
+    )
   }
   return <RawLoggedOutHeader {...props} />
 }

@@ -1,25 +1,13 @@
 import * as React from 'react'
-import {
-  PreloadedQuery, GraphQLTaggedNode,
-} from 'react-relay'
-import { OperationType } from 'relay-runtime'
 
-import { ProviderAuthenticationViewerQuery } from './__generated__/ProviderAuthenticationViewerQuery.graphql.js'
-import { ProviderAuthenticationViewerLogoutMutation } from './__generated__/ProviderAuthenticationViewerLogoutMutation.graphql.js'
-
-export interface AuthContextType<
-  TQuery extends OperationType = ProviderAuthenticationViewerQuery,
-  TMutation = ProviderAuthenticationViewerLogoutMutation,
-> {
+export interface AuthContextType {
   logout                      :() => void;
   isLogoutInFlight            :boolean;
   loginPath                   :string;
-  viewerQueryReference        :PreloadedQuery<TQuery> | null;
-  loadViewerQuery             :(variables?: TQuery['variables'], options?: any) => void;
-  disposeViewerQuery          :() => void;
   defaultRedirectionAfterLogin:string;
-  QUERY_VIEWER                :any;
-  MUTATION_LOGOUT             :TMutation;
+  data                        :any;
+  FRAGMENT_VIEWER             :any;
+  MUTATION_LOGOUT             :any;
 }
 
 export default React.createContext<Partial<AuthContextType>>({})

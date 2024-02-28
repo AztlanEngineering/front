@@ -4,36 +4,39 @@ import {
   AuthenticationProvider,
   SwitchRoutes,
 } from '@aztlan/ui'
+import { graphql } from 'react-relay'
 import routes from './modules/routes.js'
 import Status404Page from './modules/common/pages/Status404.js'
 import Base from './modules/common/templates/Base.js'
+import { FRAGMENT_VIEWER } from './ApplicationQuery.js'
 
-function Wireframe({
-  wireframeTitle,
-  // groups,
-  // testFunction,
-  // wireframeTitle,
-  // ...routeProps,
-}) {
-  return (
-    <Base
-      title={wireframeTitle || 'Loading'}
-      wireframe
-    >
-      Loading user
-    </Base>
-  )
-}
+export const MUTATION_LOGOUT = graphql`
+  mutation ApplicationLogoutMutation {
+    deleteTokenCookie(input: { clientMutationId: "logout-delete-access" }) {
+      deleted
+      clientMutationId
+    }
+    deleteRefreshTokenCookie(
+      input: { clientMutationId: "logout-delete-refresh" }
+    ) {
+      deleted
+      clientMutationId
+    }
+  }
+`
 
-function App() {
+function App({ wireframe }) {
   const { theme } = useApplicationContext()
   return (
-    <AuthenticationProvider>
+    <AuthenticationProvider
+      MUTATION_LOGOUT={MUTATION_LOGOUT}
+      FRAGMENT_VIEWER={FRAGMENT_VIEWER}
+    >
       <main className={`${theme || ''} background far`}>
         <SwitchRoutes
           items={routes}
           NotFoundPage={Status404Page}
-          Wireframe={Wireframe}
+          wireframe={wireframe}
         />
       </main>
     </AuthenticationProvider>

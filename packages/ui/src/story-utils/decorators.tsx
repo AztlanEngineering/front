@@ -10,6 +10,9 @@ import {
 import { HashRouter as Router } from 'react-router-dom'
 import { ApplicationProvider } from '../ui/common/index.js'
 import { AuthenticationProvider } from '../ui/app.base/index.js'
+import {
+  MUTATION_LOGOUT, FRAGMENT_VIEWER,
+} from './graphql.js'
 
 export const app = (StoryFn) => (
   <ApplicationProvider>
@@ -57,7 +60,10 @@ export const intlApp = (StoryFn) => {
 }
 
 export const auth = (StoryFn) => (
-  <AuthenticationProvider>
+  <AuthenticationProvider
+    MUTATION_LOGOUT={MUTATION_LOGOUT}
+    FRAGMENT_VIEWER={FRAGMENT_VIEWER}
+  >
     <StoryFn />
   </AuthenticationProvider>
 )

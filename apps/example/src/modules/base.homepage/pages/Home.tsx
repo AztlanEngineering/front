@@ -30,7 +30,7 @@ function Home() {
   const { formatMessage } = useIntl()
   return (
     <Template title={formatMessage(m.title)}>
-      <React.Suspense fallback="Loading">
+      <React.Suspense fallback="Loading QueryTester">
         <QueryTester data={data} />
       </React.Suspense>
       <p className="container">

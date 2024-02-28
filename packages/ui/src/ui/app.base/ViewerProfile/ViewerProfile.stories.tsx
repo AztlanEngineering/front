@@ -5,6 +5,7 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import * as decorators from 'story-utils/decorators.js'
+import { graphql } from 'react-relay'
 import { RawViewerProfile as Component } from './ViewerProfile.js'
 
 const meta: Meta<typeof Component> = {
@@ -19,8 +20,26 @@ const meta: Meta<typeof Component> = {
 
 export default meta
 
+const FRAGMENT = graphql`
+  fragment ViewerProfileFragment on UserNode
+    @refetchable(queryName: "ViewerProfileRefetchableFragment") {
+    firstName
+    lastName
+    created
+    updated
+    email
+    profilePicture
+  }
+`
+
 const relayConfig = {
-  query            :Component.QUERY,
+  query:graphql`
+    query ViewerProfileQuery {
+      viewer {
+        ...ViewerProfileFragment
+      }
+    }
+  `,
   getReferenceEntry:(data) => [
     'data',
     data,
@@ -36,4 +55,7 @@ const relayConfig = {
   },
 }
 
-export const Default: StoryObj<typeof Component> = { parameters: { relay: relayConfig } }
+export const Default: StoryObj<typeof Component> = {
+  args      :{ FRAGMENT },
+  parameters:{ relay: relayConfig },
+}

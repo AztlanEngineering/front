@@ -57,15 +57,25 @@ function withPrivateRoute<T extends ComponentProps>(
         userMeetsConditions,
       ],
     )
+    /*
+    console.log(
+      '🚀 ~ file: withPrivateRoute.ts ~ line 123 ~ PrivateRouteComponent ~ arePermissionsValid',
+      data,
+      arePermissionsValid,
+      userMeetsConditions({
+        groups,
+        test,
+      }),
+    ) */
 
     useEffect(
       () => {
-        if (isLogoutInFlight || !data.viewer || !arePermissionsValid) {
+        if (isLogoutInFlight || !data || !arePermissionsValid) {
           if (location.pathname !== loginPath) {
             history.push({
               pathname:loginPath,
               state   :{
-                reason:!data.viewer
+                reason:!data
                   ? 'You must be logged in to view this page.'
                   : `You do not have permission nor belong to the required groups to view this page. ${
                     groups.length
@@ -79,7 +89,7 @@ function withPrivateRoute<T extends ComponentProps>(
         }
       }, [
         isLogoutInFlight,
-        data.viewer,
+        data,
         arePermissionsValid,
         loginPath,
         location,
@@ -87,7 +97,7 @@ function withPrivateRoute<T extends ComponentProps>(
       ],
     )
 
-    if (!data.viewer || !arePermissionsValid) {
+    if (!data || !arePermissionsValid) {
       return null
     }
 

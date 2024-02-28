@@ -3,6 +3,7 @@ import * as React from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import { Link } from 'react-router-dom'
+import { graphql } from 'react-relay'
 import {
   useAuthenticationContext,
   ThemeSwitcher,
@@ -55,6 +56,15 @@ function Navigation(): React.ReactElement {
   )
 }
 
+const FRAGMENT = graphql`
+  fragment BaseAuthenticationDebugFragment on UserNode {
+    id
+    firstName
+    lastName
+    email
+  }
+`
+
 function Wrapper({
   title, children, sidebar,
 }) {
@@ -66,7 +76,7 @@ function Wrapper({
       className="grid"
       style={{ padding: '0 1em' }}
     >
-      <AuthenticationDebugHeader />
+      <AuthenticationDebugHeader FRAGMENT={FRAGMENT} />
       <div className="background near span-8 md-span-3 fit-content">
         <h1>{title}</h1>
         {sidebar}

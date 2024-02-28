@@ -7,7 +7,6 @@ import * as PropTypes from 'prop-types'
 
 import styleNames from '@aztlan/bem'
 import { useFragment } from 'react-relay'
-import { graphql } from 'relay-runtime'
 import { useViewer } from '../Authentication/index.js'
 import { ViewerProfileFragment$key } from './__generated__/ViewerProfileFragment.graphql.js'
 
@@ -17,25 +16,6 @@ const baseClassName = styleNames.base
 
 const componentClassName = 'viewer-profile'
 
-const DEFAULT_FRAGMENT = graphql`
-  fragment ViewerProfileFragment on UserNode
-    @refetchable(queryName: "ViewerProfileRefetchableFragment") {
-    firstName
-    lastName
-    created
-    updated
-    email
-    profilePicture
-  }
-`
-const DEFAULT_QUERY = graphql`
-  query ViewerProfileQuery {
-    viewer {
-      ...ViewerProfileFragment
-    }
-  }
-`
-
 /**
  * This is the component description.
  */
@@ -43,7 +23,7 @@ function RawViewerProfile({
   id,
   className: userClassName,
   style,
-  FRAGMENT = DEFAULT_FRAGMENT,
+  FRAGMENT,
   data,
   // ...otherProps
 }) {
@@ -54,9 +34,8 @@ function RawViewerProfile({
     }, [],
   )
   const result = useFragment(
-    FRAGMENT,
-    data.viewer,
-  ) as ViewerProfileFragment$key
+    FRAGMENT, data,
+  )
 
   return (
     <div
@@ -112,9 +91,6 @@ RawViewerProfile.propTypes = {
   /** The fragment for this component */
   FRAGMENT:PropTypes.any,
 }
-
-RawViewerProfile.QUERY = DEFAULT_QUERY
-RawViewerProfile.FRAGMENT = DEFAULT_FRAGMENT
 
 function ViewerProfile(props) {
   const { data } = useViewer()

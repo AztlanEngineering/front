@@ -37,22 +37,29 @@ const relayConfig = {
     }),
   },
 }
+const FRAGMENT = graphql`
+  fragment HeaderViewerFragment on UserNode
+    @refetchable(queryName: "HeaderViewerRefetchQuery") {
+    firstName
+    lastName
+    created
+    updated
+    email
+    profilePicture
+  }
+`
 
 export const Default: StoryObj<typeof Component> = { parameters: { relay: relayConfig } }
 
 export default meta
 
 export const Base: StoryObj<typeof Component> = {
-  args:{
-    // children: "Sample DebugBar"
-  },
+  args      :{ FRAGMENT },
   parameters:{ relay: relayConfig },
 }
 
 export const NoUser: StoryObj<typeof Component> = {
-  args:{
-    // children: "Sample DebugBar"
-  },
+  args      :{ ...Base.args },
   parameters:{
     relay:{
       ...relayConfig,

@@ -25,7 +25,7 @@ function withWireframe(Component) {
 function PrivateRoute({
   groups, test, permissions, ...routeProps
 }) {
-  const { viewerQueryReference } = useAuthenticationContext()
+  const { data } = useAuthenticationContext()
   const PrivateComponent = useCallback(
     withPrivateRoute(
       routeProps.component, {
@@ -51,11 +51,11 @@ function PrivateRoute({
         />
 )}
       >
-        {viewerQueryReference && <PrivateComponent {...props} />}
+        {data && <PrivateComponent {...props} />}
       </Suspense>
     ),
     [
-      viewerQueryReference,
+      data,
       PrivateComponent,
       Component,
     ],

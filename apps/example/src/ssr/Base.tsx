@@ -9,6 +9,7 @@ import { IntlProvider } from 'react-intl'
 import Application from '../Application.js'
 import loadMessages from '../locales/loadMessages.js'
 import config from '../config.js'
+import { QUERY_APPLICATION } from '../ApplicationQuery.js'
 
 export default function ({
   environment,
@@ -50,6 +51,7 @@ export default function ({
                 }}
                 maintenance={config.maintenance}
                 ssrHostname={hostname}
+                QUERY_APPLICATION={QUERY_APPLICATION}
               >
                 <Application />
               </ApplicationProvider>

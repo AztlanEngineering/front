@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { usePreloadedQuery } from 'react-relay'
+import { useFragment } from 'react-relay'
 import useAuthenticationContext from './useAuthenticationContext.js'
 
 /*
@@ -30,11 +30,12 @@ const FRAGMENT = graphql`
  */
 const useViewer = () => {
   const {
-    viewerQueryReference, QUERY_VIEWER,
+    FRAGMENT_VIEWER,
+    data: preloadedQueryData,
   } = useAuthenticationContext()
 
-  const data = usePreloadedQuery(
-    QUERY_VIEWER, viewerQueryReference,
+  const data = useFragment(
+    FRAGMENT_VIEWER, preloadedQueryData.viewer,
   )
 
   /**
@@ -89,7 +90,7 @@ const useViewer = () => {
     ({
       permissions = [], groups = [], test: testFn = null,
     } = {}): boolean => {
-      if (!data?.viewer) return false
+      if (!data) return false
       const conditions = []
       if (permissions.length) conditions.push(hasPermissions(permissions))
       if (groups.length) conditions.push(isInGroups(groups))

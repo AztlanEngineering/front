@@ -15,6 +15,7 @@ import loadMessages from './locales/loadMessages.js'
 import config from './config.js'
 import relayEnvironment from './environment.js'
 import routes from './modules/routes.js'
+import { QUERY_APPLICATION } from './ApplicationQuery.js'
 
 // import "./main.scss";
 import '@aztlan/base-styles'
@@ -50,8 +51,9 @@ function Main() {
               }}
               maintenance={config.maintenance}
               routes={routes}
+              QUERY_APPLICATION={QUERY_APPLICATION}
             >
-              <Application />
+              <Application wireframe={false} />
             </ApplicationProvider>
           </HelmetProvider>
         </IntlProvider>

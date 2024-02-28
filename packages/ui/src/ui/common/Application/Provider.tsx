@@ -1,6 +1,11 @@
 import * as React from 'react'
-import { useMemo } from 'react'
+import {
+  useMemo, useEffect,
+  Suspense,
+} from 'react'
 import * as PropTypes from 'prop-types'
+import type { InferProps } from 'prop-types'
+import { useQueryLoader } from 'react-relay'
 
 import {
   useTheme, useFullHostname,
@@ -18,8 +23,10 @@ function Provider({
   routes,
   ssrHostname,
   extraComponents,
+  QUERY_APPLICATION,
+  applicationQueryVariables,
   // ...otherProps
-}) {
+}:InferProps<typeof Provider.propTypes>) {
   const theme = useTheme(initialTheme)
 
   const isMaintenanceMode = useMaintenance(maintenance)
@@ -31,6 +38,21 @@ function Provider({
     return <div>This site is currently not available.</div>
   }
 
+  const [
+    applicationQueryReference,
+    loadApplicationQuery,
+    // disposeApplicationQuery,
+  ] = useQueryLoader(QUERY_APPLICATION)
+
+  useEffect(
+    () => {
+      loadApplicationQuery(
+        applicationQueryVariables, { fetchPolicy: 'store-or-network' },
+      )
+      // return disposeApplicationQuery
+    }, [applicationQueryVariables],
+  )
+
   const contextValue = useMemo(
     () => ({
       ...value,
@@ -39,6 +61,8 @@ function Provider({
       subdomain,
       routes,
       extraComponents,
+      applicationQueryReference,
+      QUERY_APPLICATION,
     }),
     [
       value,
@@ -47,7 +71,15 @@ function Provider({
     ],
   )
 
-  return <Context.Provider value={contextValue}>{children}</Context.Provider>
+  return (
+    <Context.Provider value={contextValue}>
+      <Suspense fallback="Loading">
+        {applicationQueryReference != null
+          ? children
+          : null}
+      </Suspense>
+    </Context.Provider>
+  )
 }
 
 Provider.propTypes = {
@@ -98,7 +130,7 @@ Provider.propTypes = {
     component            :PropTypes.elementType,
     QUERY                :PropTypes.object,
     prepareQueryVariables:PropTypes.func,
-  })),
+  }).isRequired),
 
   /* The hostname, provided in SSR. */
   ssrHostname:PropTypes.string,
@@ -107,6 +139,10 @@ Provider.propTypes = {
     key      :PropTypes.string.isRequired,
     component:PropTypes.node,
   })),
+
+  QUERY_APPLICATION:PropTypes.any,
+
+  applicationQueryVariables:PropTypes.objectOf(PropTypes.string),
 }
 
 export default Provider

@@ -6,10 +6,13 @@ import type { RoutesConfig } from './types.js'
 
 type ContextType = ReturnType<typeof useLocale> &
 ReturnType<typeof useTheme> & {
-  routes         :RoutesConfig;
-  hostname?      :string;
-  subdomain?     :string;
-  extraComponents:Record<string, React.ElementType>;
+  // routes                    :RoutesConfig;
+  routes                    :any;
+  hostname?                 :string;
+  subdomain?                :string;
+  extraComponents           :any, // Record<string, React.ElementType>;
+  applicationQueryReference?:any;
+  QUERY_APPLICATION         :any;
 }
 
 export default React.createContext<Partial<ContextType>>({})
