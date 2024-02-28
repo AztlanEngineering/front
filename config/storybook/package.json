@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/storybook-config",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "",
   "main": "index.js",
   "author": "",
@@ -11,7 +11,7 @@
     "tsconfig-paths-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
-    "@aztlan/storybook-addon-relay": "^2.1.1",
+    "@aztlan/storybook-addon-relay": "^3.0.0",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",

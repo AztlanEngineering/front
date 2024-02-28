@@ -1,6 +1,6 @@
 {
   "name": "@aztlan/storybook-helpers",
-  "version": "2.4.2",
+  "version": "3.0.0",
   "description": "",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -19,9 +19,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@aztlan/eslint-config-base": "^2.4.1",
-    "@aztlan/react-scripts": "^2.4.2",
-    "@aztlan/typescript-config": "^2.4.2",
+    "@aztlan/eslint-config-base": "^3.0.0",
+    "@aztlan/react-scripts": "^3.0.0",
+    "@aztlan/typescript-config": "^3.0.0",
     "typescript": "^5.3.3"
   },
   "eslintConfig": {
