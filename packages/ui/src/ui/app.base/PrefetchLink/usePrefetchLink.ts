@@ -3,7 +3,6 @@ import {
 } from 'react'
 import throttle from 'lodash.throttle'
 import { useApplicationContext } from '../../common/index.js'
-import useRouteMatch from './useRouteMatch.js'
 import usePrefetchQuery from './usePrefetchQuery.js'
 
 export type PrefetchLinkOptions = {
@@ -27,12 +26,11 @@ function usePrefetchLink(
     ...defaultOptions,
     ...options,
   }
-  const { routes } = useApplicationContext()
+  const { matchRoute } = useApplicationContext()
   const {
     route, match,
-  } = useRouteMatch(
-    routes, to,
-  )
+  } = matchRoute(to)
+
   const prefetchQuery = usePrefetchQuery()
 
   const prefetchData = useCallback(

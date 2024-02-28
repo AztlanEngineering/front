@@ -12,7 +12,9 @@ import {
 } from '@aztlan/react-hooks'
 import Context from './Context.js'
 import {
-  useSubdomain, useMaintenance,
+  useSubdomain,
+  useMaintenance,
+  useRouteMatch,
 } from './hooks/index.js'
 
 function Provider({
@@ -53,6 +55,8 @@ function Provider({
     }, [applicationQueryVariables],
   )
 
+  const matchRoute = useRouteMatch(routes)
+
   const contextValue = useMemo(
     () => ({
       ...value,
@@ -63,11 +67,14 @@ function Provider({
       extraComponents,
       applicationQueryReference,
       QUERY_APPLICATION,
+      matchRoute,
     }),
     [
       value,
       theme,
       extraComponents,
+      matchRoute,
+      applicationQueryReference,
     ],
   )
 

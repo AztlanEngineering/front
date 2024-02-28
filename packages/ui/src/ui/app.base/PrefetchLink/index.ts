@@ -5,5 +5,4 @@ export {
   PrivatePrefetchLink,
 } from './PrefetchLink.js'
 export { default as usePrefetchQuery } from './usePrefetchQuery.js'
-export { default as useRouteMatch } from './useRouteMatch.js'
 export { default as usePrefetchLink } from './usePrefetchLink.js'
