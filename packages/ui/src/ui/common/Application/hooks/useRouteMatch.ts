@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { matchPath } from 'react-router-dom'
 import {
   RoutesConfig, RouteConfig,
-} from '../../common/Application/types.js'
+} from '../types.js'
 
 type Return = {
   match:ReturnType<typeof matchPath>;
