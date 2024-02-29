@@ -41,11 +41,13 @@ export default (inputs) => ({
       '.jsx',
     ],
     alias:{
-      react             :getAbsolutePath('react'),
-      'react-dom'       :getAbsolutePath('react-dom'),
-      'react-router-dom':getAbsolutePath('react-router-dom'),
-      'react-relay'     :getAbsolutePath('react-relay'),
-      'react-hook-form' :getAbsolutePath('react-hook-form'),
+      react               :getAbsolutePath('react'),
+      'react-dom'         :getAbsolutePath('react-dom'),
+      'react-router-dom'  :getAbsolutePath('react-router-dom'),
+      'react-relay'       :getAbsolutePath('react-relay'),
+      'react-hook-form'   :getAbsolutePath('react-hook-form'),
+      'react-intl'        :getAbsolutePath('react-intl'),
+      'react-helmet-async':getAbsolutePath('react-helmet-async'),
     },
     roots:[
       path.resolve(
