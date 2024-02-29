@@ -4,8 +4,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 //import { Meta, StoryFn } from '@storybook/react'
 import Component from "./<%= name %>.js";
-//import * as decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
-//import * as decorators from "story-utils/decorators.js";
+//import decorators from "@aztlan/ui/dist/esm/story-utils/decorators.mjs";
+//import decorators from "story-utils/decorators.js";
 
 const meta: Meta<typeof Component> = {
   title: "<%= fullname %>",

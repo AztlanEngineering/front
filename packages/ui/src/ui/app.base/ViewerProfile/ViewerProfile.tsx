@@ -92,14 +92,28 @@ RawViewerProfile.propTypes = {
   FRAGMENT:PropTypes.any,
 }
 
-function ViewerProfile(props) {
+function ViewerProfile({ data: userData, ...props }) {
   const { data } = useViewer()
   return (
     <RawViewerProfile
-      data={data}
+      data={userData || data}
       {...props}
     />
   )
+}
+
+ViewerProfile.propTypes = {
+  /** The data for this component */
+  data:PropTypes.shape({
+    viewer:PropTypes.shape({
+      firstName     :PropTypes.string,
+      lastName      :PropTypes.string,
+      created       :PropTypes.string,
+      updated       :PropTypes.string,
+      email         :PropTypes.string,
+      profilePicture:PropTypes.string,
+    }),
+  }),
 }
 
 export { RawViewerProfile }
