@@ -88,6 +88,7 @@ function SequentialNavigationVerticalMenu(props) {
     <VerticalMenu
       rootItem={rootItem}
       // currentIndex={currentIndex}
+      {...props}
     />
   )
 }
