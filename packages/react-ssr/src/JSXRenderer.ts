@@ -110,7 +110,7 @@ class Renderer {
     const [
       host,
       port,
-    ] = (fullHost || '').split(':')[1]
+    ] = fullHost.split(':')
     const hasNonDefaultPort = port && defaultPorts[protocol] !== parseInt(
       port, 10,
     )
