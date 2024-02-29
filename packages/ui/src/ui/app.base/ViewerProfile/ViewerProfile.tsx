@@ -92,7 +92,9 @@ RawViewerProfile.propTypes = {
   FRAGMENT:PropTypes.any,
 }
 
-function ViewerProfile({ data: userData, ...props }) {
+function ViewerProfile({
+  data: userData, ...props
+}) {
   const { data } = useViewer()
   return (
     <RawViewerProfile
