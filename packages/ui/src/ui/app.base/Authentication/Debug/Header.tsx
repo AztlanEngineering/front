@@ -155,6 +155,7 @@ InferProps<typeof RawLoggedOutHeader.propTypes>): React.ReactElement {
         .join(' ')}
       style={style}
       desktop
+      left="~viewer"
       right={<Link to={loginPath}>Login</Link>}
       // {...otherProps}
     >
