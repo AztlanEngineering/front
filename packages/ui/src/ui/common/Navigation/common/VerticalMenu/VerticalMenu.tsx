@@ -43,7 +43,7 @@ function VerticalMenu({
         className={[
           item.disabled && styleNames.modifierDisabled,
           item.url && (location.pathname === item.url) && styleNames.modifierActive,
-          !item.url && styleNames.elementGroup,
+          !item.url && item.items && styleNames.elementGroup,
           item.className,
         ].filter(Boolean).join(' ')}
         onMouseLeave={() => onItemMouseLeaveHandler?.(item)}
