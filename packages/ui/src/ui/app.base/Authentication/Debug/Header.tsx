@@ -196,8 +196,6 @@ RawLoggedOutHeader.propTypes = {
 }
 
 function Header(props) {
-  const resource = useAuthenticationResource(true)
-
   const { data } = useViewer()
 
   if (data) {

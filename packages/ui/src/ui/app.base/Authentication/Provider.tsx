@@ -2,7 +2,7 @@
 import * as React from 'react'
 
 import {
-  useEffect, useCallback,
+  useEffect, useCallback, useMemo,
 } from 'react'
 import {
   useMutation, usePreloadedQuery,
@@ -25,21 +25,12 @@ function Provider({
   FRAGMENT_VIEWER,
   // ...otherProps
 }) {
-  const {
-    applicationQueryReference,
-    QUERY_APPLICATION,
-  } = useApplicationContext()
+  const { data } = useApplicationContext()
 
   const [
     commitLogout,
     isLogoutInFlight,
   ] = useMutation(MUTATION_LOGOUT)
-
-  const data = usePreloadedQuery(
-    QUERY_APPLICATION, applicationQueryReference,
-  )
-
-  // const history = useHistory()
 
   const logout = useCallback(
     () => {
@@ -73,21 +64,28 @@ function Provider({
     }, [commitLogout],
   )
 
-  return (
-    <Context.Provider
-      value={{
-        logout,
-        isLogoutInFlight,
-        loginPath,
-        defaultRedirectionAfterLogin,
+  const value = useMemo(
+    () => ({
+      logout,
+      isLogoutInFlight,
+      loginPath,
+      defaultRedirectionAfterLogin,
 
-        data,
-        FRAGMENT_VIEWER,
-      }}
-    >
-      {children}
-    </Context.Provider>
+      data,
+      FRAGMENT_VIEWER,
+    }),
+    [
+      logout,
+      isLogoutInFlight,
+      loginPath,
+      defaultRedirectionAfterLogin,
+
+      data,
+      FRAGMENT_VIEWER,
+    ],
   )
+
+  return <Context.Provider value={value}>{children}</Context.Provider>
 }
 
 Provider.propTypes = {

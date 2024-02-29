@@ -52,6 +52,7 @@ function Main() {
               maintenance={config.maintenance}
               routes={routes}
               QUERY_APPLICATION={QUERY_APPLICATION}
+              defaultRedirectionAfterLogin="/profile"
             >
               <Application wireframe={false} />
             </ApplicationProvider>

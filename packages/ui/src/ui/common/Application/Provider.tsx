@@ -5,7 +5,7 @@ import {
 } from 'react'
 import * as PropTypes from 'prop-types'
 import type { InferProps } from 'prop-types'
-import { useQueryLoader } from 'react-relay'
+import { useLazyLoadQuery } from 'react-relay'
 import {
   useTheme, useFullHostname,
 } from '@aztlan/react-hooks'
@@ -17,6 +17,7 @@ import {
   useSubdomain,
   useMaintenance,
   useRouteMatch,
+  useResource,
 } from './hooks/index.js'
 
 function Provider({
@@ -27,8 +28,10 @@ function Provider({
   routes,
   ssrHostname,
   extraComponents,
+  redirectLocallyAfterLogin,
+  defaultRedirectionAfterLogin,
   QUERY_APPLICATION,
-  applicationQueryVariables,
+  applicationQueryVariables = {},
   // ...otherProps
 }:InferProps<typeof Provider.propTypes>) {
   const theme = useTheme(initialTheme)
@@ -43,22 +46,19 @@ function Provider({
     return <div>This site is currently not available.</div>
   }
 
-  const [
-    applicationQueryReference,
-    loadApplicationQuery,
-    // disposeApplicationQuery,
-  ] = useQueryLoader(QUERY_APPLICATION)
+  const resource = useResource(
+    hostname, {
+      redirectLocallyAfterLogin,
+      defaultRedirectionAfterLogin,
+    },
+  )
 
-  useEffect(
-    () => {
-      loadApplicationQuery(
-        {
-          ...params,
-          ...applicationQueryVariables,
-        }, { fetchPolicy: 'store-or-network' },
-      )
-      // return disposeApplicationQuery
-    }, [applicationQueryVariables],
+  const data = useLazyLoadQuery(
+    QUERY_APPLICATION, {
+      authenticationResource:resource,
+      ...params,
+      ...applicationQueryVariables,
+    },
   )
 
   const matchRoute = useRouteMatch(routes as RoutesConfig)
@@ -71,26 +71,28 @@ function Provider({
       subdomain,
       routes,
       extraComponents,
-      applicationQueryReference,
       QUERY_APPLICATION,
+      data,
       matchRoute,
+      resource,
+      redirectLocallyAfterLogin,
+      defaultRedirectionAfterLogin,
     }),
     [
       value,
       theme,
       extraComponents,
+      data,
       matchRoute,
-      applicationQueryReference,
+      resource,
+      redirectLocallyAfterLogin,
+      defaultRedirectionAfterLogin,
     ],
   )
 
   return (
     <Context.Provider value={contextValue}>
-      <Suspense fallback="Loading">
-        {applicationQueryReference != null
-          ? children
-          : null}
-      </Suspense>
+      { children }
     </Context.Provider>
   )
 }
@@ -156,6 +158,10 @@ Provider.propTypes = {
   QUERY_APPLICATION:PropTypes.any,
 
   applicationQueryVariables:PropTypes.objectOf(PropTypes.string),
+
+  redirectLocallyAfterLogin:PropTypes.bool,
+
+  defaultRedirectionAfterLogin:PropTypes.string,
 }
 
 export default Provider

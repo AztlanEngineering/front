@@ -1,12 +1,16 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
 import { useLocation } from 'react-router-dom'
-import { useLazyLoadQuery } from 'react-relay'
+import {
+  useLazyLoadQuery, graphql,
+} from 'react-relay'
 import {
   defineMessages, useIntl,
 } from 'react-intl'
 import {
-  useAuthenticationResource, LoginButton,
+  useAuthenticationResource,
+  LoginButton,
+  useApplicationContext,
 } from '@aztlan/ui'
 import Template from '../templates/Base.js'
 
@@ -22,16 +26,21 @@ const m = defineMessages({
   },
 })
 
+const FRAGMENT = graphql`
+  fragment LoginButtonFragment on Query
+    @argumentDefinitions(resource: { type: "String!" }) {
+    oAuth2Links(resource: $resource) {
+      google
+    }
+  }
+`
+
 function Login() {
   const location = useLocation()
 
   const resource = useAuthenticationResource()
 
-  const data = useLazyLoadQuery(
-    LoginButton.QUERY,
-    { resource },
-    { fetchPolicy: 'store-or-network' },
-  )
+  const { data } = useApplicationContext()
 
   const { formatMessage } = useIntl()
   return (
@@ -43,9 +52,10 @@ function Login() {
           {location.state.reason}
         </p>
         )}
-        <React.Suspense fallback="Loading">
-          <LoginButton data={data} />
-        </React.Suspense>
+        <LoginButton
+          data={data}
+          FRAGMENT={FRAGMENT}
+        />
 
         <p>{formatMessage(m.login)}</p>
         <p>

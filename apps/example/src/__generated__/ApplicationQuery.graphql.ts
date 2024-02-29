@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c3c86d4d4134ec7c6237e1d35ef48472>>
+ * @generated SignedSource<<c12057585553caea195963cff24dd3bf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,12 +10,15 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ApplicationQuery$variables = Record<PropertyKey, never>;
+export type ApplicationQuery$variables = {
+  authenticationResource: string;
+};
 export type ApplicationQuery$data = {
   readonly viewer: {
     readonly id: string;
     readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryViewerFragment">;
   } | null | undefined;
+  readonly " $fragmentSpreads": FragmentRefs<"LoginButtonFragment">;
 };
 export type ApplicationQuery = {
   response: ApplicationQuery$data;
@@ -23,16 +26,30 @@ export type ApplicationQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = {
+var v0 = [
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "authenticationResource"
+  }
+],
+v1 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
-};
+},
+v2 = [
+  {
+    "kind": "Variable",
+    "name": "resource",
+    "variableName": "authenticationResource"
+  }
+];
 return {
   "fragment": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "ApplicationQuery",
@@ -45,7 +62,7 @@ return {
         "name": "viewer",
         "plural": false,
         "selections": [
-          (v0/*: any*/),
+          (v1/*: any*/),
           {
             "args": null,
             "kind": "FragmentSpread",
@@ -53,6 +70,11 @@ return {
           }
         ],
         "storageKey": null
+      },
+      {
+        "args": (v2/*: any*/),
+        "kind": "FragmentSpread",
+        "name": "LoginButtonFragment"
       }
     ],
     "type": "Query",
@@ -60,7 +82,7 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "ApplicationQuery",
     "selections": [
@@ -72,7 +94,7 @@ return {
         "name": "viewer",
         "plural": false,
         "selections": [
-          (v0/*: any*/),
+          (v1/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -131,20 +153,38 @@ return {
           }
         ],
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": (v2/*: any*/),
+        "concreteType": "OAuth2LinksProvider",
+        "kind": "LinkedField",
+        "name": "oAuth2Links",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "google",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "38a4f2c19506a9b913355a1378ad71d1",
+    "cacheID": "d541aa780cbed5894abc575d25fbed7e",
     "id": null,
     "metadata": {},
     "name": "ApplicationQuery",
     "operationKind": "query",
-    "text": "query ApplicationQuery {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...BaseAuthenticationDebugFragment\n}\n\nfragment BaseAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n"
+    "text": "query ApplicationQuery(\n  $authenticationResource: String!\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...LoginButtonFragment_24SCtj\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...BaseAuthenticationDebugFragment\n}\n\nfragment BaseAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment LoginButtonFragment_24SCtj on Query {\n  oAuth2Links(resource: $authenticationResource) {\n    google\n  }\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n"
   }
 };
 })();
 
-(node as any).hash = "5c681a28a31b649452e2ac453c1e09e4";
+(node as any).hash = "c5448b85cc4b52676b89fceda301e2b3";
 
 export default node;
