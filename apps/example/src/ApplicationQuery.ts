@@ -2,12 +2,13 @@ import { graphql } from 'react-relay'
 
 // Local Definitions
 export const QUERY_APPLICATION = graphql`
-  query ApplicationQuery($resource: String!) {
+  query ApplicationQuery($loginRequestedResource: String!) {
     viewer {
       id
       ...ApplicationQueryViewerFragment
     }
-    ...LoginButtonFragment @arguments(resource: $resource)
+    ...LoginButtonFragment
+      @arguments(loginRequestedResource: $loginRequestedResource)
   }
 `
 

@@ -55,7 +55,7 @@ function Provider({
 
   const data = useLazyLoadQuery(
     QUERY_APPLICATION, {
-      resource,
+      loginRequestedResource:resource,
       ...params,
       ...applicationQueryVariables,
     },
