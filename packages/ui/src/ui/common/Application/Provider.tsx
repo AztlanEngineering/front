@@ -9,6 +9,7 @@ import { useQueryLoader } from 'react-relay'
 import {
   useTheme, useFullHostname,
 } from '@aztlan/react-hooks'
+import { useParams } from 'react-router-dom'
 import type { RoutesConfig } from './types.js'
 
 import Context from './Context.js'
@@ -36,6 +37,7 @@ function Provider({
 
   const hostname = useFullHostname(ssrHostname)
   const subdomain = useSubdomain(hostname)
+  const params = useParams()
 
   if (isMaintenanceMode) {
     return <div>This site is currently not available.</div>
@@ -50,7 +52,10 @@ function Provider({
   useEffect(
     () => {
       loadApplicationQuery(
-        applicationQueryVariables, { fetchPolicy: 'store-or-network' },
+        {
+          ...params,
+          ...applicationQueryVariables,
+        }, { fetchPolicy: 'store-or-network' },
       )
       // return disposeApplicationQuery
     }, [applicationQueryVariables],
