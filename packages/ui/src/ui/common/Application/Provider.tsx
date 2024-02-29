@@ -32,6 +32,7 @@ function Provider({
   defaultRedirectionAfterLogin,
   QUERY_APPLICATION,
   applicationQueryVariables = {},
+  fetchOptions = {},
   // ...otherProps
 }:InferProps<typeof Provider.propTypes>) {
   const theme = useTheme(initialTheme)
@@ -58,6 +59,9 @@ function Provider({
       loginRequestedResource:resource,
       ...params,
       ...applicationQueryVariables,
+    }, {
+      fetchPolicy:'store-and-network',
+      ...fetchOptions,
     },
   )
 
@@ -162,6 +166,8 @@ Provider.propTypes = {
   redirectLocallyAfterLogin:PropTypes.bool,
 
   defaultRedirectionAfterLogin:PropTypes.string,
+
+  fetchOptions:PropTypes.object,
 }
 
 export default Provider

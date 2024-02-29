@@ -47,7 +47,7 @@ function ThemeWrapper({ children }) {
 
 ThemeWrapper.propTypes = { children: PropTypes.any }
 
-function Base({
+function Application({
   locale,
   localeProps,
   messages,
@@ -56,7 +56,7 @@ function Base({
   ssrHostname,
   ssrLocation, // SSR
   ssrRouterContext, // SSR
-}: InferProps<typeof Base.propTypes>) {
+}: InferProps<typeof Application.propTypes>) {
   const Router = ssrLocation ? StaticRouter : BrowserRouter
 
   return (
@@ -103,7 +103,7 @@ function Base({
   )
 }
 
-Base.propTypes = {
+Application.propTypes = {
   locale          :PropTypes.any,
   localeProps     :PropTypes.any,
   messages        :PropTypes.any,
@@ -114,4 +114,4 @@ Base.propTypes = {
   ssrRouterContext:PropTypes.any,
 }
 
-export default Base
+export default Application

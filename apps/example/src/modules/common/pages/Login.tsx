@@ -1,9 +1,7 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
 import { useLocation } from 'react-router-dom'
-import {
-  useLazyLoadQuery, graphql,
-} from 'react-relay'
+import { graphql } from 'react-relay'
 import {
   defineMessages, useIntl,
 } from 'react-intl'

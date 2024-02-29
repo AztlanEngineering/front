@@ -27,8 +27,6 @@ function Main() {
   )
   TokenStateManager.initialize()
 
-  // console.log('[CLI] : Render')
-
   return React.createElement(
     Application, {
       locale,
