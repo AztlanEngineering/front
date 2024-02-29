@@ -1,14 +1,29 @@
 import * as React from 'react'
+
 import {
+  StaticRouter, BrowserRouter,
+} from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
+import { IntlProvider } from 'react-intl'
+import {
+  RelayEnvironmentProvider, graphql,
+} from 'react-relay'
+import * as PropTypes from 'prop-types'
+import { InferProps } from 'prop-types'
+import {
+  ApplicationProvider,
   useApplicationContext,
   AuthenticationProvider,
   SwitchRoutes,
 } from '@aztlan/ui'
-import { graphql } from 'react-relay'
-import routes from './modules/routes.js'
 import Status404Page from './modules/common/pages/Status404.js'
-import Base from './modules/common/templates/Base.js'
-import { FRAGMENT_VIEWER } from './ApplicationQuery.js'
+
+import config from './config.js'
+import {
+  QUERY_APPLICATION, FRAGMENT_VIEWER,
+} from './ApplicationQuery.js'
+// import { prefetchRoutes } from './modules/routes.js'
+import routes from './modules/routes.js'
 
 export const MUTATION_LOGOUT = graphql`
   mutation ApplicationLogoutMutation {
@@ -25,22 +40,78 @@ export const MUTATION_LOGOUT = graphql`
   }
 `
 
-function App({ wireframe }) {
+function ThemeWrapper({ children }) {
   const { theme } = useApplicationContext()
+  return <main className={`${theme || ''} background far`}>{children}</main>
+}
+
+ThemeWrapper.propTypes = { children: PropTypes.any }
+
+function Base({
+  locale,
+  localeProps,
+  messages,
+  relayEnvironment,
+  ssrHelmetContext, // SSR
+  ssrHostname,
+  ssrLocation, // SSR
+  ssrRouterContext, // SSR
+}: InferProps<typeof Base.propTypes>) {
+  const Router = ssrLocation ? StaticRouter : BrowserRouter
+
   return (
-    <AuthenticationProvider
-      MUTATION_LOGOUT={MUTATION_LOGOUT}
-      FRAGMENT_VIEWER={FRAGMENT_VIEWER}
-    >
-      <main className={`${theme || ''} background far`}>
-        <SwitchRoutes
-          items={routes}
-          NotFoundPage={Status404Page}
-          wireframe={wireframe}
-        />
-      </main>
-    </AuthenticationProvider>
+    <RelayEnvironmentProvider environment={relayEnvironment}>
+      <Router
+        location={ssrLocation}
+        routerContext={ssrRouterContext}
+      >
+        <IntlProvider
+          locale={locale}
+          messages={messages}
+        >
+          <HelmetProvider context={ssrHelmetContext}>
+            <ApplicationProvider
+              value={{
+                locale,
+                ...localeProps,
+              }}
+              // routes={prefetchRoutes}
+              routes={routes}
+              maintenance={config.maintenance}
+              ssrHostname={ssrHostname}
+              QUERY_APPLICATION={QUERY_APPLICATION}
+              // applicationQueryVariables={{ organization: 'atest.com' }}
+              defaultRedirectionAfterLogin="/profile"
+            >
+              <ThemeWrapper>
+                <AuthenticationProvider
+                  MUTATION_LOGOUT={MUTATION_LOGOUT}
+                  FRAGMENT_VIEWER={FRAGMENT_VIEWER}
+                >
+                  <SwitchRoutes
+                    items={routes}
+                    NotFoundPage={Status404Page}
+                    // wireframe={wireframe}
+                  />
+                </AuthenticationProvider>
+              </ThemeWrapper>
+            </ApplicationProvider>
+          </HelmetProvider>
+        </IntlProvider>
+      </Router>
+    </RelayEnvironmentProvider>
   )
 }
 
-export default App
+Base.propTypes = {
+  locale          :PropTypes.any,
+  localeProps     :PropTypes.any,
+  messages        :PropTypes.any,
+  relayEnvironment:PropTypes.any,
+  ssrHelmetContext:PropTypes.any,
+  ssrHostname     :PropTypes.string,
+  ssrLocation     :PropTypes.string,
+  ssrRouterContext:PropTypes.any,
+}
+
+export default Base

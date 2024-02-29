@@ -53,6 +53,10 @@ function Provider({
     },
   )
 
+  console.log(
+    'resource', resource, defaultRedirectionAfterLogin,
+  )
+
   const data = useLazyLoadQuery(
     QUERY_APPLICATION, {
       authenticationResource:resource,

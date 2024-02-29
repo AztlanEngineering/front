@@ -13,7 +13,7 @@
     "relay:debug": "relay-compiler --output debug",
     "schema:development": "fetch-schema",
     "schema:production": "fetch-schema --ref production",
-    "client:base": "webpack-execute -t client -a @aztlan/assets/fonts -e ./src/client.tsx",
+    "client:base": "webpack-execute -t client -a @aztlan/assets/fonts -e ./src/client.ts",
     "client:serve": "npm run client:base -- -c serve -p 3001",
     "client:build": "npm run client:base -- -c build",
     "client:build:development": "npm run client:base -- -c build -m development",

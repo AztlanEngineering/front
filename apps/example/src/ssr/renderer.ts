@@ -1,26 +1,68 @@
+import * as React from 'react'
 import getServerEnvironment from '@aztlan/react-relay/server'
 import { JSXRenderer } from '@aztlan/react-ssr'
-import Base from './Base.js'
+import { useLocale } from '@aztlan/react-hooks'
+import * as PropTypes from 'prop-types'
 // @ts-ignore
 import template from '../assets/html/index.html'
-import loadMessages from '../locales/loadMessages.js'
 // @ts-ignore
 import stats from '../../public/loadable-stats.json'
 
-/*
-import styleNames from '@aztlan/bem'
-console.log('The two following should return if SSR is \
-properly configured with CSS Modules', styleNames, styleNames.base)
-      console.log(req.headers['accept-language'])
-*/
+import loadMessages from '../locales/loadMessages.js'
+import Application from '../Application.js'
+
+function Main({
+  environment,
+  routerContext,
+  location,
+  helmetContext,
+  locale: requestLocale,
+  hostname,
+  // messages:allMessages,
+}) {
+  const initialLocale = [
+    'en',
+    'es',
+  ].includes(requestLocale)
+    ? requestLocale
+    : 'en'
+  const {
+    locale, messages, ...localeProps
+  } = useLocale(
+    initialLocale,
+    loadMessages,
+  )
+  return React.createElement(
+    Application, {
+      locale,
+      localeProps,
+      messages,
+      relayEnvironment:environment,
+      ssrHelmetContext:helmetContext,
+      ssrHostname     :hostname,
+      ssrLocation     :location,
+      ssrRouterContext:routerContext,
+    },
+  )
+}
+
+Main.propTypes = {
+  environment     :PropTypes.object.isRequired,
+  location        :PropTypes.object.isRequired,
+  routerContext   :PropTypes.object.isRequired,
+  helmetContext   :PropTypes.object.isRequired,
+  hostname        :PropTypes.string.isRequired,
+  locale          :PropTypes.string.isRequired,
+  messages        :PropTypes.object.isRequired,
+  relayEnvironment:PropTypes.object.isRequired,
+}
 
 const renderer = new JSXRenderer(
-  Base, template, stats, {
+  Main, template, stats, {
     getEnvironment    :getServerEnvironment,
     defaultLocale     :'en',
     loadMessages,
     graphqlEndpointUrl:process.env.GRAPHQL_ENDPOINT,
   },
 )
-// console.log(r)
 export default renderer.render
