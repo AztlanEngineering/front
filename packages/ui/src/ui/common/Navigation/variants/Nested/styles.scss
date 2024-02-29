@@ -3,6 +3,8 @@
 @use "@aztlan/bem";
 @use "@aztlan/mixins/src/media" as media;
 
+$transition-duration:0.2s;
+
 .#{bem.$base}.nested-navigation {
   @include media.media($to: 801px) {
     &.focus-canvas {
@@ -23,7 +25,8 @@
       background: lightblue;
       display: flex;
       gap: 0;
-      overflow-x: scroll;
+      //overflow-x: scroll;
+      overflow-x: hidden;
       //transition: all 0.5s;
       width: auto;
 
@@ -31,27 +34,17 @@
         flex: 0 0 100%;
 
         left: calc(var(--offset) * -100%);
-        //left: 0;
-        //left: calc(var(--current-depth) * -100%);
-        // Write flex code so that each child takes 100% of the viewport ?
-        //flex: 0 0 auto;
         position: relative;
-        //transform: translateX(calc(var(--focus-depth) * -100%));
-        //transform: translateX(calc(var(--tree-depth) * -100%));
-        transition: left 0.3s;
+        transition: left $transition-duration;
       }
 
       .group {
         display: flex;
-        //overflow-x: visibl;
-        //flex: calc(var(--tree-depth) - 1) 0 calc(var(--tree-depth) * 100%);
         flex: 0 0 calc((var(--tree-depth) + 1) * 100%);
         gap: 0;
-        //transform: translateX(calc((1 / (var(--tree-depth))) * (var(--current-depth)) * -100%));
 
         > * {
           flex: 0 0 calc(100% / calc(var(--tree-depth) + 1));
-          //position: relative;
         }
       }
 
