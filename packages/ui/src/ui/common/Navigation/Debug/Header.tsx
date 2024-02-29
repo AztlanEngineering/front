@@ -56,7 +56,7 @@ InferProps<typeof DebugHeader.propTypes>): React.ReactElement {
       >
         {items.map((item) => (
           <li key={item.label}>
-            <Link to={item.url || item.path}>{item.label}</Link>
+            <Link to={item.url}>{item.label}</Link>
           </li>
         ))}
       </ul>
@@ -78,7 +78,6 @@ DebugHeader.propTypes = {
   items:PropTypes.arrayOf(PropTypes.shape({
     label:PropTypes.string,
     url  :PropTypes.string,
-    path :PropTypes.string, // TODO deprecate
   })),
 }
 
