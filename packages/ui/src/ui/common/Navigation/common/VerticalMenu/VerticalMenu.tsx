@@ -2,6 +2,7 @@
 import * as React from 'react'
 import {
   useInsertionEffect, useCallback,
+  useMemo,
 } from 'react'
 import {
   Link, useLocation,
@@ -19,6 +20,7 @@ function VerticalMenu({
   style,
   as: Wrapper = 'nav',
   rootItem,
+  appendItems,
   spaced,
   onItemMouseEnterHandler,
   onItemMouseLeaveHandler,
@@ -65,6 +67,18 @@ function VerticalMenu({
     ],
   )
 
+  const {
+    items:baseItems,
+    ...rootItemWithoutItems
+  } = rootItem
+
+  const finalItems = useMemo(
+    () => (appendItems ? baseItems.concat(appendItems) : rootItem.items), [
+      appendItems,
+      rootItem.items,
+    ],
+  )
+
   return (
     <Wrapper
       id={id}
@@ -80,8 +94,8 @@ function VerticalMenu({
       {...otherProps}
     >
       <ul>
-        {renderItem(rootItem)}
-        {rootItem.items.map(renderItem)}
+        {renderItem(rootItemWithoutItems)}
+        {finalItems.map(renderItem)}
       </ul>
     </Wrapper>
   )

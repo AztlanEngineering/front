@@ -1,6 +1,10 @@
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import * as basePropTypes from '../../types.js'
+import {
+  // ComponentPropTypes as VerticalMenuPropTypes,
+  rootItemPropType,
+} from '../../common/VerticalMenu/types.js'
 
 export const propTypes = {
   ...basePropTypes.fixedShared,
@@ -8,13 +12,7 @@ export const propTypes = {
   children:PropTypes.node.isRequired,
 
   /* The array of navigation elements to be passed to the navigation context */
-  items:PropTypes.arrayOf(PropTypes.shape({
-    label        :PropTypes.string.isRequired,
-    url          :PropTypes.string.isRequired,
-    footerContent:PropTypes.string,
-    disabled     :PropTypes.bool,
-    className    :PropTypes.string,
-  })),
+  rootItem:rootItemPropType,
 
   /** The label of the menu */
   menuLabel:PropTypes.string,
@@ -53,6 +51,16 @@ export type ItemType = {
   className    :string;
 }
 
+export interface Item {
+  label?         :string;
+  url?           :string;
+  disabled?      :boolean;
+  className?     :string;
+  items?         :Item[];
+  footerContent? :React.ReactElement;
+  displayItemsAs?:string; // Do not match propTypes : 'nested' | 'group';
+}
+
 export type ContextValue = {
   previous             :React.ReactElement;
   next                 :React.ReactElement;
@@ -60,7 +68,7 @@ export type ContextValue = {
   currentIndex         :number;
   currentContent       :React.ReactNode;
   currentFooterContent?:string;
-  items                :ItemType[];
+  rootItem             :Item;
   fixed                :boolean;
   hideNextButton       :boolean;
   hidePreviousButton   :boolean;

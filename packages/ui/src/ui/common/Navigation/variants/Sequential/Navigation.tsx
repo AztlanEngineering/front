@@ -81,34 +81,20 @@ function SequentialNavigationPaginator(props) {
 
 function SequentialNavigationVerticalMenu(props) {
   const {
-    items, currentIndex, menuLabel,
+    rootItem, currentIndex,
   } = useContext(Context)
-
-  const rootItem = useMemo(
-    () => ({
-      label:menuLabel,
-      items,
-    }),
-    [
-      items,
-      menuLabel,
-    ],
-  )
 
   return (
     <VerticalMenu
       rootItem={rootItem}
-      currentIndex={currentIndex}
-      label={menuLabel}
-      {...props}
+      // currentIndex={currentIndex}
     />
   )
 }
 
 function SequentialNavigation({
   children,
-  items,
-  menuLabel,
+  rootItem,
   fixed = false,
   handlerNext,
   handlerPrevious,
@@ -118,6 +104,8 @@ function SequentialNavigation({
   submit,
 }: Props): React.ReactElement {
   const location = useLocation()
+
+  const { items } = rootItem
 
   const currentIndex = useMemo(
     () => items.findIndex((item) => item.url === location.pathname),
@@ -230,8 +218,7 @@ function SequentialNavigation({
       next,
       currentContent,
       currentFooterContent,
-      items:transformedItems,
-      menuLabel,
+      rootItem,
       currentIndex,
       fixed,
       hidePreviousButton,
@@ -242,8 +229,8 @@ function SequentialNavigation({
       next,
       currentContent,
       currentFooterContent,
+      rootItem,
       transformedItems,
-      menuLabel,
       currentIndex,
       fixed,
     ],

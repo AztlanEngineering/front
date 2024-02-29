@@ -17,31 +17,33 @@ export default meta
 
 export const Base: StoryObj<typeof Component> = {
   args:{
-    menuLabel:'Navigation',
-    children :[
+    children:[
       <Component.Header key="header" />,
       <Component.VerticalMenu key="vm" />,
       <Component.Paginator key="pagi" />,
       <Component.Footer key="footer" />,
     ],
-    items:[
-      {
-        label:'Personal Information',
-        url  :'/',
-      },
-      {
-        label:'Organization Details',
-        url  :'/org',
-      },
-      {
-        label:'Location',
-        url  :'/location',
-      },
-      {
-        label:'Confirmation',
-        url  :'/confirmation',
-      },
-    ],
+    rootItem:{
+      label:'Navigation',
+      items:[
+        {
+          label:'Personal Information',
+          url  :'/',
+        },
+        {
+          label:'Organization Details',
+          url  :'/org',
+        },
+        {
+          label:'Location',
+          url  :'/location',
+        },
+        {
+          label:'Confirmation',
+          url  :'/confirmation',
+        },
+      ],
+    },
   },
 }
 

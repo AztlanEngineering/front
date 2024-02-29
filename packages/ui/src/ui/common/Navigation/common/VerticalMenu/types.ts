@@ -40,6 +40,8 @@ export const ComponentPropTypes = {
 
   /** Whether the last element displays at the end of the flexbox */
   spaced:PropTypes.bool,
+
+  appendItems:itemsValidator,
 }
 
 export type ComponentProps = InferProps<typeof ComponentPropTypes>

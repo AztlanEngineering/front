@@ -118,3 +118,23 @@ export const Spaced: StoryObj<typeof Component> = {
     style :{ 'min-height': '500px' },
   },
 }
+
+export const WithAppendItems: StoryObj<typeof Component> = {
+  args:{
+    ...Base.args,
+    appendItems:[
+      {
+        label:'Append 1',
+        url  :'/append1',
+      },
+      {
+        label:'Append 2',
+        url  :'/append2',
+      },
+      {
+        label:'Append 3',
+        url  :'/append3',
+      },
+    ],
+  },
+}

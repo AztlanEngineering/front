@@ -113,10 +113,18 @@ function FormNavigation({
     }
   }
 
+  const rootItem = useMemo(
+    () => ({
+      label:'Form',
+      items,
+    }),
+    [items],
+  )
+
   return (
     <SequentialNavigation
       {...props}
-      items={items}
+      rootItem={rootItem}
       handlerNext={handlerNext}
       handlerPrevious={setPrevious}
       hidePreviousButton={!showPreviousButton}
@@ -132,6 +140,9 @@ function FormNavigation({
 FormNavigation.propTypes = {
   /* The children of the FormNavigation */
   children:PropTypes.node.isRequired,
+
+  /* The extra items for the FormNavigation */
+  extraItems:PropTypes.objectOf(PropTypes.string),
 }
 
 FormNavigation.Header = SequentialNavigation.Header
