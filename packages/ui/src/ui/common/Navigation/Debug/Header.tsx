@@ -46,7 +46,7 @@ InferProps<typeof DebugHeader.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
-      left="Debug Menu"
+      left="~menu"
       desktop
       // {...otherProps}
     >

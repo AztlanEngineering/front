@@ -71,7 +71,7 @@ function RawLoggedInHeader({
         .filter((e) => e)
         .join(' ')}
       style={style}
-      left="viewer"
+      left="~viewer"
       desktop
       right={(
         <button
