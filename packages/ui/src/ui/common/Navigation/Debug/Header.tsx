@@ -56,7 +56,7 @@ InferProps<typeof DebugHeader.propTypes>): React.ReactElement {
       >
         {items.map((item) => (
           <li key={item.label}>
-            <Link to={item.path}>{item.label}</Link>
+            <Link to={item.url || item.path}>{item.label}</Link>
           </li>
         ))}
       </ul>
@@ -77,7 +77,8 @@ DebugHeader.propTypes = {
   /** Items of the mock nav */
   items:PropTypes.arrayOf(PropTypes.shape({
     label:PropTypes.string,
-    path :PropTypes.string,
+    url  :PropTypes.string,
+    path :PropTypes.string, // TODO deprecate
   })),
 }
 
