@@ -8,6 +8,8 @@ export const QUERY_APPLICATION = graphql`
       ...ApplicationQueryViewerFragment
     }
     ...LoginButtonFragment @arguments(resource: $loginRequestedResource)
+    time
+    ...LoginButtonViewerFragment
   }
 `
 

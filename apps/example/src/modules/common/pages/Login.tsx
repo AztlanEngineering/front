@@ -3,7 +3,9 @@ import * as React from 'react'
 import {
   useLocation, Link,
 } from 'react-router-dom'
-import { graphql } from 'react-relay'
+import {
+  graphql, useFragment,
+} from 'react-relay'
 import {
   defineMessages, useIntl,
 } from 'react-intl'
@@ -72,20 +74,35 @@ function RawLogin({
 
 export { RawLogin }
 
-function Login({ FRAGMENT }: { FRAGMENT: any }) {
+function Login() {
   const {
     data, defaultRedirectionAfterLogin,
   } = useApplicationContext()
+  const result = useFragment(
+    graphql`
+      fragment LoginButtonViewerFragment on Query {
+        viewer {
+          id
+        }
+      }
+    `,
+    data,
+  )
+  console.log(
+    'result', result,
+  )
   const { data: viewerData } = useViewer()
   const resource = useAuthenticationResource()
-  if (!viewerData) {
-    <Template title="Login">
-      <RawLogin
-        FRAGMENT={FRAGMENT}
-        data={data}
-        resource={resource}
-      />
-    </Template>
+  if (!viewerData?.id) {
+    return (
+      <Template title="Login">
+        <RawLogin
+          FRAGMENT={FRAGMENT}
+          data={data}
+          resource={resource}
+        />
+      </Template>
+    )
   }
   return (
     <Template title="Login">

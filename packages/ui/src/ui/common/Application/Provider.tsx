@@ -5,7 +5,9 @@ import {
 } from 'react'
 import * as PropTypes from 'prop-types'
 import type { InferProps } from 'prop-types'
-import { useLazyLoadQuery } from 'react-relay'
+import {
+  useRelayEnvironment, useLazyLoadQuery,
+} from 'react-relay'
 import {
   useTheme, useFullHostname,
 } from '@aztlan/react-hooks'
@@ -36,6 +38,7 @@ function Provider({
   // ...otherProps
 }:InferProps<typeof Provider.propTypes>) {
   const theme = useTheme(initialTheme)
+  const environment = useRelayEnvironment()
 
   const isMaintenanceMode = useMaintenance(maintenance)
 

@@ -70,24 +70,24 @@ function withPrivateRoute<T extends ComponentProps>(
 
     useEffect(
       () => {
-        if (typeof window !== 'undefined') {
-          if (isLogoutInFlight || !data || !arePermissionsValid) {
-            if (location.pathname !== loginPath) {
-              history.push({
-                pathname:loginPath,
-                state   :{
-                  reason:!data
-                    ? 'You must be logged in to view this page.'
-                    : `You do not have permission nor belong to the required groups to view this page. ${
-                      groups.length
-                        ? `Groups allowed are ${groups.join(', ')}.`
-                        : ''
-                    }`,
-                  from:location.pathname,
-                },
-              })
-            }
+      // if (typeof window !== 'undefined') {
+        if (isLogoutInFlight || !data || !arePermissionsValid) {
+          if (location.pathname !== loginPath) {
+            history.push({
+              pathname:loginPath,
+              state   :{
+                reason:!data
+                  ? 'You must be logged in to view this page.'
+                  : `You do not have permission nor belong to the required groups to view this page. ${
+                    groups.length
+                      ? `Groups allowed are ${groups.join(', ')}.`
+                      : ''
+                  }`,
+                from:location.pathname,
+              },
+            })
           }
+        // }
         }
       }, [
         isLogoutInFlight,

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3d71da9a062639715e462f9da525a05f>>
+ * @generated SignedSource<<713857ecae78231f1fb677e655d10b96>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,11 +14,12 @@ export type ApplicationQuery$variables = {
   loginRequestedResource: string;
 };
 export type ApplicationQuery$data = {
+  readonly time: any | null | undefined;
   readonly viewer: {
     readonly id: string;
     readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryViewerFragment">;
   } | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"LoginButtonFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"LoginButtonFragment" | "LoginButtonViewerFragment">;
 };
 export type ApplicationQuery = {
   response: ApplicationQuery$data;
@@ -46,7 +47,14 @@ v2 = [
     "name": "resource",
     "variableName": "loginRequestedResource"
   }
-];
+],
+v3 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "time",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -75,6 +83,12 @@ return {
         "args": (v2/*: any*/),
         "kind": "FragmentSpread",
         "name": "LoginButtonFragment"
+      },
+      (v3/*: any*/),
+      {
+        "args": null,
+        "kind": "FragmentSpread",
+        "name": "LoginButtonViewerFragment"
       }
     ],
     "type": "Query",
@@ -171,20 +185,21 @@ return {
           }
         ],
         "storageKey": null
-      }
+      },
+      (v3/*: any*/)
     ]
   },
   "params": {
-    "cacheID": "86d8f79191c97e4d28fbbe0c89c98758",
+    "cacheID": "e064c04efdfed7e8d535c36ad85e8f22",
     "id": null,
     "metadata": {},
     "name": "ApplicationQuery",
     "operationKind": "query",
-    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...LoginButtonFragment_2Xypug\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...BaseAuthenticationDebugFragment\n}\n\nfragment BaseAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment LoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n"
+    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...LoginButtonFragment_2Xypug\n  time\n  ...LoginButtonViewerFragment\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...BaseAuthenticationDebugFragment\n}\n\nfragment BaseAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment LoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment LoginButtonViewerFragment on Query {\n  viewer {\n    id\n  }\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n"
   }
 };
 })();
 
-(node as any).hash = "8d073f64cb855407a3a908bd6d1aab0f";
+(node as any).hash = "0df86bc72f1cbbe4752ecfd58412d9eb";
 
 export default node;

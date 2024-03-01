@@ -146,6 +146,12 @@ class Renderer {
 
     // @ts-ignore
     this.helmet = helmetContext.helmet
+    this.environment.commitUpdate((store) => {
+      const root = store.getRoot()
+      root.setValue(
+        undefined, 'viewer',
+      )
+    })
     this.queryRecords = this.environment
       .getStore()
       .getSource()
