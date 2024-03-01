@@ -5,13 +5,13 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 import { graphql } from 'react-relay'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import { RawLoggedInHeader as Component } from './Header.js'
 
 const meta: Meta<typeof Component> = {
   title     :'debug/AuthContextProviderDebugBar',
   component :Component,
-  decorators:[decorators.router],
+  decorators:[decorators.components.Router],
   parameters:{ layout: 'fullscreen' },
 }
 

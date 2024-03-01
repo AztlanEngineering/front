@@ -2,16 +2,16 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './Choices.js'
 
 const meta: Meta<typeof Component> = {
   title     :'form/inputs/Choices',
   component :Component,
   decorators:[
-    decorators.relay,
-    decorators.grid,
-    decorators.form,
+    decorators.components.Relay,
+    decorators.components.Grid,
+    decorators.components.Form,
   ],
 }
 

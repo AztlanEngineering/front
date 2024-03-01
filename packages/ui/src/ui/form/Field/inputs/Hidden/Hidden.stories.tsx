@@ -2,7 +2,7 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './Hidden.js'
 
 const defaultValues = { latitude: '23.4' }
@@ -11,8 +11,8 @@ const meta: Meta<typeof Component> = {
   title     :'form/inputs/Hidden',
   component :Component,
   decorators:[
-    decorators.grid,
-    decorators.getFormDecorator(defaultValues),
+    decorators.components.Grid,
+    decorators.getters.form({ defaultValues }),
   ],
   // argTypes:{ backgroundColor: { control: 'color' } },
 }

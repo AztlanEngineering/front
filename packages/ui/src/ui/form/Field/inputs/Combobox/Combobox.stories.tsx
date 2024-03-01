@@ -3,18 +3,18 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './Combobox.js'
 
 const meta: Meta<typeof Component> = {
   title     :'form/inputs/Combobox',
   component :Component,
   decorators:[
-    decorators.relay,
-    decorators.grid,
-    decorators.form,
+    decorators.components.Relay,
+    decorators.components.Grid,
+    decorators.components.Form,
   ],
-  //argTypes:{ backgroundColor: { control: 'color' } },
+  // argTypes:{ backgroundColor: { control: 'color' } },
   /*
   parameters: {
     layout: 'centered|fullscreen|padded(default)',

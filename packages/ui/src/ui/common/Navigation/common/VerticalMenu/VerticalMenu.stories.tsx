@@ -3,13 +3,13 @@ import * as React from 'react'
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
-import Component from './VerticalMenu' // Ensuring the component import aligns with your setup
+import decorators from 'story-utils/decorators.js'
+import Component from './VerticalMenu.js' // Ensuring the component import aligns with your setup
 
 const meta: Meta<typeof Component> = {
   title     :'common/Navigation/common/VerticalMenu',
   component :Component,
-  decorators:[decorators.router],
+  decorators:[decorators.components.Router],
 }
 
 export default meta

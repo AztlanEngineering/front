@@ -4,7 +4,7 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import { QUERY_APPLICATION } from 'story-utils/queries.js'
 import { graphql } from 'react-relay'
 import { RawViewerProfile as Component } from './ViewerProfile.js'

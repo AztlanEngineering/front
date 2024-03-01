@@ -4,20 +4,22 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './LocaleSwitcher.js'
 
 const meta: Meta<typeof Component> = {
   title     :'common/LocaleSwitcher',
   component :Component,
   decorators:[
-    decorators.intlApp,
-    decorators.relay,
+    // decorators.components.IntlApp,
+    decorators.components.Relay,
+    decorators.components.Router,
   ],
 }
 
 export default meta
 
+/*
 export const Base: StoryObj<typeof Component> = {
   args:{
     locales:{
@@ -27,4 +29,8 @@ export const Base: StoryObj<typeof Component> = {
       ru:'Русский',
     },
   },
+} */
+
+export function Default(args) {
+  return <h1>TODO: Implement</h1>
 }

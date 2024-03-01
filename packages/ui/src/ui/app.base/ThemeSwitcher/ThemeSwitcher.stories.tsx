@@ -4,15 +4,23 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './ThemeSwitcher.js'
 
 const meta: Meta<typeof Component> = {
   title     :'common/ThemeSwitcher',
   component :Component,
-  decorators:[decorators.app],
+  decorators:[
+    // decorators.components.Application,
+    decorators.components.Router,
+    decorators.components.Relay,
+  ],
 }
 
 export default meta
 
-export const Base: StoryObj<typeof Component> = { args: {} }
+// export const Base: StoryObj<typeof Component> = { args: {} }
+
+export function Default(args) {
+  return <h1>TODO: Implement</h1>
+}

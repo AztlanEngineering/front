@@ -2,15 +2,15 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './Textarea.js'
 
 const meta: Meta<typeof Component> = {
   title     :'form/inputs/Textarea',
   component :Component,
   decorators:[
-    decorators.grid,
-    decorators.form,
+    decorators.components.Grid,
+    decorators.components.Form,
   ],
   // argTypes:{ backgroundColor: { control: 'color' } },
 }

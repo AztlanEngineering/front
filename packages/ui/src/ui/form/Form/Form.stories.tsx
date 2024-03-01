@@ -3,13 +3,13 @@ import * as React from 'react'
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './Form.js'
 
 const meta: Meta<typeof Component> = {
   title     :'form/Form',
   component :Component,
-  decorators:[decorators.router],
+  decorators:[decorators.components.Router],
   parameters:{ layout: 'fullscreen' },
 }
 

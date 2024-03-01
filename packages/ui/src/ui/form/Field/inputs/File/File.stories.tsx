@@ -2,15 +2,15 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './File.js'
 
 const meta: Meta<typeof Component> = {
   title     :'form/inputs/File',
   component :Component,
   decorators:[
-    decorators.grid,
-    decorators.form,
+    decorators.components.Grid,
+    decorators.components.Form,
   ],
   // argTypes:{ backgroundColor: { control: 'color' } },
 }

@@ -3,7 +3,7 @@ import * as React from 'react'
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './Field.js'
 import withWrapper from './wrapper/withWrapper.js'
 import { AVAILABLE_TYPES } from './constants.js'
@@ -12,8 +12,8 @@ const meta: Meta<typeof Component> = {
   title     :'form/Field',
   component :Component,
   decorators:[
-    decorators.grid,
-    decorators.form,
+    decorators.components.Grid,
+    decorators.components.Form,
   ],
   argTypes:{
     type:{

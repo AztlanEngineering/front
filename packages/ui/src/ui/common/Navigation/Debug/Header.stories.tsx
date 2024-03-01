@@ -3,13 +3,13 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import * as decorators from 'story-utils/decorators.js'
+import decorators from 'story-utils/decorators.js'
 import Component from './Header.js'
 
 const meta: Meta<typeof Component> = {
   title     :'debug/NavigationDebugBar',
   component :Component,
-  decorators:[decorators.router],
+  decorators:[decorators.components.Router],
   parameters:{ layout: 'fullscreen' },
 }
 
