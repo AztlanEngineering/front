@@ -70,32 +70,34 @@ function Application({
           messages={messages}
         >
           <HelmetProvider context={ssrHelmetContext}>
-            <ApplicationProvider
-              value={{
-                locale,
-                ...localeProps,
-              }}
-              // routes={prefetchRoutes}
-              routes={routes}
-              maintenance={config.maintenance}
-              ssrHostname={ssrHostname}
-              QUERY_APPLICATION={QUERY_APPLICATION}
-              // applicationQueryVariables={{ organization: 'atest.com' }}
-              defaultRedirectionAfterLogin="/profile"
-            >
-              <ThemeWrapper>
-                <AuthenticationProvider
-                  MUTATION_LOGOUT={MUTATION_LOGOUT}
-                  FRAGMENT_VIEWER={FRAGMENT_VIEWER}
-                >
-                  <SwitchRoutes
-                    items={routes}
-                    NotFoundPage={Status404Page}
-                    // wireframe={wireframe}
-                  />
-                </AuthenticationProvider>
-              </ThemeWrapper>
-            </ApplicationProvider>
+            <React.Suspense fallback="fallback">
+              <ApplicationProvider
+                value={{
+                  locale,
+                  ...localeProps,
+                }}
+                // routes={prefetchRoutes}
+                routes={routes}
+                maintenance={config.maintenance}
+                ssrHostname={ssrHostname}
+                QUERY_APPLICATION={QUERY_APPLICATION}
+                // applicationQueryVariables={{ organization: 'atest.com' }}
+                defaultRedirectionAfterLogin="/profile"
+              >
+                <ThemeWrapper>
+                  <AuthenticationProvider
+                    MUTATION_LOGOUT={MUTATION_LOGOUT}
+                    FRAGMENT_VIEWER={FRAGMENT_VIEWER}
+                  >
+                    <SwitchRoutes
+                      items={routes}
+                      NotFoundPage={Status404Page}
+                      // wireframe={wireframe}
+                    />
+                  </AuthenticationProvider>
+                </ThemeWrapper>
+              </ApplicationProvider>
+            </React.Suspense>
           </HelmetProvider>
         </IntlProvider>
       </Router>

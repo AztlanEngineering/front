@@ -5,13 +5,11 @@ import {
 } from 'react'
 import * as PropTypes from 'prop-types'
 import type { InferProps } from 'prop-types'
-import {
-  useRelayEnvironment, useLazyLoadQuery,
-} from 'react-relay'
+import { useLazyLoadQuery } from 'react-relay'
 import {
   useTheme, useFullHostname,
 } from '@aztlan/react-hooks'
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import type { RoutesConfig } from './types.js'
 
 import Context from './Context.js'
@@ -38,17 +36,32 @@ function Provider({
   // ...otherProps
 }:InferProps<typeof Provider.propTypes>) {
   const theme = useTheme(initialTheme)
-  const environment = useRelayEnvironment()
 
   const isMaintenanceMode = useMaintenance(maintenance)
 
   const hostname = useFullHostname(ssrHostname)
   const subdomain = useSubdomain(hostname)
-  const params = useParams()
 
   if (isMaintenanceMode) {
     return <div>This site is currently not available.</div>
   }
+
+  const location = useLocation()
+
+  const matchRoute = useRouteMatch(routes as RoutesConfig)
+
+  const matchResult = matchRoute(location.pathname)
+
+  const {
+    match,
+    route,
+  } = matchResult || {}
+
+  const matchParams = match?.params
+
+  console.log(
+    'matchParams', matchParams, route,
+  )
 
   const resource = useResource(
     hostname, {
@@ -60,15 +73,14 @@ function Provider({
   const data = useLazyLoadQuery(
     QUERY_APPLICATION, {
       loginRequestedResource:resource,
-      ...params,
+      // ...params,
+      ...matchParams,
       ...applicationQueryVariables,
     }, {
       fetchPolicy:'store-and-network',
       ...fetchOptions,
     },
   )
-
-  const matchRoute = useRouteMatch(routes as RoutesConfig)
 
   const contextValue = useMemo(
     () => ({
