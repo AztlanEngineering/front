@@ -51,7 +51,10 @@ function Authentication(
   StoryFn, params = {},
 ) {
   return React.createElement(
-    AuthenticationProvider, params, StoryFn(),
+    AuthenticationProvider,
+    // @ts-ignore
+    params,
+    StoryFn(),
   )
 }
 
@@ -177,6 +180,7 @@ function Relay(
 ) {
   return React.createElement(
     RelayEnvironmentProvider,
+    // @ts-ignore
     { environment },
     StoryFn(),
   )
