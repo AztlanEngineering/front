@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1215ac5a9abd4b986714ffee7e998e0b>>
+ * @generated SignedSource<<3d71da9a062639715e462f9da525a05f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,7 +11,7 @@
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ApplicationQuery$variables = {
-  resource: string;
+  loginRequestedResource: string;
 };
 export type ApplicationQuery$data = {
   readonly viewer: {
@@ -30,7 +30,7 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "resource"
+    "name": "loginRequestedResource"
   }
 ],
 v1 = {
@@ -44,7 +44,7 @@ v2 = [
   {
     "kind": "Variable",
     "name": "resource",
-    "variableName": "resource"
+    "variableName": "loginRequestedResource"
   }
 ];
 return {
@@ -175,16 +175,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "660598fc4f8fb7952fb6e6addea93062",
+    "cacheID": "86d8f79191c97e4d28fbbe0c89c98758",
     "id": null,
     "metadata": {},
     "name": "ApplicationQuery",
     "operationKind": "query",
-    "text": "query ApplicationQuery(\n  $resource: String!\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...LoginButtonFragment_1AFwKl\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...BaseAuthenticationDebugFragment\n}\n\nfragment BaseAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment LoginButtonFragment_1AFwKl on Query {\n  oAuth2Links(resource: $resource) {\n    google\n  }\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n"
+    "text": "query ApplicationQuery(\n  $loginRequestedResource: String!\n) {\n  viewer {\n    id\n    ...ApplicationQueryViewerFragment\n  }\n  ...LoginButtonFragment_2Xypug\n}\n\nfragment ApplicationQueryViewerFragment on UserNode {\n  id\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n  isActive\n  isSuperuser\n  ...ProfileFragment\n  ...BaseAuthenticationDebugFragment\n}\n\nfragment BaseAuthenticationDebugFragment on UserNode {\n  id\n  firstName\n  lastName\n  email\n}\n\nfragment LoginButtonFragment_2Xypug on Query {\n  oAuth2Links(resource: $loginRequestedResource) {\n    google\n  }\n}\n\nfragment ProfileFragment on UserNode {\n  firstName\n  lastName\n  created\n  updated\n  email\n  profilePicture\n}\n"
   }
 };
 })();
 
-(node as any).hash = "347195acca7cf6043d8b0a2770af415d";
+(node as any).hash = "8d073f64cb855407a3a908bd6d1aab0f";
 
 export default node;

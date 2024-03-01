@@ -1,6 +1,8 @@
 /* @aztlan/generator-front 0.4.0 */
 import * as React from 'react'
-import { useLocation } from 'react-router-dom'
+import {
+  useLocation, Link,
+} from 'react-router-dom'
 import { graphql } from 'react-relay'
 import {
   defineMessages, useIntl,
@@ -9,6 +11,7 @@ import {
   useAuthenticationResource,
   LoginButton,
   useApplicationContext,
+  useViewer,
 } from '@aztlan/ui'
 import Template from '../templates/Base.js'
 
@@ -33,34 +36,63 @@ const FRAGMENT = graphql`
   }
 `
 
-function Login() {
+function RawLogin({
+  FRAGMENT,
+  data,
+  resource,
+}: {
+  FRAGMENT:any;
+  data    :any;
+  resource:string;
+}) {
   const location = useLocation()
-
-  const resource = useAuthenticationResource()
-
-  const { data } = useApplicationContext()
 
   const { formatMessage } = useIntl()
   return (
-    <Template title={formatMessage(m.title)}>
-      <div className="container">
-        {location.state?.reason && (
-        <p>
-          {' '}
-          {location.state.reason}
-        </p>
-        )}
-        <LoginButton
-          data={data}
-          FRAGMENT={FRAGMENT}
-        />
+    <div className="container">
+      {location.state?.reason && (
+      <p>
+        {' '}
+        {location.state.reason}
+      </p>
+      )}
+      <LoginButton
+        FRAGMENT={FRAGMENT}
+        data={data}
+      />
 
-        <p>{formatMessage(m.login)}</p>
-        <p>
-          After login you will be redirected to
-          {resource}
-        </p>
-      </div>
+      <p>{formatMessage(m.login)}</p>
+      <p>
+        After login you will be redirected to
+        {resource}
+      </p>
+    </div>
+  )
+}
+
+export { RawLogin }
+
+function Login({ FRAGMENT }: { FRAGMENT: any }) {
+  const {
+    data, defaultRedirectionAfterLogin,
+  } = useApplicationContext()
+  const { data: viewerData } = useViewer()
+  const resource = useAuthenticationResource()
+  if (!viewerData) {
+    <Template title="Login">
+      <RawLogin
+        FRAGMENT={FRAGMENT}
+        data={data}
+        resource={resource}
+      />
+    </Template>
+  }
+  return (
+    <Template title="Login">
+      <p>
+        You are already logged in.
+        <Link to={defaultRedirectionAfterLogin}>Login</Link>
+      </p>
     </Template>
   )
 }
