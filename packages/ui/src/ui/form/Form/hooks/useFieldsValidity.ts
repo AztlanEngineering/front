@@ -52,9 +52,10 @@ const useFormValidity = (
         }
         const isRequired = field.type !== 'hidden' && !field.optional
         const isTouched = touchedFields[field.name]
+        const isDisabled = field.disabled
         const hasError = errors[field.name]
 
-        if (isVisible && isRequired) {
+        if (isVisible && isRequired && !isDisabled) {
           a.fieldsToBeValidated.push(field.name)
           if (hasError) {
             a.fieldsWithErrors.push(field.name)
