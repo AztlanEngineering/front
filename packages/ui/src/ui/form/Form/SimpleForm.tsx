@@ -29,6 +29,7 @@ function SimpleForm({
   fields,
   fieldProps: sharedFieldProps,
   onSubmit,
+  SubmitComponent,
   ...otherProps
 }: TSimpleFormProps): React.ReactElement {
   useInsertionEffect(
@@ -68,9 +69,12 @@ function SimpleForm({
             {...fieldProps as Partial<FieldProps>}
           />
         ))}
-        <button type="submit">
-          Submit
-        </button>
+        { SubmitComponent ? <SubmitComponent />
+          : (
+            <button type="submit">
+              Submit
+            </button>
+          )}
         {/* isDebug
             && (
             <input

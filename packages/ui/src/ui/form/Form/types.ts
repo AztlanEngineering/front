@@ -81,6 +81,9 @@ export const SimpleFormPropTypes = {
     ...formPropTypes.optional,
   })),
   onSubmit:PropTypes.func,
+
+  /** The component to be rendered after the form, defaults to a basic submit button */
+  SubmitComponent:PropTypes.elementType,
 }
 
 export type TFormProps = InferProps<typeof FormPropTypes>
