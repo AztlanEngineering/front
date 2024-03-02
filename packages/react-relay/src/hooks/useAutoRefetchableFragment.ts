@@ -4,7 +4,10 @@ import {
 import { useRefetchableFragment } from 'react-relay'
 
 function useAutoRefetchableFragment(
-  fragmentNode, fragmentRef, params,
+  fragmentNode,
+  fragmentRef,
+  params,
+  fetchPolicy = 'store-and-network',
 ) {
   const [
     result,
@@ -20,7 +23,7 @@ function useAutoRefetchableFragment(
     // Skip refetch on initial load
       if (isMounted.current) {
         refetch(
-          params, { fetchPolicy: 'store-and-network' },
+          params, { fetchPolicy },
         )
       } else {
         isMounted.current = true
