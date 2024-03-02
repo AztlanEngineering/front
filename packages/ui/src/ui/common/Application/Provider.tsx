@@ -2,6 +2,7 @@ import * as React from 'react'
 import {
   useMemo, useEffect,
   Suspense,
+  useState,
 } from 'react'
 import * as PropTypes from 'prop-types'
 import type { InferProps } from 'prop-types'
@@ -57,11 +58,7 @@ function Provider({
     route,
   } = matchResult || {}
 
-  const matchParams = match?.params
-
-  console.log(
-    'matchParams', matchParams, route,
-  )
+  const [matchParams] = useState(match?.params)
 
   const resource = useResource(
     hostname, {
