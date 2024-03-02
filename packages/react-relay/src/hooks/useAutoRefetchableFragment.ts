@@ -2,12 +2,13 @@ import {
   useEffect, useRef,
 } from 'react'
 import { useRefetchableFragment } from 'react-relay'
+import type { FetchPolicy } from 'relay-runtime'
 
 function useAutoRefetchableFragment(
-  fragmentNode,
-  fragmentRef,
+  fragmentNode, 
+  fragmentRef, 
   params,
-  fetchPolicy = 'store-and-network',
+  fetchPolicy:FetchPolicy = 'store-and-network',
 ) {
   const [
     result,
