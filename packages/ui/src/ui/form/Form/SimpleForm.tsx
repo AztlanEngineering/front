@@ -30,6 +30,7 @@ function SimpleForm({
   fieldProps: sharedFieldProps,
   onSubmit,
   SubmitComponent,
+  isInFlight,
   ...otherProps
 }: TSimpleFormProps): React.ReactElement {
   useInsertionEffect(
@@ -71,7 +72,10 @@ function SimpleForm({
         ))}
         { SubmitComponent ? <SubmitComponent />
           : (
-            <button type="submit">
+            <button
+              type="submit"
+              disabled={isInFlight}
+            >
               Submit
             </button>
           )}

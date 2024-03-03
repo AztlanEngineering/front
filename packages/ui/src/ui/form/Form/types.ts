@@ -80,7 +80,8 @@ export const SimpleFormPropTypes = {
     ...formPropTypes.inputShared, // Kinda
     ...formPropTypes.optional,
   })),
-  onSubmit:PropTypes.func,
+  onSubmit  :PropTypes.func,
+  isInFlight:PropTypes.bool,
 
   /** The component to be rendered after the form, defaults to a basic submit button */
   SubmitComponent:PropTypes.elementType,
