@@ -3,4 +3,6 @@ export { default as addGraphQLComboboxSearchOptions } from './addGraphQLCombobox
 export { default as addGraphQLOptions } from './addGraphQLOptions.js'
 export { default as addGraphQLValidation } from './addGraphQLValidation.js'
 export { default as addGraphQLValueResolver } from './addGraphQLValueResolver.js'
+export { default as addEditable } from './addEditable.js'
 export { default as withErrorHandling } from './withErrorHandling.js'
+export { default as Editable } from './Editable.js'

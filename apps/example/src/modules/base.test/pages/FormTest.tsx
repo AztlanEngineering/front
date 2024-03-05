@@ -7,6 +7,7 @@ import {
   SimpleForm,
   addGraphQLOptions,
   addGraphQLComboboxSearchOptions,
+  addEditable,
   withErrorHandling,
   addGraphQLValidation,
 } from '@aztlan/ui'
@@ -55,7 +56,10 @@ function FormTest() {
       <h2 className="container">Form Test</h2>
       <SimpleForm
         className="container"
-        defaultValues={{ fruits2: 'watermelon' }}
+        defaultValues={{
+          fruits2:'watermelon',
+          theme  :'dark-theme',
+        }}
         fieldProps={{
           spanLabel         :6,
           spanLabelDesktop  :3,
@@ -162,6 +166,13 @@ function FormTest() {
                 { minLength: 1 },
               ),
             ],
+          },
+          {
+            name        :'theme',
+            label       :'Theme',
+            type        :'text',
+            autoComplete:'off',
+            extensions  :[addEditable()],
           },
         ]}
       />
