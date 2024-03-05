@@ -83,6 +83,8 @@ const useFetchQuery = (
             error  :deriveErrorFromData(result),
           })
         }
+        // this is a secondary way to get the data (main is through state)
+        return result
       } catch (err) {
         setState({
           data   :null,

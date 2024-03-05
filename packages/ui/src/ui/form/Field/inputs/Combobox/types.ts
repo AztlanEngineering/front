@@ -12,8 +12,14 @@ export const basePropTypes = {
   /** The placeholder text */
   placeholder:PropTypes.string,
 
+  /** The state reducer for the combobox */
+  stateReducer:PropTypes.func,
+
   /** Whether the input is disabled */
   // disabled:PropTypes.bool,
+
+  /** The function creator  */
+  onInputValueChangeFactory:PropTypes.func,
 }
 
 export const wrapperPropTypes = {

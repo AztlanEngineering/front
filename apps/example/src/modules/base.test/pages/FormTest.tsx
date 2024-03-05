@@ -6,6 +6,7 @@ import {
 import {
   SimpleForm,
   addGraphQLOptions,
+  addGraphQLComboboxSearchOptions,
   withErrorHandling,
   addGraphQLValidation,
 } from '@aztlan/ui'
@@ -24,6 +25,15 @@ const QUERY_LOAD_FRUIT_OPTIONS = graphql`
 const QUERY_USERNAME_AVAILABILITY = graphql`
   query FormTestValidationQuery($value: String!) {
     isUsernameAvailable(value: $value)
+  }
+`
+const QUERY_SEARCH_FRUITS_OPTIONS = graphql`
+  query FormTestSearchFruitsQuery($value: String!) {
+    searchFruits(search: $value) {
+      value
+      label
+      disabled
+    }
   }
 `
 
@@ -124,6 +134,32 @@ function FormTest() {
               withErrorHandling,
               addGraphQLOptions(
                 QUERY_LOAD_FRUIT_OPTIONS, 'fruits',
+              ),
+            ],
+          },
+          {
+            name   :'searchfruit',
+            label  :'Search for a fruit',
+            type   :'combobox',
+            options:[
+              {
+                label:'xApple',
+                value:'apple',
+              },
+              {
+                label:'xBanana',
+                value:'banana',
+              },
+              {
+                label:'xOrange',
+                value:'orange',
+              },
+            ],
+            extensions:[
+              addGraphQLComboboxSearchOptions(
+                QUERY_SEARCH_FRUITS_OPTIONS,
+                'searchFruits',
+                { minLength: 1 },
               ),
             ],
           },

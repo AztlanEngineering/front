@@ -5,9 +5,10 @@ import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
 import { useCombobox } from 'downshift'
 import { GraphQLTaggedNode } from 'react-relay'
-import debounce from 'lodash.debounce'
+import debounceAsync from './debounceAsync.js'
 import useFetchQuery, { UseFetchQueryOptions } from './useFetchQuery.js'
 import * as formPropTypes from '../Field/propTypes.js' // Your existing imports
+import type { UnionInputProps } from '../Field/types.js'
 
 type ComponentProps = InferProps<typeof componentPropTypes>
 
@@ -30,7 +31,7 @@ interface GraphqlComboboxSearchProps {
  * @param {GraphqlComboboxSearchProps} options - The options for configuring the GraphQL query.
  * @returns A higher-order component (HOC) that wraps a Downshift combobox component.
  */
-const addGraphqlComboboxSearch = (
+const addGraphQLComboboxSearch = (
   QUERY: GraphQLTaggedNode,
   accessor: string,
   options: GraphqlComboboxSearchProps = {},
@@ -42,17 +43,13 @@ const addGraphqlComboboxSearch = (
     ...fetchOptions
   } = options
   // somecode
-  return (WrappedComponent: React.ComponentType<ComponentProps>) => {
+  return (WrappedComponent: React.ComponentType<UnionInputProps>) => {
     function ExtendedComponent(props: ComponentProps): React.ReactElement {
-      /*
-    const [
-      options,
-      setOptions,
-    ] = useState<any[]>([])
-     */
-
       const {
-        fetchData, data, loading, error,
+        fetchData,
+        // data,
+        loading,
+        // error,
       } = useFetchQuery(
         QUERY,
         accessor,
@@ -61,49 +58,34 @@ const addGraphqlComboboxSearch = (
           // deriveErrorFromData,
         },
       )
+
       const debouncedFetchData = useCallback(
-        debounce(
-          (fetchVariables) => {
-            fetchData(fetchVariables)
-          }, debounceWait,
-        ),
-        [
-          fetchData,
-          debounceWait,
-        ],
+        debounceAsync(
+          (fetchVariables) => fetchData(fetchVariables), debounceWait,
+        ), [debounceWait],
       )
 
-      const stateReducer = useCallback(
-        (
-          state: any, actionAndChanges: any,
-        ) => {
-          if (
-            actionAndChanges.type === useCombobox.stateChangeTypes.InputChange
-          ) {
-            const { inputValue } = actionAndChanges.changes
-            console.log(inputValue)
-            /*
-      if (inputValue.length > 2) {
-        // Adjust based on requirements
-        fetchData(
-          QUERY,
-          variables ? variables(inputValue) : {},
-          (data: any) => {
-            const fetchedOptions = data[accessor]
-            setOptions(fetchedOptions)
-          },
-        )
-      } */
+      const onInputValueChangeFactory = useCallback(
+        (setItems) => async ({ inputValue }: any) => {
+          if (inputValue.length >= minLength) {
+            const result = await debouncedFetchData({
+              value:inputValue,
+              ...variables,
+            })
+            setItems(result)
           }
-          return actionAndChanges.changes
         },
-        [fetchData],
+        [
+          fetchData,
+          minLength,
+        ],
       )
 
       return React.createElement(
         WrappedComponent, {
           loading,
-          stateReducer,
+          onInputValueChangeFactory,
+          // options:data,
           ...props,
         },
       )
@@ -112,4 +94,4 @@ const addGraphqlComboboxSearch = (
   }
 }
 
-export default addGraphqlComboboxSearch
+export default addGraphQLComboboxSearch

@@ -27,9 +27,6 @@ function List({
   valueKey,
   isOpen,
 }: InferProps<typeof List.propTypes>): React.ReactElement {
-  console.log(
-    styleNames, isOpen,
-  )
   return (
     <ul
       className={[

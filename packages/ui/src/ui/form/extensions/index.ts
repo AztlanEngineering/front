@@ -1,4 +1,5 @@
 export { default as addConditionalDisplay } from './addConditionalDisplay.js'
+export { default as addGraphQLComboboxSearchOptions } from './addGraphQLComboboxSearchOptions.js'
 export { default as addGraphQLOptions } from './addGraphQLOptions.js'
 export { default as addGraphQLValidation } from './addGraphQLValidation.js'
 export { default as addGraphQLValueResolver } from './addGraphQLValueResolver.js'
