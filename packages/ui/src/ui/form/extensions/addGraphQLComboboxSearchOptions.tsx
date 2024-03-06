@@ -84,14 +84,11 @@ const addGraphQLComboboxSearch = (
               setItems([
                 {
                   label:'No results found',
-                  value:'',
+                  value:'No results found',
                 },
               ])
             }
             const finalItems = transform ? transform(result) : result
-            console.log(
-              'ADD', result, finalItems,
-            )
             setItems(finalItems)
           }
         },
