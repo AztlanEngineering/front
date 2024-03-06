@@ -35,6 +35,9 @@ export const Field = {
 
   /** A component to render the input */
   Component:PropTypes.elementType,
+
+  /** What Wrapper to use for the Form, default is Wrapper */
+  WrapperComponent:PropTypes.elementType,
 }
 
 /** These are props that are can be safely shared between several fields in the same form */

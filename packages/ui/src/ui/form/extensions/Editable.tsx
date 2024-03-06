@@ -11,7 +11,7 @@ function Editable({
   return (
     <div className="grid container">
       <span
-        style={{ 'grid-column': '1/-2' }}
+        style={{ 'grid-column': '1/-2' } as React.CSSProperties}
         onClick={() => setIsEditable(false)}
       >
         {value}

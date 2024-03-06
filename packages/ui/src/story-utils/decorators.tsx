@@ -80,8 +80,8 @@ function BaseForm(
     React.createElement(
       'form',
       {
-        onSubmit :methods.handleSubmit(onSubmit),
-        className:'grid',
+        onSubmit:methods.handleSubmit(onSubmit),
+        // className:'grid',
       },
       [
         StoryFn(),
@@ -111,7 +111,12 @@ function Grid(
   StoryFn, params = {},
 ) {
   return React.createElement(
-    'div', params, StoryFn(),
+    'div',
+    {
+      className:'grid container',
+      ...params,
+    },
+    StoryFn(),
   )
 }
 

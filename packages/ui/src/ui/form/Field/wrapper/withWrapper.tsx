@@ -38,8 +38,10 @@ const withWrapper = (
       ],
     )
 
+    const { WrapperComponent = Wrapper } = props
+
     return (
-      <Wrapper
+      <WrapperComponent
         Component={ExtendedComponent}
         {...props}
         {...options}

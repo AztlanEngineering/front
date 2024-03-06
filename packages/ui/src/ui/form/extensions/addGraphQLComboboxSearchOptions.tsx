@@ -18,10 +18,17 @@ const componentPropTypes = {
   stateReducer:PropTypes.func,
 }
 
+type Item = {
+  label    :string;
+  value    :string;
+  disabled?:boolean;
+}
+
 interface GraphqlComboboxSearchProps {
   variables?   :Record<string, any>;
   debounceWait?:number;
   minLength?   :number;
+  transform?   :(data: any) => Item[];
 }
 
 /**
@@ -40,6 +47,7 @@ const addGraphQLComboboxSearch = (
     variables,
     debounceWait = 100,
     minLength = 3,
+    transform,
     ...fetchOptions
   } = options
   // somecode
@@ -72,7 +80,19 @@ const addGraphQLComboboxSearch = (
               value:inputValue,
               ...variables,
             })
-            setItems(result)
+            if (!result.length) {
+              setItems([
+                {
+                  label:'No results found',
+                  value:'',
+                },
+              ])
+            }
+            const finalItems = transform ? transform(result) : result
+            console.log(
+              'ADD', result, finalItems,
+            )
+            setItems(finalItems)
           }
         },
         [
