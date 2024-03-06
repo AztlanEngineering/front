@@ -16,7 +16,10 @@ export const defaultValueKey = 'value'
  */
 export const defaultFilterItems = (
   items: Item[], inputValue: string,
-): Item[] => items.filter((item) => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
+): Item[] => console.log(
+  'ddd', items, inputValue,
+)
+  || items.filter((item) => !inputValue || item.label.toLowerCase().includes(inputValue.toLowerCase()))
 
 /**
  * Default function to convert an item to a string.

@@ -87,9 +87,9 @@ function SingleCombobox({
 
   const defaultOnInputValueChangeFactory = useCallback(
     (stateUpdater) => ({ inputValue }) => stateUpdater((state) => defaultFilterItems(
-      state, inputValue,
+      options, inputValue,
     )),
-    [],
+    [options],
   )
 
   const {
