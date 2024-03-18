@@ -31,7 +31,7 @@ function Home() {
       <React.Suspense fallback="Loading QueryTester">
         <QueryTester data={data} />
       </React.Suspense>
-      <p className="container">{formatMessage(m.welcome, { name: "d3" })}</p>
+      <p className="container">{formatMessage(m.welcome, { name: "d4" })}</p>
       <p className="container">
         <PrefetchLink to="/formtest">PREFETCH</PrefetchLink>
       </p>
