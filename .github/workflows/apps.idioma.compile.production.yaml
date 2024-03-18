@@ -1,5 +1,5 @@
 ---
-name: apps.site.test-compile.production
+name: apps.idioma.test-compile.production
 on:
   push:
     branches: [production]

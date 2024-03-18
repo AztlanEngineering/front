@@ -1,5 +1,5 @@
 ---
-name: apps.site.test-compile.development
+name: apps.idioma.test-compile.development
 on:
   push:
     branches-ignore: [production]
