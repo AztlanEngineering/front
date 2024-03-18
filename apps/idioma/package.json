@@ -40,6 +40,7 @@
     "@aztlan/typescript-config": "^3.4.0",
     "@aztlan/webpack-config": "^3.2.4",
     "@formatjs/cli": "^6.2.7",
+    "@typescript-eslint/eslint-plugin": "^7.3.0",
     "eslint": "^8.57.0",
     "graphql": "^16.8.1",
     "relay-compiler": "^16.2.0",
