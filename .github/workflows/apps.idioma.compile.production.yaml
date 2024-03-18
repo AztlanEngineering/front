@@ -1,0 +1,15 @@
+---
+name: apps.site.test-compile.production
+on:
+  push:
+    branches: [production]
+    paths: [apps/idioma/**]
+defaults:
+  run:
+    working-directory: apps/idioma
+jobs:
+  test-compile:
+    uses: ./.github/workflows/_react-compile.yaml
+    with:
+      working-directory: apps/idioma
+      GRAPHQL_ENDPOINT: ${{ vars.PRODUCTION_GRAPHQL_ENDPOINT }}
