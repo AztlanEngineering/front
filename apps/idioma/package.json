@@ -1,0 +1,90 @@
+{
+  "name": "@aztlan/idioma",
+  "version": "3.4.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-storybook": "storybook build",
+    "compile:all": "npm run client:build && npm run ssr:build && npm run sitemap:build",
+    "formatjs:extract": "formatjs extract 'src/**/*.{ts,tsx}' --out-file src/extracted-locales/en.json --format simple",
+    "formatjs:compile:en": "formatjs compile src/extracted-locales/en.json --ast --out-file src/locales/en.json --format simple",
+    "formatjs:compile:es": "formatjs compile src/extracted-locales/es.json --ast --out-file src/locales/es.json --format simple",
+    "relay": "relay-compiler",
+    "relay:debug": "relay-compiler --output debug",
+    "schema:development": "fetch-schema",
+    "schema:production": "fetch-schema --ref production",
+    "client:base": "webpack-execute -t client -a @aztlan/assets/fonts -e ./src/client.ts",
+    "client:serve": "npm run client:base -- -c serve -p 3001",
+    "client:build": "npm run client:base -- -c build",
+    "client:build:development": "npm run client:base -- -c build -m development",
+    "start": "npm run client:serve",
+    "sitemap:serve": "webpack-execute -t sitemap -c serve -e ./src/sitemap/server.ts -o tmp/sitemap.js && node tmp/sitemap.js",
+    "sitemap:build": "webpack-execute -t sitemap -c build -e ./src/sitemap/renderer.ts -o api/sitemap.js",
+    "ssr:serve": "webpack-execute -t ssr -c serve -e ./src/ssr/server.ts -o tmp/ssr.js && node tmp/ssr.js -p 3005",
+    "ssr:build": "webpack-execute -t ssr -c build -e ./src/ssr/renderer.ts -o api/ssr.js",
+    "storybook": "storybook dev -p 6007 --no-open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:tsc": "tsc",
+    "lint:eslint": "eslint --ext .cjs,.mjs,.js,.tsx,.ts ./ --quiet",
+    "lint:stylelint": "stylelint 'src/**/*.scss' --rd --rdd --risd --color --formatter verbose",
+    "format:eslint": "npm run lint:eslint -- --fix",
+    "format:stylelint": "npm run lint:stylelint -- --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "@aztlan/babel-preset-react-relay-app": "^3.1.2",
+    "@aztlan/eslint-config-base": "^3.4.0",
+    "@aztlan/stylelint-config": "^0.9.0",
+    "@aztlan/typescript-config": "^3.4.0",
+    "@aztlan/webpack-config": "^3.2.4",
+    "@formatjs/cli": "^6.2.7",
+    "eslint": "^8.57.0",
+    "graphql": "^16.8.1",
+    "relay-compiler": "^16.2.0",
+    "storybook": "^7.6.17",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@aztlan/assets": "^3.0.0",
+    "@aztlan/base-styles": "^3.4.0",
+    "@aztlan/bem": "^0.9.10",
+    "@aztlan/react-hooks": "^3.4.0",
+    "@aztlan/react-relay": "^3.4.0",
+    "@aztlan/react-scripts": "^3.4.0",
+    "@aztlan/react-ssr": "^3.4.0",
+    "@aztlan/storybook-config": "^3.0.0",
+    "@aztlan/storybook-helpers": "^3.4.0",
+    "@aztlan/ui": "^3.4.0",
+    "@loadable/component": "^5.16.3",
+    "@loadable/server": "^5.16.2",
+    "date-fns": "^3.3.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.4",
+    "react-intl": "^6.6.2",
+    "react-relay": "^16.2.0",
+    "react-relay-network-modern": "^6.2.2",
+    "react-router-dom": "^5.3.4",
+    "relay-runtime": "^16.2.0"
+  },
+  "relay": {
+    "src": "./src",
+    "schema": "./schema.graphql",
+    "language": "typescript",
+    "eagerEsModules": true
+  },
+  "babel": {
+    "presets": [
+      "@aztlan/react-relay-app"
+    ]
+  },
+  "stylelint": {
+    "extends": "@aztlan/stylelint-config"
+  },
+  "eslintConfig": {
+    "extends": "@aztlan/eslint-config-base"
+  }
+}

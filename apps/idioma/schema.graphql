@@ -1,0 +1,290 @@
+type Query {
+  """Search for fruits by label, case-insensitive."""
+  searchFruits(search: String!): [FruitType]
+
+  """Retrieve a list of fruits with optional disabled state."""
+  fruits: [FruitType]
+
+  """Retrieve a fruit by its value."""
+  fruit(value: String!): FruitType
+
+  """Check if the username is available"""
+  isUsernameAvailable(value: String!): Boolean
+
+  """Authenticated greeting"""
+  authHello: String
+
+  """The current time"""
+  time: DateTime
+  viewer: UserNode
+
+  """Retrieve OAuth2 authentication URLs for various providers"""
+  oAuth2Links(
+    """Resource identifier for the OAuth2 provider"""
+    resource: String!
+
+    """Additional state payload for OAuth2 authentication"""
+    additionalStatePayload: String
+  ): OAuth2LinksProvider
+  node(
+    """The ID of the object"""
+    id: ID!
+  ): Node
+}
+
+"""
+Graphene type representing a fruit with value, label, and optional disabled state.
+"""
+type FruitType {
+  """The slug representing the fruit."""
+  value: String
+
+  """The human-readable name of the fruit."""
+  label: String
+
+  """Whether the fruit option is disabled."""
+  disabled: Boolean!
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+type UserNode implements Node {
+  lastLogin: DateTime
+
+  """
+  Designates that this user has all permissions without explicitly assigning them.
+  """
+  isSuperuser: Boolean!
+
+  """
+  The groups this user belongs to. A user will get all permissions granted to each of their groups.
+  """
+  groups(offset: Int, before: String, after: String, first: Int, last: Int, name: String): GroupNodeConnection!
+
+  """Specific permissions for this user."""
+  userPermissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
+
+  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+
+  """Designates whether the user can log into this admin site."""
+  isStaff: Boolean!
+
+  """
+  Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+  """
+  isActive: Boolean!
+  dateJoined: DateTime!
+
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  profilePicture: String
+}
+
+"""An object with an ID"""
+interface Node {
+  """The ID of the object"""
+  id: ID!
+}
+
+type GroupNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [GroupNodeEdge]!
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""A Relay edge containing a `GroupNode` and its cursor."""
+type GroupNodeEdge {
+  """The item at the end of the edge"""
+  node: GroupNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type GroupNode implements Node {
+  """The ID of the object"""
+  id: ID!
+  name: String!
+  permissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
+
+  """
+  The groups this user belongs to. A user will get all permissions granted to each of their groups.
+  """
+  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+}
+
+type PermissionNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PermissionNodeEdge]!
+}
+
+"""A Relay edge containing a `PermissionNode` and its cursor."""
+type PermissionNodeEdge {
+  """The item at the end of the edge"""
+  node: PermissionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PermissionNode implements Node {
+  """The ID of the object"""
+  id: ID!
+  name: String!
+  codename: String!
+  groupSet(offset: Int, before: String, after: String, first: Int, last: Int, name: String): GroupNodeConnection!
+
+  """Specific permissions for this user."""
+  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+}
+
+type UserNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserNodeEdge]!
+}
+
+"""A Relay edge containing a `UserNode` and its cursor."""
+type UserNodeEdge {
+  """The item at the end of the edge"""
+  node: UserNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""
+GraphQL ObjectType for OAuth2LinksProvider.
+
+Utilizes OAuth2LinksProviderMetaclass for dynamic field generation. Each field represents
+an OAuth2 provider's authentication link.
+"""
+type OAuth2LinksProvider {
+  """Login link for google authentication"""
+  google: String!
+}
+
+type Mutation {
+  verifyToken(input: VerifyInput!): VerifyPayload
+  refreshToken(input: RefreshInput!): RefreshPayload
+  deleteTokenCookie(input: DeleteJSONWebTokenCookieInput!): DeleteJSONWebTokenCookiePayload
+  deleteRefreshTokenCookie(input: DeleteRefreshTokenCookieInput!): DeleteRefreshTokenCookiePayload
+  revokeToken(input: RevokeInput!): RevokePayload
+  upload3(input: FileInput!): Upload3Mutation
+}
+
+type VerifyPayload {
+  payload: GenericScalar!
+  clientMutationId: String
+}
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+input VerifyInput {
+  token: String
+  clientMutationId: String
+}
+
+type RefreshPayload {
+  payload: GenericScalar!
+  refreshExpiresIn: Int!
+  clientMutationId: String
+  token: String!
+  refreshToken: String!
+}
+
+input RefreshInput {
+  refreshToken: String
+  clientMutationId: String
+}
+
+type DeleteJSONWebTokenCookiePayload {
+  deleted: Boolean!
+  clientMutationId: String
+}
+
+input DeleteJSONWebTokenCookieInput {
+  clientMutationId: String
+}
+
+type DeleteRefreshTokenCookiePayload {
+  deleted: Boolean!
+  clientMutationId: String
+}
+
+input DeleteRefreshTokenCookieInput {
+  clientMutationId: String
+}
+
+type RevokePayload {
+  revoked: Int!
+  clientMutationId: String
+}
+
+input RevokeInput {
+  refreshToken: String
+  clientMutationId: String
+}
+
+type Upload3Mutation {
+  """Indicates if the upload was successful."""
+  success: Boolean
+}
+
+"""
+Aggregated input type for registering an organization, combining owner, place,
+and organization data into a single structure for streamlined processing.
+"""
+input FileInput {
+  file: Upload!
+}
+
+"""
+Create scalar that ignores normal serialization/deserialization, since
+that will be handled by the multipart request spec
+"""
+scalar Upload

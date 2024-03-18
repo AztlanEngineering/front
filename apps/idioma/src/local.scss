@@ -1,0 +1,10 @@
+@use "@aztlan/base-styles";
+
+//html {
+//  background: red;
+//  font-size: 25px;
+//}
+
+main.grid {
+  grid-template-rows: auto 1fr auto;
+}
