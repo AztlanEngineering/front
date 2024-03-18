@@ -1,14 +1,14 @@
 /* @aztlan/generator-front 0.9.1 */
-import * as React from 'react'
-import { useInsertionEffect } from 'react'
+import * as React from "react";
+import { useInsertionEffect } from "react";
 
-import * as PropTypes from 'prop-types'
-import { InferProps } from 'prop-types'
+import * as PropTypes from "prop-types";
+import { InferProps } from "prop-types";
 
-import styleNames from '@aztlan/bem'
+import styleNames from "@aztlan/bem";
 
-const baseClassName = styleNames.base
-const componentClassName = 'combobox'
+const baseClassName = styleNames.base;
+const componentClassName = "combobox";
 
 /**
  * description
@@ -19,47 +19,41 @@ function Combobox({
   id,
   className: userClassName,
   style,
-  children,
+  children
 }: // ...otherProps
 
 InferProps<typeof Combobox.propTypes>): React.ReactElement {
-  useInsertionEffect(
-    () => {
+  useInsertionEffect(() => {
     // @ts-ignore
-      import('./styles.scss')
-    }, [],
-  )
+    import("./styles.scss");
+  }, []);
 
   return (
     <div
       id={id}
-      className={[
-        baseClassName,
-        componentClassName,
-        userClassName,
-      ]
-        .filter((e) => e)
-        .join(' ')}
+      className={[baseClassName, componentClassName, userClassName]
+        .filter(e => e)
+        .join(" ")}
       style={style}
       // {...otherProps}
     >
       {children}
     </div>
-  )
+  );
 }
 
 Combobox.propTypes = {
   /** The HTML id for this element */
-  id:PropTypes.string,
+  id: PropTypes.string,
 
   /** The HTML class names for this element */
-  className:PropTypes.string,
+  className: PropTypes.string,
 
   /** The React-written, css properties for this element. */
-  style:PropTypes.objectOf(PropTypes.string),
+  style: PropTypes.objectOf(PropTypes.string),
 
   /** The children JSX */
-  children:PropTypes.node,
-}
+  children: PropTypes.node
+};
 
-export default Combobox
+export default Combobox;
