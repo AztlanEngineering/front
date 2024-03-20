@@ -18,6 +18,7 @@
     "release:minor": "./scripts/release.sh minor",
     "release:patch": "./scripts/release.sh patch",
     "release:prerelease": "./scripts/release.sh prerelease",
+    "build-changed-apps": "./scripts/compileChangedApps.sh",
     "storybook": "lerna run storybook --parallel",
     "relay": "lerna run relay --parallel",
     "test": "exit 0",

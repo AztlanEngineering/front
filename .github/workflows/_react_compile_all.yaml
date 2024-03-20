@@ -1,17 +1,8 @@
 ---
-# This is a template for compiling applications with customizable parameters
-name: _react-compile
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref
-    }}
-  cancel-in-progress: true
+name: _react-compile_all
 on:
   workflow_call:
     inputs:
-      working-directory:
-        required: true
-        description: The directory to run the compile commands in
-        type: string
       node-version:
         required: false
         default: '20'
@@ -24,10 +15,13 @@ on:
 jobs:
   compile:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       GRAPHQL_ENDPOINT: ${{ inputs.GRAPHQL_ENDPOINT }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -35,7 +29,6 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
       - name: Cache
-        id: cache-modules
         uses: actions/cache@v1
         with:
           path: ./node_modules
@@ -45,15 +38,15 @@ jobs:
         run: |
           npm install
       - uses: nelonoel/branch-name@v1.0.1
-      - name: Compile the project
-        run: cd ${{ inputs.working-directory }} && npm run compile:all
+      - name: Run build-changed-apps script
+        run: npm run build-changed-apps
       - name: Configure CI Git User
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
       - name: Commit and Push Changes
         run: |
-          cd ${{ inputs.working-directory }} && git add --force -- ./api/* ./public/*
+          git add --force -- ./apps/*
           git commit --reuse-message ${{ env.BRANCH_NAME }}
       - name: Push changes
         uses: ad-m/github-push-action@master

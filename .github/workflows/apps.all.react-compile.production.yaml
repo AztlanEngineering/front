@@ -1,0 +1,11 @@
+---
+name: apps.all.react-compile.production
+on:
+  push:
+    branches: [production]
+    paths: [apps/**]
+jobs:
+  trigger-compile:
+    uses: ./.github/workflows/_react_compile_all.yaml
+    with:
+      GRAPHQL_ENDPOINT: ${{ vars.DEVELOPMENT_GRAPHQL_ENDPOINT }}
