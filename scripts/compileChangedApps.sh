@@ -12,7 +12,7 @@ echo "$CHANGED_APPS"
 LERNA_SCOPES=()
 for APP in $CHANGED_APPS; do
   if [ -d "apps/$APP" ]; then
-    LERNA_SCOPES+=(--scope "@ldmnet/$APP")
+    LERNA_SCOPES+=(--scope "@aztlan/$APP")
   fi
 done
 
