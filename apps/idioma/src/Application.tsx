@@ -17,28 +17,13 @@ import {
   SwitchRoutes,
 } from '@aztlan/ui'
 import Status404Page from './modules/common/pages/Status404.js'
+import {
+  MUTATION_LOGOUT, QUERY_APPLICATION, FRAGMENT_VIEWER,
+} from './ApplicationQuery.js'
 
 import config from './config.js'
-import {
-  QUERY_APPLICATION, FRAGMENT_VIEWER,
-} from './ApplicationQuery.js'
 // import { prefetchRoutes } from './modules/routes.js'
 import routes from './modules/routes.js'
-
-export const MUTATION_LOGOUT = graphql`
-  mutation ApplicationLogoutMutation {
-    deleteTokenCookie(input: { clientMutationId: "logout-delete-access" }) {
-      deleted
-      clientMutationId
-    }
-    deleteRefreshTokenCookie(
-      input: { clientMutationId: "logout-delete-refresh" }
-    ) {
-      deleted
-      clientMutationId
-    }
-  }
-`
 
 function ThemeWrapper({ children }) {
   const { theme } = useApplicationContext()

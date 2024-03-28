@@ -51,3 +51,18 @@ export const FRAGMENT_AUTHENTICATION_DEBUG = graphql`
     email
   }
 `
+
+export const MUTATION_LOGOUT = graphql`
+  mutation ApplicationQueryLogoutMutation {
+    deleteTokenCookie(input: { clientMutationId: "logout-delete-access" }) {
+      deleted
+      clientMutationId
+    }
+    deleteRefreshTokenCookie(
+      input: { clientMutationId: "logout-delete-refresh" }
+    ) {
+      deleted
+      clientMutationId
+    }
+  }
+`

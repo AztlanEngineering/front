@@ -1,0 +1,80 @@
+/* @aztlan/generator-front 2.4.2 */
+
+import {
+  Meta, StoryObj,
+} from '@storybook/react'
+import decorators from 'story-utils/decorators.js'
+import { graphql } from 'react-relay'
+import { RawSelectHeader as Component } from './SelectHeader.js'
+
+const meta: Meta<typeof Component> = {
+  title     :'common/Board/SelectHeader',
+  component :Component,
+  decorators:[decorators.components.Router],
+}
+
+export default meta
+
+const FRAGMENT = graphql`
+  fragment SelectHeaderFragment on BoardMembershipNodeConnection {
+    edges {
+      node {
+        id
+        role
+        organization {
+          id
+          name
+          url
+        }
+      }
+    }
+  }
+`
+
+const relay = {
+  query:graphql`
+    query SelectHeaderQuery {
+      viewer {
+        organizationMemberships {
+          ...SelectHeaderFragment
+        }
+      }
+    }
+  `,
+  getReferenceEntry:(data) => [
+    'data',
+    data.viewer.organizationMemberships,
+  ],
+  variables    :{},
+  mockResolvers:{
+    BoardMembershipNodeConnection:() => ({
+      edges:[
+        {
+          node:{
+            role        :'OWNER',
+            organization:{
+              id  :'1',
+              name:'Board 1',
+              url :'/organization/1',
+            },
+          },
+        },
+        {
+          node:{
+            role        :'MEMBER',
+            organization:{
+              id  :'2',
+              name:'Board 2',
+              url :'/organization/2',
+            },
+          },
+        },
+      ],
+    }),
+  },
+}
+
+export const Base: StoryObj<typeof Component> = {
+  args      :{ FRAGMENT },
+  parameters:{ relay },
+}
