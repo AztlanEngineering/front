@@ -34,7 +34,8 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
 
   useEffect(
     () => {
-      if (currentBoardId && currentBoardId !== selectedBoard?.url) {
+    // if (currentBoardId && currentBoardId !== selectedBoard?.id) {
+      if (currentBoardId !== selectedBoard?.id) {
         refetchBoard({ url: currentBoardId })
       }
     }, [currentBoardId],
