@@ -4,7 +4,9 @@ import {
 } from 'react'
 import * as PropTypes from 'prop-types'
 import { InferProps } from 'prop-types'
-import { useParams } from 'react-router-dom'
+import {
+  useParams, useLocation, matchPath,
+} from 'react-router-dom'
 import {
   useRefetchableFragment, GraphQLTaggedNode,
 } from 'react-relay'
@@ -20,7 +22,12 @@ function RawProvider({
   baseBoardPath,
 }: // ...otherProps
 InferProps<typeof RawProvider.propTypes>): React.ReactElement {
-  const { board: currentBoardId } = useParams()
+  // const { board: currentBoardId } = useParams()
+  const location = useLocation()
+  const match = matchPath(
+    location.pathname, { path: baseBoardPath },
+  )
+  const currentBoardId = match?.params.board
 
   const [
     result,
@@ -36,7 +43,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
     () => {
     // if (currentBoardId && currentBoardId !== selectedBoard?.id) {
       if (currentBoardId !== selectedBoard?.id) {
-        refetchBoard({ url: currentBoardId })
+        refetchBoard({ id: currentBoardId })
       }
     }, [currentBoardId],
   )

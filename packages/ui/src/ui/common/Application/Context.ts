@@ -15,6 +15,7 @@ ReturnType<typeof useTheme> & {
   defaultRedirectionAfterLogin:string;
   data                        :any,
   matchRoute                  :(path: string) => any;
+  matchParams                 :Record<string, string>;
 }
 
 export default React.createContext<Partial<ContextType>>({})

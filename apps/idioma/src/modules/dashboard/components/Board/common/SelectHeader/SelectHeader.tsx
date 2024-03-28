@@ -51,9 +51,11 @@ function RawSelectHeader({
   const result = useFragment(
     FRAGMENT, data,
   )
-  console.log(
-    'result', result, useBoardContext(),
-  )
+
+  const [
+    selectedBoardId,
+    setSelectedBoardId,
+  ] = useState(currentBoardId)
 
   const boardMemberships = result?.edges || {}
 
@@ -61,16 +63,29 @@ function RawSelectHeader({
 
   const handleSelectionChange = useCallback(
     (event) => {
-      const selectedBoardId = event.target.value
-      if (selectedBoardId === 'null') {
+      const newSelectedBoardId = event.target.value
+      if (newSelectedBoardId === 'null') {
+        setSelectedBoardId('null')
         history.push(basePath)
       } else {
+        setSelectedBoardId(newSelectedBoardId)
         history.push(generatePath(
-          baseBoardPath, { board: selectedBoardId },
+          baseBoardPath, { board: newSelectedBoardId },
         ))
       }
     },
     [history],
+  )
+
+  useEffect(
+    () => {
+      console.log(
+        'currentBoardId', currentBoardId,
+      )
+      if (selectedBoardId !== currentBoardId) {
+        setSelectedBoardId(currentBoardId)
+      }
+    }, [currentBoardId],
   )
 
   return (
@@ -93,7 +108,7 @@ function RawSelectHeader({
         id="_board"
         name="_board"
         onChange={handleSelectionChange}
-        defaultValue={currentBoardId}
+        value={selectedBoardId ?? 'null'}
       >
         <option value="null">Select a board</option>
         {boardMemberships.map((membership) => {
