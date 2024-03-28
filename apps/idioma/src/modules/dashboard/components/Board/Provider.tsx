@@ -14,6 +14,23 @@ import { useApplicationContext } from '@aztlan/ui'
 
 import Context from './Context.js'
 
+const isValidBase64 = (input: string): boolean => {
+  const base64Regex = /^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/
+  return base64Regex.test(input)
+}
+
+const isGlobalId = (input: string): boolean => {
+  if (isValidBase64(input)) {
+    try {
+      return atob(input).includes(':')
+    } catch (error) {
+      return false
+    }
+  } else {
+    return false
+  }
+}
+
 function RawProvider({
   children,
   FRAGMENT,
@@ -27,7 +44,8 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
   const match = matchPath(
     location.pathname, { path: baseBoardPath },
   )
-  const currentBoardId = match?.params.board
+  const boardMatchParam = match?.params.board
+  const currentBoardId = isGlobalId(boardMatchParam) ? boardMatchParam : null
 
   const [
     result,
@@ -41,8 +59,7 @@ InferProps<typeof RawProvider.propTypes>): React.ReactElement {
 
   useEffect(
     () => {
-    // if (currentBoardId && currentBoardId !== selectedBoard?.id) {
-      if (currentBoardId !== selectedBoard?.id) {
+      if (currentBoardId && currentBoardId !== selectedBoard?.id) {
         refetchBoard({ id: currentBoardId })
       }
     }, [currentBoardId],
