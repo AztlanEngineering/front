@@ -61,7 +61,7 @@ export const WithNestedGroups: StoryObj<typeof Component> = {
             },
             {
               label    :'Logout',
-              Component:<h2>Logout</h2>,
+              Component:() => <h2>Logout</h2>,
             },
           ],
         },
