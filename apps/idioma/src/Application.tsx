@@ -18,12 +18,13 @@ import {
 } from '@aztlan/ui'
 import Status404Page from './modules/common/pages/Status404.js'
 import {
-  MUTATION_LOGOUT, QUERY_APPLICATION, FRAGMENT_VIEWER,
+  MUTATION_LOGOUT,
+  QUERY_APPLICATION,
+  FRAGMENT_VIEWER,
 } from './ApplicationQuery.js'
 
 import config from './config.js'
-// import { prefetchRoutes } from './modules/routes.js'
-import routes from './modules/routes.js'
+import routes, { prefetchRoutes } from './modules/routes.js'
 
 function ThemeWrapper({ children }) {
   const { theme } = useApplicationContext()
@@ -61,8 +62,8 @@ function Application({
                   locale,
                   ...localeProps,
                 }}
-                // routes={prefetchRoutes}
-                routes={routes}
+                routes={prefetchRoutes}
+                // routes={routes}
                 maintenance={config.maintenance}
                 ssrHostname={ssrHostname}
                 QUERY_APPLICATION={QUERY_APPLICATION}

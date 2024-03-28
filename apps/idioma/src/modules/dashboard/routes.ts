@@ -24,17 +24,23 @@ export const internalRoutes = [
     isPrivate:true,
   },
   {
-    path:[
-      paths.absolute.BOARD_HOME,
-      paths.absolute.BOARD_HOME2,
-    ],
-    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Profile.js')),
+    path     :[paths.absolute.NEW_BOARD],
+    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/NewBoard.js')),
     exact    :true,
     isPrivate:true,
   },
   {
-    path     :[paths.absolute.NEW],
-    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Profile.js')),
+    path     :[paths.absolute.BOARD_SETTINGS],
+    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/BoardSettings.js')),
+    exact    :true,
+    isPrivate:true,
+  },
+  {
+    path:[
+      paths.absolute.BOARD_HOME,
+      paths.absolute.BOARD_HOME2,
+    ],
+    component:loadable(() => import(/* webpackChunkName: `app.dashboard` */ './pages/Board.js')),
     exact    :true,
     isPrivate:true,
   },

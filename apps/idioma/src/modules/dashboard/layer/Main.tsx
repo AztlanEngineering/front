@@ -6,22 +6,41 @@ import { InferProps } from 'prop-types'
 import {
   NavigationFooter, NestedNavigation, SwitchRoutes,
 } from '@aztlan/ui'
+import { graphql } from 'react-relay'
 import {
   debugRouteMap,
   // rootNavigationItem,
 } from '../components/constants.js'
 import {
-  Navigation,
-  // OrganizationProvider,
-  HeaderGroup,
+  Navigation, BoardProvider, HeaderGroup,
 } from '../components/index.js'
+import paths from '../paths.js'
 
-const OrganizationProvider = React.Fragment
+const FRAGMENT = graphql`
+  fragment MainLayerBoardProviderFragment on Query
+    @refetchable(queryName: "MainLayerBoardProviderRefetchQuery")
+    @argumentDefinitions(id: { type: "ID" }) {
+    board(id: $id) {
+      id
+      name
+      created
+      updated
+    }
+  }
+`
 
 function LayerProvider({
   children, wireframe, ...props
 }) {
-  return <Navigation {...props}>{children}</Navigation>
+  return (
+    <BoardProvider
+      FRAGMENT={FRAGMENT}
+      basePath={paths.absolute.HOME}
+      baseBoardPath={paths.absolute.BOARD_HOME}
+    >
+      <Navigation {...props}>{children}</Navigation>
+    </BoardProvider>
+  )
 }
 
 function Main({

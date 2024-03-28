@@ -9,9 +9,9 @@ export default getPaths(
     HOME          :'/',
     HOME2         :'/home',
     PROFILE       :'/profile',
+    NEW_BOARD     :'/new-board',
     BOARD_HOME    :`/${BOARD_PARAM}`,
     BOARD_HOME2   :`/${BOARD_PARAM}/home`,
     BOARD_SETTINGS:`/${BOARD_PARAM}/settings`,
-    NEW           :`/${BOARD_PARAM}/new`,
   },
 )

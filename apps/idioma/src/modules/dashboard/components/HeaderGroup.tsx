@@ -7,45 +7,42 @@ import {
   NavigationHeader,
   NestedNavigation,
 } from '@aztlan/ui'
-import {
-  SelectOrganizationHeader, SearchOrganizationHeader,
-} from '@ldmnet/ui'
-
 import { graphql } from 'react-relay'
+import {
+  SelectBoardHeader, SearchBoardHeader,
+} from './Board/index.js'
+
 import { debugRouteMap } from './constants.js'
 
 import { FRAGMENT_AUTHENTICATION_DEBUG } from '../../../ApplicationQuery.js'
 
-/*
-const FRAGMENT_ORGANIZATION_SELECT = graphql`
-  fragment HeaderGroupViewerOrganizationMembershipsFragment on OrganizationMembershipNodeConnection {
+const FRAGMENT_BOARD_SELECT = graphql`
+  fragment HeaderGroupViewerBoardMembershipsFragment on BoardMembershipNodeConnection {
     edges {
       node {
         id
         role
-        organization {
+        board {
           id
           name
-          url
         }
       }
     }
   }
 `
 
-const QUERY_SEARCH_ORGANIZATION = graphql`
-  query HeaderGroupSearchOrganizationQuery($value: String!) {
-    organizations(search: $value) {
+const QUERY_SEARCH_BOARD = graphql`
+  query HeaderGroupSearchBoardQuery($value: String!) {
+    boards(search: $value) {
       edges {
         node {
           id
           name
-          url
         }
       }
     }
   }
-` */
+`
 
 function HeaderGroup({
   wireframe,
@@ -56,12 +53,10 @@ function HeaderGroup({
     <div className="container">
       {before}
       {/* wireframe ? 'Wireframe' : 'MAIN' */}
-      {/*
-      <SearchOrganizationHeader
-        QUERY={QUERY_SEARCH_ORGANIZATION}
-        accessor="organizations"
+      <SearchBoardHeader
+        QUERY={QUERY_SEARCH_BOARD}
+        accessor="boards"
       />
-    */}
       {!wireframe ? (
         <AuthenticationDebugHeader FRAGMENT={FRAGMENT_AUTHENTICATION_DEBUG} />
       ) : (
@@ -71,9 +66,7 @@ function HeaderGroup({
         items={debugRouteMap}
         className="container"
       />
-      {/*
-      <SelectOrganizationHeader FRAGMENT={FRAGMENT_ORGANIZATION_SELECT} />
-        */}
+      <SelectBoardHeader FRAGMENT={FRAGMENT_BOARD_SELECT} />
       <NestedNavigation.Header />
       {after}
     </div>

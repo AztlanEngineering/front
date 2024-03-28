@@ -2,11 +2,12 @@ import { graphql } from 'react-relay'
 
 // Local Definitions
 export const QUERY_APPLICATION = graphql`
-  query ApplicationQuery($loginRequestedResource: String!) {
+  query ApplicationQuery($loginRequestedResource: String!, $board: ID) {
     viewer {
       id
       ...ApplicationQueryViewerFragment
     }
+    ...MainLayerBoardProviderFragment @arguments(id: $board)
     ...LoginButtonFragment @arguments(resource: $loginRequestedResource)
     time
     ...LoginButtonViewerFragment
@@ -36,7 +37,7 @@ export const FRAGMENT_VIEWER = graphql`
     ...ProfileDashboardFragment
     ...ApplicationQueryAuthenticationDebugFragment
     boardMemberships {
-      #...HeaderGroupViewerBoardMembershipsFragment
+      ...HeaderGroupViewerBoardMembershipsFragment
       ...HomeBoardMembershipsFragment
       ...NavigationBoardMembershipsFragment
     }

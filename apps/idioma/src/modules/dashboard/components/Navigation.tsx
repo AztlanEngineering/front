@@ -5,6 +5,7 @@ import {
 } from 'react-relay'
 import {
   NestedNavigation, useApplicationContext,
+  useAuthenticationContext,
   useViewer,
 } from '@aztlan/ui'
 // import { useOrganizationContext } from '@ldmnet/ui'
@@ -32,6 +33,7 @@ const FRAGMENT = graphql`
 
 function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
   const { data } = useViewer()
+  const { logout } = useAuthenticationContext()
   const result = useFragment(
     FRAGMENT, data.boardMemberships,
   )
@@ -62,7 +64,7 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
           displayItemsAs:'group',
           items         :[
             {
-              label:'New Board',
+              label:'*New Board',
               url  :paths.generatePath('NEW_BOARD'),
             },
           ],
@@ -102,6 +104,10 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
         {
           label:'Profile',
           url  :paths.generatePath('PROFILE'),
+        },
+        {
+          label    :'Logout',
+          Component:() => <button onClick={logout}>Logout</button>,
         },
         /*
         {

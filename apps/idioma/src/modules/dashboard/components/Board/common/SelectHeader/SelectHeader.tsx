@@ -52,7 +52,7 @@ function RawSelectHeader({
     FRAGMENT, data,
   )
   console.log(
-    'result', result,
+    'result', result, useBoardContext(),
   )
 
   const boardMemberships = result?.edges || {}
@@ -61,12 +61,12 @@ function RawSelectHeader({
 
   const handleSelectionChange = useCallback(
     (event) => {
-      const selectedOrgUrl = event.target.value
-      if (selectedOrgUrl === 'null') {
+      const selectedBoardId = event.target.value
+      if (selectedBoardId === 'null') {
         history.push(basePath)
       } else {
         history.push(generatePath(
-          baseBoardPath, { board: selectedOrgUrl },
+          baseBoardPath, { board: selectedBoardId },
         ))
       }
     },
@@ -101,7 +101,7 @@ function RawSelectHeader({
           return (
             <option
               key={node.id}
-              value={node.board.name}
+              value={node.board.id}
             >
               {node.board.name}
               {' '}

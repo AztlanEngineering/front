@@ -1,19 +1,40 @@
 /* @aztlan/generator-front 1.4.1 */
 import * as React from 'react'
-// import { useOrganizationContext } from '@ldmnet/ui'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { graphql } from 'react-relay'
 import Template from '../layer/Main.js'
+import { useBoardContext } from '../components/index.js'
 
-function Organization() {
+/*
+const FRAGMENT = graphql`
+  fragment BoardDashboardFragment on UserNode {
+    firstName
+    lastName
+    created
+    updated
+    email
+    profilePicture
+  }
+` */
+
+function Board() {
+  const { data } = useBoardContext()
   return (
     <>
-      <h1>Panel Organization</h1>
-      <p className="container">
-        <h1>SELECTED</h1>
-        <Link to="/panel">Panel hom</Link>
-      </p>
+      <h1>Board </h1>
+      <pre
+        style={{
+          whiteSpace:'pre-wrap',
+          wordWrap  :'break-word',
+        }}
+      >
+        {JSON.stringify(
+          data, null, 2,
+        )}
+      </pre>
     </>
   )
 }
 
-export default Organization
+export default Board

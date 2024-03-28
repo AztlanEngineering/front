@@ -88,7 +88,7 @@ InferProps<typeof RawSearchHeader.propTypes>): React.ReactElement {
                 minLength:2,
                 transform:(data) => data.edges.map((edge) => ({
                   label:edge.node.name,
-                  value:edge.node.url,
+                  value:edge.node.id,
                 })),
               },
             ),
