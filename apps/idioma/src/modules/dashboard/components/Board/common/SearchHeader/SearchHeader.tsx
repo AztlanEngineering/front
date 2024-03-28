@@ -19,7 +19,7 @@ import {
   Field,
   addGraphQLComboboxSearchOptions,
 } from '@aztlan/ui'
-import { useOrganizationContext } from '../../hooks/index.js'
+import { useBoardContext } from '../../hooks/index.js'
 
 const baseClassName = styleNames.base
 const componentClassName = 'search-header'
@@ -44,7 +44,7 @@ InferProps<typeof RawSearchHeader.propTypes>): React.ReactElement {
       import('./styles.scss')
     }, [],
   )
-  const { baseOrganizationPath } = useOrganizationContext()
+  const { baseBoardPath } = useBoardContext()
 
   const { watch } = useFormContext()
   const value = watch('search')
@@ -53,7 +53,7 @@ InferProps<typeof RawSearchHeader.propTypes>): React.ReactElement {
     () => {
       if (value?.length > 2) {
         history.push(generatePath(
-          baseOrganizationPath, { organization: value },
+          baseBoardPath, { board: value },
         ))
       }
     }, [value],
@@ -70,7 +70,7 @@ InferProps<typeof RawSearchHeader.propTypes>): React.ReactElement {
         .filter((e) => e)
         .join(' ')}
       style={style}
-      left={<strong>*organization</strong>}
+      left={<strong>*board</strong>}
       // {...otherProps}
     >
       <div className="grid container">

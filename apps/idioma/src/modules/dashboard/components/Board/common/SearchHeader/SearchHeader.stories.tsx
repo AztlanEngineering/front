@@ -5,7 +5,7 @@ import {
   Meta, StoryObj,
 } from '@storybook/react'
 // import { Meta, StoryFn } from '@storybook/react'
-import decorators from 'story-utils/decorators.js'
+import decorators from '../../../../../../decorators.js'
 import Component from './SearchHeader.js'
 
 const meta: Meta<typeof Component> = {
