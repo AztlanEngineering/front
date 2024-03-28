@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<98553833cdc9eff962bb33de5450f907>>
+ * @generated SignedSource<<ba73727dc671beb291857add6e8bfc5a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,6 +11,9 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ApplicationQueryViewerFragment$data = {
+  readonly boardMemberships: {
+    readonly " $fragmentSpreads": FragmentRefs<"HomeBoardMembershipsFragment" | "NavigationBoardMembershipsFragment">;
+  };
   readonly created: any;
   readonly email: string;
   readonly firstName: string;
@@ -20,7 +23,7 @@ export type ApplicationQueryViewerFragment$data = {
   readonly lastName: string;
   readonly profilePicture: string | null | undefined;
   readonly updated: any;
-  readonly " $fragmentSpreads": FragmentRefs<"BaseAuthenticationDebugFragment" | "ProfileFragment">;
+  readonly " $fragmentSpreads": FragmentRefs<"ApplicationQueryAuthenticationDebugFragment" | "ProfileDashboardFragment" | "ProfileFragment">;
   readonly " $fragmentType": "ApplicationQueryViewerFragment";
 };
 export type ApplicationQueryViewerFragment$key = {
@@ -105,13 +108,39 @@ const node: ReaderFragment = {
     {
       "args": null,
       "kind": "FragmentSpread",
-      "name": "BaseAuthenticationDebugFragment"
+      "name": "ProfileDashboardFragment"
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "ApplicationQueryAuthenticationDebugFragment"
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "BoardMembershipNodeConnection",
+      "kind": "LinkedField",
+      "name": "boardMemberships",
+      "plural": false,
+      "selections": [
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "HomeBoardMembershipsFragment"
+        },
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "NavigationBoardMembershipsFragment"
+        }
+      ],
+      "storageKey": null
     }
   ],
   "type": "UserNode",
   "abstractKey": null
 };
 
-(node as any).hash = "e40e7731e584ae4670c5b343f3d5374c";
+(node as any).hash = "eccea578c5fc724417a170429153d9da";
 
 export default node;

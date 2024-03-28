@@ -1,4 +1,81 @@
 type Query {
+  board(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): BoardNode
+  boards(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): BoardNodeConnection
+  boardMembership(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): BoardMembershipNode
+  boardMemberships(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): BoardMembershipNodeConnection
+  group(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): GroupNode
+  groups(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): GroupNodeConnection
+  expression(
+    """The ID of the object"""
+    id: ID
+
+    """The slug of the object."""
+    xSlug: String
+
+    """The url of the object."""
+    url: String
+  ): ExpressionNode
+  expressions(
+    """Search by fields"""
+    search: String
+    offset: Int
+    before: String
+    after: String
+    first: Int
+    last: Int
+  ): ExpressionNodeConnection
+
   """Search for fruits by label, case-insensitive."""
   searchFruits(search: String!): [FruitType]
 
@@ -32,18 +109,28 @@ type Query {
   ): Node
 }
 
-"""
-Graphene type representing a fruit with value, label, and optional disabled state.
-"""
-type FruitType {
-  """The slug representing the fruit."""
-  value: String
+type BoardNode implements SearchNode {
+  """The date and time at which the object was created."""
+  created: DateTime!
 
-  """The human-readable name of the fruit."""
-  label: String
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
 
-  """Whether the fruit option is disabled."""
-  disabled: Boolean!
+  """The ID of the object"""
+  id: ID!
+  name: String!
+  isPublic: Boolean!
+  language: String!
+  users(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+  defaultForUser: UserNode
+  memberships(offset: Int, before: String, after: String, first: Int, last: Int): BoardMembershipNodeConnection!
+  groups(offset: Int, before: String, after: String, first: Int, last: Int): GroupNodeConnection!
+  fragments(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
+}
+
+interface SearchNode {
+  """The ID of the object"""
+  id: ID!
 }
 
 """
@@ -52,6 +139,40 @@ value as specified by
 [iso8601](https://en.wikipedia.org/wiki/ISO_8601).
 """
 scalar DateTime
+
+type UserNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserNodeEdge]!
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""A Relay edge containing a `UserNode` and its cursor."""
+type UserNodeEdge {
+  """The item at the end of the edge"""
+  node: UserNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
 
 type UserNode implements Node {
   lastLogin: DateTime
@@ -93,6 +214,9 @@ type UserNode implements Node {
   """The ID of the object"""
   id: ID!
   profilePicture: String
+  boardMemberships(offset: Int, before: String, after: String, first: Int, last: Int): BoardMembershipNodeConnection!
+  boards(offset: Int, before: String, after: String, first: Int, last: Int): BoardNodeConnection!
+  defaultBoard: BoardNode
 }
 
 """An object with an ID"""
@@ -109,23 +233,6 @@ type GroupNodeConnection {
   edges: [GroupNodeEdge]!
 }
 
-"""
-The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
-"""
-type PageInfo {
-  """When paginating forwards, are there more items?"""
-  hasNextPage: Boolean!
-
-  """When paginating backwards, are there more items?"""
-  hasPreviousPage: Boolean!
-
-  """When paginating backwards, the cursor to continue."""
-  startCursor: String
-
-  """When paginating forwards, the cursor to continue."""
-  endCursor: String
-}
-
 """A Relay edge containing a `GroupNode` and its cursor."""
 type GroupNodeEdge {
   """The item at the end of the edge"""
@@ -135,16 +242,57 @@ type GroupNodeEdge {
   cursor: String!
 }
 
-type GroupNode implements Node {
+type GroupNode implements SearchNode {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
   """The ID of the object"""
   id: ID!
-  name: String!
-  permissions(offset: Int, before: String, after: String, first: Int, last: Int): PermissionNodeConnection!
+  board: BoardNode!
+  fragments(offset: Int, before: String, after: String, first: Int, last: Int): ExpressionNodeConnection!
+}
 
-  """
-  The groups this user belongs to. A user will get all permissions granted to each of their groups.
-  """
-  userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
+type ExpressionNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ExpressionNodeEdge]!
+}
+
+"""A Relay edge containing a `ExpressionNode` and its cursor."""
+type ExpressionNodeEdge {
+  """The item at the end of the edge"""
+  node: ExpressionNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ExpressionNode implements SearchNode {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  group: GroupNode!
+  board: BoardNode!
+  language: String!
+  content: String!
+  correctedContent: String
+  category: String!
+  audioUrl: String
+  audioKey: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variant: String
 }
 
 type PermissionNodeConnection {
@@ -175,21 +323,78 @@ type PermissionNode implements Node {
   userSet(offset: Int, before: String, after: String, first: Int, last: Int, firstName: String, firstName_Icontains: String, lastName: String, lastName_Icontains: String, email: String, email_Icontains: String, username: String, username_Icontains: String, created_Gte: DateTime, created_Gt: DateTime, created_Lte: DateTime, created_Lt: DateTime): UserNodeConnection!
 }
 
-type UserNodeConnection {
+type BoardMembershipNodeConnection {
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
   """Contains the nodes in this connection."""
-  edges: [UserNodeEdge]!
+  edges: [BoardMembershipNodeEdge]!
 }
 
-"""A Relay edge containing a `UserNode` and its cursor."""
-type UserNodeEdge {
+"""A Relay edge containing a `BoardMembershipNode` and its cursor."""
+type BoardMembershipNodeEdge {
   """The item at the end of the edge"""
-  node: UserNode
+  node: BoardMembershipNode
 
   """A cursor for use in pagination"""
   cursor: String!
+}
+
+type BoardMembershipNode implements SearchNode {
+  """The date and time at which the object was created."""
+  created: DateTime!
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime!
+
+  """The ID of the object"""
+  id: ID!
+  board: BoardNode!
+  user: UserNode!
+  role: ExpressionsBoardMembershipRoleChoices!
+}
+
+"""An enumeration."""
+enum ExpressionsBoardMembershipRoleChoices {
+  """Owner"""
+  OWNER
+
+  """Admin"""
+  ADMIN
+
+  """Member"""
+  MEMBER
+}
+
+type BoardNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BoardNodeEdge]!
+}
+
+"""A Relay edge containing a `BoardNode` and its cursor."""
+type BoardNodeEdge {
+  """The item at the end of the edge"""
+  node: BoardNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""
+Graphene type representing a fruit with value, label, and optional disabled state.
+"""
+type FruitType {
+  """The slug representing the fruit."""
+  value: String
+
+  """The human-readable name of the fruit."""
+  label: String
+
+  """Whether the fruit option is disabled."""
+  disabled: Boolean!
 }
 
 """
@@ -204,12 +409,248 @@ type OAuth2LinksProvider {
 }
 
 type Mutation {
+  createBoard(input: CreateBoardMutationInput!): CreateBoardMutationPayload
+  updateBoard(input: UpdateBoardMutationInput!): UpdateBoardMutationPayload
+  deleteBoard(input: DeleteBoardMutationInput!): DeleteBoardMutationPayload
+  createGroup(input: CreateGroupMutationInput!): CreateGroupMutationPayload
+  updateGroup(input: UpdateGroupMutationInput!): UpdateGroupMutationPayload
+  deleteGroup(input: DeleteGroupMutationInput!): DeleteGroupMutationPayload
+  createExpression(input: CreateExpressionMutationInput!): CreateExpressionMutationPayload
+  updateExpression(input: UpdateExpressionMutationInput!): UpdateExpressionMutationPayload
+  deleteExpression(input: DeleteExpressionMutationInput!): DeleteExpressionMutationPayload
+  testAiConnector(input: String!): TestAIConnectorMutation
   verifyToken(input: VerifyInput!): VerifyPayload
   refreshToken(input: RefreshInput!): RefreshPayload
   deleteTokenCookie(input: DeleteJSONWebTokenCookieInput!): DeleteJSONWebTokenCookiePayload
   deleteRefreshTokenCookie(input: DeleteRefreshTokenCookieInput!): DeleteRefreshTokenCookiePayload
   revokeToken(input: RevokeInput!): RevokePayload
   upload3(input: FileInput!): Upload3Mutation
+}
+
+type CreateBoardMutationPayload {
+  id: String
+
+  """The date and time at which the object was created."""
+  created: DateTime
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime
+  name: String
+  isPublic: Boolean
+  language: String
+  defaultForUser: String
+  users: String
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+type ErrorType {
+  field: String!
+  messages: [String!]!
+}
+
+input CreateBoardMutationInput {
+  id: String
+  name: String!
+  isPublic: Boolean
+  language: String
+  defaultForUser: String
+  clientMutationId: String
+}
+
+type UpdateBoardMutationPayload {
+  id: String
+
+  """The date and time at which the object was created."""
+  created: DateTime
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime
+  name: String
+  isPublic: Boolean
+  language: String
+  defaultForUser: String
+  users: String
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input UpdateBoardMutationInput {
+  id: String
+  name: String!
+  isPublic: Boolean
+  language: String
+  defaultForUser: String
+  clientMutationId: String
+}
+
+type DeleteBoardMutationPayload {
+  """True if the deletion was successful"""
+  success: Boolean!
+  clientMutationId: String
+}
+
+input DeleteBoardMutationInput {
+  id: String!
+  clientMutationId: String
+}
+
+type CreateGroupMutationPayload {
+  id: String
+
+  """The date and time at which the object was created."""
+  created: DateTime
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime
+  board: String
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input CreateGroupMutationInput {
+  id: String
+  board: String!
+  clientMutationId: String
+}
+
+type UpdateGroupMutationPayload {
+  id: String
+
+  """The date and time at which the object was created."""
+  created: DateTime
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime
+  board: String
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input UpdateGroupMutationInput {
+  id: String
+  board: String!
+  clientMutationId: String
+}
+
+type DeleteGroupMutationPayload {
+  """True if the deletion was successful"""
+  success: Boolean!
+  clientMutationId: String
+}
+
+input DeleteGroupMutationInput {
+  id: String!
+  clientMutationId: String
+}
+
+type CreateExpressionMutationPayload {
+  id: String
+  board: String
+
+  """The date and time at which the object was created."""
+  created: DateTime
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime
+  language: String
+  content: String
+  correctedContent: String
+  category: String
+  audioUrl: String
+  audioKey: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variant: String
+  group: String
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input CreateExpressionMutationInput {
+  id: String
+  board: String
+  language: String
+  content: String!
+  correctedContent: String
+  category: String
+  audioUrl: String
+  audioKey: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variant: String
+  group: String
+  clientMutationId: String
+}
+
+type UpdateExpressionMutationPayload {
+  id: String
+
+  """The date and time at which the object was created."""
+  created: DateTime
+
+  """The date and time at which the object was last updated."""
+  updated: DateTime
+  language: String
+  content: String
+  correctedContent: String
+  category: String
+  audioUrl: String
+  audioKey: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variant: String
+  group: String
+  board: String
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input UpdateExpressionMutationInput {
+  id: String
+  language: String
+  content: String!
+  correctedContent: String
+  category: String
+  audioUrl: String
+  audioKey: String
+  generalExplanation: String
+  grammarExplanation: String
+  wordsExplanation: String
+  variant: String
+  group: String!
+  board: String!
+  clientMutationId: String
+}
+
+type DeleteExpressionMutationPayload {
+  """True if the deletion was successful"""
+  success: Boolean!
+  clientMutationId: String
+}
+
+input DeleteExpressionMutationInput {
+  id: String!
+  clientMutationId: String
+}
+
+type TestAIConnectorMutation {
+  output: String
 }
 
 type VerifyPayload {

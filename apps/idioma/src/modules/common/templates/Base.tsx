@@ -9,7 +9,10 @@ import {
   ThemeSwitcher,
   LocaleSwitcher,
   AuthenticationDebugHeader,
+  NavigationDebugHeader,
 } from '@aztlan/ui'
+
+import { FRAGMENT_AUTHENTICATION_DEBUG } from '../../../ApplicationQuery.js'
 
 const routeMap = [
   {
@@ -56,14 +59,36 @@ function Navigation(): React.ReactElement {
   )
 }
 
-const FRAGMENT = graphql`
-  fragment BaseAuthenticationDebugFragment on UserNode {
-    id
-    firstName
-    lastName
-    email
-  }
-`
+const items = [
+  {
+    url  :'/',
+    label:'Home',
+  },
+  {
+    url  :'/maintenance',
+    label:'Maintenance',
+  },
+  {
+    url  :'/login',
+    label:'Login',
+  },
+  {
+    url  :'/profile',
+    label:'Profile',
+  },
+  {
+    url  :'/formtest',
+    label:'Form Test',
+  },
+  {
+    url  :'/fileupload',
+    label:'File Upload',
+  },
+  {
+    url  :'/404',
+    label:'Test 404',
+  },
+]
 
 function Wrapper({
   title, children, sidebar,
@@ -76,7 +101,13 @@ function Wrapper({
       className="grid"
       style={{ padding: '0 1em' }}
     >
-      <AuthenticationDebugHeader FRAGMENT={FRAGMENT} />
+      <div className="container">
+        <AuthenticationDebugHeader FRAGMENT={FRAGMENT_AUTHENTICATION_DEBUG} />
+        <NavigationDebugHeader
+          className="container"
+          items={items}
+        />
+      </div>
       <div className="background near span-8 md-span-3 fit-content">
         <h1>{title}</h1>
         {sidebar}

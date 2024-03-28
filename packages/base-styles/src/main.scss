@@ -127,7 +127,7 @@ p {
 ul {
   &.inline {
     display: flex;
-    gap: var(--gap);
+    gap: 0 var(--gap);
     list-style: none;
     margin-block-end: var(--margin);
     margin-block-start: 0;

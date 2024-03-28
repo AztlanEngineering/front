@@ -33,6 +33,21 @@ export const FRAGMENT_VIEWER = graphql`
     #  }
     #}
     ...ProfileFragment
-    ...BaseAuthenticationDebugFragment
+    ...ProfileDashboardFragment
+    ...ApplicationQueryAuthenticationDebugFragment
+    boardMemberships {
+      #...HeaderGroupViewerBoardMembershipsFragment
+      ...HomeBoardMembershipsFragment
+      ...NavigationBoardMembershipsFragment
+    }
+  }
+`
+
+export const FRAGMENT_AUTHENTICATION_DEBUG = graphql`
+  fragment ApplicationQueryAuthenticationDebugFragment on UserNode {
+    id
+    firstName
+    lastName
+    email
   }
 `

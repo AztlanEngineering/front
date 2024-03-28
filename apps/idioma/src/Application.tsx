@@ -82,7 +82,7 @@ function Application({
                 ssrHostname={ssrHostname}
                 QUERY_APPLICATION={QUERY_APPLICATION}
                 // applicationQueryVariables={{ organization: 'atest.com' }}
-                defaultRedirectionAfterLogin="/profile"
+                defaultRedirectionAfterLogin="/d/profile"
               >
                 <ThemeWrapper>
                   <AuthenticationProvider
