@@ -24,6 +24,7 @@ function VerticalMenu({
   spaced,
   onItemMouseEnterHandler,
   onItemMouseLeaveHandler,
+  hideRootItem = false,
   ...otherProps
 }: ComponentProps): React.ReactElement {
   useInsertionEffect(
@@ -94,7 +95,7 @@ function VerticalMenu({
       {...otherProps}
     >
       <ul>
-        {renderItem(rootItemWithoutItems)}
+        {!hideRootItem && renderItem(rootItemWithoutItems)}
         {finalItems.map(renderItem)}
       </ul>
     </Wrapper>

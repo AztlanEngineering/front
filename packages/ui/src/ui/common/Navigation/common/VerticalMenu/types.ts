@@ -42,6 +42,9 @@ export const ComponentPropTypes = {
   spaced:PropTypes.bool,
 
   appendItems:itemsValidator,
+
+  /** Whether to hide the root item */
+  hideRootItem:PropTypes.bool,
 }
 
 export type ComponentProps = InferProps<typeof ComponentPropTypes>

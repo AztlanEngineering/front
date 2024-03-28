@@ -58,6 +58,16 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
           url  :paths.generatePath('HOME2'),
         },
         {
+          // url  :paths.generatePath('NEW_BOARD'),
+          displayItemsAs:'group',
+          items         :[
+            {
+              label:'New Board',
+              url  :paths.generatePath('NEW_BOARD'),
+            },
+          ],
+        },
+        {
           label         :'Boards',
           displayItemsAs:'group',
           items         :result?.edges.map((edge) => {
@@ -67,6 +77,25 @@ function Navigation({ children }: InferProps<typeof Navigation.propTypes>) {
               url  :paths.generatePath(
                 'BOARD_HOME', { board: node.board.id },
               ),
+              items:[
+                {
+                  displayItemsAs:'group',
+                  items         :[
+                    {
+                      label:'Board',
+                      url  :paths.generatePath(
+                        'BOARD_HOME2', { board: node.board.id },
+                      ),
+                    },
+                  ],
+                },
+                {
+                  label:'Settings',
+                  url  :paths.generatePath(
+                    'BOARD_SETTINGS', { board: node.board.id },
+                  ),
+                },
+              ],
             }
           }) || [],
         },

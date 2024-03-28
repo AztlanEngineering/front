@@ -58,6 +58,7 @@ function Main({
         className="md-span-10 background near"
         desktopVerticalMenuGroupSpan={4}
         desktopVerticalMenuSingleSpan={2}
+        verticalMenuProps={{ hideRootItem: true }}
       >
         <div className="container">
           <SwitchRoutes

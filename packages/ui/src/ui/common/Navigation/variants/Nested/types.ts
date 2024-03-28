@@ -92,6 +92,9 @@ export const NestedNavigationCanvasPropTypes = {
 
   /* The children to render */
   children:PropTypes.node.isRequired,
+
+  /* The props to pass to the vertical menu */
+  verticalMenuProps:PropTypes.shape(NestedNavigationVerticalMenuPropTypes),
 }
 
 export const NestedNavigationHeaderPropTypes = { ...HeaderPropTypes }

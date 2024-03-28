@@ -15,6 +15,7 @@ function NestedNavigationCanvas({
   children,
   desktopVerticalMenuGroupSpan = 9,
   desktopVerticalMenuSingleSpan = 3,
+  verticalMenuProps,
 }:NestedNavigationCanvasProps) {
   /*
   const {
@@ -41,6 +42,7 @@ function NestedNavigationCanvas({
         ]
           .filter(Boolean)
           .join(' ')}
+        {...verticalMenuProps}
       />
       <div
         id={id}
