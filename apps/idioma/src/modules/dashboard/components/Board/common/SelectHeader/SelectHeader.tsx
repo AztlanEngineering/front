@@ -17,7 +17,7 @@ import {
 } from '@aztlan/ui'
 import styleNames from '@aztlan/bem'
 import { useFragment } from 'react-relay'
-import { useOrganizationContext } from '../../hooks/index.js'
+import { useBoardContext } from '../../hooks/index.js'
 // import { NavigationHeader } from '@aztlan/ui'
 
 const baseClassName = styleNames.base
@@ -45,14 +45,17 @@ function RawSelectHeader({
   )
 
   const {
-    basePath, baseOrganizationPath, currentOrganizationUrl,
-  } = useOrganizationContext()
+    basePath, baseBoardPath, currentBoardId,
+  } = useBoardContext()
 
   const result = useFragment(
     FRAGMENT, data,
   )
+  console.log(
+    'result', result,
+  )
 
-  const organizationMemberships = result?.edges || {}
+  const boardMemberships = result?.edges || {}
 
   const history = useHistory()
 
@@ -63,7 +66,7 @@ function RawSelectHeader({
         history.push(basePath)
       } else {
         history.push(generatePath(
-          baseOrganizationPath, { organization: selectedOrgUrl },
+          baseBoardPath, { board: selectedOrgUrl },
         ))
       }
     },
@@ -82,30 +85,30 @@ function RawSelectHeader({
         .join(' ')}
       style={style}
       content="Select"
-      left={<strong>Organization</strong>}
+      left={<strong>Board</strong>}
       desktop
       {...otherProps}
     >
       <select
-        id="_organization"
-        name="_organization"
+        id="_board"
+        name="_board"
         onChange={handleSelectionChange}
-        defaultValue={currentOrganizationUrl}
+        defaultValue={currentBoardId}
       >
-        <option value="null">Select an organization</option>
-        {organizationMemberships.map((membership) => {
+        <option value="null">Select a board</option>
+        {boardMemberships.map((membership) => {
           const { node } = membership
           return (
             <option
               key={node.id}
-              value={node.organization.url}
+              value={node.board.name}
             >
-              {node.organization.url}
+              {node.board.name}
               {' '}
               - (
               {node.role}
               )
-              {/* node.organization.name */}
+              {/* node.board.name */}
             </option>
           )
         })}
@@ -138,7 +141,7 @@ function SelectHeader(props) {
   const { data } = useViewer()
   return (
     <RawSelectHeader
-      data={data.organizationMemberships}
+      data={data.boardMemberships}
       {...props}
     />
   )

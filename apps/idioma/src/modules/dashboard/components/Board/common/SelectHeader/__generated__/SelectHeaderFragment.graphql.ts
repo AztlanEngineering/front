@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2dada1b9e38e4869740782c4070ea65d>>
+ * @generated SignedSource<<e4060082521ac982b2183bdf756b7558>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,18 +9,17 @@
 // @ts-nocheck
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
-export type ActivitystreamsOrganizationMembershipRoleChoices = "ADMIN" | "FOLLOWER" | "MEMBER" | "MODERATOR" | "OWNER" | "%future added value";
+export type ExpressionsBoardMembershipRoleChoices = "ADMIN" | "MEMBER" | "OWNER" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type SelectHeaderFragment$data = {
   readonly edges: ReadonlyArray<{
     readonly node: {
-      readonly id: string;
-      readonly organization: {
+      readonly board: {
         readonly id: string;
-        readonly name: string | null | undefined;
-        readonly url: string | null | undefined;
+        readonly name: string;
       };
-      readonly role: ActivitystreamsOrganizationMembershipRoleChoices;
+      readonly id: string;
+      readonly role: ExpressionsBoardMembershipRoleChoices;
     } | null | undefined;
   } | null | undefined>;
   readonly " $fragmentType": "SelectHeaderFragment";
@@ -47,7 +46,7 @@ return {
     {
       "alias": null,
       "args": null,
-      "concreteType": "OrganizationMembershipNodeEdge",
+      "concreteType": "BoardMembershipNodeEdge",
       "kind": "LinkedField",
       "name": "edges",
       "plural": true,
@@ -55,7 +54,7 @@ return {
         {
           "alias": null,
           "args": null,
-          "concreteType": "OrganizationMembershipNode",
+          "concreteType": "BoardMembershipNode",
           "kind": "LinkedField",
           "name": "node",
           "plural": false,
@@ -71,9 +70,9 @@ return {
             {
               "alias": null,
               "args": null,
-              "concreteType": "OrganizationNode",
+              "concreteType": "BoardNode",
               "kind": "LinkedField",
-              "name": "organization",
+              "name": "board",
               "plural": false,
               "selections": [
                 (v0/*: any*/),
@@ -82,13 +81,6 @@ return {
                   "args": null,
                   "kind": "ScalarField",
                   "name": "name",
-                  "storageKey": null
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "url",
                   "storageKey": null
                 }
               ],
@@ -101,11 +93,11 @@ return {
       "storageKey": null
     }
   ],
-  "type": "OrganizationMembershipNodeConnection",
+  "type": "BoardMembershipNodeConnection",
   "abstractKey": null
 };
 })();
 
-(node as any).hash = "59100aeaabe789c804497a8c1c04b53e";
+(node as any).hash = "58192c126fec562998b9fdfd5d465c20";
 
 export default node;

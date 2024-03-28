@@ -3,8 +3,8 @@
 import {
   Meta, StoryObj,
 } from '@storybook/react'
-import decorators from 'story-utils/decorators.js'
 import { graphql } from 'react-relay'
+import decorators from '../../../../../../decorators.js'
 import { RawSelectHeader as Component } from './SelectHeader.js'
 
 const meta: Meta<typeof Component> = {
@@ -21,10 +21,9 @@ const FRAGMENT = graphql`
       node {
         id
         role
-        organization {
+        board {
           id
           name
-          url
         }
       }
     }
@@ -35,7 +34,7 @@ const relay = {
   query:graphql`
     query SelectHeaderQuery {
       viewer {
-        organizationMemberships {
+        boardMemberships {
           ...SelectHeaderFragment
         }
       }
@@ -43,7 +42,7 @@ const relay = {
   `,
   getReferenceEntry:(data) => [
     'data',
-    data.viewer.organizationMemberships,
+    data.viewer.boardMemberships,
   ],
   variables    :{},
   mockResolvers:{
@@ -51,21 +50,19 @@ const relay = {
       edges:[
         {
           node:{
-            role        :'OWNER',
-            organization:{
+            role :'OWNER',
+            board:{
               id  :'1',
               name:'Board 1',
-              url :'/organization/1',
             },
           },
         },
         {
           node:{
-            role        :'MEMBER',
-            organization:{
+            role :'MEMBER',
+            board:{
               id  :'2',
               name:'Board 2',
-              url :'/organization/2',
             },
           },
         },

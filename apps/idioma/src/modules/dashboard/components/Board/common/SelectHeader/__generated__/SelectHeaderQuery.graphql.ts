@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6c1bcc1db2d7511d340eef0e73bdb598>>
+ * @generated SignedSource<<2e28ca907446df298b279d1b94e73058>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,7 +13,7 @@ import { FragmentRefs } from "relay-runtime";
 export type SelectHeaderQuery$variables = Record<PropertyKey, never>;
 export type SelectHeaderQuery$data = {
   readonly viewer: {
-    readonly organizationMemberships: {
+    readonly boardMemberships: {
       readonly " $fragmentSpreads": FragmentRefs<"SelectHeaderFragment">;
     };
   } | null | undefined;
@@ -49,9 +49,9 @@ return {
           {
             "alias": null,
             "args": null,
-            "concreteType": "OrganizationMembershipNodeConnection",
+            "concreteType": "BoardMembershipNodeConnection",
             "kind": "LinkedField",
-            "name": "organizationMemberships",
+            "name": "boardMemberships",
             "plural": false,
             "selections": [
               {
@@ -86,15 +86,15 @@ return {
           {
             "alias": null,
             "args": null,
-            "concreteType": "OrganizationMembershipNodeConnection",
+            "concreteType": "BoardMembershipNodeConnection",
             "kind": "LinkedField",
-            "name": "organizationMemberships",
+            "name": "boardMemberships",
             "plural": false,
             "selections": [
               {
                 "alias": null,
                 "args": null,
-                "concreteType": "OrganizationMembershipNodeEdge",
+                "concreteType": "BoardMembershipNodeEdge",
                 "kind": "LinkedField",
                 "name": "edges",
                 "plural": true,
@@ -102,7 +102,7 @@ return {
                   {
                     "alias": null,
                     "args": null,
-                    "concreteType": "OrganizationMembershipNode",
+                    "concreteType": "BoardMembershipNode",
                     "kind": "LinkedField",
                     "name": "node",
                     "plural": false,
@@ -118,9 +118,9 @@ return {
                       {
                         "alias": null,
                         "args": null,
-                        "concreteType": "OrganizationNode",
+                        "concreteType": "BoardNode",
                         "kind": "LinkedField",
-                        "name": "organization",
+                        "name": "board",
                         "plural": false,
                         "selections": [
                           (v0/*: any*/),
@@ -129,13 +129,6 @@ return {
                             "args": null,
                             "kind": "ScalarField",
                             "name": "name",
-                            "storageKey": null
-                          },
-                          {
-                            "alias": null,
-                            "args": null,
-                            "kind": "ScalarField",
-                            "name": "url",
                             "storageKey": null
                           }
                         ],
@@ -157,16 +150,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "405100bc013793dd458e64918af392da",
+    "cacheID": "235d63322f24d92754ff371c05607af4",
     "id": null,
     "metadata": {},
     "name": "SelectHeaderQuery",
     "operationKind": "query",
-    "text": "query SelectHeaderQuery {\n  viewer {\n    organizationMemberships {\n      ...SelectHeaderFragment\n    }\n    id\n  }\n}\n\nfragment SelectHeaderFragment on OrganizationMembershipNodeConnection {\n  edges {\n    node {\n      id\n      role\n      organization {\n        id\n        name\n        url\n      }\n    }\n  }\n}\n"
+    "text": "query SelectHeaderQuery {\n  viewer {\n    boardMemberships {\n      ...SelectHeaderFragment\n    }\n    id\n  }\n}\n\nfragment SelectHeaderFragment on BoardMembershipNodeConnection {\n  edges {\n    node {\n      id\n      role\n      board {\n        id\n        name\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "821a9f43503a3d7ece41dbb65585a334";
+(node as any).hash = "0940ed84a18cb740c2dd810e21f0ec60";
 
 export default node;
